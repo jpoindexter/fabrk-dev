@@ -77,10 +77,8 @@ async function initializeRedis() {
 // In-memory fallback for development (NOT for production)
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
-// Emit warning once if using in-memory in production
-let productionWarningEmitted = false;
-if (process.env.NODE_ENV === 'production' && !isRedisConfigured && !productionWarningEmitted) {
-  productionWarningEmitted = true;
+// Emit warning if using in-memory rate limiting in production
+if (process.env.NODE_ENV === 'production' && !isRedisConfigured) {
   logger.warn(
     '⚠️ WARNING: In-memory rate limiting detected in production. ' +
       'This will not work correctly with multiple server instances. ' +

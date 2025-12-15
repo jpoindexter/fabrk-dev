@@ -198,12 +198,16 @@ export function detectSQLInjection(input: string): boolean {
 }
 
 /**
- * Detect XSS attempts
+ * Detect common XSS attack patterns
+ *
+ * Note: This is for early detection/blocking, NOT for HTML sanitization.
+ * For sanitizing user-generated HTML content, use DOMPurify (isomorphic-dompurify).
+ * Regex cannot reliably parse HTML - this only catches obvious attack patterns.
  */
 export function detectXSS(input: string): boolean {
   const xssPatterns = [
-    // Properly escaped script tags with case-insensitive matching
-    /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
+    // Common script injection patterns (not comprehensive - use sanitizer for HTML)
+    /<script\b/gi,
     // Dangerous URL schemes
     /\b(javascript|data|vbscript|file|about):/gi,
     // Event handlers

@@ -48,13 +48,14 @@ export function generateExcerpt(content: string, maxLength = 160): string {
     text = text.replace(htmlTagPattern, '');
   }
 
-  // Also decode common HTML entities
+  // Decode common HTML entities to readable text (for excerpts display only)
+  // Note: This is for display purposes after HTML has been stripped
   text = text
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
+    .replace(/&#39;/g, "'")
+    .replace(/&hellip;/g, '...');
 
   if (text.length <= maxLength) return text;
 

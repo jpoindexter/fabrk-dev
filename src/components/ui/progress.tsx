@@ -68,7 +68,7 @@ function Progress({
   if (variant === 'arrow') {
     const arrowChars = chars as typeof PROGRESS_CHARS.arrow;
     if (filledCount > 0) {
-      bar = arrowChars.filled.repeat(filledCount - 1) + (filledCount > 0 ? arrowChars.head : '');
+      bar = arrowChars.filled.repeat(filledCount - 1) + arrowChars.head;
     }
     bar += arrowChars.empty.repeat(emptyCount);
   } else {
