@@ -11,12 +11,19 @@
  *   GITHUB_TOKEN - Optional, for private repos or higher rate limits
  *   GITHUB_OWNER - Repository owner (default: from package.json or "jpoindexter")
  *   GITHUB_REPO  - Repository name (default: from package.json or "fabrk_plate")
+ *
+ * Features:
+ *   - Pagination support (fetches all releases, not just first 30)
+ *   - Filters out drafts and prereleases
+ *   - Validates generated TypeScript
+ *   - Rate limit handling with retries
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,6 +34,9 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 const GITHUB_OWNER = process.env.GITHUB_OWNER || 'jpoindexter';
 const GITHUB_REPO = process.env.GITHUB_REPO || 'fabrk_plate';
 const CHANGELOG_PATH = join(projectRoot, 'src/data/changelog.ts');
+const PER_PAGE = 100; // Max allowed by GitHub API
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 1000; // 1 second
 
 // Parse release body into change entries
 function parseReleaseBody(body) {
@@ -93,8 +103,58 @@ function generateTitle(name, tagName) {
   return `RELEASE_${cleanVersion(tagName).replace(/\./g, '_')}`;
 }
 
-// Fetch releases from GitHub API
-async function fetchReleases() {
+// Sleep helper for retries
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Fetch a single page of releases with retry logic
+async function fetchReleasesPage(page, headers) {
+  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases?per_page=${PER_PAGE}&page=${page}`;
+
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const response = await fetch(url, { headers });
+
+      // Handle rate limiting
+      if (response.status === 403) {
+        const rateLimitRemaining = response.headers.get('x-ratelimit-remaining');
+        const rateLimitReset = response.headers.get('x-ratelimit-reset');
+
+        if (rateLimitRemaining === '0' && rateLimitReset) {
+          const resetTime = parseInt(rateLimitReset, 10) * 1000;
+          const waitTime = Math.max(0, resetTime - Date.now()) + 1000;
+          console.log(`⏳ Rate limited. Waiting ${Math.ceil(waitTime / 1000)}s...`);
+          await sleep(waitTime);
+          continue;
+        }
+      }
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          return { releases: [], hasMore: false };
+        }
+        throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      }
+
+      const releases = await response.json();
+      const linkHeader = response.headers.get('link');
+      const hasMore = linkHeader?.includes('rel="next"') ?? false;
+
+      return { releases, hasMore };
+    } catch (error) {
+      if (attempt < MAX_RETRIES) {
+        console.log(`⚠️  Attempt ${attempt} failed, retrying in ${RETRY_DELAY}ms...`);
+        await sleep(RETRY_DELAY);
+      } else {
+        throw error;
+      }
+    }
+  }
+}
+
+// Fetch all releases with pagination
+async function fetchAllReleases() {
   const headers = {
     Accept: 'application/vnd.github.v3+json',
     'User-Agent': 'fabrk-changelog-sync',
@@ -104,21 +164,34 @@ async function fetchReleases() {
     headers.Authorization = `token ${GITHUB_TOKEN}`;
   }
 
-  const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases`;
-
   console.log(`\n📡 Fetching releases from ${GITHUB_OWNER}/${GITHUB_REPO}...`);
 
-  const response = await fetch(url, { headers });
+  const allReleases = [];
+  let page = 1;
+  let hasMore = true;
 
-  if (!response.ok) {
-    if (response.status === 404) {
-      console.log('⚠️  Repository not found or no releases yet.');
-      return [];
+  while (hasMore) {
+    const { releases, hasMore: more } = await fetchReleasesPage(page, headers);
+
+    if (releases.length === 0) break;
+
+    // Filter out drafts and prereleases
+    const validReleases = releases.filter((r) => !r.draft && !r.prerelease);
+    allReleases.push(...validReleases);
+
+    console.log(`   Page ${page}: ${releases.length} releases (${validReleases.length} valid)`);
+
+    hasMore = more;
+    page++;
+
+    // Safety limit to prevent infinite loops
+    if (page > 50) {
+      console.log('⚠️  Reached page limit (50), stopping pagination');
+      break;
     }
-    throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
   }
 
-  return response.json();
+  return allReleases;
 }
 
 // Generate TypeScript file content
@@ -179,15 +252,31 @@ export function getLatestVersion(): string {
 `;
 }
 
+// Validate generated TypeScript
+function validateTypeScript(filePath) {
+  console.log('\n🔍 Validating TypeScript...');
+  try {
+    execSync(`npx tsc --noEmit "${filePath}"`, {
+      cwd: projectRoot,
+      stdio: 'pipe',
+    });
+    console.log('   ✅ TypeScript validation passed');
+    return true;
+  } catch (error) {
+    console.error('   ❌ TypeScript validation failed:', error.message);
+    return false;
+  }
+}
+
 // Main execution
 async function main() {
   console.log('🔄 Syncing changelog from GitHub releases...');
 
   try {
-    const releases = await fetchReleases();
+    const releases = await fetchAllReleases();
 
     if (releases.length === 0) {
-      console.log('\n⚠️  No releases found. Creating placeholder changelog.');
+      console.log('\n⚠️  No published releases found. Creating placeholder changelog.');
 
       // Create default entry if no releases
       const defaultEntry = {
@@ -205,11 +294,17 @@ async function main() {
 
       const content = generateChangelogFile([defaultEntry]);
       writeFileSync(CHANGELOG_PATH, content);
+
+      // Validate
+      if (!validateTypeScript(CHANGELOG_PATH)) {
+        process.exit(1);
+      }
+
       console.log(`\n✅ Created default changelog at ${CHANGELOG_PATH}`);
       return;
     }
 
-    console.log(`\n📦 Found ${releases.length} release(s)`);
+    console.log(`\n📦 Found ${releases.length} published release(s)`);
 
     // Convert releases to changelog entries
     const entries = releases.map((release) => {
@@ -235,6 +330,12 @@ async function main() {
     // Generate and write file
     const content = generateChangelogFile(entries);
     writeFileSync(CHANGELOG_PATH, content);
+
+    // Validate TypeScript
+    if (!validateTypeScript(CHANGELOG_PATH)) {
+      console.error('\n❌ Generated file has TypeScript errors. Please check manually.');
+      process.exit(1);
+    }
 
     console.log(`\n✅ Synced ${entries.length} release(s) to changelog`);
     console.log(`   📁 ${CHANGELOG_PATH}`);

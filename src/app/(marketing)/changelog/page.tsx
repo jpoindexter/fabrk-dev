@@ -4,6 +4,7 @@
  */
 
 import { Metadata } from 'next';
+import { Rss } from 'lucide-react';
 import { CHANGELOG } from '@/data/changelog';
 import { Badge } from '@/components/ui/card';
 import { ChangelogEntry } from '@/components/changelog';
@@ -13,6 +14,11 @@ import { mode } from '@/design-system';
 export const metadata: Metadata = {
   title: 'Changelog | Fabrk',
   description: 'Version history and release notes for Fabrk SaaS boilerplate.',
+  alternates: {
+    types: {
+      'application/rss+xml': '/changelog/rss',
+    },
+  },
 };
 
 export default function ChangelogPage() {
@@ -31,6 +37,17 @@ export default function ChangelogPage() {
           <p className={cn('text-muted-foreground mx-auto max-w-2xl text-xs', mode.font)}>
             Track every update, improvement, and fix. All changes are documented here.
           </p>
+          <a
+            href="/changelog/rss"
+            className={cn(
+              'text-muted-foreground hover:text-foreground mt-4 inline-flex items-center gap-2 text-xs transition-colors',
+              mode.font
+            )}
+            title="Subscribe to RSS feed"
+          >
+            <Rss className="h-3 w-3" />
+            [RSS FEED]
+          </a>
         </div>
 
         {/* Changelog Entries */}
