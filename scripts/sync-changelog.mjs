@@ -316,7 +316,8 @@ export function getLatestVersion(): string {
 function validateTypeScript(filePath) {
   console.log('\n🔍 Validating TypeScript...');
   try {
-    execSync(`npx tsc --noEmit "${filePath}"`, {
+    // Use project-wide type check instead of single file (avoids transitive dependency issues)
+    execSync('npm run type-check', {
       cwd: projectRoot,
       stdio: 'pipe',
     });
@@ -324,6 +325,7 @@ function validateTypeScript(filePath) {
     return true;
   } catch (error) {
     console.error('   ❌ TypeScript error');
+    console.error('   Run `npm run type-check` to see details');
     return false;
   }
 }
