@@ -24,6 +24,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Check components count | {{COMPONENT_COUNT_INT}} UI components in `src/components/ui/` |
 | Payment providers | Stripe, Polar, Lemonsqueezy (3 options) |
 | Config files | `src/config/index.ts` (not .js) |
+| Create a release | See `docs/RELEASE_GUIDE.md` |
+| Sync changelog | `npm run sync:changelog` |
 
 ---
 
@@ -149,6 +151,9 @@ npm run db:reset         # Reset and reseed
 # Testing
 npm test                 # Vitest unit tests
 npm run test:e2e         # Playwright E2E tests
+
+# Changelog
+npm run sync:changelog   # Sync GitHub releases to changelog
 ```
 
 ---
@@ -780,6 +785,43 @@ When adding features: "Does this help ship faster?" If no, delete it.
 - Documentation? → Pattern 2 (Static)
 - Dashboard? → Pattern 2 (Static)
 - Settings page? → Pattern 2 (Static)
+
+### Changelog & Release System
+
+**Files:**
+- `docs/RELEASE_GUIDE.md` - Complete release workflow and versioning guide
+- `.github/RELEASE_TEMPLATE.md` - Copy/paste template for GitHub releases
+- `scripts/sync-changelog.mjs` - Syncs GitHub releases to changelog data
+- `src/data/changelog.ts` - Generated changelog data
+- `src/app/(marketing)/changelog/` - Changelog page with sidebar nav
+
+**Release Workflow:**
+```
+1. Develop → commit whatever, whenever
+2. Test → verify everything works
+3. Tag → git tag v1.2.0 && git push origin v1.2.0
+4. Release → write detailed notes on GitHub (use template)
+5. Sync → npm run sync:changelog
+6. Push → git add . && git commit && git push
+```
+
+**Semantic Versioning:**
+- **PATCH** (1.0.0 → 1.0.1): Bug fixes only
+- **MINOR** (1.0.0 → 1.1.0): New features (backwards compatible)
+- **MAJOR** (1.0.0 → 2.0.0): Breaking changes
+
+**Breaking Change = Bump MAJOR:**
+- Changed env variables
+- Changed API response format
+- Removed features customers use
+- Database schema changes requiring migration
+- Restructured folders customers customized
+
+**Changelog Features:**
+- Auto-filters noise (Claude mentions, bot commits, PR numbers)
+- RSS feed at `/changelog/rss`
+- Sidebar navigation grouped by month
+- Table of contents with scroll spy
 
 ### Audit Framework (58 files in `.claude/audit/`)
 
