@@ -22,7 +22,6 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
       data-slot="tabs-list"
       className={cn(
         'border-border inline-flex h-auto items-center justify-start gap-1 border-b p-0',
-        mode.color.bg.base,
         mode.color.text.primary,
         mode.radius,
         mode.font,

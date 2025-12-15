@@ -54,13 +54,13 @@ export function UseCaseCard({
           {/* Pain Point */}
           <div className="mb-4">
             <span className={cn('text-xs', mode.font, mode.color.text.muted)}>[PROBLEM]:</span>
-            <p className={cn('mt-1 text-sm', mode.font, mode.color.text.primary)}>{painPoint}</p>
+            <p className={cn('mt-1 text-xs', mode.font, mode.color.text.primary)}>{painPoint}</p>
           </div>
 
           {/* Solution */}
           <div className="mb-4">
             <span className={cn('text-xs', mode.font, mode.color.text.accent)}>[SOLUTION]:</span>
-            <p className={cn('mt-1 text-sm font-medium', mode.font, mode.color.text.primary)}>
+            <p className={cn('mt-1 text-xs font-medium', mode.font, mode.color.text.primary)}>
               {solution}
             </p>
           </div>
