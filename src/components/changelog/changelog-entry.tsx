@@ -37,16 +37,17 @@ interface ChangelogEntryProps {
   className?: string;
 }
 
-export function ChangelogEntry({ entry, index = 0, compact = false, className }: ChangelogEntryProps) {
+export function ChangelogEntry({
+  entry,
+  index = 0,
+  compact = false,
+  className,
+}: ChangelogEntryProps) {
   const hexCode = `0x${(index + 1).toString(16).toUpperCase().padStart(2, '0')}`;
 
   return (
     <Card size="auto" className={className}>
-      <CardHeader
-        code={hexCode}
-        title={`v${entry.version} - ${entry.title}`}
-        meta={entry.date}
-      />
+      <CardHeader code={hexCode} title={`v${entry.version} - ${entry.title}`} meta={entry.date} />
       <CardContent padding={compact ? 'sm' : 'md'}>
         <div className={cn('space-y-4', compact && 'space-y-2')}>
           {/* Group changes by type */}
@@ -61,20 +62,11 @@ export function ChangelogEntry({ entry, index = 0, compact = false, className }:
               <div key={type}>
                 <div className={cn('mb-2 flex items-center gap-2', config.className)}>
                   <Icon className="h-3 w-3" />
-                  <span className={cn('text-xs font-medium', mode.font)}>
-                    [{config.label}]
-                  </span>
+                  <span className={cn('text-xs font-medium', mode.font)}>[{config.label}]</span>
                 </div>
                 <ul className={cn('space-y-1 pl-5', compact && 'space-y-0.5')}>
                   {changes.map((change, i) => (
-                    <li
-                      key={i}
-                      className={cn(
-                        'text-muted-foreground',
-                        compact ? 'text-xs' : 'text-sm',
-                        mode.font
-                      )}
-                    >
+                    <li key={i} className={cn('text-muted-foreground text-xs', mode.font)}>
                       <span className="text-muted-foreground/50 mr-2">-</span>
                       {change.description}
                     </li>
