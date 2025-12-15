@@ -4,16 +4,28 @@ node_modules
 .pnp.js
 .yarn/install-state.gz
 
+# ============================================
+# INTERNAL DEVELOPMENT (NOT FOR CUSTOMERS)
+# ============================================
+
+# Archives - historical artifacts, audits, old code
+.archives/
+
+# MCP servers - internal AI tooling
+mcp-servers/
+.mcp.json
+
 # Reference boilerplates (local research only)
 Boilerplate/
 claude_prompts/
 sample_landing/
 agent-tools/
+ai-chatbot-main/
 
-# Internal development docs (not for customers)
+# Internal development docs
 .internal/
 
-# Archive (old code preserved for reference)
+# Archive (legacy - use .archives/)
 .archive/
 
 # Agent workspace (local development only)
@@ -227,5 +239,3 @@ storybook-static/
 npm-lock.json
 yarn.lock
 .ai-context.md
-
-ai-chatbot-main/
