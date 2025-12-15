@@ -62,7 +62,8 @@
     "sync:changelog": "node scripts/sync-changelog.mjs",
     "mcp:setup": "node scripts/mcp-setup.mjs",
     "mcp:build": "cd mcp-servers/fabrk && npm run build",
-    "prepare": "npx husky install"
+    "prepare": "npx husky install",
+    "sync:official": "node scripts/sync-to-official.mjs"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
