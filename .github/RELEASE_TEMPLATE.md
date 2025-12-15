@@ -1,19 +1,50 @@
-## What's New
+## Release Title
+<!-- Example: Dashboard Analytics & Performance Improvements -->
 
-Brief 1-2 sentence summary of this release.
+## Summary
+<!-- 2-3 sentences: What's the main focus of this release? Who benefits? -->
 
-### Added
-- New feature or capability (be specific, customer-focused)
-- Another new feature
 
-### Changed
-- Improvement to existing feature
-- Performance or UX enhancement
-
-### Fixed
-- Bug that was resolved (describe the fix, not the bug)
-- Another fix
 
 ---
 
-**Full Changelog**: https://github.com/jpoindexter/fabrk_plate/compare/v1.0.0...v1.1.0
+### Added
+<!-- New features or capabilities. Be specific about what users can now do. -->
+<!-- Format: "Feature name - what it does and why it matters" -->
+
+-
+
+### Changed
+<!-- Improvements to existing features. Include before/after if relevant. -->
+<!-- Format: "What changed - the improvement (measurable if possible)" -->
+
+-
+
+### Fixed
+<!-- Bugs that were resolved. Describe the fix, not the bug. -->
+<!-- Format: "Issue area - what now works correctly" -->
+
+-
+
+### Removed
+<!-- Features or code that was removed. Explain why if not obvious. -->
+
+-
+
+---
+
+## Migration Notes
+<!-- Required if there are breaking changes or user action needed -->
+<!-- Delete this section if not applicable -->
+
+
+
+## Technical Details
+<!-- Optional: Architecture changes, performance metrics, dependencies updated -->
+<!-- Delete this section if not applicable -->
+
+
+
+---
+
+**Full Changelog**: https://github.com/jpoindexter/fabrk_plate/compare/vPREVIOUS...vCURRENT
