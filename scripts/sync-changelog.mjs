@@ -26,8 +26,8 @@ const projectRoot = join(__dirname, '..');
 
 // Config
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
-const GITHUB_OWNER = process.env.GITHUB_OWNER || 'jpoindexter';
-const GITHUB_REPO = process.env.GITHUB_REPO || 'fabrk_plate';
+const GITHUB_OWNER = process.env.GITHUB_OWNER || 'Theft-SUDO';
+const GITHUB_REPO = process.env.GITHUB_REPO || 'fabrk-official';
 const CHANGELOG_PATH = join(projectRoot, 'src/data/changelog.ts');
 const PER_PAGE = 100;
 const MAX_RETRIES = 3;
