@@ -397,6 +397,157 @@ test('page has no accessibility violations', async () => {
         </DocsCard>
       </DocsSection>
 
+      <DocsSection title="Screen Reader Testing">
+        <DocsCard title="TESTING WITH VOICEOVER (MACOS)">
+          <ol className="space-y-2">
+            <li>1. Press Cmd + F5 to enable VoiceOver</li>
+            <li>2. Use VO + Arrow keys to navigate (VO = Ctrl + Option)</li>
+            <li>3. Press VO + Space to activate buttons/links</li>
+            <li>4. Use VO + U to open rotor (headings, links, landmarks)</li>
+            <li>5. Press Cmd + F5 again to disable</li>
+          </ol>
+          <p className="text-muted-foreground mt-4">
+            <strong>What to check:</strong> All interactive elements announce their purpose, form
+            labels are read, error messages announce, loading states communicate.
+          </p>
+        </DocsCard>
+        <DocsCard title="TESTING WITH NVDA (WINDOWS)">
+          <ol className="space-y-2">
+            <li>1. Download NVDA from nvaccess.org (free)</li>
+            <li>2. Press Insert + Down Arrow to read continuously</li>
+            <li>3. Use Tab to navigate form controls</li>
+            <li>4. Press H to jump between headings</li>
+            <li>5. Press Insert + Q to quit NVDA</li>
+          </ol>
+        </DocsCard>
+        <DocsCard title="COMMON SCREEN READER ISSUES">
+          <ul className="space-y-2">
+            <li>
+              <strong>Missing labels:</strong> Inputs without associated labels announce as
+              &quot;edit text&quot;
+            </li>
+            <li>
+              <strong>Icon buttons:</strong> Without aria-label, announced as &quot;button&quot;
+              only
+            </li>
+            <li>
+              <strong>Dynamic content:</strong> Updates not announced without aria-live regions
+            </li>
+            <li>
+              <strong>Focus trapping:</strong> Modal content should trap focus until dismissed
+            </li>
+            <li>
+              <strong>Reading order:</strong> Visual order should match DOM order
+            </li>
+          </ul>
+        </DocsCard>
+      </DocsSection>
+
+      <DocsSection title="ARIA Live Regions">
+        <DocsCard title="LIVE REGION PATTERNS">
+          <pre className="bg-muted overflow-x-auto p-4 font-mono text-xs">
+            {`/* Polite - waits for user to finish current task */
+<div aria-live="polite" aria-atomic="true">
+  {notificationCount} new notifications
+</div>
+
+/* Assertive - interrupts immediately (use sparingly) */
+<div role="alert" aria-live="assertive">
+  [ERROR]: Session expired. Please log in again.
+</div>
+
+/* Status - implicit polite, for status messages */
+<div role="status">
+  Saving changes...
+</div>
+
+/* Log - for chat/feed updates */
+<div role="log" aria-live="polite">
+  {messages.map(m => <p key={m.id}>{m.text}</p>)}
+</div>
+
+/* Timer - countdown or elapsed time */
+<div role="timer" aria-live="off" aria-atomic="true">
+  {formatTime(remainingSeconds)}
+</div>`}
+          </pre>
+        </DocsCard>
+        <DocsCard title="WHEN TO USE EACH">
+          <div className="space-y-2">
+            <div className="flex justify-between">
+              <span>Toast notifications</span>
+              <span className="text-muted-foreground">role=&quot;status&quot;</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Error messages</span>
+              <span className="text-muted-foreground">role=&quot;alert&quot;</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Form validation</span>
+              <span className="text-muted-foreground">aria-live=&quot;polite&quot;</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Chat messages</span>
+              <span className="text-muted-foreground">role=&quot;log&quot;</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Loading indicators</span>
+              <span className="text-muted-foreground">aria-busy=&quot;true&quot;</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Search results count</span>
+              <span className="text-muted-foreground">role=&quot;status&quot;</span>
+            </div>
+          </div>
+        </DocsCard>
+      </DocsSection>
+
+      <DocsSection title="Semantic HTML First">
+        <DocsCard title="PREFER NATIVE ELEMENTS">
+          <pre className="bg-muted overflow-x-auto p-4 font-mono text-xs">
+            {`/* PREFER: Native HTML elements (built-in accessibility) */
+<button onClick={handleClick}>Click me</button>
+<a href="/page">Link text</a>
+<input type="checkbox" />
+<select><option>Choice</option></select>
+
+/* AVOID: Div with ARIA (requires more work) */
+<div role="button" tabIndex={0} onClick={handleClick}
+     onKeyDown={handleKeyDown}>Click me</div>
+
+/* Native elements provide FREE: */
+// - Keyboard activation (Enter/Space)
+// - Focus management
+// - Screen reader announcements
+// - Form submission behavior
+// - Proper semantics`}
+          </pre>
+        </DocsCard>
+        <DocsCard title="ARIA IS A LAST RESORT">
+          <p className="mb-4">
+            Use ARIA only when native HTML can&apos;t provide the needed semantics:
+          </p>
+          <ul className="space-y-2">
+            <li>
+              <strong>Tabs:</strong> No native tab element, use role=&quot;tablist&quot;
+            </li>
+            <li>
+              <strong>Combobox:</strong> Custom autocomplete, use role=&quot;combobox&quot;
+            </li>
+            <li>
+              <strong>Tree:</strong> Hierarchical lists, use role=&quot;tree&quot;
+            </li>
+            <li>
+              <strong>Slider:</strong> Custom sliders may need role=&quot;slider&quot;
+            </li>
+          </ul>
+          <p className="text-muted-foreground mt-4">
+            <strong>Rule of thumb:</strong> If a native HTML element exists, use it. ARIA can
+            override but never add behavior - you must implement keyboard handling yourself.
+          </p>
+        </DocsCard>
+      </DocsSection>
+
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <DocsLinkCard

@@ -213,7 +213,7 @@ function AIImagePreview() {
                 alt="Generated demo"
                 className="aspect-square w-full object-cover"
               />
-              <div className="absolute right-0 bottom-0 left-0 bg-black/70 p-4">
+              <div className="bg-background/80 absolute right-0 bottom-0 left-0 p-4">
                 <div className="flex items-center justify-between">
                   <span className={cn('text-foreground text-xs', mode.font)}>
                     1024×1024 • DALL-E 3 • vivid
