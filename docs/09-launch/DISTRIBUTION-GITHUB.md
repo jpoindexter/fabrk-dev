@@ -59,7 +59,8 @@ GITHUB_REPO_NAME=fabrk-boilerplate
 
 **Example:**
 ```env
-GITHUB_ACCESS_TOKEN=ghp_abc123def456ghi789jkl012mno345pqr
+# Use 'x' placeholders to avoid triggering secret scanners
+GITHUB_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 GITHUB_REPO_OWNER=acme-corp
 GITHUB_REPO_NAME=fabrk-boilerplate-private
 ```

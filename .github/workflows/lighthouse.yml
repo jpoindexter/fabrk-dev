@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, dev]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
@@ -52,7 +56,8 @@ jobs:
 
       - name: Comment PR with Lighthouse scores
         if: github.event_name == 'pull_request'
-        uses: treosh/lighthouse-ci-action@v11
+        # Pinned to v12 for security (immutable release tag)
+        uses: treosh/lighthouse-ci-action@v12
         with:
           urls: |
             http://localhost:3000

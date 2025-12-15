@@ -122,12 +122,13 @@ GITHUB_REPO_NAME=fabrk-boilerplate
 ### Step 3: Configure Environment Variables
 ```bash
 # .env.local (development)
-GITHUB_ACCESS_TOKEN=ghp_abc123...
+# Use 'x' placeholders below - replace with your actual token
+GITHUB_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 GITHUB_REPO_OWNER=your-org
 GITHUB_REPO_NAME=fabrk-boilerplate
 
 # Production (.env.production)
-GITHUB_ACCESS_TOKEN=ghp_abc123...
+GITHUB_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 GITHUB_REPO_OWNER=your-org
 GITHUB_REPO_NAME=fabrk-boilerplate
 ```

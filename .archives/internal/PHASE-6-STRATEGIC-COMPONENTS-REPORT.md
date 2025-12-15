@@ -377,8 +377,9 @@ Successfully created **11 production-ready strategic components** to bring the F
 
 **Usage:**
 ```tsx
+{/* Example uses 'x' placeholder to avoid triggering secret scanners */}
 <ApiKeyGenerator
-  apiKey="sk_live_1234567890abcdefghijklmnopqrstuvwxyz"
+  apiKey="sk_live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   onGenerate={() => console.log("Generate")}
   onRevoke={() => console.log("Revoke")}
   createdAt={new Date("2024-01-15")}
