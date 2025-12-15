@@ -9,6 +9,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
@@ -58,11 +59,7 @@ export function ChatInterface({
     <form onSubmit={handleSubmit} className={cn('relative', className)}>
       <div className={cn('border-border bg-card border', mode.radius)}>
         {/* Terminal Header */}
-        <div className="border-border bg-muted/50 border-b px-4 py-2">
-          <span className={cn('text-muted-foreground text-xs', mode.font)}>
-            [ [0x00] PROMPT INPUT ]
-          </span>
-        </div>
+        <CardHeader code="0x00" title="PROMPT INPUT" className="bg-muted/50" />
 
         {/* Input Area */}
         <div className="relative p-4">
