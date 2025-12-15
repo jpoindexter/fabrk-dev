@@ -16,7 +16,7 @@ import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 export function FeaturesShowcase() {
   return (
-    <section className="border-border border-t py-20 lg:py-24">
+    <section id="features" className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
           badge="WHAT MAKES FABRK DIFFERENT"

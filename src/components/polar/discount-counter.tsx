@@ -21,10 +21,13 @@ export function DiscountCounter() {
         const response = await fetch('/api/polar/discount-usage');
         if (response.ok) {
           const data = await response.json();
-          setUsage(data);
+          // Don't show counter if API returned error state
+          if (!data._error) {
+            setUsage(data);
+          }
         }
       } catch (error) {
-        console.error('Failed to fetch discount usage:', error);
+        // Silently fail - counter just won't show
       } finally {
         setLoading(false);
       }

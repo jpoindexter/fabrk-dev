@@ -32,7 +32,7 @@ export default function CookiesPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK LEGAL:</h1>
-          <h2 className={cn('mb-4 text-4xl font-semibold tracking-tight', mode.font)}>
+          <h2 className={cn('mb-4 text-2xl font-semibold tracking-tight', mode.font)}>
             COOKIE POLICY
           </h2>
         </motion.div>

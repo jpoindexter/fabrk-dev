@@ -30,9 +30,7 @@ export function StorySection() {
               viewport={{ once: true }}
             >
               <Badge code="0x04" label="ORIGIN STORY" className="mb-4" />
-              <h2
-                className={cn('mb-4 text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}
-              >
+              <h2 className={cn('mb-4 text-sm font-semibold tracking-tight', mode.font)}>
                 THE STORY BEHIND FABRK
               </h2>
             </motion.div>

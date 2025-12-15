@@ -33,7 +33,7 @@ export function FaqSection() {
         >
           [ [0x04] FAQ ]
         </span>
-        <h2 className={cn('mb-2 text-2xl font-semibold tracking-tight', mode.font)}>
+        <h2 className={cn('mb-2 text-sm font-semibold tracking-tight', mode.font)}>
           FREQUENTLY ASKED QUESTIONS
         </h2>
         <p className={cn('text-muted-foreground text-xs', mode.font)}>

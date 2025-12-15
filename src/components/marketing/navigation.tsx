@@ -20,7 +20,7 @@ import { Logo } from '@/components/shared/logo';
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = [
-    { label: 'FEATURES', href: '/features' },
+    { label: 'FEATURES', href: '#features' },
     { label: 'PRICING', href: '#pricing' },
     { label: 'DOCS', href: '/docs' },
     { label: 'FAQ', href: '#faq' },

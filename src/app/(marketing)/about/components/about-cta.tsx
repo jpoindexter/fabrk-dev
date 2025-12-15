@@ -25,7 +25,7 @@ export function AboutCTA() {
           viewport={{ once: true }}
         >
           <Badge code="0xFF" label="EXECUTE" className="mb-4" />
-          <h2 className={cn('text-2xl font-semibold tracking-tight lg:text-4xl', mode.font)}>
+          <h2 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
             READY TO BUILD YOUR SAAS
           </h2>
         </motion.div>
