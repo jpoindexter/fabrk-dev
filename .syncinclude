@@ -35,7 +35,7 @@
 # ============================================
 CHANGELOG.md
 CLAUDE.md
-DEVELOPMENT.md
+# DEVELOPMENT.md excluded - internal dev repo architecture docs
 GEMINI.md
 LICENSE.md
 PRIVACY.md
@@ -96,14 +96,8 @@ docs/06-features/
 docs/07-advanced/
 docs/08-design/
 docs/10-deployment/
-docs/11-marketing/
+# docs/11-marketing/ excluded - internal marketing strategy
 docs/design-system/
-docs/ANALYTICS.md
-docs/CUSTOMIZATION-CHECKLIST.md
-docs/DEPLOYMENT.md
-docs/DOCUMENTATION_INDEX.md
-docs/SECURITY.md
-docs/SENTRY_SETUP.md
 
 # ============================================
 # LAUNCH DOCS (customer-facing only)
@@ -122,6 +116,12 @@ docs/09-launch/RELEASE-NOTES-v1.1.md
 # - mcp-servers/         (internal MCP)
 # - .mcp.json            (MCP config)
 # - docs/prompts/        (internal audit prompts)
+# - docs/04-development/AI_FEATURE_STRATEGY.md (internal pricing/strategy)
+# - docs/04-development/BRUTALIST-REDESIGN.md (internal planning)
+# - docs/04-development/MONOREPO_RESTRUCTURE.md (internal planning)
+# - docs/design-system/spec/components-product-strategy.md (internal product decisions)
+# - docs/08-design/cursor-design-system.md (reference, not customer-facing)
+# - docs/08-design/design-system-hardcoded-styles-plan.md (internal planning)
 # - docs/09-launch/DISTRIBUTION-*.md (internal business)
 # - docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md
 # - docs/09-launch/GITHUB-DISTRIBUTION-SETUP.md
