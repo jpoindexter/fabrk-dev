@@ -272,6 +272,30 @@ const rawNavigation: NavSection[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
+  // PHASE 6.6: LIBRARY UTILITIES
+  // ═══════════════════════════════════════════════════════════════════════════
+  {
+    title: 'LIBRARY UTILS',
+    items: [
+      {
+        title: 'LIBRARY NAVIGATION',
+        href: '/docs/library/library-navigation',
+        icon: Layout,
+      },
+      {
+        title: 'RELATED TEMPLATES',
+        href: '/docs/library/related-templates',
+        icon: GalleryVerticalEnd,
+      },
+      {
+        title: 'ADVANCED FILTERS',
+        href: '/docs/library/advanced-filters',
+        icon: FormInput,
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
   // PHASE 7: COMPONENTS
   // ═══════════════════════════════════════════════════════════════════════════
   {
