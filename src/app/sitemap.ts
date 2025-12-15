@@ -41,7 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const docsPages = [
     // Getting Started
     '/docs/getting-started',
-    '/docs/getting-started/installation',
     '/docs/getting-started/project-structure',
     '/docs/getting-started/environment-variables',
     '/docs/getting-started/database-setup',

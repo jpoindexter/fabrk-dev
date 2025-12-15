@@ -104,7 +104,7 @@ export function FinalCTASection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap items-center gap-4"
             >
-              <Link href="/docs/getting-started/installation">
+              <Link href="/docs/getting-started">
                 <Button variant="outline" size="sm" className={cn(mode.radius, mode.font)}>
                   &gt; VIEW DOCS
                 </Button>
