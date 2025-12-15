@@ -34,6 +34,35 @@ ai-chatbot-main/
 # Development plans (local notes)
 .dev-plans/
 
+# ============================================
+# INTERNAL SCRIPTS (NOT FOR CUSTOMERS)
+# ============================================
+scripts/sync-*.mjs
+scripts/mcp-setup.mjs
+scripts/generate-*-metadata.mjs
+scripts/refactor-*.mjs
+scripts/add-library-navigation.mjs
+scripts/hex-to-oklch-converter.mjs
+scripts/count-ui-components.mjs
+scripts/update-markdown-dynamic-data.mjs
+
+# ============================================
+# INTERNAL DOCUMENTATION (NOT FOR CUSTOMERS)
+# ============================================
+docs/prompts/
+docs/09-launch/
+docs/11-marketing/
+docs/design-system/violations/
+
+# ============================================
+# INTERNAL GITHUB FILES (NOT FOR CUSTOMERS)
+# ============================================
+.github/CI-CD-*.md
+.github/WORKFLOWS-CREATED.txt
+.github/copilot-instructions.md
+.github/workflows/README.md
+.github/RELEASE_TEMPLATE.md
+
 # Backup files
 *.backup
 *.bak
