@@ -199,8 +199,8 @@ EOF`, { silent: true, ignoreError: true });
     console.log(`   https://github.com/${OFFICIAL_REPO}`);
 
   } finally {
-    // Clean up - switch back to original branch
-    exec(`git checkout ${currentBranch}`, { silent: true });
+    // Clean up - switch back to original branch (force to handle untracked files)
+    exec(`git checkout -f ${currentBranch}`, { silent: true, ignoreError: true });
     exec(`git branch -D ${tempBranch}`, { silent: true, ignoreError: true });
     exec('git stash pop', { silent: true, ignoreError: true });
   }
