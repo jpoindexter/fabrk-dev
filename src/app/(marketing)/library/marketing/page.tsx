@@ -9,6 +9,9 @@ const categoryId = 'marketing';
 const categoryInfo = getCategoryInfo(categoryId);
 const categoryTemplates = getTemplatesByCategory(categoryId);
 
+// Strip icon functions for client component serialization
+const serializableTemplates = categoryTemplates.map(({ icon, ...rest }) => rest);
+
 const features = [
   'Landing pages with hero sections',
   'Feature showcase sections with icons',
@@ -26,8 +29,7 @@ export default function MarketingPage() {
       badge="MARKETING"
       title="Marketing Templates"
       description="Landing pages, pricing, blog, and marketing sections"
-      icon={categoryInfo?.icon}
-      templates={categoryTemplates}
+      templates={serializableTemplates}
       features={features}
     />
   );

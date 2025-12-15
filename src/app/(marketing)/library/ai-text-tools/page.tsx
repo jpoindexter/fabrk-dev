@@ -22,6 +22,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 type Operation = 'summarize' | 'rewrite' | 'translate' | 'expand' | 'grammar' | 'tone';
 
@@ -278,7 +279,7 @@ export default function AITextToolsTemplate() {
     <TemplateShowcasePage
       badge="AI TEXT TOOLS"
       title="AI Text Tools"
-      description="Transform text with AI: summarize, rewrite, translate, expand, and fix grammar"
+      description={`Fabrk is a terminal-styled Next.js SaaS boilerplate featuring auth, payments, and ${COMPONENT_COUNT_STRING} components with monospace fonts and sharp corners.`}
       templateId="ai-text-tools"
       category={{ name: 'AI', href: '/library?category=ai' }}
       preview={<AITextToolsPreview />}

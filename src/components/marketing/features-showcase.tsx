@@ -12,6 +12,7 @@ import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/
 import { SectionHeader } from '@/components/landing/section-header';
 import { BenefitCard } from '@/components/landing/benefit-card';
 import { CORE_BENEFITS, PRICING } from '@/data/landing';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 export function FeaturesShowcase() {
   return (
@@ -57,7 +58,7 @@ export function FeaturesShowcase() {
             <CardHeader code="0x14" title="TOTAL VALUE" />
             <CardContent>
               <StatGroup>
-                <Stat label="Components" value="70+" />
+                <Stat label="Components" value={COMPONENT_COUNT_STRING} />
                 <Stat label="Themes" value="12" />
                 <Stat label="Providers" value="3" />
                 <Stat label="Launch Price" value={PRICING.display.launch} />

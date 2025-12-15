@@ -8,6 +8,7 @@ import { PricingCard } from '@/components/landing/pricing-card';
 import { Button } from '@/components/ui/button';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 /**
  * Final CTA Section
@@ -82,7 +83,7 @@ export function FinalCTASection() {
             >
               {[
                 'Ship your MVP in days, not months',
-                '70+ production-ready components',
+                `${COMPONENT_COUNT_STRING} production-ready components`,
                 'Save 100+ hours of development time',
                 'Lifetime updates, no subscription',
               ].map((benefit, index) => (

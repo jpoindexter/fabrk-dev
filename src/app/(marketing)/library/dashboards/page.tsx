@@ -9,6 +9,9 @@ const categoryId = 'dashboard';
 const categoryInfo = getCategoryInfo(categoryId);
 const categoryTemplates = getTemplatesByCategory(categoryId);
 
+// Strip icon functions for client component serialization
+const serializableTemplates = categoryTemplates.map(({ icon, ...rest }) => rest);
+
 const features = [
   'Analytics Dashboard with charts and metrics',
   'Team Dashboard for collaboration and task tracking',
@@ -25,8 +28,7 @@ export default function DashboardsPage() {
       badge="DASHBOARDS"
       title="Dashboards"
       description="Data visualization, metrics, and reporting templates"
-      icon={categoryInfo?.icon}
-      templates={categoryTemplates}
+      templates={serializableTemplates}
       features={features}
     />
   );

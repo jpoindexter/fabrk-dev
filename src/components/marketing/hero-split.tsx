@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 interface HeroSplitProps {
   headline?: string;
@@ -20,7 +21,12 @@ export function HeroSplit({
   subheadline = '> 161 FILES NOT 1000 // Ship your SaaS in hours, not weeks',
   ctaPrimary = { text: '> GET FABRK', href: '#pricing' },
   ctaSecondary = { text: '> VIEW DOCS', href: '/docs' },
-  trustBadges = ['TYPESCRIPT STRICT', 'POSTGRESQL PRISMA', 'NEXTJS 15', '80+ COMPONENTS'],
+  trustBadges = [
+    'TYPESCRIPT STRICT',
+    'POSTGRESQL PRISMA',
+    'NEXTJS 15',
+    `${COMPONENT_COUNT_STRING} COMPONENTS`,
+  ],
   imagePosition = 'right',
 }: HeroSplitProps) {
   const contentOrder = imagePosition === 'left' ? 'lg:order-2' : 'lg:order-1';

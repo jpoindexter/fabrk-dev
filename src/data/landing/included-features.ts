@@ -4,6 +4,8 @@
  * Moves commodity features (Auth/Billing/Multi-tenancy) from hero to "included" list
  */
 
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from './stats';
+
 export const INCLUDED_FEATURES = {
   infrastructure: [
     'NextAuth v5 (Google OAuth, Magic Links, Email/Password)',
@@ -20,8 +22,8 @@ export const INCLUDED_FEATURES = {
     'Git hooks for quality control',
   ],
   ui: [
-    '70+ production-ready UI components',
-    '12 terminal-inspired themes',
+    `${COMPONENT_COUNT_STRING} production-ready UI components`,
+    `${THEME_COUNT_STRING} terminal-inspired themes`,
     'WCAG 2.1 AA accessibility compliance',
     'Fully responsive mobile design',
     'Dark mode support',

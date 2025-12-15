@@ -9,6 +9,9 @@ const categoryId = 'admin';
 const categoryInfo = getCategoryInfo(categoryId);
 const categoryTemplates = getTemplatesByCategory(categoryId);
 
+// Strip icon functions for client component serialization
+const serializableTemplates = categoryTemplates.map(({ icon, ...rest }) => rest);
+
 const features = [
   'User management with role-based access control',
   'Invitation system with 7-day token expiry',
@@ -25,8 +28,7 @@ export default function AdminPanelsPage() {
       badge="ADMIN PANELS"
       title="Admin Panels"
       description="Backend admin interfaces for user management, webhooks, and system monitoring"
-      icon={categoryInfo?.icon}
-      templates={categoryTemplates}
+      templates={serializableTemplates}
       features={features}
     />
   );

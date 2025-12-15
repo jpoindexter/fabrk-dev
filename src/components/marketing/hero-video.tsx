@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 interface HeroVideoProps {
   headline?: string;
@@ -22,7 +23,12 @@ export function HeroVideo({
   subheadline = '161 files. Not 1000. Ship your SaaS in hours, not weeks.',
   ctaPrimary = { text: 'Get Fabrk', href: '#pricing' },
   ctaSecondary = { text: 'View Demo', href: '#demo' },
-  trustBadges = ['TypeScript Strict', 'PostgreSQL', 'Next.js 15', '80+ Components'],
+  trustBadges = [
+    'TypeScript Strict',
+    'PostgreSQL',
+    'Next.js 15',
+    `${COMPONENT_COUNT_STRING} Components`,
+  ],
   videoSrc,
   videoPoster,
   overlayOpacity = 0.6,

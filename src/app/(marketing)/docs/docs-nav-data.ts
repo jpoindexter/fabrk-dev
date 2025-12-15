@@ -53,7 +53,7 @@ import {
   Cpu,
 } from 'lucide-react';
 
-export const docsNavigation: NavSection[] = [
+const rawNavigation: NavSection[] = [
   // ═══════════════════════════════════════════════════════════════════════════
   // PHASE 1: GETTING STARTED
   // ═══════════════════════════════════════════════════════════════════════════
@@ -236,27 +236,27 @@ export const docsNavigation: NavSection[] = [
       },
       {
         title: 'AI CHAT',
-        href: '/library/ai-chat',
+        href: '/docs/library/ai-chat',
         icon: MessageSquare,
       },
       {
         title: 'TEXT TOOLS',
-        href: '/library/ai-text-tools',
+        href: '/docs/library/ai-text-tools',
         icon: FileText,
       },
       {
         title: 'IMAGE GENERATION',
-        href: '/library/ai-image',
+        href: '/docs/library/ai-image',
         icon: Image,
       },
       {
         title: 'VOICE (STT/TTS)',
-        href: '/library/ai-voice',
+        href: '/docs/library/ai-voice',
         icon: Volume2,
       },
       {
         title: 'AI FORMS',
-        href: '/library/ai-forms',
+        href: '/docs/library/ai-forms',
         icon: FileCode,
       },
       {
@@ -279,7 +279,7 @@ export const docsNavigation: NavSection[] = [
     title: 'COMPONENTS',
     items: [
       {
-        title: 'UI LIBRARY 89',
+        title: 'UI LIBRARY', // Placeholder, will be updated dynamically
         href: '/docs/components/overview',
         icon: Blocks,
       },
@@ -614,3 +614,19 @@ export const docsNavigation: NavSection[] = [
     ],
   },
 ];
+
+// Calculate component count
+const componentsSection = rawNavigation.find((s) => s.title === 'COMPONENTS');
+if (componentsSection && componentsSection.subSections) {
+  let count = 0;
+  componentsSection.subSections.forEach((sub) => {
+    count += sub.items.length;
+  });
+
+  const overviewItem = componentsSection.items.find((i) => i.href === '/docs/components/overview');
+  if (overviewItem) {
+    overviewItem.title = `UI LIBRARY ${count}`;
+  }
+}
+
+export const docsNavigation = rawNavigation;

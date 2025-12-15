@@ -7,9 +7,10 @@
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 const stats = [
-  { label: 'COMPONENTS', value: '70+', status: 'READY' },
+  { label: 'COMPONENTS', value: COMPONENT_COUNT_STRING, status: 'READY' },
   { label: 'TEMPLATES', value: '20+', status: 'READY' },
   { label: 'SETUP_TIME', value: '< 5 MIN', status: 'FAST' },
 ];

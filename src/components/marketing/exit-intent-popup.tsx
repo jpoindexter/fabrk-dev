@@ -15,6 +15,7 @@ import {
 import { Sparkles } from 'lucide-react';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { Card, CardContent } from '@/components/ui/card';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 /* 💡 EXIT INTENT TIP: This popup offers an extra discount to visitors about to leave.
  * Update the EXTRA_DISCOUNT_ID with your Polar coupon ID for special offers.
@@ -67,7 +68,7 @@ interface ExitIntentPopupProps {
 
 export function ExitIntentPopup({
   title = 'Wait! Before You Go...',
-  description = 'Get Fabrk and launch your SaaS 10x faster. 70+ components, authentication, payments, and more.',
+  description = `Get Fabrk and launch your SaaS 10x faster. ${COMPONENT_COUNT_STRING} components, authentication, payments, and more.`,
   secondaryCtaText = "No thanks, I'll build from scratch",
   showPricing = true,
   delay = 300,
@@ -83,7 +84,6 @@ export function ExitIntentPopup({
       const shownDate = new Date(exitIntentShown);
       const expiryDate = new Date(shownDate.getTime() + cookieExpiry * 24 * 60 * 60 * 1000);
       if (new Date() < expiryDate) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: Initialize state from localStorage on mount
         setHasShown(true);
       }
     }

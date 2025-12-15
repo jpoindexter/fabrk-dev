@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 const heroVariations = [
   {
@@ -72,7 +73,8 @@ export default function LandingPage() {
           </h2>
 
           <p className={cn(mode.font, "text-muted-foreground mx-auto max-w-xl text-sm")}>
-            Ship your SaaS in days, not months. 234 components, authentication, payments,
+            Ship your SaaS in days, not months.
+            {COMPONENT_COUNT_STRING} components, authentication, payments,
             and everything you need to launch.
           </p>
 
@@ -202,7 +204,8 @@ export default function LandingPage() {
       </section>
     </div>
   );
-}`;
+}
+`;
 
 function LandingVariationsPreview() {
   const [activeVariation, setActiveVariation] = useState('centered');
@@ -248,8 +251,8 @@ function LandingVariationsPreview() {
                     </h2>
 
                     <p className={cn(mode.font, 'text-muted-foreground mx-auto max-w-xl text-sm')}>
-                      Ship your SaaS in days, not months. 234 components, authentication, payments,
-                      and everything you need to launch.
+                      Ship your SaaS in days, not months. {COMPONENT_COUNT_STRING} components,
+                      authentication, payments, and everything you need to launch.
                     </p>
 
                     <div className="flex items-center justify-center gap-4">

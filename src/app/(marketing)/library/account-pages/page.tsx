@@ -9,6 +9,9 @@ const categoryId = 'account';
 const categoryInfo = getCategoryInfo(categoryId);
 const categoryTemplates = getTemplatesByCategory(categoryId);
 
+// Strip icon functions for client component serialization
+const serializableTemplates = categoryTemplates.map(({ icon, ...rest }) => rest);
+
 const features = [
   'Settings page with tabbed navigation and forms',
   'Billing dashboard with invoice history',
@@ -25,8 +28,7 @@ export default function AccountPagesPage() {
       badge="ACCOUNT PAGES"
       title="Account Pages"
       description="User settings, billing, security, and profile management"
-      icon={categoryInfo?.icon}
-      templates={categoryTemplates}
+      templates={serializableTemplates}
       features={features}
     />
   );

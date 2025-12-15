@@ -27,7 +27,7 @@ export interface CategoryTemplate {
   name: string;
   description: string;
   href: string;
-  icon: React.ElementType;
+  icon?: React.ElementType;
   features: string[];
   badge?: string;
 }
@@ -65,7 +65,7 @@ function TemplateGrid({ templates }: { templates: CategoryTemplate[] }) {
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
                 [TEMPLATE]: {template.id.toUpperCase()}
               </span>
-              <template.icon className="text-muted-foreground size-4" />
+              {template.icon && <template.icon className="text-muted-foreground size-4" />}
             </div>
 
             {/* Card Content */}

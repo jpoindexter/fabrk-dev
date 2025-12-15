@@ -5,6 +5,7 @@
  */
 
 import { Sparkles, CreditCard, Rocket } from 'lucide-react';
+import { COMPONENT_COUNT_STRING } from './stats';
 
 export const CORE_BENEFITS = [
   {
@@ -57,7 +58,7 @@ export const CORE_BENEFITS = [
     module: 'SHIP_FAST',
     code: '0x12',
     title: 'Production Quality',
-    benefit: '70+ components that actually work in production',
+    benefit: `${COMPONENT_COUNT_STRING} components that actually work in production`,
     description:
       'Full dashboards: analytics, billing, user management, profile. TypeScript strict mode (no "any" soup). Git hooks BLOCK bad code before commit. 130+ tests with accessibility validation. Real error handling, loading states, edge cases.',
     timeSaved: '200+ HRS',

@@ -29,6 +29,7 @@ import {
   PaginationEllipsis,
 } from '@/components/ui/pagination';
 import { templates, categories } from './library-data';
+import { TEMPLATE_COUNT_STRING } from './library-nav-data';
 import { filterTemplates } from '@/lib/search';
 import { AdvancedFilters, TemplateCard, type FilterOptions } from '@/components/library';
 
@@ -137,7 +138,7 @@ export default function LibraryIndexPage() {
         <div>
           <div className="border-border mb-2 inline-block border px-3 py-1">
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
-              [LIBRARY]: 20+ TEMPLATES
+              [LIBRARY]: {TEMPLATE_COUNT_STRING} TEMPLATES
             </span>
           </div>
           <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Template Library</h1>

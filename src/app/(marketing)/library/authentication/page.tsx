@@ -9,6 +9,9 @@ const categoryId = 'auth';
 const categoryInfo = getCategoryInfo(categoryId);
 const categoryTemplates = getTemplatesByCategory(categoryId);
 
+// Strip icon functions for client component serialization
+const serializableTemplates = categoryTemplates.map(({ icon, ...rest }) => rest);
+
 const features = [
   'Pre-built flows for Login, Register, and Recovery',
   'Integrated with NextAuth v5 and OAuth providers',
@@ -25,8 +28,7 @@ export default function AuthenticationPage() {
       badge="AUTHENTICATION"
       title="Authentication"
       description="Login, registration, and password recovery templates"
-      icon={categoryInfo?.icon}
-      templates={categoryTemplates}
+      templates={serializableTemplates}
       features={features}
     />
   );

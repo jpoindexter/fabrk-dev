@@ -3,12 +3,13 @@
  * Centralized FAQ data used by FAQSection component
  */
 
+import { COMPONENT_COUNT_STRING } from './stats';
+
 export const FAQ_QUESTIONS = [
   {
     id: 'what-is-fabrk',
     question: 'What is Fabrk?',
-    answer:
-      "Fabrk is a production-ready Next.js 16 SaaS boilerplate with 70+ components, authentication, billing, multi-tenancy, and a unique terminal-inspired design system. It's designed to help you ship your SaaS in days, not months.",
+    answer: `Fabrk is a production-ready Next.js 16 SaaS boilerplate with ${COMPONENT_COUNT_STRING} components, authentication, billing, multi-tenancy, and a unique terminal-inspired design system. It's designed to help you ship your SaaS in days, not months.`,
   },
   {
     id: 'license',

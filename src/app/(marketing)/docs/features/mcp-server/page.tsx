@@ -2,6 +2,7 @@ import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import Link from 'next/link';
 import { Bot, Code, Palette, Zap, FileCode, CheckCircle } from 'lucide-react';
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
 
 export const metadata = {
   title: 'MCP Server - Fabrk Docs',
@@ -16,19 +17,18 @@ export default function MCPServerPage() {
       category="Features"
       title="MCP Server"
       description="AI-powered development with Fabrk design system knowledge."
-      overview="The Model Context Protocol (MCP) server gives AI assistants deep knowledge of the Fabrk design system. When connected, your AI tool understands our terminal aesthetic, knows all 77 components, and generates code that follows design rules automatically. No more manually correcting rounded corners or fixing color tokens."
+      overview={`The Model Context Protocol (MCP) server gives AI assistants deep knowledge of the Fabrk design system. When connected, your AI tool understands our terminal aesthetic, knows all ${COMPONENT_COUNT_STRING} components, and generates code that follows design rules automatically. No more manually correcting rounded corners or fixing color tokens.`}
       features={[
         {
           icon: Palette,
-          title: '77 Components',
+          title: `${COMPONENT_COUNT_STRING} Components`,
           description:
             'Full catalog with props, variants, and usage examples. AI knows every component.',
         },
         {
           icon: Bot,
-          title: '12 Themes',
-          description:
-            'CRT phosphor, retro computer, handheld, and monochrome themes built-in.',
+          title: `${THEME_COUNT_STRING} Themes`,
+          description: 'CRT phosphor, retro computer, handheld, and monochrome themes built-in.',
         },
         {
           icon: Code,
@@ -72,9 +72,8 @@ export default function MCPServerPage() {
         },
         {
           title: 'Manual Setup - Claude Code',
-          description:
-            'If you prefer manual setup, create .mcp.json in your project root.',
-          code: `{
+          description: 'If you prefer manual setup, create .mcp.json in your project root.',
+          code: `{ 
   "mcpServers": {
     "fabrk": {
       "command": "node",
@@ -89,7 +88,7 @@ export default function MCPServerPage() {
           description:
             'For Claude Desktop, add to your global config file. Use the absolute path to your project.',
           code: `// macOS: ~/Library/Application Support/Claude/claude_desktop_config.json
-// Windows: %APPDATA%\\Claude\\claude_desktop_config.json
+// Windows: %APPDATA%\Claude\claude_desktop_config.json
 
 {
   "mcpServers": {
@@ -121,13 +120,14 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
-export function PricingCard({ plan, price, features }) {
+export function PricingCard({ plan, price, features }: { plan: string; price: number; features: string[] }) {
   return (
     <Card className={cn('border border-border', mode.radius)}>
       <CardHeader code="0x10" title={plan.toUpperCase()} />
       <CardContent className="space-y-4">
         <div className={cn('text-3xl font-bold', mode.font)}>
-          \${price}<span className="text-muted-foreground text-sm">/mo</span>
+          \${price}
+          <span className="text-muted-foreground text-sm">/mo</span>
         </div>
         <ul className="space-y-2">
           {features.map((feature, i) => (
@@ -149,8 +149,7 @@ export function PricingCard({ plan, price, features }) {
         },
         {
           title: 'Scaffold a Page',
-          description:
-            'Generate complete pages with proper structure, imports, and components.',
+          description: 'Generate complete pages with proper structure, imports, and components.',
           code: `// Example prompt:
 "Create a dashboard page with analytics cards and a data table"
 
@@ -164,13 +163,12 @@ export function PricingCard({ plan, price, features }) {
         },
         {
           title: 'Validate Your Code',
-          description:
-            'Check existing code against Fabrk design rules.',
+          description: 'Check existing code against Fabrk design rules.',
           code: `// Example prompt:
-"Validate this component: <Button className='rounded-md bg-blue-500'>Submit</Button>"
+"Validate this component: <Button className='rounded-[4px] bg-blue-500'>Submit</Button>"
 
 // The AI will identify issues:
-// ✗ rounded-md should be rounded-none (terminal aesthetic)
+// ✗ Border radius should be rounded-none (terminal aesthetic)
 // ✗ bg-blue-500 should be bg-primary (use design tokens)
 // ✗ Button text should be "> SUBMIT" (uppercase with prefix)
 
@@ -209,7 +207,9 @@ export function PricingCard({ plan, price, features }) {
           </DocsCard>
 
           <DocsCard title="QUERY_COMPONENT">
-            <p className="mb-4">Get detailed docs for any of the 77 components.</p>
+            <p className="mb-4">
+              Get detailed docs for any of the ${COMPONENT_COUNT_STRING} components.
+            </p>
             Parameters
             <ul className="mt-2 space-y-1">
               <li>• component (required): Component name or slug</li>
@@ -231,15 +231,15 @@ export function PricingCard({ plan, price, features }) {
       {/* Pre-configured Prompts */}
       <DocsSection title="Guided Workflows">
         <DocsCallout variant="info" title="Prompts are step-by-step guides">
-          These prompts walk the AI through building common features. They ensure the AI
-          follows Fabrk patterns consistently, even for complex multi-step tasks.
+          These prompts walk the AI through building common features. They ensure the AI follows
+          Fabrk patterns consistently, even for complex multi-step tasks.
         </DocsCallout>
 
         <div className="mt-6 space-y-4">
           <DocsCard title="BUILD_LANDING_PAGE">
             <p className="mb-4">
-              Guided workflow for building a terminal-styled landing page with hero,
-              features, pricing, and CTA sections.
+              Guided workflow for building a terminal-styled landing page with hero, features,
+              pricing, and CTA sections.
             </p>
             Arguments
             <ul className="mt-2 space-y-1">
@@ -250,8 +250,8 @@ export function PricingCard({ plan, price, features }) {
 
           <DocsCard title="ADD_DASHBOARD_FEATURE">
             <p className="mb-4">
-              Add a new feature card to a dashboard. Supports analytics cards, data tables,
-              forms, and settings panels.
+              Add a new feature card to a dashboard. Supports analytics cards, data tables, forms,
+              and settings panels.
             </p>
             Arguments
             <ul className="mt-2 space-y-1">
@@ -276,14 +276,12 @@ export function PricingCard({ plan, price, features }) {
       {/* Design Rules Enforced */}
       <DocsSection title="Design Rules Enforced">
         <DocsCard title="TERMINAL AESTHETIC">
-          <p className="mb-4">
-            The MCP server teaches AI these core design principles:
-          </p>
+          <p className="mb-4">The MCP server teaches AI these core design principles:</p>
           <div className="space-y-4">
             <div>
               <strong>1. Sharp Edges</strong>
               <p className="text-muted-foreground">
-                Always use rounded-none. Never rounded-sm, rounded-md, or rounded-lg.
+                Always use rounded-none. Never use other border radius values like sm, md, or lg.
               </p>
             </div>
             <div>
@@ -295,13 +293,15 @@ export function PricingCard({ plan, price, features }) {
             <div>
               <strong>3. Color Tokens</strong>
               <p className="text-muted-foreground">
-                Use bg-background, text-foreground, border-border. Never hex values or Tailwind colors.
+                Use bg-background, text-foreground, border-border. Never hex values or Tailwind
+                colors.
               </p>
             </div>
             <div>
               <strong>4. Terminal Formatting</strong>
               <p className="text-muted-foreground">
-                Buttons: {'"'}{'>'} UPPERCASE{'"'}. Labels: {'"'}[LABEL]:{'"'}. Headers: {'"'}[ [0xXX] TITLE ]{'"'}.
+                Buttons: &apos;&gt; UPPERCASE&apos;. Labels: &apos;[LABEL]:&apos;. Headers: &apos;[
+                [0xXX] TITLE ]&apos;.
               </p>
             </div>
             <div>
@@ -324,7 +324,8 @@ export function PricingCard({ plan, price, features }) {
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               <ol className="list-decimal space-y-2 pl-4">
                 <li>
-                  Check the server is built: <code className="bg-muted px-1">ls mcp-servers/fabrk/dist/index.js</code>
+                  Check the server is built:{' '}
+                  <code className="bg-muted px-1">ls mcp-servers/fabrk/dist/index.js</code>
                 </li>
                 <li>
                   If missing, rebuild: <code className="bg-muted px-1">npm run mcp:build</code>
@@ -342,7 +343,7 @@ export function PricingCard({ plan, price, features }) {
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               The AI might not have loaded the MCP context. Try explicitly referencing it:
               <code className="bg-muted mt-2 block p-2">
-                {'"'}Using the Fabrk MCP server, show me the design system rules{'"'}
+                "Using the Fabrk MCP server, show me the design system rules"
               </code>
               This forces the AI to query the MCP resources before generating code.
             </div>
@@ -353,8 +354,8 @@ export function PricingCard({ plan, price, features }) {
               Config file not found
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
-              Run <code className="bg-muted px-1">npm run mcp:setup</code> to auto-generate the config.
-              For Claude Desktop, make sure you{`'`}re using the absolute path to your project.
+              Run <code className="bg-muted px-1">npm run mcp:setup</code> to auto-generate the
+              config. For Claude Desktop, make sure you're using the absolute path to your project.
             </div>
           </details>
 
@@ -364,10 +365,12 @@ export function PricingCard({ plan, price, features }) {
             </summary>
             <div className="border-border text-muted-foreground border-t p-4 text-sm">
               Cursor requires manual configuration:
-              <ol className="list-decimal space-y-2 pl-4 pt-2">
+              <ol className="list-decimal space-y-2 pt-2 pl-4">
                 <li>Open Cursor Settings (Cmd/Ctrl + ,)</li>
-                <li>Search for {'"'}MCP{'"'}</li>
-                <li>Add server: name=fabrk, command=node, args=./mcp-servers/fabrk/dist/index.js</li>
+                <li>Search for "MCP"</li>
+                <li>
+                  Add server: name=fabrk, command=node, args=./mcp-servers/fabrk/dist/index.js
+                </li>
               </ol>
             </div>
           </details>
@@ -379,12 +382,15 @@ export function PricingCard({ plan, price, features }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/design/theme-guide">
             <DocsCard title="THEME GUIDE" className="hover:border-primary/50 h-full transition-all">
-              <p>Learn about Fabrk{`'`}s 12 terminal themes and how to customize them.</p>
+              <p>Learn about Fabrk's 12 terminal themes and how to customize them.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/components/button">
             <DocsCard title="COMPONENTS" className="hover:border-primary/50 h-full transition-all">
-              <p>Browse all 77 components with examples and usage documentation.</p>
+              <p>
+                Browse all {COMPONENT_COUNT_STRING} components with examples and usage
+                documentation.
+              </p>
             </DocsCard>
           </Link>
         </div>

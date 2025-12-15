@@ -2,11 +2,13 @@
  * Comparison Data - Feature matrix vs competitors
  */
 
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from './stats';
+
 export const COMPARISON_FEATURES = [
   {
     id: 'components',
     name: 'Components',
-    fabrk: '70+',
+    fabrk: COMPONENT_COUNT_STRING,
     shipfast: '~40',
     magicui: '~150',
     saasboldkit: '~60',
@@ -62,7 +64,7 @@ export const COMPARISON_FEATURES = [
   {
     id: 'theme-switching',
     name: 'Theme Switching',
-    fabrk: '18 themes',
+    fabrk: `${THEME_COUNT_STRING} themes`,
     shipfast: 'Light/Dark',
     magicui: 'Light/Dark',
     saasboldkit: 'Light/Dark',

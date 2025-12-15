@@ -3,6 +3,8 @@
  * Used by: PricingCard (Hero, Pricing Section, ExitIntentPopup, StickyCTABar)
  */
 
+import { COMPONENT_COUNT_STRING } from './stats';
+
 export const PRICING = {
   launch: 199,
   regular: 299,
@@ -17,7 +19,7 @@ export const PRICING = {
     label: 'LAUNCH PRICE - First 100 buyers',
   },
   features: [
-    '70+ PRODUCTION-READY COMPONENTS',
+    `${COMPONENT_COUNT_STRING} PRODUCTION-READY COMPONENTS`,
     'AUTH, BILLING & MULTI-TENANCY',
     'LIFETIME UPDATES (NO SUBSCRIPTION)',
     'UNLIMITED PROJECTS & CLIENTS',

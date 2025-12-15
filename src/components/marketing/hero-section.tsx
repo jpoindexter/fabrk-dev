@@ -26,6 +26,7 @@ import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/
 import { HeroDashboardPreview } from './hero-dashboard-preview';
 import { PRICING } from '@/data/landing';
 import { TypeWriter } from '@/components/ui/typewriter';
+import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
 
 const techStack = [
   { name: 'NEXT.JS', path: siNextdotjs.path },
@@ -98,11 +99,13 @@ export function HeroSection() {
                 {/* Quick stats inline */}
                 <div className="flex flex-wrap gap-4">
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className={mode.color.text.accent}>70+</span> Components
+                    <span className={mode.color.text.accent}>{COMPONENT_COUNT_STRING}</span>{' '}
+                    Components
                   </span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className={mode.color.text.accent}>20+</span> Templates
+                    <span className={mode.color.text.accent}>{TEMPLATE_COUNT_STRING}</span>{' '}
+                    Templates
                   </span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>

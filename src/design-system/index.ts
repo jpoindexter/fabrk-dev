@@ -127,8 +127,10 @@ export interface ModeConfig {
     bg: {
       base: string;
       surface: string;
+      surfaceRaised: string;
       elevated: string;
       accent: string;
+      accentMuted: string;
       accentHover: string;
       danger: string;
       dangerMuted: string;
@@ -242,8 +244,10 @@ export const mode: ModeConfig = {
     bg: {
       base: 'bg-background',
       surface: 'bg-card',
+      surfaceRaised: 'bg-card',
       elevated: 'bg-popover',
       accent: 'bg-accent', // Purple accent for CTAs
+      accentMuted: 'bg-accent/10',
       accentHover: 'bg-accent/90',
       danger: 'bg-destructive',
       dangerMuted: 'bg-destructive/10',

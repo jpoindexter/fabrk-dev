@@ -15,6 +15,9 @@ import { FAQSection } from '@/components/marketing/faq-section';
 import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
 import { ExitIntentPopup } from '@/components/marketing/exit-intent-popup';
+import { STATS } from '@/data/landing/stats';
+
+const componentCount = STATS.find((s) => s.id === 'components')?.value || '70+';
 
 export default function HomePage() {
   return (
@@ -50,7 +53,7 @@ export default function HomePage() {
       <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
       <ExitIntentPopup
         title="Wait! Before You Go..."
-        description="Get Fabrk and launch your SaaS 10x faster. 70+ components, authentication, payments, and more."
+        description={`Get Fabrk and launch your SaaS 10x faster. ${componentCount} components, authentication, payments, and more.`}
         ctaText="Get Fabrk Now"
       />
     </>

@@ -4,6 +4,8 @@
  * Replace with real customer feedback when available.
  */
 
+import { COMPONENT_COUNT_STRING } from './stats';
+
 export const TESTIMONIALS = [
   {
     id: 'example-1',
@@ -34,8 +36,7 @@ export const TESTIMONIALS = [
   },
   {
     id: 'example-4',
-    quote:
-      '[EXAMPLE]: 70+ components that actually work. No more fighting with shadcn compatibility issues.',
+    quote: `[EXAMPLE]: ${COMPONENT_COUNT_STRING} components that actually work. No more fighting with shadcn compatibility issues.`,
     author: '[EXAMPLE] Customer Name',
     role: 'Full-Stack Developer',
     avatar: '/avatars/placeholder-4.jpg',

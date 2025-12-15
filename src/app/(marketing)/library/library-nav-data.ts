@@ -275,3 +275,14 @@ export function findTemplateByHref(href: string): {
 export function toDisplayCase(str: string): string {
   return str.toUpperCase().replace(/&/g, '');
 }
+
+// Calculate template count (excluding Getting Started docs)
+let templateCount = 0;
+templatesNavigation.forEach((section) => {
+  if (section.id !== 'getting-started') {
+    templateCount += section.items.length;
+  }
+});
+
+export const TEMPLATE_COUNT_STRING = `${templateCount}+`;
+export const TEMPLATE_COUNT_INT = templateCount;

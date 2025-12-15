@@ -5,6 +5,7 @@
  */
 
 import { Rocket, Code, Book, Settings } from 'lucide-react';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 // Documentation structure
 export const docsStructure = [
@@ -71,6 +72,7 @@ Before you begin, make sure you have:
 
 First, clone the repository and install dependencies:
 
+
 \`\`\`bash
 git clone https://github.com/fabrk/fabrk.git
 cd fabrk
@@ -81,11 +83,13 @@ npm install
 
 Copy the example environment file:
 
+
 \`\`\`bash
 cp .env.example .env.local
 \`\`\`
 
-Then update \`.env.local\` with your credentials:
+Then update <code>.env.local</code> with your credentials:
+
 
 \`\`\`env
 DATABASE_URL="postgresql://user:password@localhost:5432/fabrk"
@@ -104,6 +108,7 @@ RESEND_API_KEY="re_..."
 
 Push the Prisma schema to your database:
 
+
 \`\`\`bash
 npm run db:push
 \`\`\`
@@ -111,6 +116,7 @@ npm run db:push
 ## Start Development Server
 
 Run the development server:
+
 
 \`\`\`bash
 npm run dev
@@ -125,7 +131,7 @@ Now that you're set up, explore these guides:
 - [Authentication Setup](/docs/auth) - Configure OAuth providers
 - [Stripe Integration](/docs/payments) - Set up payments
 - [Email Templates](/docs/emails) - Customize transactional emails
-- [UI Components](/docs/ui-components) - Browse 100+ components
+- [UI Components](/docs/ui-components) - Browse ${COMPONENT_COUNT_STRING} components
 
 ## Need Help?
 
