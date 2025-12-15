@@ -1,0 +1,74 @@
+# Whitelist of files/directories to sync to official repo
+# Only these items will be included - everything else is excluded
+# Used by scripts/sync-to-official.mjs
+
+# ============================================
+# Configuration Files
+# ============================================
+.cursorrules
+.dockerignore
+.env.example
+.env.production.example
+.gitattributes
+.github/
+.gitignore
+.husky/
+.lighthouserc.json
+.nvmrc
+.prettierrc
+.windsurfrules
+
+# ============================================
+# Documentation
+# ============================================
+CHANGELOG.md
+CLAUDE.md
+DEVELOPMENT.md
+GEMINI.md
+LICENSE.md
+PRIVACY.md
+README.md
+TERMS.md
+THIRD_PARTY_LICENSES.md
+docs/
+
+# ============================================
+# Build Configuration
+# ============================================
+config/
+eslint.config.mjs
+lighthouserc.js
+next.config.ts
+package.json
+package-lock.json
+playwright.config.ts
+postcss.config.mjs
+prisma.config.ts
+stylelint.config.mjs
+tsconfig.json
+typedoc.json
+vercel.json
+vitest.config.ts
+vitest.setup.ts
+cspell.json
+
+# ============================================
+# Source Code
+# ============================================
+src/
+prisma/
+public/
+scripts/
+tests/
+
+# ============================================
+# NOTE: The following are EXCLUDED (not listed):
+# - .archives/      (internal audits, planning)
+# - .internal/      (dev tools, boilerplate refs)
+# - .codeium/       (editor config)
+# - mcp-servers/    (internal MCP tools)
+# - .mcp.json       (MCP config)
+# - ai-chatbot-main/ (reference repo)
+# - node_modules/   (dependencies)
+# - .next/          (build output)
+# ============================================

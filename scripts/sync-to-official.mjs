@@ -1,38 +1,35 @@
 #!/usr/bin/env node
 
 /**
- * Sync to Official Repository
+ * Sync to Official Repository (Whitelist Mode)
  *
- * Pushes changes to the official repo with clean commit messages
- * (strips Claude/AI signatures from commits)
+ * Only syncs files/directories explicitly listed in .syncinclude
+ * Everything else is excluded from the official repo.
  *
  * Usage: npm run sync:official
  */
 
 import { execSync } from 'child_process';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 
 const OFFICIAL_REMOTE = 'official';
 const OFFICIAL_REPO = 'Theft-SUDO/fabrk-official';
 
 // Patterns to remove from commit messages (AI signatures)
 const STRIP_PATTERNS = [
-  // Claude signatures
   /🤖\s*Generated with \[Claude.*?\]\(.*?\)\n*/gi,
   /Co-Authored-By:\s*Claude.*\n*/gi,
   /Co-Authored-By:\s*Anthropic.*\n*/gi,
-  // GPT/OpenAI signatures
   /Generated (with|by) (ChatGPT|GPT-?4|OpenAI).*\n*/gi,
   /Co-Authored-By:\s*OpenAI.*\n*/gi,
-  // Copilot signatures
   /Generated (with|by) (GitHub )?Copilot.*\n*/gi,
   /Co-Authored-By:\s*(GitHub )?Copilot.*\n*/gi,
-  // Generic AI signatures
   /🤖.*\n*/g,
   /Generated (with|by) AI.*\n*/gi,
   /AI-assisted.*\n*/gi,
-  // Clean up extra whitespace
-  /\n{3,}/g, // Multiple newlines to double
-  /\n+$/g, // Trailing newlines
+  /\n{3,}/g,
+  /\n+$/g,
 ];
 
 function exec(cmd, options = {}) {
@@ -56,8 +53,67 @@ function cleanMessage(message) {
   return cleaned.trim();
 }
 
+/**
+ * Read .syncinclude file and return list of patterns to include (whitelist)
+ */
+function getSyncIncludePatterns() {
+  const syncIncludePath = join(process.cwd(), '.syncinclude');
+
+  if (!existsSync(syncIncludePath)) {
+    console.error('❌ No .syncinclude file found!');
+    console.error('   Create a .syncinclude file listing files/dirs to sync.');
+    process.exit(1);
+  }
+
+  const content = readFileSync(syncIncludePath, 'utf8');
+  const patterns = content
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('#')); // Remove comments and empty lines
+
+  return patterns;
+}
+
+/**
+ * Stage only the whitelisted files/directories
+ */
+function stageWhitelistedFiles(patterns) {
+  console.log('📦 Including in sync:');
+
+  let addedCount = 0;
+
+  for (const pattern of patterns) {
+    const cleanPattern = pattern.replace(/\/$/, ''); // Remove trailing slash
+
+    // Check if the path exists
+    if (existsSync(cleanPattern)) {
+      try {
+        exec(`git add -f "${cleanPattern}"`, { silent: true });
+        console.log(`   ✓ ${pattern}`);
+        addedCount++;
+      } catch (err) {
+        console.log(`   ✗ ${pattern} (failed to add)`);
+      }
+    } else {
+      // Try glob pattern (for files like *.md)
+      try {
+        const result = exec(`git add -f ${cleanPattern} 2>&1 || true`, { silent: true });
+        if (!result.includes('did not match any files')) {
+          console.log(`   ✓ ${pattern}`);
+          addedCount++;
+        }
+      } catch {
+        // Pattern didn't match anything, skip silently
+      }
+    }
+  }
+
+  console.log(`\n   Total: ${addedCount} items staged\n`);
+  return addedCount;
+}
+
 async function main() {
-  console.log('🔄 Syncing to official repository...\n');
+  console.log('🔄 Syncing to official repository (whitelist mode)...\n');
 
   // Check if official remote exists
   const remotes = getOutput('git remote');
@@ -74,20 +130,9 @@ async function main() {
   const currentBranch = getOutput('git branch --show-current');
   console.log(`📍 Current branch: ${currentBranch}`);
 
-  // Check if there are commits to sync
-  let commitsBehind = '0';
-  try {
-    commitsBehind = getOutput(`git rev-list --count ${OFFICIAL_REMOTE}/main..HEAD 2>/dev/null || echo "0"`);
-  } catch {
-    commitsBehind = 'all'; // First sync
-  }
-
-  if (commitsBehind === '0') {
-    console.log('✅ Already in sync with official repo');
-    return;
-  }
-
-  console.log(`📊 Commits to sync: ${commitsBehind}\n`);
+  // Get sync include patterns (whitelist)
+  const includePatterns = getSyncIncludePatterns();
+  console.log(`📋 Found ${includePatterns.length} whitelist patterns\n`);
 
   // Get the last few commit messages to show what's being synced
   const recentCommits = getOutput('git log --oneline -5');
@@ -103,15 +148,24 @@ async function main() {
   // Create temporary branch for clean push
   const tempBranch = `sync-official-${Date.now()}`;
 
-  console.log('🔨 Creating clean sync...');
+  console.log('🔨 Creating clean sync...\n');
 
   // Stash any uncommitted changes
   exec('git stash --include-untracked', { silent: true, ignoreError: true });
 
   try {
-    // Create orphan branch with current state
+    // Create orphan branch (empty, no history)
     exec(`git checkout --orphan ${tempBranch}`, { silent: true });
-    exec('git add -A', { silent: true });
+
+    // Reset staging area (start clean)
+    exec('git reset', { silent: true });
+
+    // Stage ONLY whitelisted files
+    const stagedCount = stageWhitelistedFiles(includePatterns);
+
+    if (stagedCount === 0) {
+      throw new Error('No files were staged. Check your .syncinclude file.');
+    }
 
     // Create clean commit
     const syncMessage = `Sync ${timestamp}: ${cleanedMsg}
