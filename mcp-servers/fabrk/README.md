@@ -21,8 +21,8 @@ This MCP server gives AI assistants (Claude Code, Cursor, etc.) deep knowledge o
 
 | Feature | Description |
 |---------|-------------|
-| **{{COMPONENT_COUNT_INT}} Components** | Full catalog with props, variants, and examples |
-| **{{THEME_COUNT_INT}} Themes** | CRT phosphor, retro computer, handheld, monochrome |
+| **77 Components** | Full catalog with props, variants, and examples |
+| **12 Themes** | CRT phosphor, retro computer, handheld, monochrome |
 | **Design Tokens** | Colors, spacing, typography, mode object |
 | **Code Generation** | Generate components and pages following Fabrk patterns |
 | **Validation** | Check code against design system rules |
@@ -86,8 +86,8 @@ Query these read-only data sources:
 | Resource | URI | Description |
 |----------|-----|-------------|
 | Design System | `fabrk://design-system` | Mode object, tokens, design rules |
-| Components | `fabrk://components` | {{COMPONENT_COUNT_INT}} component catalog |
-| Themes | `fabrk://themes` | {{THEME_COUNT_INT}} theme configurations |
+| Components | `fabrk://components` | 77 component catalog |
+| Themes | `fabrk://themes` | 12 theme configurations |
 
 **Example query:**
 ```

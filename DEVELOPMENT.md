@@ -28,7 +28,7 @@ This project uses a **two-repo model** to separate the product (boilerplate) fro
 
 - ✓ Core boilerplate (`src/app/(platform)/`, `src/app/(auth)/`)
 - ✓ API routes (`src/app/api/*`)
-- ✓ UI components (`src/components/ui/`, dashboard/) # {{COMPONENT_COUNT_INT}} UI components
+- ✓ UI components (`src/components/ui/`, dashboard/) # 77 UI components
 - ✓ Documentation (`src/app/docs/*`, `src/app/library/*`)
 - ✓ Database schema (`prisma/`)
 - ✓ Templates and examples
@@ -178,7 +178,7 @@ fabrk_plate/ (dev repo)
 │   │   └── api/                  # SYNCS - 30+ API routes
 │   │
 │   ├── components/
-│   │   ├── ui/                   # SYNCS - {{COMPONENT_COUNT_INT}} UI components
+│   │   ├── ui/                   # SYNCS - 77 UI components
 │   │   ├── docs/                 # SYNCS - Documentation templates
 │   │   ├── dashboard/            # SYNCS - Dashboard components
 │   │   ├── landing/              # PRIVATE - Marketing sections

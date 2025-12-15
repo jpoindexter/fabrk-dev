@@ -2,7 +2,7 @@
 
 Complete guide to all Fabrk documentation. Start here to find what you need.
 
-**Fabrk Premium:** {{PRICE_USD_STRING}} | {{COMPONENT_COUNT_INT}} Components | {{TEMPLATE_COUNT_INT}} Templates | {{THEME_COUNT_INT}} Themes | {{TEST_LINES_STRING}} | Storybook Integrated
+**Fabrk Premium:** {{PRICE_USD_STRING}} | 77 Components | 30 Templates | 12 Themes | {{TEST_LINES_STRING}} | Storybook Integrated
 
 ---
 
@@ -11,7 +11,7 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 **New to Fabrk?** Start with these three guides:
 
 1. [**QUICK-START.md**](./QUICK-START.md) - Get up and running in 1 hour (setup, database, dev server)
-2. [**COMPONENT-SHOWCASE.md**](./COMPONENT-SHOWCASE.md) - Explore all {{COMPONENT_COUNT_STRING}} components with live examples
+2. [**COMPONENT-SHOWCASE.md**](./COMPONENT-SHOWCASE.md) - Explore all 77+ components with live examples
 3. [**DEPLOYMENT.md**](./DEPLOYMENT.md) - Deploy to production on Vercel in 10 minutes
 
 **Total time to launch:** ~2 hours from zero to production.
@@ -412,4 +412,4 @@ npm run dev
 **Last updated:** January 2025
 **Fabrk Version:** 1.0.0
 **Total Documentation:** 19 files, {{TOTAL_DOC_SIZE_STRING}}, {{TOTAL_DOC_LINES_STRING}}
-**Price:** $299 | **Components:** {{COMPONENT_COUNT_INT}} | - **Templates:** {{TEMPLATE_COUNT_INT}} | - **Themes:** {{THEME_COUNT_INT}} | - **Test Lines:** {{TEST_LINES_STRING}}
+**Price:** $299 | **Components:** 77 | - **Templates:** 30 | - **Themes:** 12 | - **Test Lines:** {{TEST_LINES_STRING}}
