@@ -5,7 +5,7 @@
  * Terminal-styled message bubbles for chat interfaces
  */
 
-import { User, Bot, Copy, Check } from 'lucide-react';
+import { Bot, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';

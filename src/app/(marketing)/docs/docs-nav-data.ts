@@ -49,8 +49,6 @@ import {
   Sparkles,
   Image,
   Volume2,
-  Mic,
-  Cpu,
   History,
 } from 'lucide-react';
 

@@ -9,9 +9,6 @@ import { useState } from 'react';
 import {
   MessageSquare,
   Plus,
-  MoreHorizontal,
-  Search,
-  User,
   Trash2,
   Edit2,
   Settings,

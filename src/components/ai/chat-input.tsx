@@ -6,7 +6,7 @@
  */
 
 import { useRef, useEffect, useState } from 'react';
-import { Send, Loader2, StopCircle } from 'lucide-react';
+import { Send, StopCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { Button } from '@/components/ui/button';
