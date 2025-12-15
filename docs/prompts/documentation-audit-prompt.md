@@ -49,14 +49,19 @@ This is the Fabrk Next.js 16 SaaS boilerplate with:
 
 ### Documentation Sections
 - `/docs/getting-started/` — Quickstart
-- `/docs/components/` — 81 component doc pages
+- `/docs/components/` — 88+ component doc pages
 - `/docs/features/` — 20+ feature guides (payments, auth, emails, etc.)
-- `/docs/design/` — Theme guide, customization guide, component authoring
+- `/docs/design/` — Theme guide, customization guide, component authoring, accessibility
 - `/docs/extras/` — Theme gallery, theme generator, display effects
 - `/docs/tutorials/` — Step-by-step guides
-- `/docs/security/` — Security docs
-- `/docs/deployment/` — Deployment guides
-- `/docs/customization-checklist/` — Launch checklist
+- `/docs/security/` — Security docs (CSRF, headers, rate limiting, validation, audit logging)
+- `/docs/deployment/` — Deployment guides (Vercel, database)
+- `/docs/launch/` — Launch checklist
+
+### Library/Template Showcase
+- Location: `src/app/(marketing)/library/`
+- 44 template pages (authentication, dashboards, settings, etc.)
+- Each template has Preview/Code tabbed interface
 
 ### Design System
 - Location: `src/design-system/`
@@ -66,23 +71,73 @@ This is the Fabrk Next.js 16 SaaS boilerplate with:
 - Aesthetic: Terminal-flat (rounded-none, font-mono everywhere)
 
 ### Components
-- 72 UI components in `src/components/ui/`
+- 77 UI components in `src/components/ui/`
 - All use `mode.radius`, `mode.font`, `mode.color.*` tokens
+- Card component uses `CardHeader` with terminal-style brackets
 
-### Themes
-- 12 themes defined in `src/app/globals.css`
-- CRT Phosphor: green (default), amber, blue, red, purple
-- Retro Computer: c64, vic20, atari, spectrum
-- Handheld: gameboy, gbpocket
-- Light: bw (Black & White)
-- Theme provider: `src/design-system/providers/ThemeProvider.tsx`
+### Themes (12 total)
+All themes defined in `src/app/globals.css` using OKLCH color format:
+
+| Category | Themes | Count |
+|----------|--------|-------|
+| **CRT Phosphor** | green (default/root), red, blue, amber, purple | 5 |
+| **Retro Computer** | c64, vic20, atari, spectrum | 4 |
+| **Handheld** | gameboy, gbpocket | 2 |
+| **Monochrome** | bw (Black & White) | 1 |
 
 ### Key Design System Files
 - `src/app/globals.css` — All theme CSS variables (OKLCH format)
-- `src/design-system/index.ts` — `mode` object, token exports
+- `src/design-system/index.ts` — `mode` object, token exports (~390 lines)
 - `src/design-system/tokens/primitives.ts` — Raw values
 - `src/design-system/tokens/semantic.ts` — Role-based tokens
+- `src/design-system/tokens/chart-colors.ts` — Chart color tokens
 - `src/design-system/themes/terminal.ts` — Terminal theme classes
+
+### Token Structure (mode object)
+
+The `mode` object provides these token categories:
+
+```typescript
+mode.radius          // 'rounded-none'
+mode.font            // 'font-mono'
+mode.shadow          // 'shadow-sm'
+mode.inputStyle      // Input styling classes
+mode.borderWidth     // 'border'
+
+mode.color.bg.*      // 16 background tokens
+  .base, .surface, .surfaceRaised, .elevated
+  .accent, .accentMuted, .accentHover
+  .danger, .dangerMuted, .success, .successMuted
+  .warning, .warningMuted, .info, .infoMuted
+  .muted, .secondary
+
+mode.color.text.*    // 14 text tokens
+  .primary, .secondary, .muted, .inverse, .accent
+  .danger, .dangerOnColor, .success, .successOnColor
+  .warning, .warningOnColor, .info, .infoOnColor
+
+mode.color.border.*  // 6 border tokens
+  .default, .focus, .accent, .danger, .success, .warning
+
+mode.color.icon.*    // 8 icon tokens
+  .primary, .secondary, .muted, .accent
+  .danger, .success, .warning, .info
+
+mode.spacing.*       // Spacing tokens (8-point grid)
+  .button.sm/md/lg, .input, .card, .badge.sm/md
+
+mode.typography.*    // Typography tokens
+  .button, .body.xs/sm/md, .heading.h1/h2/h3
+  .caption, .input, .label
+
+mode.state.*         // State tokens
+  .hover.bg/text, .focus.ring, .disabled.opacity/cursor
+```
+
+### Automated Audit Tools
+- Design system audit: `node .internal/scripts/utilities/design-system-audit.mjs`
+- Hex color scanner: `npm run scan:hex`
+- Pre-commit audit: `.internal/scripts/utilities/pre-commit-audit.mjs`
 
 You must treat the CODE as the source of truth.
 Docs must match the code. If they don't match, the docs are wrong.
@@ -110,8 +165,8 @@ You must build a "Docs-to-Code Traceability" check.
 At minimum validate:
 
 ### A) Components
-- Inventory all exported/public components in `src/components/ui/` (72 components)
-- Inventory all documented components in `/docs/components/` (81 pages)
+- Inventory all exported/public components in `src/components/ui/` (77 components)
+- Inventory all documented components in `/docs/components/` (88+ pages)
 - Report:
   - Documented but not found in code (docs lie)
   - Exists in code but not documented (docs incomplete)
@@ -158,7 +213,7 @@ Audit documentation quality across these categories:
 Docs must clearly cover:
 - How themes work (globals.css, data-theme attribute, ThemeProvider)
 - How to customize:
-  - brand colors (OKLCH format)
+  - brand colors (OKLCH format with converter links)
   - background/surface colors
   - text colors
   - radius (terminal-flat uses rounded-none via mode.radius)
@@ -170,6 +225,7 @@ Docs must clearly cover:
   - no hardcoded hex in components (use OKLCH tokens)
   - use mode.* tokens not raw classes
   - how to extend safely
+- OKLCH color format explanation with conversion tools
 
 If this section is missing or confusing, that is a launch blocker.
 
@@ -183,12 +239,12 @@ For each component (or at least each public category), docs should include:
 
 ### E) DESIGN SYSTEM REFERENCE (TOKENS + SCALES)
 Docs must include:
-- Token naming conventions (mode.color.bg.*, mode.color.text.*, etc.)
-- Semantic roles explanation (bg/text/border/accent/status)
-- Typography scale reference (text-xs, text-sm, text-base)
+- Token naming conventions (mode.color.bg.*, mode.color.text.*, mode.color.border.*, mode.color.icon.*)
+- Semantic roles explanation (bg/text/border/icon + status colors)
+- Typography scale reference (text-xs, text-sm — NO text-base in terminal)
 - Spacing scale reference (8-point grid: p-2, p-4, p-6, p-8)
 - Terminal aesthetic rules (rounded-none, font-mono, uppercase labels)
-- State token reference (hover/active/focus/disabled via mode.state.*)
+- State token reference (hover/focus/disabled via mode.state.*)
 
 ### F) ACCESSIBILITY DOCUMENTATION
 Docs must clearly state:
@@ -197,6 +253,9 @@ Docs must clearly state:
 - Non-text contrast considerations for borders/icons/controls (3:1 minimum)
 - Keyboard navigation expectations for key components
 - aria-label requirements for icon-only buttons
+- Screen reader testing guides (VoiceOver, NVDA)
+- ARIA live regions usage
+- Semantic HTML vs ARIA guidance
 
 ### G) EXAMPLES & RECIPES (HOW‑TO GUIDES)
 Docs should include real "recipes":
@@ -212,6 +271,7 @@ Audit for:
 - Token/theme adding rules
 - Linting / CI rules for "no raw colors" (npm run scan:hex)
 - Pre-commit hooks documentation
+- Design system audit script usage
 
 If maintainers can't keep it consistent, it will regress.
 
@@ -287,7 +347,7 @@ C) Documentation Blockers (must-fix before launch) — with evidence
 D) Major Risks / Warnings (should-fix) — with evidence
 E) Documentation File Coverage Manifest
 F) Docs-to-Code Traceability Report
-   - Components: 72 in code vs 81 documented (missing, extra, mismatched)
+   - Components: 77 in code vs 88+ documented (missing, extra, mismatched)
    - Tokens: mode.* documented vs defined (missing, extra, mismatched)
    - Themes: 12 themes documented vs implemented (missing, extra, mismatched)
 G) Writing Quality Audit (clarity, scannability, consistency)
@@ -301,7 +361,29 @@ M) Optional Improvements (post-launch polish)
 
 ---
 
-## 10) TONE / STRICTNESS
+## 10) AUTOMATED AUDIT INTEGRATION
+
+Run these commands as part of audit verification:
+
+```bash
+# Design system pattern violations
+node .internal/scripts/utilities/design-system-audit.mjs
+
+# Hex color detection
+npm run scan:hex
+
+# TypeScript compilation
+npm run type-check
+```
+
+Expected results for GO status:
+- 0 CRITICAL violations
+- 0 WARNING violations
+- TypeScript compiles cleanly
+
+---
+
+## 11) TONE / STRICTNESS
 
 Be blunt, clinical, and decisive.
 If docs are confusing or incomplete, say NO‑GO.
@@ -312,4 +394,4 @@ No sugarcoating, no vague advice.
 
 ---
 
-*Last updated: 2024-12-14*
+*Last updated: 2025-12-15*
