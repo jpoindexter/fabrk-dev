@@ -3,14 +3,13 @@
 # Used by scripts/sync-to-official.mjs
 
 # ============================================
-# Configuration Files
+# ROOT CONFIGURATION FILES
 # ============================================
 .cursorrules
 .dockerignore
 .env.example
 .env.production.example
 .gitattributes
-.github/
 .gitignore
 .husky/
 .lighthouserc.json
@@ -19,7 +18,20 @@
 .windsurfrules
 
 # ============================================
-# Documentation
+# GITHUB (workflows for customers)
+# ============================================
+.github/workflows/ci.yml
+.github/workflows/deploy.yml
+.github/workflows/pr-checks.yml
+.github/workflows/release.yml
+.github/workflows/codeql.yml
+.github/codeql/
+.github/ISSUE_TEMPLATE/
+.github/PULL_REQUEST_TEMPLATE.md
+.github/dependabot.yml
+
+# ============================================
+# ROOT DOCUMENTATION
 # ============================================
 CHANGELOG.md
 CLAUDE.md
@@ -30,10 +42,9 @@ PRIVACY.md
 README.md
 TERMS.md
 THIRD_PARTY_LICENSES.md
-docs/
 
 # ============================================
-# Build Configuration
+# BUILD CONFIGURATION
 # ============================================
 config/
 eslint.config.mjs
@@ -53,22 +64,84 @@ vitest.setup.ts
 cspell.json
 
 # ============================================
-# Source Code
+# SOURCE CODE (all customer code)
 # ============================================
 src/
 prisma/
 public/
-scripts/
+
+# ============================================
+# CUSTOMER-FACING SCRIPTS ONLY
+# ============================================
+scripts/generate-theme.mjs
+scripts/validate-themes.mjs
+scripts/validate-themes.ts
+scripts/validate-webhooks.mjs
+scripts/utilities/
+scripts/utils/
+
+# ============================================
+# TESTS (customers may want to run/extend)
+# ============================================
 tests/
 
 # ============================================
-# NOTE: The following are EXCLUDED (not listed):
-# - .archives/      (internal audits, planning)
-# - .internal/      (dev tools, boilerplate refs)
-# - .codeium/       (editor config)
-# - mcp-servers/    (internal MCP tools)
-# - .mcp.json       (MCP config)
-# - ai-chatbot-main/ (reference repo)
-# - node_modules/   (dependencies)
-# - .next/          (build output)
+# DOCUMENTATION (customer-facing only)
+# ============================================
+docs/01-getting-started/
+docs/02-components/
+docs/03-guides/
+docs/04-development/
+docs/06-features/
+docs/07-advanced/
+docs/08-design/
+docs/10-deployment/
+docs/11-marketing/
+docs/design-system/
+docs/ANALYTICS.md
+docs/CUSTOMIZATION-CHECKLIST.md
+docs/DEPLOYMENT.md
+docs/DOCUMENTATION_INDEX.md
+docs/SECURITY.md
+docs/SENTRY_SETUP.md
+
+# ============================================
+# LAUNCH DOCS (customer-facing only)
+# ============================================
+docs/09-launch/LAUNCH-CHECKLIST.md
+docs/09-launch/LAUNCH_CHECKLIST.md
+docs/09-launch/LAUNCH_READY.md
+docs/09-launch/README.md
+docs/09-launch/RELEASE-NOTES-v1.1.md
+
+# ============================================
+# EXCLUDED (NOT LISTED = NOT SYNCED):
+# - .archives/           (internal audits)
+# - .internal/           (dev tools)
+# - .codeium/            (editor config)
+# - mcp-servers/         (internal MCP)
+# - .mcp.json            (MCP config)
+# - docs/prompts/        (internal audit prompts)
+# - docs/09-launch/DISTRIBUTION-*.md (internal business)
+# - docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md
+# - docs/09-launch/GITHUB-DISTRIBUTION-SETUP.md
+# - docs/09-launch/LAUNCH-PREPARATION-SUMMARY.md
+# - docs/09-launch/QA-CHECKLIST-v1.1.md
+# - docs/09-launch/RELEASE-READINESS.md
+# - scripts/sync-*.mjs   (internal sync)
+# - scripts/mcp-setup.mjs (internal)
+# - scripts/*-metadata.mjs (internal)
+# - scripts/check-aria-labels.mjs (internal)
+# - scripts/hex-to-oklch-converter.mjs (internal)
+# - scripts/refactor-*.mjs (internal)
+# - scripts/add-library-navigation.mjs (internal)
+# - scripts/count-ui-components.mjs (internal)
+# - scripts/update-markdown-dynamic-data.mjs (internal)
+# - .github/workflows/accessibility.yml (internal CI)
+# - .github/workflows/backup.yml (internal)
+# - .github/workflows/e2e-tests.yml (internal)
+# - .github/workflows/lighthouse.yml (internal)
+# - .github/workflows/maintenance.yml (internal)
+# - .github/workflows/performance.yml (internal)
+# - .github/workflows/visual-tests.yml (internal)
 # ============================================
