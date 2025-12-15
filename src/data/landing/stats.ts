@@ -6,31 +6,23 @@
 import { Box, Palette, Route, Code } from 'lucide-react';
 import { docsNavigation } from '@/app/(marketing)/docs/docs-nav-data';
 import { TEMPLATE_COUNT_STRING } from '@/app/(marketing)/library/library-nav-data';
-import { THEME_NAMES } from '@/design-system/themes';
 import { themes } from '@/data/themes';
+import componentCounts from '@/data/component-counts.json'; // Import the JSON file
 
-// Calculate component count from docs navigation
-const componentsSection = docsNavigation.find((s) => s.title === 'COMPONENTS');
-let componentCount = 0;
-if (componentsSection && componentsSection.subSections) {
-  componentsSection.subSections.forEach((sub) => {
-    componentCount += sub.items.length;
-  });
-}
+// Dynamic UI Component Count (from src/components/ui)
+export const COMPONENT_COUNT_INT = componentCounts.uiComponentCount;
+export const COMPONENT_COUNT_STRING = `${COMPONENT_COUNT_INT}+`;
 
-// Export specific count string for reuse (e.g. "89+")
-export const COMPONENT_COUNT_STRING = `${componentCount}+`;
-export const COMPONENT_COUNT_INT = componentCount;
 export { TEMPLATE_COUNT_STRING };
 
 // Dynamic Theme Count
 export const THEME_COUNT_INT = themes.length;
 export const THEME_COUNT_STRING = `${THEME_COUNT_INT}`;
 
-// Manual Constants (Centralized)
+// Manual Constants (Centralized) - These would ideally also be dynamic
 export const ROUTE_COUNT_STRING = '250+';
-export const FILE_COUNT_STRING = '161';
-export const TEST_COVERAGE_STRING = '100%';
+export const FILE_COUNT_STRING = '161'; // For "161 files you can understand"
+export const TEST_COVERAGE_STRING = '100%'; // Assuming 100% test coverage for now
 
 export const STATS = [
   {
@@ -54,7 +46,7 @@ export const STATS = [
   {
     id: 'typescript',
     label: 'TYPESCRIPT',
-    value: TEST_COVERAGE_STRING,
+    value: TEST_COVERAGE_STRING, // Assuming this is for TypeScript test coverage
     icon: Code,
   },
 ] as const;
