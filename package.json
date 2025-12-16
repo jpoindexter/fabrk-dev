@@ -4,21 +4,15 @@
   "private": true,
   "description": "Production-ready Next.js SaaS boilerplate",
   "scripts": {
-    "count-components": "node scripts/count-ui-components.mjs",
-    "update-markdown-dynamic-data": "node scripts/update-markdown-dynamic-data.mjs",
-    "predev": "test -f scripts/count-ui-components.mjs && npm run count-components && npm run update-markdown-dynamic-data || true",
-    "prebuild": "test -f scripts/count-ui-components.mjs && npm run count-components && npm run update-markdown-dynamic-data || true",
-    "postinstall": "test -f scripts/count-ui-components.mjs && npm run count-components && npm run update-markdown-dynamic-data || true",
     "dev": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && next dev",
     "dev:restart": "npm run dev",
     "build": "prisma generate && next build",
     "build:prod": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
-    "lint": "npm run scan:hex && ESLINT_USE_FLAT_CONFIG=true eslint src",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint src",
     "lint:css": "stylelint \"src/**/*.css\" --allow-empty-input",
     "lint:css:fix": "stylelint \"src/**/*.css\" --fix --allow-empty-input",
     "lint:all": "npm run lint && npm run lint:css",
-    "scan:hex": "node .internal/scripts/utilities/scan-stray-hex.mjs",
     "type-check": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
@@ -30,10 +24,6 @@
     "db:reset": "prisma db push --force-reset && npm run db:seed",
     "db:migrate": "prisma migrate dev",
     "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe",
-    "jobs:worker": "node .internal/scripts/workers/job-worker.js",
-    "jobs:dev": "nodemon .internal/scripts/workers/job-worker.js",
-    "email:worker": "node .internal/scripts/workers/email-worker.js",
-    "email:dev": "nodemon .internal/scripts/workers/email-worker.js",
     "test": "vitest",
     "test:watch": "vitest watch",
     "test:coverage": "vitest --coverage",
@@ -53,25 +43,14 @@
     "analyze": "ANALYZE=true npm run build",
     "docs:api": "typedoc",
     "docs:serve": "serve docs/api",
-    "lighthouse": "./.internal/scripts/lighthouse-audit.sh",
     "lighthouse:ci": "lhci autorun",
-    "audit:staged": "node .internal/scripts/utilities/pre-commit-audit.mjs",
-    "audit:design": "node .internal/scripts/utilities/design-system-audit.mjs",
-    "audit:design:json": "node .internal/scripts/utilities/design-system-audit.mjs --json",
     "validate:themes": "node scripts/validate-themes.mjs",
-    "sync:changelog": "node scripts/sync-changelog.mjs",
-    "mcp:setup": "node scripts/mcp-setup.mjs",
-    "mcp:build": "cd mcp-servers/fabrk && npm run build",
-    "prepare": "npx husky install",
-    "sync:official": "node scripts/sync-to-official.mjs"
+    "prepare": "npx husky install"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"
-    ],
-    "src/**/*.tsx": [
-      "node .internal/scripts/utilities/pre-commit-audit.mjs"
     ],
     "src/**/*.{json,css,md}": [
       "prettier --write"

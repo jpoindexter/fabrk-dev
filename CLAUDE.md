@@ -25,7 +25,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Payment providers | Stripe, Polar, Lemonsqueezy (3 options) |
 | Config files | `src/config/index.ts` (not .js) |
 | Create a release | See `docs/RELEASE_GUIDE.md` |
-| Sync changelog | `npm run sync:changelog` |
 
 ---
 
@@ -50,7 +49,7 @@ All components use terminal aesthetic:
 
 ### 2. NEVER hardcode colors
 
-Use design tokens from `globals.css`. Run `npm run scan:hex` to detect violations.
+Use design tokens from `globals.css`.
 
 ```tsx
 // GOOD
@@ -137,10 +136,8 @@ npm run build            # Production build
 npm run type-check       # TypeScript validation
 
 # Code Quality (automated on commit)
-npm run lint             # ESLint + hex color scan
-npm run scan:hex         # Detect hardcoded colors
+npm run lint             # ESLint
 npm run format           # Prettier format
-npm run audit:staged     # Design system audit (runs on commit)
 
 # Database
 npm run db:push          # Push schema changes
@@ -151,9 +148,6 @@ npm run db:reset         # Reset and reseed
 # Testing
 npm test                 # Vitest unit tests
 npm run test:e2e         # Playwright E2E tests
-
-# Changelog
-npm run sync:changelog   # Sync GitHub releases to changelog
 ```
 
 ---
@@ -212,10 +206,9 @@ src/
 - **`src/config/index.ts`** - Central configuration exports (app.ts, stripe.ts, i18n.ts)
 - **`src/lib/env.ts`** - Environment validation with Zod
 - **`src/lib/auth.ts`** - NextAuth v5 with JWT sessions (30-day)
+- **`src/proxy.ts`** - Edge proxy for CSP nonce injection and CSRF tokens
 - **`docs/08-design/DESIGN_SYSTEM.md`** - Complete design system specification
-- **`.claude/audit/`** - 58 modular audit files (see Resources)
 - **`.husky/pre-commit`** - Git hook entry point (runs type-check + lint-staged)
-- **`.internal/scripts/utilities/pre-commit-audit.mjs`** - Design system pattern checker
 
 ---
 
@@ -630,20 +623,6 @@ The design system achieved **100% launch readiness** on December 12, 2025 with c
 - Added eslint-disable comments with rationale to 2 email files
 - Documents legitimate hardcoded colors for email client compatibility
 
-### Design System Tools
-
-**Color Conversion:**
-```bash
-node scripts/hex-to-oklch-converter.mjs
-```
-Converts hex colors to OKLCH format. Used to migrate 135 code syntax highlighting colors.
-
-**Accessibility Audit:**
-```bash
-node scripts/check-aria-labels.mjs
-```
-Scans all components for icon-only buttons without `aria-label` attributes.
-
 ### OKLCH Color System
 
 All colors now use OKLCH format for perceptual uniformity:
@@ -664,12 +643,6 @@ background-color: oklch(from var(--background) 0% c h / 0.8);
 - Reliable gradients
 - Future-proof color manipulation
 
-### Launch Reports
-
-Comprehensive audit reports archived in `.archives/design-system/2025-12-12-final/`:
-- `DESIGN_SYSTEM_AUDIT_2025-12-12.md` - Complete final audit (600+ lines)
-- `DESIGN_SYSTEM_LAUNCH_STATUS.md` - Launch readiness summary
-
 ---
 
 ## Troubleshooting
@@ -678,7 +651,6 @@ Comprehensive audit reports archived in `.archives/design-system/2025-12-12-fina
 |-------|----------|
 | Port 3000 in use | `npm run dev` (auto-kills) |
 | Prisma out of sync | `npm run db:push` |
-| Hardcoded colors | `npm run scan:hex` |
 | Env validation errors | Check `.env.local`, see `/docs/ENV-VALIDATION.md` |
 
 ---
@@ -755,15 +727,12 @@ When adding features: "Does this help ship faster?" If no, delete it.
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables and utilities (100% OKLCH tokens)
 - `src/design-system/themes/` - Terminal theme (12 complete themes)
-- `.archives/design-system/2025-12-12-final/` - Launch audit reports (100/100 score)
-- `scripts/hex-to-oklch-converter.mjs` - Color conversion tool
-- `scripts/check-aria-labels.mjs` - Accessibility audit tool
 - `/docs/components/overview` - Component documentation (77 UI components)
 
-### Card Documentation (5 Files)
+### Card Documentation
 
 **User-Facing Documentation:**
-1. `/docs/design-system/spec/card-animations.md` - **Pattern 1 vs Pattern 2 guide** (NEW as of 2025-12-15)
+1. `/docs/design-system/spec/card-animations.md` - **Pattern 1 vs Pattern 2 guide**
    - When to animate (marketing) vs when to keep static (docs/dashboards)
    - Complete animation recipes with explanations
    - Performance implications (+50KB for Pattern 1, 0KB for Pattern 2)
@@ -775,9 +744,6 @@ When adding features: "Does this help ship faster?" If no, delete it.
 3. `/docs/08-design/DESIGN_SYSTEM.md` - General design system (includes card subsection)
 4. `/docs/08-design/COMPONENT-AUTHORING.md` - Component creation guide
 5. `/docs/02-components/COMPONENT-BEST-PRACTICES.md` - General best practices (links to card docs)
-
-**Archived Internal Documentation:**
-- `/.archives/card-migration-log.md` - Internal migration tracking (moved 2025-12-15)
 
 **Quick Decision Tree** (Pattern 1 vs Pattern 2):
 - Landing page? → Pattern 1 (Animated)
@@ -791,8 +757,7 @@ When adding features: "Does this help ship faster?" If no, delete it.
 **Files:**
 - `docs/RELEASE_GUIDE.md` - Complete release workflow and versioning guide
 - `.github/RELEASE_TEMPLATE.md` - Copy/paste template for GitHub releases
-- `scripts/sync-changelog.mjs` - Syncs GitHub releases to changelog data
-- `src/data/changelog.ts` - Generated changelog data
+- `src/data/changelog.ts` - Changelog data
 - `src/app/(marketing)/changelog/` - Changelog page with sidebar nav
 
 **Release Workflow:**
@@ -801,8 +766,7 @@ When adding features: "Does this help ship faster?" If no, delete it.
 2. Test → verify everything works
 3. Tag → git tag v1.2.0 && git push origin v1.2.0
 4. Release → write detailed notes on GitHub (use template)
-5. Sync → npm run sync:changelog
-6. Push → git add . && git commit && git push
+5. Push → git add . && git commit && git push
 ```
 
 **Semantic Versioning:**
@@ -818,25 +782,6 @@ When adding features: "Does this help ship faster?" If no, delete it.
 - Restructured folders customers customized
 
 **Changelog Features:**
-- Auto-filters noise (Claude mentions, bot commits, PR numbers)
 - RSS feed at `/changelog/rss`
 - Sidebar navigation grouped by month
 - Table of contents with scroll spy
-
-### Audit Framework (58 files in `.claude/audit/`)
-
-| Category | Files | Coverage |
-|----------|-------|----------|
-| **Core** | `README.md`, `protocol.md`, `rules.md`, `files.md`, `output.md` | Entry points |
-| **Patterns** | `patterns.md`, `patterns-critical.md`, `patterns-medium.md` | Regex for violations |
-| **Accessibility** | `accessibility.md`, `a11y-*.md` (4 files) | WCAG 2.1 AA |
-| **Colors** | `colors.md`, `colors-*.md` | Design tokens, contrast |
-| **Typography** | `typography.md`, `typography-*.md` | Font scale, patterns |
-| **Spacing** | `spacing.md`, `spacing-*.md` | 8-point grid |
-| **Components** | `components.md`, `components-*.md` (5 files) | Forms, buttons, cards, validation, empty states |
-| **Animation** | `animation.md`, `animation-*.md` | Framer Motion, CSS |
-| **Responsive** | `responsive.md`, `responsive-*.md` | Mobile-first, breakpoints |
-| **Enterprise** | `enterprise.md`, `enterprise-*.md` | Error boundaries, data fetching |
-| **Extended** | `seo-metadata.md`, `react-patterns.md`, `nextjs-patterns.md`, `performance-metrics.md`, `testing-coverage.md`, `component-api.md`, `browser-compatibility.md` | SEO, React, Next.js, Core Web Vitals |
-
-**Run audit:** Say "run audit" or see `.claude/audit/README.md`
