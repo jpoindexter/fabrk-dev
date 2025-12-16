@@ -123,6 +123,23 @@ function updateMarkdownFile(filePath, componentCount, templateCount, themeCount)
   }
 }
 
+// Find all markdown files with potential counts
+function findMarkdownFiles(dir, files = []) {
+  const entries = readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    // Skip node_modules, .next, .git
+    if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
+
+    if (entry.isDirectory()) {
+      findMarkdownFiles(fullPath, files);
+    } else if (entry.name.endsWith('.md')) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
 // Main
 async function main() {
   console.log('\n📊 Updating Markdown Dynamic Counts\n');
@@ -137,19 +154,51 @@ async function main() {
   // Update source of truth
   updateComponentCountsJson(componentCount);
 
-  // Update markdown files
-  const markdownFiles = [
+  // Find all markdown files in the repo
+  const allMarkdownFiles = findMarkdownFiles(rootDir);
+
+  // Priority files (always update)
+  const priorityFiles = [
     join(rootDir, 'README.md'),
     join(rootDir, 'CLAUDE.md'),
+    join(rootDir, 'CHANGELOG.md'),
   ];
 
-  markdownFiles.forEach(file => {
+  // Update priority files first
+  priorityFiles.forEach(file => {
     try {
-      updateMarkdownFile(file, componentCount, templateCount, themeCount);
+      if (allMarkdownFiles.includes(file)) {
+        updateMarkdownFile(file, componentCount, templateCount, themeCount);
+      }
     } catch (err) {
       console.error(`❌ Failed to update ${file}: ${err.message}`);
     }
   });
+
+  // Update docs folder files
+  const docsDir = join(rootDir, 'docs');
+  const docsFiles = allMarkdownFiles.filter(f => f.startsWith(docsDir));
+
+  let docsUpdated = 0;
+  docsFiles.forEach(file => {
+    try {
+      const content = readFileSync(file, 'utf-8');
+      // Only update files that contain component/template count patterns
+      if (/\d+ (UI )?[Cc]omponents?|\d+ templates?/i.test(content)) {
+        const original = content;
+        updateMarkdownFile(file, componentCount, templateCount, themeCount);
+        if (readFileSync(file, 'utf-8') !== original) {
+          docsUpdated++;
+        }
+      }
+    } catch (err) {
+      // Silently skip files that can't be read
+    }
+  });
+
+  if (docsUpdated > 0) {
+    console.log(`✅ Updated ${docsUpdated} files in docs/`);
+  }
 
   console.log('\n✅ Done!\n');
 }

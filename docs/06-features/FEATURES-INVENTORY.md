@@ -692,7 +692,7 @@ npm run email:dev         # Email worker with watch mode
 ### What You Get for $299
 
 **Immediate Value:**
-- 83 production-ready components (save 166 hours)
+- 77 production-ready components (save 166 hours)
 - 9 copy-paste templates (save 60 hours)
 - Complete auth system (save 40 hours)
 - Stripe payment integration (save 30 hours)

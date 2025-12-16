@@ -48,7 +48,7 @@ Launch Fabrk on Product Hunt to reach 50K+ developers and generate buzz for your
 
 **Product Hunt tagline** (60 characters max):
 ```
-"Ship SaaS in days, not months. 234 production-ready components."
+"Ship SaaS in days, not months. 77 production-ready components."
 ```
 
 Alternative ideas:
@@ -95,7 +95,7 @@ This is wasteful. Your customers don't care about your auth form; they care abou
 ## The Solution
 
 Fabrk is production-ready SaaS boilerplate with:
-- ✅ 234 production-ready components
+- ✅ 77 production-ready components
 - ✅ Authentication (NextAuth v5)
 - ✅ Payments (Stripe)
 - ✅ Email system (Resend)
@@ -295,7 +295,7 @@ Open to feedback on how to improve this. What would be most helpful?
 ```
 🚀 We just shipped Fabrk on Product Hunt!
 
-234 production-ready components + auth + payments + docs.
+77 production-ready components + auth + payments + docs.
 Ship your SaaS in days, not months.
 
 $299. Lifetime access. Made by indie devs, for indie devs.

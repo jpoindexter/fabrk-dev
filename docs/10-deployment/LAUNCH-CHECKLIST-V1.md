@@ -855,7 +855,7 @@ I'm excited to announce that **Fabrk v1.0** is now live!
 After [X months] of development and testing, Fabrk is ready for production use.
 
 **What's Included:**
-• 46 production-ready components (100% tested)
+• 77 production-ready components (100% tested)
 • 28 copy-paste templates
 • 6 theme variations
 • Next.js 15, TypeScript, NextAuth v5, Stripe
