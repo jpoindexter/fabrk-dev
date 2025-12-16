@@ -779,7 +779,7 @@ fabrk-official/
 3. Visit http://localhost:3000/docs → Interactive docs
     ↓
 4. Browse:
-   • /docs/components → See all 77 UI components
+   • /docs/components → See All 77 UI components
    • /docs/features → Learn to add payments, auth, etc.
    • /library → Copy-paste ready templates
     ↓

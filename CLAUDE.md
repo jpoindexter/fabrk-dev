@@ -29,11 +29,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
+**Fabrk** is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.
 
 **Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
 
 **Requirements:** Node.js 24+ • PostgreSQL 15+ • npm 10+
+
+### Dynamic Counts (Auto-Calculated)
+
+| Metric | Source | Value |
+|--------|--------|-------|
+| UI Components | `src/data/component-counts.json` | 77 |
+| Templates | `library-nav-data.ts` (auto-counted) | 33+ |
+| Themes | `src/data/themes.ts` | 12 |
+
+**IMPORTANT:** Never hardcode component/template counts in marketing copy. Import from:
+
+```typescript
+import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
+// Returns "77+" and "33+"
+```
+
+**Auto-sync:** Counts in README.md and CLAUDE.md update automatically via `prebuild` hook on every `npm run build`.
 
 ---
 

@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "description": "Production-ready Next.js SaaS boilerplate",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && next dev",
     "dev:restart": "npm run dev",
+    "prebuild": "node scripts/update-markdown-counts.mjs",
     "build": "prisma generate && next build",
-    "build:prod": "prisma generate && prisma migrate deploy && next build",
+    "build:prod": "node scripts/update-markdown-counts.mjs && prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint src",
     "lint:css": "stylelint \"src/**/*.css\" --allow-empty-input",
@@ -45,6 +50,7 @@
     "docs:serve": "serve docs/api",
     "lighthouse:ci": "lhci autorun",
     "validate:themes": "node scripts/validate-themes.mjs",
+    "update-markdown-counts": "node scripts/update-markdown-counts.mjs",
     "prepare": "npx husky install"
   },
   "lint-staged": {
