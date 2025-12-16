@@ -40,14 +40,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Metric | Source | Value |
 |--------|--------|-------|
 | UI Components | `src/data/component-counts.json` | 77 |
-| Templates | `library-nav-data.ts` (auto-counted) | 33+ |
+| Templates | `library-nav-data.ts` (auto-counted) | 34+ |
 | Themes | `src/data/themes.ts` | 12 |
 
 **IMPORTANT:** Never hardcode component/template counts in marketing copy. Import from:
 
 ```typescript
 import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
-// Returns "77+" and "33+"
+// Returns "77+" and "34+"
 ```
 
 **Auto-sync:** Counts in README.md and CLAUDE.md update automatically via `prebuild` hook on every `npm run build`.

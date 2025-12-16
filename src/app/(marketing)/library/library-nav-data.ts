@@ -233,6 +233,7 @@ export const templatesNavigation: TemplateNavSection[] = [
         icon: DollarSign,
       },
       { title: 'Blog', href: '/library/blog', icon: Newspaper },
+      { title: 'Blog Post', href: '/library/blog/post', icon: FileText },
       {
         title: 'Changelog',
         href: '/library/changelog',
