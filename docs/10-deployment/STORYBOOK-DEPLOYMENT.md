@@ -1,6 +1,6 @@
 # Deploy Storybook Publicly
 
-Make your 234 production-ready components publicly accessible at `storybook.fabrk.io` to showcase the component library to customers and improve conversion.
+Make your 77 production-ready components publicly accessible at `storybook.fabrk.io` to showcase the component library to customers and improve conversion.
 
 ## Why Deploy Storybook?
 

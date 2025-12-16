@@ -26,7 +26,7 @@ export default function PurchaseSuccessPage() {
 
         {/* Heading */}
         <div className="mb-8 text-center">
-          <h1 className="mb-4 text-4xl font-semibold">Welcome to Fabrk! 🎉</h1>
+          <h1 className="mb-4 text-4xl font-semibold">WELCOME TO FABRK</h1>
           <p className="text-muted-foreground text-xl">
             Your purchase was successful. Check your email for download instructions.
           </p>

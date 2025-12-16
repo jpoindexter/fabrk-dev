@@ -20,13 +20,21 @@ import {
   Layers,
   Layout,
   Sparkles,
+  MessageSquare,
+  Image,
+  Volume2,
+  FormInput,
+  FileSearch,
+  QrCode,
+  History,
+  Bot,
 } from 'lucide-react';
 
 export interface Template {
   id: string;
   name: string;
   description: string;
-  category: 'dashboard' | 'admin' | 'account' | 'marketing' | 'auth' | 'ux' | 'patterns';
+  category: 'dashboard' | 'admin' | 'account' | 'marketing' | 'auth' | 'ux' | 'patterns' | 'ai';
   icon: React.ElementType;
   badge?: string;
   href: string;
@@ -184,7 +192,7 @@ export const templates: Template[] = [
   {
     id: 'blog-post',
     name: 'Blog Post',
-    description: 'Individual article view with rich content, code blocks, and engagement',
+    description: 'Individual article view with rich content and code blocks',
     category: 'marketing',
     icon: FileText,
     href: '/library/blog/post',
@@ -280,8 +288,8 @@ export const templates: Template[] = [
     id: 'ai-forms',
     name: 'AI Form Generator',
     description: 'Generate React Hook Form + Zod schemas from natural language prompts',
-    category: 'patterns',
-    icon: Sparkles,
+    category: 'ai',
+    icon: FormInput,
     badge: 'AI Powered',
     href: '/library/ai-forms',
     features: [
@@ -298,9 +306,101 @@ export const templates: Template[] = [
     lastUpdated: '2024-12-12',
     tags: ['ai', 'forms', 'code-generation', 'zod', 'validation'],
   },
+  // AI Tools
+  {
+    id: 'ai-chat',
+    name: 'AI Chat',
+    description: 'Conversational AI interface with streaming responses',
+    category: 'ai',
+    icon: MessageSquare,
+    badge: 'AI Powered',
+    href: '/library/ai-chat',
+    features: ['Streaming responses', 'Multi-model support', 'Chat history', 'Code highlighting'],
+  },
+  {
+    id: 'ai-image',
+    name: 'AI Image Generation',
+    description: 'Generate images from text prompts using AI',
+    category: 'ai',
+    icon: Image,
+    badge: 'AI Powered',
+    href: '/library/ai-image',
+    features: ['Text to image', 'Multiple styles', 'Download output', 'Prompt suggestions'],
+  },
+  {
+    id: 'ai-text-tools',
+    name: 'AI Text Tools',
+    description: 'Text transformation: summarize, rewrite, translate, expand',
+    category: 'ai',
+    icon: FileText,
+    badge: 'AI Powered',
+    href: '/library/ai-text-tools',
+    features: ['Summarize', 'Rewrite', 'Translate', 'Expand', 'Grammar fix', 'Tone change'],
+  },
+  {
+    id: 'ai-voice',
+    name: 'AI Voice (STT/TTS)',
+    description: 'Speech-to-text and text-to-speech capabilities',
+    category: 'ai',
+    icon: Volume2,
+    badge: 'AI Powered',
+    href: '/library/ai-voice',
+    features: ['Speech recognition', 'Text to speech', 'Multiple voices', 'Audio playback'],
+  },
+  {
+    id: 'ai-autofill',
+    name: 'AI Autofill',
+    description: 'Smart form autofill with AI suggestions',
+    category: 'ai',
+    icon: Sparkles,
+    badge: 'AI Powered',
+    href: '/library/ai-autofill',
+    features: ['Smart suggestions', 'Context-aware', 'Form completion', 'Custom fields'],
+  },
+  {
+    id: 'ai-pdf-chat',
+    name: 'AI PDF Chat',
+    description: 'Chat with PDF documents using AI',
+    category: 'ai',
+    icon: FileSearch,
+    badge: 'AI Powered',
+    href: '/library/ai-pdf-chat',
+    features: ['PDF upload', 'Document Q&A', 'Citation links', 'Multi-page support'],
+  },
+  {
+    id: 'ai-qr-generator',
+    name: 'AI QR Generator',
+    description: 'Generate styled QR codes with AI',
+    category: 'ai',
+    icon: QrCode,
+    badge: 'AI Powered',
+    href: '/library/ai-qr-generator',
+    features: ['Custom styles', 'Logo embedding', 'Color schemes', 'Download formats'],
+  },
+  {
+    id: 'ai-search',
+    name: 'AI Search',
+    description: 'Semantic search with AI-powered results',
+    category: 'ai',
+    icon: Search,
+    badge: 'AI Powered',
+    href: '/library/ai-search',
+    features: ['Semantic search', 'Natural language', 'Relevance ranking', 'Filters'],
+  },
+  // Marketing - Changelog
+  {
+    id: 'changelog',
+    name: 'Changelog',
+    description: 'Product changelog with version history',
+    category: 'marketing',
+    icon: History,
+    href: '/library/changelog',
+    features: ['Version tags', 'Date stamps', 'Categories', 'Badges'],
+  },
 ];
 
 export const categories = [
+  { id: 'ai', name: 'AI Tools', icon: Bot },
   { id: 'dashboard', name: 'Dashboards', icon: LayoutDashboard },
   { id: 'auth', name: 'Authentication', icon: Lock },
   { id: 'admin', name: 'Admin Panels', icon: Settings },

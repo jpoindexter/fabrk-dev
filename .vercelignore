@@ -129,3 +129,58 @@ Thumbs.db
 !LICENSE.md
 !PRIVACY.md
 !TERMS.md
+
+# ============================================
+# BOILERPLATE-ONLY CODE (not needed for marketing site)
+# Marketing site = shadcn/ui model: demos, docs, purchase
+# These files stay in repo for customers, excluded from Vercel
+# ============================================
+
+# Authentication pages (marketing has no login)
+src/app/(auth)/
+src/app/(platform)/
+
+# Auth library files
+src/lib/auth.ts
+src/lib/auth.test.ts
+
+# API routes that require database/auth
+src/app/api/auth/
+src/app/api/user/
+src/app/api/organizations/
+src/app/api/admin/
+src/app/api/api-keys/
+src/app/api/credits/
+src/app/api/invoices/
+src/app/api/notifications/
+src/app/api/pusher/
+src/app/api/ai/
+src/app/api/blog/
+src/app/api/webhooks/
+
+# Boilerplate service libraries
+src/lib/api-keys/
+src/lib/teams/
+src/lib/credits/
+src/lib/trial/
+src/lib/uploads/
+src/lib/notifications/
+src/lib/feedback/
+src/lib/stripe/
+src/lib/polar.ts
+src/lib/lemonsqueezy/
+
+# Email templates (transactional emails for users)
+src/emails/
+
+# Database (marketing doesn't need Prisma at runtime)
+prisma/
+src/generated/prisma/
+
+# Dashboard/Platform components
+src/components/dashboard/
+src/components/settings/
+src/components/admin/
+
+# Misplaced dev file
+src/app/cards-audit/

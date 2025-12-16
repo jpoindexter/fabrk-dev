@@ -274,7 +274,7 @@ export function OnboardingChecklist({
       {isComplete && (
         <div className="bg-success/10 border-success border-t p-4">
           <p className={cn('text-success text-sm', mode.font)}>
-            🎉 [SETUP_COMPLETE]: You're all set! Start building amazing things.
+            [SETUP_COMPLETE]: You're all set! Start building amazing things.
           </p>
         </div>
       )}

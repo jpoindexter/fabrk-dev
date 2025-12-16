@@ -100,7 +100,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
 
       <div className={cn('bg-primary dark:bg-primary/30 mt-4 p-4', mode.radius)}>
         <p className="text-primary dark:text-primary text-sm">
-          💡 <strong>Tip:</strong> Upgrade to Starter to get 10x more resources and unlock premium
+          <strong>[TIP]:</strong> Upgrade to Starter to get 10x more resources and unlock premium
           features like OAuth, payments, and email integration.
         </p>
       </div>

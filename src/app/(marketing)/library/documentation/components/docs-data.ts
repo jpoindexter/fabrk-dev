@@ -135,9 +135,9 @@ Now that you're set up, explore these guides:
 
 ## Need Help?
 
-- 📚 [Full Documentation](/docs)
-- 💬 [GitHub Discussions](https://github.com/your-org/your-repo/discussions)
-- 🐛 [Report Issues](https://github.com/your-org/your-repo/issues)
+- [Full Documentation](/docs)
+- [GitHub Discussions](https://github.com/your-org/your-repo/discussions)
+- [Report Issues](https://github.com/your-org/your-repo/issues)
     `,
   },
 };

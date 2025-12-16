@@ -53,7 +53,7 @@ export function DiscountCounter() {
       className={cn('bg-muted/50 flex items-center justify-between gap-4 px-4 py-2', mode.radius)}
     >
       <span className={cn('text-muted-foreground text-xs', mode.font)}>
-        {isAlmostGone ? '🔥' : '🎉'} {usage.remaining}/{usage.total} discounts left
+        {usage.remaining}/{usage.total} discounts left
       </span>
 
       {/* Progress bar */}

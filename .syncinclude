@@ -83,6 +83,11 @@ scripts/utilities/
 scripts/utils/
 
 # ============================================
+# MCP SERVER (AI-assisted development)
+# ============================================
+mcp-servers/fabrk/
+
+# ============================================
 # TESTS (customers may want to run/extend)
 # ============================================
 tests/

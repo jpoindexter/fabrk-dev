@@ -47,7 +47,7 @@ ls -la src/app/api/auth/[...nextauth]/route.ts`}
                 maxHeight="150px"
               />
               <div className="border-border border-l-primary space-y-2 border-l-2 pl-4">
-                <p className="font-medium">⚠️ Already Setup?</p>
+                <p className="font-medium">[NOTE] Already Setup?</p>
                 <p className="text-muted-foreground">
                   If you're using Fabrk boilerplate, NextAuth is already configured in{' '}
                   <code className="bg-muted px-1">src/lib/auth.ts</code>. Skip to Step 2.

@@ -98,7 +98,7 @@ Fabrk has completed all critical pre-launch fixes and improvements. The product 
 - CSP nonce system (no unsafe-inline) ✅
 
 ### Developer Experience: 90/100 ⭐⭐⭐⭐⭐
-- 100 production-ready components ✅
+- 77 production-ready components ✅
 - 13 unique AI/Code + Image tools ✅
 - 28 copy-paste templates ✅
 - 6 theme variations ✅

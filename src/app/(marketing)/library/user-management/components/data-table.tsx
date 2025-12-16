@@ -12,24 +12,30 @@ interface DataTableProps {
   table: Table<User>;
 }
 
+// Column flex values - relative proportions that stay within bounds
+const columnFlex: Record<string, string> = {
+  select: '0 0 40px',
+  name: '1 1 20%',
+  email: '1 1 25%',
+  role: '0 0 120px',
+  status: '0 0 100px',
+  actions: '0 0 50px',
+};
+
 export function DataTable({ table }: DataTableProps) {
   return (
-    <div className="border-border border">
+    <div className="border-border overflow-hidden border">
       {/* Table Header */}
       <div className="border-border bg-muted/50 border-b">
         {table.getHeaderGroups().map((headerGroup) => (
           <div key={headerGroup.id} className="flex items-center px-4 py-4">
             {headerGroup.headers.map((header) => {
-              const size = header.column.columnDef.size;
+              const columnId = header.column.id;
               return (
                 <div
                   key={header.id}
-                  className="font-medium"
-                  style={{
-                    width: size ? `${size}px` : 'auto',
-                    minWidth: size ? `${size}px` : 'auto',
-                    flex: size ? '0 0 auto' : '1 1 0%',
-                  }}
+                  className="min-w-0 font-medium"
+                  style={{ flex: columnFlex[columnId] || '1 1 0%' }}
                 >
                   {header.isPlaceholder
                     ? null
@@ -54,15 +60,12 @@ export function DataTable({ table }: DataTableProps) {
               )}
             >
               {row.getVisibleCells().map((cell) => {
-                const size = cell.column.columnDef.size;
+                const columnId = cell.column.id;
                 return (
                   <div
                     key={cell.id}
-                    style={{
-                      width: size ? `${size}px` : 'auto',
-                      minWidth: size ? `${size}px` : 'auto',
-                      flex: size ? '0 0 auto' : '1 1 0%',
-                    }}
+                    className="min-w-0"
+                    style={{ flex: columnFlex[columnId] || '1 1 0%' }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </div>
