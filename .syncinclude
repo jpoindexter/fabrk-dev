@@ -28,9 +28,9 @@
 .github/workflows/release.yml
 # CodeQL removed - not needed for boilerplate
 .github/ISSUE_TEMPLATE/
-.github/pull_request_template.md
 .github/dependabot.yml
 .github/SECURITY.md
+# .github/pull_request_template.md excluded - customers clone, don't PR
 
 # ============================================
 # ROOT DOCUMENTATION
