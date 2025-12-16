@@ -159,12 +159,12 @@ export function FeatureGuideTemplate({
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-border border-b">
-                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>Option</th>
-                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>Type</th>
-                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
+                    <th className={`w-[15%] pb-2 pr-4 text-left uppercase ${docsTypography.caption}`}>Option</th>
+                    <th className={`w-[30%] pb-2 pr-4 text-left uppercase ${docsTypography.caption}`}>Type</th>
+                    <th className={`w-[20%] pb-2 pr-4 text-left uppercase ${docsTypography.caption}`}>
                       Default
                     </th>
-                    <th className={`pb-2 text-left uppercase ${docsTypography.caption}`}>
+                    <th className={`w-[35%] pb-2 text-left uppercase ${docsTypography.caption}`}>
                       Description
                     </th>
                   </tr>
@@ -172,18 +172,18 @@ export function FeatureGuideTemplate({
                 <tbody>
                   {configuration.map((option, index) => (
                     <tr key={index} className="border-border border-b last:border-0">
-                      <td className="py-2 font-mono">{option.name}</td>
-                      <td className="py-2">
+                      <td className="py-3 pr-4 align-top font-mono">{option.name}</td>
+                      <td className="py-3 pr-4 align-top">
                         <code className={docsTypography.code}>{option.type}</code>
                       </td>
-                      <td className="py-2">
+                      <td className="py-3 pr-4 align-top">
                         {option.default ? (
                           <code className={docsTypography.code}>{option.default}</code>
                         ) : (
                           '-'
                         )}
                       </td>
-                      <td className={`py-2 ${docsTypography.caption}`}>{option.description}</td>
+                      <td className={`py-3 align-top ${docsTypography.caption}`}>{option.description}</td>
                     </tr>
                   ))}
                 </tbody>

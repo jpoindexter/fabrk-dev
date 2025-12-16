@@ -29,3 +29,7 @@ export { LibraryGuideTemplate, CodeBlock as LibraryCodeBlock } from './library-g
 export { BrowserChrome } from './browser-chrome';
 export * from './ai-chat';
 export * from './ai-forms';
+export { AiQrGenerator, type QrGeneratorProps } from './ai-qr-generator';
+export { AiPdfChat, type PdfChatProps, type PdfChatMessage } from './ai-pdf-chat';
+export { AiAutofill, type AiAutofillProps, type AutofillFormData } from './ai-autofill';
+export { AiSearch, type AiSearchProps, type SearchResult } from './ai-search';

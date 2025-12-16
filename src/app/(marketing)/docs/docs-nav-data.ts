@@ -50,6 +50,9 @@ import {
   Image,
   Volume2,
   History,
+  QrCode,
+  FileUp,
+  Search,
 } from 'lucide-react';
 
 const rawNavigation: NavSection[] = [
@@ -257,6 +260,26 @@ const rawNavigation: NavSection[] = [
         title: 'AI FORMS',
         href: '/docs/library/ai-forms',
         icon: FileCode,
+      },
+      {
+        title: 'QR GENERATOR',
+        href: '/docs/library/ai-qr-generator',
+        icon: QrCode,
+      },
+      {
+        title: 'PDF CHAT',
+        href: '/docs/library/ai-pdf-chat',
+        icon: FileUp,
+      },
+      {
+        title: 'AI AUTOFILL',
+        href: '/docs/library/ai-autofill',
+        icon: Sparkles,
+      },
+      {
+        title: 'AI SEARCH',
+        href: '/docs/library/ai-search',
+        icon: Search,
       },
       {
         title: 'AI CREDITS',
