@@ -1,0 +1,186 @@
+# ============================================
+# VERCEL IGNORE
+# Files/directories excluded from Vercel builds
+# This reduces build time and deployment size
+# ============================================
+
+# ============================================
+# INTERNAL DEVELOPMENT (not needed for marketing site)
+# ============================================
+.archives/
+.internal/
+.agent/
+.agent-workspace/
+.dev-plans/
+.project-archive/
+.test-backups/
+.cleargen/
+
+# MCP Servers (internal AI tooling)
+mcp-servers/
+.mcp.json
+
+# Reference materials (local only)
+Boilerplate/
+claude_prompts/
+sample_landing/
+agent-tools/
+ai-chatbot-main/
+
+# ============================================
+# INTERNAL DOCUMENTATION
+# ============================================
+docs/prompts/
+docs/11-marketing/
+docs/.internal/
+docs/design-system/violations/
+docs/archive/
+
+# ============================================
+# INTERNAL SCRIPTS (not needed for build)
+# ============================================
+scripts/sync-*.mjs
+scripts/mcp-setup.mjs
+scripts/generate-*-metadata.mjs
+scripts/refactor-*.mjs
+scripts/add-library-navigation.mjs
+scripts/hex-to-oklch-converter.mjs
+scripts/count-ui-components.mjs
+scripts/update-markdown-dynamic-data.mjs
+scripts/check-aria-labels.mjs
+
+# ============================================
+# TEST FILES (not needed for production build)
+# ============================================
+tests/
+coverage/
+.test-cache/
+.vitest-cache/
+playwright-report/
+test-results/
+*.spec.ts
+*.spec.tsx
+*.test.ts
+*.test.tsx
+
+# ============================================
+# INTERNAL GITHUB FILES
+# ============================================
+.github/CI-CD-*.md
+.github/WORKFLOWS-CREATED.txt
+.github/copilot-instructions.md
+.github/workflows/README.md
+.github/RELEASE_TEMPLATE.md
+
+# ============================================
+# EDITOR/IDE CONFIGURATIONS
+# ============================================
+.idea/
+.vscode/settings.json
+.vscode/keybindings.json
+*.swp
+*.swo
+*~
+
+# ============================================
+# LOGS AND REPORTS
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lighthouse*.report.html
+lighthouse*.report.json
+.lighthouseci/
+
+# ============================================
+# BACKUP AND TEMP FILES
+# ============================================
+*.backup
+*.bak
+*.tmp
+tmp/
+temp/
+backups/
+
+# ============================================
+# DATABASE (local development only)
+# ============================================
+prisma/*.db
+prisma/*.db-journal
+*.sql
+*.sql.gz
+
+# ============================================
+# MISC
+# ============================================
+.DS_Store
+Thumbs.db
+.ai-context.md
+.ai-session/
+
+# ============================================
+# DOCUMENTATION FILES (reduce bundle)
+# ============================================
+*.md
+!README.md
+!CHANGELOG.md
+!LICENSE.md
+!PRIVACY.md
+!TERMS.md
+
+# ============================================
+# BOILERPLATE-ONLY CODE (not needed for marketing site)
+# Marketing site = shadcn/ui model: demos, docs, purchase
+# These files stay in repo for customers, excluded from Vercel
+# ============================================
+
+# Authentication pages (marketing has no login)
+src/app/(auth)/
+src/app/(platform)/
+
+# Auth library files
+src/lib/auth.ts
+src/lib/auth.test.ts
+
+# API routes that require database/auth
+src/app/api/auth/
+src/app/api/user/
+src/app/api/organizations/
+src/app/api/admin/
+src/app/api/api-keys/
+src/app/api/credits/
+src/app/api/invoices/
+src/app/api/notifications/
+src/app/api/pusher/
+src/app/api/ai/
+src/app/api/blog/
+src/app/api/webhooks/
+
+# Boilerplate service libraries
+src/lib/api-keys/
+src/lib/teams/
+src/lib/credits/
+src/lib/trial/
+src/lib/uploads/
+src/lib/notifications/
+src/lib/feedback/
+src/lib/stripe/
+src/lib/polar.ts
+src/lib/lemonsqueezy/
+
+# Email templates (transactional emails for users)
+src/emails/
+
+# Database (marketing doesn't need Prisma at runtime)
+prisma/
+src/generated/prisma/
+
+# Dashboard/Platform components
+src/components/dashboard/
+src/components/settings/
+src/components/admin/
+
+# Misplaced dev file
+src/app/cards-audit/

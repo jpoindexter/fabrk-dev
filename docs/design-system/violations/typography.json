@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "generated": "2025-12-06",
+    "lastUpdated": "2025-12-06",
+    "source": "PHASE 6: FINAL COMPLIANCE SWEEP",
+    "totalViolations": 0,
+    "fixedViolations": 1,
+    "allowedSizes": [
+      "text-2xs",
+      "text-xs",
+      "text-sm",
+      "text-base",
+      "text-lg",
+      "text-xl",
+      "text-2xl",
+      "text-3xl",
+      "text-4xl",
+      "text-5xl",
+      "text-6xl",
+      "text-7xl",
+      "text-8xl"
+    ],
+    "allowedWeights": ["font-normal", "font-medium", "font-semibold", "font-bold"],
+    "allowedLineHeights": [
+      "leading-none",
+      "leading-tight",
+      "leading-snug",
+      "leading-normal",
+      "leading-relaxed",
+      "leading-loose"
+    ]
+  },
+  "violations": [],
+  "documentationExceptions": [
+    {
+      "id": "TYPO-001",
+      "file": "src/app/docs/components/label/page.tsx",
+      "line": 138,
+      "value": "text-[14px]",
+      "note": "String literal in documentation code example - intentional demonstration"
+    },
+    {
+      "id": "TYPO-002",
+      "file": "src/app/docs/extras/theming/page.tsx",
+      "line": 97,
+      "value": "text-[hardcoded]",
+      "note": "Educational bad example showing what NOT to do"
+    }
+  ],
+  "fixed": [
+    {
+      "id": "TYPO-003",
+      "file": "src/app/visual-test/page.tsx",
+      "line": 758,
+      "fix": "Changed text-[10px] to text-2xs",
+      "fixedDate": "2025-12-05"
+    }
+  ],
+  "compliant": {
+    "fontMono": "285 usages via mode.font, ~40 hardcoded in pages",
+    "fontSans": "Body element only + showcase demo",
+    "arbitraryInlineStyles": "0 usages",
+    "bannedWeights": "0 usages (font-thin, font-extralight, font-light, font-extrabold)"
+  },
+  "themeReadiness": {
+    "uiComponents": "READY - use mode.font",
+    "pages": "PARTIAL - ~40 hardcoded font-mono"
+  }
+}

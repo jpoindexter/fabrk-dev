@@ -1,0 +1,1 @@
+{"version":3,"file":"generate-page.d.ts","sourceRoot":"","sources":["../../src/tools/generate-page.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,UAAU,gBAAgB;IACxB,QAAQ,EAAE,SAAS,GAAG,WAAW,GAAG,UAAU,GAAG,MAAM,GAAG,MAAM,CAAC;IACjE,QAAQ,EAAE,MAAM,CAAC;IACjB,QAAQ,CAAC,EAAE,MAAM,EAAE,CAAC;CACrB;AAED,wBAAgB,YAAY,CAAC,IAAI,EAAE,gBAAgB,GAAG,MAAM,CAiB3D"}

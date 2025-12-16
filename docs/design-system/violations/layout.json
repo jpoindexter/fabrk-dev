@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "generated": "2025-12-06",
+    "source": "PHASE 2: FULL RESCAN",
+    "spec": "design-system/spec/foundations.md v2.0.0",
+    "status": "COMPLIANT"
+  },
+  "rules": {
+    "containerMaxWidths": [
+      "max-w-7xl",
+      "max-w-6xl",
+      "max-w-5xl",
+      "max-w-4xl",
+      "max-w-3xl",
+      "max-w-2xl",
+      "max-w-xl",
+      "max-w-lg",
+      "max-w-md",
+      "max-w-sm"
+    ],
+    "gridColumns": [
+      "grid-cols-1",
+      "grid-cols-2",
+      "grid-cols-3",
+      "grid-cols-4",
+      "grid-cols-6",
+      "grid-cols-12"
+    ],
+    "responsiveBreakpoints": ["sm:640px", "md:768px", "lg:1024px", "xl:1280px", "2xl:1536px"],
+    "containerPadding": "px-4 sm:px-6 lg:px-8"
+  },
+  "violations": [],
+  "acceptedPatterns": [
+    {
+      "pattern": "max-w-7xl",
+      "locations": ["main content containers"],
+      "reason": "Standard max-width for page content"
+    },
+    {
+      "pattern": "grid gap-4 md:grid-cols-2 lg:grid-cols-3",
+      "locations": ["feature grids, card layouts"],
+      "reason": "Responsive grid pattern"
+    }
+  ],
+  "summary": {
+    "totalScanned": 320,
+    "violations": 0,
+    "status": "PASSED"
+  }
+}

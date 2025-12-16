@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "generated": "2025-12-05",
+    "lastUpdated": "2025-12-05",
+    "source": "CONSISTENCY LOCKDOWN AUDIT",
+    "totalViolations": 0,
+    "fixedViolations": 2,
+    "theme": "terminal",
+    "terminalRule": "All components use rounded-none",
+    "exceptions": [
+      "Badge: rounded-sm (per terminal theme)",
+      "Spinner/Loader: rounded-full (functionally required for circle)"
+    ]
+  },
+  "violations": [],
+  "fixed": [
+    {
+      "id": "RADIUS-001",
+      "file": "src/components/ui/scroll-area.tsx",
+      "line": 18,
+      "fix": "Changed rounded-[inherit] to rounded-none",
+      "fixedDate": "2025-12-05"
+    },
+    {
+      "id": "RADIUS-002",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "line": 115,
+      "fix": "Changed rounded-tl-sm to rounded-none",
+      "fixedDate": "2025-12-05"
+    }
+  ],
+  "acceptedExceptions": [
+    {
+      "file": "src/components/templates/list-page-template.tsx",
+      "line": 152,
+      "value": "rounded-full",
+      "component": "Spinner",
+      "reason": "Comment states: 'rounded-full is required here for the spinning animation'",
+      "accepted": true
+    }
+  ],
+  "compliant": {
+    "modeRadius": "All components using mode.radius resolve to rounded-none",
+    "badges": "Badge components use mode.radius (terminal = rounded-sm)",
+    "cards": "All Card components use rounded-none",
+    "buttons": "All Button components use rounded-none",
+    "inputs": "All Input components use rounded-none",
+    "scrollArea": "ScrollArea uses rounded-none",
+    "navigationMenu": "NavigationMenu indicator uses rounded-none"
+  },
+  "summary": {
+    "status": "ALL COMPLIANT"
+  }
+}
