@@ -189,7 +189,7 @@ export function HeroSection() {
                 {/* Launch Pricing */}
                 <div className="border-accent space-y-1 border-l-2 pl-3">
                   <div className={cn('text-xs font-bold', mode.color.text.accent, mode.font)}>
-                    🎉 LAUNCH PRICE: $199
+                    LAUNCH PRICE: $199
                   </div>
                   <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
                     $299 after first 100 buyers

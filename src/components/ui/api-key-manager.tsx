@@ -201,7 +201,7 @@ export function ApiKeyManager({
                     </Button>
                   </div>
                   <p className="text-destructive text-xs">
-                    ⚠️ Copy this key now. You won't be able to see it again.
+                    [WARNING] Copy this key now. You won't be able to see it again.
                   </p>
                 </div>
               )}
