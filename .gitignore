@@ -50,10 +50,17 @@ scripts/update-markdown-dynamic-data.mjs
 # INTERNAL DOCUMENTATION (NOT FOR CUSTOMERS)
 # ============================================
 docs/prompts/
-docs/09-launch/
 docs/11-marketing/
 docs/design-system/violations/
 docs/.internal/
+
+# docs/09-launch/ - keep customer-facing files, ignore internal
+docs/09-launch/DISTRIBUTION-*.md
+docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md
+docs/09-launch/GITHUB-DISTRIBUTION-SETUP.md
+docs/09-launch/LAUNCH-PREPARATION-SUMMARY.md
+docs/09-launch/QA-CHECKLIST-v1.1.md
+docs/09-launch/RELEASE-READINESS.md
 
 # ============================================
 # INTERNAL GITHUB FILES (NOT FOR CUSTOMERS)

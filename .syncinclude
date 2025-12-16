@@ -13,8 +13,10 @@
 .gitignore
 .husky/
 .lighthouserc.json
+.npmrc
 .nvmrc
 .prettierrc
+.vercelignore
 .windsurfrules
 
 # ============================================
@@ -24,11 +26,11 @@
 .github/workflows/deploy.yml
 .github/workflows/pr-checks.yml
 .github/workflows/release.yml
-.github/workflows/codeql.yml
-.github/codeql/
+# CodeQL removed - not needed for boilerplate
 .github/ISSUE_TEMPLATE/
-.github/PULL_REQUEST_TEMPLATE.md
+.github/pull_request_template.md
 .github/dependabot.yml
+.github/SECURITY.md
 
 # ============================================
 # ROOT DOCUMENTATION
