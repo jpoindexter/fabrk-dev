@@ -24,7 +24,17 @@ import {
 // CONFIGURATION
 // =============================================================================
 
-const THEMES = ['light', 'dark', 'red', 'blue', 'green', 'amber'] as const;
+// All 12 themes from src/data/themes.ts
+const THEMES = [
+  // Standard CRT
+  'amber', 'blue', 'green', 'purple', 'red',
+  // Retro Computer
+  'atari', 'c64', 'spectrum', 'vic20',
+  // Handheld
+  'gameboy', 'gbpocket',
+  // Light
+  'bw',
+] as const;
 type Theme = (typeof THEMES)[number];
 
 interface ContrastCheck {

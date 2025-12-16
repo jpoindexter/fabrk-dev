@@ -23,6 +23,10 @@ import {
   Bot,
 } from 'lucide-react';
 
+// Dynamic counts from source of truth
+import { TEMPLATE_COUNT_STRING } from '@/app/(marketing)/library/library-nav-data';
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
+
 // Core feature categories with detailed information
 export const FEATURE_CATEGORIES = [
   {
@@ -204,7 +208,7 @@ export const FEATURE_CATEGORIES = [
     description:
       'Model Context Protocol server for AI coding assistants. Query component catalog, generate components with Fabrk styling, and validate code against design system rules.',
     features: [
-      '70+ component catalog',
+      `${COMPONENT_COUNT_STRING} component catalog`,
       'AI-assisted scaffolding',
       'Design system validation',
       'Props & variants documentation',
@@ -213,7 +217,7 @@ export const FEATURE_CATEGORIES = [
       'Cursor IDE support',
       'Terminal aesthetic enforcement',
     ],
-    stats: { label: 'Components', value: '70+' },
+    stats: { label: 'Components', value: COMPONENT_COUNT_STRING },
   },
 ];
 
@@ -222,19 +226,19 @@ export const COMPONENT_STATS = [
   {
     icon: Layers,
     label: 'UI Components',
-    value: '70+',
+    value: COMPONENT_COUNT_STRING,
     description: 'Production-ready components',
   },
   {
     icon: Palette,
     label: 'Color Themes',
-    value: '12',
+    value: THEME_COUNT_STRING,
     description: 'Terminal themes included',
   },
   {
     icon: FileCode,
     label: 'Page Templates',
-    value: '200+',
+    value: TEMPLATE_COUNT_STRING,
     description: 'Copy-paste ready pages',
   },
   {

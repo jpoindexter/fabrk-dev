@@ -49,8 +49,10 @@
     "docs:api": "typedoc",
     "docs:serve": "serve docs/api",
     "lighthouse:ci": "lhci autorun",
-    "validate:themes": "node scripts/validate-themes.mjs",
+    "validate:themes": "tsx scripts/validate-themes.ts",
     "update-markdown-counts": "node scripts/update-markdown-counts.mjs",
+    "sync:official": "node scripts/sync-to-official.mjs",
+    "sync:official:dry": "node scripts/sync-to-official.mjs --dry-run",
     "prepare": "npx husky install"
   },
   "lint-staged": {

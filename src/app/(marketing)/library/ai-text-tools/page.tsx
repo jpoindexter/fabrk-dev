@@ -18,11 +18,11 @@ import {
 } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 import { Textarea } from '@/components/ui/textarea';
 import { TemplateShowcasePage, TemplatePreviewWrapper } from '@/components/library';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 type Operation = 'summarize' | 'rewrite' | 'translate' | 'expand' | 'grammar' | 'tone';
 
@@ -45,26 +45,23 @@ const operations: { id: Operation; label: string; icon: typeof FileText; descrip
   { id: 'tone', label: 'CHANGE TONE', icon: Sparkles, description: 'Adjust writing style' },
 ];
 
-const demoInput = `Fabrk is a Next.js SaaS boilerplate with a terminal-inspired design. It includes authentication, payments, and 70+ UI components. The design system uses monospace fonts and sharp corners throughout.`;
+const demoInput = `Fabrk is a Next.js SaaS boilerplate with a terminal-inspired design. It includes authentication, payments, and ${COMPONENT_COUNT_STRING} UI components. The design system uses monospace fonts and sharp corners throughout.`;
 
+// Demo outputs use dynamic count for accuracy
 const demoOutputs: Record<Operation, string> = {
-  summarize:
-    'Fabrk is a terminal-styled Next.js SaaS boilerplate featuring auth, payments, and 70+ components with monospace fonts and sharp corners.',
-  rewrite:
-    'Fabrk offers a Next.js boilerplate for SaaS applications, distinguished by its terminal-inspired aesthetic. The platform comes equipped with authentication and payment systems, alongside over 70 UI components. Its design language emphasizes monospace typography and angular corners.',
-  translate:
-    'Fabrk es un boilerplate de SaaS para Next.js con un diseño inspirado en terminales. Incluye autenticación, pagos y más de 70 componentes de interfaz de usuario. El sistema de diseño utiliza fuentes monoespaciadas y esquinas afiladas en todo momento.',
+  summarize: `Fabrk is a terminal-styled Next.js SaaS boilerplate featuring auth, payments, and ${COMPONENT_COUNT_STRING} components with monospace fonts and sharp corners.`,
+  rewrite: `Fabrk offers a Next.js boilerplate for SaaS applications, distinguished by its terminal-inspired aesthetic. The platform comes equipped with authentication and payment systems, alongside ${COMPONENT_COUNT_STRING} UI components. Its design language emphasizes monospace typography and angular corners.`,
+  translate: `Fabrk es un boilerplate de SaaS para Next.js con un diseño inspirado en terminales. Incluye autenticación, pagos y ${COMPONENT_COUNT_STRING} componentes de interfaz de usuario. El sistema de diseño utiliza fuentes monoespaciadas y esquinas afiladas en todo momento.`,
   expand: `Fabrk is a comprehensive Next.js SaaS boilerplate that draws inspiration from classic terminal interfaces. The platform provides a robust foundation for building software-as-a-service applications.
 
 Key features include:
 - **Authentication**: Complete auth system with OAuth, magic links, and 2FA
 - **Payments**: Multi-provider support (Stripe, Polar, LemonSqueezy)
-- **70+ UI Components**: Pre-built, production-ready components
+- **${COMPONENT_COUNT_STRING} UI Components**: Pre-built, production-ready components
 
 The design system creates a cohesive terminal aesthetic through monospace fonts (JetBrains Mono) and sharp, angular corners (rounded-none), giving applications a distinctive developer-focused look.`,
-  grammar:
-    'Fabrk is a Next.js SaaS boilerplate with a terminal-inspired design. It includes authentication, payments, and over 70 UI components. The design system uses monospace fonts and sharp corners throughout.',
-  tone: 'Hey there! Fabrk is this awesome Next.js boilerplate that gives your SaaS that cool terminal vibe. You get auth, payments, and a ton of UI components (70+!) right out of the box. Plus, the whole thing rocks monospace fonts and those crisp, sharp corners everywhere.',
+  grammar: `Fabrk is a Next.js SaaS boilerplate with a terminal-inspired design. It includes authentication, payments, and ${COMPONENT_COUNT_STRING} UI components. The design system uses monospace fonts and sharp corners throughout.`,
+  tone: `Hey there! Fabrk is this awesome Next.js boilerplate that gives your SaaS that cool terminal vibe. You get auth, payments, and a ton of UI components (${COMPONENT_COUNT_STRING}!) right out of the box. Plus, the whole thing rocks monospace fonts and those crisp, sharp corners everywhere.`,
 };
 
 const templateCode = `"use client";

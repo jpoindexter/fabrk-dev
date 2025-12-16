@@ -13,6 +13,7 @@ import config from '@/config/app';
 import { Badge, Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
+import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
 
 export function AboutCTA() {
   return (
@@ -40,7 +41,7 @@ export function AboutCTA() {
           <Card size="auto">
             <CardContent padding="md">
               <p className={cn('text-muted-foreground text-xs', mode.font)}>
-                Start shipping faster with 70+ production-ready components.
+                Start shipping faster with {COMPONENT_COUNT_STRING} production-ready components.
               </p>
             </CardContent>
           </Card>
