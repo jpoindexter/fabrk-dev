@@ -61,7 +61,7 @@ export default function ThemeGalleryPage() {
           title: 'Select a Theme',
           description: 'Click any theme card to instantly apply it',
           code: `// Theme is automatically applied to:
-// 1. All 77 UI components
+// 1. All UI components
 // 2. All marketing pages
 // 3. All docs pages
 // 4. Charts and data visualizations

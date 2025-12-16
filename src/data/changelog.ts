@@ -7,6 +7,8 @@
  * Run `npm run sync:changelog` to update
  */
 
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
+
 export type ChangeType = 'added' | 'changed' | 'fixed' | 'removed' | 'security' | 'deprecated';
 
 export interface ChangelogEntry {
@@ -28,11 +30,11 @@ export const CHANGELOG: ChangelogEntry[] = [
     changes: [
       {
         type: 'added',
-        description: '77 production-ready UI components',
+        description: `${COMPONENT_COUNT_STRING} production-ready UI components`,
       },
       {
         type: 'added',
-        description: '12 terminal color themes',
+        description: `${THEME_COUNT_STRING} terminal color themes`,
       },
       {
         type: 'added',

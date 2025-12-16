@@ -101,14 +101,17 @@ export interface ChangelogEntry {
   }[];
 }
 
+// Import dynamic counts
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from "@/data/landing/stats";
+
 export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.0.0",
     date: "2025-12-15",
     title: "INITIAL_RELEASE",
     changes: [
-      { type: "added", description: "77 production-ready UI components" },
-      { type: "added", description: "12 terminal color themes" },
+      { type: "added", description: \`\${COMPONENT_COUNT_STRING} production-ready UI components\` },
+      { type: "added", description: \`\${THEME_COUNT_STRING} terminal color themes\` },
       { type: "added", description: "Multi-provider payments" },
     ],
   },

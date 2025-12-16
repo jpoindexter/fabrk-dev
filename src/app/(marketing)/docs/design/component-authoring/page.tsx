@@ -7,6 +7,7 @@ import {
   DocsCallout,
 } from '@/components/docs';
 import { Code, Shield, Palette, CheckCircle } from 'lucide-react';
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
 
 export const metadata: Metadata = {
   title: 'Component Authoring Guide - Fabrk Docs',
@@ -380,12 +381,12 @@ npm run dev
           <DocsLinkCard
             href="/docs/design/theme-guide"
             title="Theme Guide"
-            description="Explore all 12 terminal-inspired themes"
+            description={`Explore all ${THEME_COUNT_STRING} terminal-inspired themes`}
           />
           <DocsLinkCard
             href="/docs/components/overview"
             title="Components Overview"
-            description="Browse all 77 UI components"
+            description={`Browse all ${COMPONENT_COUNT_STRING} UI components`}
           />
           <DocsLinkCard
             href="/docs/customization-checklist"

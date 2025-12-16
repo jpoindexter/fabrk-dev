@@ -3,6 +3,7 @@
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { ChangelogEntry } from '@/components/changelog';
 import { type ChangelogEntry as ChangelogEntryType } from '@/data/changelog';
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
 
 const mockEntry: ChangelogEntryType = {
   version: '1.0.0',
@@ -10,8 +11,8 @@ const mockEntry: ChangelogEntryType = {
   title: 'INITIAL_RELEASE',
   url: 'https://github.com/example/repo/releases/tag/v1.0.0',
   changes: [
-    { type: 'added', description: '77 production-ready UI components' },
-    { type: 'added', description: '12 terminal color themes' },
+    { type: 'added', description: `${COMPONENT_COUNT_STRING} production-ready UI components` },
+    { type: 'added', description: `${THEME_COUNT_STRING} terminal color themes` },
     { type: 'added', description: 'Multi-provider payments (Stripe, Polar, Lemonsqueezy)' },
     { type: 'changed', description: 'Upgraded to Next.js 16 with React 19' },
     { type: 'fixed', description: 'Mobile navigation z-index issues' },
@@ -51,7 +52,7 @@ import { CHANGELOG } from "@/data/changelog"`}
     title: 'INITIAL_RELEASE',
     url: 'https://github.com/...',
     changes: [
-      { type: 'added', description: '77 UI components' },
+      { type: 'added', description: 'Production-ready UI components' },
       { type: 'changed', description: 'Upgraded to Next.js 16' },
       { type: 'fixed', description: 'Mobile navigation issues' },
     ],

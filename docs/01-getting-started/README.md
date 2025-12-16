@@ -2,7 +2,7 @@
 
 Complete guide to all Fabrk documentation. Start here to find what you need.
 
-**Fabrk Premium:** {{PRICE_USD_STRING}} | 77 Components | 30 Templates | 12 Themes | {{TEST_LINES_STRING}} | Storybook Integrated
+**Fabrk Premium:** $299 | 77 Components | 33 Templates | 12 Themes | 17,822 Test Lines | Storybook Integrated
 
 ---
 
@@ -411,5 +411,5 @@ npm run dev
 
 **Last updated:** January 2025
 **Fabrk Version:** 1.0.0
-**Total Documentation:** 19 files, {{TOTAL_DOC_SIZE_STRING}}, {{TOTAL_DOC_LINES_STRING}}
-**Price:** $299 | **Components:** 77 | - **Templates:** 30 | - **Themes:** 12 | - **Test Lines:** {{TEST_LINES_STRING}}
+**Total Documentation:** 19 files, ~300KB, ~9,000 lines
+**Price:** $299 | **Components:** 77 | - **Templates:** 33 | - **Themes:** 12 | - **Test Lines:** 17,822 Test Lines

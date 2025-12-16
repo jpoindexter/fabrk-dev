@@ -4,6 +4,7 @@ import { Card, CardHeader, CardContent, Badge } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { Plus, RefreshCw, Wrench, Shield, Rss } from 'lucide-react';
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
 
 // Mock changelog data for preview
 const mockChangelog = [
@@ -12,8 +13,8 @@ const mockChangelog = [
     date: '2025-12-15',
     title: 'INITIAL_RELEASE',
     changes: [
-      { type: 'added' as const, description: '77 production-ready UI components' },
-      { type: 'added' as const, description: '12 terminal color themes' },
+      { type: 'added' as const, description: `${COMPONENT_COUNT_STRING} production-ready UI components` },
+      { type: 'added' as const, description: `${THEME_COUNT_STRING} terminal color themes` },
       {
         type: 'added' as const,
         description: 'Multi-provider payments (Stripe, Polar, Lemonsqueezy)',

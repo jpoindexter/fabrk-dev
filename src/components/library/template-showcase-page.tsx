@@ -1,6 +1,6 @@
 /**
  * TemplateShowcasePage - Reusable wrapper for all template showcase pages
- * Eliminates boilerplate across 33+ template pages
+ * Eliminates boilerplate across all template pages
  *
  * Uses StyledTabs for consistent bordered tab styling across all templates.
  */
