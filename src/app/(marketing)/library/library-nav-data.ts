@@ -110,6 +110,26 @@ export const templatesNavigation: TemplateNavSection[] = [
         href: '/library/ai-voice',
         icon: Volume2,
       },
+      {
+        title: 'AI Autofill',
+        href: '/library/ai-autofill',
+        icon: FormInput,
+      },
+      {
+        title: 'AI PDF Chat',
+        href: '/library/ai-pdf-chat',
+        icon: FileText,
+      },
+      {
+        title: 'AI QR Generator',
+        href: '/library/ai-qr-generator',
+        icon: Image,
+      },
+      {
+        title: 'AI Search',
+        href: '/library/ai-search',
+        icon: Search,
+      },
     ],
   },
   {
