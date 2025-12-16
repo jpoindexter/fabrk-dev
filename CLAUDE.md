@@ -23,6 +23,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Pre-commit checks | Automatic via Husky (type-check + lint-staged) |
 | Config files | `src/config/index.ts` (not .js) |
 | Create a release | See `docs/RELEASE_GUIDE.md` |
+| Environment setup | Copy `.env.example` → `.env.local` |
 
 ---
 
@@ -30,7 +31,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Fabrk** is a Next.js 16 SaaS boilerplate with 77 UI components, terminal-inspired design, and full-stack features.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
+**Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
+
+**Requirements:** Node.js 24+ • PostgreSQL 15+ • npm 10+
 
 ---
 
@@ -287,6 +290,92 @@ All docs pages in `src/app/docs/` MUST use a template:
 | Prisma out of sync | `npm run db:push` |
 | TypeScript errors | `npx prisma generate` then `npm run type-check` |
 | Build fails | `rm -rf .next && npm run build` |
+| Env validation fails | Check `.env.local` against `.env.example` |
+
+---
+
+## Deployment (Vercel)
+
+**Auto-deploy:** Push to `main` → Vercel builds and deploys automatically
+
+**Configuration** (`vercel.json`):
+
+- Framework: Next.js (auto-detected)
+- Region: `iad1` (US East - Washington DC)
+- Build: `prisma generate && next build`
+- Output: Standalone mode for optimal cold starts
+
+**Required Vercel Environment Variables:**
+
+```bash
+DATABASE_URL              # Vercel Postgres connection string
+NEXTAUTH_SECRET           # Generate: openssl rand -base64 32
+NEXTAUTH_URL              # https://your-domain.com
+NEXT_PUBLIC_APP_URL       # https://your-domain.com
+STRIPE_SECRET_KEY         # sk_live_... (production)
+STRIPE_WEBHOOK_SECRET     # whsec_... (from Stripe dashboard)
+RESEND_API_KEY            # re_... (for transactional email)
+UPSTASH_REDIS_REST_URL    # For distributed rate limiting
+UPSTASH_REDIS_REST_TOKEN  # Upstash token
+```
+
+**Security Headers** (configured in `next.config.ts`):
+
+- Strict CSP with nonce-based script execution
+- HSTS with 2-year max-age
+- X-Frame-Options, X-Content-Type-Options
+- Referrer-Policy, Permissions-Policy
+
+---
+
+## Environment Setup
+
+Environment validation via Zod (`src/lib/env/index.ts`). Missing required vars fail loudly in production.
+
+**Critical (required in production):**
+
+- `DATABASE_URL` - PostgreSQL connection
+- `NEXTAUTH_SECRET` - Session encryption (min 32 chars)
+- `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET` - Payments
+
+**Optional but recommended:**
+
+- `UPSTASH_REDIS_*` - Distributed rate limiting (falls back to in-memory)
+- `RESEND_API_KEY` - Transactional email
+- `NEXT_PUBLIC_POSTHOG_KEY` - Product analytics
+
+**Skip validation (CI/builds):** `SKIP_ENV_VALIDATION=true`
+
+See `.env.example` for full list with documentation.
+
+---
+
+## Testing
+
+```bash
+npm test              # Unit tests (Vitest)
+npm run test:e2e      # E2E tests (Playwright)
+npm run test:a11y     # Accessibility (axe-core)
+npm run test:visual   # Visual regression
+npm run test:all      # Unit + E2E together
+```
+
+**When to run what:**
+
+- Before commit: Automatic (type-check + lint via Husky)
+- Before PR: `npm run test:all`
+- After UI changes: `npm run test:visual:update` (review snapshots)
+
+---
+
+## Analytics & Monitoring
+
+- **PostHog** - Product analytics, feature flags (`NEXT_PUBLIC_POSTHOG_KEY`)
+- **Vercel Analytics** - Web vitals, performance
+- **Vercel Speed Insights** - Real user monitoring
+- **Sentry** - Error tracking (optional, `NEXT_PUBLIC_SENTRY_DSN`)
+
+PostHog is proxied through `/ingest/*` rewrites to bypass ad blockers.
 
 ---
 
