@@ -645,7 +645,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 - How to implement RBAC
 
 **Copy-paste templates** at `/library`:
-- 30+ production-ready page templates
+- 46+ production-ready page templates
 - Landing pages, dashboards, auth flows
 - Just copy, paste, customize
 
