@@ -1,5 +1,5 @@
 /**
- * ✅ FABRK COMPONENT
+ * FABRK COMPONENT
  * Getting Started Guide - Library Templates
  * Complete walkthrough for first-time users
  * Uses LibraryGuideTemplate for consistent structure
@@ -139,7 +139,7 @@ export default function GettingStartedPage() {
                 </ol>
               </div>
               <div className="border-border border-l-primary space-y-2 border-l-2 pl-4">
-                <p className="font-medium">💡 Pro Tip:</p>
+                <p className="font-medium">[TIP]:</p>
                 <p className="text-muted-foreground">
                   The code includes comments showing exactly where to paste it in your project
                   structure (e.g.,{' '}
@@ -267,7 +267,7 @@ npm run lint`}
       ]}
       quickReference={[
         {
-          title: '📚 Resources',
+          title: '[RESOURCES]',
           links: [
             { label: 'Template Library', href: '/library' },
             { label: 'Component API Docs', href: '/docs' },
@@ -275,7 +275,7 @@ npm run lint`}
           ],
         },
         {
-          title: '🔧 Integration Guides',
+          title: '[INTEGRATIONS]',
           links: [
             { label: 'NextAuth', href: '/library/docs/integration/nextauth' },
             { label: 'Prisma', href: '/library/docs/integration/prisma' },
