@@ -397,7 +397,7 @@ STRIPE_SECRET_KEY=sk_live_xxxxx           # Live keys only
 - **Burp Suite Community** - Web security testing
 
 ### 10.3 Community & Updates
-- **GitHub Security Advisories** - https://github.com/jpoindexter/fabrk_plate/security
+- **GitHub Security Advisories** - https://github.com/jpoindexter/fabrk-dev/security
 - **Email Notifications** - security@fabrek.dev
 
 ---

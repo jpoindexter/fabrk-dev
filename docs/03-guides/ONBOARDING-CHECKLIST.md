@@ -35,8 +35,8 @@ Before you start, gather these prerequisites:
 
 ```bash
 # Clone the repository
-git clone https://github.com/jpoindexter/fabrk_plate.git
-cd fabrk_plate
+git clone https://github.com/jpoindexter/fabrk-dev.git
+cd fabrk-dev
 
 # Install dependencies
 npm install --legacy-peer-deps

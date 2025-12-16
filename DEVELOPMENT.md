@@ -12,7 +12,7 @@ This project uses a **two-repo model** to separate the product (boilerplate) fro
 
 | Repo | Purpose | URL |
 |------|---------|-----|
-| **fabrk_plate** (this repo) | Development + Marketing | Private |
+| **fabrk-dev** (this repo) | Development + Marketing | Private |
 | **fabrk-official** | Customer-facing boilerplate | https://github.com/Theft-SUDO/fabrk-official |
 
 ### What's Private (Stays Here)
@@ -42,8 +42,8 @@ This project uses a **two-repo model** to separate the product (boilerplate) fro
 
 ```bash
 # Clone and install
-git clone https://github.com/jpoindexter/fabrk_plate.git
-cd fabrk_plate
+git clone https://github.com/jpoindexter/fabrk-dev.git
+cd fabrk-dev
 npm install --legacy-peer-deps
 
 # Set up environment
@@ -146,7 +146,7 @@ npm run test:e2e         # Playwright E2E tests
 ## 📂 Project Structure
 
 ```
-fabrk_plate/ (dev repo)
+fabrk-dev/ (dev repo)
 ├── .internal/                    # PRIVATE - Never syncs
 │   ├── scripts/
 │   │   ├── sync-to-official.sh           # Main sync script

@@ -154,7 +154,7 @@ npm run sync:changelog
 # Configure via environment variables:
 # GITHUB_TOKEN - Optional, for private repos
 # GITHUB_OWNER - Repository owner (default: "jpoindexter")
-# GITHUB_REPO  - Repository name (default: "fabrk_plate")`,
+# GITHUB_REPO  - Repository name (default: "fabrk-dev")`,
         },
       ]}
       accessibility={[

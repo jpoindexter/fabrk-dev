@@ -7,12 +7,12 @@ Production-grade file upload validation system with magic byte checking, executa
 ## Files Modified/Created
 
 ### 1. Core Validation Module
-**File:** `/home/user/fabrk_plate/src/lib/uploads/validation.ts` (NEW)
+**File:** `/home/user/fabrk-dev/src/lib/uploads/validation.ts` (NEW)
 - **Lines of code:** 511
 - **Purpose:** Comprehensive file upload validation with security features
 
 ### 2. Updated Upload Storage Module
-**File:** `/home/user/fabrk_plate/src/lib/storage/uploads.ts` (MODIFIED)
+**File:** `/home/user/fabrk-dev/src/lib/storage/uploads.ts` (MODIFIED)
 - **Changes:**
   - Added import of new validation functions
   - Added `validateFileSecure()` function
@@ -20,20 +20,20 @@ Production-grade file upload validation system with magic byte checking, executa
   - Maintained backward compatibility with old `validateFile()` function
 
 ### 3. Updated Avatar Upload API
-**File:** `/home/user/fabrk_plate/src/app/api/user/avatar/route.ts` (MODIFIED)
+**File:** `/home/user/fabrk-dev/src/app/api/user/avatar/route.ts` (MODIFIED)
 - **Changes:**
   - Replaced basic validation with `validateUpload()`
   - Uses `FILE_TYPE_CONFIGS.avatar` for avatar-specific rules
   - Removed hardcoded size/type checks
 
 ### 4. Comprehensive Test Suite
-**File:** `/home/user/fabrk_plate/src/lib/uploads/validation.test.ts` (NEW)
+**File:** `/home/user/fabrk-dev/src/lib/uploads/validation.test.ts` (NEW)
 - **Test count:** 32 tests
 - **Status:** ✅ All passing
 - **Coverage:** Magic bytes, executables, sanitization, validation, etc.
 
 ### 5. Documentation
-**File:** `/home/user/fabrk_plate/docs/04-features/FILE-UPLOAD-SECURITY.md` (NEW)
+**File:** `/home/user/fabrk-dev/docs/04-features/FILE-UPLOAD-SECURITY.md` (NEW)
 - Complete usage guide
 - API reference
 - Security best practices
