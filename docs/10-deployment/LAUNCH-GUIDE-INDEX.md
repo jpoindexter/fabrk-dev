@@ -200,7 +200,7 @@ This comprehensive launch guide covers everything you need to successfully launc
 - **100% test coverage**
 - **8 production-ready templates**
 - **6 theme variations**
-- **Storybook with all component stories**
+- **Component showcase with examples**
 - **Next.js 15, TypeScript 5**
 - **161 essential files**
 

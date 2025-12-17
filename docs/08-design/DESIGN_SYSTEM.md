@@ -248,6 +248,47 @@ Reference standards from CLI/terminal design best practices.
 | Min touch target | 44×44px | `h-10 w-10` minimum |
 | Reduced motion | Respect prefers-reduced-motion | Use Framer Motion's `useReducedMotion` |
 
+### Screen Reader Guidance
+
+**Terminal Symbols**
+
+When using terminal tree-drawing characters (├─, └─, │, ─), add screen reader support:
+
+```tsx
+// GOOD: Decorative symbols hidden from screen readers
+<span aria-hidden="true">├─</span> Item name
+
+// GOOD: Visually-hidden alternative text
+<span className="sr-only">Child item:</span>
+<span aria-hidden="true">├─</span> Item name
+
+// BAD: Raw symbols exposed to screen readers
+├─ Item name  // Screen reader says "box drawings light vertical and right"
+```
+
+**Common Terminal Patterns:**
+
+| Symbol | Unicode | SR Says | Solution |
+|--------|---------|---------|----------|
+| `├─` | U+251C U+2500 | "box drawings..." | `aria-hidden="true"` |
+| `└─` | U+2514 U+2500 | "box drawings..." | `aria-hidden="true"` |
+| `│` | U+2502 | "box drawings..." | `aria-hidden="true"` |
+| `>` | U+003E | "greater than" | Keep for prompts |
+| `$` | U+0024 | "dollar sign" | Keep for prompts |
+
+**Focus Indicators for Terminal Aesthetic:**
+
+The `rounded-none` rule affects focus rings. Ensure visibility:
+
+```css
+/* Terminal-style focus with sharp corners */
+.focus-terminal:focus-visible {
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+  border-radius: 0; /* Keep sharp corners */
+}
+```
+
 **Pages Analyzed:** 83 pages from sitemaps
 - Marketing/Landing: 10 pages
 - Templates: 14 pages

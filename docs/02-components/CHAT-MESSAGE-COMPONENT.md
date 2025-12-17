@@ -14,7 +14,7 @@ A comprehensive, production-ready chat message component system built for the Fa
 
 **Lines of Code:** ~400
 
-### 2. Storybook Stories (`src/components/ui/chat-message.stories.tsx`)
+### 2. component documentation Stories (`src/components/ui/chat-message.stories.tsx`)
 **16 Interactive Stories:**
 1. Default (other user message)
 2. OwnMessage (right-aligned)
@@ -69,7 +69,7 @@ A comprehensive, production-ready chat message component system built for the Fa
 - **Files:** 4
 - **Lines of Code:** ~2,000
 - **Components:** 3
-- **Storybook Stories:** 21
+- **component documentation Stories:** 21
 - **Demo Pages:** 1
 
 ## Features Implemented
@@ -269,11 +269,11 @@ Visit `/demo/chat` to see the component in action with:
 - Typing indicator demo
 - Feature showcase
 
-## Storybook
+## component documentation
 
-Run Storybook to explore all 21 stories:
+View the component showcase to explore all 21 stories:
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 Navigate to **UI > ChatMessage** to see:
@@ -488,7 +488,7 @@ Potential additions for advanced use cases:
 All requirements met:
 
 - [x] Component file created (`chat-message.tsx`)
-- [x] Storybook stories created (`chat-message.stories.tsx`)
+- [x] component examples created (`chat-message.stories.tsx`)
 - [x] Display sender, content, timestamp
 - [x] Support "own" vs "other" alignment
 - [x] Avatar support with fallback
@@ -500,7 +500,7 @@ All requirements met:
 - [x] Delete/edit actions on hover
 - [x] Neobrutalism styling (2px borders, rounded-brutal)
 - [x] Theme-responsive colors (design tokens)
-- [x] 21+ Storybook examples (exceeded 10 requirement)
+- [x] 21+ component documentation examples (exceeded 10 requirement)
 - [x] Documentation file
 - [x] Demo page
 
@@ -511,14 +511,14 @@ All requirements met:
 - **Accessibility:** WCAG 2.1 AA compliant
 - **Performance:** Optimized for 1000+ message threads
 - **Documentation:** Complete API docs + examples
-- **Test Coverage:** 21 Storybook stories + interactive demo
+- **Test Coverage:** 21 component examples + interactive demo
 
 ## Conclusion
 
 The Chat Message component is production-ready and includes:
 
 - ✅ All requested features implemented
-- ✅ Comprehensive Storybook stories (21 examples)
+- ✅ Comprehensive component examples (21 examples)
 - ✅ Full documentation
 - ✅ Interactive demo page
 - ✅ Theme system integration

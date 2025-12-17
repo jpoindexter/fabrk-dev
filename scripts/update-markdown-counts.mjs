@@ -1,206 +1,223 @@
 #!/usr/bin/env node
-
 /**
- * Update Markdown Dynamic Counts
- * Syncs component/template counts from source of truth to README.md and CLAUDE.md
+ * update-markdown-counts.mjs
  *
- * Run: npm run update-markdown-counts
- * Or:  node scripts/update-markdown-counts.mjs
+ * Automatically updates component and theme counts in markdown documentation files.
+ * Reads counts from source of truth (component-counts.json, themes.ts) and updates
+ * markdown files to prevent drift between code and documentation.
+ *
+ * Run manually: npm run update-markdown-counts
+ * Runs automatically: prebuild hook (before every build)
  */
 
-import { readFileSync, writeFileSync, readdirSync } from 'fs';
-import { join, dirname } from 'path';
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const rootDir = join(__dirname, '..');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT = path.resolve(__dirname, '..');
 
-// Count UI components (recursive .tsx files in src/components/ui)
-function countComponents(dir, count = 0) {
-  const files = readdirSync(dir, { withFileTypes: true });
-  for (const file of files) {
-    const fullPath = join(dir, file.name);
-    if (file.isDirectory()) {
-      count = countComponents(fullPath, count);
-    } else if (file.name.endsWith('.tsx')) {
-      count++;
-    }
+// =============================================================================
+// SOURCE OF TRUTH - Read dynamic counts
+// =============================================================================
+
+function getComponentCount() {
+  const countsPath = path.join(ROOT, 'src/data/component-counts.json');
+  try {
+    const data = JSON.parse(fs.readFileSync(countsPath, 'utf8'));
+    return data.uiComponentCount;
+  } catch (error) {
+    console.error('❌ Could not read component-counts.json:', error.message);
+    return 77; // Fallback
   }
-  return count;
 }
 
-// Count templates from library-nav-data.ts (parse the file)
-function countTemplates() {
-  const navDataPath = join(rootDir, 'src/app/(marketing)/library/library-nav-data.ts');
-  const content = readFileSync(navDataPath, 'utf-8');
+function getThemeCount() {
+  const themesPath = path.join(ROOT, 'src/data/themes.ts');
+  try {
+    const content = fs.readFileSync(themesPath, 'utf8');
+    // Count theme objects in the themes array
+    const matches = content.match(/id:\s*['"][^'"]+['"]/g);
+    return matches ? matches.length : 12; // Fallback to 12
+  } catch (error) {
+    console.error('❌ Could not read themes.ts:', error.message);
+    return 12; // Fallback
+  }
+}
 
-  // Count items arrays (excluding getting-started)
-  const matches = content.match(/items:\s*\[([\s\S]*?)\]/g) || [];
-  let count = 0;
-
-  matches.forEach((match, index) => {
-    // Skip first match (getting-started section)
-    if (index === 0) return;
-
-    // Count objects in the items array
-    const itemMatches = match.match(/\{\s*title:/g);
-    if (itemMatches) {
-      count += itemMatches.length;
+function getTemplateCount() {
+  // Templates are counted from library-nav-data.ts
+  const navPath = path.join(ROOT, 'src/app/(marketing)/library/library-nav-data.ts');
+  try {
+    const content = fs.readFileSync(navPath, 'utf8');
+    // Look for TEMPLATE_COUNT_STRING export
+    const match = content.match(/TEMPLATE_COUNT_STRING\s*=\s*['"](\d+)\+?['"]/);
+    if (match) {
+      return parseInt(match[1], 10);
     }
-  });
-
-  return count;
+    // Fallback: count items array
+    const itemMatches = content.match(/{\s*title:/g);
+    return itemMatches ? itemMatches.length : 34;
+  } catch (error) {
+    console.error('❌ Could not read library-nav-data.ts:', error.message);
+    return 34; // Fallback
+  }
 }
 
-// Count themes
-function countThemes() {
-  const themesPath = join(rootDir, 'src/data/themes.ts');
-  const content = readFileSync(themesPath, 'utf-8');
-  const matches = content.match(/id:\s*['"][^'"]+['"]/g);
-  return matches ? matches.length : 0;
+// =============================================================================
+// MARKDOWN FILES TO UPDATE
+// =============================================================================
+
+const MARKDOWN_FILES = [
+  // Root documentation
+  'README.md',
+  'CLAUDE.md',
+  // Getting started
+  'docs/01-getting-started/README.md',
+  'docs/01-getting-started/DOCUMENTATION_INDEX.md',
+  // Components
+  'docs/02-components/COMPONENTS-INVENTORY.md',
+  // Design
+  'docs/08-design/TERMINAL-FLAT-DESIGN-SPEC.md',
+  'docs/08-design/COMPONENT-AUTHORING.md',
+  'docs/08-design/CUSTOMIZATION-GUIDE.md',
+  'docs/08-design/TOKEN-REFERENCE.md',
+  'docs/08-design/THEME-GUIDE.md',
+  // Launch
+  'docs/09-launch/LAUNCH-PREPARATION-SUMMARY.md',
+  'docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md',
+  // Deployment
+  'docs/10-deployment/PRODUCT-HUNT-LAUNCH.md',
+  'docs/10-deployment/NPM-PACKAGE-GUIDE.md',
+];
+
+// =============================================================================
+// REPLACEMENT PATTERNS
+// =============================================================================
+
+function getReplacements(componentCount, themeCount, templateCount) {
+  return [
+    // Component counts - various formats
+    {
+      // "87 Components" or "77 Components" → correct count
+      pattern: /\b\d{2,3}\s+Components\b/gi,
+      replacement: `${componentCount} Components`,
+    },
+    {
+      // "77+ components" or "87+ components" → correct count
+      pattern: /\b\d{2,3}\+?\s+components\b/gi,
+      replacement: `${componentCount}+ components`,
+    },
+    {
+      // **87 Components** or **77 Components** → correct count (bold)
+      pattern: /\*\*\d{2,3}\s+Components\*\*/gi,
+      replacement: `**${componentCount} Components**`,
+    },
+    {
+      // Component Inventory (77 Components) → correct count
+      pattern: /Component Inventory \(\d{2,3} Components\)/gi,
+      replacement: `Component Inventory (${componentCount} Components)`,
+    },
+
+    // Theme counts - various formats
+    {
+      // "6 Themes" or "12 Themes" → correct count
+      pattern: /\b(6|12|13)\s+Themes\b/g,
+      replacement: `${themeCount} Themes`,
+    },
+    {
+      // "(12 themes)" → correct count
+      pattern: /\((\d{1,2})\s+themes\)/gi,
+      replacement: `(${themeCount} themes)`,
+    },
+    {
+      // "all 12 themes" or "all 6 themes" → correct count
+      pattern: /all\s+\d{1,2}\s+themes/gi,
+      replacement: `all ${themeCount} themes`,
+    },
+
+    // Template counts
+    {
+      // "28 Templates" or "33 Templates" or "34 Templates" → correct count
+      pattern: /\b\d{2}\s+Templates\b/g,
+      replacement: `${templateCount} Templates`,
+    },
+
+    // Stats line in docs (| 77 Components | 33 Templates | 12 Themes |)
+    {
+      pattern: /\|\s*\d{2,3}\s+Components\s*\|\s*\d{2}\s+Templates\s*\|\s*\d{1,2}\s+Themes\s*\|/g,
+      replacement: `| ${componentCount} Components | ${templateCount} Templates | ${themeCount} Themes |`,
+    },
+  ];
 }
 
-// Update component-counts.json
-function updateComponentCountsJson(componentCount) {
-  const jsonPath = join(rootDir, 'src/data/component-counts.json');
-  const data = { uiComponentCount: componentCount };
-  writeFileSync(jsonPath, JSON.stringify(data, null, 2) + '\n');
-  console.log(`✅ Updated component-counts.json: ${componentCount} components`);
-}
+// =============================================================================
+// MAIN UPDATE FUNCTION
+// =============================================================================
 
-// Update a markdown file with new counts
-function updateMarkdownFile(filePath, componentCount, templateCount, themeCount) {
-  let content = readFileSync(filePath, 'utf-8');
-  const fileName = filePath.split('/').pop();
+function updateMarkdownFile(filePath, replacements) {
+  const fullPath = path.join(ROOT, filePath);
+
+  if (!fs.existsSync(fullPath)) {
+    console.log(`⏭️  Skipped (not found): ${filePath}`);
+    return { updated: false, changes: 0 };
+  }
+
+  let content = fs.readFileSync(fullPath, 'utf8');
   let changes = 0;
 
-  // Track original content
-  const original = content;
+  for (const { pattern, replacement } of replacements) {
+    const originalContent = content;
+    content = content.replace(pattern, replacement);
+    if (content !== originalContent) {
+      changes++;
+    }
+  }
 
-  // README.md patterns - more specific replacements
-  const readmePatterns = [
-    // "### UI Components (77 Total)" -> exact match
-    [/### UI Components \(\d+ Total\)/g, `### UI Components (${componentCount} Total)`],
-    // "All 77 UI components" (case insensitive)
-    [/[Aa]ll \d+ UI components/g, `All ${componentCount} UI components`],
-    // "77 production-ready components"
-    [/\d+ production-ready components/g, `${componentCount} production-ready components`],
-    // "See all 77 UI components" in nav
-    [/[Ss]ee all \d+ UI components/g, `See all ${componentCount} UI components`],
-    // "# 77 UI component" in directory trees
-    [/# \d+ UI component/g, `# ${componentCount} UI component`],
-    // "77 UI component docs"
-    [/\d+ UI component docs/g, `${componentCount} UI component docs`],
-    // Inline mentions like "on top of 77 UI components"
-    [/of \d+ UI components/g, `of ${componentCount} UI components`],
-  ];
-
-  // CLAUDE.md patterns
-  const claudePatterns = [
-    // Table rows
-    [/\| UI Components \| `[^`]+` \| \d+ \|/g, `| UI Components | \`src/data/component-counts.json\` | ${componentCount} |`],
-    [/\| Templates \| `[^`]+` \(auto-counted\) \| \d+\+ \|/g, `| Templates | \`library-nav-data.ts\` (auto-counted) | ${templateCount}+ |`],
-    [/\| Themes \| `[^`]+` \| \d+ \|/g, `| Themes | \`src/data/themes.ts\` | ${themeCount} |`],
-    // "77+" standalone
-    [/"\d+\+" and "\d+\+"/g, `"${componentCount}+" and "${templateCount}+"`],
-  ];
-
-  // Apply all patterns
-  const allPatterns = [...readmePatterns, ...claudePatterns];
-
-  allPatterns.forEach(([regex, replacement]) => {
-    content = content.replace(regex, replacement);
-  });
-
-  // Count actual changes
-  if (content !== original) {
-    changes = (original.match(/\d+/g) || []).length - (content.match(/\d+/g) || []).length;
-    changes = Math.abs(changes) || 1; // At least 1 if content changed
-    writeFileSync(filePath, content);
-    console.log(`✅ Updated ${fileName}`);
+  if (changes > 0) {
+    fs.writeFileSync(fullPath, content, 'utf8');
+    console.log(`✅ Updated: ${filePath} (${changes} patterns matched)`);
+    return { updated: true, changes };
   } else {
-    console.log(`ℹ️  No changes needed in ${fileName}`);
+    console.log(`⏭️  No changes: ${filePath}`);
+    return { updated: false, changes: 0 };
   }
 }
 
-// Find all markdown files with potential counts
-function findMarkdownFiles(dir, files = []) {
-  const entries = readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const fullPath = join(dir, entry.name);
-    // Skip node_modules, .next, .git
-    if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
+// =============================================================================
+// EXECUTE
+// =============================================================================
 
-    if (entry.isDirectory()) {
-      findMarkdownFiles(fullPath, files);
-    } else if (entry.name.endsWith('.md')) {
-      files.push(fullPath);
+function main() {
+  console.log('\n🔢 Updating markdown documentation counts...\n');
+
+  const componentCount = getComponentCount();
+  const themeCount = getThemeCount();
+  const templateCount = getTemplateCount();
+
+  console.log(`📊 Source of truth:`);
+  console.log(`   - Components: ${componentCount}`);
+  console.log(`   - Themes: ${themeCount}`);
+  console.log(`   - Templates: ${templateCount}`);
+  console.log('');
+
+  const replacements = getReplacements(componentCount, themeCount, templateCount);
+
+  let totalUpdated = 0;
+  let totalChanges = 0;
+
+  for (const file of MARKDOWN_FILES) {
+    const result = updateMarkdownFile(file, replacements);
+    if (result.updated) {
+      totalUpdated++;
+      totalChanges += result.changes;
     }
   }
-  return files;
+
+  console.log('');
+  console.log(`📝 Summary: ${totalUpdated} files updated, ${totalChanges} total changes`);
+  console.log('');
 }
 
-// Main
-async function main() {
-  console.log('\n📊 Updating Markdown Dynamic Counts\n');
-
-  const componentsDir = join(rootDir, 'src/components/ui');
-  const componentCount = countComponents(componentsDir);
-  const templateCount = countTemplates();
-  const themeCount = countThemes();
-
-  console.log(`Found: ${componentCount} components, ${templateCount} templates, ${themeCount} themes\n`);
-
-  // Update source of truth
-  updateComponentCountsJson(componentCount);
-
-  // Find all markdown files in the repo
-  const allMarkdownFiles = findMarkdownFiles(rootDir);
-
-  // Priority files (always update)
-  const priorityFiles = [
-    join(rootDir, 'README.md'),
-    join(rootDir, 'CLAUDE.md'),
-    join(rootDir, 'CHANGELOG.md'),
-  ];
-
-  // Update priority files first
-  priorityFiles.forEach(file => {
-    try {
-      if (allMarkdownFiles.includes(file)) {
-        updateMarkdownFile(file, componentCount, templateCount, themeCount);
-      }
-    } catch (err) {
-      console.error(`❌ Failed to update ${file}: ${err.message}`);
-    }
-  });
-
-  // Update docs folder files
-  const docsDir = join(rootDir, 'docs');
-  const docsFiles = allMarkdownFiles.filter(f => f.startsWith(docsDir));
-
-  let docsUpdated = 0;
-  docsFiles.forEach(file => {
-    try {
-      const content = readFileSync(file, 'utf-8');
-      // Only update files that contain component/template count patterns
-      if (/\d+ (UI )?[Cc]omponents?|\d+ templates?/i.test(content)) {
-        const original = content;
-        updateMarkdownFile(file, componentCount, templateCount, themeCount);
-        if (readFileSync(file, 'utf-8') !== original) {
-          docsUpdated++;
-        }
-      }
-    } catch (err) {
-      // Silently skip files that can't be read
-    }
-  });
-
-  if (docsUpdated > 0) {
-    console.log(`✅ Updated ${docsUpdated} files in docs/`);
-  }
-
-  console.log('\n✅ Done!\n');
-}
-
-main().catch(console.error);
+main();

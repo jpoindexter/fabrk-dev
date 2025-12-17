@@ -181,9 +181,9 @@ import { CustomerDetails } from '@/components/dashboard/customer-details'
 [SHOW: Page update]
 
 [6:15-7:30] TEST IT (75 sec)
-"Let's test the component in Storybook:
-npm run storybook
-[SHOW: Storybook running]
+"Let's test the component in component documentation:
+#Component showcase at /components
+[SHOW: component documentation running]
 "This is where you develop components in isolation.
 Write a quick test too:"
 [SHOW: Test file creation]
@@ -202,7 +202,7 @@ This is the Fabrk experience."
 1. Defined data model in Prisma (type-safe)
 2. Created API endpoint (5 minutes)
 3. Built React component (5 minutes)
-4. Tested in Storybook (2 minutes)
+4. Tested in component documentation (2 minutes)
 5. Added to page (1 minute)
 Total: ~15 minutes for a real feature.
 

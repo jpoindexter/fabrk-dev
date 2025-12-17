@@ -170,7 +170,7 @@ Need ESLint rules or custom scripts to detect:
 - Non-8-point spacing values
 - Theme-specific naming
 
-### 2. Storybook/Component Showcase
+### 2. component documentation/Component Showcase
 
 **Status:** Partial  
 **Priority:** Medium  

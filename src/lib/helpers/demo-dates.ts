@@ -83,9 +83,9 @@ export function useDemoDates(fixedBase?: string): DemoDateUtils {
 }
 
 /**
- * Generate demo dates for Storybook stories (pure function version).
+ * Generate demo dates for tests and examples (pure function version).
  *
- * ⚠️ USE THIS CAREFULLY: Only for Storybook decorators and non-React contexts.
+ * ⚠️ USE THIS CAREFULLY: Only for test fixtures and non-React contexts.
  * For React components, prefer `useDemoDates()` hook.
  *
  * @param baseDate - Optional fixed base date (for deterministic stories)

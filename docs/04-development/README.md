@@ -21,7 +21,7 @@ This folder contains API documentation, browser automation guides, and complete 
 
 - **44 test files** - Complete component coverage
 - **100% coverage** - All components tested
-- **82 Storybook stories** - Visual documentation
+- **82 component examples** - Visual documentation
 - **Complete testing suite** - Production-ready quality
 
 ## Quick Links

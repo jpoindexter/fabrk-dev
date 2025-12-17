@@ -1,12 +1,16 @@
-# Whitelist of files/directories to sync to official repo
-# Only these items will be included - everything else is excluded
-# Used by scripts/sync-to-official.mjs
+# ============================================
+# FABRK CUSTOMER DISTRIBUTION WHITELIST
+# ============================================
+# This file controls what customers receive.
+# ONLY files listed here are synced to THEFT-DEV/fabrk
+# ============================================
 
 # ============================================
-# ROOT CONFIGURATION FILES
+# ROOT CONFIGURATION
 # ============================================
 .cursorrules
 .dockerignore
+.editorconfig
 .env.example
 .env.production.example
 .gitattributes
@@ -20,24 +24,23 @@
 .windsurfrules
 
 # ============================================
-# GITHUB (workflows for customers)
+# GITHUB WORKFLOWS & TEMPLATES
 # ============================================
 .github/workflows/ci.yml
 .github/workflows/deploy.yml
 .github/workflows/pr-checks.yml
 .github/workflows/release.yml
-# CodeQL removed - not needed for boilerplate
 .github/ISSUE_TEMPLATE/
 .github/dependabot.yml
 .github/SECURITY.md
-# .github/pull_request_template.md excluded - customers clone, don't PR
 
 # ============================================
 # ROOT DOCUMENTATION
 # ============================================
 CHANGELOG.md
 CLAUDE.md
-# DEVELOPMENT.md excluded - internal dev repo architecture docs
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
 GEMINI.md
 LICENSE.md
 PRIVACY.md
@@ -66,14 +69,14 @@ vitest.setup.ts
 cspell.json
 
 # ============================================
-# SOURCE CODE (all customer code)
+# APPLICATION SOURCE CODE
 # ============================================
 src/
 prisma/
 public/
 
 # ============================================
-# CUSTOMER-FACING SCRIPTS ONLY
+# CUSTOMER SCRIPTS
 # ============================================
 scripts/generate-theme.mjs
 scripts/validate-themes.mjs
@@ -85,29 +88,75 @@ scripts/utils/
 # ============================================
 # MCP SERVER (AI-assisted development)
 # ============================================
-mcp-servers/fabrk/
+mcp-servers/fabrk/README.md
+mcp-servers/fabrk/package.json
+mcp-servers/fabrk/tsconfig.json
+mcp-servers/fabrk/src/
 
 # ============================================
-# TESTS (customers may want to run/extend)
+# TESTS
 # ============================================
 tests/
 
 # ============================================
-# DOCUMENTATION (customer-facing only)
+# DOCS: ROOT (navigation hub)
 # ============================================
-docs/01-getting-started/
-docs/02-components/
-docs/03-guides/
-docs/04-development/
-docs/06-features/
-docs/07-advanced/
-docs/08-design/
-docs/10-deployment/
-# docs/11-marketing/ excluded - internal marketing strategy
-docs/design-system/
+docs/README.md
 
 # ============================================
-# LAUNCH DOCS (customer-facing only)
+# DOCS: GETTING STARTED
+# ============================================
+docs/01-getting-started/
+
+# ============================================
+# DOCS: COMPONENTS
+# ============================================
+docs/02-components/
+
+# ============================================
+# DOCS: GUIDES
+# ============================================
+docs/03-guides/
+
+# ============================================
+# DOCS: DEVELOPMENT (filtered)
+# ============================================
+docs/04-development/AGENT-TOOLS-INTEGRATION.md
+docs/04-development/AI_CREDITS_IMPLEMENTATION.md
+docs/04-development/API-REFERENCE.md
+docs/04-development/API_DOCUMENTATION.md
+docs/04-development/API_DOCUMENTATION_SUMMARY.md
+docs/04-development/BROWSER-AUTOMATION-TESTING.md
+docs/04-development/COMPONENT-SHOWCASE.md
+docs/04-development/GIT-ROLLBACK-GUIDE.md
+docs/04-development/LIGHTHOUSE-CI.md
+docs/04-development/README.md
+docs/04-development/STYLING-SIMPLIFICATION.md
+docs/04-development/TESTING-GUIDE.md
+
+# ============================================
+# DOCS: FEATURES
+# ============================================
+docs/06-features/
+
+# ============================================
+# DOCS: ADVANCED (filtered)
+# ============================================
+docs/07-advanced/BACKUP-RECOVERY.md
+docs/07-advanced/PERFORMANCE-OPTIMIZATION.md
+docs/07-advanced/PERFORMANCE.md
+docs/07-advanced/README.md
+docs/07-advanced/SECURITY-BEST-PRACTICES.md
+docs/07-advanced/SECURITY-IMPLEMENTATION.md
+docs/07-advanced/SECURITY-IMPROVEMENTS.md
+
+# ============================================
+# DOCS: DESIGN SYSTEM
+# ============================================
+docs/08-design/
+
+# ============================================
+# DOCS: LAUNCH CHECKLIST (filtered)
 # ============================================
 docs/09-launch/LAUNCH-CHECKLIST.md
 docs/09-launch/LAUNCH_CHECKLIST.md
@@ -116,39 +165,48 @@ docs/09-launch/README.md
 docs/09-launch/RELEASE-NOTES-v1.1.md
 
 # ============================================
-# EXCLUDED (NOT LISTED = NOT SYNCED):
-# - .archives/           (internal audits)
-# - .internal/           (dev tools)
-# - .codeium/            (editor config)
-# - mcp-servers/         (internal MCP)
-# - .mcp.json            (MCP config)
-# - docs/prompts/        (internal audit prompts)
-# - docs/04-development/AI_FEATURE_STRATEGY.md (internal pricing/strategy)
-# - docs/04-development/BRUTALIST-REDESIGN.md (internal planning)
-# - docs/04-development/MONOREPO_RESTRUCTURE.md (internal planning)
-# - docs/design-system/spec/components-product-strategy.md (internal product decisions)
-# - docs/08-design/cursor-design-system.md (reference, not customer-facing)
-# - docs/08-design/design-system-hardcoded-styles-plan.md (internal planning)
-# - docs/09-launch/DISTRIBUTION-*.md (internal business)
-# - docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md
-# - docs/09-launch/GITHUB-DISTRIBUTION-SETUP.md
-# - docs/09-launch/LAUNCH-PREPARATION-SUMMARY.md
-# - docs/09-launch/QA-CHECKLIST-v1.1.md
-# - docs/09-launch/RELEASE-READINESS.md
-# - scripts/sync-*.mjs   (internal sync)
-# - scripts/mcp-setup.mjs (internal)
-# - scripts/*-metadata.mjs (internal)
-# - scripts/check-aria-labels.mjs (internal)
-# - scripts/hex-to-oklch-converter.mjs (internal)
-# - scripts/refactor-*.mjs (internal)
-# - scripts/add-library-navigation.mjs (internal)
-# - scripts/count-ui-components.mjs (internal)
-# - scripts/update-markdown-dynamic-data.mjs (internal)
-# - .github/workflows/accessibility.yml (internal CI)
-# - .github/workflows/backup.yml (internal)
-# - .github/workflows/e2e-tests.yml (internal)
-# - .github/workflows/lighthouse.yml (internal)
-# - .github/workflows/maintenance.yml (internal)
-# - .github/workflows/performance.yml (internal)
-# - .github/workflows/visual-tests.yml (internal)
+# DOCS: DEPLOYMENT (filtered)
+# ============================================
+docs/10-deployment/ALTERNATIVE-DEPLOYMENTS.md
+docs/10-deployment/ANALYTICS-SETUP.md
+docs/10-deployment/DEMO-VIDEO-GUIDE.md
+docs/10-deployment/DEPLOYMENT.md
+docs/10-deployment/NPM-PACKAGE-GUIDE.md
+docs/10-deployment/POST-LAUNCH-MONITORING.md
+docs/10-deployment/PRODUCTION-DEPLOYMENT.md
+docs/10-deployment/README.md
+
+# ============================================
+# DOCS: DESIGN SYSTEM SPECS
+# ============================================
+docs/design-system/spec/
+
+# ============================================
+# EXCLUDED FROM CUSTOMER PACKAGE:
+# ============================================
+# Internal Development:
+#   - *-COMPLETE.md (internal completion reports)
+#   - LIGHTHOUSE-SETUP-SUMMARY.md (internal CI setup)
+#   - DEMO-PAGES-COMPLETE.md (internal progress)
+#
+# Internal Launch:
+#   - PRODUCT-HUNT*.md (internal campaign copy)
+#   - LAUNCH-DAY-RUNBOOK.md (internal coordination)
+#   - LAUNCH-TIMELINE.md (internal timeline)
+#   - LAUNCH-CHECKLIST-*.md (internal checklists)
+#   - V1-BLOCKER-FIXES.md (internal bugs)
+#   - WEEK-2-COMPLETION-REPORT.md (internal report)
+#   - READY-FOR-LAUNCH.md (internal status)
+#
+# Internal Business:
+#   - docs/09-launch/DISTRIBUTION*.md (pricing strategy)
+#   - docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md
+#   - docs/11-marketing/ (entire directory)
+#
+# Internal QA:
+#   - docs/design-system/violations/ (internal audits)
+#
+# Internal Scripts:
+#   - scripts/sync-*.mjs (repo sync tools)
+#   - scripts/update-*.mjs (internal tools)
 # ============================================

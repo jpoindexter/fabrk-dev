@@ -841,7 +841,7 @@ A: Yes. SQLite for local dev (fast, no Docker), PostgreSQL for production (Verce
 
 **Q: Why OKLCH colors instead of RGB/HSL?**
 
-A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. All 12 themes maintain WCAG 2.2 AA contrast ratios automatically.
+A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. all 12 themes maintain WCAG 2.2 AA contrast ratios automatically.
 
 **Q: Can I change the terminal aesthetic to rounded corners?**
 

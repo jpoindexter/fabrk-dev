@@ -450,10 +450,10 @@ npm run dev
 
 Visit: `http://localhost:3000/examples/comment-thread-demo`
 
-### View Storybook
+### View Examples
 
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 Navigate to: `UI/CommentThread`
@@ -534,7 +534,7 @@ npm run test comment-thread
 
 ## Support
 
-Check the Storybook stories for interactive examples and the comprehensive README for detailed API documentation.
+Check the component examples for interactive examples and the comprehensive README for detailed API documentation.
 
 ---
 

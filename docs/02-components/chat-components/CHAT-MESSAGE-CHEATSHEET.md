@@ -334,7 +334,7 @@ return (
 
 - **Full Docs:** `chat-message.md`
 - **Quick Start:** `CHAT-MESSAGE-QUICK-START.md`
-- **Storybook:** `npm run storybook` → UI > ChatMessage
+- **Examples:** `#Component showcase at /components` → UI > ChatMessage
 - **Demo:** `/demo/chat` page
 
 ---

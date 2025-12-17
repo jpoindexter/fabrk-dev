@@ -727,12 +727,12 @@ import { Body } from "@/components/ui/typography";
 
 ## Testing Typography
 
-### Visual Testing (Storybook)
+### Visual Testing (component documentation)
 
-View all typography components in Storybook:
+View all typography components in component documentation:
 
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 Navigate to: **UI/Typography** in the sidebar
@@ -805,7 +805,7 @@ import { Link as TypographyLink } from "@/components/ui/typography";
 
 ## Support & Resources
 
-- **Storybook**: `npm run storybook` → UI/Typography
+- **component documentation**: `#Component showcase at /components` → UI/Typography
 - **Source**: `src/components/ui/typography.tsx`
 - **Stories**: `src/components/ui/typography.stories.tsx`
 - **Issues**: Report typography issues on GitHub

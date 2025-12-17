@@ -65,7 +65,7 @@
   - [ ] Run `npm run test:e2e` - all green
 
 - [ ] **Manual testing**
-  - [ ] Test all 46 components in Storybook: `npm run storybook`
+  - [ ] Test all 77 components in showcase: `#Component showcase at /components`
   - [ ] Test all 28 templates in browser
   - [ ] Test all 6 theme variations
   - [ ] Test on mobile devices (iOS Safari, Android Chrome)
@@ -170,7 +170,7 @@
   - [ ] API reference complete
   - [ ] Component prop types documented
   - [ ] TypeScript types exported
-  - [ ] Storybook stories for all components
+  - [ ] component examples for all components
   - [ ] Template usage guides (`/library/README.md`)
 
 ### Repository Setup
@@ -522,7 +522,7 @@ We're excited to announce the initial release of **Fabrk**, a production-ready N
 
 - **46 Production-Ready Components** - All tested with 100% coverage
 - **28 Copy-Paste Templates** - Analytics, Team Dashboard, User Management, and more
-- **6 Theme Variations** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
+- **12 Theme Variations** - Green, Amber, Blue, Red, Purple + Retro: Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W
 - **17,822 Lines of Test Code** - Vitest + Playwright + Accessibility tests
 - **100% TypeScript** - Strict mode, zero `any` types
 - **Next.js 15** - Latest features, App Router, Server Components

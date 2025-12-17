@@ -22,7 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Design system rules | See `docs/08-design/DESIGN_SYSTEM.md` |
 | Pre-commit checks | Automatic via Husky (type-check + lint-staged) |
 | Config files | `src/config/index.ts` (not .js) |
-| Create a release | See `docs/RELEASE_GUIDE.md` |
+| Release process | See `docs/09-launch/RELEASE-READINESS.md` |
 | Environment setup | Copy `.env.example` → `.env.local` |
 
 ---
@@ -33,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
 
-**Requirements:** Node.js 24+ • PostgreSQL 15+ • npm 10+
+**Requirements:** Node.js 20+ • PostgreSQL 15+ • npm 10+
 
 ### Dynamic Counts (Auto-Calculated)
 
@@ -155,7 +155,7 @@ src/
 │   ├── (auth)/            # Auth pages
 │   └── api/               # API routes
 ├── components/
-│   ├── ui/                # Radix primitives (LOCKED - 77 components)
+│   ├── ui/                # Radix primitives (LOCKED - 77+ components)
 │   ├── docs/              # Docs components & templates
 │   ├── landing/           # Landing sections
 │   ├── dashboard/         # Dashboard components
@@ -411,6 +411,6 @@ Third-party brand icons require official colors. Use eslint-disable:
 ## Resources
 
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
-- `docs/RELEASE_GUIDE.md` - Release workflow and versioning
+- `docs/09-launch/RELEASE-READINESS.md` - Release workflow and versioning
 - `src/app/globals.css` - CSS variables (100% OKLCH tokens)
 - `/docs/components/overview` - Component documentation

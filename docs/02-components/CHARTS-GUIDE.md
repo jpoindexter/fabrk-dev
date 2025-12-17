@@ -636,6 +636,6 @@ const data = [
 ---
 
 **Next Steps:**
-- View [Storybook examples](http://localhost:6006)
+- View [component documentation examples](http://localhost:6006)
 - Check [Component Library README](../COMPONENT-LIBRARY-README.md)
 - Explore [E-commerce Guide](./ECOMMERCE-GUIDE.md)

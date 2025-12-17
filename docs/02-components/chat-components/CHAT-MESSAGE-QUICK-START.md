@@ -271,10 +271,10 @@ All colors automatically adapt to the active theme!
 
 ## 🧪 Testing
 
-### View in Storybook
+### View Examples
 
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 Navigate to **UI > ChatMessage** to see 21 interactive examples.
@@ -291,7 +291,7 @@ Visit `http://localhost:3000/demo/chat` for a live demo.
 
 - **Full Documentation:** `src/components/ui/chat-message.md`
 - **Implementation Report:** `CHAT-MESSAGE-COMPONENT.md` (root)
-- **Storybook Stories:** `src/components/ui/chat-message.stories.tsx`
+- **Component Examples:** `src/components/ui/chat-message.stories.tsx`
 
 ## 🐛 Troubleshooting
 
@@ -332,7 +332,7 @@ Ensure `users` array is provided in the reaction object.
 ## 📞 Support
 
 - Issues: Check `chat-message.md` for detailed troubleshooting
-- Examples: See Storybook or demo page
+- Examples: See the component showcase or demo page
 - Updates: Component follows semantic versioning
 
 ---

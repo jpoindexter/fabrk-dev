@@ -35,14 +35,14 @@ Launch Fabrk on Product Hunt to reach 50K+ developers and generate buzz for your
 **Design Tips**:
 - Use your primary color (purple)
 - Show product dashboard/UI
-- Include "87 Components" or "$299"
+- Include "77+ components" or "$299"
 - Keep clean and minimal
 
 **Example thumbnail elements**:
 - Primary color background
 - Product screenshot in center
 - Large headline: "Fabrk - SaaS Boilerplate"
-- Smaller subheading: "87 Components. Production-ready. $299"
+- Smaller subheading: "77+ components. Production-ready. $299"
 
 ### 3. Write Your Tagline (T-14 days)
 
@@ -53,7 +53,7 @@ Launch Fabrk on Product Hunt to reach 50K+ developers and generate buzz for your
 
 Alternative ideas:
 - "The complete Next.js 15 SaaS boilerplate"
-- "234 components + payments + auth + docs. Launch ready."
+- "77+ components + payments + auth + docs. Launch ready."
 - "3x faster to launch with production-ready code"
 
 ### 4. Create Gallery (T-7 days)
@@ -103,12 +103,12 @@ Fabrk is production-ready SaaS boilerplate with:
 - ✅ Multi-tenancy & RBAC
 - ✅ Analytics ready
 - ✅ Full TypeScript
-- ✅ 95% Storybook coverage
+- ✅ Full documentation coverage
 - ✅ 931+ tests
 
 ## What's Inside
 
-**87 Components**:
+**77+ components**:
 - 9 landing page components
 - 8 dashboard templates
 - 25 UI primitives
@@ -129,15 +129,15 @@ Fabrk is production-ready SaaS boilerplate with:
 ## Why This Matters
 
 **For indie hackers**: Launch in 1 week instead of 2 months
-**For agencies**: 234 components = no UI building
+**For agencies**: 77+ components = no UI building
 **For teams**: Production-ready = fewer bugs
 **For everyone**: $299 investment, save thousands in dev time
 
 ## By The Numbers
 
 - **156 files** vs competitors' 450-1000
-- **234 components** vs shadcn/ui's 67 (30% more)
-- **95% documented** with Storybook
+- **77+ components** vs shadcn/ui's 67 (30% more)
+- **Fully documented** with examples
 - **64% test coverage** with 931+ tests
 - **400KB docs** with 24 guides
 - **20 color themes** for instant branding
@@ -189,7 +189,7 @@ Then Fabrk is for you. $299 one-time. Unlimited projects. Lifetime access.
 
 - "Can I see a demo?"
   - Yes, we have live demos at /demo
-  - Interactive component Storybook
+  - Interactive component showcase
   - Watch the 60-second video
 
 - "What if I need help?"
@@ -256,7 +256,7 @@ TL;DR: 87 production components + auth + payments + docs. Ship SaaS in days.
 Mention when relevant:
 - "Built by indie developers, for indie developers"
 - "Production-ready = tested, documented, no bugs"
-- "234 components saves 3-4 weeks of dev time"
+- "77+ components saves 3-4 weeks of dev time"
 - "Same price as Makerkit, 45% more components"
 - "Lifetime access, infinite projects"
 
@@ -339,7 +339,7 @@ $299. Lifetime access. Made by indie devs, for indie devs.
 **Month 1**:
 - [ ] Create 3-5 case studies
 - [ ] Fix top feature requests
-- [ ] Deploy Storybook publicly
+- [ ] Deploy Documentation publicly
 - [ ] Record demo video
 
 **Month 2-3**:

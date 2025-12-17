@@ -21,13 +21,13 @@
 
 **Fabrk UI** is a production-ready React component library with:
 
-- **83 Components** - Comprehensive UI component set
+- **77+ components** - Comprehensive UI component set
 - **TypeScript** - Full type safety with exported type definitions
 - **Radix UI** - Accessible primitives for complex components
 - **Tailwind CSS** - Utility-first styling with OKLCH colors
 - **100% Test Coverage** - Vitest unit tests + Playwright E2E
-- **6 Theme Variations** - Purple, Ocean Blue, Forest Green, Sunset Orange, Hot Pink, Ruby Red
-- **Storybook** - Interactive component documentation
+- **12 Theme Variations** - Green, Amber, Blue, Red, Purple + Retro: Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W
+- **Component Showcase** - Interactive documentation at /components
 - **Accessibility** - WCAG 2.1 AA compliant with axe-core testing
 
 ---
@@ -827,9 +827,9 @@ Production-ready React component library with 83 accessible components, Radix UI
 
 ## Features
 
-- 🎨 **83 Components** - Comprehensive UI component library
+- 🎨 **77+ components** - Comprehensive UI component library
 - ♿ **Accessible** - WCAG 2.1 AA compliant with Radix UI
-- 🎭 **6 Themes** - Purple, Ocean, Forest, Sunset, Pink, Ruby
+- 🎭 **12 Themes** - Green, Amber, Blue, Red, Purple, Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W
 - 🎯 **TypeScript** - Full type safety with exported definitions
 - 🌳 **Tree-shakeable** - Optimized bundle size with ESM
 - 📱 **Responsive** - Mobile-first design
@@ -989,7 +989,7 @@ MIT © Fabrk
 ## Links
 
 - [Documentation](https://fabrk.io/docs)
-- [Storybook](https://storybook.fabrk.io)
+- [Component Showcase](https://fabrk.io/components)
 - [GitHub](https://github.com/fabrk/ui)
 - [NPM](https://www.npmjs.com/package/@fabrk/ui)
 ```
@@ -1012,7 +1012,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 6 OKLCH color themes
 - Full TypeScript support
 - Tree-shakeable ESM/CJS builds
-- Comprehensive Storybook documentation
+- Comprehensive component documentation
 - 100% test coverage
 - Accessibility testing with axe-core
 
@@ -1104,8 +1104,6 @@ yarn-error.log*
 
 # Documentation (keep README.md, LICENSE, CHANGELOG.md)
 docs/
-storybook-static/
-.storybook/
 
 # CI/CD
 .github/
@@ -1599,7 +1597,7 @@ npm info @fabrk/ui
 After successful publish:
 
 - [ ] Update homepage with new version
-- [ ] Publish Storybook build
+- [ ] Update component showcase
 - [ ] Update GitHub README badges
 - [ ] Announce on social media
 - [ ] Update internal documentation
@@ -1799,7 +1797,7 @@ When deprecating features:
 ### 5. Documentation
 - Comprehensive README
 - Migration guides for MAJOR versions
-- Storybook for visual docs
+- Component showcase for visual docs
 - API documentation (TypeDoc)
 
 ### 6. Performance

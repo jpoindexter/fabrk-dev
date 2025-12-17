@@ -18,7 +18,7 @@ A production-ready, nested comment system built for the Fabrk boilerplate with f
    - Empty state handling
 
 2. **`src/components/ui/comment-thread.stories.tsx`** (685 lines)
-   - 10 comprehensive Storybook stories:
+   - 10 comprehensive component examples:
      - Default (flat comments)
      - WithReplies (2-level nesting)
      - DeepNesting (5-level nesting)
@@ -165,7 +165,7 @@ All dependencies are pre-installed in Fabrk boilerplate:
 
 ### Documentation
 - ✅ Comprehensive README with examples
-- ✅ Storybook stories for all use cases
+- ✅ component examples for all use cases
 - ✅ JSDoc comments on interfaces
 - ✅ Real-world integration guide
 
@@ -199,12 +199,12 @@ export default function BlogPost() {
 }
 ```
 
-## Storybook Preview
+## Component Preview
 
-Run Storybook to see all 10 interactive stories:
+View the component showcase to see all 10 interactive stories:
 
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 Navigate to: `UI/CommentThread`
@@ -326,7 +326,7 @@ model CommentLike {
 The Comment Thread component is **production-ready** and fully integrated with the Fabrk boilerplate design system. It includes:
 
 - 465 lines of component code
-- 685 lines of Storybook stories
+- 685 lines of component examples
 - 245 lines of unit tests
 - 580 lines of documentation
 - 260 lines of demo page

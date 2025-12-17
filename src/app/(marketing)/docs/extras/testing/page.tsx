@@ -15,7 +15,7 @@ export default function TestingGuidePage() {
       category="Extras"
       title="Testing Guide"
       description="Comprehensive testing with Vitest for unit tests and Playwright for E2E tests."
-      overview="130+ tests included. Vitest for unit tests, Playwright for E2E, axe-core for accessibility, and Storybook for visual tests."
+      overview="130+ tests included. Vitest for unit tests, Playwright for E2E, and axe-core for accessibility."
       features={[
         {
           icon: TestTube,
@@ -239,8 +239,7 @@ jobs:
             <div>├─ 130+ total tests</div>
             <div>├─ Unit tests with Vitest</div>
             <div>├─ E2E tests with Playwright</div>
-            <div>├─ Accessibility tests with axe-core</div>
-            <div>└─ Visual tests with Storybook</div>
+            <div>└─ Accessibility tests with axe-core</div>
           </div>
         </DocsCard>
       </DocsSection>
