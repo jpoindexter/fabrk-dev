@@ -21,7 +21,7 @@ export const polar = new Polar({
 
 // Product configuration
 export const FABRK_PRODUCT_ID = process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID;
-export const FABRK_DISCOUNT_ID = '1161689c-dbc2-4e53-8c18-43f4af7aaa3f'; // Auto-expires at 100 uses (first 100 buyers)
+export const FABRK_DISCOUNT_ID = undefined; // No discount for testing
 
 /**
  * Create a checkout session for Fabrk purchase
@@ -40,16 +40,20 @@ export async function createCheckoutSession(params: {
     throw new Error('Polar product ID not configured');
   }
 
-  // Use custom discount if provided, otherwise use default
-  const discountToApply = params.discountId || FABRK_DISCOUNT_ID;
-
-  const checkout = await polar.checkouts.create({
+  // Build checkout payload (no discount for testing)
+  const checkoutPayload: any = {
     products: [FABRK_PRODUCT_ID],
-    discountId: discountToApply,
     customerEmail: params.customerEmail,
     successUrl: params.successUrl,
     metadata: params.metadata,
-  });
+  };
+
+  // Only add discountId if explicitly provided
+  if (params.discountId) {
+    checkoutPayload.discountId = params.discountId;
+  }
+
+  const checkout = await polar.checkouts.create(checkoutPayload);
 
   return checkout;
 }

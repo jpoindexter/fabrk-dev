@@ -53,8 +53,8 @@ export function PricingCard({
           </div>
         </div>
 
-        {/* Discount Counter - show in full variant */}
-        {variant === 'full' && showDiscountCounter && <DiscountCounter />}
+        {/* Discount Counter - disabled for testing */}
+        {/* {variant === 'full' && showDiscountCounter && <DiscountCounter />} */}
 
         {/* Features List */}
         {showFeatures && (
