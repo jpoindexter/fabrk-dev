@@ -113,13 +113,6 @@ export default function PurchaseSuccessPage() {
             </div>
           </CardContent>
         </Card>
-
-        {/* Back to Home */}
-        <div className="text-center">
-          <Button asChild variant="ghost" className="uppercase">
-            <Link href="/">&gt; BACK TO HOME</Link>
-          </Button>
-        </div>
       </div>
     </div>
   );
