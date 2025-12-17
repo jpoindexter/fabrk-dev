@@ -517,12 +517,16 @@ if (isProduction) {
     warnings.push('DATABASE_URL is not set');
   }
 
-  if (!env.server.STRIPE_SECRET_KEY) {
-    warnings.push('STRIPE_SECRET_KEY is not set (payments will not work)');
-  }
+  // Only warn about payments if NO provider is configured
+  const hasPaymentProvider =
+    !!process.env.STRIPE_SECRET_KEY ||
+    !!process.env.POLAR_ACCESS_TOKEN ||
+    !!process.env.LEMONSQUEEZY_API_KEY;
 
-  if (!env.server.RESEND_API_KEY) {
-    warnings.push('RESEND_API_KEY is not set (emails will not be sent)');
+  if (!hasPaymentProvider) {
+    warnings.push(
+      'No payment provider configured (STRIPE_SECRET_KEY, POLAR_ACCESS_TOKEN, or LEMONSQUEEZY_API_KEY)'
+    );
   }
 
   if (!env.server.UPSTASH_REDIS_REST_URL) {

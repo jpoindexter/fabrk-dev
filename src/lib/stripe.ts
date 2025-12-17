@@ -16,10 +16,7 @@ const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || '';
 // Check if Stripe is configured
 export const isStripeConfigured = !!STRIPE_KEY;
 
-// Log warning if Stripe is not configured in production (but don't block build)
-if (!STRIPE_KEY && process.env.NODE_ENV === 'production' && process.env.SKIP_ENV_VALIDATION !== 'true') {
-  logger.warn('STRIPE_SECRET_KEY not configured - Stripe payments disabled (using alternative payment provider)');
-}
+// No warning needed - route guards handle this gracefully
 
 // Initialize Stripe client (use placeholder if not configured - won't be used)
 export const stripe = new Stripe(STRIPE_KEY || 'sk_test_placeholder', {
