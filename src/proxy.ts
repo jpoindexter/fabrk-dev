@@ -1,10 +1,10 @@
 /**
- * Middleware for CSP nonce injection and CSRF token management.
+ * Next.js 16 Proxy (replaces middleware.ts for response modification)
  *
- * This middleware handles:
- * - CSP nonce generation for security headers
- * - CSRF token cookie for form submissions
- * - Nonce injection into HTML responses
+ * Handles:
+ * - CSP nonce generation and injection
+ * - CSRF token management
+ * - Response header and body modification
  */
 
 import { NextResponse } from 'next/server';
@@ -33,22 +33,39 @@ function hasValidCsrfCookie(token: string | undefined): boolean {
   return !!token && token.length >= 32;
 }
 
-export function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   // Generate nonce for CSP
   const nonce = generateNonce();
+
+  // Get the response
   const response = NextResponse.next();
 
-  // Inject nonce into request headers for server components
+  // Set nonce in request headers for server components
   response.headers.set(getNonceHeaderName(), nonce);
 
-  // Update CSP header with actual nonce
-  const cspHeader = response.headers.get('Content-Security-Policy');
-  if (cspHeader) {
-    response.headers.set(
-      'Content-Security-Policy',
-      cspHeader.replace(/nonce-NONCE_PLACEHOLDER/g, `nonce-${nonce}`)
-    );
-  }
+  // Build CSP with actual nonce (proxy.ts must set headers, not modify them)
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
+  const csp = [
+    "default-src 'self'",
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com`,
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "img-src 'self' data: https: blob:",
+    "font-src 'self' data: https://fonts.gstatic.com",
+    "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com https://api.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com",
+    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com",
+    "frame-ancestors 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
+    "worker-src 'self' blob:",
+    "manifest-src 'self'",
+    "media-src 'self'",
+    "child-src 'self' blob:",
+    "upgrade-insecure-requests",
+  ].join('; ');
+
+  response.headers.set('Content-Security-Policy', csp);
 
   // Ensure CSRF token cookie exists
   const existingCsrfToken = req.cookies.get(CSRF_COOKIE_NAME)?.value;

@@ -35,45 +35,8 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=()",
   },
-  {
-    key: "Content-Security-Policy",
-    value:
-      // Default: Only allow same-origin resources
-      "default-src 'self'; " +
-      // Scripts: Nonce-based CSP with strict-dynamic for production security
-      // Middleware generates unique nonce per request and replaces NONCE_PLACEHOLDER
-      "script-src 'self' 'nonce-NONCE_PLACEHOLDER' 'strict-dynamic' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; " +
-      // Styles: 'unsafe-inline' required for Tailwind CSS-in-JS
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-      // Images: Data URIs, HTTPS sources, and blobs for dynamic images
-      "img-src 'self' data: https: blob:; " +
-      // Fonts: Google Fonts and data URIs
-      "font-src 'self' data: https://fonts.gstatic.com; " +
-      // API connections: Strict allowlist of trusted endpoints
-      "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com " +
-      "https://api.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com " +
-      "https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com; " +
-      // Frames: Stripe payment elements only
-      "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
-      // Clickjacking protection
-      "frame-ancestors 'self'; " +
-      // Base URI restriction
-      "base-uri 'self'; " +
-      // Form submission restriction
-      "form-action 'self'; " +
-      // Block all plugins
-      "object-src 'none'; " +
-      // Web Workers
-      "worker-src 'self' blob:; " +
-      // PWA manifest
-      "manifest-src 'self'; " +
-      // Media files
-      "media-src 'self'; " +
-      // Child frames (deprecated fallback)
-      "child-src 'self' blob:; " +
-      // Block mixed content
-      "upgrade-insecure-requests;",
-  },
+  // CSP is now set in proxy.ts with dynamic nonce generation
+  // Keeping this comment as reference for the CSP policy structure
 ];
 
 const nextConfig: NextConfig = {
