@@ -10,7 +10,7 @@ import { auth } from '@/lib/auth';
 import { withCsrfProtection } from '@/lib/security/csrf';
 import { isOrganizationMember } from '@/lib/teams/organizations';
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe';
+import { stripe, isStripeConfigured } from '@/lib/stripe';
 import { logger } from '@/lib/logger';
 
 interface RouteContext {
@@ -24,6 +24,11 @@ export async function GET(req: NextRequest, context: RouteContext) {
 
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json({ subscription: null }, { status: 200 });
     }
 
     // Verify user is a member
@@ -78,6 +83,14 @@ export const POST = withCsrfProtection(async (req: NextRequest, context: RouteCo
 
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json(
+        { error: 'Stripe billing is not configured' },
+        { status: 503 }
+      );
     }
 
     // Verify user is a member
@@ -137,6 +150,14 @@ export const DELETE = withCsrfProtection(async (req: NextRequest, context: Route
 
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json(
+        { error: 'Stripe billing is not configured' },
+        { status: 503 }
+      );
     }
 
     // Verify user is a member

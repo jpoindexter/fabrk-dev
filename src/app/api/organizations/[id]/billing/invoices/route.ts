@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { isOrganizationMember } from '@/lib/teams/organizations';
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe';
+import { stripe, isStripeConfigured } from '@/lib/stripe';
 import { logger } from '@/lib/logger';
 
 interface RouteContext {
@@ -30,6 +30,11 @@ export async function GET(req: NextRequest, context: RouteContext) {
         { error: 'You are not a member of this organization' },
         { status: 403 }
       );
+    }
+
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json({ invoices: [] }, { status: 200 });
     }
 
     // Fetch organization

@@ -8,7 +8,7 @@ import { auth } from '@/lib/auth';
 import { withCsrfProtection } from '@/lib/security/csrf';
 import { hasOrganizationRole } from '@/lib/teams/organizations';
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe';
+import { stripe, isStripeConfigured } from '@/lib/stripe';
 import { OrgRole } from '@/generated/prisma/client';
 import { logger } from '@/lib/logger';
 
@@ -23,6 +23,14 @@ export const POST = withCsrfProtection(async (req: NextRequest, context: RouteCo
 
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json(
+        { error: 'Stripe billing is not configured' },
+        { status: 503 }
+      );
     }
 
     // Verify user has permission (OWNER or ADMIN)

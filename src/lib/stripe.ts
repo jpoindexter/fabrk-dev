@@ -9,21 +9,19 @@ import crypto from 'crypto';
 import { logger } from '@/lib/logger';
 import { env } from '@/lib/env';
 
-// Initialize Stripe - throw error if STRIPE_SECRET_KEY is not set
-// Allow builds without Stripe key when SKIP_ENV_VALIDATION is set
+// Initialize Stripe - OPTIONAL (only needed if using Stripe for payments)
+// If not configured, Stripe functions will gracefully return null
 const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || '';
 
-if (
-  !STRIPE_KEY &&
-  process.env.SKIP_ENV_VALIDATION !== 'true' &&
-  process.env.NODE_ENV === 'production'
-) {
-  throw new Error(
-    'STRIPE_SECRET_KEY environment variable is required in production. ' +
-      'Please set it in your .env.local file or environment configuration.'
-  );
+// Check if Stripe is configured
+export const isStripeConfigured = !!STRIPE_KEY;
+
+// Log warning if Stripe is not configured in production (but don't block build)
+if (!STRIPE_KEY && process.env.NODE_ENV === 'production' && process.env.SKIP_ENV_VALIDATION !== 'true') {
+  logger.warn('STRIPE_SECRET_KEY not configured - Stripe payments disabled (using alternative payment provider)');
 }
 
+// Initialize Stripe client (use placeholder if not configured - won't be used)
 export const stripe = new Stripe(STRIPE_KEY || 'sk_test_placeholder', {
   apiVersion: '2025-11-17.clover',
   typescript: true,

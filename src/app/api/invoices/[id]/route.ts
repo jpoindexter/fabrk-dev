@@ -1,6 +1,6 @@
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe';
+import { stripe, isStripeConfigured } from '@/lib/stripe';
 import { NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 
@@ -19,6 +19,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     }
 
     const { id } = await params;
+
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json(
+        { error: 'Stripe billing is not configured' },
+        { status: 503 }
+      );
+    }
 
     // Fetch payment and verify ownership
     const payment = await prisma.payment.findUnique({
