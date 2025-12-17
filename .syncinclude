@@ -71,10 +71,10 @@ cspell.json
 # ============================================
 # APPLICATION SOURCE CODE
 # ============================================
-# NOTE: Explicitly list what customers need - NO marketing site
-# Customers get the boilerplate, NOT the Fabrk marketing pages
+# NOTE: Customers get components to BUILD marketing pages
+#       but NOT Fabrk's actual marketing website
 
-# App Routes (Platform Only - NO Marketing)
+# App Routes (Platform & Auth - NO Fabrk Marketing Pages)
 src/app/(platform)/
 src/app/(auth)/
 src/app/api/
@@ -84,7 +84,8 @@ src/app/layout.tsx
 src/app/not-found.tsx
 src/app/error.tsx
 
-# Components (UI Library + Platform - NO Marketing)
+# Components (ALL components including marketing components)
+# Customers need HeroSection, PricingCard, etc. to build their own sites
 src/components/ui/
 src/components/dashboard/
 src/components/docs/
@@ -93,40 +94,33 @@ src/components/analytics/
 src/components/auth/
 src/components/billing/
 src/components/email/
+src/components/landing/
 src/components/navigation/
 src/components/security/
 src/components/seo/
 src/components/settings/
 src/components/templates/
 src/components/theme/
-src/components/shared/footer.tsx
-src/components/shared/logo.tsx
-src/components/shared/terminal-background.tsx
+src/components/shared/
 src/components/providers.tsx
 src/components/cookie-consent.tsx
 
-# Core Libraries
+# Core Libraries & Data
 src/lib/
 src/design-system/
 src/config/
-src/data/component-counts.json
-src/data/changelog.ts
-src/data/themes.ts
-
-# Styles
+src/data/
 src/styles/
-
-# Type Definitions
 src/types/
 
 # Database & Assets
 prisma/
 public/
 
-# EXCLUDED (Marketing Site - Customers don't need this):
-# - src/app/(marketing)/ - Landing, pricing, about, blog, purchase pages
-# - src/components/landing/ - Marketing-specific components
-# - src/data/landing/ - Marketing copy and data
+# EXCLUDED (Fabrk's Actual Marketing Pages):
+# - src/app/(marketing)/ - Fabrk's landing, pricing, about, blog, purchase pages
+# Customers get the COMPONENTS to build marketing pages,
+# but NOT the actual Fabrk marketing website itself
 
 # ============================================
 # CUSTOMER SCRIPTS
