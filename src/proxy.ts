@@ -37,11 +37,16 @@ export default async function proxy(req: NextRequest) {
   // Generate nonce for CSP
   const nonce = generateNonce();
 
-  // Get the response
-  const response = NextResponse.next();
+  // Clone request with nonce in headers for server components
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set(getNonceHeaderName(), nonce);
 
-  // Set nonce in request headers for server components
-  response.headers.set(getNonceHeaderName(), nonce);
+  // Get the response with modified request headers
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 
   // Build CSP with actual nonce (proxy.ts must set headers, not modify them)
   const isDevelopment = process.env.NODE_ENV === 'development';
