@@ -79,6 +79,13 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
+    resolveAlias: {
+      // Ignore optional AI/storage dependencies (loaded dynamically at runtime)
+      'openai': false,
+      '@anthropic-ai/sdk': false,
+      '@aws-sdk/client-s3': false,
+      '@aws-sdk/s3-request-presigner': false,
+    },
   },
 
   // Instrumentation is automatically enabled in Next.js 15
