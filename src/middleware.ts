@@ -1,9 +1,10 @@
 /**
- * Proxy for CSP nonce injection and CSRF token management.
+ * Middleware for CSP nonce injection and CSRF token management.
  *
- * This file handles:
+ * This middleware handles:
  * - CSP nonce generation for security headers
  * - CSRF token cookie for form submissions
+ * - Nonce injection into HTML responses
  */
 
 import { NextResponse } from 'next/server';
@@ -32,7 +33,7 @@ function hasValidCsrfCookie(token: string | undefined): boolean {
   return !!token && token.length >= 32;
 }
 
-export function proxy(req: NextRequest) {
+export function middleware(req: NextRequest) {
   // Generate nonce for CSP
   const nonce = generateNonce();
   const response = NextResponse.next();

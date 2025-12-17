@@ -40,7 +40,6 @@ export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string 
       'https://cdn.jsdelivr.net',
       'https://js.stripe.com',
       'https://va.vercel-scripts.com',
-      'https://us-assets.i.posthog.com',
       'https://www.googletagmanager.com',
       'https://www.google-analytics.com',
     ],
@@ -59,17 +58,19 @@ export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string 
       "'self'",
       'https://api.stripe.com',
       'https://vitals.vercel-insights.com',
-      'https://api.posthog.com',
-      'https://us.i.posthog.com',
-      'https://us-assets.i.posthog.com',
       'https://www.google-analytics.com',
       'https://analytics.google.com',
       'https://www.googletagmanager.com',
       ...(isDevelopment ? ['ws:', 'wss:'] : []),
     ],
 
-    // Frames: Stripe payment elements only
-    'frame-src': ["'self'", 'https://js.stripe.com', 'https://hooks.stripe.com'],
+    // Frames: Stripe payment elements and Vercel Live
+    'frame-src': [
+      "'self'",
+      'https://js.stripe.com',
+      'https://hooks.stripe.com',
+      'https://vercel.live',
+    ],
 
     // Web Workers: Same-origin only
     'worker-src': ["'self'", 'blob:'],
