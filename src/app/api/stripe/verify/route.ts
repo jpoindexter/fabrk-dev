@@ -131,7 +131,7 @@
 
 import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe/client';
+import { stripe, isStripeConfigured } from '@/lib/stripe/client';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -146,6 +146,17 @@ const verifySchema = z.object({
  */
 export async function GET(request: NextRequest) {
   try {
+    // Check if Stripe is configured
+    if (!isStripeConfigured) {
+      return NextResponse.json(
+        {
+          error: 'Stripe billing is not configured',
+          message: 'This endpoint is only available when using Stripe for payments',
+        },
+        { status: 503 }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
     const sessionId = searchParams.get('session_id');
 
