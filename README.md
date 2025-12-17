@@ -41,8 +41,8 @@
 
 ```bash
 # Clone and install
-git clone https://github.com/Theft-SUDO/fabrk-official.git
-cd fabrk-official
+git clone https://github.com/THEFT-DEV/fabrk.git
+cd fabrk
 npm install --legacy-peer-deps
 
 # Set up environment
@@ -496,7 +496,7 @@ KEY ARCHITECTURAL PATTERNS:
 ## 📁 Project Structure
 
 ```
-fabrk-official/
+fabrk/
 ├── src/
 │   ├── app/
 │   │   ├── (platform)/      # Dashboard and app pages
@@ -692,7 +692,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 Fabrk documentation is organized across multiple locations for different purposes:
 
 ```
-fabrk-official/
+fabrk/
 ├── README.md                          # You are here! Quick start + overview
 ├── CLAUDE.md                          # AI assistant development guide
 │
@@ -1132,7 +1132,7 @@ npm install lucide-react
 ### Still stuck?
 
 - **Email:** support@fabrek.dev
-- **GitHub Issues:** https://github.com/Theft-SUDO/fabrk-official/issues
+- **GitHub Issues:** https://github.com/THEFT-DEV/fabrk/issues
 - **Discord:** Coming soon
 
 When reporting issues, include:
@@ -1147,7 +1147,7 @@ When reporting issues, include:
 
 ### Issues & Questions
 
-- **GitHub Issues**: https://github.com/Theft-SUDO/fabrk-official/issues
+- **GitHub Issues**: https://github.com/THEFT-DEV/fabrk/issues
 - **Email**: support@fabrek.dev
 
 ### Contributing
