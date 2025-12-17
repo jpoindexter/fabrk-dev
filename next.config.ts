@@ -84,7 +84,7 @@ const nextConfig: NextConfig = {
   // Instrumentation is automatically enabled in Next.js 15
 
   // Webpack configuration to exclude @react-email from server-side bundling
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, webpack }) => {
     if (isServer) {
       // Exclude @react-email packages from server-side bundling to prevent CSS loading issues
       config.externals = config.externals || [];
@@ -99,6 +99,15 @@ const nextConfig: NextConfig = {
         '@aws-sdk/s3-request-presigner'
       );
     }
+
+    // Ignore optional AI/storage dependencies to prevent build warnings
+    // These packages are only loaded at runtime when features are enabled
+    config.plugins = config.plugins || [];
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^(openai|@anthropic-ai\/sdk|@aws-sdk\/client-s3|@aws-sdk\/s3-request-presigner)$/,
+      })
+    );
 
     return config;
   },
