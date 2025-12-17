@@ -71,9 +71,62 @@ cspell.json
 # ============================================
 # APPLICATION SOURCE CODE
 # ============================================
-src/
+# NOTE: Explicitly list what customers need - NO marketing site
+# Customers get the boilerplate, NOT the Fabrk marketing pages
+
+# App Routes (Platform Only - NO Marketing)
+src/app/(platform)/
+src/app/(auth)/
+src/app/api/
+src/app/globals.css
+src/app/typography.css
+src/app/layout.tsx
+src/app/not-found.tsx
+src/app/error.tsx
+
+# Components (UI Library + Platform - NO Marketing)
+src/components/ui/
+src/components/dashboard/
+src/components/docs/
+src/components/forms/
+src/components/analytics/
+src/components/auth/
+src/components/billing/
+src/components/email/
+src/components/navigation/
+src/components/security/
+src/components/seo/
+src/components/settings/
+src/components/templates/
+src/components/theme/
+src/components/shared/footer.tsx
+src/components/shared/logo.tsx
+src/components/shared/terminal-background.tsx
+src/components/providers.tsx
+src/components/cookie-consent.tsx
+
+# Core Libraries
+src/lib/
+src/design-system/
+src/config/
+src/data/component-counts.json
+src/data/changelog.ts
+src/data/themes.ts
+
+# Styles
+src/styles/
+
+# Type Definitions
+src/types/
+
+# Database & Assets
 prisma/
 public/
+
+# EXCLUDED (Marketing Site - Customers don't need this):
+# - src/app/(marketing)/ - Landing, pricing, about, blog, purchase pages
+# - src/components/landing/ - Marketing-specific components
+# - src/data/landing/ - Marketing copy and data
 
 # ============================================
 # CUSTOMER SCRIPTS
