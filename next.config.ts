@@ -80,11 +80,11 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
     resolveAlias: {
-      // Ignore optional AI/storage dependencies (loaded dynamically at runtime)
-      'openai': false,
-      '@anthropic-ai/sdk': false,
-      '@aws-sdk/client-s3': false,
-      '@aws-sdk/s3-request-presigner': false,
+      // Alias optional AI/storage dependencies to empty module (loaded dynamically at runtime)
+      'openai': './src/lib/noop.ts',
+      '@anthropic-ai/sdk': './src/lib/noop.ts',
+      '@aws-sdk/client-s3': './src/lib/noop.ts',
+      '@aws-sdk/s3-request-presigner': './src/lib/noop.ts',
     },
   },
 
