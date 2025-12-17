@@ -2,7 +2,7 @@
 
 import { SimpleIcon } from '@/components/ui/simple-icon';
 import { Card, CardContent, Badge } from '@/components/ui/card';
-import { siTypescript, siStorybook, siVitest, siGithubactions } from 'simple-icons';
+import { siTypescript, siVitest, siGithubactions, siMdx } from 'simple-icons';
 import { CheckCircle2, TestTube2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -17,10 +17,10 @@ export function QualitySection() {
       icon: siVitest.path,
     },
     {
-      metric: '95%',
-      label: 'Storybook Coverage',
-      description: 'Most components are documented in interactive Storybook',
-      icon: siStorybook.path,
+      metric: '77+',
+      label: 'Documented Components',
+      description: 'Every component has examples and documentation',
+      icon: siMdx.path,
     },
     {
       metric: '100%',
@@ -140,7 +140,7 @@ export function QualitySection() {
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     Unlike other boilerplates that ship untested code, every Fabrk component is
-                    rigorously tested, documented in Storybook, and validated by CI/CD pipelines.
+                    rigorously tested, fully documented, and validated by CI/CD pipelines.
                     You're not inheriting technical debt—you're getting production-grade
                     infrastructure.
                   </p>

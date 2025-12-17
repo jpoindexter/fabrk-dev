@@ -42,7 +42,7 @@ interface ChatInputProps {
 }
 ```
 
-### 2. Storybook Stories
+### 2. component documentation Stories
 **Location:** `src/components/ui/chat-input.stories.tsx` (638 lines)
 
 **12 Interactive Examples:**
@@ -248,10 +248,10 @@ const [showPicker, setShowPicker] = useState(false);
 - **Character counter:** Conditionally rendered (only when `showCharCount={true}`)
 - **No re-renders:** Uses controlled component pattern efficiently
 
-## Testing in Storybook
+## Testing in component documentation
 
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 Navigate to **Components → ChatInput** to see all 12 examples.
@@ -262,7 +262,7 @@ Navigate to **Components → ChatInput** to see all 12 examples.
 - **Dependencies:** 0 additional packages (uses existing `lucide-react`)
 - **Design Tokens:** 100% (no hardcoded colors)
 - **TypeScript:** Fully typed with props interface
-- **Examples:** 12 Storybook stories + 1 example page
+- **Examples:** 12 component examples + 1 example page
 - **Documentation:** 412 lines of comprehensive guide
 
 ## Future Enhancements (Optional)
@@ -303,7 +303,7 @@ Navigate to **Components → ChatInput** to see all 12 examples.
 
 The Chat Input component is **production-ready** with:
 - ✅ All requested features implemented
-- ✅ 8+ Storybook examples (12 total)
+- ✅ 8+ component documentation examples (12 total)
 - ✅ Comprehensive documentation
 - ✅ Full design system compliance
 - ✅ Theme-responsive styling

@@ -23,6 +23,69 @@
 
 ---
 
+## WCAG Accessibility
+
+All Fabrk themes are designed to meet **WCAG 2.2 AA** contrast requirements.
+
+### Contrast Ratios
+
+| Element | Minimum Ratio | Fabrk Target | Standard |
+|---------|---------------|--------------|----------|
+| Body text | 4.5:1 | 7:1+ | WCAG AA |
+| Large text (18px+) | 3:1 | 4.5:1+ | WCAG AA |
+| UI components | 3:1 | 4.5:1+ | WCAG AA |
+| Focus indicators | 3:1 | 4.5:1+ | WCAG 2.2 |
+
+### OKLCH Advantage
+
+Fabrk uses **OKLCH color space** for perceptually uniform colors:
+
+- **Predictable contrast**: Lightness (L) directly correlates to perceived brightness
+- **Consistent accessibility**: Same lightness = same contrast ratio
+- **Easy validation**: Check L values to estimate contrast
+
+**Contrast Formula (OKLCH):**
+```
+// Approximate contrast ratio from lightness difference
+// Background L < 50%: Dark mode
+// Foreground L > 80%: High contrast text
+
+Background: oklch(10% ...)  // Very dark
+Foreground: oklch(85% ...)  // Very light
+// Result: ~10:1 contrast ratio (exceeds AAA)
+```
+
+### Testing Contrast
+
+```bash
+# Run accessibility tests
+npm run test:a11y
+
+# Manual check with browser DevTools
+# 1. Open DevTools > Accessibility tab
+# 2. Check contrast ratio for text elements
+# 3. Verify 4.5:1 minimum for body text
+```
+
+### Focus States
+
+All themes include visible focus states for keyboard navigation:
+
+```css
+/* Terminal-style focus ring */
+:focus-visible {
+  outline: 2px solid oklch(var(--ring));
+  outline-offset: 2px;
+}
+
+/* High contrast focus for accessibility */
+.focus-visible:focus-visible {
+  outline-color: oklch(var(--primary));
+}
+```
+
+---
+
 ## Standard CRT Themes (Phosphor Colors)
 
 These themes simulate classic CRT monitor phosphor colors from the 1970s-1990s.

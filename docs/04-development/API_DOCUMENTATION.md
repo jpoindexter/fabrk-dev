@@ -602,7 +602,7 @@ npm run docs:api
 ### Internal Documentation
 
 - [Component Showcase](../library/README.md)
-- [Storybook Stories](../../src/components/ui/)
+- [component documentation Stories](../../src/components/ui/)
 - [Design System Guide](../08-design/DESIGN_SYSTEM.md)
 - [Contributing Guide](../CONTRIBUTING.md)
 

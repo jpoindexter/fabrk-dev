@@ -10,7 +10,7 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 - **9 Copy-Paste Templates**
 - **6 Professional Color Themes**
 - **17,822 Lines of Test Code**
-- **82 Storybook Stories**
+- **77 documented components**
 - **44 Test Files with Vitest + Playwright**
 - **Next.js 16 + TypeScript Strict**
 - **26,813 Lines of Documentation**
@@ -408,18 +408,16 @@ npm run test:all          # All tests
 
 ---
 
-### Storybook Integration
-- **82 Interactive Stories** - Every component documented
-- **Addon A11y** - Accessibility testing
-- **Addon Docs** - Auto-generated documentation
-- **Addon Vitest** - Test integration
-- **Visual Testing** - Component isolation
-- **Design System Docs** - Living style guide
+### Component Documentation
+- **77 Components** - Every component with examples
+- **Accessibility Testing** - Built-in with axe-core
+- **Interactive Showcase** - Live examples at /components
+- **Design System Docs** - Complete style guide
 
-**Storybook Scripts:**
+**Documentation Commands:**
 ```bash
-npm run storybook         # Start Storybook dev server
-npm run build-storybook   # Build static Storybook
+npm run dev              # View component showcase at /components
+npm run test:a11y        # Run accessibility tests
 ```
 
 ---
@@ -590,7 +588,7 @@ npm run email:dev         # Email worker with watch mode
 | **Components** | 83 | ~40 | 100+ | 150+ |
 | **Templates** | 9 | 0 | Few | Many |
 | **Themes** | 6 (OKLCH) | 1 | 2 | 2 |
-| **Storybook** | 82 stories | ❌ | ❌ | ❌ |
+| **Documentation** | 82 stories | ❌ | ❌ | ❌ |
 | **Testing** | 17,822 lines | ❌ | Partial | Partial |
 | **Test Coverage** | 44 test files | 0 | ~10 | ~20 |
 | **Next.js** | v16 (latest) | v14 | v14 | v14 |
@@ -605,7 +603,7 @@ npm run email:dev         # Email worker with watch mode
 ---
 
 ### Unique to Fabrk
-1. **82 Storybook stories** - No competitor has this level of component documentation
+1. **77 documented components** - No competitor has this level of component documentation
 2. **17,822 lines of test code** - Enterprise-grade testing (more than any competitor)
 3. **6-theme OKLCH system** - Perceptually uniform colors with live switching
 4. **4 landing page variations** - Multiple aesthetics out of the box
@@ -624,7 +622,7 @@ npm run email:dev         # Email worker with watch mode
 | Task | Estimated Hours | Cost @ $100/hr |
 |------|-----------------|----------------|
 | **UI Components** (234 components) | 166 hours | $16,600 |
-| **Storybook Setup** (82 stories) | 40 hours | $4,000 |
+| **Documentation Setup** (82 stories) | 40 hours | $4,000 |
 | **Testing Setup** (Vitest + Playwright) | 30 hours | $3,000 |
 | **Writing Tests** (17,822 lines) | 80 hours | $8,000 |
 | **Authentication** (NextAuth v5 + OAuth) | 40 hours | $4,000 |
@@ -675,17 +673,17 @@ npm run email:dev         # Email worker with watch mode
 **Feature Comparison:**
 - **234 components** - More than ShipFast (40), comparable to Supastarter (100+)
 - **9 production templates** - Unique advantage (competitors have 0-few)
-- **82 Storybook stories** - No competitor has this (enterprise feature)
+- **77 documented components** - No competitor has this (enterprise feature)
 - **17,822 lines of test code** - More than any competitor combined
 - **6-theme system** - Unique to Fabrk (competitors have 1-2 static themes)
 - **Next.js 16** - Newest version (competitors use v14)
 - **26,813 lines of docs** - Most comprehensive in market
 
 **Market Position:**
-- **Match Makerkit** ($299) - Similar pricing, superior testing/Storybook
+- **Match Makerkit** ($299) - Similar pricing, superior testing/documentation
 - **Match Supastarter** ($297) - Similar pricing, better component docs
 - **Premium over ShipFast** ($199) - $100 more, 10x more features
-- **Enterprise-grade quality** - Testing + Storybook justify premium
+- **Enterprise-grade quality** - Testing + documentation justify premium
 
 ---
 
@@ -697,7 +695,7 @@ npm run email:dev         # Email worker with watch mode
 - Complete auth system (save 40 hours)
 - Stripe payment integration (save 30 hours)
 - Full testing suite (save 110 hours)
-- 82 Storybook stories (save 40 hours)
+- 77 documented components (save 40 hours)
 - 26,813 lines of documentation (save 40 hours)
 
 **Long-Term Value:**
@@ -717,7 +715,7 @@ npm run email:dev         # Email worker with watch mode
 2. **Serious Indie Hackers** - Launching multiple SaaS products
 3. **Startups** - Need enterprise features fast (fundraising deadline)
 4. **Companies** - Internal tools with quality standards
-5. **Developers** - Want to learn best practices (Storybook + tests)
+5. **Developers** - Want to learn best practices (documentation + tests)
 
 **Not For:**
 - Hobbyists ($299 is high for learning project)
@@ -731,7 +729,7 @@ npm run email:dev         # Email worker with watch mode
 ### Production Ready ✅
 - ✅ 234 components complete
 - ✅ 9 templates production-ready
-- ✅ 82 Storybook stories
+- ✅ 77 documented components
 - ✅ 17,822 lines of test code
 - ✅ 44 test files (Vitest + Playwright)
 - ✅ 6-theme system with live switching
@@ -797,7 +795,7 @@ npm run email:dev         # Email worker with watch mode
 - Replace all hex colors with OKLCH
 - Add more templates (3-5 new templates)
 - Create video tutorials (10 videos)
-- Improve Storybook docs
+- Improve component docs
 
 ### Phase 3: Month 2 Expansion
 - Add CMS integration (Sanity/Contentful)
@@ -827,7 +825,7 @@ npm run email:dev         # Email worker with watch mode
 ### Resources
 - **Component Showcase:** Live demos at `/components`
 - **Template Gallery:** Production templates at `/library`
-- **Storybook:** 82 interactive stories
+- **Component Showcase:** 77 documented components
 - **GitHub Repo:** Full source code access
 - **Example Apps:** 3 demo projects included
 
@@ -879,7 +877,7 @@ A: Currently PostgreSQL only (Prisma). Custom database adapters possible ($500 s
 
 **Buy Fabrk if:**
 - You're building 2+ SaaS projects this year
-- You value quality (testing + Storybook)
+- You value quality (testing + documentation)
 - You need enterprise features (multi-tenancy, RBAC, security)
 - You're an agency building client projects
 - You want to learn best practices

@@ -592,7 +592,7 @@ Use this checklist when implementing new dropdown menus:
 - `src/components/dashboard/dashboard-header.tsx` - User menu with profile
 - `src/components/ui/data-table/data-table-pagination.tsx` - Pagination Select
 
-**Storybook Examples:**
+**component documentation Examples:**
 View live examples at http://localhost:6006
 - DropdownMenu/Alignment stories
 - Select component variations

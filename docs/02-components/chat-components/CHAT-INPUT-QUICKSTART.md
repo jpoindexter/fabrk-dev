@@ -40,8 +40,8 @@ export default function MyChat() {
 # Visit the example page
 http://localhost:3000/examples/chat-input
 
-# Or view Storybook stories
-npm run storybook
+# Or view component examples
+#Component showcase at /components
 # Navigate to Components → ChatInput
 ```
 
@@ -382,7 +382,7 @@ className="max-w-2xl"     // Custom styles
 
 - **Documentation:** `src/components/ui/chat-input.md`
 - **Examples:** `/examples/chat-input`
-- **Storybook:** `npm run storybook`
+- **Examples:** `#Component showcase at /components`
 - **Architecture:** `CHAT-INPUT-ARCHITECTURE.md`
 - **Preview:** `CHAT-INPUT-PREVIEW.md`
 
@@ -391,7 +391,7 @@ className="max-w-2xl"     // Custom styles
 For questions or issues:
 1. Check the full documentation (`chat-input.md`)
 2. View example page (`/examples/chat-input`)
-3. Inspect Storybook stories
+3. Inspect component examples
 4. Review architecture diagram
 5. Check common issues section
 

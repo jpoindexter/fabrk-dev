@@ -1,22 +1,24 @@
 # Fabrk Premium - Documentation Index
 
-**Fabrk Premium:** $299 | 87 Components | 28 Templates | 6 Themes
+**Fabrk Premium:** $299 | 77+ components | 50 Templates | 12 Themes
 
 Complete index of all documentation organized into numbered sections for easy navigation.
 
-## 📚 Documentation Structure
+## Documentation Structure
 
-All documentation is organized into 7 numbered folders:
+All documentation is organized into numbered folders:
 
 ```
 docs/
 ├── 01-getting-started/      # Quick start, troubleshooting, setup
 ├── 02-components/           # Component library, charts, landing pages
-├── 03-development/          # API docs, testing, browser automation
-├── 04-features/             # Feature guides, enterprise setup, accessibility
-├── 05-deployment/           # Launch prep, deployment, monitoring
-├── 06-marketing/            # Comparison, SEO, growth tactics
-└── 07-advanced/             # Performance, security, backup & recovery
+├── 03-guides/               # Feature guides, integrations
+├── 04-development/          # API docs, testing, browser automation
+├── 06-features/             # Feature inventory, i18n, accessibility
+├── 07-advanced/             # Performance, security, backup & recovery
+├── 08-design/               # Design system, themes, tokens
+├── 09-launch/               # Launch checklist, release notes
+└── 10-deployment/           # Deployment guides, analytics, monitoring
 ```
 
 ---
@@ -26,17 +28,17 @@ docs/
 ### New Developer
 1. [01-getting-started/QUICK-START.md](./01-getting-started/QUICK-START.md) - Setup in 5 minutes
 2. [01-getting-started/README.md](./01-getting-started/README.md) - Project overview
-3. [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md) - See all 234 components
+3. [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md) - See all 77+ components
 
 ### Preparing for Launch
-1. [05-deployment/V1-BLOCKER-FIXES.md](./05-deployment/V1-BLOCKER-FIXES.md) - ⚠️ Critical pre-launch fixes
-2. [05-deployment/DEMO-VIDEO-GUIDE.md](./05-deployment/DEMO-VIDEO-GUIDE.md) - Record demo video
-3. [06-marketing/COMPARISON.md](./06-marketing/COMPARISON.md) - Competitive positioning
+1. [09-launch/LAUNCH-CHECKLIST.md](../09-launch/LAUNCH_CHECKLIST.md) - Pre-launch checklist
+2. [10-deployment/DEMO-VIDEO-GUIDE.md](../10-deployment/DEMO-VIDEO-GUIDE.md) - Record demo video
+3. [10-deployment/DEPLOYMENT.md](../10-deployment/DEPLOYMENT.md) - Deployment guide
 
 ### Designer/Frontend
 1. [02-components/README.md](./02-components/README.md) - Component overview
 2. Visit `/components` page - Interactive component showcase
-3. Run `npm run storybook` - Component playground
+3. [08-design/DESIGN_SYSTEM.md](./08-design/DESIGN_SYSTEM.md) - Design system guide
 
 ---
 
@@ -60,15 +62,15 @@ docs/
 **Path:** `docs/02-components/`
 
 **Contents:**
-- **COMPONENTS-INVENTORY.md** - All 234 components listed
+- **COMPONENTS-INVENTORY.md** - All 77+ components listed
 - **COMPONENT-BEST-PRACTICES.md** - Design patterns
 - **CHARTS-GUIDE.md** - Recharts integration
 - **LANDING-PAGE-VARIATIONS.md** - 4 landing page styles
 
-**87 Production Components:**
+**77 Production Components:**
 - Layout, Navigation, Forms, Data Display
 - Feedback, Overlays, Media, Communication
-- 100% tested, Storybook documented
+- 100% tested, fully documented
 
 ---
 
@@ -91,69 +93,37 @@ docs/
 
 ---
 
-### 04 - Features
+### 06 - Features
 
-**Path:** `docs/04-features/`
+**Path:** `docs/06-features/`
 
 **Contents:**
-- **FEATURES-INVENTORY.md** - Complete feature list + ROI ($299 justification)
-- **ENTERPRISE-FEATURES-SETUP.md** - Enterprise tier configuration
+- **FEATURES-INVENTORY.md** - Complete feature list
 - **ACCESSIBILITY.md** - WCAG 2.1 Level AA compliance
 - **I18N-IMPLEMENTATION.md** - 18 language support
-- **I18N-COMPLETION-REPORT.md** - i18n status
 - **SEARCH-IMPLEMENTATION.md** - Search integration
-- **ECOMMERCE-GUIDE.md** - Stripe + subscriptions
-- **CMS-IMPLEMENTATION.md** - Content management
+- **MONITOR-EFFECTS.md** - CRT/LCD visual effects
 
 **Every feature explained in detail.**
 
 ---
 
-### 05 - Deployment
+### 10 - Deployment
 
-**Path:** `docs/05-deployment/`
+**Path:** `docs/10-deployment/`
 
 **Contents:**
-- **V1-BLOCKER-FIXES.md** - ⚠️ Critical pre-launch fixes
-- **LAUNCH-TIMELINE.md** - Complete launch timeline
-- **DEMO-VIDEO-GUIDE.md** - 3-5 minute production guide
-- **PRODUCT-HUNT.md** - Launch strategy
 - **DEPLOYMENT.md** - Vercel deployment (recommended)
+- **PRODUCTION-DEPLOYMENT.md** - Production setup guide
 - **ALTERNATIVE-DEPLOYMENTS.md** - Netlify, AWS, Railway, DigitalOcean
 - **POST-LAUNCH-MONITORING.md** - System monitoring
 - **ANALYTICS-SETUP.md** - Vercel Analytics, Google Analytics
-
-**Includes:** Launch preparation, deployment, and post-launch operations
+- **DEMO-VIDEO-GUIDE.md** - 3-5 minute production guide
 
 **Supported Platforms:**
 - Vercel (one-click)
 - Netlify, AWS, Railway, DigitalOcean
 - Self-hosted (Docker)
-
----
-
-### 06 - Marketing
-
-**Path:** `docs/06-marketing/`
-
-**Contents:**
-- **COMPARISON.md** - Fabrk vs ShipFast, Supastarter, Makerkit
-- **MARKETING.md** - Marketing strategy
-- **SEO-QUICK-REFERENCE.md** - SEO optimization
-- **SEO-AEO-GEO-GUIDE.md** - Complete search optimization
-- **CONVERSION-OPTIMIZATION.md** - CRO strategies
-- **GROWTH-TACTICS.md** - Growth hacking
-- **CUSTOMER-ONBOARDING.md** - User activation
-
-**Pricing: $299 (Premium Enterprise)**
-
-**Why $299?**
-- 234 components vs Makerkit 60 (+45%)
-- Complete testing suite
-- Exclusive Storybook integration
-- 156 files vs 800+ (80% cleaner)
-- 20 themes vs 2 (3x more)
-- Next.js 15 (latest)
 
 ---
 
@@ -181,35 +151,34 @@ docs/
 ### "How do I..."
 
 **...get started?**
-→ [01-getting-started/QUICK-START.md](./01-getting-started/QUICK-START.md)
+→ [QUICK-START.md](./QUICK-START.md)
 
 **...see all components?**
-→ [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md)
+→ [COMPONENTS-INVENTORY.md](../02-components/COMPONENTS-INVENTORY.md)
 
 **...prepare for launch?**
-→ [05-deployment/V1-BLOCKER-FIXES.md](./05-deployment/V1-BLOCKER-FIXES.md)
+→ [09-launch/LAUNCH_CHECKLIST.md](../09-launch/LAUNCH_CHECKLIST.md)
 
 **...deploy to production?**
-→ [05-deployment/DEPLOYMENT.md](./05-deployment/DEPLOYMENT.md)
+→ [10-deployment/DEPLOYMENT.md](../10-deployment/DEPLOYMENT.md)
 
-**...compare Fabrk to competitors?**
-→ [06-marketing/COMPARISON.md](./06-marketing/COMPARISON.md)
+**...customize themes?**
+→ [08-design/THEME-GUIDE.md](../08-design/THEME-GUIDE.md)
 
 **...optimize performance?**
-→ [07-advanced/PERFORMANCE.md](./07-advanced/PERFORMANCE.md)
+→ [07-advanced/PERFORMANCE.md](../07-advanced/PERFORMANCE.md)
 
 **...set up analytics?**
-→ [05-deployment/ANALYTICS-SETUP.md](./05-deployment/ANALYTICS-SETUP.md)
+→ [10-deployment/ANALYTICS-SETUP.md](../10-deployment/ANALYTICS-SETUP.md)
 
 ---
 
 ## 📊 Project Statistics
 
 ### Components & Templates
-- **234 components** - Production-ready UI library
-- **28 templates** - Copy-paste layouts
-- **20 themes** - OKLCH color variations
-- **82 Storybook stories** - Visual documentation
+- **77+ components** - Production-ready UI library
+- **50+ templates** - Copy-paste layouts
+- **12 themes** - OKLCH terminal variations
 
 ### Testing & Quality
 - **44 test files** - Complete coverage
@@ -221,7 +190,7 @@ docs/
 - **77 markdown files** - Comprehensive guides
 - **10 numbered sections** - Organized structure
 - **TypeScript API docs** - Full type coverage
-- **Storybook integration** - Interactive demos
+- **Live component showcase** - Interactive demos at /components
 
 ---
 
@@ -242,7 +211,7 @@ npm run test             # Run unit tests
 npm run test:e2e         # Run E2E tests
 
 # Documentation
-npm run storybook        # Component playground
+npm run dev              # View /components showcase
 npm run docs:api         # Generate API docs
 
 # Code Quality
@@ -270,7 +239,6 @@ npm run type-check       # TypeScript validation
 ### Testing & Tools
 - [Vitest](https://vitest.dev)
 - [Playwright](https://playwright.dev)
-- [Storybook](https://storybook.js.org)
 - [Recharts](https://recharts.org)
 
 ---

@@ -134,14 +134,14 @@ This guide provides a comprehensive script and production checklist for creating
 
 ### Section 5: Developer Experience (3:00 - 3:30)
 
-**Visual**: Show code examples and Storybook
+**Visual**: Show code examples and component showcase
 
 **Voiceover**:
-> "Developer experience is a priority. All components are fully typed with TypeScript, come with Storybook for interactive development, and include comprehensive documentation. Props are auto-completed in your IDE, and error messages are helpful. Installation is simple - just npm install and you're ready to go."
+> "Developer experience is a priority. All components are fully typed with TypeScript and include comprehensive documentation. Props are auto-completed in your IDE, and error messages are helpful. Installation is simple - just npm install and you're ready to go."
 
 **Show**:
 - VSCode with autocomplete
-- Storybook interface
+- Component showcase page
 - Component props documentation
 - Quick component usage example
 
@@ -329,11 +329,11 @@ export function MyComponent() {
 - Tests run and pass (sped up 3x)
 - Show coverage numbers
 
-### Shot 11: Storybook (8 seconds)
-- Open Storybook in browser
-- Navigate to a component
-- Change props in controls panel
-- Show component update live
+### Shot 11: Component Showcase (8 seconds)
+- Open /components page in browser
+- Navigate to a component category
+- Show component examples and variations
+- Demonstrate interactive elements
 
 ### Shot 12: Landing Variations (20 seconds)
 - Navigate to /variations

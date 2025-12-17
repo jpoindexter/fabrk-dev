@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'UI Components Overview - Fabrk Docs',
-  description: 'Complete list of 80+ production-ready UI components included in Fabrk boilerplate.',
+  description: 'Complete list of 77+ production-ready UI components included in Fabrk boilerplate.',
 };
 
 const componentCategories = [
@@ -162,7 +162,7 @@ export default function ComponentsOverviewPage() {
       code="[0x60]"
       category="Components"
       title="UI Components Library"
-      description="80+ production-ready components built with Radix UI and Tailwind CSS."
+      description="77+ production-ready components built with Radix UI and Tailwind CSS."
       overview={`${totalComponents} components across ${componentCategories.length} categories. All fully typed with TypeScript. Built on Radix UI primitives for accessibility.`}
       features={[
         {

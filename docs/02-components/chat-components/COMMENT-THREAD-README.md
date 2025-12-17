@@ -423,9 +423,9 @@ model CommentLike {
 - **Virtual Scrolling** - For 100+ comments, consider react-window or react-virtuoso
 - **Memoization** - Use React.memo on SingleComment for deep threads
 
-## Storybook Examples
+## Component Examples
 
-The component includes 10+ Storybook stories:
+The component includes 10+ component examples:
 
 1. **Default** - Flat comment list
 2. **WithReplies** - 2-level nesting
@@ -438,10 +438,10 @@ The component includes 10+ Storybook stories:
 9. **LimitedDepth** - maxDepth demonstration
 10. **SingleThread** - Focused discussion thread
 
-Run Storybook to explore all examples:
+View the component showcase to explore all examples:
 
 ```bash
-npm run storybook
+#Component showcase at /components
 ```
 
 ## TypeScript Support
