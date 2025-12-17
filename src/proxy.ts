@@ -1,5 +1,5 @@
 /**
- * Next.js 16 Middleware
+ * Next.js 16 Proxy
  *
  * Handles:
  * - CSP nonce generation and injection
@@ -33,7 +33,7 @@ function hasValidCsrfCookie(token: string | undefined): boolean {
   return !!token && token.length >= 32;
 }
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   // Generate nonce for CSP
   const nonce = generateNonce();
 
@@ -48,7 +48,7 @@ export default async function middleware(req: NextRequest) {
     },
   });
 
-  // Build CSP with actual nonce (middleware must set headers, not modify them)
+  // Build CSP with actual nonce (proxy.ts must set headers, not modify them)
   const isDevelopment = process.env.NODE_ENV === 'development';
 
   const csp = [
