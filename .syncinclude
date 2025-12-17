@@ -71,10 +71,10 @@ cspell.json
 # ============================================
 # APPLICATION SOURCE CODE
 # ============================================
-# NOTE: Customers get components to BUILD marketing pages
-#       but NOT Fabrk's actual marketing website
+# Customers get the SaaS boilerplate ONLY
+# NO Fabrk marketing website, components, or content
 
-# App Routes (Platform & Auth - NO Fabrk Marketing Pages)
+# App Routes (Platform & Auth ONLY)
 src/app/(platform)/
 src/app/(auth)/
 src/app/api/
@@ -84,8 +84,7 @@ src/app/layout.tsx
 src/app/not-found.tsx
 src/app/error.tsx
 
-# Components (ALL components including marketing components)
-# Customers need HeroSection, PricingCard, etc. to build their own sites
+# Components (Core UI + Platform - NO Landing/Marketing)
 src/components/ui/
 src/components/dashboard/
 src/components/docs/
@@ -94,7 +93,6 @@ src/components/analytics/
 src/components/auth/
 src/components/billing/
 src/components/email/
-src/components/landing/
 src/components/navigation/
 src/components/security/
 src/components/seo/
@@ -105,11 +103,13 @@ src/components/shared/
 src/components/providers.tsx
 src/components/cookie-consent.tsx
 
-# Core Libraries & Data
+# Core Libraries (NO Landing Data)
 src/lib/
 src/design-system/
 src/config/
-src/data/
+src/data/component-counts.json
+src/data/changelog.ts
+src/data/themes.ts
 src/styles/
 src/types/
 
@@ -117,10 +117,14 @@ src/types/
 prisma/
 public/
 
-# EXCLUDED (Fabrk's Actual Marketing Pages):
-# - src/app/(marketing)/ - Fabrk's landing, pricing, about, blog, purchase pages
-# Customers get the COMPONENTS to build marketing pages,
-# but NOT the actual Fabrk marketing website itself
+# ============================================
+# EXCLUDED - Fabrk's Marketing Website
+# ============================================
+# Customers DO NOT GET:
+# - src/app/(marketing)/ - Landing, pricing, about, blog, purchase pages
+# - src/components/landing/ - Landing page components
+# - src/data/landing/ - Marketing copy, FAQs, benefits, comparison
+# - Any Fabrk website content
 
 # ============================================
 # CUSTOMER SCRIPTS
