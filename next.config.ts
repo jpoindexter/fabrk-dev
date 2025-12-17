@@ -40,12 +40,9 @@ const securityHeaders = [
     value:
       // Default: Only allow same-origin resources
       "default-src 'self'; " +
-      // Scripts: Nonce-based CSP for production with strict-dynamic
-      // Development: Keep 'unsafe-inline' and 'unsafe-eval' for HMR
-      // Production: Nonce from middleware + strict-dynamic for trusted script chains
-      (process.env.NODE_ENV === "production"
-        ? "script-src 'self' 'strict-dynamic' 'nonce-NONCE_PLACEHOLDER' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; "
-        : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; ") +
+      // Scripts: Nonce-based CSP with strict-dynamic for production security
+      // Middleware generates unique nonce per request and replaces NONCE_PLACEHOLDER
+      "script-src 'self' 'nonce-NONCE_PLACEHOLDER' 'strict-dynamic' https://js.stripe.com https://va.vercel-scripts.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com; " +
       // Styles: 'unsafe-inline' required for Tailwind CSS-in-JS
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       // Images: Data URIs, HTTPS sources, and blobs for dynamic images
@@ -74,8 +71,8 @@ const securityHeaders = [
       "media-src 'self'; " +
       // Child frames (deprecated fallback)
       "child-src 'self' blob:; " +
-      // Block mixed content (production only)
-      (process.env.NODE_ENV === "production" ? "upgrade-insecure-requests; block-all-mixed-content;" : ""),
+      // Block mixed content
+      "upgrade-insecure-requests;",
   },
 ];
 
@@ -92,7 +89,17 @@ const nextConfig: NextConfig = {
       // Exclude @react-email packages from server-side bundling to prevent CSS loading issues
       config.externals = config.externals || [];
       config.externals.push('@react-email/components', '@react-email/render');
+
+      // Mark optional AI and storage dependencies as external (not bundled)
+      // These are loaded dynamically with try/catch and are optional
+      config.externals.push(
+        'openai',
+        '@anthropic-ai/sdk',
+        '@aws-sdk/client-s3',
+        '@aws-sdk/s3-request-presigner'
+      );
     }
+
     return config;
   },
 
