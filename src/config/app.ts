@@ -173,12 +173,6 @@ const config = {
         process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
     ),
     commandPalette: true, // ⌘K keyboard shortcut
-
-    // CMS features
-    sanityCMS: !!(
-      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)
-    ),
   },
 
   // ============================================================================
@@ -200,23 +194,6 @@ const config = {
       components: 'components',
       templates: 'templates',
       docs: 'docs',
-    },
-  },
-
-  // ============================================================================
-  // CMS CONFIGURATION (Sanity)
-  // ============================================================================
-  cms: {
-    enabled: !!(
-      (env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) &&
-      (env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET)
-    ),
-    projectId:
-      env?.client?.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: env?.client?.NEXT_PUBLIC_SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET,
-    apiToken: env?.server?.SANITY_API_TOKEN || process.env.SANITY_API_TOKEN, // Server-side only
-    studio: {
-      basePath: '/studio', // Studio accessible at /studio
     },
   },
 

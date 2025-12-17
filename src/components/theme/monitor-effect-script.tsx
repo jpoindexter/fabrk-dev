@@ -2,7 +2,11 @@
 
 import React from 'react';
 
-export function MonitorEffectScript() {
+interface MonitorEffectScriptProps {
+  nonce?: string;
+}
+
+export function MonitorEffectScript({ nonce }: MonitorEffectScriptProps = {}) {
   const script = `
     (function() {
       try {
@@ -14,5 +18,7 @@ export function MonitorEffectScript() {
     })();
   `;
 
-  return <script dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
+  return (
+    <script nonce={nonce} dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />
+  );
 }

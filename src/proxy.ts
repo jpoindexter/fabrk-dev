@@ -40,15 +40,13 @@ export function proxy(req: NextRequest) {
   // Inject nonce into request headers for server components
   response.headers.set(getNonceHeaderName(), nonce);
 
-  // Update CSP header with actual nonce (only in production)
-  if (process.env.NODE_ENV === 'production') {
-    const cspHeader = response.headers.get('Content-Security-Policy');
-    if (cspHeader) {
-      response.headers.set(
-        'Content-Security-Policy',
-        cspHeader.replace(/nonce-NONCE_PLACEHOLDER/g, `nonce-${nonce}`)
-      );
-    }
+  // Update CSP header with actual nonce
+  const cspHeader = response.headers.get('Content-Security-Policy');
+  if (cspHeader) {
+    response.headers.set(
+      'Content-Security-Policy',
+      cspHeader.replace(/nonce-NONCE_PLACEHOLDER/g, `nonce-${nonce}`)
+    );
   }
 
   // Ensure CSRF token cookie exists

@@ -83,6 +83,7 @@ export interface ThemeScriptProps {
   storageKey?: string;
   storageKeyPrefix?: string;
   defaultColorTheme?: ColorThemeName;
+  nonce?: string;
 }
 
 // =============================================================================
@@ -199,6 +200,7 @@ export function ThemeScript({
   storageKey,
   storageKeyPrefix = 'design-system',
   defaultColorTheme = 'green',
+  nonce,
 }: ThemeScriptProps) {
   const colorKey = storageKey || 'theme';
   const legacyColorKey = storageKey || `${storageKeyPrefix}-color-theme`;
@@ -243,7 +245,9 @@ export function ThemeScript({
     })();
   `;
 
-  return <script dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
+  return (
+    <script nonce={nonce} dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />
+  );
 }
 
 export default ThemeProvider;

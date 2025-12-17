@@ -286,27 +286,6 @@ function validateOptional(): ValidationError[] {
     });
   }
 
-  // Sanity (all or nothing)
-  const sanityVars = [
-    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    process.env.NEXT_PUBLIC_SANITY_DATASET,
-  ];
-  const sanityVarNames = ['NEXT_PUBLIC_SANITY_PROJECT_ID', 'NEXT_PUBLIC_SANITY_DATASET'];
-  const sanityPresent = sanityVars.filter((v) => isPresent(v)).length;
-
-  if (sanityPresent > 0 && sanityPresent < 2) {
-    sanityVarNames.forEach((varName, index) => {
-      if (!isPresent(sanityVars[index])) {
-        errors.push({
-          variable: varName,
-          message:
-            'Both NEXT_PUBLIC_SANITY_PROJECT_ID and NEXT_PUBLIC_SANITY_DATASET must be set together',
-          category: 'CMS (Sanity)',
-        });
-      }
-    });
-  }
-
   // Upstash Redis (all or nothing)
   const redisVars = [process.env.UPSTASH_REDIS_REST_URL, process.env.UPSTASH_REDIS_REST_TOKEN];
   const redisVarNames = ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN'];
@@ -568,7 +547,6 @@ export function getFeatureSummary(): {
     'Real-Time (Pusher)': isPresent(process.env.NEXT_PUBLIC_PUSHER_KEY),
     'Analytics (PostHog)': isPresent(process.env.NEXT_PUBLIC_POSTHOG_KEY),
     'Search (Algolia)': isPresent(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID),
-    'CMS (Sanity)': isPresent(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID),
     'Cache (Redis)': isPresent(process.env.UPSTASH_REDIS_REST_URL),
     'File Storage (S3)': isPresent(process.env.S3_BUCKET_NAME),
     'Error Tracking (Sentry)': isPresent(process.env.NEXT_PUBLIC_SENTRY_DSN),

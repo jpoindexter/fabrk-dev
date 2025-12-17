@@ -28,7 +28,7 @@ export const PRICING = {
     'WCAG 2.1 AA ACCESSIBLE',
   ],
   cta: {
-    label: '> BUY NOW',
+    label: 'BUY NOW',
   },
   trustLine: 'Secure checkout via Polar │ All sales final',
 } as const;

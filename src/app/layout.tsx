@@ -18,6 +18,7 @@ import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadat
 import { TerminalBackground } from '@/components/shared/terminal-background';
 import { ThemeScript } from '@/design-system/providers';
 import { MonitorEffectScript } from '@/components/theme/monitor-effect-script';
+import { getNonce } from '@/lib/nonce';
 import './globals.css';
 import './typography.css';
 import '@/styles/crt-effects.css';
@@ -140,7 +141,9 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const nonce = await getNonce();
+
   return (
     <html
       lang="en"
@@ -148,10 +151,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${jetbrainsMono.variable} ${pixelbasel.variable}`}
     >
       <head>
-        <ThemeScript defaultColorTheme="green" storageKeyPrefix="fabrk-theme" />
-        <MonitorEffectScript />
+        <ThemeScript defaultColorTheme="green" storageKeyPrefix="fabrk-theme" nonce={nonce} />
+        <MonitorEffectScript nonce={nonce} />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -190,6 +194,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Google Tag Manager - inline required for consent mode sync */}
         {/* eslint-disable-next-line @next/next/next-script-for-ga */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -200,12 +205,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateOrganizationSchema()),
           }}
         />
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateProductSchema()),
           }}

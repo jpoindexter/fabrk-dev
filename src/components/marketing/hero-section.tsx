@@ -40,7 +40,7 @@ const techStack = [
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden px-4 pt-8 pb-16 sm:px-0 lg:min-h-[90vh] lg:pt-12 lg:pb-20">
+    <section className="relative flex min-h-[90vh] items-center overflow-hidden px-4 pt-8 pb-16 sm:px-0 lg:min-h-screen lg:pt-12 lg:pb-20">
       <Container size="2xl">
         <div className="relative">
           {/* Main Hero Window - Wider, behind */}
@@ -223,7 +223,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-32 lg:mt-40"
+          className="mt-16 lg:mt-20"
         >
           <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
           <div className="flex flex-wrap gap-2">
