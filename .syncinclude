@@ -87,13 +87,18 @@ src/app/error.tsx
 # Components (ALL components - they're templates/boilerplate)
 src/components/
 
-# Core Libraries & Data (example data they can customize)
+# Core Libraries
 src/lib/
 src/design-system/
 src/config/
-src/data/
 src/styles/
 src/types/
+
+# Data (Generic only - NO Fabrk marketing content)
+src/data/changelog.ts
+src/data/component-counts.json
+src/data/themes.ts
+# EXCLUDED: src/data/landing/ - Your Fabrk pricing, benefits, FAQs, testimonials
 
 # Database & Assets
 prisma/
