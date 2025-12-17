@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { CheckCircle, Download, Mail, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { PurchaseTracker } from '@/components/analytics/purchase-tracker';
 import Link from 'next/link';
 
@@ -39,84 +39,71 @@ export default function PurchaseSuccessPage() {
 
         {/* What's Next */}
         <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="uppercase">[NEXT STEPS]</CardTitle>
-          </CardHeader>
+          <CardHeader code="0x01" title="NEXT STEPS" />
           <CardContent className="space-y-6">
             {/* Email */}
-            <Card className="bg-card/50">
-              <CardContent className="flex gap-4 p-6">
-                <div className="shrink-0">
-                  <Card className="w-fit border-primary/20 bg-primary/5">
-                    <CardContent className="p-4">
-                      <Mail className="text-primary h-6 w-6" />
-                    </CardContent>
-                  </Card>
+            <div className="flex gap-4">
+              <div className="shrink-0">
+                <div className="bg-primary/10 rounded-none p-4">
+                  <Mail className="text-primary h-6 w-6" />
                 </div>
-                <div className="flex-1">
-                  <CardTitle className="mb-2 text-sm uppercase">[1] CHECK YOUR EMAIL</CardTitle>
-                  <CardDescription className="text-sm">
-                    Confirmation email sent with download links and instructions. Check spam folder
-                    if not received within 5 minutes.
-                  </CardDescription>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="flex-1">
+                <h3 className="mb-2 text-sm font-semibold uppercase">[1] CHECK YOUR EMAIL</h3>
+                <p className="text-muted-foreground text-sm">
+                  Order confirmation sent from Polar.sh. Click the "Access my purchase" button to
+                  view your benefits. Check spam if not received within 5 minutes.
+                </p>
+              </div>
+            </div>
 
-            {/* Download */}
-            <Card className="bg-card/50">
-              <CardContent className="flex gap-4 p-6">
-                <div className="shrink-0">
-                  <Card className="w-fit border-primary/20 bg-primary/5">
-                    <CardContent className="p-4">
-                      <Download className="text-primary h-6 w-6" />
-                    </CardContent>
-                  </Card>
+            {/* Access Portal */}
+            <div className="flex gap-4">
+              <div className="shrink-0">
+                <div className="bg-primary/10 rounded-none p-4">
+                  <Github className="text-primary h-6 w-6" />
                 </div>
-                <div className="flex-1">
-                  <CardTitle className="mb-2 text-sm uppercase">[2] DOWNLOAD FABRK</CardTitle>
-                  <CardDescription className="text-sm">
-                    Use email link to download complete boilerplate (ZIP file). Extract and follow
-                    setup instructions in README.
-                  </CardDescription>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="flex-1">
+                <h3 className="mb-2 text-sm font-semibold uppercase">
+                  [2] ACCESS GITHUB REPOSITORY
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  In the customer portal, click "Go to THEFT-DEV/fabrk" under Benefit Grants.
+                  Access is instant - you'll be added as a collaborator immediately.
+                </p>
+              </div>
+            </div>
 
-            {/* Setup */}
-            <Card className="bg-card/50">
-              <CardContent className="flex gap-4 p-6">
-                <div className="shrink-0">
-                  <Card className="w-fit border-primary/20 bg-primary/5">
-                    <CardContent className="p-4">
-                      <Github className="text-primary h-6 w-6" />
-                    </CardContent>
-                  </Card>
+            {/* Clone & Build */}
+            <div className="flex gap-4">
+              <div className="shrink-0">
+                <div className="bg-primary/10 rounded-none p-4">
+                  <Download className="text-primary h-6 w-6" />
                 </div>
-                <div className="flex-1">
-                  <CardTitle className="mb-2 text-sm uppercase">[3] START BUILDING</CardTitle>
-                  <CardDescription className="text-sm">
-                    Run <code className="bg-muted rounded-none px-2 py-1 text-xs">npm install</code>{' '}
-                    and <code className="bg-muted rounded-none px-2 py-1 text-xs">npm run dev</code>{' '}
-                    to start. Documentation in{' '}
-                    <code className="bg-muted rounded-none px-2 py-1 text-xs">docs/</code> folder.
-                  </CardDescription>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="flex-1">
+                <h3 className="mb-2 text-sm font-semibold uppercase">[3] CLONE & BUILD</h3>
+                <p className="text-muted-foreground text-sm">
+                  Clone the repository, run{' '}
+                  <code className="bg-muted rounded-none px-2 py-1 text-xs">npm install</code> and{' '}
+                  <code className="bg-muted rounded-none px-2 py-1 text-xs">npm run dev</code>.
+                  Complete setup guide in{' '}
+                  <code className="bg-muted rounded-none px-2 py-1 text-xs">README.md</code>.
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
         {/* Need Help */}
         <Card className="mb-8 bg-muted/50">
-          <CardHeader>
-            <CardTitle className="text-sm uppercase">[NEED HELP?]</CardTitle>
-            <CardDescription className="text-sm">
-              Check documentation in download or reach out with questions.
-            </CardDescription>
-          </CardHeader>
+          <CardHeader code="0x02" title="NEED HELP?" />
           <CardContent>
-            <div className="flex gap-4">
+            <p className="text-muted-foreground mb-4 text-center text-sm">
+              Check documentation in download or reach out with questions.
+            </p>
+            <div className="flex justify-center gap-4">
               <Button asChild variant="outline" size="sm" className="uppercase">
                 <Link href="mailto:support@fabrek.dev">&gt; EMAIL SUPPORT</Link>
               </Button>
