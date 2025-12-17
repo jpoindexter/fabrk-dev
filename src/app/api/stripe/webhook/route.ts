@@ -118,6 +118,7 @@ import { isWebhookEventProcessed, markWebhookEventProcessed } from '@/lib/stripe
 import * as paymentHandlers from './handlers/payment';
 import * as subscriptionHandlers from './handlers/subscription';
 import * as checkoutHandlers from './handlers/checkout';
+import { guardStripeRoute } from '@/lib/api/route-guards';
 
 const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || 'sk_test_placeholder';
 const stripe = new Stripe(STRIPE_KEY, {
@@ -125,6 +126,10 @@ const stripe = new Stripe(STRIPE_KEY, {
 });
 
 export async function POST(req: Request) {
+  // Guard: Return 404 if Stripe not configured (marketing site uses Polar instead)
+  const guard = guardStripeRoute();
+  if (guard) return guard;
+
   const body = await req.text();
   const headersList = await headers();
   const signature = headersList.get('Stripe-Signature') as string;

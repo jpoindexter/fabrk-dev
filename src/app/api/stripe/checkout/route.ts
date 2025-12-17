@@ -133,8 +133,13 @@ import {
 } from '@/lib/stripe/idempotency';
 import config from '@/config/app';
 import { NextRequest, NextResponse } from 'next/server';
+import { guardStripeRoute } from '@/lib/api/route-guards';
 
 async function checkoutHandler(req: NextRequest) {
+  // Guard: Return 404 if Stripe not configured (marketing site uses Polar instead)
+  const guard = guardStripeRoute();
+  if (guard) return guard;
+
   try {
     const session = await auth();
     const body = await req.json();

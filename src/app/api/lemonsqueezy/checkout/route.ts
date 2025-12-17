@@ -3,12 +3,17 @@ import { auth } from '@/lib/auth';
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { createLemonSqueezyCheckout, getVariantIdForTier } from '@/lib/lemonsqueezy';
 import { logger } from '@/lib/logger';
+import { guardLemonsqueezyRoute } from '@/lib/api/route-guards';
 
 /**
  * POST /api/lemonsqueezy/checkout
  * Create a Lemon Squeezy checkout session
  */
 export async function POST(req: NextRequest) {
+  // Guard: Return 404 if Lemonsqueezy not configured (marketing site uses Polar instead)
+  const guard = guardLemonsqueezyRoute();
+  if (guard) return guard;
+
   try {
     // Rate limit
     const identifier = getClientIdentifier(req);

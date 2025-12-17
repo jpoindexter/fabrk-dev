@@ -8,12 +8,17 @@ import {
   type LemonSqueezyWebhookPayload,
 } from '@/lib/lemonsqueezy';
 import { logger } from '@/lib/logger';
+import { guardLemonsqueezyRoute } from '@/lib/api/route-guards';
 
 /**
  * POST /api/lemonsqueezy/webhook
  * Handle Lemon Squeezy webhook events
  */
 export async function POST(req: NextRequest) {
+  // Guard: Return 404 if Lemonsqueezy not configured (marketing site uses Polar instead)
+  const guard = guardLemonsqueezyRoute();
+  if (guard) return guard;
+
   try {
     // Get raw body for signature verification
     const rawBody = await req.text();
