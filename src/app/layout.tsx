@@ -120,8 +120,6 @@ export const metadata: Metadata = {
     title: 'Fabrk - Build Production Apps at AI Speed',
     description: '169 production-ready components with automated quality enforcement',
     images: ['/og-image.png'],
-    creator: '@fabrk',
-    site: '@fabrk',
   },
   robots: {
     index: true,

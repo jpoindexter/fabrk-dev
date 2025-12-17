@@ -341,7 +341,7 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 
 1. **Start small:** Read QUICK-START.md, get it running locally, explore components
 2. **Don't over-customize:** Ship with defaults first, iterate based on feedback
-3. **Join Discord:** Get help from other builders
+3. **Email for help:** support@fabrek.dev
 4. **Launch fast:** Aim for 1-2 weeks from start to launch
 
 ### Experienced Developers
@@ -370,9 +370,9 @@ Component usage | [COMPONENT-SHOWCASE.md](./COMPONENT-SHOWCASE.md)
 Deployment issues | [DEPLOYMENT.md](./DEPLOYMENT.md), [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 Security concerns | [SECURITY-BEST-PRACTICES.md](./SECURITY-BEST-PRACTICES.md)
 Growth strategy | [GROWTH-TACTICS.md](./GROWTH-TACTICS.md)
-General questions | Discord or support@fabrek.dev
+General questions | support@fabrek.dev
 
-**Response time:** <24 hours for email, real-time on Discord
+**Response time:** 24-48 hours for email
 
 ---
 

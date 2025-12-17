@@ -173,9 +173,6 @@ export function generateSubscriptionUpdateHTML({
                 </p>
                 <table cellpadding="0" cellspacing="0">
                   <tr>
-                    <td style="padding-right: 20px;">
-                      <a href="https://discord.gg/fabrk" style="color: #007AFF; text-decoration: none; font-size: 14px;">💬 Discord</a>
-                    </td>
                     <td>
                       <a href="mailto:support@fabrek.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email Support</a>
                     </td>

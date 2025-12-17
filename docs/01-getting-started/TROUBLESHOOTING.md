@@ -985,7 +985,7 @@ If you've tried the solutions above and still have issues:
 - `docs/API-REFERENCE.md`
 - `docs/CLAUDE.md` (architecture reference)
 
-### 2. Search Discord
+### 2. Search email
 
 - Search for your error message
 - Check #help channel

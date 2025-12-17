@@ -1129,7 +1129,6 @@ npm install lucide-react
 
 - **Email:** support@fabrek.dev
 - **GitHub Issues:** https://github.com/THEFT-DEV/fabrk/issues
-- **Discord:** Coming soon
 
 When reporting issues, include:
 1. Error message (full stack trace)
@@ -1153,11 +1152,6 @@ Contributions welcome! Please:
 2. Create a feature branch
 3. Make changes (ensure pre-commit hooks pass)
 4. Submit a pull request
-
-### Community
-
-- **Discord**: Coming soon
-- **Twitter**: [@fabrk_dev](https://twitter.com/fabrk_dev)
 
 ---
 

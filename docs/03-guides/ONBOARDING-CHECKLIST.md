@@ -539,7 +539,7 @@ npm start
 | **TypeScript errors** | Run `npm run type-check`, review errors |
 | **Tests failing** | Run `npm run test:watch`, check individual files |
 
-For more help: See **docs/TROUBLESHOOTING.md** or ask in Discord
+For more help: See **docs/TROUBLESHOOTING.md** or ask in email support
 
 ---
 
@@ -582,4 +582,4 @@ Congratulations! 🎉 Your SaaS is ready to launch!
 
 **You've got this!** 🚀
 
-**Questions?** → support@fabrek.dev or Discord community
+**Questions?** → support@fabrek.dev or email support community

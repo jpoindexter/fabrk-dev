@@ -830,7 +830,7 @@ npm run email:dev         # Email worker with watch mode
 - **Example Apps:** 3 demo projects included
 
 ### Community
-- **Discord Server** - 500+ developers
+- **Email Support** - 500+ developers
 - **Twitter** - @fabrek.dev
 - **Newsletter** - Weekly tips and updates
 - **Blog** - Best practices and tutorials
@@ -849,7 +849,7 @@ A: Yes! One-time payment, lifetime updates. No recurring fees.
 A: Yes with Extended License ($499). Contact for details.
 
 **Q: What if I need help?**
-A: Discord community + email support (48-hour response). Priority support available.
+A: email support + email support (48-hour response). Priority support available.
 
 **Q: Is there a refund policy?**
 A: 30-day money-back guarantee. No questions asked.

@@ -927,6 +927,6 @@ UPSTASH_REDIS_REST_TOKEN="..."
 
 ---
 
-**Questions? Join the Fabrk Discord or email support@fabrek.dev.**
+**Questions? Email support@fabrek.dev.**
 
 **API Reference complete. Happy building! 🚀**

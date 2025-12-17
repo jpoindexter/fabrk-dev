@@ -59,4 +59,4 @@ Any other information that might be helpful.
 
 ---
 
-**Note:** For faster support, consider joining our [Discord community](https://discord.gg/fabrk) where you can get real-time help from other developers.
+**Note:** For faster support, email us at support@fabrek.dev.

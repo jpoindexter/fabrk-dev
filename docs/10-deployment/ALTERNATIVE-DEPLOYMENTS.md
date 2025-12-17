@@ -932,4 +932,4 @@ Verify all functionality works on new platform.
 
 ---
 
-**Questions? Join the Fabrk Discord or email support@fabrek.dev.**
+**Questions? Email support@fabrek.dev.**

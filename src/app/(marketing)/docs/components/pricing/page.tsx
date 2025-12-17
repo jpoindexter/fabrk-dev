@@ -103,7 +103,7 @@ function PricingCardDemo() {
         </li>
         <li className="flex items-center gap-2 font-mono text-xs">
           <Check className="text-success h-3 w-3" />
-          Discord community
+          Email support
         </li>
         <li className="flex items-center gap-2 font-mono text-xs">
           <Check className="text-success h-3 w-3" />

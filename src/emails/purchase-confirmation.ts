@@ -100,7 +100,7 @@ export function generatePurchaseConfirmationHTML({
                 <ol style="margin: 0; padding-left: 20px; color: #525252; font-size: 14px; line-height: 1.8;">
                   <li>Download the boilerplate using the button above</li>
                   <li>Follow the Quick Start guide in the README</li>
-                  <li>Join our Discord community for support</li>
+                  <li>Email support@fabrek.dev for help</li>
                   <li>Start building your SaaS!</li>
                 </ol>
               </div>
@@ -129,11 +129,8 @@ export function generatePurchaseConfirmationHTML({
                     <td style="padding-right: 20px;">
                       <a href="https://docs.fabrk.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">📚 Documentation</a>
                     </td>
-                    <td style="padding-right: 20px;">
-                      <a href="https://discord.gg/fabrk" style="color: #007AFF; text-decoration: none; font-size: 14px;">💬 Discord</a>
-                    </td>
                     <td>
-                      <a href="mailto:support@fabrek.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email</a>
+                      <a href="mailto:support@fabrek.dev" style="color: #007AFF; text-decoration: none; font-size: 14px;">✉️ Email Support</a>
                     </td>
                   </tr>
                 </table>
@@ -148,7 +145,7 @@ export function generatePurchaseConfirmationHTML({
                 Thank you for choosing Fabrk!
               </p>
               <p style="margin: 0; color: #737373; font-size: 12px; line-height: 1.5;">
-                This is an automated confirmation email. For support, please contact us at support@fabrek.dev or join our Discord community.
+                This is an automated confirmation email. For support, please contact us at support@fabrek.dev.
               </p>
               <p style="margin: 16px 0 0 0; color: #737373; font-size: 12px;">
                 © ${new Date().getFullYear()} Fabrk. All rights reserved.

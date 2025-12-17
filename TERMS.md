@@ -17,7 +17,7 @@ This document provides a summary of our terms. For the full, legally binding Ter
 ### What's Included
 - Full source code access
 - Lifetime updates
-- Discord community support
+- Email support
 - Documentation and examples
 
 ### Usage Rights
@@ -39,8 +39,7 @@ You CANNOT:
 - Refund requests via email
 
 ### Support
-- Community Discord for all tiers
-- Email support for Team+
+- Email support for all tiers
 - Priority support for Enterprise
 
 ### Limitation of Liability

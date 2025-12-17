@@ -709,4 +709,4 @@ npm run lint
 
 **Testing gives you confidence to ship fast. Start with critical paths, add coverage over time. 🧪**
 
-**Questions? Join the Fabrk Discord or email support@fabrek.dev.**
+**Questions? Email support@fabrek.dev.**

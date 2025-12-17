@@ -461,7 +461,7 @@ When adding features that need explanation:
 
 - **GitHub Issues** - Bug reports, feature requests
 - **GitHub Discussions** - General questions, ideas
-- **Discord** - Real-time chat, community support
+- **Email** - support@fabrek.dev
 - **Email** - support@fabrek.dev for private matters
 
 ### Getting Help

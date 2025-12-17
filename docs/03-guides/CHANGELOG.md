@@ -232,7 +232,7 @@ npm run stripe:listen    # Listen to Stripe webhooks locally
 - Lifetime updates for v1.x
 - Unlimited projects (personal + commercial)
 - No attribution required
-- Discord community + email support
+- Email support (support@fabrek.dev)
 - 30-day money-back guarantee
 - Comprehensive documentation
 

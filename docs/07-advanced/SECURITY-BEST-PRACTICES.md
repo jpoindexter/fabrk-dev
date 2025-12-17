@@ -953,4 +953,4 @@ npm install package-name@latest
 
 **Security is not a one-time task. It's an ongoing practice. Stay vigilant. 🔒**
 
-**Questions? Join the Fabrk Discord or email support@fabrek.dev.**
+**Questions? Email support@fabrek.dev.**
