@@ -98,6 +98,7 @@ src/types/
 src/data/changelog.ts
 src/data/component-counts.json
 src/data/themes.ts
+src/data/examples/
 # EXCLUDED: src/data/landing/ - Your Fabrk pricing, benefits, FAQs, testimonials
 
 # Database & Assets
