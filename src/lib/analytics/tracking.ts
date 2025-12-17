@@ -13,7 +13,7 @@
 
 import { logger } from '@/lib/logger';
 
-export type AnalyticsProvider = 'ga4' | 'plausible' | 'posthog' | 'mixpanel' | 'custom';
+export type AnalyticsProvider = 'ga4' | 'plausible' | 'mixpanel' | 'custom';
 
 // Event definitions (type-safe)
 export type AnalyticsEvent =
@@ -140,9 +140,6 @@ export function trackEvent<T extends AnalyticsEvent>(event: T['name'], props?: T
       case 'plausible':
         trackPlausibleEvent(event, props);
         break;
-      case 'posthog':
-        trackPostHogEvent(event, props);
-        break;
       case 'custom':
         trackCustomEvent(event, props);
         break;
@@ -174,11 +171,6 @@ export function identifyUser(userId: string, properties?: UserProperties) {
           window.gtag('set', 'user_properties', properties);
         }
         break;
-      case 'posthog':
-        if (typeof window !== 'undefined' && window.posthog) {
-          window.posthog.identify(userId, properties);
-        }
-        break;
     }
   });
 }
@@ -201,16 +193,6 @@ export function trackRevenue(
   // GA4 purchase event
   if (config.providers.includes('ga4') && typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'purchase', {
-      transaction_id: transactionId,
-      value: amount,
-      currency,
-      ...metadata,
-    });
-  }
-
-  // PostHog revenue tracking
-  if (config.providers.includes('posthog') && typeof window !== 'undefined' && window.posthog) {
-    window.posthog.capture('purchase', {
       transaction_id: transactionId,
       value: amount,
       currency,
@@ -283,12 +265,6 @@ function trackPlausibleEvent(event: string, props?: Record<string, unknown>) {
   }
 }
 
-function trackPostHogEvent(event: string, props?: Record<string, unknown>) {
-  if (typeof window !== 'undefined' && window.posthog) {
-    window.posthog.capture(event, props);
-  }
-}
-
 function trackCustomEvent(event: string, props?: Record<string, unknown>) {
   // Send to custom endpoint
   if (typeof window !== 'undefined') {
@@ -307,14 +283,6 @@ function trackCustomEvent(event: string, props?: Record<string, unknown>) {
 }
 
 /**
- * PostHog client interface
- */
-interface PostHogClient {
-  identify: (userId: string, properties?: Record<string, unknown>) => void;
-  capture: (event: string, properties?: Record<string, unknown>) => void;
-}
-
-/**
  * Plausible options interface
  */
 interface PlausibleOptions {
@@ -330,7 +298,6 @@ declare global {
       params?: Record<string, unknown>
     ) => void;
     plausible?: (event: string, options?: PlausibleOptions) => void;
-    posthog?: PostHogClient;
   }
 }
 

@@ -34,8 +34,8 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
   return <>{children}</>;
 }
 
-function getEnabledProviders(): ('ga4' | 'plausible' | 'posthog' | 'custom')[] {
-  const providers: ('ga4' | 'plausible' | 'posthog' | 'custom')[] = [];
+function getEnabledProviders(): ('ga4' | 'plausible' | 'custom')[] {
+  const providers: ('ga4' | 'plausible' | 'custom')[] = [];
 
   if (env.client.NEXT_PUBLIC_GA4_MEASUREMENT_ID) {
     providers.push('ga4');
@@ -43,10 +43,6 @@ function getEnabledProviders(): ('ga4' | 'plausible' | 'posthog' | 'custom')[] {
 
   if (env.client.NEXT_PUBLIC_PLAUSIBLE_DOMAIN) {
     providers.push('plausible');
-  }
-
-  if (env.client.NEXT_PUBLIC_POSTHOG_KEY) {
-    providers.push('posthog');
   }
 
   // Always enable custom analytics endpoint

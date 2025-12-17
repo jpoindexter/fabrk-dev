@@ -8,7 +8,6 @@ import { auth } from '@/lib/auth';
 import { withCsrfProtection } from '@/lib/security/csrf';
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
 import { createOrganization } from '@/lib/teams/organizations';
-import { trackOrgCreated } from '@/lib/analytics/events';
 import { logger } from '@/lib/logger';
 import { z } from 'zod';
 
@@ -59,10 +58,7 @@ export const POST = withCsrfProtection(async (req: NextRequest) => {
       ownerId: session.user.id,
     });
 
-    // Track in analytics
-    await trackOrgCreated(session.user.id, organization.id, organization.name, {
-      slug: organization.slug,
-    });
+    // TODO: Add analytics tracking if needed
 
     return NextResponse.json({
       success: true,

@@ -18,8 +18,6 @@ import { cn } from '@/lib/utils';
  * - Color themes: Light and Dark
  * - Terminal aesthetic (sharp edges, monospace font) is enforced globally
  * - Persisted to localStorage with SSR flash prevention
- *
- * PostHog analytics initialized via instrumentation-client.ts (Next.js 15+)
  */
 
 interface ProvidersProps {

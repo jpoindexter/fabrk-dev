@@ -346,29 +346,6 @@ function validateOptional(): ValidationError[] {
     });
   }
 
-  // PostHog validation
-  if (
-    isPresent(process.env.NEXT_PUBLIC_POSTHOG_KEY) &&
-    !hasPrefix(process.env.NEXT_PUBLIC_POSTHOG_KEY, 'phc_')
-  ) {
-    errors.push({
-      variable: 'NEXT_PUBLIC_POSTHOG_KEY',
-      message: 'Must start with phc_',
-      category: 'Analytics (PostHog)',
-    });
-  }
-
-  if (
-    isPresent(process.env.NEXT_PUBLIC_POSTHOG_HOST) &&
-    !isValidUrl(process.env.NEXT_PUBLIC_POSTHOG_HOST)
-  ) {
-    errors.push({
-      variable: 'NEXT_PUBLIC_POSTHOG_HOST',
-      message: 'Must be a valid URL',
-      category: 'Analytics (PostHog)',
-    });
-  }
-
   // Sentry validation
   if (
     isPresent(process.env.NEXT_PUBLIC_SENTRY_DSN) &&
@@ -545,7 +522,6 @@ export function getFeatureSummary(): {
     'Google OAuth':
       isPresent(process.env.GOOGLE_CLIENT_ID) && isPresent(process.env.GOOGLE_CLIENT_SECRET),
     'Real-Time (Pusher)': isPresent(process.env.NEXT_PUBLIC_PUSHER_KEY),
-    'Analytics (PostHog)': isPresent(process.env.NEXT_PUBLIC_POSTHOG_KEY),
     'Search (Algolia)': isPresent(process.env.NEXT_PUBLIC_ALGOLIA_APP_ID),
     'Cache (Redis)': isPresent(process.env.UPSTASH_REDIS_REST_URL),
     'File Storage (S3)': isPresent(process.env.S3_BUCKET_NAME),
