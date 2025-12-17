@@ -861,10 +861,6 @@ A: Yes, that's the primary use case. Sell subscriptions, charge customers, keep 
 
 A: Correct. €299 × 5 seats. Contact support@fabrek.dev for volume pricing (10+ seats).
 
-**Q: Can I see what's included before purchasing?**
-
-A: Yes. Browse the full [documentation](docs/README.md), view the [component demos](/components), and check the [feature inventory](docs/06-features/FEATURES-INVENTORY.md). Everything is documented upfront.
-
 ### Features
 
 **Q: Does this include a database schema for [X]?**
