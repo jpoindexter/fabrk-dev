@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { CheckCircle, Download, Mail, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { PurchaseTracker } from '@/components/analytics/purchase-tracker';
 import Link from 'next/link';
 
@@ -19,97 +20,117 @@ export default function PurchaseSuccessPage() {
       <div className="w-full max-w-2xl">
         {/* Success Icon */}
         <div className="mb-8 flex justify-center">
-          <div className="bg-success/10 rounded-none p-6">
-            <CheckCircle className="text-success h-16 w-16" />
-          </div>
+          <Card className="w-fit border-success/20 bg-success/5">
+            <CardContent className="p-6">
+              <CheckCircle className="text-success h-16 w-16" />
+            </CardContent>
+          </Card>
         </div>
 
         {/* Heading */}
         <div className="mb-8 text-center">
-          <h1 className="mb-4 text-4xl font-semibold">WELCOME TO FABRK</h1>
-          <p className="text-muted-foreground text-xl">
-            Your purchase was successful. Check your email for download instructions.
+          <h1 className="mb-4 text-4xl font-semibold uppercase tracking-tight">
+            [SUCCESS] WELCOME TO FABRK
+          </h1>
+          <p className="text-muted-foreground text-base">
+            Purchase confirmed. Check your email for download instructions.
           </p>
         </div>
 
         {/* What's Next */}
-        <div className="bg-card border-border mb-8 rounded-none border p-8">
-          <h2 className="mb-6 text-2xl font-semibold tracking-tight">What's Next?</h2>
-
-          <div className="space-y-6">
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="uppercase">[NEXT STEPS]</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
             {/* Email */}
-            <div className="flex gap-4">
-              <div className="shrink-0">
-                <div className="bg-primary/10 rounded-none p-4">
-                  <Mail className="text-primary h-6 w-6" />
+            <Card className="bg-card/50">
+              <CardContent className="flex gap-4 p-6">
+                <div className="shrink-0">
+                  <Card className="w-fit border-primary/20 bg-primary/5">
+                    <CardContent className="p-4">
+                      <Mail className="text-primary h-6 w-6" />
+                    </CardContent>
+                  </Card>
                 </div>
-              </div>
-              <div>
-                <h3 className="mb-1 font-semibold">1. Check Your Email</h3>
-                <p className="text-muted-foreground text-sm">
-                  We've sent you a confirmation email with download links and instructions. Check
-                  your spam folder if you don't see it within 5 minutes.
-                </p>
-              </div>
-            </div>
+                <div className="flex-1">
+                  <CardTitle className="mb-2 text-sm uppercase">[1] CHECK YOUR EMAIL</CardTitle>
+                  <CardDescription className="text-sm">
+                    Confirmation email sent with download links and instructions. Check spam folder
+                    if not received within 5 minutes.
+                  </CardDescription>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Download */}
-            <div className="flex gap-4">
-              <div className="shrink-0">
-                <div className="bg-primary/10 rounded-none p-4">
-                  <Download className="text-primary h-6 w-6" />
+            <Card className="bg-card/50">
+              <CardContent className="flex gap-4 p-6">
+                <div className="shrink-0">
+                  <Card className="w-fit border-primary/20 bg-primary/5">
+                    <CardContent className="p-4">
+                      <Download className="text-primary h-6 w-6" />
+                    </CardContent>
+                  </Card>
                 </div>
-              </div>
-              <div>
-                <h3 className="mb-1 font-semibold">2. Download Fabrk</h3>
-                <p className="text-muted-foreground text-sm">
-                  Use the download link in your email to get the complete Fabrk boilerplate (ZIP
-                  file). Extract it and follow the setup instructions in the README.
-                </p>
-              </div>
-            </div>
+                <div className="flex-1">
+                  <CardTitle className="mb-2 text-sm uppercase">[2] DOWNLOAD FABRK</CardTitle>
+                  <CardDescription className="text-sm">
+                    Use email link to download complete boilerplate (ZIP file). Extract and follow
+                    setup instructions in README.
+                  </CardDescription>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Setup */}
-            <div className="flex gap-4">
-              <div className="shrink-0">
-                <div className="bg-primary/10 rounded-none p-4">
-                  <Github className="text-primary h-6 w-6" />
+            <Card className="bg-card/50">
+              <CardContent className="flex gap-4 p-6">
+                <div className="shrink-0">
+                  <Card className="w-fit border-primary/20 bg-primary/5">
+                    <CardContent className="p-4">
+                      <Github className="text-primary h-6 w-6" />
+                    </CardContent>
+                  </Card>
                 </div>
-              </div>
-              <div>
-                <h3 className="mb-1 font-semibold">3. Start Building</h3>
-                <p className="text-muted-foreground text-sm">
-                  Run <code className="bg-muted rounded px-2 py-1 text-xs">npm install</code> and{' '}
-                  <code className="bg-muted rounded px-2 py-1 text-xs">npm run dev</code> to get
-                  started. Full documentation is included in the{' '}
-                  <code className="bg-muted rounded px-2 py-1 text-xs">docs/</code> folder.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div className="flex-1">
+                  <CardTitle className="mb-2 text-sm uppercase">[3] START BUILDING</CardTitle>
+                  <CardDescription className="text-sm">
+                    Run <code className="bg-muted rounded-none px-2 py-1 text-xs">npm install</code>{' '}
+                    and <code className="bg-muted rounded-none px-2 py-1 text-xs">npm run dev</code>{' '}
+                    to start. Documentation in{' '}
+                    <code className="bg-muted rounded-none px-2 py-1 text-xs">docs/</code> folder.
+                  </CardDescription>
+                </div>
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
 
         {/* Need Help */}
-        <div className="bg-muted/50 mb-8 rounded-none p-6">
-          <h3 className="mb-2 font-semibold">Need Help?</h3>
-          <p className="text-muted-foreground mb-4 text-sm">
-            Check the comprehensive documentation included in your download, or reach out if you
-            have any questions.
-          </p>
-          <div className="flex gap-4">
-            <Button asChild variant="outline" size="sm">
-              <Link href="mailto:support@fabrek.dev">Email Support</Link>
-            </Button>
-            <Button asChild variant="outline" size="sm">
-              <Link href="/#faq">View FAQ</Link>
-            </Button>
-          </div>
-        </div>
+        <Card className="mb-8 bg-muted/50">
+          <CardHeader>
+            <CardTitle className="text-sm uppercase">[NEED HELP?]</CardTitle>
+            <CardDescription className="text-sm">
+              Check documentation in download or reach out with questions.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex gap-4">
+              <Button asChild variant="outline" size="sm" className="uppercase">
+                <Link href="mailto:support@fabrek.dev">&gt; EMAIL SUPPORT</Link>
+              </Button>
+              <Button asChild variant="outline" size="sm" className="uppercase">
+                <Link href="/#faq">&gt; VIEW FAQ</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Back to Home */}
         <div className="text-center">
-          <Button asChild variant="ghost">
-            <Link href="/">← Back to Home</Link>
+          <Button asChild variant="ghost" className="uppercase">
+            <Link href="/">&gt; BACK TO HOME</Link>
           </Button>
         </div>
       </div>

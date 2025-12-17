@@ -9,14 +9,16 @@
  * Handles product sales and checkout for Fabrk
  */
 
-import { Polar } from '@polar-sh/sdk';
+import { Polar, ServerSandbox } from '@polar-sh/sdk';
 
 // Check if Polar is configured
 export const isPolarConfigured = () => !!process.env.POLAR_ACCESS_TOKEN;
 
 // Initialize Polar client (only if configured)
+// Use sandbox server in development, production server in production
 export const polar = new Polar({
   accessToken: process.env.POLAR_ACCESS_TOKEN || 'not-configured',
+  server: process.env.NODE_ENV === 'development' ? ServerSandbox : undefined,
 });
 
 // Product configuration
