@@ -861,9 +861,9 @@ A: Yes, that's the primary use case. Sell subscriptions, charge customers, keep 
 
 A: Correct. €299 × 5 seats. Contact support@fabrek.dev for volume pricing (10+ seats).
 
-**Q: What if I just want to try it first?**
+**Q: Can I see what's included before purchasing?**
 
-A: Clone the repo, run it locally, test everything. No time limits. Pay when you're ready to deploy.
+A: Yes. Browse the full [documentation](docs/README.md), view the [component demos](/components), and check the [feature inventory](docs/06-features/FEATURES-INVENTORY.md). Everything is documented upfront.
 
 ### Features
 
