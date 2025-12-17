@@ -123,15 +123,22 @@ function validateRequired(): ValidationError[] {
     });
   }
 
-  // Stripe
-  if (!isPresent(process.env.STRIPE_SECRET_KEY)) {
+  // Payment Provider (at least one required)
+  const hasStripe = isPresent(process.env.STRIPE_SECRET_KEY);
+  const hasPolar = isPresent(process.env.POLAR_ACCESS_TOKEN);
+  const hasLemonsqueezy = isPresent(process.env.LEMONSQUEEZY_API_KEY);
+
+  if (!hasStripe && !hasPolar && !hasLemonsqueezy) {
     errors.push({
-      variable: 'STRIPE_SECRET_KEY',
+      variable: 'PAYMENT_PROVIDER',
       message:
-        'Stripe secret key is required. Get it from: https://dashboard.stripe.com/test/apikeys',
+        'At least one payment provider is required: STRIPE_SECRET_KEY, POLAR_ACCESS_TOKEN, or LEMONSQUEEZY_API_KEY',
       category: 'Payment',
     });
-  } else if (!hasPrefix(process.env.STRIPE_SECRET_KEY, 'sk_')) {
+  }
+
+  // Stripe validation (optional - only if using Stripe)
+  if (hasStripe && !hasPrefix(process.env.STRIPE_SECRET_KEY, 'sk_')) {
     errors.push({
       variable: 'STRIPE_SECRET_KEY',
       message: 'Must start with sk_test_ or sk_live_',
@@ -139,14 +146,7 @@ function validateRequired(): ValidationError[] {
     });
   }
 
-  if (!isPresent(process.env.STRIPE_WEBHOOK_SECRET)) {
-    errors.push({
-      variable: 'STRIPE_WEBHOOK_SECRET',
-      message:
-        'Stripe webhook secret is required. Get it from: stripe listen --forward-to localhost:3000/api/webhooks/stripe',
-      category: 'Payment',
-    });
-  } else if (!hasPrefix(process.env.STRIPE_WEBHOOK_SECRET, 'whsec_')) {
+  if (process.env.STRIPE_WEBHOOK_SECRET && !hasPrefix(process.env.STRIPE_WEBHOOK_SECRET, 'whsec_')) {
     errors.push({
       variable: 'STRIPE_WEBHOOK_SECRET',
       message: 'Must start with whsec_',
@@ -154,14 +154,7 @@ function validateRequired(): ValidationError[] {
     });
   }
 
-  if (!isPresent(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)) {
-    errors.push({
-      variable: 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY',
-      message:
-        'Stripe publishable key is required. Get it from: https://dashboard.stripe.com/test/apikeys',
-      category: 'Payment',
-    });
-  } else if (!hasPrefix(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, 'pk_')) {
+  if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY && !hasPrefix(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, 'pk_')) {
     errors.push({
       variable: 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY',
       message: 'Must start with pk_test_ or pk_live_',
@@ -169,14 +162,17 @@ function validateRequired(): ValidationError[] {
     });
   }
 
-  // Email
-  if (!isPresent(process.env.RESEND_API_KEY)) {
+  // Polar validation (optional - only if using Polar)
+  if (hasPolar && !hasPrefix(process.env.POLAR_ACCESS_TOKEN, 'polar_')) {
     errors.push({
-      variable: 'RESEND_API_KEY',
-      message: 'Resend API key is required. Get it from: https://resend.com/api-keys',
-      category: 'Email',
+      variable: 'POLAR_ACCESS_TOKEN',
+      message: 'Must start with polar_',
+      category: 'Payment',
     });
-  } else if (!hasPrefix(process.env.RESEND_API_KEY, 're_')) {
+  }
+
+  // Email is optional (system works without emails, just logs warnings)
+  if (process.env.RESEND_API_KEY && !hasPrefix(process.env.RESEND_API_KEY, 're_')) {
     errors.push({
       variable: 'RESEND_API_KEY',
       message: 'Must start with re_',
@@ -513,7 +509,7 @@ export function validateEnvWithWarnings(): void {
 
   if (!result.valid) {
     // Separate critical errors from warnings
-    const criticalCategories = ['Database', 'Authentication', 'Payment', 'Email'];
+    const criticalCategories = ['Database', 'Authentication', 'Payment'];
     const criticalErrors = result.errors.filter((e) => criticalCategories.includes(e.category));
     const warnings = result.errors.filter((e) => !criticalCategories.includes(e.category));
 
