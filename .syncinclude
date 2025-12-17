@@ -84,32 +84,14 @@ src/app/layout.tsx
 src/app/not-found.tsx
 src/app/error.tsx
 
-# Components (Core UI + Platform - NO Landing/Marketing)
-src/components/ui/
-src/components/dashboard/
-src/components/docs/
-src/components/forms/
-src/components/analytics/
-src/components/auth/
-src/components/billing/
-src/components/email/
-src/components/navigation/
-src/components/security/
-src/components/seo/
-src/components/settings/
-src/components/templates/
-src/components/theme/
-src/components/shared/
-src/components/providers.tsx
-src/components/cookie-consent.tsx
+# Components (ALL components - they're templates/boilerplate)
+src/components/
 
-# Core Libraries (NO Landing Data)
+# Core Libraries & Data (example data they can customize)
 src/lib/
 src/design-system/
 src/config/
-src/data/component-counts.json
-src/data/changelog.ts
-src/data/themes.ts
+src/data/
 src/styles/
 src/types/
 
