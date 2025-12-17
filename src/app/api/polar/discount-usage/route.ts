@@ -19,6 +19,17 @@ export async function GET() {
     });
   }
 
+  // Check if discount is configured
+  if (!FABRK_DISCOUNT_ID) {
+    // No discount configured - return fallback
+    return NextResponse.json({
+      used: 0,
+      total: 100,
+      remaining: 100,
+      _error: true,
+    });
+  }
+
   try {
     // Get discount details from Polar
     const discount = await polar.discounts.get({

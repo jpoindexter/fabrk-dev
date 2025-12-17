@@ -21,7 +21,8 @@ export const polar = new Polar({
 
 // Product configuration
 export const FABRK_PRODUCT_ID = process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID;
-export const FABRK_DISCOUNT_ID = undefined; // No discount for testing
+// Dynamic discount ID from environment (optional)
+export const FABRK_DISCOUNT_ID = process.env.NEXT_PUBLIC_POLAR_DISCOUNT_ID;
 
 /**
  * Create a checkout session for Fabrk purchase
