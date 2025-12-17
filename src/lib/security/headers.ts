@@ -40,6 +40,7 @@ export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string 
       'https://cdn.jsdelivr.net',
       'https://js.stripe.com',
       'https://va.vercel-scripts.com',
+      'https://us-assets.i.posthog.com', // PostHog (optional)
       'https://www.googletagmanager.com',
       'https://www.google-analytics.com',
     ],
@@ -58,6 +59,9 @@ export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string 
       "'self'",
       'https://api.stripe.com',
       'https://vitals.vercel-insights.com',
+      'https://api.posthog.com', // PostHog (optional)
+      'https://us.i.posthog.com', // PostHog (optional)
+      'https://us-assets.i.posthog.com', // PostHog (optional)
       'https://www.google-analytics.com',
       'https://analytics.google.com',
       'https://www.googletagmanager.com',
