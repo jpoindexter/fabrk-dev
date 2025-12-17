@@ -11,8 +11,8 @@ This checklist will guide you through setting up your SaaS application from zero
 Before you start, gather these prerequisites:
 
 ### System Requirements
-- [ ] **Node.js 18+** installed (check: `node --version`)
-- [ ] **npm 9+** installed (check: `npm --version`)
+- [ ] **Node.js 22+** installed (check: `node --version`)
+- [ ] **npm 10+** installed (check: `npm --version`)
 - [ ] **PostgreSQL 14+** available (local or cloud)
 - [ ] **Git** installed (check: `git --version`)
 - [ ] **VS Code or IDE** of choice (recommended)

@@ -33,7 +33,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
 
-**Requirements:** Node.js 20+ • PostgreSQL 15+ • npm 10+
+**Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 
 ### Dynamic Counts (Auto-Calculated)
 
