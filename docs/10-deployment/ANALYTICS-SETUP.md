@@ -224,6 +224,103 @@ View your analytics at: `https://plausible.io/fabrk.dev`
 
 ---
 
+## PostHog Analytics (Included in Fabrk)
+
+Fabrk includes optional PostHog integration for product analytics, feature flags, and session recordings. PostHog only initializes when configured - leave environment variables empty to disable.
+
+### 1. Sign Up (Optional)
+
+1. Go to [posthog.com](https://posthog.com/)
+2. Create free account (generous free tier)
+3. Create new project
+4. Copy API key (starts with `phc_`)
+
+### 2. Configure Environment Variables
+
+**In `.env.local` or Vercel:**
+
+```env
+# PostHog (Optional - leave empty to disable)
+NEXT_PUBLIC_POSTHOG_KEY=phc_your_key_here
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com  # Or https://app.posthog.com for EU
+```
+
+**If not set:** PostHog will not initialize. App works perfectly without analytics (graceful degradation).
+
+### 3. Verify Integration
+
+PostHog is already integrated in Fabrk:
+
+```typescript
+// src/lib/analytics/posthog-provider.tsx - Already configured
+// Automatically initializes if NEXT_PUBLIC_POSTHOG_KEY is present
+// Proxies through /ingest to bypass ad blockers (100% data capture)
+```
+
+**Test it:**
+```bash
+npm run dev
+# Visit http://localhost:3000
+# Open PostHog dashboard → Live Events
+# You should see your session (if key configured)
+```
+
+### 4. Track Custom Events
+
+**Client-side tracking:**
+
+```typescript
+import { trackEvent } from '@/lib/analytics/posthog-provider';
+
+// Safe tracking - no-op if PostHog not configured
+trackEvent('button_clicked', {
+  button_name: 'checkout',
+  page: 'pricing',
+});
+```
+
+**Server-side tracking:**
+
+```typescript
+import { trackUserSignup, trackOrgCreated } from '@/lib/analytics/events';
+
+// Safe helper functions with graceful degradation
+await trackUserSignup(userId, email, { provider: 'google' });
+await trackOrgCreated(userId, orgId, orgName);
+```
+
+### 5. PostHog Dashboard
+
+View your analytics at: `https://app.posthog.com`
+
+**Key Features:**
+- Event tracking and funnels
+- Session recordings (opt-in)
+- Feature flags for A/B testing
+- Cohort analysis
+- Retention tracking
+
+### 6. Privacy Settings
+
+PostHog is GDPR-compliant by default:
+- IP addresses anonymized
+- No persistent cookies (uses localStorage)
+- User data deletion supported
+- Self-hosting available
+
+**Disable session recordings** (if not needed):
+
+PostHog session recordings are disabled by default in Fabrk. To enable them, modify `posthog-provider.tsx`:
+
+```typescript
+posthog.init(key, {
+  // ...existing config
+  disable_session_recording: false, // Enable recordings
+});
+```
+
+---
+
 ## Custom Event Tracking
 
 ### Key Events to Track
@@ -601,9 +698,28 @@ Before launch, verify:
 
 ---
 
-## Recommended: Plausible for Fabrk
+## Recommended Analytics for Fabrk
 
-**Why Plausible over GA4 for indie hackers:**
+### PostHog (Built-in, Free Tier Available)
+
+**Why PostHog for SaaS products:**
+
+1. **Included in Fabrk** - Already integrated, optional initialization
+2. **All-in-one platform** - Analytics + Feature Flags + Session Replay + A/B Testing
+3. **Product analytics** - Funnels, cohorts, retention tracking
+4. **Self-hostable** - Own your data completely
+5. **Generous free tier** - 1M events/month free
+6. **No cookie banner needed** - GDPR compliant by default
+
+**When to use PostHog:**
+- Building a SaaS product (most Fabrk users)
+- Need feature flags and A/B testing
+- Want session replay for debugging
+- Privacy-focused product analytics
+
+### Plausible (Simple Alternative)
+
+**Why Plausible for indie hackers:**
 
 1. **No cookie banner** - GDPR compliant by default
 2. **Simpler** - Less overwhelming than GA4
@@ -612,11 +728,18 @@ Before launch, verify:
 5. **Great UX** - Beautiful, intuitive dashboard
 6. **€9/month** - Affordable for indie hackers
 
-**When to use GA4 instead:**
-- You need detailed funnel analysis
-- You're running Google Ads campaigns
-- You need advanced segmentation
-- You have a team that knows GA4 already
+**When to use Plausible:**
+- Content sites, blogs, marketing pages
+- Simple traffic tracking
+- No need for product analytics
+
+### GA4 (For Marketing Analytics)
+
+**When to use GA4:**
+- Running Google Ads campaigns
+- Need detailed funnel analysis
+- Advanced segmentation required
+- Team already knows GA4
 
 ---
 

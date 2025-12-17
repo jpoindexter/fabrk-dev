@@ -17,42 +17,44 @@ export default function PostHogIntegrationPage() {
       description="Add analytics and feature flags to track user behavior in templates."
       meta={{ time: '~10 minutes', level: 'Beginner' }}
       overview={{
-        text: 'Fabrk includes PostHog for analytics. Track events, user properties, and feature flags in your templates.',
+        text: 'Fabrk includes optional PostHog integration that activates only when configured. No setup required if you don\'t need analytics.',
         highlights: [
-          'Event tracking for user actions',
-          'User identification and properties',
-          'Feature flags for A/B testing',
-          'Session recordings (optional)',
+          'Optional initialization (graceful degradation)',
+          'Client-side event tracking with safe helpers',
+          'Server-side tracking for API routes',
+          'Automatic pageview tracking on route changes',
         ],
       }}
       steps={[
         {
           code: '0x01',
-          title: 'SETUP',
+          title: 'SETUP (OPTIONAL)',
           content: (
             <LibraryCodeBlock
               code={`# .env.local
-NEXT_PUBLIC_POSTHOG_KEY="phc_your_key"
-NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`}
+NEXT_PUBLIC_POSTHOG_KEY="phc_your_key"  # Optional
+NEXT_PUBLIC_POSTHOG_HOST="https://us.i.posthog.com"  # Optional
+
+# If not set, PostHog won't initialize (no errors)
+# App works perfectly without analytics`}
               language="bash"
-              maxHeight="80px"
+              maxHeight="120px"
             />
           ),
         },
         {
           code: '0x02',
-          title: 'TRACK EVENTS',
+          title: 'TRACK EVENTS (CLIENT)',
           content: (
             <LibraryCodeBlock
               code={`"use client";
 
-import { usePostHog } from "posthog-js/react";
+import { trackEvent } from "@/lib/analytics/posthog-provider";
 
 export default function DashboardButton() {
-  const posthog = usePostHog();
-
   const handleClick = () => {
-    posthog.capture("dashboard_button_clicked", {
+    // Safe tracking - no-op if PostHog not configured
+    trackEvent("dashboard_button_clicked", {
       button: "export_data",
       location: "analytics_page",
     });
@@ -67,38 +69,45 @@ export default function DashboardButton() {
         },
         {
           code: '0x03',
-          title: 'IDENTIFY USERS',
+          title: 'TRACK EVENTS (SERVER)',
           content: (
             <LibraryCodeBlock
-              code={`useEffect(() => {
-  if (session?.user) {
-    posthog.identify(session.user.id, {
-      email: session.user.email,
-      name: session.user.name,
-    });
-  }
-}, [session]);`}
+              code={`// Use safe helper functions from events.ts
+import { trackUserSignup, trackOrgCreated } from "@/lib/analytics/events";
+
+// Track user signup
+await trackUserSignup(userId, email, {
+  provider: "google",
+});
+
+// Track organization creation
+await trackOrgCreated(userId, orgId, "My Org", {
+  memberCount: 1,
+});`}
               language="typescript"
-              maxHeight="180px"
+              maxHeight="240px"
             />
           ),
         },
         {
           code: '0x04',
-          title: 'FEATURE FLAGS',
+          title: 'AUTOMATIC PAGEVIEWS',
           content: (
             <LibraryCodeBlock
-              code={`import { useFeatureFlagEnabled } from "posthog-js/react";
+              code={`// PostHogProvider automatically tracks pageviews
+// Already integrated in src/app/layout.tsx
 
-export function NewFeature() {
-  const isEnabled = useFeatureFlagEnabled("new-dashboard");
+import { PostHogProvider } from "@/lib/analytics/posthog-provider";
 
-  if (!isEnabled) return null;
-
-  return <NewDashboardComponent />;
+export default function RootLayout({ children }) {
+  return (
+    <PostHogProvider>
+      {children}  {/* Pageviews tracked on route change */}
+    </PostHogProvider>
+  );
 }`}
               language="tsx"
-              maxHeight="200px"
+              maxHeight="240px"
             />
           ),
         },

@@ -40,79 +40,48 @@ export default function AnalyticsPage() {
       ]}
       setup={[
         {
-          title: 'Configure PostHog Credentials',
-          description: 'Add your PostHog credentials to environment variables',
+          title: 'Configure PostHog (Optional)',
+          description: 'PostHog only activates when API key is present. Leave empty to disable.',
           code: `# .env.local
-NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key
-NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com`,
+NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key  # Optional
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com  # Optional
+
+# If not set, PostHog will not initialize (graceful degradation)`,
           language: 'bash',
         },
         {
-          title: 'Enable Analytics in Config',
-          description: 'Enable analytics in your config',
-          code: `// src/config.js
-module.exports = {
-  features: {
-    analytics: true, // Enable PostHog
-  },
-};`,
-          language: 'javascript',
+          title: 'Automatic Initialization',
+          description: 'PostHog initializes automatically if configured (no setup needed)',
+          code: `// src/lib/analytics/posthog-provider.tsx
+// Provider checks for NEXT_PUBLIC_POSTHOG_KEY
+// If present: initializes PostHog
+// If absent: no-op (app works without analytics)
+
+// Already integrated in src/app/layout.tsx
+import { PostHogProvider } from '@/lib/analytics/posthog-provider';
+
+export default function RootLayout({ children }) {
+  return (
+    <PostHogProvider>
+      {children}
+    </PostHogProvider>
+  );
+}`,
+          language: 'typescript',
         },
       ]}
       usage={[
         {
-          title: 'PostHog Provider Setup',
-          description: 'Initialize PostHog in your application',
-          code: `// src/components/providers/posthog-provider.tsx
-"use client";
-
-import posthog from "posthog-js";
-import { PostHogProvider } from "posthog-js/react";
-import { useEffect } from "react";
-
-export function PHProvider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-      capture_pageview: false, // We'll capture manually
-      capture_pageleave: true,
-      persistence: "localStorage",
-    });
-  }, []);
-
-  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
-}
-
-// Add to your root layout
-// src/app/layout.tsx
-import { PHProvider } from "@/components/providers/posthog-provider";
-
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        <PHProvider>
-          {children}
-        </PHProvider>
-      </body>
-    </html>
-  );
-}`,
-          language: 'tsx',
-        },
-        {
-          title: 'Tracking Events',
-          description: 'Track custom events throughout your application',
+          title: 'Client-Side Event Tracking',
+          description: 'Track custom events in client components',
           code: `"use client";
 
-import { usePostHog } from "posthog-js/react";
+import { trackEvent } from "@/lib/analytics/posthog-provider";
 
 export function CheckoutButton({ plan, price }: Props) {
-  const posthog = usePostHog();
-
   const handleCheckout = async () => {
-    // Track checkout started
-    posthog.capture("checkout_started", {
+    // Safe tracking - no-op if PostHog not configured
+    trackEvent("checkout_started", {
       plan_name: plan,
       plan_price: price,
       currency: "USD",
@@ -129,126 +98,60 @@ export function CheckoutButton({ plan, price }: Props) {
 }
 
 // Common events to track:
-// - signup_started
-// - signup_completed
+// - user_signed_up
 // - checkout_started
 // - payment_completed
 // - feature_used
-// - settings_changed
-// - organization_created
+// - org_created
 // - member_invited`,
           language: 'tsx',
         },
         {
-          title: 'User Identification',
-          description: 'Identify users after authentication to link their activity',
-          code: `"use client";
+          title: 'Server-Side Event Tracking',
+          description: 'Track events from API routes and Server Actions using safe helpers',
+          code: `// src/lib/analytics/events.ts provides safe helper functions
+import { trackUserSignup, trackOrgCreated, trackSubscriptionStarted } from "@/lib/analytics/events";
 
-import { usePostHog } from "posthog-js/react";
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+// Example: Track user signup in API route
+export async function POST(request: Request) {
+  const { email, userId } = await request.json();
 
-export function UserIdentifier() {
-  const posthog = usePostHog();
-  const { data: session } = useSession();
+  // Create user in database...
 
-  useEffect(() => {
-    if (session?.user) {
-      // Identify the user
-      posthog.identify(session.user.id, {
-        email: session.user.email,
-        name: session.user.name,
-        plan: session.user.plan,
-        created_at: session.user.createdAt,
-      });
-
-      // Set user properties
-      posthog.people.set({
-        last_login: new Date().toISOString(),
-      });
-    }
-  }, [session, posthog]);
-
-  return null;
-}
-
-// Reset on logout
-const handleLogout = () => {
-  posthog.reset(); // Clear user identity
-  signOut();
-};`,
-          language: 'tsx',
-        },
-        {
-          title: 'Page View Tracking',
-          description: 'Track page views with the Next.js router',
-          code: `"use client";
-
-import { usePathname, useSearchParams } from "next/navigation";
-import { usePostHog } from "posthog-js/react";
-import { useEffect } from "react";
-
-export function PageViewTracker() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const posthog = usePostHog();
-
-  useEffect(() => {
-    if (pathname) {
-      let url = window.origin + pathname;
-      if (searchParams.toString()) {
-        url = url + "?" + searchParams.toString();
-      }
-      posthog.capture("$pageview", {
-        $current_url: url,
-      });
-    }
-  }, [pathname, searchParams, posthog]);
-
-  return null;
-}`,
-          language: 'tsx',
-        },
-        {
-          title: 'Server-Side Tracking',
-          description: 'Track events from API routes and server actions',
-          code: `// src/lib/analytics/server.ts
-import { PostHog } from "posthog-node";
-
-const posthogServer = new PostHog(
-  process.env.NEXT_PUBLIC_POSTHOG_KEY!,
-  { host: process.env.NEXT_PUBLIC_POSTHOG_HOST }
-);
-
-export async function trackServerEvent(
-  userId: string,
-  event: string,
-  properties?: Record<string, any>
-) {
-  posthogServer.capture({
-    distinctId: userId,
-    event,
-    properties,
-  });
-
-  // Flush in serverless environments
-  await posthogServer.shutdown();
-}
-
-// Usage in API routes
-export async function POST(req: Request) {
-  const session = await auth();
-
-  // Process payment...
-
-  await trackServerEvent(session.user.id, "payment_completed", {
-    amount: 99,
-    plan: "pro",
-    payment_method: "card",
+  // Track signup (no-op if PostHog not configured)
+  await trackUserSignup(userId, email, {
+    provider: "credentials",
+    timestamp: new Date().toISOString(),
   });
 
   return Response.json({ success: true });
-}`,
+}
+
+// Example: Track organization creation
+await trackOrgCreated(userId, orgId, orgName, {
+  memberCount: 1,
+  plan: "free",
+});
+
+// Example: Track subscription
+await trackSubscriptionStarted(userId, "pro", 99, "month");`,
+          language: 'typescript',
+        },
+        {
+          title: 'Page View Tracking (Automatic)',
+          description: 'Page views are automatically tracked by PostHogProvider',
+          code: `// Page views are handled automatically by PostHogProvider
+// No additional code needed!
+
+// The provider tracks:
+// - Route changes (usePathname)
+// - Query parameters (useSearchParams)
+// - Full URL with origin
+
+// Events appear in PostHog as "$pageview" with:
+// - $current_url: Full page URL
+// - Automatic user properties
+// - Session data`,
           language: 'typescript',
         },
       ]}

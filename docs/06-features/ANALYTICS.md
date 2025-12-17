@@ -188,46 +188,87 @@ interface EventProperties {
 
 ### PostHog Setup
 
+Fabrk includes optional PostHog integration that only activates when configured. This follows industry-standard boilerplate patterns where analytics don't run without an API key.
+
+**Key Files:**
+- `src/lib/analytics/posthog-provider.tsx` - Client-side provider (optional initialization)
+- `src/lib/analytics/posthog-server.ts` - Server-side client with graceful degradation
+- `src/lib/analytics/events.ts` - Safe helper functions for common events
+
+**Client-Side Setup:**
+
 ```typescript
-// src/lib/analytics/posthog.ts
+// src/lib/analytics/posthog-provider.tsx
+'use client';
+
 import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
-export const initPostHog = () => {
-  if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
-      person_profiles: 'identified_only', // Only create profiles for logged-in users
-      capture_pageview: false, // Manual page view tracking
-      capture_pageleave: true,
-      autocapture: false, // Explicit tracking only
-    });
-  }
-};
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-export const trackEvent = (
-  event: string,
-  properties?: Record<string, any>
-) => {
-  if (typeof window !== 'undefined') {
-    posthog.capture(event, properties);
-  }
-};
+  useEffect(() => {
+    // Only initialize if API key is present (optional pattern)
+    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+      if (!posthog.__loaded) {
+        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+          api_host: '/ingest', // Proxy to bypass ad blockers
+          ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+          person_profiles: 'identified_only',
+          capture_pageview: false,
+          capture_pageleave: true,
+          capture_performance: true,
+          loaded: (posthog) => {
+            if (process.env.NODE_ENV === 'development') {
+              posthog.opt_out_capturing(); // Disable in development
+            }
+          },
+        });
+      }
+    }
+  }, []);
 
-export const identifyUser = (userId: string, traits?: Record<string, any>) => {
-  if (typeof window !== 'undefined') {
-    posthog.identify(userId, traits);
+  // Auto-track pageviews on route change
+  useEffect(() => {
+    if (pathname && posthog.__loaded) {
+      let url = window.origin + pathname;
+      if (searchParams && searchParams.toString()) {
+        url = url + `?${searchParams.toString()}`;
+      }
+      posthog.capture('$pageview', { $current_url: url });
+    }
+  }, [pathname, searchParams]);
+
+  return <>{children}</>;
+}
+
+// Safe event tracking (no-op if not configured)
+export function trackEvent(eventName: string, properties?: Record<string, unknown>) {
+  if (typeof window !== 'undefined' && posthog.__loaded) {
+    posthog.capture(eventName, properties);
   }
-};
+}
+
+// Check if PostHog is enabled
+export function isPostHogEnabled(): boolean {
+  return typeof window !== 'undefined' && posthog.__loaded;
+}
 ```
 
 ### Track Events in Components
 
 ```typescript
 // Example: Track button click
-import { trackEvent } from '@/lib/analytics/posthog';
+'use client';
+
+import { trackEvent } from '@/lib/analytics/posthog-provider';
 
 export function PricingCard({ plan }) {
   const handleClick = () => {
+    // Safe tracking - no-op if PostHog not configured
     trackEvent('payment_click_plan', {
       plan_name: plan.name,
       plan_price: plan.price,
@@ -242,49 +283,194 @@ export function PricingCard({ plan }) {
 }
 ```
 
-### Track Page Views
+**Multi-Provider Tracking:**
+
+Fabrk also includes a unified analytics system that supports multiple providers (GA4, Plausible, PostHog):
 
 ```typescript
-// src/app/layout.tsx or middleware
-import { PostHogPageView } from '@/components/analytics/posthog-pageview';
+// src/lib/analytics/tracking.ts - Multi-provider support
+import { trackEvent as trackPostHogEvent } from './posthog-provider';
+
+export function trackEvent(event: string, props?: Record<string, unknown>) {
+  // Automatically tracks to all enabled providers
+  if (config.providers.includes('posthog')) {
+    trackPostHogEvent(event, props);
+  }
+
+  if (config.providers.includes('ga4')) {
+    // GA4 tracking...
+  }
+
+  // Add more providers as needed
+}
+```
+
+### Track Page Views
+
+Page views are automatically tracked by the `PostHogProvider` component when routes change. No additional setup needed.
+
+```typescript
+// src/app/layout.tsx - Already configured
+import { PostHogProvider } from '@/lib/analytics/posthog-provider';
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <Suspense>
-          <PostHogPageView />  {/* Auto-tracks page views */}
-        </Suspense>
-        {children}
+        <PostHogProvider>
+          {/* Automatically tracks $pageview on route changes */}
+          {children}
+        </PostHogProvider>
       </body>
     </html>
   );
 }
 ```
 
+**How it works:** The provider uses Next.js `usePathname()` and `useSearchParams()` hooks to detect route changes and automatically capture pageview events with the full URL.
+
 ### Server-Side Events
 
+Fabrk provides a singleton PostHog client for server-side tracking with graceful degradation.
+
 ```typescript
-// src/app/api/webhooks/stripe/route.ts
+// src/lib/analytics/posthog-server.ts
 import { PostHog } from 'posthog-node';
 
-const posthog = new PostHog(process.env.POSTHOG_API_KEY);
+let posthogClient: PostHog | null = null;
+
+export function getPostHogClient(): PostHog | null {
+  // Graceful degradation: return null if not configured
+  if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+    return null;
+  }
+
+  if (!posthogClient) {
+    posthogClient = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+      host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+      flushAt: 20,
+      flushInterval: 30000,
+    });
+  }
+
+  return posthogClient;
+}
+
+export async function trackServerEvent(
+  distinctId: string,
+  event: string,
+  properties?: Record<string, unknown>
+): Promise<void> {
+  const client = getPostHogClient();
+  if (!client) return; // Silent fail if not configured
+
+  try {
+    client.capture({
+      distinctId,
+      event,
+      properties: {
+        ...properties,
+        timestamp: new Date().toISOString(),
+      },
+    });
+  } catch (error) {
+    console.error('[PostHog] Failed to track event:', error);
+  }
+}
+
+// Usage in API routes and Server Actions
+export async function identifyServerUser(
+  userId: string,
+  properties?: Record<string, unknown>
+): Promise<void> {
+  const client = getPostHogClient();
+  if (!client) return;
+
+  try {
+    client.identify({
+      distinctId: userId,
+      properties,
+    });
+  } catch (error) {
+    console.error('[PostHog] Failed to identify user:', error);
+  }
+}
+```
+
+**Safe Helper Functions:**
+
+```typescript
+// src/lib/analytics/events.ts
+import { trackServerEvent, identifyServerUser } from './posthog-server';
+
+// Track user signup
+export async function trackUserSignup(
+  userId: string,
+  email: string,
+  metadata?: Record<string, unknown>
+): Promise<void> {
+  await trackServerEvent(userId, 'user_signed_up', {
+    email,
+    signupMethod: metadata?.provider || 'credentials',
+    ...metadata,
+  });
+
+  await identifyServerUser(userId, {
+    email,
+    createdAt: new Date().toISOString(),
+    ...metadata,
+  });
+}
+
+// Track organization created
+export async function trackOrgCreated(
+  userId: string,
+  orgId: string,
+  orgName: string,
+  metadata?: Record<string, unknown>
+): Promise<void> {
+  await trackServerEvent(userId, 'org_created', {
+    orgId,
+    orgName,
+    ...metadata,
+  });
+}
+
+// Track subscription started
+export async function trackSubscriptionStarted(
+  userId: string,
+  plan: string,
+  amount: number,
+  interval: 'month' | 'year'
+): Promise<void> {
+  await trackServerEvent(userId, 'subscription_started', {
+    plan,
+    amount,
+    interval,
+  });
+}
+
+// Example usage in webhook
+// src/app/api/webhooks/stripe/route.ts
+import { trackSubscriptionStarted } from '@/lib/analytics/events';
 
 export async function POST(request: Request) {
   const event = await stripe.webhooks.constructEvent(...);
 
-  // Track server-side event
-  posthog.capture({
-    distinctId: event.data.object.customer,
-    event: 'payment_webhook_received',
-    properties: {
-      event_type: event.type,
-      amount: event.data.object.amount_total / 100,
-      currency: event.data.object.currency,
-    },
-  });
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
+    const userId = session.metadata?.userId;
 
-  await posthog.shutdown(); // Important: Flush events
+    // Safe tracking - no-op if PostHog not configured
+    await trackSubscriptionStarted(
+      userId,
+      session.metadata?.plan || 'unknown',
+      (session.amount_total || 0) / 100,
+      'month'
+    );
+  }
+
+  return NextResponse.json({ received: true });
 }
 ```
 
