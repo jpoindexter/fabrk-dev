@@ -312,6 +312,7 @@ export function HeroSection() {
               code="0x02"
               label={`${currentStack.label} STACK`}
               meta={currentStack.meta}
+              className="min-w-[280px]"
             />
             <div className="flex gap-1">
               {allStacks.map((stack, index) => (
