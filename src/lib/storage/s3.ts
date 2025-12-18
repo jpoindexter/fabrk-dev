@@ -77,7 +77,8 @@ export class S3Provider implements StorageProviderClient {
         'x-amz-content-sha256': payloadHash,
         'Content-Type': options.contentType || 'application/octet-stream',
       },
-      body,
+      // Convert Buffer to Uint8Array for fetch compatibility
+      body: new Uint8Array(body),
     });
 
     if (!res.ok) {

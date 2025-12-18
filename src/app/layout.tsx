@@ -143,6 +143,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const nonce = await getNonce();
+  // Conditionally spread nonce to avoid hydration mismatch when undefined
+  const nonceAttr = nonce ? { nonce } : {};
 
   return (
     <html
@@ -155,7 +157,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <MonitorEffectScript nonce={nonce} />
         {/* Google Consent Mode v2 - Must load BEFORE GTM */}
         <script
-          nonce={nonce}
+          {...nonceAttr}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -194,7 +197,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* Google Tag Manager - inline required for consent mode sync */}
         {/* eslint-disable-next-line @next/next/next-script-for-ga */}
         <script
-          nonce={nonce}
+          {...nonceAttr}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -205,14 +209,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <script
           type="application/ld+json"
-          nonce={nonce}
+          {...nonceAttr}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateOrganizationSchema()),
           }}
         />
         <script
           type="application/ld+json"
-          nonce={nonce}
+          {...nonceAttr}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateProductSchema()),
           }}

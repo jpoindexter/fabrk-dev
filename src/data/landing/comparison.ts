@@ -2,7 +2,7 @@
  * Comparison Data - Feature matrix vs competitors
  */
 
-import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from './stats';
+import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING, PROVIDER_COUNT_STRING } from './stats';
 
 export const COMPARISON_FEATURES = [
   {
@@ -46,12 +46,12 @@ export const COMPARISON_FEATURES = [
     saasboldkit: true,
   },
   {
-    id: 'payment-providers',
-    name: 'Payment Providers',
-    fabrk: 'Stripe, Lemon Squeezy, Polar',
-    shipfast: 'Stripe only',
-    magicui: 'Stripe only',
-    saasboldkit: 'Stripe only',
+    id: 'providers',
+    name: 'Integrations',
+    fabrk: `${PROVIDER_COUNT_STRING} providers (6 categories)`,
+    shipfast: 'Stripe + Resend',
+    magicui: 'Stripe + SendGrid',
+    saasboldkit: 'Stripe + Resend',
   },
   {
     id: 'multitenancy',

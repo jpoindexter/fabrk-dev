@@ -104,11 +104,13 @@ export class StripeProvider implements PaymentProviderClient {
   async getSubscription(subscriptionId: string) {
     const stripe = getStripeClient();
     const sub = await stripe.subscriptions.retrieve(subscriptionId);
+    // Type assertion to access current_period_end which exists on all subscription responses
+    const subData = sub as unknown as { current_period_end: number; status: string; cancel_at_period_end: boolean };
 
     return {
-      status: sub.status,
-      currentPeriodEnd: new Date(sub.current_period_end * 1000),
-      cancelAtPeriodEnd: sub.cancel_at_period_end,
+      status: subData.status,
+      currentPeriodEnd: new Date(subData.current_period_end * 1000),
+      cancelAtPeriodEnd: subData.cancel_at_period_end,
     };
   }
 }

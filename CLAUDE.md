@@ -13,7 +13,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ░░░░░       ░░░░░   ░░░░░ ░░░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░   ░░░░
 ```
 
-> Terminal-first SaaS boilerplate. Ship fast. Look sharp.
+> 29 providers. Zero lock-in. Terminal-first SaaS boilerplate.
 
 ## Quick Reference
 
@@ -29,9 +29,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Fabrk** is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.
+**Fabrk** is a Next.js 16 SaaS boilerplate with 29 swappable providers and terminal-inspired design. Switch from Stripe to Polar, Resend to SES, or OpenAI to Anthropic without rewriting code.
 
-**Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
+**Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • 5 Payment providers • 9 AI providers • 5 Email providers • 5 Search + 5 Storage • Prisma 7 + PostgreSQL • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
 
 **Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 

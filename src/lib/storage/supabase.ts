@@ -45,7 +45,8 @@ export class SupabaseStorageProvider implements StorageProviderClient {
           'Content-Type': options.contentType || 'application/octet-stream',
           'x-upsert': 'true',
         },
-        body,
+        // Convert Buffer to Uint8Array for fetch compatibility
+        body: Buffer.isBuffer(body) ? new Uint8Array(body) : body,
       }
     );
 

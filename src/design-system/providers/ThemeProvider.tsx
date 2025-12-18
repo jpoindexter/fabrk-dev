@@ -245,8 +245,11 @@ export function ThemeScript({
     })();
   `;
 
+  // Conditionally spread nonce to avoid hydration mismatch when undefined
+  const nonceAttr = nonce ? { nonce } : {};
+
   return (
-    <script nonce={nonce} dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />
+    <script {...nonceAttr} dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />
   );
 }
 

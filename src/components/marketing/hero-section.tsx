@@ -66,9 +66,9 @@ export function HeroSection() {
                       mode.font
                     )}
                   >
-                    BUILD IN
+                    ZERO
                     <br />
-                    MINUTES
+                    LOCK-IN
                   </h2>
                   {/* Desktop: ASCII art */}
                   <pre
@@ -78,29 +78,29 @@ export function HeroSection() {
                       mode.font
                     )}
                   >
-                    {` ███████████  █████  █████ █████ █████       ██████████      █████ ██████   █████
-░░███░░░░░███░░███  ░░███ ░░███ ░░███       ░░███░░░░███    ░░███ ░░██████ ░░███
- ░███    ░███ ░███   ░███  ░███  ░███        ░███   ░░███    ░░███  ░███░███ ░███
- ░██████████  ░███   ░███  ░███  ░███        ░███    ░███    ░███  ░███░░███░███
- ░███░░░░░███ ░███   ░███  ░███  ░███        ░███    ░███    ░███  ░███ ░░██████
- ░███    ░███ ░███   ░███  ░███  ░███      █ ░███    ███     ░███  ░███  ░░█████
- ███████████  ░░████████   █████ ███████████ ██████████      █████ █████  ░░█████
-░░░░░░░░░░░    ░░░░░░░░   ░░░░░ ░░░░░░░░░░░ ░░░░░░░░░░      ░░░░░ ░░░░░    ░░░░░
+                    {` ███████████ ██████████ ███████████    ███████
+░░███░░░░░░█░░███░░░░░█░░███░░░░░███  ███░░░░░███
+ ░░░    ███  ░███   █ ░  ░███    ░███░███    ░███
+    ███░     ░███████    ░██████████ ░███    ░███
+   ███       ░███░░░█    ░███░░░░░███░███    ░███
+ ████     █  ░███  ░     ░███    ░███░░███   ███
+███████████  ██████████  █████   █████░░░███████░
+░░░░░░░░░░░ ░░░░░░░░░░  ░░░░░   ░░░░░  ░░░░░░░
 
 
 
- ██████   ██████ █████ ██████   █████ █████  █████ ███████████ ██████████  █████████
-░░██████ ██████ ░░███ ░░██████ ░░███ ░░███  ░░███ ░█░░░███░░░█░░███░░░░░█ ███░░░░░███
- ░███░█████░███  ░███  ░███░███ ░███  ░███   ░███ ░   ░███  ░  ░███  █ ░ ░███    ░░░
- ░███░░███ ░███  ░███  ░███░░███░███  ░███   ░███     ░███     ░██████   ░░█████████
- ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███   ░███     ░███     ░███░░█    ░░░░░░░░███
- ░███      ░███  ░███  ░███  ░░█████  ░███   ░███     ░███     ░███ ░   █ ███    ░███
- █████     █████ █████ █████  ░░█████ ░░████████      █████    ██████████░░█████████
-░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░   ░░░░░░░░      ░░░░░    ░░░░░░░░░░  ░░░░░░░░░`}
+ █████        ███████      █████████  █████   ████       █████ ██████   █████
+░░███       ███░░░░░███   ███░░░░░███░░███   ███░       ░░███ ░░██████ ░░███
+ ░███      ███     ░░███ ███     ░░░  ░███  ███          ░███  ░███░███ ░███
+ ░███     ░███      ░███░███          ░███████           ░███  ░███░░███░███
+ ░███     ░███      ░███░███          ░███░░███          ░███  ░███ ░░██████
+ ░███      ░░███    ███ ░░███     ███ ░███ ░░███         ░███  ░███  ░░█████
+ ███████████░░░███████░   ░░█████████ █████ ░░████       █████ █████  ░░█████
+░░░░░░░░░░░   ░░░░░░░      ░░░░░░░░░ ░░░░░   ░░░░       ░░░░░ ░░░░░    ░░░░░`}
                   </pre>
                   <p className={cn('mb-0 text-sm leading-relaxed', mode.color.text.muted)}>
                     <TypeWriter
-                      text="Ship your product this weekend not next quarter."
+                      text="29 providers. Switch Stripe to Polar in one line."
                       delay={0.5}
                       speed={40}
                       showCursor
@@ -112,17 +112,23 @@ export function HeroSection() {
                 {/* Quick stats inline */}
                 <div className="flex flex-wrap gap-4">
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className={mode.color.text.accent}>{COMPONENT_COUNT_STRING}</span>{' '}
-                    Components
+                    <span className={mode.color.text.accent}>5</span>{' '}
+                    Payment
                   </span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className={mode.color.text.accent}>{TEMPLATE_COUNT_STRING}</span>{' '}
-                    Templates
+                    <span className={mode.color.text.accent}>9</span>{' '}
+                    AI
                   </span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
                   <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className={mode.color.text.accent}>{'< 5 MIN'}</span> Setup
+                    <span className={mode.color.text.accent}>5</span>{' '}
+                    Email
+                  </span>
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
+                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
+                    <span className={mode.color.text.accent}>10</span>{' '}
+                    Storage + Search
                   </span>
                 </div>
 

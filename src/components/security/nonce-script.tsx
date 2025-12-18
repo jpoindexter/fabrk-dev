@@ -41,10 +41,12 @@ export async function NonceScript({
   defer,
 }: NonceScriptProps) {
   const nonce = await getNonce();
+  // Conditionally spread nonce to avoid hydration mismatch when undefined
+  const nonceAttr = nonce ? { nonce } : {};
 
   return (
     <script
-      nonce={nonce}
+      {...nonceAttr}
       type={type}
       id={id}
       async={async}

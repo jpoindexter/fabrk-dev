@@ -188,6 +188,63 @@ await resend.batch.send(emails);`,
       previous={{ title: 'Google OAuth', href: '/docs/features/google-oauth' }}
       next={{ title: 'Organizations', href: '/docs/features/organizations' }}
     >
+      {/* Provider Guides Section */}
+      <DocsSection title="Email Provider Guides">
+        <p className="text-muted-foreground mb-4">
+          Fabrk supports multiple email providers. Choose based on your needs:
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <DocsCard title="RESEND" className="h-full">
+            <p className="text-muted-foreground mb-2">Currently configured</p>
+            <ul className="text-muted-foreground space-y-1 text-xs">
+              <li>• React Email support</li>
+              <li>• Developer-first API</li>
+              <li>• Free tier: 3,000/month</li>
+            </ul>
+          </DocsCard>
+          <a href="/docs/features/postmark">
+            <DocsCard title="POSTMARK" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Best deliverability</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• 99%+ inbox placement</li>
+                <li>• Transactional focus</li>
+                <li>• Message streams</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/sendgrid">
+            <DocsCard title="SENDGRID" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Most popular</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• 100B+ emails/year</li>
+                <li>• Marketing + transactional</li>
+                <li>• Free tier: 100/day</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/ses">
+            <DocsCard title="AMAZON SES" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Lowest cost</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• $0.10 per 1,000</li>
+                <li>• AWS ecosystem</li>
+                <li>• Unlimited scale</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/mailgun">
+            <DocsCard title="MAILGUN" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Developer favorite</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Email validation API</li>
+                <li>• Powerful routing</li>
+                <li>• Great analytics</li>
+              </ul>
+            </DocsCard>
+          </a>
+        </div>
+      </DocsSection>
+
       {/* Best Practices Section */}
       <DocsSection title="Best Practices">
         <DocsCard title="BEST PRACTICES">

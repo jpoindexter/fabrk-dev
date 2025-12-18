@@ -101,7 +101,11 @@ export class PolarProvider implements PaymentProviderClient {
 
   async cancelSubscription(subscriptionId: string): Promise<void> {
     const polar = getPolarClient();
-    await polar.subscriptions.cancel({ id: subscriptionId });
+    // Polar SDK uses update with SubscriptionCancel type to cancel at period end
+    await polar.subscriptions.update({
+      id: subscriptionId,
+      subscriptionUpdate: { cancelAtPeriodEnd: true },
+    });
   }
 
   async getSubscription(subscriptionId: string) {
@@ -109,8 +113,8 @@ export class PolarProvider implements PaymentProviderClient {
     const sub = await polar.subscriptions.get({ id: subscriptionId });
 
     return {
-      status: sub.status,
-      currentPeriodEnd: new Date(sub.currentPeriodEnd),
+      status: sub.status as string,
+      currentPeriodEnd: sub.currentPeriodEnd ? new Date(sub.currentPeriodEnd) : new Date(),
       cancelAtPeriodEnd: sub.cancelAtPeriodEnd,
     };
   }

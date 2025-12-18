@@ -370,43 +370,107 @@ const audioBlob = await ttsResponse.blob();`,
         </DocsCard>
       </DocsSection>
 
+      {/* AI Provider Guides */}
+      <DocsSection title="AI Provider Guides">
+        <p className="text-muted-foreground mb-4">
+          Fabrk supports 9 AI providers. Choose based on your needs:
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/docs/features/openai">
+            <DocsCard title="OPENAI" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Industry standard</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• GPT-4o, GPT-4o-mini</li>
+                <li>• DALL-E, Whisper, TTS</li>
+                <li>• Best structured output</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/anthropic">
+            <DocsCard title="ANTHROPIC" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Best for coding</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Claude 4 Opus/Sonnet</li>
+                <li>• 200K context window</li>
+                <li>• Superior reasoning</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/google-ai">
+            <DocsCard title="GOOGLE AI" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Multimodal leader</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Gemini 2.0 Flash/Pro</li>
+                <li>• 2M token context</li>
+                <li>• Native multimodal</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/xai">
+            <DocsCard title="XAI" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Real-time knowledge</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Grok 2, Grok 2 Vision</li>
+                <li>• 128K context</li>
+                <li>• X/Twitter integration</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/deepseek">
+            <DocsCard title="DEEPSEEK" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Best value</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• DeepSeek V3, Coder</li>
+                <li>• 90% cheaper than GPT-4</li>
+                <li>• Coding specialist</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/mistral">
+            <DocsCard title="MISTRAL" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">European excellence</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Large 2, Codestral</li>
+                <li>• EU data residency</li>
+                <li>• Open weights available</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/groq">
+            <DocsCard title="GROQ" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Fastest inference</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• LPU hardware</li>
+                <li>• 10x faster than GPU</li>
+                <li>• Llama, Mixtral, Gemma</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/together">
+            <DocsCard title="TOGETHER AI" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Model variety</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• 100+ models</li>
+                <li>• Fine-tuning platform</li>
+                <li>• OpenAI-compatible</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/ollama">
+            <DocsCard title="OLLAMA" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Local & private</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Run locally</li>
+                <li>• 100% private</li>
+                <li>• Zero cost</li>
+              </ul>
+            </DocsCard>
+          </a>
+        </div>
+      </DocsSection>
+
       {/* Provider Comparison */}
       <DocsSection title="Provider Comparison">
-        <DocsCard title="CHOOSE YOUR PROVIDER">
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="border-border border-b">
-                  <th className="p-2 text-left">Provider</th>
-                  <th className="p-2 text-left">Best For</th>
-                  <th className="p-2 text-left">Structured Output</th>
-                  <th className="p-2 text-left">Cost</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-border border-b">
-                  <td className="p-2 font-medium">OpenAI</td>
-                  <td className="p-2">Production apps</td>
-                  <td className="p-2">Excellent</td>
-                  <td className="p-2">~$0.15/1M tokens</td>
-                </tr>
-                <tr className="border-border border-b">
-                  <td className="p-2 font-medium">Google</td>
-                  <td className="p-2">High volume</td>
-                  <td className="p-2">Good</td>
-                  <td className="p-2">~$0.075/1M tokens</td>
-                </tr>
-                <tr>
-                  <td className="p-2 font-medium">Ollama</td>
-                  <td className="p-2">Local dev, privacy</td>
-                  <td className="p-2">Limited</td>
-                  <td className="p-2">Free (local)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </DocsCard>
-
         <DocsCallout variant="info" title="Provider Priority">
           Fabrk checks for providers in order: OpenAI → Google → Ollama. The first configured
           provider is used automatically. No code changes needed when switching providers.

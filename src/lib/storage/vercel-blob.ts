@@ -40,7 +40,8 @@ export class VercelBlobProvider implements StorageProviderClient {
         'x-content-type': options.contentType || 'application/octet-stream',
         'x-cache-control-max-age': '31536000',
       },
-      body,
+      // Convert Buffer to Uint8Array for fetch compatibility
+      body: Buffer.isBuffer(body) ? new Uint8Array(body) : body,
     });
 
     if (!res.ok) {

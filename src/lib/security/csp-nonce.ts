@@ -41,13 +41,16 @@ export function generateNonce(): string {
  * Retrieve the nonce for the current request
  *
  * Must be called from Server Components or Server Actions
- * Returns empty string if no nonce is available (fallback for edge cases)
+ * Returns undefined if no nonce is available (to avoid hydration mismatch)
  *
- * @returns Nonce string or empty string
+ * @returns Nonce string or undefined
  */
-export async function getNonce(): Promise<string> {
+export async function getNonce(): Promise<string | undefined> {
   const headersList = await headers();
-  return headersList.get(NONCE_HEADER) || '';
+  const nonce = headersList.get(NONCE_HEADER);
+  // Return undefined (not empty string) to avoid hydration mismatch
+  // Empty string renders nonce="" which mismatches client-side nonce
+  return nonce || undefined;
 }
 
 /**

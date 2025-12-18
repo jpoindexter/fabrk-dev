@@ -266,36 +266,62 @@ export function FileUploader() {
         </DocsCard>
       </DocsSection>
 
-      {/* Provider Comparison Section */}
-      <DocsSection title="Choosing a Provider">
-        <div className="grid gap-4 sm:grid-cols-3">
-          <DocsCard title="CLOUDFLARE R2">
-            <p className="mb-2">Recommended</p>
-            <ul className="space-y-1">
-              <li>• No egress fees (huge savings)</li>
-              <li>• S3-compatible API</li>
-              <li>• Global edge network</li>
-              <li>• Generous free tier</li>
-            </ul>
-          </DocsCard>
-          <DocsCard title="AWS S3">
-            <p className="mb-2">Industry Standard</p>
-            <ul className="space-y-1">
-              <li>• Most mature platform</li>
-              <li>• Extensive documentation</li>
-              <li>• Pay-per-use pricing</li>
-              <li>• Egress fees apply</li>
-            </ul>
-          </DocsCard>
-          <DocsCard title="LOCAL STORAGE">
-            <p className="mb-2">Development Only</p>
-            <ul className="space-y-1">
-              <li>• No setup required</li>
-              <li>• Good for testing</li>
-              <li>• Files in /uploads folder</li>
-              <li>• Not for production</li>
-            </ul>
-          </DocsCard>
+      {/* Storage Provider Guides */}
+      <DocsSection title="Storage Provider Guides">
+        <p className="text-muted-foreground mb-4">
+          Fabrk supports 5 storage providers. Choose based on your needs:
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/docs/features/r2">
+            <DocsCard title="CLOUDFLARE R2" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Recommended</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Zero egress fees</li>
+                <li>• S3-compatible</li>
+                <li>• Global edge network</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/s3">
+            <DocsCard title="AMAZON S3" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Industry standard</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• 11 9s durability</li>
+                <li>• CloudFront CDN</li>
+                <li>• AWS ecosystem</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/supabase-storage">
+            <DocsCard title="SUPABASE STORAGE" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Auth integrated</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Row-level security</li>
+                <li>• Image transforms</li>
+                <li>• Supabase Auth</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/uploadthing">
+            <DocsCard title="UPLOADTHING" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Next.js native</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Type-safe uploads</li>
+                <li>• Built-in validation</li>
+                <li>• React hooks</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/vercel-blob">
+            <DocsCard title="VERCEL BLOB" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Zero config</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Auto Vercel setup</li>
+                <li>• Edge caching</li>
+                <li>• Simple API</li>
+              </ul>
+            </DocsCard>
+          </a>
         </div>
       </DocsSection>
 

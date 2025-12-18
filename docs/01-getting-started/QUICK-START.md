@@ -8,10 +8,7 @@ Get Fabrk running locally in under 5 minutes.
 
 Before starting, make sure you have:
 
-- **Node.js 18+** ([Download](https://nodejs.org/))
-- **PostgreSQL database** (see database options below)
-- **Stripe account** ([Sign up free](https://stripe.com/))
-- **Resend account** for emails ([Sign up free](https://resend.com/))
+- **Node.js 22+** ([Download](https://nodejs.org/))
 - **Git** installed
 
 ---
@@ -20,20 +17,75 @@ Before starting, make sure you have:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/fabrk.git
+git clone https://github.com/fabrk-dev/fabrk.git
 cd fabrk
 
 # Install dependencies
-npm install --legacy-peer-deps
+npm install
 ```
-
-**Why `--legacy-peer-deps`?** Next.js 15 and React 19 are cutting-edge. Some dependencies haven't updated peer dependency versions yet. This flag ensures everything installs smoothly.
 
 ---
 
-## Step 2: Database Setup
+## Step 2: Run the Setup Wizard
 
-You have several free options:
+Fabrk includes an interactive setup wizard that configures everything for you.
+
+```bash
+npm run setup
+```
+
+The wizard will guide you through:
+
+1. **Choose your template** - Starter, SaaS, AI App, Marketplace, or Custom
+2. **Configure providers** - Database, payments, email, AI, search, storage
+3. **Enter API keys** - Inline entry with helpful links and format examples
+4. **Generate .env.local** - Auto-generated secrets and configuration
+
+### Template Options
+
+| Template | Setup Time | What's Included |
+|----------|-----------|-----------------|
+| **Starter** | 30 seconds | SQLite + NextAuth (zero API keys) |
+| **SaaS** ★ | 4-5 min | PostgreSQL + Stripe + Resend + PostHog |
+| **AI App** | 5-6 min | SaaS + OpenAI |
+| **Marketplace** | 6-7 min | SaaS + Search + Storage |
+| **Custom** | 6-8 min | Pick each provider yourself |
+
+### Dry Run Mode
+
+Preview what the wizard will do without making changes:
+
+```bash
+npm run setup:dry
+```
+
+---
+
+## Step 3: Initialize Database
+
+Run Prisma to create your database schema:
+
+```bash
+npm run db:push
+```
+
+---
+
+## Step 4: Start Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) - you're ready to build!
+
+---
+
+## Alternative: Manual Setup
+
+If you prefer manual configuration, follow these steps:
+
+### Database Options
 
 ### Option A: Supabase (Recommended - Easiest)
 
@@ -65,9 +117,7 @@ sudo -u postgres createdb fabrk
 # DATABASE_URL="postgresql://postgres:password@localhost:5432/fabrk"
 ```
 
----
-
-## Step 3: Environment Variables
+### Environment Variables
 
 Fabrk uses **runtime validation** for all environment variables to prevent silent failures. Missing or invalid variables will cause immediate startup errors with clear messages.
 

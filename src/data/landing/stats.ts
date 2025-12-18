@@ -30,6 +30,16 @@ export const TOTAL_DOC_SIZE_STRING = '~300KB';
 export const TOTAL_DOC_LINES_STRING = '~9,000 lines';
 export const PRICE_USD_STRING = '$299'; // Price string
 
+// Provider Counts (from src/lib/ providers)
+// Payments: Stripe, Lemonsqueezy, Paddle, Polar, PayPal (5)
+// Email: Resend, Postmark, SendGrid, SES, Mailgun (5)
+// Newsletter: ConvertKit, Beehiiv, Mailchimp, Buttondown, Loops (5)
+// AI: OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Together, Ollama (9)
+// Search: Algolia, Typesense, Meilisearch, Elasticsearch, Fuse.js (5)
+// Storage: R2, S3, Supabase, UploadThing, Vercel Blob (5)
+export const PROVIDER_COUNT_INT = 34;
+export const PROVIDER_COUNT_STRING = `${PROVIDER_COUNT_INT}+`;
+
 export const STATS = [
   {
     id: 'components',

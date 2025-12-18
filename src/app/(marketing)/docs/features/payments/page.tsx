@@ -194,6 +194,63 @@ export function ManageBillingButton() {
       previous={{ title: 'Database', href: '/docs/features/database' }}
       next={{ title: 'Google OAuth', href: '/docs/features/google-oauth' }}
     >
+      {/* Payment Provider Guides */}
+      <DocsSection title="Payment Provider Guides">
+        <p className="text-muted-foreground mb-4">
+          Fabrk supports 5 payment providers. Choose based on your needs:
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <DocsCard title="STRIPE" className="h-full">
+            <p className="text-muted-foreground mb-2">Currently configured</p>
+            <ul className="text-muted-foreground space-y-1 text-xs">
+              <li>• Industry standard</li>
+              <li>• Best documentation</li>
+              <li>• 2.9% + 30 cents</li>
+            </ul>
+          </DocsCard>
+          <a href="/docs/features/paddle">
+            <DocsCard title="PADDLE" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Merchant of Record</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• Handles all tax/VAT</li>
+                <li>• 200+ countries</li>
+                <li>• No tax filings</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/lemonsqueezy">
+            <DocsCard title="LEMONSQUEEZY" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Digital products</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• MoR included</li>
+                <li>• License key delivery</li>
+                <li>• Great for SaaS</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/polar">
+            <DocsCard title="POLAR" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Open source focus</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• GitHub integration</li>
+                <li>• Sponsor tiers</li>
+                <li>• MoR included</li>
+              </ul>
+            </DocsCard>
+          </a>
+          <a href="/docs/features/paypal">
+            <DocsCard title="PAYPAL" className="hover:border-primary/50 h-full transition-all">
+              <p className="text-muted-foreground mb-2">Trusted brand</p>
+              <ul className="text-muted-foreground space-y-1 text-xs">
+                <li>• 400M+ accounts</li>
+                <li>• Pay Later options</li>
+                <li>• Venmo (US)</li>
+              </ul>
+            </DocsCard>
+          </a>
+        </div>
+      </DocsSection>
+
       {/* Security Warning for API Keys */}
       <DocsSection title="Security">
         <DocsCallout variant="danger" title="NEVER COMMIT SECRETS TO GIT">

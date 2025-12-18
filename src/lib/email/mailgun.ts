@@ -48,9 +48,10 @@ export class MailgunProvider implements EmailProviderClient {
     }
 
     options.attachments?.forEach((attachment) => {
+      // Convert Buffer to Uint8Array for Blob compatibility
       const content = typeof attachment.content === 'string'
         ? new Blob([attachment.content])
-        : new Blob([attachment.content]);
+        : new Blob([Buffer.isBuffer(attachment.content) ? new Uint8Array(attachment.content) : attachment.content]);
       formData.append('attachment', content, attachment.filename);
     });
 

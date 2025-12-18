@@ -65,7 +65,8 @@ export class UploadThingProvider implements StorageProviderClient {
     // Upload file using presigned URL
     const formData = new FormData();
     Object.entries(fields).forEach(([k, v]) => formData.append(k, v as string));
-    formData.append('file', new Blob([fileBuffer]));
+    // Convert Buffer to Uint8Array for Blob compatibility
+    formData.append('file', new Blob([new Uint8Array(fileBuffer)]));
 
     const uploadRes = await fetch(uploadUrl, {
       method: 'POST',

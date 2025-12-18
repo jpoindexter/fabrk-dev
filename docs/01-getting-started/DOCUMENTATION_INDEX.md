@@ -98,11 +98,21 @@ docs/
 **Path:** `docs/06-features/`
 
 **Contents:**
+- **PROVIDERS.md** - 34+ provider integrations (payments, email, AI, etc.)
 - **FEATURES-INVENTORY.md** - Complete feature list
 - **ACCESSIBILITY.md** - WCAG 2.1 Level AA compliance
 - **I18N-IMPLEMENTATION.md** - 18 language support
 - **SEARCH-IMPLEMENTATION.md** - Search integration
+- **WEBHOOKS.md** - Webhook handling for payments
 - **MONITOR-EFFECTS.md** - CRT/LCD visual effects
+
+**Provider Categories:**
+- Payments: Stripe, Lemonsqueezy, Paddle, Polar, PayPal
+- Email: Resend, Postmark, SendGrid, AWS SES, Mailgun
+- Newsletter: ConvertKit, Beehiiv, Mailchimp, Buttondown, Loops
+- AI: OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Groq, Together, Ollama
+- Search: Algolia, Typesense, Meilisearch, Elasticsearch, Fuse.js
+- Storage: R2, S3, Supabase, UploadThing, Vercel Blob
 
 **Every feature explained in detail.**
 
@@ -151,7 +161,10 @@ docs/
 ### "How do I..."
 
 **...get started?**
-→ [QUICK-START.md](./QUICK-START.md)
+→ [QUICK-START.md](./QUICK-START.md) - Run `npm run setup` for interactive wizard
+
+**...configure providers?**
+→ [PROVIDERS.md](../06-features/PROVIDERS.md) - 34+ payment, email, AI, search, storage integrations
 
 **...see all components?**
 → [COMPONENTS-INVENTORY.md](../02-components/COMPONENTS-INVENTORY.md)

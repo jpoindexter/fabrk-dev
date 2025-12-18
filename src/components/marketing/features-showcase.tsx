@@ -12,7 +12,7 @@ import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/
 import { SectionHeader } from '@/components/landing/section-header';
 import { BenefitCard } from '@/components/landing/benefit-card';
 import { CORE_BENEFITS, PRICING } from '@/data/landing';
-import { COMPONENT_COUNT_STRING } from '@/data/landing/stats';
+import { COMPONENT_COUNT_STRING, PROVIDER_COUNT_STRING } from '@/data/landing/stats';
 
 export function FeaturesShowcase() {
   return (
@@ -21,8 +21,8 @@ export function FeaturesShowcase() {
         <SectionHeader
           badge="WHAT MAKES FABRK DIFFERENT"
           code="0x10"
-          title="SHIP YOUR AI SAAS BEFORE YOUR RUNWAY ENDS"
-          description="AI credit system: done. Multi-provider billing: done. Production components: done. 215+ hours of work you don't have to do. Launch this weekend, not next quarter."
+          title="YOUR STACK. YOUR CHOICE. ZERO LOCK-IN."
+          description="29 providers with unified interfaces. Switch from Stripe to Polar, Resend to SES, or OpenAI to Anthropic without rewriting code. Never get trapped by vendors again."
           align="center"
         />
 
@@ -60,7 +60,7 @@ export function FeaturesShowcase() {
               <StatGroup>
                 <Stat label="Components" value={COMPONENT_COUNT_STRING} />
                 <Stat label="Themes" value="12" />
-                <Stat label="Providers" value="3" />
+                <Stat label="Providers" value={PROVIDER_COUNT_STRING} />
                 <Stat label="Launch Price" value={PRICING.display.launch} />
               </StatGroup>
             </CardContent>

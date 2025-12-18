@@ -27,13 +27,14 @@ export class ResendProvider implements EmailProviderClient {
   }
 
   async send(options: EmailOptions): Promise<EmailResult> {
+    // Build email params with required html/text content
     const { data, error } = await this.client.emails.send({
       from: options.from || 'noreply@yourdomain.com',
       to: Array.isArray(options.to) ? options.to : [options.to],
       subject: options.subject,
-      html: options.html,
+      html: options.html || options.text || '',
       text: options.text,
-      reply_to: options.replyTo,
+      replyTo: options.replyTo,
       cc: options.cc,
       bcc: options.bcc,
       attachments: options.attachments?.map((a) => ({

@@ -11,13 +11,13 @@
 
 # Fabrk
 
-> Terminal-first SaaS boilerplate. Ship fast. Look sharp.
+> 29 providers. Zero lock-in. Terminal-first SaaS boilerplate.
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](#-license)
 
-**Fabrk** is a production-ready Next.js SaaS boilerplate with a terminal-inspired design system. Built for indie hackers who want to ship fast without compromising on quality.
+**Fabrk** is a production-ready Next.js SaaS boilerplate with 29 swappable providers and a terminal-inspired design system. Switch from Stripe to Polar, Resend to SES, or OpenAI to Anthropic without rewriting code.
 
 ---
 
@@ -811,7 +811,7 @@ When **stuck or troubleshooting**:
 
 **Q: What makes Fabrk different from other SaaS boilerplates?**
 
-A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 77 production-ready components, and 100% OKLCH color system for perfect theme consistency.
+A: Zero vendor lock-in with 29 swappable providers (5 payment, 9 AI, 5 email, 5 search, 5 storage). Switch Stripe to Polar in one line. Plus terminal-first design (12 themes), 77 production components, and 100% OKLCH color system.
 
 **Q: Can I use this for client projects?**
 
@@ -1199,7 +1199,7 @@ Contributions welcome! Please:
 
 **Built with ❤️ by indie hackers, for indie hackers.**
 
-**Ship fast. Stay lean. Build what matters.**
+**29 providers. Zero lock-in. Your stack, your choice.**
 
 ---
 

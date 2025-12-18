@@ -327,17 +327,21 @@ const state = {
 // ============================================================================
 
 function renderTabs() {
-  const tabs = state.tabs.map((tab, i) => {
-    if (i === state.currentTab) {
-      return `${c.bgAmber}${c.black} ${tab} ${c.reset}`;
-    } else if (i < state.currentTab) {
-      return `${c.amberDim}${tab}${c.reset}`;
-    } else {
-      return `${c.amber}${tab}${c.reset}`;
-    }
-  });
+  const total = state.tabs.length;
+  const current = state.currentTab + 1;
+  const tabName = state.tabs[state.currentTab];
 
-  console.log(`  ${tabs.join('  ')}    ${c.amberDim}(Tab to cycle)${c.reset}`);
+  // Step indicator format: [3/12] DATABASE
+  const stepIndicator = `${c.amberDim}[${c.amberBright}${current}${c.amberDim}/${total}]${c.reset}`;
+  const currentTabDisplay = `${c.bgAmber}${c.black} ${tabName} ${c.reset}`;
+
+  // Progress bar
+  const progressWidth = 40;
+  const filled = Math.round((current / total) * progressWidth);
+  const empty = progressWidth - filled;
+  const progressBar = `${c.amberBright}${'█'.repeat(filled)}${c.amberDim}${'░'.repeat(empty)}${c.reset}`;
+
+  console.log(`  ${stepIndicator} ${currentTabDisplay}  ${progressBar}`);
   console.log(`${c.amber}${'─'.repeat(74)}${c.reset}`);
 }
 
@@ -451,7 +455,7 @@ function renderCategoryTab(categoryName) {
     return;
   }
 
-  // Selection phase
+  // Selection phase - compact single-line format
   const lines = [
     '',
     `${c.amberBright}> ${category.desc}${c.reset}`,
@@ -465,42 +469,30 @@ function renderCategoryTab(categoryName) {
     const bullet = isChosen
       ? `${c.amberBright}●${c.reset}`
       : isSelected
-        ? `${c.amber}○${c.reset}`
+        ? `${c.amber}▸${c.reset}`
         : `${c.amberDim}○${c.reset}`;
 
     const name = isSelected
       ? `${c.amberBright}${c.bold}${opt.name}${c.reset}`
-      : `${c.amber}${opt.name}${c.reset}`;
+      : isChosen
+        ? `${c.amber}${opt.name}${c.reset}`
+        : `${c.amberDim}${opt.name}${c.reset}`;
 
-    const rec = opt.rec ? ` ${c.amberBright}★${c.reset}` : '';
+    const rec = opt.rec ? `${c.amberBright}★${c.reset}` : ' ';
     const keyCount = opt.keys.length;
-    const keyHint = keyCount > 0 ? `${c.amberDim}(${keyCount} key${keyCount > 1 ? 's' : ''})${c.reset}` : '';
+    const keyHint = keyCount > 0 ? `${c.amberDim}(${keyCount})${c.reset}` : '   ';
 
-    lines.push(`  ${bullet} ${name}${rec}  ${keyHint}`);
-    lines.push(`      ${c.amberDim}${opt.desc}${c.reset}`);
-    lines.push('');
+    // Compact: one line per option
+    lines.push(`  ${bullet} ${rec} ${name} ${keyHint}`);
+
+    // Show description only for selected item
+    if (isSelected) {
+      lines.push(`      ${c.amber}→ ${opt.desc}${c.reset}`);
+    }
   });
 
-  // Show summary of selections so far
-  const config = TEMPLATE_CONFIGS[state.templateKey] || TEMPLATE_CONFIGS.custom;
-  const tabIndex = config.categories.indexOf(categoryName);
-  if (tabIndex > 0) {
-    lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
-    lines.push(`${c.amberDim}Selected so far:${c.reset}`);
-    config.categories.slice(0, tabIndex).forEach((catName) => {
-      const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
-      if (!cat) return;
-      const sel = state.customSelections[catName];
-      const opt = cat.options.find((o) => o.id === sel);
-      if (opt && !opt.id.startsWith('none')) {
-        lines.push(`  ${c.amberDim}${catName}:${c.reset} ${c.amber}${opt.name}${c.reset}`);
-      }
-    });
-  }
-
-  // Legend
   lines.push('');
-  lines.push(`${c.amberDim}★ = recommended${c.reset}`);
+  lines.push(`${c.amberDim}★ recommended  (n) = API keys needed${c.reset}`);
 
   renderBox(categoryName, lines);
 }
@@ -576,6 +568,7 @@ function renderReviewTab() {
 
     let keysConfigured = 0;
     let keysTotal = 0;
+    const missingServices = []; // Track services with missing keys
 
     config.categories.forEach((catName) => {
       const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
@@ -589,11 +582,18 @@ function renderReviewTab() {
         keysTotal += opt.keys.length;
         keysConfigured += configured;
 
+        // Track services that have required keys but none configured
+        if (opt.keys.length > 0 && configured === 0) {
+          missingServices.push(opt.name);
+        }
+
         const status = opt.keys.length === 0
           ? `${c.amberBright}✓${c.reset}`
           : configured === opt.keys.length
             ? `${c.amberBright}✓${c.reset}`
-            : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
+            : configured === 0
+              ? `${c.amber}!${c.reset}`
+              : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
 
         lines.push(`  ${status}  ${c.amber}${catName}:${c.reset} ${c.amberBright}${opt.name}${c.reset}`);
       } else {
@@ -608,13 +608,20 @@ function renderReviewTab() {
     if (keysTotal > 0) {
       const pct = Math.round((keysConfigured / keysTotal) * 100);
       lines.push(`${c.amberDim}API Keys:${c.reset} ${keysConfigured}/${keysTotal} configured (${pct}%)`);
+
+      // Show warning if services are missing keys
+      if (missingServices.length > 0) {
+        lines.push('');
+        lines.push(`${c.amberBright}⚠ Missing keys:${c.reset} ${c.amber}${missingServices.join(', ')}${c.reset}`);
+        lines.push(`${c.amberDim}These features won't work until keys are added to .env.local${c.reset}`);
+      }
     } else {
       lines.push(`${c.amberDim}No API keys needed for your selection.${c.reset}`);
     }
   }
 
   lines.push('');
-  lines.push(`${c.amberDim}Press Enter to continue${c.reset}`);
+  lines.push(`${c.amberDim}Press Enter to continue · Shift+Tab to go back${c.reset}`);
   lines.push('');
 
   renderBox('REVIEW', lines);
