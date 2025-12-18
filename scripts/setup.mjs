@@ -2,107 +2,636 @@
 
 /**
  * Fabrk Setup Wizard
- * Interactive CLI for configuring your SaaS boilerplate
- *
- * Usage:
- *   npm run setup              # Interactive setup
- *   npm run setup -- --dry-run # Preview without writing files
- *
- * Templates:
- *   1. Starter     - SQLite + Auth (30s, 0 keys)
- *   2. SaaS        - Postgres + Stripe + Email + Analytics (4-5m, 3 keys)
- *   3. AI App      - SaaS + OpenAI (5-6m, 4 keys)
- *   4. Marketplace - SaaS + Search + Storage (6-7m, 5 keys)
- *   5. Custom      - Choose each module (6-8m, varies)
+ * Tab-based navigation with Amber CRT aesthetic
  */
 
-// Parse CLI flags
-const args = process.argv.slice(2);
-const DRY_RUN = args.includes('--dry-run') || args.includes('-n');
-
-import * as readline from 'node:readline/promises';
-import { stdin as input, stdout as output } from 'node:process';
-import { readFile, writeFile, access } from 'node:fs/promises';
+import * as readline from 'node:readline';
+import { stdin, stdout } from 'node:process';
+import { readFile, writeFile, copyFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomBytes } from 'node:crypto';
 import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
+
+const args = process.argv.slice(2);
+const DRY_RUN = args.includes('--dry-run') || args.includes('-n');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = join(__dirname, '..');
 
-// ANSI color codes
+// ============================================================================
+// AMBER CRT COLORS
+// ============================================================================
+
 const c = {
   reset: '\x1b[0m',
   bold: '\x1b[1m',
   dim: '\x1b[2m',
-  green: '\x1b[32m',
-  blue: '\x1b[34m',
-  yellow: '\x1b[33m',
-  cyan: '\x1b[36m',
-  red: '\x1b[31m',
-  magenta: '\x1b[35m',
+  amber: '\x1b[33m',
+  amberBright: '\x1b[93m',
+  amberDim: '\x1b[2m\x1b[33m',
+  bgAmber: '\x1b[43m',
+  black: '\x1b[30m',
 };
 
-const log = (msg, color = 'reset') => console.log(`${c[color]}${msg}${c.reset}`);
-const success = (msg) => log(`  ${c.green}[OK]${c.reset} ${msg}`);
-const info = (msg) => log(`  ${c.blue}[INFO]${c.reset} ${msg}`);
-const warn = (msg) => log(`  ${c.yellow}[WARN]${c.reset} ${msg}`);
-const error = (msg) => log(`  ${c.red}[ERROR]${c.reset} ${msg}`);
+const clear = () => stdout.write('\x1b[2J\x1b[H');
+const hideCursor = () => stdout.write('\x1b[?25l');
+const showCursor = () => stdout.write('\x1b[?25h');
 
-function banner() {
-  console.log('');
-  log('  +-----------------------------------------+', 'cyan');
-  log('  |  FABRK SETUP                            |', 'cyan');
-  log('  |  What are you building?                 |', 'cyan');
-  log('  +-----------------------------------------+', 'cyan');
-  if (DRY_RUN) {
-    log('  |  [DRY RUN] No files will be written     |', 'yellow');
-    log('  +-----------------------------------------+', 'cyan');
-  }
-  console.log('');
-}
+// ============================================================================
+// TEMPLATES & DATA
+// ============================================================================
 
 const TEMPLATES = [
-  { key: '1', name: 'Starter', file: 'starter.json', time: '30s', keys: 0 },
-  { key: '2', name: 'SaaS', file: 'saas.json', time: '4-5m', keys: 3 },
-  { key: '3', name: 'AI App', file: 'ai-app.json', time: '5-6m', keys: 4 },
-  { key: '4', name: 'Marketplace', file: 'marketplace.json', time: '6-7m', keys: 5 },
-  { key: '5', name: 'Custom', file: null, time: '6-8m', keys: 'varies' },
+  { name: 'STARTER', file: 'starter.json', time: '30 sec', keys: 0, desc: 'SQLite + NextAuth', detail: 'demos, prototypes' },
+  { name: 'SAAS', file: 'saas.json', time: '4-5 min', keys: 3, desc: 'PostgreSQL + Stripe + Resend', detail: 'subscription apps', recommended: true },
+  { name: 'AI APP', file: 'ai-app.json', time: '5-6 min', keys: 4, desc: 'SaaS + OpenAI', detail: 'AI wrappers, chat' },
+  { name: 'MARKETPLACE', file: 'marketplace.json', time: '6-7 min', keys: 5, desc: 'SaaS + Algolia + S3', detail: 'platforms' },
+  { name: 'CUSTOM', file: null, time: 'varies', keys: '?', desc: 'Mix and match', detail: 'pick each feature' },
 ];
 
-const CUSTOM_OPTIONS = {
-  database: [
-    { key: '1', name: 'SQLite', value: 'sqlite', recommended: true },
-    { key: '2', name: 'PostgreSQL', value: 'postgresql' },
-  ],
-  payments: [
-    { key: '1', name: 'None', value: null },
-    { key: '2', name: 'Stripe', value: 'stripe', recommended: true },
-    { key: '3', name: 'Polar', value: 'polar' },
-    { key: '4', name: 'LemonSqueezy', value: 'lemonsqueezy' },
-  ],
-  ai: [
-    { key: '1', name: 'None', value: null },
-    { key: '2', name: 'OpenAI', value: 'openai', recommended: true },
-    { key: '3', name: 'Anthropic', value: 'anthropic' },
-    { key: '4', name: 'Google AI', value: 'google' },
-  ],
-  analytics: [
-    { key: '1', name: 'None', value: null },
-    { key: '2', name: 'PostHog', value: 'posthog', recommended: true },
-    { key: '3', name: 'Google Analytics', value: 'ga' },
-  ],
-  email: [
-    { key: '1', name: 'None', value: null },
-    { key: '2', name: 'Resend', value: 'resend', recommended: true },
-    { key: '3', name: 'SendGrid', value: 'sendgrid' },
-  ],
+const MARKETPLACE_STYLES = [
+  { name: 'AMAZON/ETSY', value: 'amazon', source: 'marketplace-amazon.tsx', desc: 'Product grid' },
+  { name: 'AIRBNB', value: 'airbnb', source: 'marketplace-airbnb.tsx', desc: 'Listing cards' },
+  { name: 'GUMROAD', value: 'minimal', source: 'marketplace-minimal.tsx', desc: 'Minimal creator' },
+];
+
+const STARTER_PAGES = {
+  saas: { source: 'saas.tsx', name: 'SaaS Landing' },
+  'ai-app': { source: 'ai-app.tsx', name: 'AI App Landing' },
 };
 
+const API_KEY_INFO = {
+  // Database
+  DATABASE_URL: { format: 'postgresql://user:pass@host:5432/db', where: 'supabase.com / neon.tech / vercel.com/storage' },
+  MONGODB_URI: { format: 'mongodb+srv://...', where: 'cloud.mongodb.com' },
+
+  // Payments
+  STRIPE_SECRET_KEY: { format: 'sk_test_...', where: 'dashboard.stripe.com/apikeys' },
+  STRIPE_WEBHOOK_SECRET: { format: 'whsec_...', where: 'dashboard.stripe.com/webhooks' },
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: { format: 'pk_test_...', where: 'dashboard.stripe.com/apikeys' },
+  LEMONSQUEEZY_API_KEY: { format: 'eyJ...', where: 'app.lemonsqueezy.com/settings/api' },
+  LEMONSQUEEZY_WEBHOOK_SECRET: { format: '...', where: 'app.lemonsqueezy.com/settings/webhooks' },
+  PADDLE_API_KEY: { format: '...', where: 'vendors.paddle.com/authentication' },
+  PADDLE_WEBHOOK_SECRET: { format: 'pdl_...', where: 'vendors.paddle.com/notifications' },
+  POLAR_ACCESS_TOKEN: { format: 'polar_...', where: 'polar.sh/settings/tokens' },
+  PAYPAL_CLIENT_ID: { format: '...', where: 'developer.paypal.com/dashboard/applications' },
+  PAYPAL_CLIENT_SECRET: { format: '...', where: 'developer.paypal.com/dashboard/applications' },
+
+  // Email
+  RESEND_API_KEY: { format: 're_...', where: 'resend.com/api-keys' },
+  POSTMARK_API_KEY: { format: '...', where: 'account.postmarkapp.com/servers' },
+  SENDGRID_API_KEY: { format: 'SG....', where: 'app.sendgrid.com/settings/api_keys' },
+  AWS_SES_ACCESS_KEY: { format: 'AKIA...', where: 'console.aws.amazon.com/ses' },
+  AWS_SES_SECRET_KEY: { format: '...', where: 'console.aws.amazon.com/ses' },
+  AWS_SES_REGION: { format: 'us-east-1', where: 'console.aws.amazon.com/ses' },
+  MAILGUN_API_KEY: { format: 'key-...', where: 'app.mailgun.com/app/account/security/api_keys' },
+  MAILGUN_DOMAIN: { format: 'mg.yourdomain.com', where: 'app.mailgun.com/app/sending/domains' },
+
+  // Analytics
+  NEXT_PUBLIC_POSTHOG_KEY: { format: 'phc_...', where: 'app.posthog.com/project/settings' },
+  NEXT_PUBLIC_PLAUSIBLE_DOMAIN: { format: 'yourdomain.com', where: 'plausible.io/sites' },
+  NEXT_PUBLIC_MIXPANEL_TOKEN: { format: '...', where: 'mixpanel.com/settings/project' },
+  NEXT_PUBLIC_AMPLITUDE_KEY: { format: '...', where: 'analytics.amplitude.com/settings' },
+
+  // Newsletter
+  CONVERTKIT_API_KEY: { format: '...', where: 'app.convertkit.com/account_settings/developer_settings' },
+  BEEHIIV_API_KEY: { format: '...', where: 'app.beehiiv.com/settings/integrations' },
+  MAILCHIMP_API_KEY: { format: '...', where: 'admin.mailchimp.com/account/api' },
+  MAILCHIMP_SERVER: { format: 'us1', where: 'admin.mailchimp.com (in API key)' },
+  BUTTONDOWN_API_KEY: { format: '...', where: 'buttondown.email/settings/api' },
+  LOOPS_API_KEY: { format: '...', where: 'app.loops.so/settings/api' },
+
+  // AI Providers
+  OPENAI_API_KEY: { format: 'sk-...', where: 'platform.openai.com/api-keys' },
+  ANTHROPIC_API_KEY: { format: 'sk-ant-...', where: 'console.anthropic.com/settings/keys' },
+  GOOGLE_AI_API_KEY: { format: 'AIza...', where: 'aistudio.google.com/app/apikey' },
+  XAI_API_KEY: { format: 'xai-...', where: 'console.x.ai/api-keys' },
+  DEEPSEEK_API_KEY: { format: 'sk-...', where: 'platform.deepseek.com/api_keys' },
+  MISTRAL_API_KEY: { format: '...', where: 'console.mistral.ai/api-keys' },
+  GROQ_API_KEY: { format: 'gsk_...', where: 'console.groq.com/keys' },
+  TOGETHER_API_KEY: { format: '...', where: 'api.together.xyz/settings/api-keys' },
+  OLLAMA_BASE_URL: { format: 'http://localhost:11434', where: 'Local - run: ollama serve' },
+
+  // Search
+  ALGOLIA_APP_ID: { format: 'XXXXXX', where: 'dashboard.algolia.com/account/api-keys' },
+  ALGOLIA_API_KEY: { format: '...', where: 'dashboard.algolia.com/account/api-keys' },
+  TYPESENSE_HOST: { format: 'xxx.typesense.net', where: 'cloud.typesense.org' },
+  TYPESENSE_API_KEY: { format: '...', where: 'cloud.typesense.org' },
+  MEILISEARCH_HOST: { format: 'http://localhost:7700', where: 'cloud.meilisearch.com' },
+  MEILISEARCH_API_KEY: { format: '...', where: 'cloud.meilisearch.com' },
+  ELASTICSEARCH_URL: { format: 'https://...', where: 'cloud.elastic.co' },
+
+  // Storage
+  AWS_ACCESS_KEY_ID: { format: 'AKIA...', where: 'console.aws.amazon.com/iam' },
+  AWS_SECRET_ACCESS_KEY: { format: '...', where: 'console.aws.amazon.com/iam' },
+  AWS_S3_BUCKET: { format: 'my-bucket-name', where: 's3.console.aws.amazon.com' },
+  R2_ACCESS_KEY_ID: { format: '...', where: 'dash.cloudflare.com/r2' },
+  R2_SECRET_ACCESS_KEY: { format: '...', where: 'dash.cloudflare.com/r2' },
+  R2_BUCKET: { format: 'my-bucket', where: 'dash.cloudflare.com/r2' },
+  SUPABASE_URL: { format: 'https://xxx.supabase.co', where: 'supabase.com/dashboard/project/settings/api' },
+  SUPABASE_ANON_KEY: { format: 'eyJ...', where: 'supabase.com/dashboard/project/settings/api' },
+  UPLOADTHING_SECRET: { format: 'sk_live_...', where: 'uploadthing.com/dashboard' },
+  BLOB_READ_WRITE_TOKEN: { format: 'vercel_blob_...', where: 'vercel.com/dashboard/stores' },
+};
+
+// ============================================================================
+// WIZARD STATE
+// ============================================================================
+
+// All feature categories - comprehensive industry options
+const FEATURE_CATEGORIES = [
+  {
+    name: 'DATABASE',
+    desc: 'Where your data lives',
+    options: [
+      { id: 'postgres', name: 'PostgreSQL', keys: ['DATABASE_URL'], desc: 'Supabase, Neon, Vercel Postgres', rec: true },
+      { id: 'mysql', name: 'MySQL', keys: ['DATABASE_URL'], desc: 'PlanetScale, traditional hosting' },
+      { id: 'mongodb', name: 'MongoDB', keys: ['MONGODB_URI'], desc: 'Document database, Atlas' },
+      { id: 'sqlite', name: 'SQLite', keys: [], desc: 'Local file, zero config' },
+    ],
+  },
+  {
+    name: 'PAYMENTS',
+    desc: 'Accept money from customers',
+    options: [
+      { id: 'stripe', name: 'Stripe', keys: ['STRIPE_SECRET_KEY', 'STRIPE_WEBHOOK_SECRET', 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY'], desc: 'Cards, subscriptions, invoices', rec: true },
+      { id: 'lemonsqueezy', name: 'Lemonsqueezy', keys: ['LEMONSQUEEZY_API_KEY', 'LEMONSQUEEZY_WEBHOOK_SECRET'], desc: 'Digital products, EU/tax handled' },
+      { id: 'paddle', name: 'Paddle', keys: ['PADDLE_API_KEY', 'PADDLE_WEBHOOK_SECRET'], desc: 'Merchant of record, global' },
+      { id: 'polar', name: 'Polar.sh', keys: ['POLAR_ACCESS_TOKEN'], desc: 'Open source monetization' },
+      { id: 'paypal', name: 'PayPal', keys: ['PAYPAL_CLIENT_ID', 'PAYPAL_CLIENT_SECRET'], desc: 'Global reach, trusted' },
+      { id: 'none-pay', name: 'None', keys: [], desc: 'Skip payments' },
+    ],
+  },
+  {
+    name: 'EMAIL',
+    desc: 'Send transactional emails',
+    options: [
+      { id: 'resend', name: 'Resend', keys: ['RESEND_API_KEY'], desc: 'Modern, React email templates', rec: true },
+      { id: 'postmark', name: 'Postmark', keys: ['POSTMARK_API_KEY'], desc: 'Best deliverability' },
+      { id: 'sendgrid', name: 'SendGrid', keys: ['SENDGRID_API_KEY'], desc: 'High volume, marketing' },
+      { id: 'ses', name: 'AWS SES', keys: ['AWS_SES_ACCESS_KEY', 'AWS_SES_SECRET_KEY', 'AWS_SES_REGION'], desc: 'Cheapest at scale' },
+      { id: 'mailgun', name: 'Mailgun', keys: ['MAILGUN_API_KEY', 'MAILGUN_DOMAIN'], desc: 'Developer-friendly' },
+      { id: 'none-email', name: 'None', keys: [], desc: 'Skip email' },
+    ],
+  },
+  {
+    name: 'ANALYTICS',
+    desc: 'Track user behavior',
+    options: [
+      { id: 'posthog', name: 'PostHog', keys: ['NEXT_PUBLIC_POSTHOG_KEY'], desc: 'Product analytics + feature flags', rec: true },
+      { id: 'plausible', name: 'Plausible', keys: ['NEXT_PUBLIC_PLAUSIBLE_DOMAIN'], desc: 'Privacy-friendly, simple' },
+      { id: 'mixpanel', name: 'Mixpanel', keys: ['NEXT_PUBLIC_MIXPANEL_TOKEN'], desc: 'Event analytics, funnels' },
+      { id: 'amplitude', name: 'Amplitude', keys: ['NEXT_PUBLIC_AMPLITUDE_KEY'], desc: 'Product analytics, cohorts' },
+      { id: 'vercel', name: 'Vercel Analytics', keys: [], desc: 'Built-in, zero config' },
+      { id: 'none-analytics', name: 'None', keys: [], desc: 'Skip analytics' },
+    ],
+  },
+  {
+    name: 'NEWSLETTER',
+    desc: 'Email marketing and subscribers',
+    options: [
+      { id: 'convertkit', name: 'ConvertKit', keys: ['CONVERTKIT_API_KEY'], desc: 'Creator-focused, automations', rec: true },
+      { id: 'beehiiv', name: 'Beehiiv', keys: ['BEEHIIV_API_KEY'], desc: 'Newsletter monetization' },
+      { id: 'mailchimp', name: 'Mailchimp', keys: ['MAILCHIMP_API_KEY', 'MAILCHIMP_SERVER'], desc: 'Enterprise, legacy' },
+      { id: 'buttondown', name: 'Buttondown', keys: ['BUTTONDOWN_API_KEY'], desc: 'Simple, markdown' },
+      { id: 'loops', name: 'Loops', keys: ['LOOPS_API_KEY'], desc: 'Modern, SaaS-focused' },
+      { id: 'resend-audience', name: 'Resend Audiences', keys: [], desc: 'If using Resend for email' },
+      { id: 'none-newsletter', name: 'None', keys: [], desc: 'Skip newsletter' },
+    ],
+  },
+  {
+    name: 'AI',
+    desc: 'Add AI capabilities',
+    options: [
+      { id: 'openai', name: 'OpenAI', keys: ['OPENAI_API_KEY'], desc: 'GPT-4o, o1, embeddings', rec: true },
+      { id: 'anthropic', name: 'Anthropic', keys: ['ANTHROPIC_API_KEY'], desc: 'Claude 3.5 Sonnet, Opus' },
+      { id: 'google', name: 'Google AI', keys: ['GOOGLE_AI_API_KEY'], desc: 'Gemini 2.0, Flash' },
+      { id: 'xai', name: 'xAI (Grok)', keys: ['XAI_API_KEY'], desc: 'Grok 2, real-time data' },
+      { id: 'deepseek', name: 'DeepSeek', keys: ['DEEPSEEK_API_KEY'], desc: 'V3, R1 reasoning' },
+      { id: 'mistral', name: 'Mistral', keys: ['MISTRAL_API_KEY'], desc: 'Large 2, Codestral' },
+      { id: 'groq', name: 'Groq', keys: ['GROQ_API_KEY'], desc: 'Fastest inference' },
+      { id: 'together', name: 'Together AI', keys: ['TOGETHER_API_KEY'], desc: 'Open models, cheap' },
+      { id: 'ollama', name: 'Ollama', keys: ['OLLAMA_BASE_URL'], desc: 'Local models, free' },
+      { id: 'none-ai', name: 'None', keys: [], desc: 'Skip AI' },
+    ],
+  },
+  {
+    name: 'SEARCH',
+    desc: 'Search and discovery',
+    options: [
+      { id: 'algolia', name: 'Algolia', keys: ['ALGOLIA_APP_ID', 'ALGOLIA_API_KEY'], desc: 'Fastest, typo-tolerant', rec: true },
+      { id: 'typesense', name: 'Typesense', keys: ['TYPESENSE_HOST', 'TYPESENSE_API_KEY'], desc: 'Open source Algolia alt' },
+      { id: 'meilisearch', name: 'Meilisearch', keys: ['MEILISEARCH_HOST', 'MEILISEARCH_API_KEY'], desc: 'Open source, easy' },
+      { id: 'elasticsearch', name: 'Elasticsearch', keys: ['ELASTICSEARCH_URL'], desc: 'Full-text, enterprise' },
+      { id: 'fuse', name: 'Fuse.js', keys: [], desc: 'Client-side, no API' },
+      { id: 'none-search', name: 'None', keys: [], desc: 'Skip search' },
+    ],
+  },
+  {
+    name: 'STORAGE',
+    desc: 'File uploads and media',
+    options: [
+      { id: 'r2', name: 'Cloudflare R2', keys: ['R2_ACCESS_KEY_ID', 'R2_SECRET_ACCESS_KEY', 'R2_BUCKET'], desc: 'S3-compatible, no egress', rec: true },
+      { id: 's3', name: 'AWS S3', keys: ['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_S3_BUCKET'], desc: 'Industry standard' },
+      { id: 'supabase-storage', name: 'Supabase Storage', keys: ['SUPABASE_URL', 'SUPABASE_ANON_KEY'], desc: 'Integrated with DB' },
+      { id: 'uploadthing', name: 'UploadThing', keys: ['UPLOADTHING_SECRET'], desc: 'Simple, type-safe' },
+      { id: 'vercel-blob', name: 'Vercel Blob', keys: ['BLOB_READ_WRITE_TOKEN'], desc: 'Zero config on Vercel' },
+      { id: 'none-storage', name: 'None', keys: [], desc: 'Skip storage' },
+    ],
+  },
+];
+
+// Template configurations - which categories each template uses and defaults
+const TEMPLATE_CONFIGS = {
+  starter: {
+    categories: [], // No category selection, just basic setup
+    defaults: {},
+  },
+  saas: {
+    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS'],
+    defaults: {
+      DATABASE: 'postgres',
+      PAYMENTS: 'stripe',
+      EMAIL: 'resend',
+      NEWSLETTER: 'none-newsletter',
+      ANALYTICS: 'posthog',
+    },
+  },
+  'ai-app': {
+    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'AI'],
+    defaults: {
+      DATABASE: 'postgres',
+      PAYMENTS: 'stripe',
+      EMAIL: 'resend',
+      NEWSLETTER: 'none-newsletter',
+      ANALYTICS: 'posthog',
+      AI: 'openai',
+    },
+  },
+  marketplace: {
+    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'SEARCH', 'STORAGE'],
+    defaults: {
+      DATABASE: 'postgres',
+      PAYMENTS: 'stripe',
+      EMAIL: 'resend',
+      NEWSLETTER: 'none-newsletter',
+      ANALYTICS: 'posthog',
+      SEARCH: 'algolia',
+      STORAGE: 'r2',
+    },
+  },
+  custom: {
+    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'AI', 'SEARCH', 'STORAGE'],
+    defaults: {
+      DATABASE: 'postgres',
+      PAYMENTS: 'none-pay',
+      EMAIL: 'none-email',
+      NEWSLETTER: 'none-newsletter',
+      ANALYTICS: 'none-analytics',
+      AI: 'none-ai',
+      SEARCH: 'none-search',
+      STORAGE: 'none-storage',
+    },
+  },
+};
+
+const state = {
+  currentTab: 0,
+  tabs: ['Template', 'API Keys', 'Starter Page', 'Complete'],
+  // Selections
+  template: null,
+  templateKey: null,
+  marketplaceStyle: null,
+  apiKeyValues: {},
+  wantsStarterPage: false,
+  // UI state for current screen
+  selectedIndex: 0,
+  inputValue: '',
+  currentApiKeyIndex: 0,
+  apiKeysToPrompt: [],
+  // Custom mode
+  isCustomMode: false,
+  customSelections: {}, // { categoryName: optionId }
+};
+
+// ============================================================================
+// RENDERING
+// ============================================================================
+
+function renderTabs() {
+  const tabs = state.tabs.map((tab, i) => {
+    if (i === state.currentTab) {
+      return `${c.bgAmber}${c.black} ${tab} ${c.reset}`;
+    } else if (i < state.currentTab) {
+      return `${c.amberDim}${tab}${c.reset}`;
+    } else {
+      return `${c.amber}${tab}${c.reset}`;
+    }
+  });
+
+  console.log(`  ${tabs.join('  ')}    ${c.amberDim}(Tab to cycle)${c.reset}`);
+  console.log(`${c.amber}${'─'.repeat(74)}${c.reset}`);
+}
+
+function renderBox(title, lines) {
+  const width = 70;
+  const hr = '═'.repeat(width);
+
+  console.log(`${c.amber}  ╔${hr}╗${c.reset}`);
+
+  if (title) {
+    const titlePad = width - title.length;
+    const left = Math.floor(titlePad / 2);
+    const right = titlePad - left;
+    console.log(`${c.amber}  ║${' '.repeat(left)}${c.amberBright}${title}${c.amber}${' '.repeat(right)}║${c.reset}`);
+    console.log(`${c.amber}  ╠${hr}╣${c.reset}`);
+  }
+
+  for (const line of lines) {
+    const stripped = line.replace(/\x1b\[[0-9;]*m/g, '');
+    const pad = width - stripped.length;
+    console.log(`${c.amber}  ║${c.reset}${line}${' '.repeat(Math.max(0, pad))}${c.amber}║${c.reset}`);
+  }
+
+  console.log(`${c.amber}  ╚${hr}╝${c.reset}`);
+}
+
+function renderScreen() {
+  clear();
+
+  // Header
+  console.log(`${c.amber}`);
+  console.log(`  ███████╗ █████╗ ██████╗ ██████╗ ██╗  ██╗`);
+  console.log(`  ██╔════╝██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝`);
+  console.log(`  █████╗  ███████║██████╔╝██████╔╝█████╔╝   ${c.amberBright}SETUP WIZARD${c.amber}`);
+  console.log(`  ██╔══╝  ██╔══██║██╔══██╗██╔══██╗██╔═██╗   ${c.amberDim}v1.0${c.amber}`);
+  console.log(`  ██║     ██║  ██║██████╔╝██║  ██║██║  ██╗`);
+  console.log(`  ╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝`);
+  console.log(`${c.reset}`);
+
+  if (DRY_RUN) {
+    console.log(`  ${c.amberBright}⚠ DRY RUN MODE${c.reset}`);
+  }
+  console.log('');
+
+  // Tab bar
+  renderTabs();
+  console.log('');
+
+  // Content based on current tab
+  const tabName = state.tabs[state.currentTab];
+  switch (tabName) {
+    case 'Template':
+      renderTemplateTab();
+      break;
+    case 'API Keys':
+      renderApiKeysTab();
+      break;
+    case 'Starter Page':
+      renderStarterPageTab();
+      break;
+    case 'Complete':
+      renderCompleteTab();
+      break;
+    default:
+      // Check if it's a category tab
+      if (FEATURE_CATEGORIES.find((cat) => cat.name === tabName)) {
+        renderCategoryTab(tabName);
+      }
+      break;
+  }
+
+  // Footer
+  console.log('');
+  console.log(`${c.amber}${'─'.repeat(74)}${c.reset}`);
+  renderFooter();
+}
+
+function renderTemplateTab() {
+  const lines = [];
+  lines.push(`${c.amberBright}> What are you building?${c.reset}`);
+  lines.push('');
+
+  TEMPLATES.forEach((t, i) => {
+    const selected = i === state.selectedIndex;
+    const bullet = selected ? `${c.amberBright}●${c.reset}` : ' ';
+    const num = selected ? `${c.amberBright}${i + 1}.${c.reset}` : `${c.amberDim}${i + 1}.${c.reset}`;
+    const name = selected ? `${c.amberBright}${c.bold}${t.name}${c.reset}` : `${c.amber}${t.name}${c.reset}`;
+    const rec = t.recommended ? ` ${c.amberBright}★${c.reset}` : '';
+    const meta = `${c.amberDim}${t.time} · ${t.keys} keys${c.reset}`;
+
+    lines.push(`${bullet} ${num} ${name}${rec}  ${meta}`);
+    lines.push(`     ${c.amberDim}${t.desc}${c.reset}`);
+    if (selected) {
+      lines.push(`     ${c.amber}→ ${t.detail}${c.reset}`);
+    }
+    lines.push('');
+  });
+
+  renderBox('TEMPLATE', lines);
+}
+
+function renderCategoryTab(categoryName) {
+  const category = FEATURE_CATEGORIES.find((c) => c.name === categoryName);
+  if (!category) return;
+
+  const currentSelection = state.customSelections[categoryName];
+  const lines = [
+    '',
+    `${c.amberBright}> ${category.desc}${c.reset}`,
+    '',
+  ];
+
+  category.options.forEach((opt, i) => {
+    const isSelected = i === state.selectedIndex;
+    const isChosen = currentSelection === opt.id;
+
+    const bullet = isChosen
+      ? `${c.amberBright}●${c.reset}`
+      : isSelected
+        ? `${c.amber}○${c.reset}`
+        : `${c.amberDim}○${c.reset}`;
+
+    const name = isSelected
+      ? `${c.amberBright}${c.bold}${opt.name}${c.reset}`
+      : `${c.amber}${opt.name}${c.reset}`;
+
+    const rec = opt.rec ? ` ${c.amberBright}★ REC${c.reset}` : '';
+    const keyCount = opt.keys.length;
+    const keyHint = keyCount > 0 ? `${c.amberDim}(${keyCount} key${keyCount > 1 ? 's' : ''})${c.reset}` : '';
+
+    lines.push(`  ${bullet} ${name}${rec}  ${keyHint}`);
+    lines.push(`      ${c.amberDim}${opt.desc}${c.reset}`);
+    lines.push('');
+  });
+
+  // Show summary of selections so far
+  const categoryIndex = FEATURE_CATEGORIES.findIndex((c) => c.name === categoryName);
+  if (categoryIndex > 0) {
+    lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
+    lines.push(`${c.amberDim}Selected so far:${c.reset}`);
+    FEATURE_CATEGORIES.slice(0, categoryIndex).forEach((cat) => {
+      const sel = state.customSelections[cat.name];
+      const opt = cat.options.find((o) => o.id === sel);
+      if (opt && !opt.id.startsWith('none')) {
+        lines.push(`  ${c.amberDim}${cat.name}:${c.reset} ${c.amber}${opt.name}${c.reset}`);
+      }
+    });
+    lines.push('');
+  }
+
+  renderBox(categoryName, lines);
+}
+
+function renderApiKeysTab() {
+  if (state.apiKeysToPrompt.length === 0) {
+    const lines = [
+      '',
+      `${c.amberBright}No API keys required!${c.reset}`,
+      '',
+      `${c.amberDim}Press Enter or Tab to continue.${c.reset}`,
+      '',
+    ];
+    renderBox('API KEYS', lines);
+    return;
+  }
+
+  const lines = [''];
+
+  // Show list of all keys with status
+  state.apiKeysToPrompt.forEach((apiKey, i) => {
+    const isCurrent = i === state.currentApiKeyIndex;
+    const isComplete = i < state.currentApiKeyIndex;
+    const value = state.apiKeyValues[apiKey];
+
+    let status;
+    if (isComplete) {
+      status = value ? `${c.amberBright}✓${c.reset}` : `${c.amberDim}skipped${c.reset}`;
+    } else if (isCurrent) {
+      status = `${c.amberBright}◀${c.reset}`;
+    } else {
+      status = `${c.amberDim}...${c.reset}`;
+    }
+
+    const name = isCurrent
+      ? `${c.amberBright}${c.bold}${apiKey}${c.reset}`
+      : isComplete
+        ? `${c.amberDim}${apiKey}${c.reset}`
+        : `${c.amber}${apiKey}${c.reset}`;
+
+    lines.push(`  ${status}  ${name}`);
+  });
+
+  lines.push('');
+  lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
+  lines.push('');
+
+  // Current key details
+  const key = state.apiKeysToPrompt[state.currentApiKeyIndex];
+  const info = API_KEY_INFO[key] || { format: '', where: '' };
+
+  lines.push(`${c.amber}FORMAT:${c.reset}  ${c.amberDim}${info.format}${c.reset}`);
+  lines.push(`${c.amber}WHERE:${c.reset}   ${c.amberDim}${info.where}${c.reset}`);
+  lines.push('');
+  lines.push(`${c.amberDim}Leave blank to skip · Enter to continue${c.reset}`);
+  lines.push('');
+  lines.push(`${c.amberBright}>${c.reset} ${state.inputValue}█`);
+  lines.push('');
+
+  renderBox('API KEYS', lines);
+}
+
+function renderStarterPageTab() {
+  const options = [
+    { name: 'YES', desc: 'Copy pre-built landing page + FABRK-PROMPTS.md' },
+    { name: 'NO', desc: 'Skip - keep existing page.tsx' },
+  ];
+
+  const lines = [
+    '',
+    `${c.amberBright}> Copy a starter landing page?${c.reset}`,
+    '',
+  ];
+
+  options.forEach((opt, i) => {
+    const selected = i === state.selectedIndex;
+    const bullet = selected ? `${c.amberBright}●${c.reset}` : ' ';
+    const num = selected ? `${c.amberBright}${i + 1}.${c.reset}` : `${c.amberDim}${i + 1}.${c.reset}`;
+    const name = selected ? `${c.amberBright}${c.bold}${opt.name}${c.reset}` : `${c.amber}${opt.name}${c.reset}`;
+    lines.push(`${bullet} ${num} ${name}`);
+    lines.push(`     ${c.amberDim}${opt.desc}${c.reset}`);
+    lines.push('');
+  });
+
+  renderBox('STARTER PAGE', lines);
+}
+
+function renderCompleteTab() {
+  if (DRY_RUN) {
+    const lines = [
+      '',
+      `${c.amberBright}⚠ DRY RUN - No files written${c.reset}`,
+      '',
+      `${c.amber}Would create:${c.reset}`,
+      `  • .env.local`,
+      state.wantsStarterPage ? `  • src/app/(marketing)/page.tsx` : '',
+      state.wantsStarterPage ? `  • FABRK-PROMPTS.md` : '',
+      '',
+      `${c.amberDim}Run ${c.amber}npm run setup${c.amberDim} to apply.${c.reset}`,
+      '',
+    ].filter(Boolean);
+    renderBox('DRY RUN COMPLETE', lines);
+  } else {
+    const lines = [
+      '',
+      `${c.amberBright}✓ Setup Complete!${c.reset}`,
+      '',
+      `${c.amber}Created:${c.reset}`,
+      `  ${c.amberBright}✓${c.reset} .env.local`,
+      state.wantsStarterPage ? `  ${c.amberBright}✓${c.reset} Landing page copied` : '',
+      state.wantsStarterPage ? `  ${c.amberBright}✓${c.reset} FABRK-PROMPTS.md` : '',
+      '',
+      `${c.amber}Next steps:${c.reset}`,
+      `  ${c.amberBright}1.${c.reset} npm run db:push`,
+      `  ${c.amberBright}2.${c.reset} npm run dev`,
+      '',
+    ].filter(Boolean);
+    renderBox('COMPLETE', lines);
+  }
+}
+
+function renderFooter() {
+  const hints = [];
+  const tabName = state.tabs[state.currentTab];
+
+  // Check if it's a category tab or selection tab
+  const isCategory = FEATURE_CATEGORIES.some((c) => c.name === tabName);
+  if (tabName === 'Template' || tabName === 'Starter Page' || isCategory) {
+    hints.push(`${c.amberDim}↑/↓${c.reset} ${c.amber}select${c.reset}`);
+  }
+  if (tabName === 'API Keys' && state.apiKeysToPrompt.length > 0) {
+    hints.push(`${c.amberDim}type${c.reset} ${c.amber}value${c.reset}`);
+  }
+
+  if (state.currentTab < state.tabs.length - 1) {
+    hints.push(`${c.amberDim}Enter/Tab${c.reset} ${c.amber}next${c.reset}`);
+    hints.push(`${c.amberDim}Shift+Tab${c.reset} ${c.amber}back${c.reset}`);
+  } else {
+    hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}finish${c.reset}`);
+  }
+  hints.push(`${c.amberDim}Ctrl+C${c.reset} ${c.amber}exit${c.reset}`);
+
+  console.log(`  ${hints.join('   ')}`);
+}
+
+// ============================================================================
+// LOGIC
+// ============================================================================
+
 async function loadTemplate(filename) {
-  const path = join(__dirname, 'templates', filename);
-  const content = await readFile(path, 'utf-8');
+  const content = await readFile(join(__dirname, 'templates', filename), 'utf-8');
   return JSON.parse(content);
 }
 
@@ -110,329 +639,388 @@ function generateSecret() {
   return randomBytes(32).toString('base64');
 }
 
-async function promptSelect(rl, question, options) {
-  console.log('');
-  log(`  ${question}`, 'bold');
-  console.log('');
-
-  for (const opt of options) {
-    const rec = opt.recommended ? ` ${c.green}(recommended)${c.reset}` : '';
-    const extra = opt.time ? ` ${c.dim}${opt.time}  ${opt.keys} keys${c.reset}` : '';
-    log(`    ${opt.key}. ${opt.name}${rec}${extra}`);
-  }
-
-  console.log('');
-  const validKeys = options.map(o => o.key);
-
-  while (true) {
-    const answer = await rl.question(`  ${c.cyan}>${c.reset} `);
-    const trimmed = answer.trim();
-
-    if (validKeys.includes(trimmed)) {
-      return options.find(o => o.key === trimmed);
-    }
-
-    if (trimmed === '?' || trimmed.toLowerCase() === 'help') {
-      log('  Enter the number of your choice (1-' + options.length + ')', 'yellow');
-      log('  Press Ctrl+C to exit', 'dim');
-      continue;
-    }
-
-    warn(`Invalid selection. Enter ${validKeys.join(', ')}`);
-  }
-}
-
-async function promptInput(rl, label, hint = '') {
-  const hintText = hint ? ` ${c.dim}(${hint})${c.reset}` : '';
-  const answer = await rl.question(`  ${label}${hintText}: ${c.cyan}`);
-  process.stdout.write(c.reset);
-  return answer.trim();
-}
-
-async function checkEnvExists() {
-  try {
-    await access(join(ROOT_DIR, '.env.local'));
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function buildEnvContent(template, customValues = {}) {
+async function buildEnvContent(template, values = {}) {
   const lines = ['# Generated by Fabrk Setup Wizard', `# Template: ${template.name}`, ''];
-
-  for (const [key, value] of Object.entries(template.env)) {
-    if (value === '{{AUTO_GENERATE}}') {
+  for (const [key, val] of Object.entries(template.env)) {
+    if (val === '{{AUTO_GENERATE}}') {
       lines.push(`${key}="${generateSecret()}"`);
-    } else if (value.startsWith('{{PROMPT:')) {
-      const customVal = customValues[key] || '';
-      lines.push(`${key}="${customVal}"`);
+    } else if (typeof val === 'string' && val.startsWith('{{PROMPT:')) {
+      lines.push(`${key}="${values[key] || ''}"`);
     } else {
-      lines.push(`${key}="${value}"`);
+      lines.push(`${key}="${val}"`);
     }
   }
-
   return lines.join('\n') + '\n';
 }
 
-async function writeEnvFile(content) {
-  const path = join(ROOT_DIR, '.env.local');
-  await writeFile(path, content, 'utf-8');
-}
+async function copyStarterPage(templateKey, marketplaceStyle = null) {
+  const templatesDir = join(__dirname, 'page-templates');
+  let sourceFile;
 
-async function installDependencies(deps) {
-  if (!deps || deps.length === 0) return;
-
-  info(`Installing ${deps.length} dependencies...`);
-
-  try {
-    execSync(`npm install ${deps.join(' ')}`, {
-      cwd: ROOT_DIR,
-      stdio: 'pipe',
-    });
-    success(`Installed: ${deps.join(', ')}`);
-  } catch (err) {
-    warn(`Some dependencies may need manual installation`);
+  if (templateKey === 'marketplace' && marketplaceStyle) {
+    const style = MARKETPLACE_STYLES.find((s) => s.value === marketplaceStyle);
+    sourceFile = style?.source;
+  } else if (STARTER_PAGES[templateKey]) {
+    sourceFile = STARTER_PAGES[templateKey].source;
   }
+
+  if (!sourceFile) return false;
+
+  const sourcePath = join(templatesDir, sourceFile);
+  const destPath = join(ROOT_DIR, 'src/app/(marketing)/page.tsx');
+
+  if (!existsSync(sourcePath)) return false;
+
+  if (existsSync(destPath)) {
+    await copyFile(destPath, destPath + '.backup');
+  }
+  await copyFile(sourcePath, destPath);
+  return true;
 }
 
-async function runCustomFlow(rl) {
-  const config = {
-    name: 'Custom',
-    dependencies: [],
-    env: {
-      NEXTAUTH_SECRET: '{{AUTO_GENERATE}}',
-      NEXTAUTH_URL: 'http://localhost:3000',
-      NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
-      NODE_ENV: 'development',
-    },
-  };
+async function generatePromptsFile() {
+  const content = `# FABRK-PROMPTS.md
 
-  // Step 1: Database
-  log('\n  [1/6] Database', 'bold');
-  const db = await promptSelect(rl, '', CUSTOM_OPTIONS.database);
+Paste into Cursor, Claude Code, or Windsurf:
 
-  if (db.value === 'sqlite') {
-    config.env.DATABASE_URL = 'file:./dev.db';
+## Update Content
+\`\`\`
+Update src/app/(marketing)/page.tsx with your app name, tagline, and 3 features.
+Keep terminal aesthetic (font-mono, rounded-none).
+\`\`\`
+
+## Add Pricing
+\`\`\`
+Create src/app/(marketing)/pricing/page.tsx with 3 tiers.
+\`\`\`
+`;
+  await writeFile(join(ROOT_DIR, 'FABRK-PROMPTS.md'), content, 'utf-8');
+}
+
+async function finalize() {
+  const selectedTemplate = TEMPLATES[state.selectedIndex];
+
+  // Load template
+  let template;
+  if (selectedTemplate.file) {
+    template = await loadTemplate(selectedTemplate.file);
   } else {
-    config.env.DATABASE_URL = '{{PROMPT:PostgreSQL connection string}}';
+    // Custom - basic template
+    template = {
+      name: 'Custom',
+      env: {
+        NEXTAUTH_SECRET: '{{AUTO_GENERATE}}',
+        NEXTAUTH_URL: 'http://localhost:3000',
+        NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
+        NODE_ENV: 'development',
+      },
+    };
   }
 
-  // Step 2: Payments
-  log('\n  [2/6] Payments', 'bold');
-  const payments = await promptSelect(rl, '', CUSTOM_OPTIONS.payments);
+  state.template = template;
+  state.templateKey = selectedTemplate.name.toLowerCase().replace(' ', '-');
 
-  if (payments.value === 'stripe') {
-    config.dependencies.push('stripe', '@stripe/stripe-js');
-    config.env.STRIPE_SECRET_KEY = '{{PROMPT:Stripe secret key}}';
-    config.env.STRIPE_WEBHOOK_SECRET = '{{PROMPT:Stripe webhook secret}}';
-    config.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = '{{PROMPT:Stripe publishable key}}';
-  } else if (payments.value === 'polar') {
-    config.env.POLAR_ACCESS_TOKEN = '{{PROMPT:Polar access token}}';
-  } else if (payments.value === 'lemonsqueezy') {
-    config.env.LEMONSQUEEZY_API_KEY = '{{PROMPT:LemonSqueezy API key}}';
-    config.env.LEMONSQUEEZY_WEBHOOK_SECRET = '{{PROMPT:LemonSqueezy webhook secret}}';
-  }
+  // Build env content
+  const envContent = await buildEnvContent(template, state.apiKeyValues);
 
-  // Step 3: AI Provider
-  log('\n  [3/6] AI Provider', 'bold');
-  const ai = await promptSelect(rl, '', CUSTOM_OPTIONS.ai);
+  if (!DRY_RUN) {
+    // Write .env.local
+    await writeFile(join(ROOT_DIR, '.env.local'), envContent, 'utf-8');
 
-  if (ai.value === 'openai') {
-    config.dependencies.push('openai', 'ai');
-    config.env.OPENAI_API_KEY = '{{PROMPT:OpenAI API key}}';
-  } else if (ai.value === 'anthropic') {
-    config.dependencies.push('@anthropic-ai/sdk', 'ai');
-    config.env.ANTHROPIC_API_KEY = '{{PROMPT:Anthropic API key}}';
-  } else if (ai.value === 'google') {
-    config.dependencies.push('@google/generative-ai', 'ai');
-    config.env.GOOGLE_AI_API_KEY = '{{PROMPT:Google AI API key}}';
-  }
-
-  // Step 4: Analytics
-  log('\n  [4/6] Analytics', 'bold');
-  const analytics = await promptSelect(rl, '', CUSTOM_OPTIONS.analytics);
-
-  if (analytics.value === 'posthog') {
-    config.dependencies.push('posthog-js');
-    config.env.NEXT_PUBLIC_POSTHOG_KEY = '{{PROMPT:PostHog project API key}}';
-    config.env.NEXT_PUBLIC_POSTHOG_HOST = 'https://us.i.posthog.com';
-  } else if (analytics.value === 'ga') {
-    config.env.NEXT_PUBLIC_GA_MEASUREMENT_ID = '{{PROMPT:Google Analytics ID}}';
-  }
-
-  // Step 5: Email
-  log('\n  [5/6] Email', 'bold');
-  const email = await promptSelect(rl, '', CUSTOM_OPTIONS.email);
-
-  if (email.value === 'resend') {
-    config.dependencies.push('resend');
-    config.env.RESEND_API_KEY = '{{PROMPT:Resend API key}}';
-  } else if (email.value === 'sendgrid') {
-    config.dependencies.push('@sendgrid/mail');
-    config.env.SENDGRID_API_KEY = '{{PROMPT:SendGrid API key}}';
-  }
-
-  // Step 6: Summary
-  log('\n  [6/6] Configuration Summary', 'bold');
-  console.log('');
-  info(`Database: ${db.name}`);
-  info(`Payments: ${payments.name}`);
-  info(`AI: ${ai.name}`);
-  info(`Analytics: ${analytics.name}`);
-  info(`Email: ${email.name}`);
-
-  return config;
-}
-
-async function collectEnvValues(rl, template) {
-  const values = {};
-  const prompts = [];
-
-  for (const [key, value] of Object.entries(template.env)) {
-    if (typeof value === 'string' && value.startsWith('{{PROMPT:')) {
-      const hint = value.replace('{{PROMPT:', '').replace('}}', '');
-      prompts.push({ key, hint });
-    }
-  }
-
-  if (prompts.length === 0) return values;
-
-  console.log('');
-  log('  Enter your API keys (leave blank to skip):', 'bold');
-  console.log('');
-
-  for (const { key, hint } of prompts) {
-    const answer = await promptInput(rl, `  ${key}`, hint);
-    values[key] = answer;
-  }
-
-  return values;
-}
-
-async function main() {
-  const rl = readline.createInterface({ input, output });
-
-  try {
-    banner();
-
-    // Check for existing .env.local (skip in dry run)
-    if (!DRY_RUN && await checkEnvExists()) {
-      warn('.env.local already exists');
-      const answer = await rl.question(`  Overwrite? (y/N): ${c.cyan}`);
-      process.stdout.write(c.reset);
-
-      if (answer.trim().toLowerCase() !== 'y') {
-        info('Setup cancelled');
-        rl.close();
-        return;
+    // Copy starter page if requested
+    if (state.wantsStarterPage && ['saas', 'ai-app', 'marketplace'].includes(state.templateKey)) {
+      const copied = await copyStarterPage(state.templateKey, state.marketplaceStyle);
+      if (copied) {
+        await generatePromptsFile();
       }
     }
+  }
+}
 
-    log('  Press Ctrl+C to exit at any time', 'dim');
+// ============================================================================
+// INPUT HANDLING
+// ============================================================================
 
-    // Select template
-    const selected = await promptSelect(rl, 'Select a template:', TEMPLATES);
+async function handleKeypress(str, key) {
+  // Ctrl+C - exit
+  if (key.ctrl && key.name === 'c') {
+    showCursor();
+    if (stdin.isTTY) stdin.setRawMode(false);
+    clear();
+    console.log(`\n  ${c.amberDim}Setup cancelled. No changes made.${c.reset}\n`);
+    process.exit(0);
+  }
 
-    let template;
-    let customValues = {};
+  // Tab - next tab
+  if (key.name === 'tab' && !key.shift) {
+    await goToNextTab();
+    return;
+  }
 
-    if (selected.name === 'Custom') {
-      template = await runCustomFlow(rl);
-    } else {
-      template = await loadTemplate(selected.file);
-    }
+  // Shift+Tab - previous tab
+  if (key.name === 'tab' && key.shift) {
+    goToPrevTab();
+    return;
+  }
 
-    // Collect API keys
-    customValues = await collectEnvValues(rl, template);
+  // Tab-specific handling
+  const tabName = state.tabs[state.currentTab];
+  switch (tabName) {
+    case 'Template':
+      if (key.name === 'up') {
+        state.selectedIndex = (state.selectedIndex - 1 + TEMPLATES.length) % TEMPLATES.length;
+        renderScreen();
+      } else if (key.name === 'down') {
+        state.selectedIndex = (state.selectedIndex + 1) % TEMPLATES.length;
+        renderScreen();
+      } else if (key.name === 'return') {
+        await goToNextTab();
+      } else if (str >= '1' && str <= '5') {
+        state.selectedIndex = parseInt(str, 10) - 1;
+        renderScreen();
+      }
+      break;
 
-    // Generate and write .env.local
-    console.log('');
-    info('Generating configuration...');
 
-    const envContent = await buildEnvContent(template, customValues);
-    const envVarCount = envContent.split('\n').filter(l => l.includes('=')).length;
+    case 'API Keys':
+      if (state.apiKeysToPrompt.length === 0) {
+        // No keys needed, just advance
+        if (key.name === 'return') {
+          await goToNextTab();
+        }
+      } else {
+        if (key.name === 'return') {
+          // Save current value and move to next key
+          const currentKey = state.apiKeysToPrompt[state.currentApiKeyIndex];
+          state.apiKeyValues[currentKey] = state.inputValue;
+          state.inputValue = '';
+          state.currentApiKeyIndex++;
 
-    if (DRY_RUN) {
-      // Show preview instead of writing
-      console.log('');
-      log('  +-----------------------------------------+', 'magenta');
-      log('  |  DRY RUN PREVIEW                        |', 'magenta');
-      log('  +-----------------------------------------+', 'magenta');
-      console.log('');
-      log('  .env.local would contain:', 'bold');
-      console.log('');
-      for (const line of envContent.split('\n')) {
-        if (line.startsWith('#') || line === '') {
-          log(`    ${c.dim}${line}${c.reset}`);
-        } else {
-          // Mask sensitive values
-          const [key, ...valueParts] = line.split('=');
-          const value = valueParts.join('=');
-          if (key && value) {
-            const masked = value.length > 10 ? value.slice(0, 8) + '...' : value;
-            log(`    ${c.cyan}${key}${c.reset}=${masked}`);
+          if (state.currentApiKeyIndex >= state.apiKeysToPrompt.length) {
+            await goToNextTab();
+          } else {
+            renderScreen();
           }
+        } else if (key.name === 'backspace') {
+          state.inputValue = state.inputValue.slice(0, -1);
+          renderScreen();
+        } else if (str && str.length === 1 && !key.ctrl) {
+          state.inputValue += str;
+          renderScreen();
         }
       }
-      console.log('');
-      info(`Would generate ${envVarCount} variables`);
+      break;
 
-      if (template.dependencies && template.dependencies.length > 0) {
-        info(`Would install: ${template.dependencies.join(', ')}`);
+    case 'Starter Page':
+      if (key.name === 'up' || key.name === 'down') {
+        state.selectedIndex = state.selectedIndex === 0 ? 1 : 0;
+        renderScreen();
+      } else if (key.name === 'return') {
+        state.wantsStarterPage = state.selectedIndex === 0;
+        await goToNextTab();
+      } else if (str === '1' || str === '2') {
+        state.selectedIndex = parseInt(str, 10) - 1;
+        state.wantsStarterPage = state.selectedIndex === 0;
+        renderScreen();
       }
+      break;
 
-      console.log('');
-      log('  +-----------------------------------------+', 'yellow');
-      log('  |  DRY RUN COMPLETE                       |', 'yellow');
-      log('  |  Run without --dry-run to apply         |', 'yellow');
-      log('  +-----------------------------------------+', 'yellow');
-      console.log('');
-    } else {
-      // Actually write and install
-      await writeEnvFile(envContent);
-      success(`Generated .env.local (${envVarCount} variables)`);
-
-      // Install dependencies if needed
-      if (template.dependencies && template.dependencies.length > 0) {
-        await installDependencies(template.dependencies);
+    case 'Complete':
+      if (key.name === 'return') {
+        showCursor();
+        if (stdin.isTTY) stdin.setRawMode(false);
+        console.log('');
+        process.exit(0);
       }
+      break;
 
-      // Auto-generate secret confirmation
-      success('Auto-generated NEXTAUTH_SECRET');
-
-      // Final message
-      console.log('');
-      log('  +-----------------------------------------+', 'green');
-      log('  |  Setup complete!                        |', 'green');
-      log('  +-----------------------------------------+', 'green');
-      console.log('');
-      log(`  ${c.bold}Next steps:${c.reset}`);
-      log(`    1. npm run db:push   ${c.dim}(push schema to database)${c.reset}`);
-      log(`    2. npm run dev       ${c.dim}(start development server)${c.reset}`);
-      console.log('');
-    }
-
-  } catch (err) {
-    if (err.code === 'ERR_USE_AFTER_CLOSE') {
-      // User pressed Ctrl+C
-      console.log('');
-      info('Setup cancelled');
-    } else {
-      error(err.message);
-      process.exit(1);
-    }
-  } finally {
-    rl.close();
+    default:
+      // Handle category tabs (DATABASE, PAYMENTS, EMAIL, etc.)
+      const category = FEATURE_CATEGORIES.find((c) => c.name === tabName);
+      if (category) {
+        if (key.name === 'up') {
+          state.selectedIndex = (state.selectedIndex - 1 + category.options.length) % category.options.length;
+          renderScreen();
+        } else if (key.name === 'down') {
+          state.selectedIndex = (state.selectedIndex + 1) % category.options.length;
+          renderScreen();
+        } else if (key.name === 'return') {
+          // Save selection and advance
+          state.customSelections[tabName] = category.options[state.selectedIndex].id;
+          await goToNextTab();
+        }
+      }
+      break;
   }
 }
 
-// Handle Ctrl+C gracefully
+async function goToNextTab() {
+  const tabName = state.tabs[state.currentTab];
+
+  // Handle Template tab - set up categories based on template config
+  if (tabName === 'Template') {
+    const selectedTemplate = TEMPLATES[state.selectedIndex];
+    state.templateKey = selectedTemplate.name.toLowerCase().replace(' ', '-');
+
+    // Get template config
+    const config = TEMPLATE_CONFIGS[state.templateKey] || TEMPLATE_CONFIGS.custom;
+
+    if (config.categories.length > 0) {
+      // Template has categories - show category tabs
+      state.tabs = ['Template', ...config.categories, 'API Keys', 'Starter Page', 'Complete'];
+
+      // Initialize selections with defaults
+      state.customSelections = { ...config.defaults };
+    } else {
+      // Starter template - no categories, just basic setup
+      state.tabs = ['Template', 'API Keys', 'Starter Page', 'Complete'];
+      state.customSelections = {};
+      state.apiKeysToPrompt = []; // Starter has no API keys
+    }
+
+    state.currentApiKeyIndex = 0;
+    state.inputValue = '';
+  }
+
+  // Handle category tabs - save selection
+  const category = FEATURE_CATEGORIES.find((c) => c.name === tabName);
+  if (category) {
+    state.customSelections[tabName] = category.options[state.selectedIndex].id;
+  }
+
+  // Before API Keys tab - collect all keys from selected options
+  const nextTabName = state.tabs[state.currentTab + 1];
+  if (nextTabName === 'API Keys' && Object.keys(state.customSelections).length > 0) {
+    // Collect all API keys from selected options
+    const allKeys = [];
+    Object.entries(state.customSelections).forEach(([catName, optionId]) => {
+      const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+      if (cat) {
+        const opt = cat.options.find((o) => o.id === optionId);
+        if (opt) {
+          allKeys.push(...opt.keys);
+        }
+      }
+    });
+    state.apiKeysToPrompt = allKeys;
+
+    // Build template env
+    state.template = {
+      name: state.templateKey,
+      env: {
+        NEXTAUTH_SECRET: '{{AUTO_GENERATE}}',
+        NEXTAUTH_URL: 'http://localhost:3000',
+        NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
+        NODE_ENV: 'development',
+      },
+    };
+    allKeys.forEach((key) => {
+      state.template.env[key] = `{{PROMPT:${key}}}`;
+    });
+  }
+
+  // Handle Starter Page tab
+  if (tabName === 'Starter Page') {
+    await finalize();
+  }
+
+  if (state.currentTab < state.tabs.length - 1) {
+    state.currentTab++;
+
+    // Set correct selection index for category tabs
+    const nextTab = state.tabs[state.currentTab];
+    const nextCategory = FEATURE_CATEGORIES.find((c) => c.name === nextTab);
+    if (nextCategory && state.customSelections[nextTab]) {
+      const idx = nextCategory.options.findIndex((o) => o.id === state.customSelections[nextTab]);
+      state.selectedIndex = idx >= 0 ? idx : 0;
+    } else {
+      state.selectedIndex = 0;
+    }
+
+    renderScreen();
+  }
+}
+
+function goToPrevTab() {
+  if (state.currentTab > 0) {
+    state.currentTab--;
+
+    // If going back to Template tab, reset tabs to default
+    const tabName = state.tabs[state.currentTab];
+    if (tabName === 'Template') {
+      state.tabs = ['Template', 'API Keys', 'Starter Page', 'Complete'];
+      state.isCustomMode = false;
+      state.customSelections = {};
+    }
+
+    // Restore selection index for category tabs
+    const category = FEATURE_CATEGORIES.find((c) => c.name === tabName);
+    if (category && state.customSelections[tabName]) {
+      const idx = category.options.findIndex((o) => o.id === state.customSelections[tabName]);
+      state.selectedIndex = idx >= 0 ? idx : 0;
+    } else {
+      state.selectedIndex = 0;
+    }
+
+    state.inputValue = '';
+    renderScreen();
+  }
+}
+
+// ============================================================================
+// MAIN
+// ============================================================================
+
+async function main() {
+  if (!stdin.isTTY) {
+    console.log(`${c.amber}Fabrk Setup Wizard requires an interactive terminal.${c.reset}`);
+    console.log(`${c.amberDim}Please run in a terminal that supports TTY.${c.reset}`);
+    process.exit(1);
+  }
+
+  readline.emitKeypressEvents(stdin);
+  stdin.setRawMode(true);
+  hideCursor();
+
+  // Check for existing .env.local
+  if (!DRY_RUN && existsSync(join(ROOT_DIR, '.env.local'))) {
+    clear();
+    console.log(`\n  ${c.amberBright}Warning:${c.reset} .env.local already exists.`);
+    console.log(`  ${c.amberDim}It will be overwritten. Press Enter to continue or Ctrl+C to cancel.${c.reset}\n`);
+
+    await new Promise((resolve) => {
+      const handler = (str, key) => {
+        if (key.ctrl && key.name === 'c') {
+          showCursor();
+          stdin.setRawMode(false);
+          console.log(`\n  ${c.amberDim}Cancelled.${c.reset}\n`);
+          process.exit(0);
+        }
+        if (key.name === 'return') {
+          stdin.removeListener('keypress', handler);
+          resolve();
+        }
+      };
+      stdin.on('keypress', handler);
+    });
+  }
+
+  // Initial render
+  renderScreen();
+
+  // Listen for input
+  stdin.on('keypress', handleKeypress);
+}
+
 process.on('SIGINT', () => {
-  console.log('');
-  log('  [INFO] Setup cancelled', 'blue');
-  console.log('');
+  showCursor();
+  if (stdin.isTTY) stdin.setRawMode(false);
   process.exit(0);
 });
 
-main();
+main().catch((err) => {
+  showCursor();
+  if (stdin.isTTY) stdin.setRawMode(false);
+  console.error(err);
+  process.exit(1);
+});
