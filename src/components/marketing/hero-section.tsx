@@ -5,11 +5,12 @@
  */
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SimpleIcon } from '@/components/ui/simple-icon';
 import {
   siNextdotjs,
@@ -19,6 +20,10 @@ import {
   siTypescript,
   siStripe,
   siResend,
+  siOpenai,
+  siCloudflare,
+  siAlgolia,
+  siGoogle,
 } from 'simple-icons';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -26,19 +31,83 @@ import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/
 import { HeroDashboardPreview } from './hero-dashboard-preview';
 import { PRICING } from '@/data/landing';
 import { TypeWriter } from '@/components/ui/typewriter';
-import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
 
-const techStack = [
+// Core tech stack (always shown)
+const coreStack = [
   { name: 'NEXT.JS', path: siNextdotjs.path },
   { name: 'REACT', path: siReact.path },
   { name: 'TYPESCRIPT', path: siTypescript.path },
   { name: 'TAILWIND', path: siTailwindcss.path },
   { name: 'PRISMA', path: siPrisma.path },
-  { name: 'STRIPE', path: siStripe.path },
-  { name: 'RESEND', path: siResend.path },
+];
+
+// Rotating provider stacks
+const providerStacks = [
+  {
+    label: 'PAYMENT',
+    providers: [
+      { name: 'STRIPE', path: siStripe.path },
+      { name: 'POLAR', path: null },
+      { name: 'LEMONSQUEEZY', path: null },
+      { name: 'PADDLE', path: null },
+      { name: 'PAYPAL', path: null },
+    ],
+  },
+  {
+    label: 'EMAIL',
+    providers: [
+      { name: 'RESEND', path: siResend.path },
+      { name: 'SENDGRID', path: null },
+      { name: 'SES', path: null },
+      { name: 'POSTMARK', path: null },
+      { name: 'MAILGUN', path: null },
+    ],
+  },
+  {
+    label: 'AI',
+    providers: [
+      { name: 'OPENAI', path: siOpenai.path },
+      { name: 'ANTHROPIC', path: null },
+      { name: 'GOOGLE', path: siGoogle.path },
+      { name: 'GROQ', path: null },
+      { name: 'OLLAMA', path: null },
+    ],
+  },
+  {
+    label: 'STORAGE',
+    providers: [
+      { name: 'S3', path: null },
+      { name: 'R2', path: siCloudflare.path },
+      { name: 'SUPABASE', path: null },
+      { name: 'UPLOADTHING', path: null },
+      { name: 'VERCEL BLOB', path: null },
+    ],
+  },
+  {
+    label: 'SEARCH',
+    providers: [
+      { name: 'ALGOLIA', path: siAlgolia.path },
+      { name: 'MEILISEARCH', path: null },
+      { name: 'TYPESENSE', path: null },
+      { name: 'ELASTICSEARCH', path: null },
+      { name: 'FUSE.JS', path: null },
+    ],
+  },
 ];
 
 export function HeroSection() {
+  const [currentStackIndex, setCurrentStackIndex] = useState(0);
+
+  // Rotate through provider stacks every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStackIndex((prev) => (prev + 1) % providerStacks.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentStack = providerStacks[currentStackIndex];
+
   return (
     <section className="relative flex min-h-[90vh] items-center overflow-hidden px-4 pt-8 pb-16 sm:px-0 lg:min-h-screen lg:pt-12 lg:pb-20">
       <Container size="2xl">
@@ -231,9 +300,10 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 lg:mt-20"
         >
-          <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
-          <div className="flex flex-wrap gap-2">
-            {techStack.map((tech) => (
+          {/* Core Stack - Always visible */}
+          <CardBadge code="0x02" label="CORE STACK" meta="STABLE" className="mb-4" />
+          <div className="flex flex-wrap gap-2 mb-6">
+            {coreStack.map((tech) => (
               <div
                 key={tech.name}
                 className={cn(
@@ -248,6 +318,60 @@ export function HeroSection() {
               </div>
             ))}
           </div>
+
+          {/* Rotating Provider Stack */}
+          <div className="flex items-center gap-3 mb-4">
+            <CardBadge
+              code="0x03"
+              label={`${currentStack.label} PROVIDERS`}
+              meta="SWAPPABLE"
+            />
+            <div className="flex gap-1">
+              {providerStacks.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentStackIndex(index)}
+                  className={cn(
+                    'size-2 border transition-colors',
+                    mode.color.border.default,
+                    index === currentStackIndex
+                      ? mode.color.bg.accent
+                      : mode.color.bg.surface
+                  )}
+                  aria-label={`Show ${providerStacks[index].label} providers`}
+                />
+              ))}
+            </div>
+          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentStack.label}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="flex flex-wrap gap-2"
+            >
+              {currentStack.providers.map((provider) => (
+                <div
+                  key={provider.name}
+                  className={cn(
+                    'flex items-center gap-2 border px-2 py-1',
+                    mode.color.border.default,
+                    mode.color.bg.surface
+                  )}
+                >
+                  {provider.path ? (
+                    <SimpleIcon path={provider.path} className="size-3.5" />
+                  ) : (
+                    <span className={cn('size-3.5 flex items-center justify-center text-[8px]', mode.color.text.muted)}>●</span>
+                  )}
+                  <span className={cn('text-xs', mode.font)}>{provider.name}</span>
+                  <span className={cn('text-xs', mode.color.text.success, mode.font)}>[OK]</span>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
       </Container>
     </section>
