@@ -32,19 +32,22 @@ import { HeroDashboardPreview } from './hero-dashboard-preview';
 import { PRICING } from '@/data/landing';
 import { TypeWriter } from '@/components/ui/typewriter';
 
-// Core tech stack (always shown)
-const coreStack = [
-  { name: 'NEXT.JS', path: siNextdotjs.path },
-  { name: 'REACT', path: siReact.path },
-  { name: 'TYPESCRIPT', path: siTypescript.path },
-  { name: 'TAILWIND', path: siTailwindcss.path },
-  { name: 'PRISMA', path: siPrisma.path },
-];
-
-// Rotating provider stacks
-const providerStacks = [
+// All stacks rotate through - core first, then providers
+const allStacks = [
+  {
+    label: 'CORE',
+    meta: 'STABLE',
+    providers: [
+      { name: 'NEXT.JS', path: siNextdotjs.path },
+      { name: 'REACT', path: siReact.path },
+      { name: 'TYPESCRIPT', path: siTypescript.path },
+      { name: 'TAILWIND', path: siTailwindcss.path },
+      { name: 'PRISMA', path: siPrisma.path },
+    ],
+  },
   {
     label: 'PAYMENT',
+    meta: 'SWAPPABLE',
     providers: [
       { name: 'STRIPE', path: siStripe.path },
       { name: 'POLAR', path: null },
@@ -55,6 +58,7 @@ const providerStacks = [
   },
   {
     label: 'EMAIL',
+    meta: 'SWAPPABLE',
     providers: [
       { name: 'RESEND', path: siResend.path },
       { name: 'SENDGRID', path: null },
@@ -65,6 +69,7 @@ const providerStacks = [
   },
   {
     label: 'AI',
+    meta: 'SWAPPABLE',
     providers: [
       { name: 'OPENAI', path: siOpenai.path },
       { name: 'ANTHROPIC', path: null },
@@ -75,6 +80,7 @@ const providerStacks = [
   },
   {
     label: 'STORAGE',
+    meta: 'SWAPPABLE',
     providers: [
       { name: 'S3', path: null },
       { name: 'R2', path: siCloudflare.path },
@@ -85,6 +91,7 @@ const providerStacks = [
   },
   {
     label: 'SEARCH',
+    meta: 'SWAPPABLE',
     providers: [
       { name: 'ALGOLIA', path: siAlgolia.path },
       { name: 'MEILISEARCH', path: null },
@@ -98,15 +105,15 @@ const providerStacks = [
 export function HeroSection() {
   const [currentStackIndex, setCurrentStackIndex] = useState(0);
 
-  // Rotate through provider stacks every 3 seconds
+  // Rotate through all stacks every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentStackIndex((prev) => (prev + 1) % providerStacks.length);
+      setCurrentStackIndex((prev) => (prev + 1) % allStacks.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const currentStack = providerStacks[currentStackIndex];
+  const currentStack = allStacks[currentStackIndex];
 
   return (
     <section className="relative flex min-h-[90vh] items-center overflow-hidden px-4 pt-8 pb-16 sm:px-0 lg:min-h-screen lg:pt-12 lg:pb-20">
@@ -293,41 +300,21 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Tech Stack - Below Hero */}
+        {/* Tech Stack - Single Rotating Section */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 lg:mt-20"
         >
-          {/* Core Stack - Always visible */}
-          <CardBadge code="0x02" label="CORE STACK" meta="STABLE" className="mb-4" />
-          <div className="flex flex-wrap gap-2 mb-6">
-            {coreStack.map((tech) => (
-              <div
-                key={tech.name}
-                className={cn(
-                  'flex items-center gap-2 border px-2 py-1',
-                  mode.color.border.default,
-                  mode.color.bg.surface
-                )}
-              >
-                <SimpleIcon path={tech.path} className="size-3.5" />
-                <span className={cn('text-xs', mode.font)}>{tech.name}</span>
-                <span className={cn('text-xs', mode.color.text.success, mode.font)}>[OK]</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Rotating Provider Stack */}
           <div className="flex items-center gap-3 mb-4">
             <CardBadge
-              code="0x03"
-              label={`${currentStack.label} PROVIDERS`}
-              meta="SWAPPABLE"
+              code="0x02"
+              label={`${currentStack.label} STACK`}
+              meta={currentStack.meta}
             />
             <div className="flex gap-1">
-              {providerStacks.map((_, index) => (
+              {allStacks.map((stack, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentStackIndex(index)}
@@ -338,7 +325,7 @@ export function HeroSection() {
                       ? mode.color.bg.accent
                       : mode.color.bg.surface
                   )}
-                  aria-label={`Show ${providerStacks[index].label} providers`}
+                  aria-label={`Show ${stack.label} stack`}
                 />
               ))}
             </div>
