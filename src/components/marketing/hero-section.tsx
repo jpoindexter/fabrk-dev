@@ -105,11 +105,11 @@ const allStacks = [
 export function HeroSection() {
   const [currentStackIndex, setCurrentStackIndex] = useState(0);
 
-  // Rotate through all stacks every 3 seconds
+  // Rotate through all stacks every 6 seconds (time for typing + reading)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStackIndex((prev) => (prev + 1) % allStacks.length);
-    }, 3000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
@@ -334,15 +334,21 @@ export function HeroSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStack.label}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="flex flex-wrap gap-2"
             >
-              {currentStack.providers.map((provider) => (
-                <div
+              {currentStack.providers.map((provider, index) => (
+                <motion.div
                   key={provider.name}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.15,
+                    delay: index * 0.12,  // Stagger each item like typing
+                  }}
                   className={cn(
                     'flex items-center gap-2 border px-2 py-1',
                     mode.color.border.default,
@@ -355,8 +361,15 @@ export function HeroSection() {
                     <span className={cn('size-3.5 flex items-center justify-center text-[8px]', mode.color.text.muted)}>●</span>
                   )}
                   <span className={cn('text-xs', mode.font)}>{provider.name}</span>
-                  <span className={cn('text-xs', mode.color.text.success, mode.font)}>[OK]</span>
-                </div>
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.12 + 0.1 }}
+                    className={cn('text-xs', mode.color.text.success, mode.font)}
+                  >
+                    [OK]
+                  </motion.span>
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
