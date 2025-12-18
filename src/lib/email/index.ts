@@ -1,64 +1,73 @@
-/* 💡 EMAIL TIP: Get your Resend API key from https://resend.com/api-keys
- * Update FROM_EMAIL below with your verified domain (e.g., hello@yourdomain.com).
- * In development, emails are logged to console instead of being sent.
+/**
+ * Email Providers - Unified Interface
+ *
+ * Supports: Resend, Postmark, SendGrid, AWS SES, Mailgun
+ *
+ * Usage:
+ *   import { sendEmail, getEmailProvider } from '@/lib/email'
  */
+
+export type EmailProvider = 'resend' | 'postmark' | 'sendgrid' | 'ses' | 'mailgun';
+
+export interface EmailOptions {
+  to: string | string[];
+  subject: string;
+  html?: string;
+  text?: string;
+  from?: string;
+  replyTo?: string;
+  cc?: string[];
+  bcc?: string[];
+  attachments?: Array<{
+    filename: string;
+    content: string | Buffer;
+    contentType?: string;
+  }>;
+}
+
+export interface EmailResult {
+  id: string;
+  success: boolean;
+}
+
+export interface EmailProviderClient {
+  send(options: EmailOptions): Promise<EmailResult>;
+  sendBatch?(emails: EmailOptions[]): Promise<EmailResult[]>;
+}
+
+// Re-export individual providers
+export { ResendProvider } from './resend';
+export { PostmarkProvider } from './postmark';
+export { SendGridProvider } from './sendgrid';
+export { SESProvider } from './ses';
+export { MailgunProvider } from './mailgun';
 
 /**
- * Email Service - Unified exports
- *
- * Split into submodules:
- * - email-core.ts - Core sending functionality
- * - email-auth.ts - Verification and reset emails
- * - email-welcome.ts - Post-purchase welcome emails
- * - email-organization.ts - Team invitation emails
+ * Get email provider based on environment config
  */
+export function getEmailProvider(): EmailProviderClient {
+  const provider = process.env.EMAIL_PROVIDER as EmailProvider || 'resend';
 
-// Core exports
-export { sendEmail, FROM_EMAIL, APP_NAME, APP_URL, resend } from './email-core';
+  switch (provider) {
+    case 'resend':
+      return new (require('./resend').ResendProvider)();
+    case 'postmark':
+      return new (require('./postmark').PostmarkProvider)();
+    case 'sendgrid':
+      return new (require('./sendgrid').SendGridProvider)();
+    case 'ses':
+      return new (require('./ses').SESProvider)();
+    case 'mailgun':
+      return new (require('./mailgun').MailgunProvider)();
+    default:
+      throw new Error(\`Unknown email provider: \${provider}\`);
+  }
+}
 
-// Direct send functions
-export { sendVerificationEmail, sendResetEmail } from './email-auth';
-export { sendWelcomeEmail } from './email-welcome';
-export { sendOrganizationInvite } from './email-organization';
-
-// Email service object for backwards compatibility
-import { sendWelcomeEmail } from './email-welcome';
-import { sendVerificationEmail, sendResetEmail } from './email-auth';
-
-export const emailService = {
-  sendWelcomeEmail,
-  sendVerificationEmail,
-  sendResetEmail,
-
-  /**
-   * Send template-based email
-   */
-  async sendTemplate(
-    template: 'email-verification' | 'password-reset' | 'welcome',
-    to: string,
-    data: {
-      verificationLink?: string;
-      resetLink?: string;
-      name?: string;
-      licenseKey?: string;
-    }
-  ) {
-    switch (template) {
-      case 'email-verification':
-        if (!data.verificationLink) throw new Error('verificationLink required');
-        const token = data.verificationLink.split('/').pop() || '';
-        return sendVerificationEmail(to, token);
-
-      case 'password-reset':
-        if (!data.resetLink) throw new Error('resetLink required');
-        const resetToken = data.resetLink.split('/').pop() || '';
-        return sendResetEmail(to, resetToken);
-
-      case 'welcome':
-        return sendWelcomeEmail(to, data.name || 'User', data.licenseKey);
-
-      default:
-        throw new Error(`Unknown template: ${template}`);
-    }
-  },
-};
+/**
+ * Send an email using the configured provider
+ */
+export async function sendEmail(options: EmailOptions): Promise<EmailResult> {
+  const provider = getEmailProvider();
+  return provider.send(options);
+}

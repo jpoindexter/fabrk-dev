@@ -472,7 +472,7 @@ function renderCategoryTab(categoryName) {
       ? `${c.amberBright}${c.bold}${opt.name}${c.reset}`
       : `${c.amber}${opt.name}${c.reset}`;
 
-    const rec = opt.rec ? ` ${c.amberBright}★ REC${c.reset}` : '';
+    const rec = opt.rec ? ` ${c.amberBright}★${c.reset}` : '';
     const keyCount = opt.keys.length;
     const keyHint = keyCount > 0 ? `${c.amberDim}(${keyCount} key${keyCount > 1 ? 's' : ''})${c.reset}` : '';
 
@@ -496,8 +496,11 @@ function renderCategoryTab(categoryName) {
         lines.push(`  ${c.amberDim}${catName}:${c.reset} ${c.amber}${opt.name}${c.reset}`);
       }
     });
-    lines.push('');
   }
+
+  // Legend
+  lines.push('');
+  lines.push(`${c.amberDim}★ = recommended${c.reset}`);
 
   renderBox(categoryName, lines);
 }
