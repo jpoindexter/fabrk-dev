@@ -250,17 +250,19 @@ const TEMPLATE_CONFIGS = {
     defaults: {},
   },
   saas: {
-    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS'],
+    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'SEARCH', 'STORAGE'],
     defaults: {
       DATABASE: 'postgres',
       PAYMENTS: 'stripe',
       EMAIL: 'resend',
       NEWSLETTER: 'none-newsletter',
       ANALYTICS: 'posthog',
+      SEARCH: 'none-search',
+      STORAGE: 'none-storage',
     },
   },
   'ai-app': {
-    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'AI'],
+    categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'AI', 'SEARCH', 'STORAGE'],
     defaults: {
       DATABASE: 'postgres',
       PAYMENTS: 'stripe',
@@ -268,6 +270,8 @@ const TEMPLATE_CONFIGS = {
       NEWSLETTER: 'none-newsletter',
       ANALYTICS: 'posthog',
       AI: 'openai',
+      SEARCH: 'none-search',
+      STORAGE: 'none-storage',
     },
   },
   marketplace: {
@@ -299,7 +303,7 @@ const TEMPLATE_CONFIGS = {
 
 const state = {
   currentTab: 0,
-  tabs: ['Template', 'API Keys', 'Starter Page', 'Complete'],
+  tabs: ['Template', 'Review', 'Starter Page', 'Complete'],
   // Selections
   template: null,
   templateKey: null,
@@ -309,8 +313,10 @@ const state = {
   // UI state for current screen
   selectedIndex: 0,
   inputValue: '',
-  currentApiKeyIndex: 0,
-  apiKeysToPrompt: [],
+  // Category tab state - inline key entry
+  categoryPhase: 'selection', // 'selection' | 'keys'
+  categoryKeyIndex: 0, // which key in current category
+  categoryKeys: [], // keys for current category's selection
   // Custom mode
   isCustomMode: false,
   customSelections: {}, // { categoryName: optionId }
@@ -386,8 +392,8 @@ function renderScreen() {
     case 'Template':
       renderTemplateTab();
       break;
-    case 'API Keys':
-      renderApiKeysTab();
+    case 'Review':
+      renderReviewTab();
       break;
     case 'Starter Page':
       renderStarterPageTab();
@@ -438,6 +444,14 @@ function renderCategoryTab(categoryName) {
   if (!category) return;
 
   const currentSelection = state.customSelections[categoryName];
+
+  // If in key entry phase, show key input UI
+  if (state.categoryPhase === 'keys' && state.categoryKeys.length > 0) {
+    renderCategoryKeyEntry(categoryName);
+    return;
+  }
+
+  // Selection phase
   const lines = [
     '',
     `${c.amberBright}> ${category.desc}${c.reset}`,
@@ -468,15 +482,18 @@ function renderCategoryTab(categoryName) {
   });
 
   // Show summary of selections so far
-  const categoryIndex = FEATURE_CATEGORIES.findIndex((c) => c.name === categoryName);
-  if (categoryIndex > 0) {
+  const config = TEMPLATE_CONFIGS[state.templateKey] || TEMPLATE_CONFIGS.custom;
+  const tabIndex = config.categories.indexOf(categoryName);
+  if (tabIndex > 0) {
     lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
     lines.push(`${c.amberDim}Selected so far:${c.reset}`);
-    FEATURE_CATEGORIES.slice(0, categoryIndex).forEach((cat) => {
-      const sel = state.customSelections[cat.name];
+    config.categories.slice(0, tabIndex).forEach((catName) => {
+      const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+      if (!cat) return;
+      const sel = state.customSelections[catName];
       const opt = cat.options.find((o) => o.id === sel);
       if (opt && !opt.id.startsWith('none')) {
-        lines.push(`  ${c.amberDim}${cat.name}:${c.reset} ${c.amber}${opt.name}${c.reset}`);
+        lines.push(`  ${c.amberDim}${catName}:${c.reset} ${c.amber}${opt.name}${c.reset}`);
       }
     });
     lines.push('');
@@ -485,26 +502,21 @@ function renderCategoryTab(categoryName) {
   renderBox(categoryName, lines);
 }
 
-function renderApiKeysTab() {
-  if (state.apiKeysToPrompt.length === 0) {
-    const lines = [
-      '',
-      `${c.amberBright}No API keys required!${c.reset}`,
-      '',
-      `${c.amberDim}Press Enter or Tab to continue.${c.reset}`,
-      '',
-    ];
-    renderBox('API KEYS', lines);
-    return;
-  }
+function renderCategoryKeyEntry(categoryName) {
+  const category = FEATURE_CATEGORIES.find((c) => c.name === categoryName);
+  const selectedOpt = category?.options.find((o) => o.id === state.customSelections[categoryName]);
 
   const lines = [''];
 
-  // Show list of all keys with status
-  state.apiKeysToPrompt.forEach((apiKey, i) => {
-    const isCurrent = i === state.currentApiKeyIndex;
-    const isComplete = i < state.currentApiKeyIndex;
-    const value = state.apiKeyValues[apiKey];
+  // Show what's selected
+  lines.push(`${c.amberBright}${selectedOpt?.name || categoryName}${c.reset} ${c.amberDim}selected${c.reset}`);
+  lines.push('');
+
+  // Show key entry progress
+  state.categoryKeys.forEach((key, i) => {
+    const isCurrent = i === state.categoryKeyIndex;
+    const isComplete = i < state.categoryKeyIndex;
+    const value = state.apiKeyValues[key];
 
     let status;
     if (isComplete) {
@@ -516,10 +528,10 @@ function renderApiKeysTab() {
     }
 
     const name = isCurrent
-      ? `${c.amberBright}${c.bold}${apiKey}${c.reset}`
+      ? `${c.amberBright}${c.bold}${key}${c.reset}`
       : isComplete
-        ? `${c.amberDim}${apiKey}${c.reset}`
-        : `${c.amber}${apiKey}${c.reset}`;
+        ? `${c.amberDim}${key}${c.reset}`
+        : `${c.amber}${key}${c.reset}`;
 
     lines.push(`  ${status}  ${name}`);
   });
@@ -529,7 +541,7 @@ function renderApiKeysTab() {
   lines.push('');
 
   // Current key details
-  const key = state.apiKeysToPrompt[state.currentApiKeyIndex];
+  const key = state.categoryKeys[state.categoryKeyIndex];
   const info = API_KEY_INFO[key] || { format: '', where: '' };
 
   lines.push(`${c.amber}FORMAT:${c.reset}  ${c.amberDim}${info.format}${c.reset}`);
@@ -540,7 +552,69 @@ function renderApiKeysTab() {
   lines.push(`${c.amberBright}>${c.reset} ${state.inputValue}█`);
   lines.push('');
 
-  renderBox('API KEYS', lines);
+  renderBox(`${categoryName} KEYS`, lines);
+}
+
+function renderReviewTab() {
+  const lines = [''];
+
+  // Show all selections grouped by category
+  const config = TEMPLATE_CONFIGS[state.templateKey] || TEMPLATE_CONFIGS.custom;
+
+  if (config.categories.length === 0) {
+    // Starter template
+    lines.push(`${c.amberBright}STARTER${c.reset} ${c.amberDim}template${c.reset}`);
+    lines.push('');
+    lines.push(`${c.amberDim}SQLite database + NextAuth${c.reset}`);
+    lines.push(`${c.amberDim}No additional API keys needed.${c.reset}`);
+  } else {
+    lines.push(`${c.amberBright}Configuration Summary${c.reset}`);
+    lines.push('');
+
+    let keysConfigured = 0;
+    let keysTotal = 0;
+
+    config.categories.forEach((catName) => {
+      const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+      if (!cat) return;
+
+      const sel = state.customSelections[catName];
+      const opt = cat.options.find((o) => o.id === sel);
+
+      if (opt && !opt.id.startsWith('none')) {
+        const configured = opt.keys.filter((k) => state.apiKeyValues[k]).length;
+        keysTotal += opt.keys.length;
+        keysConfigured += configured;
+
+        const status = opt.keys.length === 0
+          ? `${c.amberBright}✓${c.reset}`
+          : configured === opt.keys.length
+            ? `${c.amberBright}✓${c.reset}`
+            : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
+
+        lines.push(`  ${status}  ${c.amber}${catName}:${c.reset} ${c.amberBright}${opt.name}${c.reset}`);
+      } else {
+        lines.push(`  ${c.amberDim}○  ${catName}: None${c.reset}`);
+      }
+    });
+
+    lines.push('');
+    lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
+    lines.push('');
+
+    if (keysTotal > 0) {
+      const pct = Math.round((keysConfigured / keysTotal) * 100);
+      lines.push(`${c.amberDim}API Keys:${c.reset} ${keysConfigured}/${keysTotal} configured (${pct}%)`);
+    } else {
+      lines.push(`${c.amberDim}No API keys needed for your selection.${c.reset}`);
+    }
+  }
+
+  lines.push('');
+  lines.push(`${c.amberDim}Press Enter to continue${c.reset}`);
+  lines.push('');
+
+  renderBox('REVIEW', lines);
 }
 
 function renderStarterPageTab() {
@@ -608,17 +682,22 @@ function renderFooter() {
 
   // Check if it's a category tab or selection tab
   const isCategory = FEATURE_CATEGORIES.some((c) => c.name === tabName);
-  if (tabName === 'Template' || tabName === 'Starter Page' || isCategory) {
-    hints.push(`${c.amberDim}↑/↓${c.reset} ${c.amber}select${c.reset}`);
-  }
-  if (tabName === 'API Keys' && state.apiKeysToPrompt.length > 0) {
+
+  if (isCategory && state.categoryPhase === 'keys') {
+    // Key entry mode
     hints.push(`${c.amberDim}type${c.reset} ${c.amber}value${c.reset}`);
+    hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}next key${c.reset}`);
+  } else if (tabName === 'Template' || tabName === 'Starter Page' || (isCategory && state.categoryPhase === 'selection')) {
+    hints.push(`${c.amberDim}↑/↓${c.reset} ${c.amber}select${c.reset}`);
+    hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}confirm${c.reset}`);
+  } else if (tabName === 'Review') {
+    hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}continue${c.reset}`);
   }
 
-  if (state.currentTab < state.tabs.length - 1) {
-    hints.push(`${c.amberDim}Enter/Tab${c.reset} ${c.amber}next${c.reset}`);
+  if (state.currentTab < state.tabs.length - 1 && state.categoryPhase !== 'keys') {
+    hints.push(`${c.amberDim}Tab${c.reset} ${c.amber}next${c.reset}`);
     hints.push(`${c.amberDim}Shift+Tab${c.reset} ${c.amber}back${c.reset}`);
-  } else {
+  } else if (state.currentTab === state.tabs.length - 1) {
     hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}finish${c.reset}`);
   }
   hints.push(`${c.amberDim}Ctrl+C${c.reset} ${c.amber}exit${c.reset}`);
@@ -782,32 +861,9 @@ async function handleKeypress(str, key) {
       break;
 
 
-    case 'API Keys':
-      if (state.apiKeysToPrompt.length === 0) {
-        // No keys needed, just advance
-        if (key.name === 'return') {
-          await goToNextTab();
-        }
-      } else {
-        if (key.name === 'return') {
-          // Save current value and move to next key
-          const currentKey = state.apiKeysToPrompt[state.currentApiKeyIndex];
-          state.apiKeyValues[currentKey] = state.inputValue;
-          state.inputValue = '';
-          state.currentApiKeyIndex++;
-
-          if (state.currentApiKeyIndex >= state.apiKeysToPrompt.length) {
-            await goToNextTab();
-          } else {
-            renderScreen();
-          }
-        } else if (key.name === 'backspace') {
-          state.inputValue = state.inputValue.slice(0, -1);
-          renderScreen();
-        } else if (str && str.length === 1 && !key.ctrl) {
-          state.inputValue += str;
-          renderScreen();
-        }
+    case 'Review':
+      if (key.name === 'return') {
+        await goToNextTab();
       }
       break;
 
@@ -838,16 +894,56 @@ async function handleKeypress(str, key) {
       // Handle category tabs (DATABASE, PAYMENTS, EMAIL, etc.)
       const category = FEATURE_CATEGORIES.find((c) => c.name === tabName);
       if (category) {
-        if (key.name === 'up') {
-          state.selectedIndex = (state.selectedIndex - 1 + category.options.length) % category.options.length;
-          renderScreen();
-        } else if (key.name === 'down') {
-          state.selectedIndex = (state.selectedIndex + 1) % category.options.length;
-          renderScreen();
-        } else if (key.name === 'return') {
-          // Save selection and advance
-          state.customSelections[tabName] = category.options[state.selectedIndex].id;
-          await goToNextTab();
+        if (state.categoryPhase === 'keys') {
+          // Key entry mode
+          if (key.name === 'return') {
+            // Save current value and move to next key
+            const currentKey = state.categoryKeys[state.categoryKeyIndex];
+            state.apiKeyValues[currentKey] = state.inputValue;
+            state.inputValue = '';
+            state.categoryKeyIndex++;
+
+            if (state.categoryKeyIndex >= state.categoryKeys.length) {
+              // Done with keys, advance to next tab
+              state.categoryPhase = 'selection';
+              state.categoryKeys = [];
+              state.categoryKeyIndex = 0;
+              await goToNextTab();
+            } else {
+              renderScreen();
+            }
+          } else if (key.name === 'backspace') {
+            state.inputValue = state.inputValue.slice(0, -1);
+            renderScreen();
+          } else if (str && str.length === 1 && !key.ctrl) {
+            state.inputValue += str;
+            renderScreen();
+          }
+        } else {
+          // Selection mode
+          if (key.name === 'up') {
+            state.selectedIndex = (state.selectedIndex - 1 + category.options.length) % category.options.length;
+            renderScreen();
+          } else if (key.name === 'down') {
+            state.selectedIndex = (state.selectedIndex + 1) % category.options.length;
+            renderScreen();
+          } else if (key.name === 'return') {
+            // Save selection
+            const selectedOpt = category.options[state.selectedIndex];
+            state.customSelections[tabName] = selectedOpt.id;
+
+            // If option has keys, switch to key entry phase
+            if (selectedOpt.keys.length > 0) {
+              state.categoryPhase = 'keys';
+              state.categoryKeys = [...selectedOpt.keys];
+              state.categoryKeyIndex = 0;
+              state.inputValue = '';
+              renderScreen();
+            } else {
+              // No keys needed, advance to next tab
+              await goToNextTab();
+            }
+          }
         }
       }
       break;
@@ -867,30 +963,25 @@ async function goToNextTab() {
 
     if (config.categories.length > 0) {
       // Template has categories - show category tabs
-      state.tabs = ['Template', ...config.categories, 'API Keys', 'Starter Page', 'Complete'];
+      state.tabs = ['Template', ...config.categories, 'Review', 'Starter Page', 'Complete'];
 
       // Initialize selections with defaults
       state.customSelections = { ...config.defaults };
     } else {
       // Starter template - no categories, just basic setup
-      state.tabs = ['Template', 'API Keys', 'Starter Page', 'Complete'];
+      state.tabs = ['Template', 'Review', 'Starter Page', 'Complete'];
       state.customSelections = {};
-      state.apiKeysToPrompt = []; // Starter has no API keys
     }
 
-    state.currentApiKeyIndex = 0;
     state.inputValue = '';
+    state.categoryPhase = 'selection';
+    state.categoryKeys = [];
+    state.categoryKeyIndex = 0;
   }
 
-  // Handle category tabs - save selection
-  const category = FEATURE_CATEGORIES.find((c) => c.name === tabName);
-  if (category) {
-    state.customSelections[tabName] = category.options[state.selectedIndex].id;
-  }
-
-  // Before API Keys tab - collect all keys from selected options
+  // Before Review tab - build template env
   const nextTabName = state.tabs[state.currentTab + 1];
-  if (nextTabName === 'API Keys' && Object.keys(state.customSelections).length > 0) {
+  if (nextTabName === 'Review') {
     // Collect all API keys from selected options
     const allKeys = [];
     Object.entries(state.customSelections).forEach(([catName, optionId]) => {
@@ -902,7 +993,6 @@ async function goToNextTab() {
         }
       }
     });
-    state.apiKeysToPrompt = allKeys;
 
     // Build template env
     state.template = {
@@ -919,13 +1009,18 @@ async function goToNextTab() {
     });
   }
 
-  // Handle Starter Page tab
+  // Handle Starter Page tab - finalize before Complete
   if (tabName === 'Starter Page') {
     await finalize();
   }
 
   if (state.currentTab < state.tabs.length - 1) {
     state.currentTab++;
+
+    // Reset category phase when moving between tabs
+    state.categoryPhase = 'selection';
+    state.categoryKeys = [];
+    state.categoryKeyIndex = 0;
 
     // Set correct selection index for category tabs
     const nextTab = state.tabs[state.currentTab];
@@ -948,10 +1043,16 @@ function goToPrevTab() {
     // If going back to Template tab, reset tabs to default
     const tabName = state.tabs[state.currentTab];
     if (tabName === 'Template') {
-      state.tabs = ['Template', 'API Keys', 'Starter Page', 'Complete'];
+      state.tabs = ['Template', 'Review', 'Starter Page', 'Complete'];
       state.isCustomMode = false;
       state.customSelections = {};
+      state.apiKeyValues = {};
     }
+
+    // Reset category phase
+    state.categoryPhase = 'selection';
+    state.categoryKeys = [];
+    state.categoryKeyIndex = 0;
 
     // Restore selection index for category tabs
     const category = FEATURE_CATEGORIES.find((c) => c.name === tabName);
