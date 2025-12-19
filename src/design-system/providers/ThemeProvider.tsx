@@ -21,7 +21,10 @@ export type ColorThemeName =
   | 'vic20'
   | 'atari'
   | 'spectrum'
-  | 'bw';
+  | 'bw'
+  | 'milano'
+  | 'collector'
+  | 'life-hutch';
 
 const ALL_THEMES = [
   'amber',
@@ -36,6 +39,9 @@ const ALL_THEMES = [
   'atari',
   'spectrum',
   'bw',
+  'milano',
+  'collector',
+  'life-hutch',
 ] as const;
 
 // Dark themes for system dark mode (all terminal themes are dark)
@@ -51,6 +57,9 @@ const DARK_THEMES: ColorThemeName[] = [
   'vic20',
   'atari',
   'spectrum',
+  'milano',
+  'collector',
+  'life-hutch',
 ];
 
 // Light theme for system light mode

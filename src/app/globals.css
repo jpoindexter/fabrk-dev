@@ -1486,49 +1486,107 @@
 }
 
 /* ============================================
-   GRADIENT TEXT UTILITIES
+   Milano Theme - Territory Studio / Behance inspired
+   Deep space blue with neon cyan and teal accents
+   High-end FUI aesthetic
    ============================================ */
 
-/* Gradient effect for hero headlines - uses theme accent color */
-.text-gradient-purple {
-  background: linear-gradient(
-    135deg,
-    oklch(from var(--accent) calc(l + 0.15) c h),
-    oklch(var(--accent)),
-    oklch(from var(--accent) calc(l - 0.1) c h)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+[data-theme='milano'] {
+  --background: 3% 0.02 200; /* Deepest blue/black */
+  --foreground: 92% 0.08 190; /* Near white cyan */
+  --card: 6% 0.04 200;
+  --card-foreground: 92% 0.08 190;
+  --popover: 8% 0.05 200;
+  --popover-foreground: 92% 0.08 190;
+  --primary: 65% 0.25 190; /* Bright Neon Cyan */
+  --primary-foreground: 5% 0.01 200;
+  --secondary: 45% 0.15 200;
+  --secondary-foreground: 92% 0.08 190;
+  --muted: 12% 0.06 200;
+  --muted-foreground: 55% 0.12 190;
+  --accent: 75% 0.3 195;
+  --accent-foreground: 5% 0.01 200;
+  --destructive: 60% 0.25 15;
+  --destructive-foreground: 98% 0.01 15;
+  --border: 35% 0.18 195;
+  --input: 35% 0.18 195;
+  --ring: 75% 0.3 195;
+  --success: 75% 0.25 160;
+  --warning: 80% 0.2 80;
+  --info: 70% 0.2 200;
+  --radius: 0rem;
 }
 
-/* Text glow effect for accent elements - uses theme accent color */
-.text-glow-purple {
-  text-shadow:
-    0 0 20px oklch(var(--accent) / 0.5),
-    0 0 40px oklch(var(--accent) / 0.3),
-    0 0 60px oklch(var(--accent) / 0.2);
+[data-theme='milano'] body {
+  text-shadow: 0 0 2px oklch(75% 0.3 195 / 0.5), 0 0 5px oklch(75% 0.3 195 / 0.2);
 }
 
-/* Button glow effect - uses theme accent color */
-.button-glow-purple {
-  box-shadow:
-    0 0 20px oklch(var(--accent) / 0.4),
-    0 0 40px oklch(var(--accent) / 0.2);
+/* ============================================
+   Collector Theme - Guardians of the Galaxy inspired
+   Deep purple/violet with magenta and cyan accents
+   ============================================ */
+
+[data-theme='collector'] {
+  --background: 5% 0.04 290;
+  --foreground: 90% 0.15 330;
+  --card: 8% 0.05 290;
+  --card-foreground: 90% 0.15 330;
+  --popover: 10% 0.06 290;
+  --popover-foreground: 90% 0.15 330;
+  --primary: 65% 0.28 330;
+  --primary-foreground: 5% 0.01 290;
+  --secondary: 70% 0.2 190;
+  --secondary-foreground: 10% 0.02 190;
+  --muted: 15% 0.06 290;
+  --muted-foreground: 70% 0.14 330;
+  --accent: 65% 0.28 330;
+  --accent-foreground: 98% 0.01 330;
+  --destructive: 65% 0.25 15;
+  --destructive-foreground: 98% 0.01 15;
+  --border: 45% 0.15 330;
+  --input: 45% 0.15 330;
+  --ring: 70% 0.25 330;
+  --success: 70% 0.2 190;
+  --warning: 75% 0.22 60;
+  --info: 70% 0.2 200;
+  --radius: 0rem;
 }
 
-/* Animate gradient on hover */
-@keyframes gradient-shift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+/* ============================================
+   Life Hutch Theme - Love Death and Robots inspired
+   Gritty military technical aesthetic
+   ============================================ */
+
+[data-theme='life-hutch'] {
+  --background: 2% 0.02 140; /* Nearly black-green */
+  --foreground: 85% 0.2 150; /* Pale technical green */
+  --card: 4% 0.03 140;
+  --card-foreground: 85% 0.2 150;
+  --popover: 6% 0.04 140;
+  --popover-foreground: 85% 0.2 150;
+  --primary: 70% 0.3 150; /* Bright Neon Green */
+  --primary-foreground: 2% 0.02 140;
+  --secondary: 40% 0.1 140;
+  --secondary-foreground: 85% 0.2 150;
+  --muted: 10% 0.05 140;
+  --muted-foreground: 50% 0.1 150;
+  --accent: 75% 0.35 155; /* Electric Green Glow */
+  --accent-foreground: 2% 0.02 140;
+  --destructive: 65% 0.3 25; /* Warning Red */
+  --destructive-foreground: 98% 0.01 25;
+  --border: 30% 0.15 150;
+  --input: 30% 0.15 150;
+  --ring: 75% 0.35 155;
+  --success: 75% 0.3 150;
+  --warning: 80% 0.25 80;
+  --info: 70% 0.2 200;
+  --radius: 0rem;
 }
 
-.text-gradient-animated {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+[data-theme='life-hutch'] body {
+  text-shadow: 
+    0 0 1px rgba(0, 255, 100, 0.3),
+    0 0 3px rgba(0, 255, 100, 0.1);
 }
+
+

@@ -61,10 +61,11 @@ export function HeroSection() {
                   {/* Clean text headline - works with all FUI themes */}
                   <h2
                     className={cn(
-                      'mb-4 text-3xl leading-tight font-bold tracking-tight sm:text-4xl lg:text-5xl',
+                      'mb-4 text-3xl leading-tight font-bold tracking-tight sm:text-4xl lg:text-5xl glitch-text',
                       mode.color.text.accent,
                       mode.font
                     )}
+                    data-text="BUILD IN MINUTES"
                   >
                     BUILD IN
                     <br />
