@@ -232,7 +232,8 @@ export function ThemeDropdown() {
             )}
           >
             <div
-              className={cn('mr-2 h-4 w-4 border border-current', mode.radius)}
+              className={cn('mr-2 h-4 w-4 border', mode.radius)}
+              style={{ backgroundColor: fui.preview }}
             />
             {fui.name}
             {currentFui === fui.id && <span className="ml-auto text-xs">✓</span>}
