@@ -159,8 +159,10 @@ export function ThemeDropdown() {
       document.documentElement.removeAttribute('data-fui');
     } else {
       document.documentElement.setAttribute('data-fui', fuiId);
+      // Also set data-theme to the FUI style so colors are controlled by fui-styles.css
+      document.documentElement.setAttribute('data-theme', fuiId);
+      localStorage.setItem('theme', fuiId);
     }
-    // REMOVED: Auto-switching baseTheme logic to ensure independence
   };
 
   if (!mounted) {

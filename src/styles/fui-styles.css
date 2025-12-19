@@ -1,6 +1,8 @@
 /**
  * FUI (Fantasy User Interface) Styles
- * Each style provides a "Total UI" transformation including colors, fonts, backgrounds, and animations.
+ *
+ * Color variables are on [data-theme="..."] to work with the theme system.
+ * Decorative styles are on [data-fui="..."] for visual effects.
  */
 
 /* Base: no border radius for all FUI elements */
@@ -17,11 +19,23 @@
   to { transform: translateY(100vh); }
 }
 
+@keyframes fui-blink {
+  50% { opacity: 0; }
+}
+
 /* ============================================================================
-   STAR_NAV - Heavy Structural Dashboard
+   STAR_NAV - Heavy Structural Dashboard (Cyan)
    ============================================================================ */
-[data-fui="star-nav"] { 
+[data-theme="star-nav"] {
   --fui: #00d2ff;
+  --background: 0.08 0.02 220;
+  --foreground: 0.95 0.02 200;
+  --primary: 0.75 0.15 200;
+  --accent: 0.75 0.15 200;
+  --muted: 0.2 0.02 220;
+  --muted-foreground: 0.6 0.05 200;
+  --border: 0.3 0.05 200;
+  --card: 0.1 0.02 220;
 }
 [data-fui="star-nav"] [data-slot="card"] {
   border: 2px solid rgba(0, 210, 255, 0.4) !important;
@@ -30,10 +44,18 @@
 }
 
 /* ============================================================================
-   MILANO - Advanced Technical
+   MILANO - Advanced Technical (Cyan)
    ============================================================================ */
-[data-fui="milano"] { 
+[data-theme="milano"] {
   --fui: #00ffff;
+  --background: 0.06 0.02 200;
+  --foreground: 0.95 0.1 185;
+  --primary: 0.8 0.2 185;
+  --accent: 0.8 0.2 185;
+  --muted: 0.15 0.02 200;
+  --muted-foreground: 0.6 0.08 185;
+  --border: 0.25 0.08 185;
+  --card: 0.08 0.02 200;
 }
 [data-fui="milano"] [data-slot="card"] {
   border: 1px solid rgba(0, 255, 255, 0.2) !important;
@@ -50,8 +72,16 @@
 /* ============================================================================
    COLLECTOR - Luxury Magenta
    ============================================================================ */
-[data-fui="collector"] { 
+[data-theme="collector"] {
   --fui: #ff00ff;
+  --background: 0.06 0.04 320;
+  --foreground: 0.95 0.1 320;
+  --primary: 0.7 0.3 320;
+  --accent: 0.7 0.3 320;
+  --muted: 0.15 0.04 320;
+  --muted-foreground: 0.6 0.1 320;
+  --border: 0.3 0.15 320;
+  --card: 0.08 0.04 320;
 }
 [data-fui="collector"] [data-slot="card"] {
   border: 2px solid var(--fui) !important;
@@ -60,10 +90,18 @@
 }
 
 /* ============================================================================
-   LIFE HUTCH - Gritty Military
+   LIFE HUTCH - Gritty Military (Green)
    ============================================================================ */
-[data-fui="life-hutch"] { 
+[data-theme="life-hutch"] {
   --fui: #33ff66;
+  --background: 0.05 0.02 140;
+  --foreground: 0.9 0.2 140;
+  --primary: 0.75 0.25 140;
+  --accent: 0.75 0.25 140;
+  --muted: 0.12 0.02 140;
+  --muted-foreground: 0.55 0.1 140;
+  --border: 0.25 0.1 140;
+  --card: 0.07 0.02 140;
 }
 [data-fui="life-hutch"] [data-slot="card"] {
   border: 1px solid rgba(51, 255, 102, 0.3) !important;
@@ -76,11 +114,18 @@
 }
 
 /* ============================================================================
-   BLADE RUNNER - Neon Noir
+   BLADE RUNNER - Neon Noir (Pink/Magenta)
    ============================================================================ */
-[data-fui="blade-runner"] { 
+[data-theme="blade-runner"] {
   --fui: #ff0055;
-  background-color: #0a0005 !important;
+  --background: 0.04 0.03 350;
+  --foreground: 0.95 0.15 350;
+  --primary: 0.65 0.3 350;
+  --accent: 0.65 0.3 350;
+  --muted: 0.12 0.03 350;
+  --muted-foreground: 0.55 0.1 350;
+  --border: 0.3 0.15 350;
+  --card: 0.06 0.03 350;
 }
 [data-fui="blade-runner"] [data-slot="card"] {
   border: 2px solid var(--fui) !important;
@@ -89,11 +134,18 @@
 }
 
 /* ============================================================================
-   GHOST IN SHELL - Cybernetic
+   GHOST IN SHELL - Cybernetic (Teal/Cyan)
    ============================================================================ */
-[data-fui="ghost-shell"] { 
+[data-theme="ghost-shell"] {
   --fui: #00ffcc;
-  background-color: #000a08 !important;
+  --background: 0.04 0.02 175;
+  --foreground: 0.92 0.15 175;
+  --primary: 0.8 0.2 175;
+  --accent: 0.8 0.2 175;
+  --muted: 0.12 0.02 175;
+  --muted-foreground: 0.55 0.08 175;
+  --border: 0.28 0.1 175;
+  --card: 0.06 0.02 175;
 }
 [data-fui="ghost-shell"] [data-slot="card"] {
   border: 1px solid var(--fui) !important;
@@ -104,8 +156,16 @@
 /* ============================================================================
    JARVIS - Holographic Blue
    ============================================================================ */
-[data-fui="jarvis"] { 
+[data-theme="jarvis"] {
   --fui: #00aaff;
+  --background: 0.06 0.03 220;
+  --foreground: 0.92 0.1 210;
+  --primary: 0.7 0.18 210;
+  --accent: 0.7 0.18 210;
+  --muted: 0.15 0.03 220;
+  --muted-foreground: 0.55 0.08 210;
+  --border: 0.28 0.08 210;
+  --card: 0.08 0.03 220;
 }
 [data-fui="jarvis"] [data-slot="card"] {
   border: 1px solid rgba(0, 170, 255, 0.3) !important;
@@ -114,10 +174,18 @@
 }
 
 /* ============================================================================
-   TRON - Grid Neon
+   TRON - Grid Neon (Cyan)
    ============================================================================ */
-[data-fui="tron"] { 
+[data-theme="tron"] {
   --fui: #00ffff;
+  --background: 0.02 0 0;
+  --foreground: 0.95 0.2 185;
+  --primary: 0.85 0.25 185;
+  --accent: 0.85 0.25 185;
+  --muted: 0.1 0 0;
+  --muted-foreground: 0.6 0.1 185;
+  --border: 0.4 0.15 185;
+  --card: 0.04 0.01 185;
 }
 [data-fui="tron"] [data-slot="card"] {
   border: 2px solid var(--fui) !important;
@@ -126,10 +194,18 @@
 }
 
 /* ============================================================================
-   ALIEN - Retro CRT
+   ALIEN - Retro CRT (Green)
    ============================================================================ */
-[data-fui="alien"] { 
+[data-theme="alien"] {
   --fui: #00ff66;
+  --background: 0.02 0.01 140;
+  --foreground: 0.9 0.25 140;
+  --primary: 0.8 0.3 140;
+  --accent: 0.8 0.3 140;
+  --muted: 0.08 0.01 140;
+  --muted-foreground: 0.5 0.12 140;
+  --border: 0.35 0.15 140;
+  --card: 0.04 0.01 140;
 }
 [data-fui="alien"] [data-slot="card"] {
   border: 2px solid var(--fui) !important;
@@ -137,10 +213,18 @@
 }
 
 /* ============================================================================
-   OBLIVION - Technical HUD
+   OBLIVION - Technical HUD (Cyan)
    ============================================================================ */
-[data-fui="oblivion"] { 
+[data-theme="oblivion"] {
   --fui: #00ffff;
+  --background: 0.03 0.01 200;
+  --foreground: 0.92 0.12 185;
+  --primary: 0.8 0.2 185;
+  --accent: 0.8 0.2 185;
+  --muted: 0.1 0.01 200;
+  --muted-foreground: 0.55 0.08 185;
+  --border: 0.3 0.1 185;
+  --card: 0.05 0.01 200;
 }
 [data-fui="oblivion"] [data-slot="card"] {
   border: 1px solid var(--fui) !important;
@@ -148,10 +232,18 @@
 }
 
 /* ============================================================================
-   BRACKET CORNERS
+   BRACKET CORNERS (Cyan)
    ============================================================================ */
-[data-fui="bracket-corners"] { 
-  --fui: #00ffff; 
+[data-theme="bracket-corners"] {
+  --fui: #00ffff;
+  --background: 0.04 0.02 185;
+  --foreground: 0.9 0.15 185;
+  --primary: 0.8 0.2 185;
+  --accent: 0.8 0.2 185;
+  --muted: 0.12 0.02 185;
+  --muted-foreground: 0.55 0.08 185;
+  --border: 0.28 0.1 185;
+  --card: 0.06 0.02 185;
 }
 [data-fui="bracket-corners"] [data-slot="card"] {
   border: 1px solid rgba(0, 255, 255, 0.2) !important;
@@ -159,10 +251,18 @@
 }
 
 /* ============================================================================
-   PACIFIC RIM
+   PACIFIC RIM (Orange-Red)
    ============================================================================ */
-[data-fui="pacific-rim"] { 
+[data-theme="pacific-rim"] {
   --fui: #ff4400;
+  --background: 0.06 0.02 25;
+  --foreground: 0.92 0.12 25;
+  --primary: 0.65 0.25 25;
+  --accent: 0.65 0.25 25;
+  --muted: 0.15 0.02 25;
+  --muted-foreground: 0.55 0.08 25;
+  --border: 0.35 0.12 25;
+  --card: 0.08 0.02 25;
 }
 [data-fui="pacific-rim"] [data-slot="card"] {
   border: 4px solid var(--fui) !important;
@@ -170,10 +270,18 @@
 }
 
 /* ============================================================================
-   MASS EFFECT
+   MASS EFFECT (Orange)
    ============================================================================ */
-[data-fui="mass-effect"] { 
+[data-theme="mass-effect"] {
   --fui: #ff6600;
+  --background: 0.06 0.02 35;
+  --foreground: 0.92 0.12 35;
+  --primary: 0.7 0.22 35;
+  --accent: 0.7 0.22 35;
+  --muted: 0.15 0.02 35;
+  --muted-foreground: 0.55 0.08 35;
+  --border: 0.35 0.1 35;
+  --card: 0.08 0.02 35;
 }
 [data-fui="mass-effect"] [data-slot="card"] {
   border: 2px solid var(--fui) !important;
@@ -181,10 +289,18 @@
 }
 
 /* ============================================================================
-   WAKANDA
+   WAKANDA (Purple)
    ============================================================================ */
-[data-fui="wakanda"] { 
+[data-theme="wakanda"] {
   --fui: #aa55ff;
+  --background: 0.05 0.03 285;
+  --foreground: 0.92 0.12 285;
+  --primary: 0.65 0.25 285;
+  --accent: 0.65 0.25 285;
+  --muted: 0.12 0.03 285;
+  --muted-foreground: 0.55 0.1 285;
+  --border: 0.3 0.12 285;
+  --card: 0.07 0.03 285;
 }
 [data-fui="wakanda"] [data-slot="card"] {
   border: 2px solid var(--fui) !important;
@@ -192,11 +308,18 @@
 }
 
 /* ============================================================================
-   INTERSTELLAR - Minimal Technical
+   INTERSTELLAR - Minimal Technical (Gray)
    ============================================================================ */
-[data-fui="interstellar"] { 
+[data-theme="interstellar"] {
   --fui: #aaaaaa;
-  background-color: #050505 !important;
+  --background: 0.03 0 0;
+  --foreground: 0.85 0 0;
+  --primary: 0.6 0 0;
+  --accent: 0.6 0 0;
+  --muted: 0.1 0 0;
+  --muted-foreground: 0.5 0 0;
+  --border: 0.25 0 0;
+  --card: 0.05 0 0;
 }
 [data-fui="interstellar"] [data-slot="card"] {
   border: 1px solid rgba(170, 170, 170, 0.4) !important;
@@ -209,13 +332,196 @@
 }
 
 /* ============================================================================
-   IRON MAN
+   IRON MAN (Light Blue)
    ============================================================================ */
-[data-fui="iron-man"] { 
+[data-theme="iron-man"] {
   --fui: #00ccff;
+  --background: 0.05 0.02 210;
+  --foreground: 0.92 0.12 200;
+  --primary: 0.75 0.18 200;
+  --accent: 0.75 0.18 200;
+  --muted: 0.12 0.02 210;
+  --muted-foreground: 0.55 0.08 200;
+  --border: 0.3 0.1 200;
+  --card: 0.07 0.02 210;
 }
 [data-fui="iron-man"] [data-slot="card"] {
   border: 1px solid var(--fui) !important;
   background: rgba(0, 20, 40, 0.6) !important;
   box-shadow: 0 0 30px rgba(0, 204, 255, 0.2) !important;
+}
+
+/* ============================================================================
+   DEUS EX (Gold)
+   ============================================================================ */
+[data-theme="deus-ex"] {
+  --fui: #ffcc00;
+  --background: 0.06 0.02 50;
+  --foreground: 0.92 0.12 50;
+  --primary: 0.8 0.18 50;
+  --accent: 0.8 0.18 50;
+  --muted: 0.15 0.02 50;
+  --muted-foreground: 0.55 0.08 50;
+  --border: 0.35 0.1 50;
+  --card: 0.08 0.02 50;
+}
+[data-fui="deus-ex"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(20, 15, 0, 0.9) !important;
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.2) !important;
+}
+
+/* ============================================================================
+   AVATAR (Military Green)
+   ============================================================================ */
+[data-theme="avatar"] {
+  --fui: #00ff00;
+  --background: 0.04 0.02 130;
+  --foreground: 0.9 0.25 130;
+  --primary: 0.8 0.3 130;
+  --accent: 0.8 0.3 130;
+  --muted: 0.1 0.02 130;
+  --muted-foreground: 0.5 0.1 130;
+  --border: 0.35 0.15 130;
+  --card: 0.06 0.02 130;
+}
+[data-fui="avatar"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(0, 10, 0, 0.9) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2) !important;
+}
+
+/* ============================================================================
+   DEAD SPACE (Teal)
+   ============================================================================ */
+[data-theme="dead-space"] {
+  --fui: #00ffcc;
+  --background: 0.04 0.02 175;
+  --foreground: 0.9 0.15 175;
+  --primary: 0.8 0.2 175;
+  --accent: 0.8 0.2 175;
+  --muted: 0.1 0.02 175;
+  --muted-foreground: 0.55 0.08 175;
+  --border: 0.3 0.1 175;
+  --card: 0.06 0.02 175;
+}
+[data-fui="dead-space"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(0, 20, 15, 0.9) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2) !important;
+}
+
+/* ============================================================================
+   CORTANA (Blue)
+   ============================================================================ */
+[data-theme="cortana"] {
+  --fui: #0088ff;
+  --background: 0.05 0.03 220;
+  --foreground: 0.92 0.1 220;
+  --primary: 0.65 0.2 220;
+  --accent: 0.65 0.2 220;
+  --muted: 0.12 0.03 220;
+  --muted-foreground: 0.55 0.08 220;
+  --border: 0.28 0.1 220;
+  --card: 0.07 0.03 220;
+}
+[data-fui="cortana"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(0, 20, 50, 0.9) !important;
+  box-shadow: 0 0 25px rgba(0, 136, 255, 0.3) !important;
+}
+
+/* ============================================================================
+   LCARS (Orange - Star Trek)
+   ============================================================================ */
+[data-theme="lcars"] {
+  --fui: #ff9900;
+  --background: 0.06 0.02 40;
+  --foreground: 0.92 0.1 40;
+  --primary: 0.75 0.2 40;
+  --accent: 0.75 0.2 40;
+  --muted: 0.15 0.02 40;
+  --muted-foreground: 0.55 0.08 40;
+  --border: 0.4 0.12 40;
+  --card: 0.08 0.02 40;
+}
+[data-fui="lcars"] [data-slot="card"] {
+  border: 3px solid var(--fui) !important;
+  background: rgba(20, 10, 0, 0.9) !important;
+}
+
+/* ============================================================================
+   CORNER TICKS (Orange)
+   ============================================================================ */
+[data-theme="corner-ticks"] {
+  --fui: #ff8800;
+  --background: 0.06 0.02 35;
+  --foreground: 0.92 0.12 35;
+  --primary: 0.7 0.22 35;
+  --accent: 0.7 0.22 35;
+  --muted: 0.15 0.02 35;
+  --muted-foreground: 0.55 0.08 35;
+  --border: 0.35 0.1 35;
+  --card: 0.08 0.02 35;
+}
+[data-fui="corner-ticks"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(15, 8, 0, 0.9) !important;
+}
+
+/* ============================================================================
+   WIREFRAME (White/Gray)
+   ============================================================================ */
+[data-theme="wireframe"] {
+  --fui: #ffffff;
+  --background: 0.05 0 0;
+  --foreground: 0.9 0 0;
+  --primary: 0.7 0 0;
+  --accent: 0.7 0 0;
+  --muted: 0.12 0 0;
+  --muted-foreground: 0.55 0 0;
+  --border: 0.3 0 0;
+  --card: 0.08 0 0;
+}
+[data-fui="wireframe"] [data-slot="card"] {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background: transparent !important;
+}
+
+/* ============================================================================
+   REMOTE LINK (Orange)
+   ============================================================================ */
+[data-theme="remote-link"] {
+  --fui: #ff6600;
+  --background: 0.06 0.02 35;
+  --foreground: 0.92 0.12 35;
+  --primary: 0.7 0.22 35;
+  --accent: 0.7 0.22 35;
+  --muted: 0.15 0.02 35;
+  --muted-foreground: 0.55 0.08 35;
+  --border: 0.35 0.1 35;
+  --card: 0.08 0.02 35;
+}
+[data-fui="remote-link"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(15, 8, 0, 0.9) !important;
+}
+
+/* ============================================================================
+   TREAD (Yellow-Green)
+   ============================================================================ */
+[data-theme="tread"] {
+  --fui: #ccff00;
+  --background: 0.05 0.02 100;
+  --foreground: 0.9 0.2 100;
+  --primary: 0.8 0.25 100;
+  --accent: 0.8 0.25 100;
+  --muted: 0.12 0.02 100;
+  --muted-foreground: 0.55 0.1 100;
+  --border: 0.3 0.12 100;
+  --card: 0.07 0.02 100;
+}
+[data-fui="tread"] [data-slot="card"] {
+  border: 2px solid var(--fui) !important;
+  background: rgba(10, 12, 0, 0.9) !important;
 }
