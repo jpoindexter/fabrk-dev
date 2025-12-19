@@ -3,6 +3,9 @@
  *
  * Each style has its own signature color from sci-fi films.
  * Applied via data-fui attribute on document root.
+ *
+ * IMPORTANT: These styles should be DRAMATIC and immediately visible.
+ * Each FUI style changes borders, glows, and accents to its signature color.
  */
 
 /* Base: ensure mono font and no border radius */
@@ -11,71 +14,83 @@
 
 /* ============================================================================
    BRACKET CORNERS - Cyan
+   Iconic FUI pattern with L-shaped corner brackets
    ============================================================================ */
 [data-fui="bracket-corners"] { --fui: #00ffff; }
-[data-fui="bracket-corners"] [data-slot="card"] { position: relative !important; }
+[data-fui="bracket-corners"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--fui) 30%, transparent) !important;
+}
 [data-fui="bracket-corners"] [data-slot="card"]::before,
 [data-fui="bracket-corners"] [data-slot="card"]::after {
   content: '' !important;
   position: absolute !important;
-  width: 20px !important;
-  height: 20px !important;
+  width: 24px !important;
+  height: 24px !important;
   pointer-events: none !important;
 }
 [data-fui="bracket-corners"] [data-slot="card"]::before {
-  top: 0 !important;
-  left: 0 !important;
+  top: -2px !important;
+  left: -2px !important;
+  border-top: 3px solid var(--fui) !important;
+  border-left: 3px solid var(--fui) !important;
+}
+[data-fui="bracket-corners"] [data-slot="card"]::after {
+  bottom: -2px !important;
+  right: -2px !important;
+  border-bottom: 3px solid var(--fui) !important;
+  border-right: 3px solid var(--fui) !important;
+}
+
+/* ============================================================================
+   CORNER TICKS - Orange
+   Small precise corner markers
+   ============================================================================ */
+[data-fui="corner-ticks"] { --fui: #ff8800; }
+[data-fui="corner-ticks"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--fui) 25%, transparent) !important;
+}
+[data-fui="corner-ticks"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 6px !important;
+  left: 6px !important;
+  width: 10px !important;
+  height: 10px !important;
   border-top: 2px solid var(--fui) !important;
   border-left: 2px solid var(--fui) !important;
 }
-[data-fui="bracket-corners"] [data-slot="card"]::after {
-  bottom: 0 !important;
-  right: 0 !important;
+[data-fui="corner-ticks"] [data-slot="card"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 6px !important;
+  right: 6px !important;
+  width: 10px !important;
+  height: 10px !important;
   border-bottom: 2px solid var(--fui) !important;
   border-right: 2px solid var(--fui) !important;
 }
 
 /* ============================================================================
-   CORNER TICKS - Orange
-   ============================================================================ */
-[data-fui="corner-ticks"] { --fui: #ff8800; }
-[data-fui="corner-ticks"] [data-slot="card"] { position: relative !important; }
-[data-fui="corner-ticks"] [data-slot="card"]::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 4px !important;
-  left: 4px !important;
-  width: 6px !important;
-  height: 6px !important;
-  border-top: 1px solid var(--fui) !important;
-  border-left: 1px solid var(--fui) !important;
-}
-[data-fui="corner-ticks"] [data-slot="card"]::after {
-  content: '' !important;
-  position: absolute !important;
-  bottom: 4px !important;
-  right: 4px !important;
-  width: 6px !important;
-  height: 6px !important;
-  border-bottom: 1px solid var(--fui) !important;
-  border-right: 1px solid var(--fui) !important;
-}
-
-/* ============================================================================
-   WIREFRAME - White
+   WIREFRAME - White/Gray
+   Minimal transparent wireframe look
    ============================================================================ */
 [data-fui="wireframe"] { --fui: #ffffff; }
 [data-fui="wireframe"] [data-slot="card"] {
   background: transparent !important;
-  border: 1px solid color-mix(in srgb, var(--fui) 30%, transparent) !important;
+  border: 2px solid color-mix(in srgb, var(--fui) 60%, transparent) !important;
 }
 [data-fui="wireframe"] section {
-  border: 1px solid color-mix(in srgb, var(--fui) 15%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--fui) 25%, transparent) !important;
   margin: 4px !important;
 }
 
 /* ============================================================================
-   OBLIVION - Cyan with grid
+   OBLIVION - Cyan with grid overlay
+   Tom Cruise's drone interface
    ============================================================================ */
 [data-fui="oblivion"] { --fui: #00ffff; }
 [data-fui="oblivion"]::before {
@@ -83,133 +98,166 @@
   position: fixed !important;
   inset: 0 !important;
   background:
-    linear-gradient(90deg, transparent 98%, color-mix(in srgb, var(--fui) 15%, transparent) 98%) 0 0 / 50px 50px,
-    linear-gradient(0deg, transparent 98%, color-mix(in srgb, var(--fui) 15%, transparent) 98%) 0 0 / 50px 50px !important;
+    linear-gradient(90deg, transparent 98%, color-mix(in srgb, var(--fui) 20%, transparent) 98%) 0 0 / 50px 50px,
+    linear-gradient(0deg, transparent 98%, color-mix(in srgb, var(--fui) 20%, transparent) 98%) 0 0 / 50px 50px !important;
   pointer-events: none !important;
   z-index: 0 !important;
 }
-[data-fui="oblivion"] [data-slot="card"] { position: relative !important; z-index: 1 !important; }
+[data-fui="oblivion"] [data-slot="card"] {
+  position: relative !important;
+  z-index: 1 !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 35%, transparent) !important;
+}
 [data-fui="oblivion"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
-  top: -1px !important;
-  left: -1px !important;
-  width: 16px !important;
-  height: 16px !important;
-  border-top: 2px solid var(--fui) !important;
-  border-left: 2px solid var(--fui) !important;
+  top: -2px !important;
+  left: -2px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-top: 3px solid var(--fui) !important;
+  border-left: 3px solid var(--fui) !important;
 }
 [data-fui="oblivion"] [data-slot="card"]::after {
   content: '' !important;
   position: absolute !important;
-  bottom: -1px !important;
-  right: -1px !important;
-  width: 16px !important;
-  height: 16px !important;
-  border-bottom: 2px solid var(--fui) !important;
-  border-right: 2px solid var(--fui) !important;
+  bottom: -2px !important;
+  right: -2px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-bottom: 3px solid var(--fui) !important;
+  border-right: 3px solid var(--fui) !important;
 }
 [data-fui="oblivion"] section { position: relative !important; z-index: 1 !important; }
 
 /* ============================================================================
-   REMOTE LINK - Orange with top bar
+   REMOTE LINK - Orange with top accent bar
+   Clean data display style
    ============================================================================ */
 [data-fui="remote-link"] { --fui: #ff6600; }
-[data-fui="remote-link"] [data-slot="card"] { position: relative !important; overflow: hidden !important; }
+[data-fui="remote-link"] [data-slot="card"] {
+  position: relative !important;
+  overflow: hidden !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--fui) 25%, transparent) !important;
+}
 [data-fui="remote-link"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 3px !important;
+  height: 4px !important;
   background: var(--fui) !important;
 }
 [data-fui="remote-link"] [data-slot="card"]::after {
   content: 'ACTIVE' !important;
   position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
-  font-size: 8px !important;
+  top: 10px !important;
+  right: 10px !important;
+  font-size: 9px !important;
   color: var(--fui) !important;
-  letter-spacing: 0.1em !important;
-  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+  font-weight: 700 !important;
 }
 
 /* ============================================================================
-   TREAD FX-D - Yellow-green with progress bar
+   TREAD FX-D - Yellow-green with side progress bar
+   Industrial/military display
    ============================================================================ */
 [data-fui="tread"] { --fui: #ccff00; }
-[data-fui="tread"] [data-slot="card"] { position: relative !important; }
+[data-fui="tread"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--fui) 30%, transparent) !important;
+}
 [data-fui="tread"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: 8px !important;
   left: 0 !important;
-  width: 4px !important;
+  width: 5px !important;
   height: calc(100% - 16px) !important;
   background: linear-gradient(180deg, var(--fui) 0%, var(--fui) 70%, transparent 70%) !important;
 }
 [data-fui="tread"] [data-slot="card"]::after {
   content: 'AMP' !important;
   position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
-  font-size: 8px !important;
-  letter-spacing: 0.15em !important;
-  opacity: 0.6 !important;
+  top: 10px !important;
+  right: 10px !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
   color: var(--fui) !important;
+  font-weight: 700 !important;
 }
 
 /* ============================================================================
-   JARVIS - Blue with glow
+   JARVIS - Blue with holographic glow
+   Iron Man's AI assistant interface
    ============================================================================ */
 [data-fui="jarvis"] { --fui: #00aaff; }
 [data-fui="jarvis"] [data-slot="card"] {
   position: relative !important;
-  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 15%, transparent), inset 0 0 20px color-mix(in srgb, var(--fui) 5%, transparent) !important;
+  border-color: var(--fui) !important;
+  box-shadow:
+    0 0 25px color-mix(in srgb, var(--fui) 40%, transparent),
+    0 0 50px color-mix(in srgb, var(--fui) 20%, transparent),
+    inset 0 0 30px color-mix(in srgb, var(--fui) 10%, transparent) !important;
 }
 [data-fui="jarvis"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: -1px !important;
-  left: 20% !important;
-  right: 20% !important;
-  height: 1px !important;
+  left: 15% !important;
+  right: 15% !important;
+  height: 2px !important;
   background: linear-gradient(90deg, transparent, var(--fui), transparent) !important;
+  box-shadow: 0 0 10px var(--fui) !important;
 }
 
 /* ============================================================================
    LCARS - Orange Star Trek style
+   Classic Star Trek computer interface
    ============================================================================ */
 [data-fui="lcars"] { --fui: #ff9900; }
-[data-fui="lcars"] [data-slot="card"] { position: relative !important; margin-left: 12px !important; }
+[data-fui="lcars"] [data-slot="card"] {
+  position: relative !important;
+  margin-left: 16px !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--fui) 30%, transparent) !important;
+}
 [data-fui="lcars"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
-  left: -12px !important;
-  width: 8px !important;
+  left: -16px !important;
+  width: 12px !important;
   height: 100% !important;
   background: var(--fui) !important;
-  border-radius: 4px 0 0 4px !important;
+  border-radius: 6px 0 0 6px !important;
 }
 
 /* ============================================================================
    CORTANA - Blue holographic
+   Halo AI holographic display
    ============================================================================ */
 [data-fui="cortana"] { --fui: #0088ff; }
 [data-fui="cortana"]::before {
   content: '' !important;
   position: fixed !important;
   inset: 0 !important;
-  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--fui) 8%, transparent) 0%, transparent 60%) !important;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--fui) 12%, transparent) 0%, transparent 60%) !important;
   pointer-events: none !important;
 }
 [data-fui="cortana"] [data-slot="card"] {
   position: relative !important;
-  box-shadow: 0 0 25px color-mix(in srgb, var(--fui) 20%, transparent), inset 0 0 25px color-mix(in srgb, var(--fui) 5%, transparent) !important;
   z-index: 1 !important;
+  border-color: var(--fui) !important;
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--fui) 40%, transparent),
+    0 0 60px color-mix(in srgb, var(--fui) 20%, transparent),
+    inset 0 0 30px color-mix(in srgb, var(--fui) 8%, transparent) !important;
 }
 [data-fui="cortana"] [data-slot="card"]::before {
   content: '' !important;
@@ -217,31 +265,41 @@
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 1px !important;
+  height: 2px !important;
   background: linear-gradient(90deg, transparent, var(--fui), transparent) !important;
+  box-shadow: 0 0 15px var(--fui) !important;
 }
 
 /* ============================================================================
    PACIFIC RIM - Orange-red industrial
+   Jaeger HUD heavy industrial
    ============================================================================ */
 [data-fui="pacific-rim"] { --fui: #ff4400; }
-[data-fui="pacific-rim"] [data-slot="card"] { border-width: 3px !important; border-color: var(--fui) !important; position: relative !important; }
+[data-fui="pacific-rim"] [data-slot="card"] {
+  position: relative !important;
+  border: 4px solid var(--fui) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 35%, transparent) !important;
+}
 [data-fui="pacific-rim"] [data-slot="card"]::before {
   content: 'JAEGER' !important;
   position: absolute !important;
-  top: -10px !important;
-  left: 12px !important;
-  padding: 0 8px !important;
-  font-size: 9px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.15em !important;
+  top: -12px !important;
+  left: 16px !important;
+  padding: 0 10px !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.2em !important;
   background: oklch(var(--background)) !important;
   color: var(--fui) !important;
 }
-[data-fui="pacific-rim"] section { border: 2px solid var(--fui) !important; margin: 8px 4px !important; }
+[data-fui="pacific-rim"] section {
+  border: 3px solid var(--fui) !important;
+  margin: 8px 4px !important;
+}
 
 /* ============================================================================
    ALIEN ISOLATION - Green CRT with scanlines
+   Retro CRT terminal from Alien
    ============================================================================ */
 [data-fui="alien"] { --fui: #00ff66; }
 [data-fui="alien"]::before {
@@ -251,15 +309,23 @@
   background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, oklch(var(--background)) 2px, oklch(var(--background)) 4px) !important;
   pointer-events: none !important;
   z-index: 100 !important;
-  opacity: 0.1 !important;
+  opacity: 0.15 !important;
 }
-[data-fui="alien"] [data-slot="card"] { position: relative !important; z-index: 1 !important; border: 2px solid var(--fui) !important; }
+[data-fui="alien"] [data-slot="card"] {
+  position: relative !important;
+  z-index: 1 !important;
+  border: 3px solid var(--fui) !important;
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--fui) 40%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--fui) 10%, transparent) !important;
+}
 [data-fui="alien"] [data-slot="card"]::before {
   content: '>' !important;
   position: absolute !important;
-  top: 8px !important;
-  left: 8px !important;
-  font-size: 12px !important;
+  top: 10px !important;
+  left: 10px !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
   animation: fui-blink 1s step-end infinite !important;
   color: var(--fui) !important;
 }
@@ -267,195 +333,237 @@
 
 /* ============================================================================
    DEAD SPACE - Teal health spine
+   Isaac's RIG health display
    ============================================================================ */
 [data-fui="dead-space"] { --fui: #00ffcc; }
-[data-fui="dead-space"] [data-slot="card"] { position: relative !important; }
+[data-fui="dead-space"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--fui) 30%, transparent) !important;
+}
 [data-fui="dead-space"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
-  top: 8px !important;
-  left: 8px !important;
-  width: 6px !important;
-  height: calc(100% - 16px) !important;
+  top: 10px !important;
+  left: 10px !important;
+  width: 8px !important;
+  height: calc(100% - 20px) !important;
   background: linear-gradient(180deg, var(--fui) 0%, var(--fui) 80%, #ff4444 80%) !important;
+  box-shadow: 0 0 10px var(--fui) !important;
 }
 [data-fui="dead-space"] [data-slot="card"]::after {
   content: 'RIG' !important;
   position: absolute !important;
-  top: 6px !important;
-  right: 8px !important;
-  font-size: 9px !important;
-  letter-spacing: 0.2em !important;
-  opacity: 0.5 !important;
+  top: 8px !important;
+  right: 10px !important;
+  font-size: 10px !important;
+  letter-spacing: 0.25em !important;
+  font-weight: 700 !important;
   color: var(--fui) !important;
 }
 
 /* ============================================================================
    MASS EFFECT - Orange N7 with chamfer
+   Commander Shepard's omni-tool
    ============================================================================ */
 [data-fui="mass-effect"] { --fui: #ff6600; }
 [data-fui="mass-effect"] [data-slot="card"] {
   position: relative !important;
-  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)) !important;
+  border-color: var(--fui) !important;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px)) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 35%, transparent) !important;
 }
 [data-fui="mass-effect"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
   right: 0 !important;
-  border: 12px solid transparent !important;
+  border: 16px solid transparent !important;
   border-top-color: var(--fui) !important;
   border-right-color: var(--fui) !important;
 }
 
 /* ============================================================================
    DEUS EX - Gold augmented
+   Adam Jensen's augmented vision
    ============================================================================ */
 [data-fui="deus-ex"] { --fui: #ffcc00; }
 [data-fui="deus-ex"]::before {
   content: '' !important;
   position: fixed !important;
   inset: 0 !important;
-  background: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, color-mix(in srgb, var(--fui) 3%, transparent) 3px, color-mix(in srgb, var(--fui) 3%, transparent) 4px) !important;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, color-mix(in srgb, var(--fui) 5%, transparent) 3px, color-mix(in srgb, var(--fui) 5%, transparent) 4px) !important;
   pointer-events: none !important;
 }
-[data-fui="deus-ex"] [data-slot="card"] { position: relative !important; }
+[data-fui="deus-ex"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 35%, transparent) !important;
+}
 [data-fui="deus-ex"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
-  height: 3px !important;
+  height: 4px !important;
   background: linear-gradient(90deg, var(--fui), transparent) !important;
+  box-shadow: 0 0 10px var(--fui) !important;
 }
 
 /* ============================================================================
    GHOST IN SHELL - Magenta cyberbrain
+   Section 9 cyberpunk interface
    ============================================================================ */
 [data-fui="ghost-shell"] { --fui: #ff0066; }
-[data-fui="ghost-shell"] [data-slot="card"] { position: relative !important; }
+[data-fui="ghost-shell"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 35%, transparent) !important;
+}
 [data-fui="ghost-shell"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
-  top: 8px !important;
-  left: 8px !important;
-  width: 8px !important;
-  height: 8px !important;
-  border: 2px solid var(--fui) !important;
+  top: 10px !important;
+  left: 10px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border: 3px solid var(--fui) !important;
   border-radius: 50% !important;
+  box-shadow: 0 0 10px var(--fui) !important;
 }
 [data-fui="ghost-shell"] [data-slot="card"]::after {
   content: 'SEC 9' !important;
   position: absolute !important;
-  bottom: 6px !important;
-  right: 8px !important;
-  font-size: 8px !important;
-  letter-spacing: 0.15em !important;
-  opacity: 0.5 !important;
+  bottom: 8px !important;
+  right: 10px !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 700 !important;
   color: var(--fui) !important;
 }
 
 /* ============================================================================
    TRON LEGACY - Cyan neon glow
+   The Grid's signature neon aesthetic
    ============================================================================ */
 [data-fui="tron"] { --fui: #00ffff; }
 [data-fui="tron"] [data-slot="card"] {
   position: relative !important;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--fui) 25%, transparent), inset 0 0 12px color-mix(in srgb, var(--fui) 8%, transparent) !important;
+  border: 2px solid var(--fui) !important;
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--fui) 50%, transparent),
+    0 0 40px color-mix(in srgb, var(--fui) 25%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--fui) 15%, transparent) !important;
 }
 [data-fui="tron"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
-  top: -1px !important;
-  left: 15% !important;
-  right: 15% !important;
-  height: 2px !important;
+  top: -2px !important;
+  left: 10% !important;
+  right: 10% !important;
+  height: 3px !important;
   background: var(--fui) !important;
-  box-shadow: 0 0 10px var(--fui), 0 0 20px var(--fui) !important;
+  box-shadow: 0 0 15px var(--fui), 0 0 30px var(--fui) !important;
 }
 
 /* ============================================================================
    AVATAR - Green military HUD
+   AMP suit targeting interface
    ============================================================================ */
 [data-fui="avatar"] { --fui: #00ff00; }
 [data-fui="avatar"]::before {
   content: '' !important;
   position: fixed !important;
   inset: 0 !important;
-  background: radial-gradient(circle at center, transparent 30%, color-mix(in srgb, var(--fui) 5%, transparent) 100%) !important;
+  background: radial-gradient(circle at center, transparent 30%, color-mix(in srgb, var(--fui) 8%, transparent) 100%) !important;
   pointer-events: none !important;
 }
-[data-fui="avatar"] [data-slot="card"] { position: relative !important; z-index: 1 !important; }
+[data-fui="avatar"] [data-slot="card"] {
+  position: relative !important;
+  z-index: 1 !important;
+  border-color: var(--fui) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--fui) 35%, transparent) !important;
+}
 [data-fui="avatar"] [data-slot="card"]::before {
   content: '+' !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  font-size: 24px !important;
-  opacity: 0.1 !important;
+  font-size: 32px !important;
+  font-weight: 100 !important;
+  opacity: 0.2 !important;
   pointer-events: none !important;
   color: var(--fui) !important;
 }
 
 /* ============================================================================
    BLADE RUNNER - Neon pink noir
+   Replicant detection interface
    ============================================================================ */
 [data-fui="blade-runner"] { --fui: #ff0055; }
-[data-fui="blade-runner"] [data-slot="card"] { position: relative !important; }
+[data-fui="blade-runner"] [data-slot="card"] {
+  position: relative !important;
+  border-color: var(--fui) !important;
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--fui) 40%, transparent),
+    0 0 40px color-mix(in srgb, var(--fui) 20%, transparent) !important;
+}
 [data-fui="blade-runner"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
-  left: 16px !important;
-  width: 50px !important;
-  height: 2px !important;
+  left: 20px !important;
+  width: 60px !important;
+  height: 3px !important;
   background: var(--fui) !important;
-  box-shadow: 0 0 8px var(--fui) !important;
+  box-shadow: 0 0 12px var(--fui) !important;
 }
 [data-fui="blade-runner"] [data-slot="card"]::after {
-  content: 'REPL' !important;
+  content: 'REPLICANT' !important;
   position: absolute !important;
-  bottom: 8px !important;
-  right: 12px !important;
-  font-size: 8px !important;
-  letter-spacing: 0.2em !important;
-  opacity: 0.4 !important;
+  bottom: 10px !important;
+  right: 14px !important;
+  font-size: 9px !important;
+  letter-spacing: 0.25em !important;
+  font-weight: 700 !important;
   color: var(--fui) !important;
 }
 
 /* ============================================================================
    INTERSTELLAR - Gray NASA minimal
+   TARS/CASE interface minimal
    ============================================================================ */
 [data-fui="interstellar"] { --fui: #aaaaaa; }
 [data-fui="interstellar"] [data-slot="card"] {
   position: relative !important;
   background: transparent !important;
-  border: 1px solid color-mix(in srgb, var(--fui) 50%, transparent) !important;
+  border: 2px solid color-mix(in srgb, var(--fui) 70%, transparent) !important;
 }
 [data-fui="interstellar"] [data-slot="card"]::before {
   content: 'TARS' !important;
   position: absolute !important;
-  top: 8px !important;
-  right: 12px !important;
-  font-size: 9px !important;
-  letter-spacing: 0.25em !important;
-  opacity: 0.35 !important;
+  top: 10px !important;
+  right: 14px !important;
+  font-size: 10px !important;
+  letter-spacing: 0.3em !important;
+  font-weight: 700 !important;
   color: var(--fui) !important;
 }
 [data-fui="interstellar"] [data-slot="card"]::after {
   content: '' !important;
   position: absolute !important;
-  bottom: 10px !important;
-  left: 12px !important;
-  width: 30px !important;
-  height: 1px !important;
-  background: color-mix(in srgb, var(--fui) 40%, transparent) !important;
+  bottom: 12px !important;
+  left: 14px !important;
+  width: 40px !important;
+  height: 2px !important;
+  background: color-mix(in srgb, var(--fui) 60%, transparent) !important;
 }
 
 /* ============================================================================
    IRON MAN HUD - Light blue
+   Stark Industries holographic HUD
    ============================================================================ */
 [data-fui="iron-man"] { --fui: #00ccff; }
 [data-fui="iron-man"]::before {
@@ -463,65 +571,78 @@
   position: fixed !important;
   inset: 0 !important;
   background:
-    radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--fui) 6%, transparent) 0%, transparent 30%),
-    radial-gradient(circle at 75% 75%, color-mix(in srgb, var(--fui) 6%, transparent) 0%, transparent 30%) !important;
+    radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--fui) 10%, transparent) 0%, transparent 30%),
+    radial-gradient(circle at 75% 75%, color-mix(in srgb, var(--fui) 10%, transparent) 0%, transparent 30%) !important;
   pointer-events: none !important;
 }
-[data-fui="iron-man"] [data-slot="card"] { position: relative !important; z-index: 1 !important; }
+[data-fui="iron-man"] [data-slot="card"] {
+  position: relative !important;
+  z-index: 1 !important;
+  border-color: var(--fui) !important;
+  box-shadow:
+    0 0 25px color-mix(in srgb, var(--fui) 40%, transparent),
+    inset 0 0 25px color-mix(in srgb, var(--fui) 10%, transparent) !important;
+}
 [data-fui="iron-man"] [data-slot="card"]::before {
   content: '' !important;
   position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
-  width: 35px !important;
-  height: 35px !important;
-  border: 1px solid color-mix(in srgb, var(--fui) 50%, transparent) !important;
+  top: 10px !important;
+  right: 10px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: 2px solid color-mix(in srgb, var(--fui) 60%, transparent) !important;
   border-radius: 50% !important;
 }
 [data-fui="iron-man"] [data-slot="card"]::after {
   content: 'STARK' !important;
   position: absolute !important;
-  bottom: 6px !important;
-  left: 10px !important;
-  font-size: 7px !important;
-  letter-spacing: 0.15em !important;
-  opacity: 0.4 !important;
+  bottom: 8px !important;
+  left: 12px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 700 !important;
   color: var(--fui) !important;
 }
 
 /* ============================================================================
    WAKANDA TECH - Purple vibranium
+   Shuri's vibranium tech interface
    ============================================================================ */
 [data-fui="wakanda"] { --fui: #aa55ff; }
 [data-fui="wakanda"]::before {
   content: '' !important;
   position: fixed !important;
   inset: 0 !important;
-  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--fui) 8%, transparent) 0%, transparent 50%) !important;
+  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--fui) 12%, transparent) 0%, transparent 50%) !important;
   pointer-events: none !important;
 }
 [data-fui="wakanda"] [data-slot="card"] {
   position: relative !important;
-  box-shadow: 0 0 25px color-mix(in srgb, var(--fui) 20%, transparent), inset 0 0 25px color-mix(in srgb, var(--fui) 6%, transparent) !important;
   z-index: 1 !important;
+  border-color: var(--fui) !important;
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--fui) 40%, transparent),
+    0 0 60px color-mix(in srgb, var(--fui) 20%, transparent),
+    inset 0 0 30px color-mix(in srgb, var(--fui) 10%, transparent) !important;
 }
 [data-fui="wakanda"] [data-slot="card"]::before {
-  content: 'VIB' !important;
+  content: 'VIBRANIUM' !important;
   position: absolute !important;
-  top: 6px !important;
-  left: 10px !important;
-  font-size: 7px !important;
-  letter-spacing: 0.18em !important;
-  opacity: 0.5 !important;
+  top: 8px !important;
+  left: 12px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 700 !important;
   color: var(--fui) !important;
 }
 [data-fui="wakanda"] [data-slot="card"]::after {
   content: '' !important;
   position: absolute !important;
   top: 50% !important;
-  right: 12px !important;
-  width: 25px !important;
-  height: 25px !important;
-  border: 1px solid color-mix(in srgb, var(--fui) 60%, transparent) !important;
+  right: 14px !important;
+  width: 28px !important;
+  height: 28px !important;
+  border: 2px solid color-mix(in srgb, var(--fui) 70%, transparent) !important;
   transform: translateY(-50%) rotate(45deg) !important;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--fui) 50%, transparent) !important;
 }
