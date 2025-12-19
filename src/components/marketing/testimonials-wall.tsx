@@ -1,9 +1,9 @@
 /**
- * What's Included Section - Unified terminal HUD card using Card UI primitives
+ * Testimonials Wall - Unified terminal HUD card using Card UI primitives
  *
  * Design System Compliance:
  * - Uses mode.typography.* tokens (no hardcoded text-[Xpx])
- * - Uses Card, CardContent, FeatureItem primitives
+ * - Uses Card, CardContent, CardFooter primitives
  */
 
 'use client';
@@ -11,27 +11,27 @@
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/container';
 import { SectionHeader } from '@/components/landing/section-header';
-import { INCLUDED_FEATURES } from '@/data/landing/included-features';
+import { TESTIMONIALS } from '@/data/landing/testimonials';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { Card, CardContent, FeatureItem } from '@/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 
-export function WhatsIncludedSection() {
+export function TestimonialsWall() {
   return (
     <section className="border-border border-t py-20 lg:py-24">
       <Container>
         <SectionHeader
-          badge="INCLUDED"
-          code="0x45"
-          title="EVERYTHING YOU NEED TO SHIP"
-          description="Full-stack SaaS infrastructure, no assembly required"
+          badge="TESTIMONIALS"
+          code="0x50"
+          title="DEVELOPERS LOVE FABRK"
+          description="Join hundreds of developers shipping faster with Fabrk"
           align="center"
         />
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {INCLUDED_FEATURES.map((item, index) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {TESTIMONIALS.map((testimonial, index) => (
             <motion.div
-              key={item.id}
+              key={testimonial.id}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -47,23 +47,30 @@ export function WhatsIncludedSection() {
                   )}
                 >
                   <span className={cn(mode.typography.caption, mode.font, 'uppercase')}>
-                    {item.category}
+                    FEEDBACK
                   </span>
                   <span className={cn(mode.typography.caption, mode.color.text.accent, mode.font)}>
-                    {item.features.length}
+                    {'★'.repeat(testimonial.rating)}
                   </span>
                 </div>
 
-                {/* Features */}
+                {/* Quote - uses mode.typography.body.sm */}
                 <CardContent padding="md" className="flex-grow">
-                  <div className="space-y-1">
-                    {item.features.slice(0, 5).map((feature, i) => (
-                      <FeatureItem key={i} icon="arrow" className={mode.color.text.muted}>
-                        {feature}
-                      </FeatureItem>
-                    ))}
-                  </div>
+                  <p className={cn(mode.typography.body.sm, mode.font, 'leading-relaxed', mode.color.text.primary)}>
+                    "{testimonial.quote}"
+                  </p>
                 </CardContent>
+
+                {/* Author */}
+                <CardFooter>
+                  <span className={cn(mode.typography.caption, mode.font)}>
+                    <span className={mode.color.text.accent}>{testimonial.author}</span>
+                    <span className={mode.color.text.muted}>
+                      {' · '}
+                      {testimonial.role.split(',')[0]}
+                    </span>
+                  </span>
+                </CardFooter>
               </Card>
             </motion.div>
           ))}

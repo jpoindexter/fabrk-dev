@@ -1,9 +1,18 @@
 'use client';
 
+/**
+ * StatCard - Unified terminal HUD card using Card UI primitives
+ *
+ * Design System Compliance:
+ * - Uses mode.typography.* tokens
+ * - Uses Card primitive with consistent header pattern
+ */
+
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface StatCardProps {
   icon: LucideIcon;
@@ -28,26 +37,28 @@ export function StatCard({ icon: Icon, value, label, index }: StatCardProps) {
         delay: index * 0.1,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
-      className={cn(
-        'group border-border bg-card hover:bg-muted/50 relative flex flex-col items-center gap-4 border p-6 text-center transition-colors',
-        mode.radius
-      )}
+      className="h-full"
     >
-      {/* Icon */}
-      <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-      >
-        <Icon className={cn('size-8', mode.color.text.accent)} />
-      </motion.div>
+      <Card size="full" interactive>
+        {/* Header - minimal */}
+        <div
+          className={cn(
+            'flex items-center justify-between border-b px-4 py-2',
+            mode.color.border.default
+          )}
+        >
+          <span className={cn(mode.typography.caption, mode.font, 'uppercase')}>
+            {label}
+          </span>
+          <Icon className={cn('size-4', mode.color.text.accent)} />
+        </div>
 
-      {/* Value */}
-      <div className={cn('text-4xl font-bold tracking-tight', mode.font, mode.color.text.primary)}>
-        {value}
-      </div>
-
-      {/* Label */}
-      <div className={cn('text-xs tracking-wider', mode.font, mode.color.text.muted)}>{label}</div>
+        <CardContent padding="md" className="flex flex-col items-center justify-center">
+          <div className={cn('text-3xl font-bold', mode.font, mode.color.text.primary)}>
+            {value}
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 }

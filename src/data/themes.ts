@@ -26,6 +26,9 @@ export const themeGroups = {
     { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f', wcag: 'aa' },
     { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a', wcag: 'aa' },
   ],
+  'Sci-Fi': [
+    { id: 'collector', name: 'Collector', preview: '#ff55aa', wcag: 'aa' },
+  ],
   Light: [{ id: 'bw', name: 'Black & White', preview: '#ffffff', wcag: 'aa' }],
 } as const;
 

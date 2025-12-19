@@ -1340,8 +1340,115 @@
 }
 
 /* ============================================
+   Collector Theme - Territory Studio inspired
+   Deep purple/violet with magenta and cyan accents
+   Inspired by Guardians of the Galaxy FUI
+   ============================================ */
+
+[data-theme='collector'] {
+  /* Base colors - Deep purple/violet background */
+  --background: 8% 0.04 290; /* Very dark purple */
+  --foreground: 85% 0.18 330; /* Light magenta text */
+  --card: 12% 0.05 290; /* Slightly lighter purple for cards */
+  --card-foreground: 85% 0.18 330;
+  --popover: 15% 0.06 290;
+  --popover-foreground: 85% 0.18 330;
+
+  /* Primary - Bright magenta/fuchsia */
+  --primary: 65% 0.28 330;
+  --primary-foreground: 98% 0.01 330;
+
+  /* Secondary - Cyan/teal accent */
+  --secondary: 70% 0.2 190;
+  --secondary-foreground: 10% 0.02 190;
+
+  /* Muted - Dark purple for subtle backgrounds */
+  --muted: 18% 0.06 290;
+  --muted-foreground: 70% 0.14 330; /* Softer magenta */
+
+  /* Accent - Bright magenta (same as primary for consistency) */
+  --accent: 65% 0.28 330;
+  --accent-foreground: 98% 0.01 330;
+
+  /* Destructive - Red/coral alert color */
+  --destructive: 65% 0.25 15;
+  --destructive-foreground: 98% 0.01 15;
+
+  /* Borders - Magenta tint for visibility */
+  --border: 45% 0.15 330;
+  --input: 45% 0.15 330;
+
+  /* Ring - Focus indicator (bright magenta) */
+  --ring: 70% 0.25 330;
+
+  /* Status colors */
+  --success: 70% 0.2 190; /* Cyan for success */
+  --success-foreground: 10% 0.02 190;
+  --warning: 75% 0.22 60; /* Warm yellow-orange */
+  --warning-foreground: 10% 0.02 60;
+  --info: 70% 0.2 200; /* Lighter cyan */
+  --info-foreground: 10% 0.02 200;
+
+  /* Chart colors - Magenta/Cyan spectrum */
+  --chart-1: 65% 0.28 330; /* Magenta */
+  --chart-2: 70% 0.2 190; /* Cyan */
+  --chart-3: 65% 0.25 15; /* Red/coral */
+  --chart-4: 75% 0.22 60; /* Yellow */
+  --chart-5: 60% 0.24 300; /* Purple */
+  --chart-6: 72% 0.18 210; /* Blue-cyan */
+  --chart-7: 68% 0.26 340; /* Pink */
+  --chart-8: 65% 0.22 180; /* Teal */
+  --chart-9: 70% 0.2 320; /* Magenta-pink */
+
+  /* Semantic mappings */
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+
+  /* Terminal radius */
+  --radius: 0rem;
+
+  /* Syntax highlighting - Magenta/Cyan theme */
+  --code-bg: oklch(12% 0.05 290);
+  --code-fg: oklch(85% 0.18 330);
+  --code-comment: oklch(55% 0.12 290);
+  --code-string: oklch(70% 0.2 190); /* Cyan strings */
+  --code-punctuation: oklch(70% 0.14 330);
+  --code-number: oklch(65% 0.25 15); /* Red numbers */
+  --code-keyword: oklch(65% 0.28 330); /* Magenta keywords */
+  --code-function: oklch(70% 0.2 190); /* Cyan functions */
+  --code-selector: oklch(75% 0.22 60); /* Yellow selectors */
+}
+
+/* ============================================
    CRT GLOW EFFECTS - Apply to all text
    ============================================ */
+
+[data-theme='collector'] body {
+  text-shadow:
+    0 0 2px oklch(65% 0.28 330 / 0.4),
+    0 0 6px oklch(65% 0.28 330 / 0.2),
+    0 0 10px oklch(70% 0.2 190 / 0.1);
+}
 
 [data-theme='red'] body {
   text-shadow:

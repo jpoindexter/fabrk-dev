@@ -1,54 +1,62 @@
 /**
- * ✅ FABRK COMPONENT
- * Home Page - Clean, Achromatic-inspired landing page
- * Production-ready ✓
+ * Home Alt - MakerKit-style long-form landing page
+ * 16 sections for comprehensive product showcase
  */
 
 import { HeroSection } from '@/components/marketing/hero-section';
 import { HeroPlaygroundFull } from '@/components/marketing/hero-playground-full';
-import { FeaturesShowcase } from '@/components/marketing/features-showcase';
+import { FeaturesShowcaseAlt } from '@/components/marketing/features-showcase-alt';
+import { IntegrationsGrid } from '@/components/marketing/integrations-grid';
+import { TechStackSection } from '@/components/marketing/tech-stack-section';
+import { TestimonialsWall } from '@/components/marketing/testimonials-wall';
 import { StatsSection } from '@/components/marketing/stats-section';
 import { UseCasesSection } from '@/components/marketing/use-cases-section';
 import { PricingSection } from '@/components/marketing/pricing-section';
 import { WhatsIncludedSection } from '@/components/marketing/whats-included-section';
-import { FounderSection } from '@/components/marketing/founder-section';
 import { FAQSection } from '@/components/marketing/faq-section';
 import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
-export default function HomePage() {
+
+export default function HomeAltPage() {
   return (
     <>
-      {/* Hero - Updated with verified social proof */}
+      {/* 1. Hero */}
       <HeroSection />
 
-      {/* Interactive Playground - Full shadcn-style with 5 tabs */}
+      {/* 2. Interactive Playground */}
       <HeroPlaygroundFull />
 
-      {/* What Makes Fabrk Different */}
-      <FeaturesShowcase />
+      {/* 3. Features Grid (MakerKit-style) */}
+      <FeaturesShowcaseAlt />
 
-      {/* Trust Indicators - Updated with verifiable stats */}
+      {/* 4. Integrations */}
+      <IntegrationsGrid />
+
+      {/* 6. Tech Stack */}
+      <TechStackSection />
+
+      {/* 7. Testimonials Wall */}
+      <TestimonialsWall />
+
+      {/* 8. Stats */}
       <StatsSection />
 
-      {/* Target Personas - Who Fabrk is for */}
+      {/* 9. Use Cases */}
       <UseCasesSection />
 
-      {/* Pricing - Launch price ($199) for first 100 buyers */}
+      {/* 10. Pricing */}
       <PricingSection />
 
-      {/* What's Included - Auth/Billing/Multi-tenancy checklist */}
+      {/* 12. What's Included */}
       <WhatsIncludedSection />
 
-      {/* Founder Credibility - Trust signal */}
-      <FounderSection />
-
-      {/* FAQ */}
+      {/* 13. FAQ */}
       <FAQSection />
 
-      {/* Final Conversion Push */}
+      {/* 14. Final CTA */}
       <FinalCTASection />
 
-      {/* Overlays */}
+      {/* 15. Sticky CTA Bar */}
       <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
     </>
   );

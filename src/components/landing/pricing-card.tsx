@@ -3,11 +3,16 @@
  * PricingCard - Reusable pricing display component
  * Removes 3× duplication (Hero, PricingSection, ExitIntentPopup)
  * Production-ready ✓
+ *
+ * Design System Compliance:
+ * - Uses mode.typography.* tokens
+ * - Uses unified header pattern (no CardHeader brackets)
  */
 'use client';
 
 import { motion } from 'framer-motion';
-import { Card, CardHeader, CardContent, FeatureItem, FeatureList } from '@/components/ui/card';
+import { Card, CardContent, FeatureItem, FeatureList } from '@/components/ui/card';
+import { Lock, Tag } from 'lucide-react';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { DiscountCounter } from '@/components/polar/discount-counter';
 import { PRICING } from '@/data/landing/pricing';
@@ -29,7 +34,20 @@ export function PricingCard({
 }: PricingCardProps) {
   return (
     <Card size="auto" className={cn('w-full max-w-sm', className)}>
-      <CardHeader code="0x41" title="PRICING CONFIG" />
+      {/* Header - minimal */}
+      <div
+        className={cn(
+          'flex items-center justify-between border-b px-4 py-2',
+          mode.color.border.default
+        )}
+      >
+        <span className={cn(mode.typography.caption, mode.font, 'uppercase')}>
+          PRICING
+        </span>
+        <span className={cn(mode.typography.caption, mode.color.text.accent, mode.font)}>
+          LAUNCH
+        </span>
+      </div>
       <CardContent padding="md">
         {/* Price Display */}
         <div className="mb-4">
@@ -88,8 +106,11 @@ export function PricingCard({
         </PolarCheckoutButton>
 
         {/* Trust line */}
-        <div className={cn('mt-4 text-center text-xs', mode.color.text.muted, mode.font)}>
-          {PRICING.trustLine}
+        <div className={cn('mt-4 flex items-center justify-center gap-1.5', mode.typography.caption, mode.color.text.muted, mode.font)}>
+          <Lock className="size-3" />
+          Secure checkout via Polar
+          <span className={mode.color.text.muted}>|</span>
+          All sales final
         </div>
       </CardContent>
     </Card>

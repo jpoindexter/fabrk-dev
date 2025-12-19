@@ -1,17 +1,24 @@
 /**
- * ✅ FABRK COMPONENT
- * BenefitCard - Extracted from FeaturesShowcase
- * Displays auth/billing/multi-tenancy benefits with stats
- * Production-ready ✓
+ * BenefitCard - Unified terminal HUD card using Card UI primitives
+ *
+ * Design System Compliance:
+ * - Uses mode.typography.* tokens (no hardcoded text-[Xpx])
+ * - Uses Card, CardHeader, CardContent, CardFooter primitives
+ * - Uses Stat for key:value pairs
+ * - Uses FeatureItem for feature lists
  */
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Card, CardHeader, CardContent, Stat, StatGroup } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  Stat,
+  FeatureItem,
+} from '@/components/ui/card';
 
 interface BenefitCardProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -28,88 +35,81 @@ interface BenefitCardProps {
 }
 
 export function BenefitCard({
-  icon: Icon,
   module,
   code,
   benefit,
-  description,
   timeSaved,
   costSaved,
   features,
   index,
-  ctaLabel,
   ctaHref,
 }: BenefitCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
       className="h-full"
     >
-      <Card className="h-full">
-        <CardHeader
-          code={code}
-          title={module}
-          icon={
-            <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
-              <Icon className={cn('size-5', mode.color.text.accent)} />
-            </motion.div>
-          }
-        />
-        <CardContent className="flex h-full flex-col">
-          {/* Benefit Statement */}
-          <h3 className={cn('mb-4 text-xs font-semibold', mode.font, mode.color.text.primary)}>
-            {benefit}
-          </h3>
-
-          {/* Description */}
-          <p className={cn('mb-4 text-xs leading-relaxed', mode.font, mode.color.text.muted)}>
-            {description}
-          </p>
-
-          {/* Time/Cost Savings */}
-          <div className="mb-4">
-            <StatGroup>
-              <Stat label="Time Saved" value={timeSaved} size="sm" />
-              <Stat label="Cost Saved" value={costSaved} size="sm" />
-            </StatGroup>
-          </div>
-
-          {/* Features List */}
-          <div className={cn('mb-4 flex-grow text-xs', mode.font, mode.color.text.muted)}>
-            <span className="mb-2 block font-semibold">[INCLUDES]:</span>
-            <ul className="space-y-1">
-              {features.map((feature) => (
-                <li key={feature}>
-                  <span className={mode.color.text.success}>✓</span> {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* CTA Button - Pushed to bottom */}
-          {ctaLabel && ctaHref && (
-            <div className="mt-auto">
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className={cn('w-full text-xs', mode.radius, mode.font)}
-              >
-                <Link href={ctaHref} className="flex items-center justify-center gap-2">
-                  {ctaLabel}
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </Button>
-            </div>
+      <Card size="full">
+        {/* Header - minimal */}
+        <div
+          className={cn(
+            'flex items-center justify-between border-b px-4 py-2',
+            mode.color.border.default
           )}
+        >
+          <span className={cn(mode.typography.caption, mode.font, 'uppercase')}>
+            {module.replace(/_/g, ' ')}
+          </span>
+        </div>
+
+        {/* Title - uses mode.typography.body.sm */}
+        <div className={cn('border-b px-4 py-3', mode.color.border.default)}>
+          <span className={cn(mode.typography.body.sm, 'font-medium', mode.font, mode.color.text.primary)}>
+            {benefit}
+          </span>
+        </div>
+
+        {/* Stats Row - uses Stat component pattern */}
+        <div className={cn('flex border-b', mode.color.border.default)}>
+          <div className={cn('flex-1 border-r px-4 py-2', mode.color.border.default)}>
+            <Stat label="TIME" value={timeSaved} size="sm" />
+          </div>
+          <div className="flex-1 px-4 py-2">
+            <Stat label="COST" value={costSaved} size="sm" />
+          </div>
+        </div>
+
+        {/* Features - uses FeatureItem with custom icon */}
+        <CardContent padding="md" className="flex-grow">
+          <div className="space-y-1">
+            {features.slice(0, 5).map((feature, i) => (
+              <FeatureItem key={i} icon="arrow" className={mode.color.text.muted}>
+                {feature}
+              </FeatureItem>
+            ))}
+          </div>
         </CardContent>
+
+        {/* Footer CTA */}
+        {ctaHref && (
+          <CardFooter className="p-0">
+            <Link
+              href={ctaHref}
+              className={cn(
+                'flex w-full px-4 py-2 transition-colors',
+                'hover:bg-muted/50',
+                mode.typography.caption,
+                mode.color.text.muted,
+                mode.font
+              )}
+            >
+              &gt; VIEW DOCS
+            </Link>
+          </CardFooter>
+        )}
       </Card>
     </motion.div>
   );

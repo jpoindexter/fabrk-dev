@@ -1,11 +1,10 @@
 /**
  * Benefits Data - Unique value propositions
  * Focus on differentiators, not commodity features
- * REDESIGNED: Lead with AI monetization, payment flexibility, production quality
  */
 
-import { Sparkles, CreditCard, Rocket } from 'lucide-react';
-import { COMPONENT_COUNT_STRING, PROVIDER_COUNT_STRING } from './stats';
+import { Sparkles, CreditCard, Rocket, Shield, Palette, Users } from 'lucide-react';
+import { COMPONENT_COUNT_STRING, PROVIDER_COUNT_STRING, THEME_COUNT_STRING } from './stats';
 
 export const CORE_BENEFITS = [
   {
@@ -73,5 +72,71 @@ export const CORE_BENEFITS = [
     ],
     ctaLabel: '> Explore AI Features',
     ctaHref: '/docs/features/ai-integration',
+  },
+  {
+    id: 'multi-tenancy',
+    icon: Users,
+    module: 'MULTI_TENANT',
+    code: '0x13',
+    title: 'Multi-Tenancy',
+    benefit: 'Organizations, teams, and permissions out of the box',
+    description:
+      'Full B2B SaaS architecture ready to go. Create organizations, invite team members, assign roles. Granular permissions with RBAC. Audit logs for compliance. No more building tenant isolation from scratch.',
+    timeSaved: '100+ HRS',
+    costSaved: '$10K',
+    features: [
+      'Organization Management',
+      'Team Invites + Member Roles',
+      'Role-Based Access Control',
+      'Tenant Data Isolation',
+      'Audit Logging Built-In',
+      'Admin Dashboard Included',
+    ],
+    ctaLabel: '> See Multi-Tenancy',
+    ctaHref: '/docs/features/multi-tenancy',
+  },
+  {
+    id: 'terminal-design',
+    icon: Palette,
+    module: 'TERMINAL_UI',
+    code: '0x14',
+    title: 'Terminal Design',
+    benefit: `${THEME_COUNT_STRING} themes that make your SaaS stand out`,
+    description:
+      'Distinctive terminal aesthetic that developers love. Sharp corners, monospace typography, hex codes. Stand out from generic gradient landing pages. Theme switcher included. Your product will be memorable.',
+    timeSaved: '60+ HRS',
+    costSaved: '$6K',
+    features: [
+      '12 Pre-Built Terminal Themes',
+      'Theme Generator Tool',
+      'OKLCH Color System',
+      'Dark Mode Built-In',
+      'Consistent Design Tokens',
+      'Zero Rounded Corners',
+    ],
+    ctaLabel: '> Preview Themes',
+    ctaHref: '/docs/themes',
+  },
+  {
+    id: 'auth-security',
+    icon: Shield,
+    module: 'AUTH_SECURE',
+    code: '0x15',
+    title: 'Auth & Security',
+    benefit: 'Enterprise-grade authentication in minutes',
+    description:
+      'NextAuth v5 pre-configured with Google OAuth, magic links, and email/password. JWT sessions with 30-day expiry. Rate limiting, CSRF protection, security headers. SOC 2 compliance patterns built-in.',
+    timeSaved: '80+ HRS',
+    costSaved: '$8K',
+    features: [
+      'NextAuth v5 Pre-Configured',
+      'Google OAuth + Magic Links',
+      'JWT Sessions (30-Day)',
+      'Rate Limiting (Upstash)',
+      'Security Headers + CSP',
+      'SOC 2 Compliance Patterns',
+    ],
+    ctaLabel: '> View Auth Docs',
+    ctaHref: '/docs/features/authentication',
   },
 ] as const;

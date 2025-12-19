@@ -53,4 +53,28 @@ export const FAQ_QUESTIONS = [
     answer:
       'Fabrk works with any hosting provider (Vercel, Railway, AWS, etc.). We include deployment guides and environment setup instructions for popular platforms.',
   },
+  {
+    id: 'setup-time',
+    question: 'How long does setup take?',
+    answer:
+      'Most developers get a local dev server running in under 30 minutes. Clone the repo, run npm install, configure your environment variables, and you\'re ready to start building. We include a setup wizard and detailed quickstart guide.',
+  },
+  {
+    id: 'existing-codebase',
+    question: 'Can I use Fabrk with an existing project?',
+    answer:
+      'Fabrk is designed as a foundation for new projects, not a drop-in addition to existing codebases. However, you can absolutely extract individual components, patterns, or even entire feature modules and adapt them to your existing project.',
+  },
+  {
+    id: 'future-nextjs',
+    question: 'What happens when Next.js 17 comes out?',
+    answer:
+      'Lifetime updates means exactly that. When Next.js 17 drops, we\'ll upgrade Fabrk and you\'ll get access to the updated codebase via GitHub. No additional payment required. We stay on the latest stable releases.',
+  },
+  {
+    id: 'terminal-aesthetic',
+    question: 'Why the terminal aesthetic?',
+    answer:
+      'The terminal design isn\'t just style - it\'s strategic differentiation. Your SaaS will stand out in a sea of generic gradient landing pages. Developers love it. Plus, the flat design compiles to smaller CSS bundles and renders faster.',
+  },
 ] as const;

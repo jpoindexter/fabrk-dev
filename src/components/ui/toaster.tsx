@@ -69,7 +69,7 @@ export const ToastTitle = ({ children }: ToastContentProps) => (
 );
 ToastTitle.displayName = 'ToastTitle';
 export const ToastDescription = ({ children }: ToastContentProps) => (
-  <div data-slot="toast-description" className={`"text-sm" dark:text-muted-foreground opacity-90`}>
+  <div data-slot="toast-description" className="text-[11px] text-muted-foreground opacity-90">
     {children}
   </div>
 );

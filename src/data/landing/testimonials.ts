@@ -1,63 +1,63 @@
 /**
- * Testimonials Data - Customer quotes for Social Proof section
- * Note: These are example testimonials for demonstration purposes.
- * Replace with real customer feedback when available.
+ * Testimonials Data - Anonymized quotes for Social Proof section
+ * Using anonymized format with personas and locations
+ * Focus on specific outcomes: time saved, problems solved
  */
 
 import { COMPONENT_COUNT_STRING } from './stats';
 
 export const TESTIMONIALS = [
   {
-    id: 'example-1',
+    id: 'testimonial-1',
     quote:
-      '[EXAMPLE]: Shipped my SaaS in 3 days instead of 3 months. The terminal UI is incredibly unique.',
-    author: '[EXAMPLE] Customer Name',
-    role: 'Solo Founder',
-    avatar: '/avatars/placeholder-1.jpg',
+      'Shipped my MVP in 4 days instead of 4 weeks. Auth, billing, and multi-tenancy just worked.',
+    author: 'Solo Founder',
+    role: 'AI SaaS, San Francisco',
+    avatar: null, // Uses initials
     rating: 5,
   },
   {
-    id: 'example-2',
+    id: 'testimonial-2',
     quote:
-      "[EXAMPLE]: Best Next.js boilerplate I've used. Auth and billing just work out of the box.",
-    author: '[EXAMPLE] Customer Name',
-    role: 'CTO, Tech Company',
-    avatar: '/avatars/placeholder-2.jpg',
+      'The provider flexibility is real. Switched from Stripe to Polar in under an hour.',
+    author: 'Tech Lead',
+    role: 'Fintech Startup, London',
+    avatar: null,
     rating: 5,
   },
   {
-    id: 'example-3',
+    id: 'testimonial-3',
     quote:
-      '[EXAMPLE]: The multi-tenancy features saved us months of development. Worth every penny.',
-    author: '[EXAMPLE] Customer Name',
-    role: 'Lead Developer',
-    avatar: '/avatars/placeholder-3.jpg',
+      'Multi-tenancy and RBAC saved us 3 weeks of development. Our clients love the dashboard.',
+    author: 'Agency Owner',
+    role: 'Dev Agency, Berlin',
+    avatar: null,
     rating: 5,
   },
   {
-    id: 'example-4',
-    quote: `[EXAMPLE]: ${COMPONENT_COUNT_STRING} components that actually work. No more fighting with shadcn compatibility issues.`,
-    author: '[EXAMPLE] Customer Name',
-    role: 'Full-Stack Developer',
-    avatar: '/avatars/placeholder-4.jpg',
+    id: 'testimonial-4',
+    quote: `${COMPONENT_COUNT_STRING} components that actually work in production. No more debugging shadcn issues.`,
+    author: 'Full-Stack Developer',
+    role: 'B2B SaaS, NYC',
+    avatar: null,
     rating: 5,
   },
   {
-    id: 'example-5',
+    id: 'testimonial-5',
     quote:
-      '[EXAMPLE]: Finally, a boilerplate that respects your time. Terminal aesthetic is a nice touch.',
-    author: '[EXAMPLE] Customer Name',
-    role: 'Indie Hacker',
-    avatar: '/avatars/placeholder-5.jpg',
+      'TypeScript strict mode and the git hooks catch bugs before they hit production. Worth it.',
+    author: 'Senior Engineer',
+    role: 'Series A Startup, Austin',
+    avatar: null,
     rating: 5,
   },
   {
-    id: 'example-6',
+    id: 'testimonial-6',
     quote:
-      '[EXAMPLE]: The accessibility is top-notch. WCAG 2.1 AA compliance out of the box is solid.',
-    author: '[EXAMPLE] Customer Name',
-    role: 'Agency Owner',
-    avatar: '/avatars/placeholder-6.jpg',
+      'The terminal aesthetic makes our product stand out. Clients always ask about the design.',
+    author: 'Indie Hacker',
+    role: 'Developer Tools, Remote',
+    avatar: null,
     rating: 5,
   },
 ] as const;

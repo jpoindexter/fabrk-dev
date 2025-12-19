@@ -41,6 +41,9 @@ const themeGroups = {
     { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
     { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
   ],
+  'Sci-Fi': [
+    { id: 'collector', name: 'Collector', preview: '#ff55aa' },
+  ],
   Light: [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
 } as const;
 /* eslint-enable design-system/no-hardcoded-colors */
@@ -92,9 +95,9 @@ export function ThemeDropdown() {
     if (['gameboy', 'gbpocket'].includes(themeId)) {
       effect = 'lcd';
     }
-    // 2. Retro Computer / CRT Themes
+    // 2. Retro Computer / CRT Themes (including Sci-Fi)
     else if (
-      ['amber', 'green', 'blue', 'red', 'purple', 'c64', 'vic20', 'atari', 'spectrum'].includes(
+      ['amber', 'green', 'blue', 'red', 'purple', 'c64', 'vic20', 'atari', 'spectrum', 'collector'].includes(
         themeId
       )
     ) {
