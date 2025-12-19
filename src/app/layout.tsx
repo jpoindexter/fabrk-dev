@@ -142,7 +142,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const nonce = await getNonce();
+  // Only use nonces in production to avoid hydration mismatch in dev
+  const nonce = process.env.NODE_ENV === 'production' ? await getNonce() : undefined;
 
   return (
     <html
