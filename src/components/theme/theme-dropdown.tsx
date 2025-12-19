@@ -44,30 +44,30 @@ const themeGroups = {
   Light: [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
 } as const;
 
-// FUI decoration styles - each has its own signature color
+// FUI decoration styles - each has its own signature color AND matching base theme
 const fuiStyles = [
-  { id: 'none', name: 'None', preview: 'transparent' },
-  { id: 'bracket-corners', name: 'Bracket Corners', preview: '#00ffff' },  // Cyan
-  { id: 'corner-ticks', name: 'Corner Ticks', preview: '#ff8800' },        // Orange
-  { id: 'wireframe', name: 'Wireframe', preview: '#ffffff' },              // White
-  { id: 'oblivion', name: 'Oblivion', preview: '#00ffff' },                // Cyan (film accurate)
-  { id: 'remote-link', name: 'Remote Link', preview: '#ff6600' },          // Orange
-  { id: 'tread', name: 'Tread FX-D', preview: '#ccff00' },                 // Yellow-green
-  { id: 'jarvis', name: 'JARVIS', preview: '#00aaff' },                    // Blue
-  { id: 'lcars', name: 'LCARS', preview: '#ff9900' },                      // Orange (Star Trek)
-  { id: 'cortana', name: 'Cortana', preview: '#0088ff' },                  // Blue (Halo)
-  { id: 'pacific-rim', name: 'Pacific Rim', preview: '#ff4400' },          // Orange-red
-  { id: 'alien', name: 'Alien Isolation', preview: '#00ff66' },            // Green (CRT)
-  { id: 'dead-space', name: 'Dead Space', preview: '#00ffcc' },            // Teal
-  { id: 'mass-effect', name: 'Mass Effect', preview: '#ff6600' },          // Orange (N7)
-  { id: 'deus-ex', name: 'Deus Ex', preview: '#ffcc00' },                  // Gold
-  { id: 'ghost-shell', name: 'Ghost in Shell', preview: '#ff0066' },       // Magenta
-  { id: 'tron', name: 'Tron Legacy', preview: '#00ffff' },                 // Cyan (signature)
-  { id: 'avatar', name: 'Avatar HUD', preview: '#00ff00' },                // Green (military)
-  { id: 'blade-runner', name: 'Blade Runner', preview: '#ff0055' },        // Neon pink
-  { id: 'interstellar', name: 'Interstellar', preview: '#aaaaaa' },        // Gray (NASA)
-  { id: 'iron-man', name: 'Iron Man HUD', preview: '#00ccff' },            // Light blue
-  { id: 'wakanda', name: 'Wakanda Tech', preview: '#aa55ff' },             // Purple
+  { id: 'none', name: 'None', preview: 'transparent', baseTheme: null },
+  { id: 'bracket-corners', name: 'Bracket Corners', preview: '#00ffff', baseTheme: 'blue' },
+  { id: 'corner-ticks', name: 'Corner Ticks', preview: '#ff8800', baseTheme: 'amber' },
+  { id: 'wireframe', name: 'Wireframe', preview: '#ffffff', baseTheme: 'bw' },
+  { id: 'oblivion', name: 'Oblivion', preview: '#00ffff', baseTheme: 'blue' },
+  { id: 'remote-link', name: 'Remote Link', preview: '#ff6600', baseTheme: 'amber' },
+  { id: 'tread', name: 'Tread FX-D', preview: '#ccff00', baseTheme: 'green' },
+  { id: 'jarvis', name: 'JARVIS', preview: '#00aaff', baseTheme: 'blue' },
+  { id: 'lcars', name: 'LCARS', preview: '#ff9900', baseTheme: 'amber' },
+  { id: 'cortana', name: 'Cortana', preview: '#0088ff', baseTheme: 'blue' },
+  { id: 'pacific-rim', name: 'Pacific Rim', preview: '#ff4400', baseTheme: 'red' },
+  { id: 'alien', name: 'Alien Isolation', preview: '#00ff66', baseTheme: 'green' },
+  { id: 'dead-space', name: 'Dead Space', preview: '#00ffcc', baseTheme: 'blue' },
+  { id: 'mass-effect', name: 'Mass Effect', preview: '#ff6600', baseTheme: 'amber' },
+  { id: 'deus-ex', name: 'Deus Ex', preview: '#ffcc00', baseTheme: 'amber' },
+  { id: 'ghost-shell', name: 'Ghost in Shell', preview: '#ff0066', baseTheme: 'purple' },
+  { id: 'tron', name: 'Tron Legacy', preview: '#00ffff', baseTheme: 'blue' },
+  { id: 'avatar', name: 'Avatar HUD', preview: '#00ff00', baseTheme: 'green' },
+  { id: 'blade-runner', name: 'Blade Runner', preview: '#ff0055', baseTheme: 'red' },
+  { id: 'interstellar', name: 'Interstellar', preview: '#aaaaaa', baseTheme: 'bw' },
+  { id: 'iron-man', name: 'Iron Man HUD', preview: '#00ccff', baseTheme: 'blue' },
+  { id: 'wakanda', name: 'Wakanda Tech', preview: '#aa55ff', baseTheme: 'purple' },
 ] as const;
 /* eslint-enable design-system/no-hardcoded-colors */
 
@@ -120,6 +120,11 @@ export function ThemeDropdown() {
     localStorage.setItem('theme', themeId);
     document.documentElement.setAttribute('data-theme', themeId);
 
+    // Clear FUI style when selecting a color theme directly
+    setCurrentFui('none');
+    localStorage.setItem('fui-style', 'none');
+    document.documentElement.removeAttribute('data-fui');
+
     // Smart Link: Auto-switch monitor effect based on theme type
     let effect = '';
 
@@ -158,10 +163,20 @@ export function ThemeDropdown() {
   const handleFuiChange = (fuiId: FuiStyle) => {
     setCurrentFui(fuiId);
     localStorage.setItem('fui-style', fuiId);
+
     if (fuiId === 'none') {
       document.documentElement.removeAttribute('data-fui');
     } else {
       document.documentElement.setAttribute('data-fui', fuiId);
+
+      // When selecting an FUI style, also set the matching base theme
+      const fuiStyle = fuiStyles.find(f => f.id === fuiId);
+      if (fuiStyle?.baseTheme) {
+        const baseTheme = fuiStyle.baseTheme as ColorTheme;
+        setCurrentTheme(baseTheme);
+        localStorage.setItem('theme', baseTheme);
+        document.documentElement.setAttribute('data-theme', baseTheme);
+      }
     }
   };
 
