@@ -22,6 +22,7 @@ import { getNonce } from '@/lib/nonce';
 import './globals.css';
 import './typography.css';
 import '@/styles/crt-effects.css';
+import '@/styles/fui-styles.css';
 import '@/lib/dev-validation';
 
 const jetbrainsMono = localFont({

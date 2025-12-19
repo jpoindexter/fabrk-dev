@@ -1,0 +1,506 @@
+/**
+ * FUI (Fantasy User Interface) Styles
+ *
+ * Decorative styles inspired by sci-fi film interfaces.
+ * Applied via data-fui attribute on document root.
+ * Works with any color theme - uses design system tokens.
+ */
+
+/* Base: ensure mono font and no border radius */
+[data-fui] { font-family: var(--font-jetbrains-mono), ui-monospace, monospace !important; }
+[data-fui] * { border-radius: 0 !important; }
+
+/* ============================================================================
+   BRACKET CORNERS - Corner L-brackets on cards
+   ============================================================================ */
+[data-fui="bracket-corners"] [data-slot="card"] { position: relative !important; }
+[data-fui="bracket-corners"] [data-slot="card"]::before,
+[data-fui="bracket-corners"] [data-slot="card"]::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 20px !important;
+  height: 20px !important;
+  pointer-events: none !important;
+}
+[data-fui="bracket-corners"] [data-slot="card"]::before {
+  top: 0 !important;
+  left: 0 !important;
+  border-top: 2px solid oklch(var(--primary)) !important;
+  border-left: 2px solid oklch(var(--primary)) !important;
+}
+[data-fui="bracket-corners"] [data-slot="card"]::after {
+  bottom: 0 !important;
+  right: 0 !important;
+  border-bottom: 2px solid oklch(var(--primary)) !important;
+  border-right: 2px solid oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   CORNER TICKS - Small tick marks at corners
+   ============================================================================ */
+[data-fui="corner-ticks"] [data-slot="card"] { position: relative !important; }
+[data-fui="corner-ticks"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 4px !important;
+  left: 4px !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-top: 1px solid oklch(var(--primary)) !important;
+  border-left: 1px solid oklch(var(--primary)) !important;
+}
+[data-fui="corner-ticks"] [data-slot="card"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 4px !important;
+  right: 4px !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-bottom: 1px solid oklch(var(--primary)) !important;
+  border-right: 1px solid oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   WIREFRAME - Transparent backgrounds, thin borders
+   ============================================================================ */
+[data-fui="wireframe"] [data-slot="card"] {
+  background: transparent !important;
+  border: 1px solid oklch(var(--border)) !important;
+}
+[data-fui="wireframe"] section {
+  border: 1px solid oklch(var(--border) / 0.3) !important;
+  margin: 4px !important;
+}
+
+/* ============================================================================
+   OBLIVION - Grid overlay + corner brackets
+   ============================================================================ */
+[data-fui="oblivion"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(90deg, transparent 98%, oklch(var(--border) / 0.15) 98%) 0 0 / 50px 50px,
+    linear-gradient(0deg, transparent 98%, oklch(var(--border) / 0.15) 98%) 0 0 / 50px 50px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+[data-fui="oblivion"] [data-slot="card"] { position: relative !important; z-index: 1 !important; }
+[data-fui="oblivion"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -1px !important;
+  left: -1px !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-top: 2px solid oklch(var(--primary)) !important;
+  border-left: 2px solid oklch(var(--primary)) !important;
+}
+[data-fui="oblivion"] [data-slot="card"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -1px !important;
+  right: -1px !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-bottom: 2px solid oklch(var(--primary)) !important;
+  border-right: 2px solid oklch(var(--primary)) !important;
+}
+[data-fui="oblivion"] section { position: relative !important; z-index: 1 !important; }
+
+/* ============================================================================
+   REMOTE LINK - Top accent bar + status label
+   ============================================================================ */
+[data-fui="remote-link"] [data-slot="card"] { position: relative !important; overflow: hidden !important; }
+[data-fui="remote-link"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: oklch(var(--primary)) !important;
+}
+[data-fui="remote-link"] [data-slot="card"]::after {
+  content: 'ACTIVE' !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  font-size: 8px !important;
+  color: oklch(var(--primary)) !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================================================
+   TREAD FX-D - Left progress bar
+   ============================================================================ */
+[data-fui="tread"] [data-slot="card"] { position: relative !important; }
+[data-fui="tread"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 8px !important;
+  left: 0 !important;
+  width: 4px !important;
+  height: calc(100% - 16px) !important;
+  background: linear-gradient(180deg, oklch(var(--primary)) 0%, oklch(var(--primary)) 70%, transparent 70%) !important;
+}
+[data-fui="tread"] [data-slot="card"]::after {
+  content: 'AMP' !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.15em !important;
+  opacity: 0.4 !important;
+  color: oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   JARVIS - Subtle glow on cards
+   ============================================================================ */
+[data-fui="jarvis"] [data-slot="card"] {
+  position: relative !important;
+  box-shadow: 0 0 20px oklch(var(--primary) / 0.08), inset 0 0 20px oklch(var(--primary) / 0.02) !important;
+}
+[data-fui="jarvis"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -1px !important;
+  left: 20% !important;
+  right: 20% !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, oklch(var(--primary) / 0.5), transparent) !important;
+}
+
+/* ============================================================================
+   LCARS - Left panel accent (Star Trek)
+   ============================================================================ */
+[data-fui="lcars"] [data-slot="card"] { position: relative !important; margin-left: 12px !important; }
+[data-fui="lcars"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -12px !important;
+  width: 8px !important;
+  height: 100% !important;
+  background: oklch(var(--primary)) !important;
+  border-radius: 4px 0 0 4px !important;
+}
+
+/* ============================================================================
+   CORTANA - Holographic glow
+   ============================================================================ */
+[data-fui="cortana"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: radial-gradient(ellipse at center, oklch(var(--primary) / 0.04) 0%, transparent 60%) !important;
+  pointer-events: none !important;
+}
+[data-fui="cortana"] [data-slot="card"] {
+  position: relative !important;
+  box-shadow: 0 0 25px oklch(var(--primary) / 0.1), inset 0 0 25px oklch(var(--primary) / 0.02) !important;
+  z-index: 1 !important;
+}
+[data-fui="cortana"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, oklch(var(--primary) / 0.6), transparent) !important;
+}
+
+/* ============================================================================
+   PACIFIC RIM - Thick borders
+   ============================================================================ */
+[data-fui="pacific-rim"] [data-slot="card"] { border-width: 3px !important; position: relative !important; }
+[data-fui="pacific-rim"] [data-slot="card"]::before {
+  content: 'JAEGER' !important;
+  position: absolute !important;
+  top: -10px !important;
+  left: 12px !important;
+  padding: 0 8px !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  background: oklch(var(--background)) !important;
+  color: oklch(var(--primary)) !important;
+}
+[data-fui="pacific-rim"] section { border: 2px solid oklch(var(--border)) !important; margin: 8px 4px !important; }
+
+/* ============================================================================
+   ALIEN ISOLATION - CRT scanlines
+   ============================================================================ */
+[data-fui="alien"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, oklch(var(--background)) 2px, oklch(var(--background)) 4px) !important;
+  pointer-events: none !important;
+  z-index: 100 !important;
+  opacity: 0.1 !important;
+}
+[data-fui="alien"] [data-slot="card"] { position: relative !important; z-index: 1 !important; border-width: 2px !important; }
+[data-fui="alien"] [data-slot="card"]::before {
+  content: '>' !important;
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  font-size: 12px !important;
+  animation: fui-blink 1s step-end infinite !important;
+  color: oklch(var(--primary)) !important;
+}
+@keyframes fui-blink { 50% { opacity: 0; } }
+
+/* ============================================================================
+   DEAD SPACE - Health bar spine
+   ============================================================================ */
+[data-fui="dead-space"] [data-slot="card"] { position: relative !important; }
+[data-fui="dead-space"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  width: 6px !important;
+  height: calc(100% - 16px) !important;
+  background: linear-gradient(180deg, oklch(var(--primary)) 0%, oklch(var(--primary)) 80%, oklch(var(--destructive)) 80%) !important;
+}
+[data-fui="dead-space"] [data-slot="card"]::after {
+  content: 'RIG' !important;
+  position: absolute !important;
+  top: 6px !important;
+  right: 8px !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  opacity: 0.3 !important;
+  color: oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   MASS EFFECT - Chamfered corners
+   ============================================================================ */
+[data-fui="mass-effect"] [data-slot="card"] {
+  position: relative !important;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)) !important;
+}
+[data-fui="mass-effect"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  border: 12px solid transparent !important;
+  border-top-color: oklch(var(--primary) / 0.5) !important;
+  border-right-color: oklch(var(--primary) / 0.5) !important;
+}
+
+/* ============================================================================
+   DEUS EX - Top gradient bar
+   ============================================================================ */
+[data-fui="deus-ex"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, oklch(var(--primary) / 0.01) 3px, oklch(var(--primary) / 0.01) 4px) !important;
+  pointer-events: none !important;
+}
+[data-fui="deus-ex"] [data-slot="card"] { position: relative !important; }
+[data-fui="deus-ex"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, oklch(var(--primary)), transparent) !important;
+}
+
+/* ============================================================================
+   GHOST IN SHELL - Circle indicator
+   ============================================================================ */
+[data-fui="ghost-shell"] [data-slot="card"] { position: relative !important; }
+[data-fui="ghost-shell"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  width: 8px !important;
+  height: 8px !important;
+  border: 2px solid oklch(var(--primary)) !important;
+  border-radius: 50% !important;
+}
+[data-fui="ghost-shell"] [data-slot="card"]::after {
+  content: 'SEC 9' !important;
+  position: absolute !important;
+  bottom: 6px !important;
+  right: 8px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.15em !important;
+  opacity: 0.3 !important;
+  color: oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   TRON LEGACY - Glowing top edge
+   ============================================================================ */
+[data-fui="tron"] [data-slot="card"] {
+  position: relative !important;
+  box-shadow: 0 0 12px oklch(var(--primary) / 0.15), inset 0 0 12px oklch(var(--primary) / 0.03) !important;
+}
+[data-fui="tron"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -1px !important;
+  left: 15% !important;
+  right: 15% !important;
+  height: 2px !important;
+  background: oklch(var(--primary)) !important;
+  box-shadow: 0 0 10px oklch(var(--primary)), 0 0 20px oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   AVATAR - Targeting crosshair
+   ============================================================================ */
+[data-fui="avatar"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at center, transparent 30%, oklch(var(--background) / 0.3) 100%) !important;
+  pointer-events: none !important;
+}
+[data-fui="avatar"] [data-slot="card"] { position: relative !important; z-index: 1 !important; }
+[data-fui="avatar"] [data-slot="card"]::before {
+  content: '+' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 24px !important;
+  opacity: 0.06 !important;
+  pointer-events: none !important;
+  color: oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   BLADE RUNNER - Top accent bar
+   ============================================================================ */
+[data-fui="blade-runner"] [data-slot="card"] { position: relative !important; }
+[data-fui="blade-runner"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 16px !important;
+  width: 50px !important;
+  height: 2px !important;
+  background: oklch(var(--primary)) !important;
+}
+[data-fui="blade-runner"] [data-slot="card"]::after {
+  content: 'REPL' !important;
+  position: absolute !important;
+  bottom: 8px !important;
+  right: 12px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.2em !important;
+  opacity: 0.25 !important;
+  color: oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   INTERSTELLAR - Minimal, thin
+   ============================================================================ */
+[data-fui="interstellar"] [data-slot="card"] {
+  position: relative !important;
+  background: transparent !important;
+  border: 1px solid oklch(var(--border) / 0.5) !important;
+}
+[data-fui="interstellar"] [data-slot="card"]::before {
+  content: 'TARS' !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 12px !important;
+  font-size: 9px !important;
+  letter-spacing: 0.25em !important;
+  opacity: 0.2 !important;
+  color: oklch(var(--foreground)) !important;
+}
+[data-fui="interstellar"] [data-slot="card"]::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 10px !important;
+  left: 12px !important;
+  width: 30px !important;
+  height: 1px !important;
+  background: oklch(var(--foreground) / 0.25) !important;
+}
+
+/* ============================================================================
+   IRON MAN HUD - Circle HUD element
+   ============================================================================ */
+[data-fui="iron-man"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(circle at 25% 25%, oklch(var(--primary) / 0.03) 0%, transparent 30%),
+    radial-gradient(circle at 75% 75%, oklch(var(--primary) / 0.03) 0%, transparent 30%) !important;
+  pointer-events: none !important;
+}
+[data-fui="iron-man"] [data-slot="card"] { position: relative !important; z-index: 1 !important; }
+[data-fui="iron-man"] [data-slot="card"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  width: 35px !important;
+  height: 35px !important;
+  border: 1px solid oklch(var(--border) / 0.4) !important;
+  border-radius: 50% !important;
+}
+[data-fui="iron-man"] [data-slot="card"]::after {
+  content: 'STARK' !important;
+  position: absolute !important;
+  bottom: 6px !important;
+  left: 10px !important;
+  font-size: 7px !important;
+  letter-spacing: 0.15em !important;
+  opacity: 0.25 !important;
+  color: oklch(var(--primary)) !important;
+}
+
+/* ============================================================================
+   WAKANDA TECH - Angular diamond
+   ============================================================================ */
+[data-fui="wakanda"]::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background: radial-gradient(ellipse at center, oklch(var(--primary) / 0.04) 0%, transparent 50%) !important;
+  pointer-events: none !important;
+}
+[data-fui="wakanda"] [data-slot="card"] {
+  position: relative !important;
+  box-shadow: 0 0 25px oklch(var(--primary) / 0.1), inset 0 0 25px oklch(var(--primary) / 0.03) !important;
+  z-index: 1 !important;
+}
+[data-fui="wakanda"] [data-slot="card"]::before {
+  content: 'VIB' !important;
+  position: absolute !important;
+  top: 6px !important;
+  left: 10px !important;
+  font-size: 7px !important;
+  letter-spacing: 0.18em !important;
+  opacity: 0.3 !important;
+  color: oklch(var(--primary)) !important;
+}
+[data-fui="wakanda"] [data-slot="card"]::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: 12px !important;
+  width: 25px !important;
+  height: 25px !important;
+  border: 1px solid oklch(var(--primary) / 0.4) !important;
+  transform: translateY(-50%) rotate(45deg) !important;
+}

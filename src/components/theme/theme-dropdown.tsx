@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * Color theme picker dropdown for navbar (Light/Dark only)
+ * Color theme + FUI style picker dropdown for navbar
  * Production-ready ✓
  */
 
@@ -43,15 +43,43 @@ const themeGroups = {
   ],
   Light: [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
 } as const;
+
+// FUI decoration styles - these add visual decorations to cards
+const fuiStyles = [
+  { id: 'none', name: 'None', preview: 'transparent' },
+  { id: 'bracket-corners', name: 'Bracket Corners', preview: 'currentColor' },
+  { id: 'corner-ticks', name: 'Corner Ticks', preview: 'currentColor' },
+  { id: 'wireframe', name: 'Wireframe', preview: 'currentColor' },
+  { id: 'oblivion', name: 'Oblivion', preview: 'currentColor' },
+  { id: 'remote-link', name: 'Remote Link', preview: 'currentColor' },
+  { id: 'tread', name: 'Tread FX-D', preview: 'currentColor' },
+  { id: 'jarvis', name: 'JARVIS', preview: 'currentColor' },
+  { id: 'lcars', name: 'LCARS', preview: 'currentColor' },
+  { id: 'cortana', name: 'Cortana', preview: 'currentColor' },
+  { id: 'pacific-rim', name: 'Pacific Rim', preview: 'currentColor' },
+  { id: 'alien', name: 'Alien Isolation', preview: 'currentColor' },
+  { id: 'dead-space', name: 'Dead Space', preview: 'currentColor' },
+  { id: 'mass-effect', name: 'Mass Effect', preview: 'currentColor' },
+  { id: 'deus-ex', name: 'Deus Ex', preview: 'currentColor' },
+  { id: 'ghost-shell', name: 'Ghost in Shell', preview: 'currentColor' },
+  { id: 'tron', name: 'Tron Legacy', preview: 'currentColor' },
+  { id: 'avatar', name: 'Avatar HUD', preview: 'currentColor' },
+  { id: 'blade-runner', name: 'Blade Runner', preview: 'currentColor' },
+  { id: 'interstellar', name: 'Interstellar', preview: 'currentColor' },
+  { id: 'iron-man', name: 'Iron Man HUD', preview: 'currentColor' },
+  { id: 'wakanda', name: 'Wakanda Tech', preview: 'currentColor' },
+] as const;
 /* eslint-enable design-system/no-hardcoded-colors */
 
 // Flattened list for type safety and easy lookup
 const themes = Object.values(themeGroups).flat();
 
 export type ColorTheme = (typeof themes)[number]['id'];
+export type FuiStyle = (typeof fuiStyles)[number]['id'];
 
 export function ThemeDropdown() {
   const [currentTheme, setCurrentTheme] = useState<ColorTheme>('green');
+  const [currentFui, setCurrentFui] = useState<FuiStyle>('none');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -65,10 +93,17 @@ export function ThemeDropdown() {
     // Clear old next-themes localStorage keys
     localStorage.removeItem('theme-mode'); // Old key if it exists
 
-    // Set DaisyUI theme (force green as default if no valid theme)
+    // Set color theme (force green as default if no valid theme)
     const saved = (localStorage.getItem('theme') as ColorTheme) || 'green';
     setCurrentTheme(saved);
     document.documentElement.setAttribute('data-theme', saved);
+
+    // Set FUI style
+    const savedFui = (localStorage.getItem('fui-style') as FuiStyle) || 'none';
+    setCurrentFui(savedFui);
+    if (savedFui !== 'none') {
+      document.documentElement.setAttribute('data-fui', savedFui);
+    }
 
     // Force remove dark class if it somehow persists (safe cleanup)
     if (document.documentElement.classList.contains('dark')) {
@@ -80,7 +115,7 @@ export function ThemeDropdown() {
     }
   }, []);
 
-  const handleChange = (themeId: ColorTheme) => {
+  const handleThemeChange = (themeId: ColorTheme) => {
     setCurrentTheme(themeId);
     localStorage.setItem('theme', themeId);
     document.documentElement.setAttribute('data-theme', themeId);
@@ -120,6 +155,16 @@ export function ThemeDropdown() {
     }
   };
 
+  const handleFuiChange = (fuiId: FuiStyle) => {
+    setCurrentFui(fuiId);
+    localStorage.setItem('fui-style', fuiId);
+    if (fuiId === 'none') {
+      document.documentElement.removeAttribute('data-fui');
+    } else {
+      document.documentElement.setAttribute('data-fui', fuiId);
+    }
+  };
+
   if (!mounted) {
     return (
       <Button variant="ghost" size="sm" className={mode.radius} disabled aria-label="Loading theme">
@@ -129,6 +174,7 @@ export function ThemeDropdown() {
   }
 
   const currentThemeName = themes.find((t) => t.id === currentTheme)?.name || 'Green CRT';
+  const currentFuiName = fuiStyles.find((f) => f.id === currentFui)?.name || 'None';
 
   return (
     <DropdownMenu modal={false}>
@@ -143,7 +189,8 @@ export function ThemeDropdown() {
           <span className="hidden sm:inline">{currentThemeName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className={cn('w-56', mode.radius)}>
+      <DropdownMenuContent align="end" className={cn('w-56 max-h-[70vh] overflow-y-auto', mode.radius)}>
+        {/* Color Themes */}
         {Object.entries(themeGroups).map(([groupName, groupThemes], index) => (
           <div key={groupName}>
             {index > 0 && <DropdownMenuSeparator />}
@@ -153,7 +200,7 @@ export function ThemeDropdown() {
             {groupThemes.map((theme) => (
               <DropdownMenuItem
                 key={theme.id}
-                onClick={() => handleChange(theme.id)}
+                onClick={() => handleThemeChange(theme.id)}
                 className={cn(
                   'font-semibold',
                   currentTheme === theme.id && 'bg-primary text-primary-foreground'
@@ -168,6 +215,28 @@ export function ThemeDropdown() {
               </DropdownMenuItem>
             ))}
           </div>
+        ))}
+
+        {/* FUI Styles */}
+        <DropdownMenuSeparator />
+        <DropdownMenuLabel className="text-muted-foreground text-xs tracking-wider uppercase">
+          FUI Style
+        </DropdownMenuLabel>
+        {fuiStyles.map((fui) => (
+          <DropdownMenuItem
+            key={fui.id}
+            onClick={() => handleFuiChange(fui.id)}
+            className={cn(
+              'font-semibold',
+              currentFui === fui.id && 'bg-primary text-primary-foreground'
+            )}
+          >
+            <div
+              className={cn('mr-2 h-4 w-4 border border-current', mode.radius)}
+            />
+            {fui.name}
+            {currentFui === fui.id && <span className="ml-auto text-xs">✓</span>}
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
