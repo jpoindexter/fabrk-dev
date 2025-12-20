@@ -1401,9 +1401,8 @@ async function goToNextTab() {
   }
 
   // Finalize when the NEXT tab is Complete (handles both Starter Page → Complete and Product Info → Complete)
-  const nextTabIndex = state.currentTab + 1;
-  const nextTabName = state.tabs[nextTabIndex];
-  if (nextTabName === 'Complete') {
+  const upcomingTab = state.tabs[state.currentTab + 1];
+  if (upcomingTab === 'Complete') {
     await finalize();
   }
 
