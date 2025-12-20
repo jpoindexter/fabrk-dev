@@ -276,3 +276,5 @@ storybook-static/
 npm-lock.json
 yarn.lock
 .ai-context.md
+# Experimental pages
+src/app/(marketing)/fui-lab/
