@@ -141,7 +141,17 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
+    const productionRedirects = process.env.NODE_ENV === "production" ? [
+      // Block experimental/lab pages in production
+      {
+        source: "/fui-lab/:path*",
+        destination: "/",
+        permanent: false,
+      },
+    ] : [];
+
     return [
+      ...productionRedirects,
       // Docs category index redirects
       {
         source: "/docs/tutorials",
