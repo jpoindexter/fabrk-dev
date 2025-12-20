@@ -56,53 +56,49 @@ export function HeroSection() {
               <span className="text-primary">YOUR APP NOW</span>
             </h1>
 
-            {/* Description */}
-            <p className={cn('text-sm max-w-md leading-relaxed', mode.font, mode.color.text.muted)}>
-              A production-ready SaaS boilerplate with auth, payments, and multi-tenancy.
-              Just import and go—no configuration required.
+            {/* Description - outcome focused */}
+            <p className={cn('text-sm max-w-lg leading-relaxed', mode.font, mode.color.text.muted)}>
+              Ship your SaaS in days, not months. Production-ready auth, payments, and multi-tenancy—just import and deploy.
             </p>
 
-            {/* Code snippet */}
-            <div className={cn('border bg-muted/50 p-4 text-xs', mode.font)}>
-              <div className={mode.color.text.muted}>import &quot;@fabrk/styles.css&quot;;</div>
+            {/* Code snippet - compressed */}
+            <div className={cn('border bg-muted/50 p-3 text-xs', mode.font)}>
               <div className={mode.color.text.muted}>import {'{'} Auth, Billing {'}'} from &quot;@fabrk&quot;;</div>
-              <div className="mt-2">
-                <span className={mode.color.text.muted}>export default</span> () =&gt; {'{'}
-              </div>
-              <div className="pl-4">
+              <div className="mt-1">
                 <span className={mode.color.text.accent}>&lt;Auth&gt;</span>
                 <span className={mode.color.text.success}>&lt;Billing /&gt;</span>
                 <span className={mode.color.text.accent}>&lt;/Auth&gt;</span>
+                <span className={cn('ml-2', mode.color.text.muted)}>// 2 lines. Done.</span>
               </div>
-              <div>{'}'}</div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3">
+            {/* CTAs - clear hierarchy */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <PolarCheckoutButton
                 className={cn(
-                  'bg-primary text-primary-foreground px-4 py-2 text-xs font-medium',
+                  'bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium',
                   mode.radius,
                   mode.font
                 )}
               >
-                &gt; GET STARTED — $199
-                <ArrowRight className="ml-2 h-4 w-4" />
+                &gt; GET STARTED
+                <span className="ml-2 opacity-70 text-xs">$199</span>
+                <ArrowRight className="ml-1 h-4 w-4" />
               </PolarCheckoutButton>
               <Button
-                variant="outline"
+                variant="ghost"
                 asChild
-                className={cn('px-4 py-2 text-xs', mode.radius, mode.font)}
+                className={cn('px-4 py-2 text-xs', mode.radius, mode.font, mode.color.text.muted, 'hover:text-foreground')}
               >
-                <Link href="/library">&gt; PLAYGROUND</Link>
+                <Link href="/library">&gt; EXPLORE PLAYGROUND</Link>
               </Button>
             </div>
 
-            {/* Stats inline */}
-            <div className={cn('flex items-center gap-6 text-xs pt-2', mode.font, mode.color.text.muted)}>
-              <span><span className="text-foreground font-medium">{COMPONENT_COUNT_STRING}</span> COMPONENTS</span>
-              <span><span className="text-foreground font-medium">{TEMPLATE_COUNT_STRING}</span> TEMPLATES</span>
-              <span><span className="text-foreground font-medium">12</span> THEMES</span>
+            {/* Stats - stronger visual weight */}
+            <div className={cn('grid grid-cols-3 gap-4 text-sm py-3 border-y', mode.font)}>
+              <span className="text-center"><span className="text-foreground font-bold">{COMPONENT_COUNT_STRING}</span> <span className={mode.color.text.muted}>COMPONENTS</span></span>
+              <span className="text-center"><span className="text-foreground font-bold">{TEMPLATE_COUNT_STRING}</span> <span className={mode.color.text.muted}>TEMPLATES</span></span>
+              <span className="text-center"><span className="text-foreground font-bold">12</span> <span className={mode.color.text.muted}>THEMES</span></span>
             </div>
 
             {/* Tech Stack */}
@@ -136,8 +132,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* RIGHT: Live component preview */}
-          <div className="space-y-4">
+          {/* RIGHT: Live component preview - aligned with headline */}
+          <div className="space-y-4 lg:mt-[51px]">
             {/* Dashboard Preview */}
             <Card size="auto">
               <CardHeader code="0x01" title="DASHBOARD" />
