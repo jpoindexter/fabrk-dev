@@ -15,7 +15,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
@@ -62,24 +62,24 @@ export default function HomePage() {
           {/* TODO: Replace with your actual features */}
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
-              <CardHeader title="FEATURE ONE" />
               <CardContent>
+                <h3 className="mb-2 text-lg font-semibold">FEATURE ONE</h3>
                 <p className="text-muted-foreground">
                   Describe your first key feature here. What problem does it solve?
                 </p>
               </CardContent>
             </Card>
             <Card>
-              <CardHeader title="FEATURE TWO" />
               <CardContent>
+                <h3 className="mb-2 text-lg font-semibold">FEATURE TWO</h3>
                 <p className="text-muted-foreground">
                   Describe your second key feature here. What value does it provide?
                 </p>
               </CardContent>
             </Card>
             <Card>
-              <CardHeader title="FEATURE THREE" />
               <CardContent>
+                <h3 className="mb-2 text-lg font-semibold">FEATURE THREE</h3>
                 <p className="text-muted-foreground">
                   Describe your third key feature here. Why should users care?
                 </p>
