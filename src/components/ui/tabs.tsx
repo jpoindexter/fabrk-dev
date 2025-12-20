@@ -21,7 +21,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        'border-border inline-flex h-auto items-center justify-start gap-1 border-b p-0',
+        'flex h-auto w-full items-center justify-evenly border-b border-border p-0',
         mode.color.text.primary,
         mode.radius,
         mode.font,
@@ -38,7 +38,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        'flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
         // Underline style - clean minimal look
         'border-b-2 border-transparent bg-transparent',
         // Default state - muted text
