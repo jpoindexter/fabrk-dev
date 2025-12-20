@@ -32,16 +32,6 @@ const jetbrainsMono = localFont({
       style: 'normal',
     },
     {
-      path: '../../public/fonts/jetbrains-mono/JetBrainsMono-Medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/jetbrains-mono/JetBrainsMono-SemiBold.woff2',
-      weight: '600',
-      style: 'normal',
-    },
-    {
       path: '../../public/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2',
       weight: '700',
       style: 'normal',
@@ -49,6 +39,7 @@ const jetbrainsMono = localFont({
   ],
   variable: '--font-jetbrains-mono',
   display: 'swap',
+  preload: true,
 });
 
 // Pixelbasel - Premium pixel font for Terminal mode
@@ -151,10 +142,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${GeistSans.variable} ${jetbrainsMono.variable} ${pixelbasel.variable}`}
     >
       <head>
+        {/* Static meta tags for SEO - ensures Lighthouse sees them immediately */}
+        <meta
+          name="description"
+          content="A complete UI system with 169 production-ready components, design tokens, automated testing, and AI workflows. Build faster with enforced quality standards."
+        />
         <ThemeScript defaultColorTheme="green" storageKeyPrefix="fabrk-theme" nonce={nonce} />
         <MonitorEffectScript nonce={nonce} />
-        {/* Google Consent Mode v2 - Must load BEFORE GTM */}
-        <script
+        {/* Google Tag Manager - Only when GTM_ID is configured */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <>
+            {/* Google Consent Mode v2 - Must load BEFORE GTM */}
+            <script
           nonce={nonce}
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
@@ -192,19 +191,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             `,
           }}
         />
-        {/* Google Tag Manager - inline required for consent mode sync */}
-        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
-        <script
-          nonce={nonce}
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            {/* eslint-disable-next-line @next/next/next-script-for-ga */}
+            <script
+              nonce={nonce}
+              suppressHydrationWarning
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T47RSZPP');`,
-          }}
-        />
+})(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`,
+              }}
+            />
+          </>
+        )}
         <script
           type="application/ld+json"
           nonce={nonce}
@@ -226,17 +226,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         className="bg-background text-foreground font-mono antialiased"
         suppressHydrationWarning
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T47RSZPP"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        {/* Google Tag Manager (noscript) - Only when GTM_ID is configured */}
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         <Providers>
-          <Analytics />
+          {/* Vercel Analytics - Only when deployed to Vercel */}
+          {process.env.VERCEL && <Analytics />}
           {/* Skip link - points to main content only (navigation/footer are page-specific) */}
           <a
             href="#main-content"
