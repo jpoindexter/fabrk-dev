@@ -44,7 +44,7 @@ const showCursor = () => stdout.write('\x1b[?25h');
 // ============================================================================
 
 const TEMPLATES = [
-  { name: 'STARTER', file: 'starter.json', time: '30 sec', keys: 0, desc: 'SQLite + NextAuth', detail: 'demos, prototypes' },
+  { name: 'STARTER', file: 'starter.json', time: '1-2 min', keys: 1, desc: 'PostgreSQL + NextAuth', detail: 'demos, prototypes' },
   { name: 'SAAS', file: 'saas.json', time: '4-5 min', keys: 3, desc: 'PostgreSQL + Stripe + Resend', detail: 'subscription apps', recommended: true },
   { name: 'AI APP', file: 'ai-app.json', time: '5-6 min', keys: 4, desc: 'SaaS + OpenAI', detail: 'AI wrappers, chat' },
   { name: 'MARKETPLACE', file: 'marketplace.json', time: '6-7 min', keys: 5, desc: 'SaaS + Algolia + S3', detail: 'platforms' },
@@ -246,8 +246,10 @@ const FEATURE_CATEGORIES = [
 // Template configurations - which categories each template uses and defaults
 const TEMPLATE_CONFIGS = {
   starter: {
-    categories: [], // No category selection, just basic setup
-    defaults: {},
+    categories: ['DATABASE'], // Only database needed
+    defaults: {
+      DATABASE: 'postgres',
+    },
   },
   saas: {
     categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'SEARCH', 'STORAGE'],
@@ -557,58 +559,88 @@ function renderCategoryKeyEntry(categoryName) {
 
 function renderReviewTab() {
   const lines = [''];
-
-  // Show all selections grouped by category
   const config = TEMPLATE_CONFIGS[state.templateKey] || TEMPLATE_CONFIGS.custom;
+  const templateName = TEMPLATES.find((t) => t.name.toLowerCase().replace(' ', '-') === state.templateKey)?.name || state.templateKey;
+
+  // Template header
+  lines.push(`${c.amberBright}${templateName.toUpperCase()}${c.reset} ${c.amberDim}template${c.reset}`);
+  lines.push('');
+
+  // Features section
+  lines.push(`${c.amber}FEATURES${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+
+  let keysConfigured = 0;
+  let keysTotal = 0;
+  const enabledFeatures = [];
+
+  config.categories.forEach((catName) => {
+    const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+    if (!cat) return;
+
+    const sel = state.customSelections[catName];
+    const opt = cat.options.find((o) => o.id === sel);
+
+    if (opt && !opt.id.startsWith('none')) {
+      const configured = opt.keys.filter((k) => state.apiKeyValues[k]).length;
+      keysTotal += opt.keys.length;
+      keysConfigured += configured;
+      enabledFeatures.push({ cat: catName, opt, configured });
+
+      const status = opt.keys.length === 0
+        ? `${c.amberBright}✓${c.reset}`
+        : configured === opt.keys.length
+          ? `${c.amberBright}✓${c.reset}`
+          : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
+
+      lines.push(`  ${status}  ${c.amber}${catName}:${c.reset} ${c.amberBright}${opt.name}${c.reset}`);
+    } else {
+      lines.push(`  ${c.amberDim}○  ${catName}: Skip${c.reset}`);
+    }
+  });
 
   if (config.categories.length === 0) {
-    // Starter template
-    lines.push(`${c.amberBright}STARTER${c.reset} ${c.amberDim}template${c.reset}`);
-    lines.push('');
-    lines.push(`${c.amberDim}SQLite database + NextAuth${c.reset}`);
-    lines.push(`${c.amberDim}No additional API keys needed.${c.reset}`);
-  } else {
-    lines.push(`${c.amberBright}Configuration Summary${c.reset}`);
-    lines.push('');
+    lines.push(`  ${c.amberDim}No optional features${c.reset}`);
+  }
 
-    let keysConfigured = 0;
-    let keysTotal = 0;
+  // Files section
+  lines.push('');
+  lines.push(`${c.amber}WILL CREATE${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+  lines.push(`  ${c.amberBright}✓${c.reset} .env.local`);
+  if (state.wantsStarterPage) {
+    lines.push(`  ${c.amberBright}✓${c.reset} src/app/(marketing)/page.tsx`);
+    lines.push(`  ${c.amberBright}✓${c.reset} FABRK-PROMPTS.md`);
+  }
 
-    config.categories.forEach((catName) => {
-      const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
-      if (!cat) return;
+  // Environment variables preview
+  lines.push('');
+  lines.push(`${c.amber}ENV VARIABLES${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+  lines.push(`  ${c.amberDim}NEXTAUTH_SECRET${c.reset}    ${c.amber}[auto-generated]${c.reset}`);
+  lines.push(`  ${c.amberDim}NEXTAUTH_URL${c.reset}       ${c.amber}http://localhost:3000${c.reset}`);
+  lines.push(`  ${c.amberDim}NODE_ENV${c.reset}           ${c.amber}development${c.reset}`);
 
-      const sel = state.customSelections[catName];
-      const opt = cat.options.find((o) => o.id === sel);
-
-      if (opt && !opt.id.startsWith('none')) {
-        const configured = opt.keys.filter((k) => state.apiKeyValues[k]).length;
-        keysTotal += opt.keys.length;
-        keysConfigured += configured;
-
-        const status = opt.keys.length === 0
-          ? `${c.amberBright}✓${c.reset}`
-          : configured === opt.keys.length
-            ? `${c.amberBright}✓${c.reset}`
-            : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
-
-        lines.push(`  ${status}  ${c.amber}${catName}:${c.reset} ${c.amberBright}${opt.name}${c.reset}`);
+  // Show configured API keys
+  enabledFeatures.forEach(({ opt }) => {
+    opt.keys.forEach((key) => {
+      const value = state.apiKeyValues[key];
+      if (value) {
+        const masked = value.length > 12 ? value.slice(0, 8) + '...' + value.slice(-4) : '***';
+        lines.push(`  ${c.amberDim}${key}${c.reset}`);
+        lines.push(`      ${c.amberBright}${masked}${c.reset}`);
       } else {
-        lines.push(`  ${c.amberDim}○  ${catName}: None${c.reset}`);
+        lines.push(`  ${c.amberDim}${key}${c.reset}  ${c.amber}[skipped]${c.reset}`);
       }
     });
+  });
 
-    lines.push('');
-    lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
-    lines.push('');
-
-    if (keysTotal > 0) {
-      const pct = Math.round((keysConfigured / keysTotal) * 100);
-      lines.push(`${c.amberDim}API Keys:${c.reset} ${keysConfigured}/${keysTotal} configured (${pct}%)`);
-    } else {
-      lines.push(`${c.amberDim}No API keys needed for your selection.${c.reset}`);
-    }
-  }
+  // Next steps
+  lines.push('');
+  lines.push(`${c.amber}AFTER SETUP${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+  lines.push(`  ${c.amberBright}1.${c.reset} npm run db:push`);
+  lines.push(`  ${c.amberBright}2.${c.reset} npm run dev`);
 
   lines.push('');
   lines.push(`${c.amberDim}Press Enter to continue${c.reset}`);

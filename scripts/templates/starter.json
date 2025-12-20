@@ -1,18 +1,18 @@
 {
   "name": "Starter",
-  "description": "SQLite + Auth only. Perfect for demos and prototypes.",
-  "setup_time": "30 seconds",
-  "api_keys_needed": 0,
+  "description": "PostgreSQL + Auth only. Perfect for demos and prototypes.",
+  "setup_time": "1-2 minutes",
+  "api_keys_needed": 1,
   "dependencies": [],
   "env": {
-    "DATABASE_URL": "file:./dev.db",
+    "DATABASE_URL": "{{PROMPT:PostgreSQL connection string (neon.tech or supabase.com free tier)}}",
     "NEXTAUTH_SECRET": "{{AUTO_GENERATE}}",
     "NEXTAUTH_URL": "http://localhost:3000",
     "NEXT_PUBLIC_APP_URL": "http://localhost:3000",
     "NODE_ENV": "development"
   },
   "features": {
-    "database": "sqlite",
+    "database": "postgresql",
     "auth": true,
     "payments": null,
     "email": null,
