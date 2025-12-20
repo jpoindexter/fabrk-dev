@@ -35,6 +35,15 @@
   }
 }
 
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 @keyframes glitch {
   0%,
   90%,
@@ -1462,6 +1471,11 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Animation utilities */
+.animate-blink {
+  animation: blink 0.8s infinite;
 }
 .skip-link {
   position: absolute;

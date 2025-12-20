@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -16,7 +15,7 @@ interface TypeWriterProps {
 /**
  * TypeWriter Component
  * Animated typewriter effect that triggers on scroll
- * Used for terminal-style text animations
+ * Uses CSS animations instead of Framer Motion for performance
  */
 export function TypeWriter({
   text,
@@ -27,8 +26,27 @@ export function TypeWriter({
 }: TypeWriterProps) {
   const [displayText, setDisplayText] = useState('');
   const [started, setStarted] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
+
+  // Intersection Observer for scroll trigger
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isInView) return;
@@ -62,13 +80,11 @@ export function TypeWriter({
     <span ref={ref}>
       {displayText}
       {shouldShowCursor && (
-        <motion.span
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 0.8, repeat: Infinity }}
-          className={cn('inline-block w-[0.5em]', mode.color.text.accent)}
+        <span
+          className={cn('inline-block w-[0.5em] animate-blink', mode.color.text.accent)}
         >
           █
-        </motion.span>
+        </span>
       )}
     </span>
   );

@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
-import { motion } from 'framer-motion';
 import { SimpleIcon } from '@/components/ui/simple-icon';
 import {
   siNextdotjs,
@@ -44,12 +43,7 @@ export function HeroSection() {
       <Container size="2xl">
         <div className="relative">
           {/* Main Hero Window - Wider, behind */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative isolate z-0 max-w-2xl lg:ml-16"
-          >
+          <div className="relative isolate z-0 max-w-2xl lg:ml-16 animate-in fade-in zoom-in-[0.98] duration-600">
             <Card size="auto">
               <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
               <CardContent className="space-y-4 p-8">
@@ -148,24 +142,19 @@ export function HeroSection() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
 
           {/* Right Column - Visual Proof (Hidden on mobile, overlays on desktop) */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 lg:absolute lg:top-12 lg:-right-16 lg:mt-0 lg:w-full lg:max-w-[280px]"
-          >
+          <div className="mt-8 lg:absolute lg:top-12 lg:-right-16 lg:mt-0 lg:w-full lg:max-w-[280px] animate-in fade-in slide-in-from-right-5 duration-600 delay-300">
             {/* Urgency Card - Top */}
-            <Card size="auto" className="border-accent border-2 lg:-mr-8">
+            <Card size="auto" className="border-primary border-2 lg:-mr-8">
               <CardHeader code="0x03" title="LAUNCH OFFER.SH" />
               <CardContent className="space-y-4 p-4">
                 {/* Price - Big and Bold */}
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-baseline gap-2">
-                      <span className={cn('text-4xl font-bold', mode.font, mode.color.text.accent)}>
+                      <span className={cn('text-4xl font-bold text-primary', mode.font)}>
                         $199
                       </span>
                       <span className={cn('text-2xl line-through', mode.color.text.muted)}>
@@ -178,7 +167,7 @@ export function HeroSection() {
                   </div>
                   <div
                     className={cn(
-                      'bg-accent text-accent-foreground border-accent animate-pulse border-2 px-4 py-1.5 text-sm font-bold',
+                      'bg-primary text-primary-foreground border-primary animate-pulse border-2 px-4 py-1.5 text-sm font-bold',
                       mode.font
                     )}
                   >
@@ -187,8 +176,8 @@ export function HeroSection() {
                 </div>
 
                 {/* Launch Pricing */}
-                <div className="border-accent space-y-1 border-l-2 pl-3">
-                  <div className={cn('text-xs font-bold', mode.color.text.accent, mode.font)}>
+                <div className="border-primary space-y-1 border-l-2 pl-3">
+                  <div className={cn('text-xs font-bold text-primary', mode.font)}>
                     LAUNCH PRICE: $199
                   </div>
                   <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
@@ -197,11 +186,11 @@ export function HeroSection() {
                 </div>
 
                 {/* Speed Messaging */}
-                <div className="border-accent flex items-center justify-center gap-4 border-t pt-3">
+                <div className="border-primary flex items-center justify-center gap-4 border-t pt-3">
                   <div className={cn('text-sm font-bold', mode.font, mode.color.text.muted)}>
                     FROM IDEA
                   </div>
-                  <div className={cn('text-sm font-bold', mode.font, mode.color.text.accent)}>
+                  <div className={cn('text-sm font-bold text-primary', mode.font)}>
                     │
                   </div>
                   <div className={cn('text-sm font-bold', mode.font, mode.color.text.success)}>
@@ -215,16 +204,11 @@ export function HeroSection() {
             <div className="mt-8 hidden lg:-ml-24 lg:block">
               <HeroDashboardPreview />
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Tech Stack - Below Hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 lg:mt-20"
-        >
+        <div className="mt-16 lg:mt-20 animate-in fade-in slide-in-from-bottom-3 duration-600 delay-500">
           <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech) => (
@@ -242,7 +226,7 @@ export function HeroSection() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </Container>
     </section>
   );
