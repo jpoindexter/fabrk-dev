@@ -42,12 +42,12 @@ export function GridColumnThree() {
         <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SWITCHES]</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <Label className="text-xs">Enable notifications</Label>
-            <Switch checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
+            <Label htmlFor="notifications-switch" className="text-xs">Enable notifications</Label>
+            <Switch id="notifications-switch" aria-label="Enable notifications" checked={switchEnabled} onCheckedChange={setSwitchEnabled} />
           </div>
           <div className="flex items-center justify-between">
-            <Label className="text-xs">Dark mode</Label>
-            <Switch defaultChecked />
+            <Label htmlFor="darkmode-switch" className="text-xs">Dark mode</Label>
+            <Switch id="darkmode-switch" aria-label="Dark mode" defaultChecked />
           </div>
         </div>
       </div>

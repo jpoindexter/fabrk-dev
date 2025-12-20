@@ -14,42 +14,40 @@
 'use client';
 
 import { useState } from 'react';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ComponentsGrid, DashboardPreview, TablePreview, ProfilePreview } from './playground';
 
 export function HeroPlaygroundFull() {
   const [activeTab, setActiveTab] = useState('components');
 
-  const tabs = [
-    { id: 'components', label: 'COMPONENTS' },
-    { id: 'dashboard', label: 'DASHBOARD' },
-    { id: 'table', label: 'TABLE' },
-    { id: 'profile', label: 'PROFILE' },
-  ];
-
   return (
     <section className="border-border border-t py-16">
       <div className="container mx-auto max-w-[1800px] px-12 lg:px-24">
-        {/* Header with tabs */}
-        <div className="mb-8">
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          {/* Header with tabs */}
+          <div className="mb-8">
             <TabsList className="bg-transparent">
-              {tabs.map((tab) => (
-                <TabsTrigger key={tab.id} value={tab.id}>
-                  {tab.label}
-                </TabsTrigger>
-              ))}
+              <TabsTrigger value="components">COMPONENTS</TabsTrigger>
+              <TabsTrigger value="dashboard">DASHBOARD</TabsTrigger>
+              <TabsTrigger value="table">TABLE</TabsTrigger>
+              <TabsTrigger value="profile">PROFILE</TabsTrigger>
             </TabsList>
-          </Tabs>
-        </div>
+          </div>
 
-        {/* Tab Content */}
-        <div>
-          {activeTab === 'components' && <ComponentsGrid />}
-          {activeTab === 'dashboard' && <DashboardPreview />}
-          {activeTab === 'table' && <TablePreview />}
-          {activeTab === 'profile' && <ProfilePreview />}
-        </div>
+          {/* Tab Content - TabsContent handles aria relationships */}
+          <TabsContent value="components">
+            <ComponentsGrid />
+          </TabsContent>
+          <TabsContent value="dashboard">
+            <DashboardPreview />
+          </TabsContent>
+          <TabsContent value="table">
+            <TablePreview />
+          </TabsContent>
+          <TabsContent value="profile">
+            <ProfilePreview />
+          </TabsContent>
+        </Tabs>
       </div>
     </section>
   );

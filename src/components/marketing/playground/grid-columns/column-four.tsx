@@ -30,7 +30,7 @@ export function GridColumnFour() {
         <div className="p-4">
           <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SLIDER]</h3>
           <p className={cn('mb-4 text-xs', mode.color.text.muted)}>Value: ${priceRange[0]}</p>
-          <Slider value={priceRange} onValueChange={setPriceRange} max={800} min={200} step={10} />
+          <Slider value={priceRange} onValueChange={setPriceRange} max={800} min={200} step={10} aria-label="Price range slider" />
         </div>
       </Card>
 
@@ -60,7 +60,7 @@ export function GridColumnFour() {
         <div className="p-4">
           <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SELECT MENU]</h3>
           <Select defaultValue="option-1">
-            <SelectTrigger className="text-xs">
+            <SelectTrigger className="text-xs" aria-label="Select an option">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -77,9 +77,9 @@ export function GridColumnFour() {
         <div className="p-4">
           <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[INPUT TYPES]</h3>
           <div className="space-y-2">
-            <Input type="email" placeholder="Email" className="text-xs" />
-            <Input type="password" placeholder="Password" className="text-xs" />
-            <Input type="number" placeholder="Amount" className="text-xs" />
+            <Input type="email" placeholder="Email" aria-label="Email address" className="text-xs" />
+            <Input type="password" placeholder="Password" aria-label="Password" className="text-xs" />
+            <Input type="number" placeholder="Amount" aria-label="Amount" className="text-xs" />
           </div>
         </div>
       </Card>

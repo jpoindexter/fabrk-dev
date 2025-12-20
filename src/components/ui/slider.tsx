@@ -7,8 +7,8 @@ import { mode } from '@/design-system';
 
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> & { 'aria-label'?: string }
+>(({ className, 'aria-label': ariaLabel, ...props }, ref) => (
   <SliderPrimitive.Root
     ref={ref}
     data-slot="slider"
@@ -26,6 +26,7 @@ const Slider = React.forwardRef<
       <SliderPrimitive.Range className={cn('absolute h-full', mode.color.bg.accent)} />
     </SliderPrimitive.Track>
     <SliderPrimitive.Thumb
+      aria-label={ariaLabel}
       className={cn(
         'block h-5 w-5 border transition-colors hover:scale-105 focus-visible:outline-none',
         mode.color.border.accent,

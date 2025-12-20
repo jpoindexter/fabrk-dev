@@ -4,9 +4,37 @@
  * Production-ready ✓
  */
 
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/marketing/hero-section';
-import { HeroPlaygroundFull } from '@/components/marketing/hero-playground-full';
 import { FeaturesShowcase } from '@/components/marketing/features-showcase';
+
+// Lazy load the heavy playground component to improve LCP
+const HeroPlaygroundFull = dynamic(
+  () => import('@/components/marketing/hero-playground-full').then(mod => mod.HeroPlaygroundFull),
+  {
+    ssr: true,
+    loading: () => (
+      <section className="border-border border-t py-16">
+        <div className="container mx-auto max-w-[1800px] px-12 lg:px-24">
+          <div className="animate-pulse">
+            <div className="mb-8 flex gap-2">
+              <div className="h-9 w-32 rounded bg-muted" />
+              <div className="h-9 w-32 rounded bg-muted" />
+              <div className="h-9 w-32 rounded bg-muted" />
+              <div className="h-9 w-32 rounded bg-muted" />
+            </div>
+            <div className="grid grid-cols-4 gap-4">
+              <div className="h-64 rounded bg-muted" />
+              <div className="h-64 rounded bg-muted" />
+              <div className="h-64 rounded bg-muted" />
+              <div className="h-64 rounded bg-muted" />
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+);
 import { StatsSection } from '@/components/marketing/stats-section';
 import { UseCasesSection } from '@/components/marketing/use-cases-section';
 import { PricingSection } from '@/components/marketing/pricing-section';
