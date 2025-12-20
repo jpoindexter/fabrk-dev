@@ -15,7 +15,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ export default function HomePage() {
       <Alert className="rounded-none border-x-0 border-t-0 bg-amber-500/10">
         <AlertDescription className="text-center">
           <strong>[SETUP]</strong> Edit this page at{' '}
-          <code className="bg-muted px-1">src/app/(marketing)/page.tsx</code>
+          <code className="bg-muted px-1">src/app/page.tsx</code>
           {' '}- Update content, then remove this banner.
         </AlertDescription>
       </Alert>
@@ -72,10 +72,10 @@ export default function HomePage() {
               { name: 'CATEGORY 4', count: '456 listings' },
             ].map((cat) => (
               <Card key={cat.name} className="cursor-pointer transition-colors hover:border-primary">
-                <CardHeader>
-                  <CardTitle className="text-lg">{cat.name}</CardTitle>
-                  <CardDescription>{cat.count}</CardDescription>
-                </CardHeader>
+                <CardHeader title={cat.name} />
+                <CardContent>
+                  <p className="text-muted-foreground">{cat.count}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
@@ -97,11 +97,12 @@ export default function HomePage() {
               { step: '03', title: 'TRANSACT', desc: 'Secure payment processing. Buyer protection included.' },
             ].map((s) => (
               <Card key={s.step}>
-                <CardHeader>
+                <CardHeader title={s.title}>
                   <div className="mb-2 text-4xl font-bold text-muted-foreground">{s.step}</div>
-                  <CardTitle className="text-lg">{s.title}</CardTitle>
-                  <CardDescription>{s.desc}</CardDescription>
                 </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{s.desc}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
@@ -124,10 +125,10 @@ export default function HomePage() {
               { title: 'SELLER TOOLS', desc: 'Analytics, inventory management, and more' },
             ].map((benefit) => (
               <Card key={benefit.title}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{benefit.title}</CardTitle>
-                  <CardDescription>{benefit.desc}</CardDescription>
-                </CardHeader>
+                <CardHeader title={benefit.title} />
+                <CardContent>
+                  <p className="text-muted-foreground">{benefit.desc}</p>
+                </CardContent>
               </Card>
             ))}
           </div>

@@ -15,7 +15,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ export default function HomePage() {
       <Alert className="rounded-none border-x-0 border-t-0 bg-amber-500/10">
         <AlertDescription className="text-center">
           <strong>[SETUP]</strong> Edit this page at{' '}
-          <code className="bg-muted px-1">src/app/(marketing)/page.tsx</code>
+          <code className="bg-muted px-1">src/app/page.tsx</code>
           {' '}- Update content, then remove this banner.
         </AlertDescription>
       </Alert>
@@ -91,10 +91,10 @@ export default function HomePage() {
               { title: 'LEARN', desc: 'Adapts to your preferences over time' },
             ].map((cap) => (
               <Card key={cap.title}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{cap.title}</CardTitle>
-                  <CardDescription>{cap.desc}</CardDescription>
-                </CardHeader>
+                <CardHeader title={cap.title} />
+                <CardContent>
+                  <p className="text-muted-foreground">{cap.desc}</p>
+                </CardContent>
               </Card>
             ))}
           </div>
@@ -116,13 +116,12 @@ export default function HomePage() {
               { name: 'PRO', price: '$49', credits: '5,000', desc: 'For power users' },
             ].map((plan) => (
               <Card key={plan.name} className={plan.popular ? 'border-primary' : ''}>
-                <CardHeader>
+                <CardHeader title={plan.name}>
                   {plan.popular && <Badge className="mb-2 w-fit">MOST POPULAR</Badge>}
-                  <CardTitle>{plan.name}</CardTitle>
-                  <CardDescription>{plan.desc}</CardDescription>
-                  <div className="text-4xl font-bold">{plan.price}<span className="text-lg font-normal text-muted-foreground">/mo</span></div>
                 </CardHeader>
                 <CardContent>
+                  <p className="text-muted-foreground mb-2">{plan.desc}</p>
+                  <div className="text-4xl font-bold mb-4">{plan.price}<span className="text-lg font-normal text-muted-foreground">/mo</span></div>
                   <p className="text-2xl font-semibold">{plan.credits} credits</p>
                   <p className="text-sm text-muted-foreground">per month</p>
                   <Button className="mt-6 w-full" variant={plan.popular ? 'default' : 'outline'}>

@@ -15,7 +15,7 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
@@ -26,7 +26,7 @@ export default function HomePage() {
       <Alert className="rounded-none border-x-0 border-t-0 bg-amber-500/10">
         <AlertDescription className="text-center">
           <strong>[SETUP]</strong> Edit this page at{' '}
-          <code className="bg-muted px-1">src/app/(marketing)/page.tsx</code>
+          <code className="bg-muted px-1">src/app/page.tsx</code>
           {' '}- Update content below, then remove this banner.
           See <code className="bg-muted px-1">FABRK-PROMPTS.md</code> for AI prompts.
         </AlertDescription>
@@ -62,28 +62,28 @@ export default function HomePage() {
           {/* TODO: Replace with your actual features */}
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
-              <CardHeader>
-                <CardTitle>FEATURE ONE</CardTitle>
-                <CardDescription>
+              <CardHeader title="FEATURE ONE" />
+              <CardContent>
+                <p className="text-muted-foreground">
                   Describe your first key feature here. What problem does it solve?
-                </CardDescription>
-              </CardHeader>
+                </p>
+              </CardContent>
             </Card>
             <Card>
-              <CardHeader>
-                <CardTitle>FEATURE TWO</CardTitle>
-                <CardDescription>
+              <CardHeader title="FEATURE TWO" />
+              <CardContent>
+                <p className="text-muted-foreground">
                   Describe your second key feature here. What value does it provide?
-                </CardDescription>
-              </CardHeader>
+                </p>
+              </CardContent>
             </Card>
             <Card>
-              <CardHeader>
-                <CardTitle>FEATURE THREE</CardTitle>
-                <CardDescription>
+              <CardHeader title="FEATURE THREE" />
+              <CardContent>
+                <p className="text-muted-foreground">
                   Describe your third key feature here. Why should users care?
-                </CardDescription>
-              </CardHeader>
+                </p>
+              </CardContent>
             </Card>
           </div>
         </div>
