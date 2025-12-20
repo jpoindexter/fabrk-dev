@@ -8,15 +8,15 @@ Get Fabrk running locally in under 5 minutes.
 
 Before starting, make sure you have:
 
-- **Node.js 18+** ([Download](https://nodejs.org/))
-- **PostgreSQL database** (see database options below)
-- **Stripe account** ([Sign up free](https://stripe.com/))
-- **Resend account** for emails ([Sign up free](https://resend.com/))
+- **Node.js 22+** ([Download](https://nodejs.org/))
 - **Git** installed
+- **PostgreSQL database** (the wizard will guide you - get a free one at [neon.tech](https://neon.tech) or [supabase.com](https://supabase.com))
 
 ---
 
-## Step 1: Clone and Install
+## Option 1: Interactive Setup Wizard (Recommended)
+
+The fastest way to get started. The wizard configures everything for you.
 
 ```bash
 # Clone the repository
@@ -25,324 +25,234 @@ cd fabrk
 
 # Install dependencies
 npm install --legacy-peer-deps
+
+# Run the interactive setup wizard
+npm run setup
 ```
 
-**Why `--legacy-peer-deps`?** Next.js 15 and React 19 are cutting-edge. Some dependencies haven't updated peer dependency versions yet. This flag ensures everything installs smoothly.
+### What the Wizard Does
+
+1. **Asks what you're building:**
+   - **STARTER** (1-2 min) - PostgreSQL + Auth only
+   - **SAAS** (4-5 min) - Full stack with Stripe + Resend
+   - **AI APP** (5-6 min) - SaaS + OpenAI integration
+   - **MARKETPLACE** (6-7 min) - SaaS + Algolia + Storage
+   - **CUSTOM** - Pick each feature individually
+
+2. **Walks you through each service:**
+   - Database (PostgreSQL, MySQL, MongoDB, SQLite)
+   - Payments (Stripe, Polar, Lemonsqueezy, PayPal)
+   - Email (Resend, Postmark, SendGrid, AWS SES)
+   - Analytics (PostHog, Plausible, Mixpanel)
+   - AI (OpenAI, Anthropic, Google AI, and more)
+   - Search (Algolia, Typesense, Meilisearch)
+   - Storage (Cloudflare R2, AWS S3, Supabase)
+
+3. **Generates `.env.local`** with all your configured variables
+
+4. **Copies a starter landing page** matching your app type:
+   - SaaS → Features grid, pricing tiers, FAQ
+   - AI App → Demo section, capabilities, credit-based pricing
+   - Marketplace → Categories, how it works, seller benefits
+   - Starter/Custom → Basic hero, features, CTA
+
+5. **Runs database setup automatically:**
+   - `npx prisma generate` - Creates Prisma client
+   - `npm run db:push` - Syncs schema to database
+
+6. **Starts the dev server and opens your browser**
+
+### Skipping API Keys
+
+Don't have all your API keys yet? No problem! The wizard lets you skip any key:
+- Just press Enter without typing anything
+- The wizard writes helpful placeholder values
+- TODO comments remind you what to configure later
+
+```env
+# TODO: Replace with your actual DATABASE_URL
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/DATABASE"
+```
 
 ---
 
-## Step 2: Database Setup
+## Option 2: Manual Setup
 
-You have several free options:
+If you prefer to configure everything manually:
 
-### Option A: Supabase (Recommended - Easiest)
+### Step 1: Clone and Install
 
+```bash
+git clone https://github.com/yourusername/fabrk.git
+cd fabrk
+npm install --legacy-peer-deps
+```
+
+### Step 2: Database Setup
+
+Get a free PostgreSQL database:
+
+**Neon (Recommended - Serverless):**
+1. Go to [neon.tech](https://neon.tech)
+2. Create a new project (free tier)
+3. Copy the connection string
+
+**Supabase:**
 1. Go to [database.new](https://database.new)
 2. Create a new project (free tier)
 3. Copy the connection string from Settings → Database → Connection String (URI)
-4. Use the "Session mode" connection string for best compatibility
 
-### Option B: Railway
-
-1. Go to [railway.app](https://railway.app/)
-2. Click "New Project" → "Provision PostgreSQL"
-3. Copy the `DATABASE_URL` from the PostgreSQL service
-
-### Option C: Local PostgreSQL
-
+**Local PostgreSQL:**
 ```bash
 # macOS (via Homebrew)
 brew install postgresql
 brew services start postgresql
 createdb fabrk
 
-# Ubuntu/Debian
-sudo apt install postgresql
-sudo systemctl start postgresql
-sudo -u postgres createdb fabrk
-
 # Your connection string:
 # DATABASE_URL="postgresql://postgres:password@localhost:5432/fabrk"
 ```
 
----
-
-## Step 3: Environment Variables
-
-Fabrk uses **runtime validation** for all environment variables to prevent silent failures. Missing or invalid variables will cause immediate startup errors with clear messages.
-
-1. Copy the example environment file:
+### Step 3: Environment Variables
 
 ```bash
 cp .env.example .env.local
 ```
 
-2. Edit `.env.local` and fill in your values:
+Edit `.env.local` with minimum required values:
 
 ```env
-# Required for Development (minimum)
+# Database (Required)
+DATABASE_URL="postgresql://user:password@host:5432/fabrk"
+
+# Auth (Required)
+NEXTAUTH_SECRET="generate-with-openssl-rand-base64-32"
 NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="generate-a-random-secret-here"  # Min 32 chars
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
-# Database (optional in dev, required in production)
-DATABASE_URL="your-postgresql-connection-string-here"
-
-# Stripe (optional - only if you want to test payments)
-STRIPE_SECRET_KEY="sk_test_..."
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..." # (see Stripe setup below)
-
-# Resend Email (optional - emails will log to console if not set)
+# Email (Required for magic link auth)
 RESEND_API_KEY="re_..."
-EMAIL_FROM="noreply@yourdomain.com"
+EMAIL_FROM="onboarding@resend.dev"
 
-# Optional: Google OAuth
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
+# Payments (Optional - add when ready)
+# STRIPE_SECRET_KEY="sk_test_..."
+# STRIPE_WEBHOOK_SECRET="whsec_..."
+# NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
 ```
 
-**Important:** All environment variables are validated at startup. If validation fails, you'll see a clear error message indicating what's wrong. See `/docs/ENV-VALIDATION.md` for complete validation rules.
-
-### How to Get Each API Key:
-
-**NextAuth Secret:**
-```bash
-openssl rand -base64 32
-```
-
-**Stripe Keys:**
-1. Go to [dashboard.stripe.com](https://dashboard.stripe.com/)
-2. Click "Developers" → "API keys"
-3. Copy "Publishable key" and "Secret key"
-4. Toggle "Test mode" ON (top right) for development
-
-**Stripe Webhook Secret** (for local dev):
-```bash
-# In a separate terminal, run:
-npm run stripe:listen
-
-# Copy the webhook signing secret (whsec_...) that appears
-```
-
-**Resend API Key:**
-1. Go to [resend.com/api-keys](https://resend.com/api-keys)
-2. Click "Create API Key"
-3. Copy the key (starts with `re_`)
-
-**Google OAuth (Optional):**
-1. Go to [console.cloud.google.com](https://console.cloud.google.com/)
-2. Create a new project
-3. Enable "Google+ API"
-4. Go to "Credentials" → "Create Credentials" → "OAuth 2.0 Client ID"
-5. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
-
----
-
-## Step 4: Initialize Database
-
-Run Prisma to create your database schema:
+### Step 4: Initialize Database
 
 ```bash
-npx prisma db push
+npx prisma generate
+npm run db:push
 ```
 
-**What this does:**
-- Creates all tables in your PostgreSQL database
-- Generates the Prisma Client for type-safe database queries
-- No migrations needed in development (push directly to database)
-
-**Expected output:**
-```
-✔ Generated Prisma Client
-✔ Database synchronized with Prisma schema
-```
-
-**Optional:** Open Prisma Studio to see your database:
-```bash
-npm run db:studio
-```
-
----
-
-## Step 5: Run Development Server
+### Step 5: Start Development
 
 ```bash
 npm run dev
 ```
 
-**Expected output:**
-```
-▲ Next.js 15.0.0
-- Local:        http://localhost:3000
-- Ready in 1.2s
+Visit [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Customizing Your Landing Page
+
+After setup, your landing page is at `src/app/(marketing)/page.tsx`.
+
+Each template includes:
+- **[SETUP] banner** at the top with instructions
+- **TODO comments** marking what to customize
+- **Placeholder text** that clearly needs replacement
+
+### Quick Customization
+
+1. Open `src/app/(marketing)/page.tsx`
+2. Replace placeholder text with your app name and features
+3. Remove the [SETUP] instruction banner
+4. Done!
+
+### AI-Assisted Customization
+
+A `FABRK-PROMPTS.md` file is generated with copy-paste prompts for Cursor, Claude Code, or Windsurf:
+
+```markdown
+## QUICK START - Update Your Landing Page
+Update src/app/(marketing)/page.tsx:
+1. Replace placeholder text with my app name and tagline
+2. Update the 3-6 features to match what my product does
+3. Keep the terminal aesthetic (font-mono, rounded-none, uppercase headings)
+4. Remove the [SETUP] instruction banner at the top when done
 ```
 
 ---
 
-## Step 6: Test Authentication Flow
+## Testing Your Setup
 
-1. Open [http://localhost:3000](http://localhost:3000)
-2. Click "Get Started" or navigate to `/register`
-3. Register with your email:
-   - Email: `test@example.com`
-   - Password: `Test1234!`
+### Authentication
+1. Navigate to `/login`
+2. Enter any email address
+3. Check console for magic link (if Resend not configured)
+4. Click link to log in
 
-**What should happen:**
-- ✅ Account created in database
-- ✅ Verification email logged to console (if `RESEND_API_KEY` not set)
-- ✅ Redirected to verification prompt
+### Payments (if configured)
+1. Navigate to `/pricing`
+2. Click a plan
+3. Use test card: `4242 4242 4242 4242`
+4. Complete checkout
 
-**Check the console** to see the verification link if you don't have Resend configured yet.
-
-4. Click the verification link (from console or email)
-5. Log in with your credentials
-6. You should see the dashboard at `/dashboard`
-
----
-
-## Step 7: Test Stripe Checkout (Optional)
-
-1. Make sure Stripe webhook listener is running:
-```bash
-npm run stripe:listen
-```
-
-2. Navigate to pricing section (/#pricing)
-3. Click "Buy Now"
-4. Use Stripe test card: `4242 4242 4242 4242`
-   - Expiry: Any future date
-   - CVC: Any 3 digits
-   - ZIP: Any 5 digits
-
-**Expected outcome:**
-- ✅ Redirected to Stripe Checkout
-- ✅ Payment successful
-- ✅ Webhook received (check terminal running `stripe:listen`)
-- ✅ Payment recorded in database
-- ✅ Welcome email sent (or logged to console)
+### Theme Switching
+1. Click the palette icon in the navigation
+2. Try different themes (Green CRT, Amber, C64, etc.)
 
 ---
 
 ## Troubleshooting
 
-### Environment variable validation errors
-If you see errors like:
-```
-❌ Invalid server environment variables:
-{
-  "NEXTAUTH_SECRET": {
-    "_errors": ["String must contain at least 32 character(s)"]
-  }
-}
-```
-
-**Solution:**
+### Port 3000 already in use
 ```bash
-# Generate a strong secret
-openssl rand -base64 32
-
-# Add to .env.local
-echo "NEXTAUTH_SECRET=your-generated-secret-here" >> .env.local
-
-# Restart the dev server
-npm run dev
-```
-
-**Common validation issues:**
-- `NEXTAUTH_SECRET` must be at least 32 characters
-- `NEXTAUTH_URL` must be a valid URL (HTTPS in production)
-- Stripe keys must start with correct prefix (`sk_test_` or `sk_live_`)
-- See `/docs/ENV-VALIDATION.md` for complete validation rules
-
-### "Module not found" errors
-```bash
-# Clear node_modules and reinstall
-rm -rf node_modules package-lock.json
-npm install --legacy-peer-deps
+npm run dev  # Automatically kills old processes
 ```
 
 ### Database connection errors
 ```bash
-# Test your connection string
+# Verify your connection string
 npx prisma db pull
 
 # If it fails, check:
-# - Is PostgreSQL running?
 # - Is the connection string correct?
-# - Does the database exist?
+# - Is the database server running?
+# - Are you using the correct password?
 ```
 
-### Prisma Client errors
+### Prisma errors
 ```bash
-# Regenerate Prisma Client
+rm -rf node_modules/.prisma
 npx prisma generate
+npm run db:push
 ```
 
-### Port 3000 already in use
+### Build fails
 ```bash
-# Kill the process using port 3000
-lsof -ti:3000 | xargs kill -9
-
-# Or use a different port
-PORT=3001 npm run dev
+rm -rf .next
+npm run build
 ```
-
-### Stripe webhook not receiving events
-```bash
-# Make sure stripe:listen is running in a separate terminal
-npm run stripe:listen
-
-# The webhook endpoint should show:
-# > Ready! Your webhook signing secret is whsec_...
-```
-
-### Email not sending
-- If `RESEND_API_KEY` is not set, emails will be logged to the console instead
-- Check your Resend domain is verified
-- For development, console logging is fine
 
 ---
 
 ## Next Steps
 
-✅ **You're ready to build!** Here's what to do next:
-
-1. **Explore the codebase:**
-   - `src/app/` - All pages and API routes
-   - `src/components/` - Reusable UI components
-   - `src/lib/` - Utility functions and configurations
-   - `prisma/schema.prisma` - Database schema
-
-2. **Customize your app:**
-   - Edit `src/config.js` - Central configuration file
-   - Update branding in `src/app/layout.tsx`
-   - Modify pricing in `src/components/landing/pricing-section.tsx`
-
-3. **Add your features:**
-   - Start building your unique product features
-   - All the boring stuff (auth, payments, emails) is done
-
-4. **Read the docs:**
-   - [DEPLOYMENT.md](./DEPLOYMENT.md) - Deploy to production
-   - [CLAUDE.md](../CLAUDE.md) - Detailed architecture guide
-   - [README.md](../README.md) - Project overview
+1. **Customize your landing page** - Update `src/app/(marketing)/page.tsx`
+2. **Configure payments** - Set up Stripe/Polar/Lemonsqueezy webhooks
+3. **Add your features** - Build on top of 77 UI components
+4. **Deploy** - Push to Vercel and set environment variables
 
 ---
 
-## Common Questions
+## Helpful Links
 
-**Q: Can I use a different database?**
-A: Fabrk uses PostgreSQL with Prisma. You *could* switch to MySQL or SQLite by changing the `provider` in `prisma/schema.prisma`, but PostgreSQL is recommended for production SaaS.
-
-**Q: Do I need Stripe webhook for development?**
-A: Yes, otherwise payment confirmations won't work. Use `npm run stripe:listen` to forward webhooks to localhost.
-
-**Q: What if I don't want OAuth?**
-A: Just don't set `GOOGLE_CLIENT_ID`. The OAuth button will be hidden automatically.
-
-**Q: How do I add more OAuth providers?**
-A: Edit `src/lib/auth.ts` and add providers from [authjs.dev/getting-started/providers](https://authjs.dev/getting-started/providers)
-
----
-
+- [README.md](../../README.md) - Project overview
+- [CLAUDE.md](../../CLAUDE.md) - AI development guide
+- [DESIGN_SYSTEM.md](../08-design/DESIGN_SYSTEM.md) - Design system reference
+- [DEPLOYMENT.md](../10-deployment/DEPLOYMENT.md) - Deployment guide

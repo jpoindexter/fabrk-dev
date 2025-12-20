@@ -1132,3 +1132,7 @@ Rules for `/src/components/landing/*` and `/src/app/docs/*`:
 | `/src/components/landing/*.tsx` | Landing page components |
 | `/src/components/demo/*.tsx` | Demo/template components |
 | `/DESIGN_SYSTEM.md` | This file |
+
+---
+
+**Last Updated:** 2025-12-20

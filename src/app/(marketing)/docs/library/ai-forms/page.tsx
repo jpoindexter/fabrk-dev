@@ -1,7 +1,7 @@
 'use client';
 
 import { FeatureGuideTemplate, DocsSection, DocsCard } from '@/components/docs';
-import { FileCode, Sparkles, Eye, Code, Zap, RefreshCw } from 'lucide-react';
+import { Sparkles, Eye, Code, Zap, RefreshCw } from 'lucide-react';
 
 export default function AiFormsDocsPage() {
   return (

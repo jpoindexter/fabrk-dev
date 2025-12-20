@@ -2,7 +2,7 @@
 
 Complete guide to all Fabrk documentation. Start here to find what you need.
 
-**Fabrk Premium:** $299 | 77+ components | 50 Templates | 12 Themes | 17,822 Test Lines | Full Documentation
+**Fabrk Premium:** $299 | 77+ components | 48 Templates | 12 Themes | 17,822 Test Lines | Full Documentation
 
 ---
 
@@ -270,7 +270,7 @@ Complete guide to all Fabrk documentation. Start here to find what you need.
 
 **Product Stats:**
 - **77+ components** (more than Makerkit's 60)
-- **50 Templates** (Analytics, Team, Charts, User Management, Settings, Billing, Security, Emails)
+- **48 Templates** (Analytics, Team, Charts, User Management, Settings, Billing, Security, Emails)
 - **12 Themes** (Green, Amber, Blue, Red, Purple + Retro: Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W)
 - **17,822 Test Lines** (Vitest + Playwright)
 - **Price:** $299 (same as Makerkit, more value)

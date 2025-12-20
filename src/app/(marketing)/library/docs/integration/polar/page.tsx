@@ -3,7 +3,6 @@
  * Polar.sh Integration Guide
  * Uses LibraryGuideTemplate for consistent structure
  */
-import Link from 'next/link';
 import { CreditCard } from 'lucide-react';
 import { LibraryGuideTemplate, LibraryCodeBlock } from '@/components/library';
 

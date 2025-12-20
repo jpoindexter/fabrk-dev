@@ -2,9 +2,18 @@
 /**
  * update-markdown-counts.mjs
  *
- * Automatically updates component and theme counts in markdown documentation files.
- * Reads counts from source of truth (component-counts.json, themes.ts) and updates
+ * Automatically updates ALL dynamic counts in markdown documentation files.
+ * Reads counts from source of truth (actual files/directories) and updates
  * markdown files to prevent drift between code and documentation.
+ *
+ * COUNTS TRACKED:
+ * - UI Components (src/components/ui)
+ * - Themes (src/data/themes.ts)
+ * - Templates (src/app/(marketing)/library)
+ * - API Routes (src/app/api)
+ * - Test Files (src test files)
+ * - i18n Languages (src/config/i18n.ts)
+ * - Docs Pages (docs folder)
  *
  * Run manually: npm run update-markdown-counts
  * Runs automatically: prebuild hook (before every build)
@@ -13,22 +22,23 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { glob } from 'glob';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..');
 
 // =============================================================================
-// SOURCE OF TRUTH - Read dynamic counts
+// SOURCE OF TRUTH - Count from actual files
 // =============================================================================
 
-function getComponentCount() {
-  const countsPath = path.join(ROOT, 'src/data/component-counts.json');
+async function getComponentCount() {
   try {
-    const data = JSON.parse(fs.readFileSync(countsPath, 'utf8'));
-    return data.uiComponentCount;
+    // Include subdirectories (data-table/, file-upload/, etc.)
+    const files = await glob('src/components/ui/**/*.tsx', { cwd: ROOT });
+    return files.length;
   } catch (error) {
-    console.error('❌ Could not read component-counts.json:', error.message);
+    console.error('❌ Could not count UI components:', error.message);
     return 77; // Fallback
   }
 }
@@ -46,23 +56,108 @@ function getThemeCount() {
   }
 }
 
-function getTemplateCount() {
-  // Templates are counted from library-nav-data.ts
-  const navPath = path.join(ROOT, 'src/app/(marketing)/library/library-nav-data.ts');
+async function getTemplateCount() {
   try {
-    const content = fs.readFileSync(navPath, 'utf8');
-    // Look for TEMPLATE_COUNT_STRING export
-    const match = content.match(/TEMPLATE_COUNT_STRING\s*=\s*['"](\d+)\+?['"]/);
-    if (match) {
-      return parseInt(match[1], 10);
-    }
-    // Fallback: count items array
-    const itemMatches = content.match(/{\s*title:/g);
-    return itemMatches ? itemMatches.length : 34;
+    // Count actual template pages in library
+    const files = await glob('src/app/(marketing)/library/**/page.tsx', { cwd: ROOT });
+    // Subtract 1 for the main library index page
+    return Math.max(files.length - 1, 0);
   } catch (error) {
-    console.error('❌ Could not read library-nav-data.ts:', error.message);
-    return 34; // Fallback
+    console.error('❌ Could not count templates:', error.message);
+    return 50; // Fallback
   }
+}
+
+async function getApiRouteCount() {
+  try {
+    const files = await glob('src/app/api/**/route.ts', { cwd: ROOT });
+    return files.length;
+  } catch (error) {
+    console.error('❌ Could not count API routes:', error.message);
+    return 70; // Fallback
+  }
+}
+
+async function getTestFileCount() {
+  try {
+    const tsFiles = await glob('src/**/*.test.ts', { cwd: ROOT });
+    const tsxFiles = await glob('src/**/*.test.tsx', { cwd: ROOT });
+    return tsFiles.length + tsxFiles.length;
+  } catch (error) {
+    console.error('❌ Could not count test files:', error.message);
+    return 20; // Fallback
+  }
+}
+
+function getLanguageCount() {
+  const i18nPath = path.join(ROOT, 'src/config/i18n.ts');
+  try {
+    const content = fs.readFileSync(i18nPath, 'utf8');
+    // Count locales in the array
+    const match = content.match(/locales\s*=\s*\[([^\]]+)\]/);
+    if (match) {
+      const locales = match[1].split(',').filter(l => l.trim().length > 0);
+      return locales.length;
+    }
+    return 6; // Fallback
+  } catch (error) {
+    console.error('❌ Could not read i18n.ts:', error.message);
+    return 6; // Fallback
+  }
+}
+
+async function getDocsPageCount() {
+  try {
+    const files = await glob('docs/**/*.md', { cwd: ROOT });
+    return files.length;
+  } catch (error) {
+    console.error('❌ Could not count docs pages:', error.message);
+    return 100; // Fallback
+  }
+}
+
+async function getLiveDocsPageCount() {
+  try {
+    const files = await glob('src/app/(marketing)/docs/**/page.tsx', { cwd: ROOT });
+    return files.length;
+  } catch (error) {
+    console.error('❌ Could not count live docs pages:', error.message);
+    return 100; // Fallback
+  }
+}
+
+// =============================================================================
+// SAVE COUNTS TO JSON (for use in TypeScript)
+// =============================================================================
+
+async function saveCountsToJson(counts) {
+  const countsPath = path.join(ROOT, 'src/data/dynamic-counts.json');
+  const data = {
+    generatedAt: new Date().toISOString(),
+    counts: {
+      uiComponents: counts.components,
+      themes: counts.themes,
+      templates: counts.templates,
+      apiRoutes: counts.apiRoutes,
+      testFiles: counts.testFiles,
+      languages: counts.languages,
+      docsPages: counts.docsPages,
+      liveDocsPages: counts.liveDocsPages,
+    },
+    // String versions for marketing copy (with + suffix)
+    strings: {
+      components: `${counts.components}+`,
+      themes: `${counts.themes}`,
+      templates: `${counts.templates}+`,
+      apiRoutes: `${counts.apiRoutes}+`,
+      testFiles: `${counts.testFiles}+`,
+      languages: `${counts.languages}`,
+      docsPages: `${counts.docsPages}+`,
+    }
+  };
+
+  fs.writeFileSync(countsPath, JSON.stringify(data, null, 2), 'utf8');
+  console.log(`💾 Saved counts to src/data/dynamic-counts.json`);
 }
 
 // =============================================================================
@@ -76,78 +171,165 @@ const MARKDOWN_FILES = [
   // Getting started
   'docs/01-getting-started/README.md',
   'docs/01-getting-started/DOCUMENTATION_INDEX.md',
+  'docs/01-getting-started/QUICK-START.md',
   // Components
+  'docs/02-components/README.md',
   'docs/02-components/COMPONENTS-INVENTORY.md',
+  // Features
+  'docs/06-features/README.md',
+  'docs/06-features/FEATURES-INVENTORY.md',
+  'docs/06-features/I18N-IMPLEMENTATION.md',
   // Design
   'docs/08-design/TERMINAL-FLAT-DESIGN-SPEC.md',
   'docs/08-design/COMPONENT-AUTHORING.md',
   'docs/08-design/CUSTOMIZATION-GUIDE.md',
   'docs/08-design/TOKEN-REFERENCE.md',
   'docs/08-design/THEME-GUIDE.md',
+  'docs/08-design/DESIGN_SYSTEM.md',
   // Launch
-  'docs/09-launch/LAUNCH-PREPARATION-SUMMARY.md',
-  'docs/09-launch/COMMUNITY-BUILDING-STRATEGY.md',
+  'docs/09-launch/README.md',
+  'docs/09-launch/LAUNCH-CHECKLIST.md',
+  'docs/09-launch/LAUNCH_READY.md',
   // Deployment
+  'docs/10-deployment/DEPLOYMENT.md',
   'docs/10-deployment/PRODUCT-HUNT-LAUNCH.md',
   'docs/10-deployment/NPM-PACKAGE-GUIDE.md',
+  'docs/10-deployment/DEMO-VIDEO-GUIDE.md',
+  // Development
+  'docs/04-development/README.md',
+  'docs/04-development/API_DOCUMENTATION.md',
+  'docs/04-development/TESTING-GUIDE.md',
 ];
 
 // =============================================================================
 // REPLACEMENT PATTERNS
 // =============================================================================
 
-function getReplacements(componentCount, themeCount, templateCount) {
+function getReplacements(counts) {
+  const { components, themes, templates, apiRoutes, testFiles, languages } = counts;
+
   return [
-    // Component counts - various formats
+    // =========================================================================
+    // COMPONENT COUNTS
+    // =========================================================================
     {
       // "87 Components" or "77 Components" → correct count
       pattern: /\b\d{2,3}\s+Components\b/gi,
-      replacement: `${componentCount} Components`,
+      replacement: `${components} Components`,
     },
     {
       // "77+ components" or "87+ components" → correct count
       pattern: /\b\d{2,3}\+?\s+components\b/gi,
-      replacement: `${componentCount}+ components`,
+      replacement: `${components}+ components`,
     },
     {
       // **87 Components** or **77 Components** → correct count (bold)
       pattern: /\*\*\d{2,3}\s+Components\*\*/gi,
-      replacement: `**${componentCount} Components**`,
+      replacement: `**${components} Components**`,
     },
     {
       // Component Inventory (77 Components) → correct count
       pattern: /Component Inventory \(\d{2,3} Components\)/gi,
-      replacement: `Component Inventory (${componentCount} Components)`,
+      replacement: `Component Inventory (${components} Components)`,
+    },
+    {
+      // "all 77 UI components" → correct count
+      pattern: /all\s+\d{2,3}\s+UI\s+components/gi,
+      replacement: `all ${components} UI components`,
     },
 
-    // Theme counts - various formats
+    // =========================================================================
+    // THEME COUNTS
+    // =========================================================================
     {
       // "6 Themes" or "12 Themes" → correct count
-      pattern: /\b(6|12|13)\s+Themes\b/g,
-      replacement: `${themeCount} Themes`,
+      pattern: /\b(6|12|13|14)\s+Themes\b/g,
+      replacement: `${themes} Themes`,
     },
     {
       // "(12 themes)" → correct count
       pattern: /\((\d{1,2})\s+themes\)/gi,
-      replacement: `(${themeCount} themes)`,
+      replacement: `(${themes} themes)`,
     },
     {
       // "all 12 themes" or "all 6 themes" → correct count
       pattern: /all\s+\d{1,2}\s+themes/gi,
-      replacement: `all ${themeCount} themes`,
+      replacement: `all ${themes} themes`,
+    },
+    {
+      // "12 terminal themes" → correct count
+      pattern: /\b\d{1,2}\s+terminal\s+themes/gi,
+      replacement: `${themes} terminal themes`,
     },
 
-    // Template counts
+    // =========================================================================
+    // TEMPLATE COUNTS
+    // =========================================================================
     {
-      // "28 Templates" or "33 Templates" or "34 Templates" → correct count
+      // "28 Templates" or "34 Templates" or "50 Templates" → correct count
       pattern: /\b\d{2}\s+Templates\b/g,
-      replacement: `${templateCount} Templates`,
+      replacement: `${templates} Templates`,
+    },
+    {
+      // "34+ Templates" or "50+ Templates" → correct count
+      pattern: /\b\d{2}\+\s+Templates\b/g,
+      replacement: `${templates}+ Templates`,
+    },
+    {
+      // "34+ page templates" → correct count
+      pattern: /\b\d{2}\+?\s+page\s+templates/gi,
+      replacement: `${templates}+ page templates`,
     },
 
-    // Stats line in docs (| 77 Components | 33 Templates | 12 Themes |)
+    // =========================================================================
+    // API ROUTE COUNTS
+    // =========================================================================
     {
-      pattern: /\|\s*\d{2,3}\s+Components\s*\|\s*\d{2}\s+Templates\s*\|\s*\d{1,2}\s+Themes\s*\|/g,
-      replacement: `| ${componentCount} Components | ${templateCount} Templates | ${themeCount} Themes |`,
+      // "30+ endpoints" or "70+ endpoints" → correct count
+      pattern: /\b\d{2,3}\+?\s+endpoints/gi,
+      replacement: `${apiRoutes}+ endpoints`,
+    },
+    {
+      // "72 API routes" → correct count
+      pattern: /\b\d{2,3}\s+API\s+routes/gi,
+      replacement: `${apiRoutes} API routes`,
+    },
+
+    // =========================================================================
+    // TEST FILE COUNTS
+    // =========================================================================
+    {
+      // "20+ test files" → correct count
+      pattern: /\b\d{2,3}\+?\s+test\s+files/gi,
+      replacement: `${testFiles}+ test files`,
+    },
+
+    // =========================================================================
+    // LANGUAGE COUNTS
+    // =========================================================================
+    {
+      // "5 languages" or "6 languages" → correct count
+      pattern: /\b[4-9]\s+languages/gi,
+      replacement: `${languages} languages`,
+    },
+    {
+      // "18 languages" (legacy) → correct count
+      pattern: /\b18\s+languages/gi,
+      replacement: `${languages} languages`,
+    },
+
+    // =========================================================================
+    // COMBINED STATS LINES
+    // =========================================================================
+    {
+      // | 77 Components | 33 Templates | 12 Themes |
+      pattern: /\|\s*\d{2,3}\s+Components\s*\|\s*\d{2}\+?\s+Templates\s*\|\s*\d{1,2}\s+Themes\s*\|/g,
+      replacement: `| ${components} Components | ${templates}+ Templates | ${themes} Themes |`,
+    },
+    {
+      // $299 | 77 UI Components | 34+ Templates | 12 Terminal Themes
+      pattern: /\$299\s*\|\s*\d{2,3}\s+UI\s+Components\s*\|\s*\d{2}\+?\s+Templates\s*\|\s*\d{1,2}\s+Terminal\s+Themes/gi,
+      replacement: `$299 | ${components} UI Components | ${templates}+ Templates | ${themes} Terminal Themes`,
     },
   ];
 }
@@ -189,20 +371,38 @@ function updateMarkdownFile(filePath, replacements) {
 // EXECUTE
 // =============================================================================
 
-function main() {
+async function main() {
   console.log('\n🔢 Updating markdown documentation counts...\n');
+  console.log('📊 Counting from source files...\n');
 
-  const componentCount = getComponentCount();
-  const themeCount = getThemeCount();
-  const templateCount = getTemplateCount();
+  // Count everything from source files
+  const counts = {
+    components: await getComponentCount(),
+    themes: getThemeCount(),
+    templates: await getTemplateCount(),
+    apiRoutes: await getApiRouteCount(),
+    testFiles: await getTestFileCount(),
+    languages: getLanguageCount(),
+    docsPages: await getDocsPageCount(),
+    liveDocsPages: await getLiveDocsPageCount(),
+  };
 
-  console.log(`📊 Source of truth:`);
-  console.log(`   - Components: ${componentCount}`);
-  console.log(`   - Themes: ${themeCount}`);
-  console.log(`   - Templates: ${templateCount}`);
+  console.log(`📊 Dynamic counts (from source files):`);
+  console.log(`   ├── UI Components:    ${counts.components}`);
+  console.log(`   ├── Themes:           ${counts.themes}`);
+  console.log(`   ├── Templates:        ${counts.templates}`);
+  console.log(`   ├── API Routes:       ${counts.apiRoutes}`);
+  console.log(`   ├── Test Files:       ${counts.testFiles}`);
+  console.log(`   ├── Languages (i18n): ${counts.languages}`);
+  console.log(`   ├── Docs Pages (MD):  ${counts.docsPages}`);
+  console.log(`   └── Docs Pages (TSX): ${counts.liveDocsPages}`);
   console.log('');
 
-  const replacements = getReplacements(componentCount, themeCount, templateCount);
+  // Save counts to JSON for TypeScript usage
+  await saveCountsToJson(counts);
+
+  // Get replacement patterns
+  const replacements = getReplacements(counts);
 
   let totalUpdated = 0;
   let totalChanges = 0;
@@ -220,4 +420,4 @@ function main() {
   console.log('');
 }
 
-main();
+main().catch(console.error);

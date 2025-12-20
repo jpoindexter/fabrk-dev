@@ -4,7 +4,6 @@
  * Complete guide for adding authentication to library templates
  * Uses LibraryGuideTemplate for consistent structure
  */
-import Link from 'next/link';
 import { Lock } from 'lucide-react';
 import { LibraryGuideTemplate, LibraryCodeBlock } from '@/components/library';
 

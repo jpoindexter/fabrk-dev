@@ -1,8 +1,19 @@
 # Fabrk Premium - Documentation Index
 
-**Fabrk Premium:** $299 | 77+ components | 50 Templates | 12 Themes
+**Fabrk Premium:** $299 | 77 UI Components | 48+ Templates | 12 Terminal Themes
 
 Complete index of all documentation organized into numbered sections for easy navigation.
+
+**Last Updated:** 2025-12-20
+
+## Quick Start
+
+```bash
+npm install --legacy-peer-deps
+npm run setup    # Interactive setup wizard
+```
+
+The setup wizard configures everything: database, payments, email, themes, and copies a landing page template.
 
 ## Documentation Structure
 
@@ -10,25 +21,25 @@ All documentation is organized into numbered folders:
 
 ```
 docs/
-├── 01-getting-started/      # Quick start, troubleshooting, setup
-├── 02-components/           # Component library, charts, landing pages
+├── 01-getting-started/      # Quick start, troubleshooting, setup wizard
+├── 02-components/           # 77 UI components, charts, landing pages
 ├── 03-guides/               # Feature guides, integrations
 ├── 04-development/          # API docs, testing, browser automation
 ├── 06-features/             # Feature inventory, i18n, accessibility
 ├── 07-advanced/             # Performance, security, backup & recovery
-├── 08-design/               # Design system, themes, tokens
+├── 08-design/               # Design system, 12 themes, tokens
 ├── 09-launch/               # Launch checklist, release notes
 └── 10-deployment/           # Deployment guides, analytics, monitoring
 ```
 
 ---
 
-## 🚀 Quick Start Paths
+## Quick Start Paths
 
 ### New Developer
-1. [01-getting-started/QUICK-START.md](./01-getting-started/QUICK-START.md) - Setup in 5 minutes
-2. [01-getting-started/README.md](./01-getting-started/README.md) - Project overview
-3. [02-components/COMPONENTS-INVENTORY.md](./02-components/COMPONENTS-INVENTORY.md) - See all 77+ components
+1. **Run `npm run setup`** - Interactive wizard configures everything
+2. [QUICK-START.md](./QUICK-START.md) - Detailed setup options
+3. [COMPONENTS-INVENTORY.md](../02-components/COMPONENTS-INVENTORY.md) - See all 77+ components
 
 ### Preparing for Launch
 1. [09-launch/LAUNCH-CHECKLIST.md](../09-launch/LAUNCH_CHECKLIST.md) - Pre-launch checklist
@@ -173,31 +184,35 @@ docs/
 
 ---
 
-## 📊 Project Statistics
+## Project Statistics
 
 ### Components & Templates
-- **77+ components** - Production-ready UI library
-- **50+ templates** - Copy-paste layouts
-- **12 themes** - OKLCH terminal variations
+- **77 UI components** - Production-ready library
+- **5 landing page templates** - Setup wizard starter pages
+- **48+ page templates** - Copy-paste layouts in `/library`
+- **12 terminal themes** - OKLCH color schemes
 
-### Testing & Quality
-- **44 test files** - Complete coverage
-- **17,822 lines** of test code
-- **100% coverage** - Every component tested
-- **Lighthouse 90+** - Performance verified
+### Setup Wizard
+- **5 templates** - STARTER, SAAS, AI APP, MARKETPLACE, CUSTOM
+- **Auto-configuration** - Database, payments, email, analytics, AI
+- **Landing page copy** - Matching template for your app type
+- **Post-setup commands** - Prisma generate, db:push, npm run dev
 
 ### Documentation
-- **77 markdown files** - Comprehensive guides
+- **150+ markdown files** - Comprehensive guides
 - **10 numbered sections** - Organized structure
 - **TypeScript API docs** - Full type coverage
 - **Live component showcase** - Interactive demos at /components
 
 ---
 
-## 🛠️ Development Commands
+## Development Commands
 
 ### Quick Reference
 ```bash
+# Setup (NEW - Interactive Wizard)
+npm run setup            # Configure everything interactively
+
 # Development
 npm run dev              # Start dev server
 npm run build            # Build for production
@@ -210,9 +225,10 @@ npm run db:studio        # Open Prisma Studio
 npm run test             # Run unit tests
 npm run test:e2e         # Run E2E tests
 
-# Documentation
-npm run dev              # View /components showcase
-npm run docs:api         # Generate API docs
+# Validation
+npm run validate:themes    # Validate theme tokens
+npm run validate:webhooks  # Validate webhook endpoints
+npm run validate:templates # Validate template inventory
 
 # Code Quality
 npm run lint             # ESLint
@@ -266,8 +282,7 @@ npm run type-check       # TypeScript validation
 
 ---
 
-**Last Updated:** November 14, 2025
-**Documentation Files:** 77 markdown files
-**Total Size:** 10+ MB
-**Organization:** 7 numbered sections
-**Status:** ✅ Production ready
+**Last Updated:** 2025-12-20
+**Documentation Files:** 150+ markdown files
+**Organization:** 10 numbered sections
+**Status:** Production ready

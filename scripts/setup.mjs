@@ -16,6 +16,23 @@ import { existsSync } from 'node:fs';
 
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run') || args.includes('-n');
+const TEST_MODE = args.includes('--test') || args.includes('-t');
+
+// Test data for automated testing
+const TEST_VALUES = {
+  DATABASE_URL: 'postgresql://test:test@localhost:5432/testdb',
+  STRIPE_SECRET_KEY: 'sk_test_fake123',
+  STRIPE_WEBHOOK_SECRET: 'whsec_fake123',
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: 'pk_test_fake123',
+  RESEND_API_KEY: 're_fake123',
+  NEXT_PUBLIC_POSTHOG_KEY: 'phc_fake123',
+  OPENAI_API_KEY: 'sk-fake123',
+  ALGOLIA_APP_ID: 'FAKE123',
+  ALGOLIA_API_KEY: 'fake123',
+  R2_ACCESS_KEY_ID: 'fake123',
+  R2_SECRET_ACCESS_KEY: 'fake123',
+  R2_BUCKET: 'test-bucket',
+};
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = join(__dirname, '..');
@@ -44,7 +61,7 @@ const showCursor = () => stdout.write('\x1b[?25h');
 // ============================================================================
 
 const TEMPLATES = [
-  { name: 'STARTER', file: 'starter.json', time: '30 sec', keys: 0, desc: 'SQLite + NextAuth', detail: 'demos, prototypes' },
+  { name: 'STARTER', file: 'starter.json', time: '1-2 min', keys: 1, desc: 'PostgreSQL + NextAuth', detail: 'demos, prototypes' },
   { name: 'SAAS', file: 'saas.json', time: '4-5 min', keys: 3, desc: 'PostgreSQL + Stripe + Resend', detail: 'subscription apps', recommended: true },
   { name: 'AI APP', file: 'ai-app.json', time: '5-6 min', keys: 4, desc: 'SaaS + OpenAI', detail: 'AI wrappers, chat' },
   { name: 'MARKETPLACE', file: 'marketplace.json', time: '6-7 min', keys: 5, desc: 'SaaS + Algolia + S3', detail: 'platforms' },
@@ -58,14 +75,17 @@ const MARKETPLACE_STYLES = [
 ];
 
 const STARTER_PAGES = {
+  starter: { source: 'starter.tsx', name: 'Starter Landing' },
   saas: { source: 'saas.tsx', name: 'SaaS Landing' },
   'ai-app': { source: 'ai-app.tsx', name: 'AI App Landing' },
+  marketplace: { source: 'marketplace.tsx', name: 'Marketplace Landing' },
+  custom: { source: 'starter.tsx', name: 'Starter Landing' }, // Same as starter - generic starting point
 };
 
 const API_KEY_INFO = {
   // Database
-  DATABASE_URL: { format: 'postgresql://user:pass@host:5432/db', where: 'supabase.com / neon.tech / vercel.com/storage' },
-  MONGODB_URI: { format: 'mongodb+srv://...', where: 'cloud.mongodb.com' },
+  DATABASE_URL: { format: 'postgresql://user:pass@host:5432/db', where: 'supabase.com / neon.tech / vercel.com/storage', placeholder: 'postgresql://USER:PASSWORD@HOST:5432/DATABASE' },
+  MONGODB_URI: { format: 'mongodb+srv://...', where: 'cloud.mongodb.com', placeholder: 'mongodb+srv://USER:PASSWORD@cluster.mongodb.net/DATABASE' },
 
   // Payments
   STRIPE_SECRET_KEY: { format: 'sk_test_...', where: 'dashboard.stripe.com/apikeys' },
@@ -246,8 +266,10 @@ const FEATURE_CATEGORIES = [
 // Template configurations - which categories each template uses and defaults
 const TEMPLATE_CONFIGS = {
   starter: {
-    categories: [], // No category selection, just basic setup
-    defaults: {},
+    categories: ['DATABASE'], // Only database needed
+    defaults: {
+      DATABASE: 'postgres',
+    },
   },
   saas: {
     categories: ['DATABASE', 'PAYMENTS', 'EMAIL', 'NEWSLETTER', 'ANALYTICS', 'SEARCH', 'STORAGE'],
@@ -557,58 +579,88 @@ function renderCategoryKeyEntry(categoryName) {
 
 function renderReviewTab() {
   const lines = [''];
-
-  // Show all selections grouped by category
   const config = TEMPLATE_CONFIGS[state.templateKey] || TEMPLATE_CONFIGS.custom;
+  const templateName = TEMPLATES.find((t) => t.name.toLowerCase().replace(' ', '-') === state.templateKey)?.name || state.templateKey;
+
+  // Template header
+  lines.push(`${c.amberBright}${templateName.toUpperCase()}${c.reset} ${c.amberDim}template${c.reset}`);
+  lines.push('');
+
+  // Features section
+  lines.push(`${c.amber}FEATURES${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+
+  let keysConfigured = 0;
+  let keysTotal = 0;
+  const enabledFeatures = [];
+
+  config.categories.forEach((catName) => {
+    const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+    if (!cat) return;
+
+    const sel = state.customSelections[catName];
+    const opt = cat.options.find((o) => o.id === sel);
+
+    if (opt && !opt.id.startsWith('none')) {
+      const configured = opt.keys.filter((k) => state.apiKeyValues[k]).length;
+      keysTotal += opt.keys.length;
+      keysConfigured += configured;
+      enabledFeatures.push({ cat: catName, opt, configured });
+
+      const status = opt.keys.length === 0
+        ? `${c.amberBright}✓${c.reset}`
+        : configured === opt.keys.length
+          ? `${c.amberBright}✓${c.reset}`
+          : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
+
+      lines.push(`  ${status}  ${c.amber}${catName}:${c.reset} ${c.amberBright}${opt.name}${c.reset}`);
+    } else {
+      lines.push(`  ${c.amberDim}○  ${catName}: Skip${c.reset}`);
+    }
+  });
 
   if (config.categories.length === 0) {
-    // Starter template
-    lines.push(`${c.amberBright}STARTER${c.reset} ${c.amberDim}template${c.reset}`);
-    lines.push('');
-    lines.push(`${c.amberDim}SQLite database + NextAuth${c.reset}`);
-    lines.push(`${c.amberDim}No additional API keys needed.${c.reset}`);
-  } else {
-    lines.push(`${c.amberBright}Configuration Summary${c.reset}`);
-    lines.push('');
+    lines.push(`  ${c.amberDim}No optional features${c.reset}`);
+  }
 
-    let keysConfigured = 0;
-    let keysTotal = 0;
+  // Files section
+  lines.push('');
+  lines.push(`${c.amber}WILL CREATE${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+  lines.push(`  ${c.amberBright}✓${c.reset} .env.local`);
+  if (state.wantsStarterPage) {
+    lines.push(`  ${c.amberBright}✓${c.reset} src/app/(marketing)/page.tsx`);
+    lines.push(`  ${c.amberBright}✓${c.reset} FABRK-PROMPTS.md`);
+  }
 
-    config.categories.forEach((catName) => {
-      const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
-      if (!cat) return;
+  // Environment variables preview
+  lines.push('');
+  lines.push(`${c.amber}ENV VARIABLES${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+  lines.push(`  ${c.amberDim}NEXTAUTH_SECRET${c.reset}    ${c.amber}[auto-generated]${c.reset}`);
+  lines.push(`  ${c.amberDim}NEXTAUTH_URL${c.reset}       ${c.amber}http://localhost:3000${c.reset}`);
+  lines.push(`  ${c.amberDim}NODE_ENV${c.reset}           ${c.amber}development${c.reset}`);
 
-      const sel = state.customSelections[catName];
-      const opt = cat.options.find((o) => o.id === sel);
-
-      if (opt && !opt.id.startsWith('none')) {
-        const configured = opt.keys.filter((k) => state.apiKeyValues[k]).length;
-        keysTotal += opt.keys.length;
-        keysConfigured += configured;
-
-        const status = opt.keys.length === 0
-          ? `${c.amberBright}✓${c.reset}`
-          : configured === opt.keys.length
-            ? `${c.amberBright}✓${c.reset}`
-            : `${c.amber}${configured}/${opt.keys.length}${c.reset}`;
-
-        lines.push(`  ${status}  ${c.amber}${catName}:${c.reset} ${c.amberBright}${opt.name}${c.reset}`);
+  // Show configured API keys
+  enabledFeatures.forEach(({ opt }) => {
+    opt.keys.forEach((key) => {
+      const value = state.apiKeyValues[key];
+      if (value) {
+        const masked = value.length > 12 ? value.slice(0, 8) + '...' + value.slice(-4) : '***';
+        lines.push(`  ${c.amberDim}${key}${c.reset}`);
+        lines.push(`      ${c.amberBright}${masked}${c.reset}`);
       } else {
-        lines.push(`  ${c.amberDim}○  ${catName}: None${c.reset}`);
+        lines.push(`  ${c.amberDim}${key}${c.reset}  ${c.amber}[skipped]${c.reset}`);
       }
     });
+  });
 
-    lines.push('');
-    lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
-    lines.push('');
-
-    if (keysTotal > 0) {
-      const pct = Math.round((keysConfigured / keysTotal) * 100);
-      lines.push(`${c.amberDim}API Keys:${c.reset} ${keysConfigured}/${keysTotal} configured (${pct}%)`);
-    } else {
-      lines.push(`${c.amberDim}No API keys needed for your selection.${c.reset}`);
-    }
-  }
+  // Next steps
+  lines.push('');
+  lines.push(`${c.amber}AFTER SETUP${c.reset}`);
+  lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+  lines.push(`  ${c.amberBright}1.${c.reset} npm run db:push`);
+  lines.push(`  ${c.amberBright}2.${c.reset} npm run dev`);
 
   lines.push('');
   lines.push(`${c.amberDim}Press Enter to continue${c.reset}`);
@@ -719,16 +771,50 @@ function generateSecret() {
 }
 
 async function buildEnvContent(template, values = {}) {
-  const lines = ['# Generated by Fabrk Setup Wizard', `# Template: ${template.name}`, ''];
+  const lines = [
+    '# Generated by Fabrk Setup Wizard',
+    `# Template: ${template.name}`,
+    '#',
+    '# IMPORTANT: Replace any placeholder values before running npm run db:push',
+    '# Get a free PostgreSQL database at: neon.tech or supabase.com',
+    '',
+  ];
+
+  const skippedKeys = [];
+
   for (const [key, val] of Object.entries(template.env)) {
     if (val === '{{AUTO_GENERATE}}') {
       lines.push(`${key}="${generateSecret()}"`);
     } else if (typeof val === 'string' && val.startsWith('{{PROMPT:')) {
-      lines.push(`${key}="${values[key] || ''}"`);
+      const userValue = values[key];
+      if (userValue) {
+        lines.push(`${key}="${userValue}"`);
+      } else {
+        // Use placeholder if available, otherwise empty
+        const info = API_KEY_INFO[key];
+        const placeholder = info?.placeholder || '';
+        if (placeholder) {
+          lines.push(`# TODO: Replace with your actual ${key}`);
+          lines.push(`${key}="${placeholder}"`);
+          skippedKeys.push(key);
+        } else {
+          lines.push(`${key}=""`);
+        }
+      }
     } else {
       lines.push(`${key}="${val}"`);
     }
   }
+
+  if (skippedKeys.length > 0) {
+    lines.push('');
+    lines.push('# ⚠️  SKIPPED KEYS - You must set these before running db:push:');
+    skippedKeys.forEach((key) => {
+      const info = API_KEY_INFO[key];
+      lines.push(`#   ${key} - Get from: ${info?.where || 'your provider'}`);
+    });
+  }
+
   return lines.join('\n') + '\n';
 }
 
@@ -736,10 +822,16 @@ async function copyStarterPage(templateKey, marketplaceStyle = null) {
   const templatesDir = join(__dirname, 'page-templates');
   let sourceFile;
 
+  // Check for marketplace style variants first
   if (templateKey === 'marketplace' && marketplaceStyle) {
     const style = MARKETPLACE_STYLES.find((s) => s.value === marketplaceStyle);
-    sourceFile = style?.source;
-  } else if (STARTER_PAGES[templateKey]) {
+    if (style?.source) {
+      sourceFile = style.source;
+    }
+  }
+
+  // Fall back to standard template pages
+  if (!sourceFile && STARTER_PAGES[templateKey]) {
     sourceFile = STARTER_PAGES[templateKey].source;
   }
 
@@ -760,18 +852,51 @@ async function copyStarterPage(templateKey, marketplaceStyle = null) {
 async function generatePromptsFile() {
   const content = `# FABRK-PROMPTS.md
 
-Paste into Cursor, Claude Code, or Windsurf:
+Copy-paste these prompts into Cursor, Claude Code, or Windsurf.
 
-## Update Content
+## QUICK START - Update Your Landing Page
 \`\`\`
-Update src/app/(marketing)/page.tsx with your app name, tagline, and 3 features.
-Keep terminal aesthetic (font-mono, rounded-none).
+Update src/app/(marketing)/page.tsx:
+1. Replace placeholder text with my app name and tagline
+2. Update the 3-6 features to match what my product does
+3. Keep the terminal aesthetic (font-mono, rounded-none, uppercase headings)
+4. Remove the [SETUP] instruction banner at the top when done
 \`\`\`
 
-## Add Pricing
+## ADD PRICING PAGE
 \`\`\`
-Create src/app/(marketing)/pricing/page.tsx with 3 tiers.
+Create src/app/(marketing)/pricing/page.tsx with 3 tiers (Free, Pro, Enterprise).
+Match the terminal style from the landing page.
+Include a FAQ section at the bottom.
 \`\`\`
+
+## ADD ABOUT PAGE
+\`\`\`
+Create src/app/(marketing)/about/page.tsx with:
+- Brief company/founder story
+- Mission statement
+- Team section (if applicable)
+Keep terminal aesthetic consistent.
+\`\`\`
+
+## ADD BLOG
+\`\`\`
+Create a blog at src/app/(marketing)/blog/ with:
+- List page showing all posts
+- Individual post pages from MDX files
+- Categories and tags support
+\`\`\`
+
+## CUSTOMIZE THEME
+\`\`\`
+Update src/app/globals.css to change the color scheme.
+Look for the :root section and modify the CSS variables.
+Available themes: red, blue, green, amber, purple (see theme switcher).
+\`\`\`
+
+---
+Generated by Fabrk Setup Wizard
+Delete this file after you've customized your site.
 `;
   await writeFile(join(ROOT_DIR, 'FABRK-PROMPTS.md'), content, 'utf-8');
 }
@@ -806,14 +931,116 @@ async function finalize() {
     // Write .env.local
     await writeFile(join(ROOT_DIR, '.env.local'), envContent, 'utf-8');
 
-    // Copy starter page if requested
-    if (state.wantsStarterPage && ['saas', 'ai-app', 'marketplace'].includes(state.templateKey)) {
+    // Copy starter page if requested and available
+    state.landingPageCopied = false;
+    if (state.wantsStarterPage && STARTER_PAGES[state.templateKey]) {
       const copied = await copyStarterPage(state.templateKey, state.marketplaceStyle);
       if (copied) {
+        state.landingPageCopied = true;
         await generatePromptsFile();
       }
     }
+
+    // Run post-setup commands
+    await runPostSetup();
   }
+}
+
+async function runPostSetup() {
+  // Check if DATABASE_URL has a real value (not a placeholder)
+  const envPath = join(ROOT_DIR, '.env.local');
+  const envContent = await readFile(envPath, 'utf-8');
+  const hasValidDb = envContent.includes('DATABASE_URL=') &&
+    !envContent.includes('DATABASE_URL="postgresql://USER:PASSWORD');
+
+  state.postSetupResults = [];
+
+  // Show cursor for command output
+  showCursor();
+  if (stdin.isTTY) stdin.setRawMode(false);
+
+  clear();
+  console.log(`${c.amber}`);
+  console.log(`  ███████╗ █████╗ ██████╗ ██████╗ ██╗  ██╗`);
+  console.log(`  ██╔════╝██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝`);
+  console.log(`  █████╗  ███████║██████╔╝██████╔╝█████╔╝   ${c.amberBright}RUNNING SETUP${c.amber}`);
+  console.log(`  ██╔══╝  ██╔══██║██╔══██╗██╔══██╗██╔═██╗`);
+  console.log(`  ██║     ██║  ██║██████╔╝██║  ██║██║  ██╗`);
+  console.log(`  ╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝`);
+  console.log(`${c.reset}`);
+  console.log('');
+
+  // Always run prisma generate first
+  console.log(`${c.amber}[1/3]${c.reset} ${c.amberBright}Generating Prisma client...${c.reset}`);
+  try {
+    execSync('npx prisma generate', { cwd: ROOT_DIR, stdio: 'inherit' });
+    state.postSetupResults.push({ cmd: 'prisma generate', status: 'success' });
+    console.log(`${c.amberBright}✓${c.reset} Prisma client generated`);
+  } catch (error) {
+    state.postSetupResults.push({ cmd: 'prisma generate', status: 'failed', error: error.message });
+    console.log(`${c.amber}✗${c.reset} Prisma generate failed`);
+  }
+  console.log('');
+
+  // Run db:push if we have a valid database URL
+  if (hasValidDb) {
+    console.log(`${c.amber}[2/3]${c.reset} ${c.amberBright}Pushing database schema...${c.reset}`);
+    try {
+      execSync('npm run db:push', { cwd: ROOT_DIR, stdio: 'inherit' });
+      state.postSetupResults.push({ cmd: 'db:push', status: 'success' });
+      console.log(`${c.amberBright}✓${c.reset} Database schema pushed`);
+    } catch (error) {
+      state.postSetupResults.push({ cmd: 'db:push', status: 'failed', error: error.message });
+      console.log(`${c.amber}✗${c.reset} Database push failed - check your DATABASE_URL`);
+    }
+  } else {
+    console.log(`${c.amber}[2/3]${c.reset} ${c.amberDim}Skipping db:push - DATABASE_URL not configured${c.reset}`);
+    state.postSetupResults.push({ cmd: 'db:push', status: 'skipped', reason: 'DATABASE_URL not configured' });
+  }
+  console.log('');
+
+  // Start dev server
+  console.log(`${c.amber}[3/3]${c.reset} ${c.amberBright}Starting development server...${c.reset}`);
+  console.log('');
+
+  // Open browser after a short delay
+  setTimeout(() => {
+    const openCmd = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'start' : 'xdg-open';
+    try {
+      execSync(`${openCmd} http://localhost:3000`, { stdio: 'ignore' });
+    } catch {
+      // Browser open failed, that's ok
+    }
+  }, 3000);
+
+  console.log(`${c.amberBright}╔══════════════════════════════════════════════════════════════════════╗${c.reset}`);
+  console.log(`${c.amberBright}║                         SETUP COMPLETE                               ║${c.reset}`);
+  console.log(`${c.amberBright}╚══════════════════════════════════════════════════════════════════════╝${c.reset}`);
+  console.log('');
+  console.log(`  ${c.amberBright}✓${c.reset} .env.local created`);
+  if (state.landingPageCopied) {
+    console.log(`  ${c.amberBright}✓${c.reset} Landing page copied`);
+  }
+  console.log(`  ${c.amberBright}✓${c.reset} Prisma client generated`);
+  if (state.postSetupResults.find((r) => r.cmd === 'db:push' && r.status === 'success')) {
+    console.log(`  ${c.amberBright}✓${c.reset} Database schema pushed`);
+  } else if (state.postSetupResults.find((r) => r.cmd === 'db:push' && r.status === 'skipped')) {
+    console.log(`  ${c.amber}○${c.reset} Database: Update DATABASE_URL in .env.local, then run: npm run db:push`);
+  }
+  console.log('');
+  console.log(`  ${c.amberBright}Opening http://localhost:3000 in your browser...${c.reset}`);
+  console.log('');
+  console.log(`  ${c.amberDim}Press Ctrl+C to stop the server${c.reset}`);
+  console.log('');
+
+  // Run dev server (this will keep running until Ctrl+C)
+  try {
+    execSync('npm run dev', { cwd: ROOT_DIR, stdio: 'inherit' });
+  } catch {
+    // User pressed Ctrl+C
+  }
+
+  process.exit(0);
 }
 
 // ============================================================================
@@ -1119,9 +1346,164 @@ process.on('SIGINT', () => {
   process.exit(0);
 });
 
-main().catch((err) => {
-  showCursor();
-  if (stdin.isTTY) stdin.setRawMode(false);
-  console.error(err);
-  process.exit(1);
-});
+// ============================================================================
+// AUTOMATED TEST MODE
+// ============================================================================
+
+async function runTests() {
+  console.log(`${c.amberBright}╔══════════════════════════════════════════════════════════════════════╗${c.reset}`);
+  console.log(`${c.amberBright}║                    FABRK SETUP WIZARD - TEST MODE                    ║${c.reset}`);
+  console.log(`${c.amberBright}╚══════════════════════════════════════════════════════════════════════╝${c.reset}`);
+  console.log('');
+
+  const results = [];
+  const templateKeys = ['starter', 'saas', 'ai-app', 'marketplace', 'custom'];
+
+  for (const templateKey of templateKeys) {
+    console.log(`${c.amber}Testing template: ${c.amberBright}${templateKey.toUpperCase()}${c.reset}`);
+
+    try {
+      // Get template config
+      const config = TEMPLATE_CONFIGS[templateKey] || TEMPLATE_CONFIGS.custom;
+      const templateInfo = TEMPLATES.find((t) => t.name.toLowerCase().replace(' ', '-') === templateKey);
+
+      // Load template file if exists
+      let template;
+      if (templateInfo?.file) {
+        template = await loadTemplate(templateInfo.file);
+      } else {
+        template = {
+          name: 'Custom',
+          env: {
+            NEXTAUTH_SECRET: '{{AUTO_GENERATE}}',
+            NEXTAUTH_URL: 'http://localhost:3000',
+            NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
+            NODE_ENV: 'development',
+          },
+        };
+      }
+
+      // Simulate selections with test values
+      const testSelections = {};
+      const testApiValues = {};
+
+      config.categories.forEach((catName) => {
+        const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+        if (cat) {
+          // Pick first non-none option (usually the recommended one)
+          const opt = cat.options.find((o) => !o.id.startsWith('none')) || cat.options[0];
+          testSelections[catName] = opt.id;
+
+          // Add test values for keys
+          opt.keys.forEach((key) => {
+            if (TEST_VALUES[key]) {
+              testApiValues[key] = TEST_VALUES[key];
+            }
+          });
+        }
+      });
+
+      // Build env with test values
+      const allKeys = [];
+      Object.entries(testSelections).forEach(([catName, optionId]) => {
+        const cat = FEATURE_CATEGORIES.find((c) => c.name === catName);
+        if (cat) {
+          const opt = cat.options.find((o) => o.id === optionId);
+          if (opt) {
+            allKeys.push(...opt.keys);
+          }
+        }
+      });
+
+      // Build template env
+      const testTemplate = {
+        name: templateKey,
+        env: {
+          ...template.env,
+        },
+      };
+      allKeys.forEach((key) => {
+        if (!testTemplate.env[key]) {
+          testTemplate.env[key] = `{{PROMPT:${key}}}`;
+        }
+      });
+
+      // Generate env content
+      const envContent = await buildEnvContent(testTemplate, testApiValues);
+
+      // Validate env content
+      const hasDatabase = envContent.includes('DATABASE_URL=');
+      const hasAuthSecret = envContent.includes('NEXTAUTH_SECRET=');
+      const envLines = envContent.split('\n').filter((l) => l && !l.startsWith('#'));
+
+      console.log(`  ${c.amberBright}✓${c.reset} Template loaded`);
+      console.log(`  ${c.amberBright}✓${c.reset} Categories: ${config.categories.length}`);
+      console.log(`  ${c.amberBright}✓${c.reset} Keys configured: ${Object.keys(testApiValues).length}`);
+      console.log(`  ${c.amberBright}✓${c.reset} Env vars: ${envLines.length}`);
+      console.log(`  ${hasDatabase ? `${c.amberBright}✓${c.reset}` : `${c.amber}○${c.reset}`} DATABASE_URL: ${hasDatabase ? 'present' : 'not needed'}`);
+      console.log(`  ${hasAuthSecret ? `${c.amberBright}✓${c.reset}` : `${c.amber}✗${c.reset}`} NEXTAUTH_SECRET: ${hasAuthSecret ? 'present' : 'MISSING'}`);
+
+      results.push({
+        template: templateKey,
+        status: 'pass',
+        categories: config.categories.length,
+        keys: Object.keys(testApiValues).length,
+        envVars: envLines.length,
+      });
+
+      console.log(`  ${c.amberBright}→ PASS${c.reset}`);
+      console.log('');
+    } catch (error) {
+      console.log(`  ${c.amber}✗ ERROR: ${error.message}${c.reset}`);
+      results.push({
+        template: templateKey,
+        status: 'fail',
+        error: error.message,
+      });
+      console.log(`  ${c.amber}→ FAIL${c.reset}`);
+      console.log('');
+    }
+  }
+
+  // Summary
+  console.log(`${c.amber}${'═'.repeat(74)}${c.reset}`);
+  console.log(`${c.amberBright}TEST SUMMARY${c.reset}`);
+  console.log(`${c.amber}${'─'.repeat(74)}${c.reset}`);
+
+  const passed = results.filter((r) => r.status === 'pass').length;
+  const failed = results.filter((r) => r.status === 'fail').length;
+
+  results.forEach((r) => {
+    const status = r.status === 'pass' ? `${c.amberBright}✓ PASS${c.reset}` : `${c.amber}✗ FAIL${c.reset}`;
+    console.log(`  ${status}  ${r.template.toUpperCase()}`);
+    if (r.error) {
+      console.log(`         ${c.amberDim}${r.error}${c.reset}`);
+    }
+  });
+
+  console.log('');
+  console.log(`${c.amberBright}Results: ${passed}/${results.length} passed${c.reset}`);
+  if (failed > 0) {
+    console.log(`${c.amber}${failed} test(s) failed${c.reset}`);
+  }
+  console.log('');
+
+  return failed === 0;
+}
+
+// Entry point
+if (TEST_MODE) {
+  runTests()
+    .then((success) => process.exit(success ? 0 : 1))
+    .catch((err) => {
+      console.error(err);
+      process.exit(1);
+    });
+} else {
+  main().catch((err) => {
+    showCursor();
+    if (stdin.isTTY) stdin.setRawMode(false);
+    console.error(err);
+    process.exit(1);
+  });
+}

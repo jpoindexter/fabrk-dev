@@ -39,6 +39,35 @@
 
 ## ⚡ Quick Start
 
+### Option 1: Interactive Setup Wizard (Recommended)
+
+```bash
+# Clone and install
+git clone https://github.com/THEFT-DEV/fabrk.git
+cd fabrk
+npm install --legacy-peer-deps
+
+# Run the interactive setup wizard
+npm run setup
+```
+
+The setup wizard will:
+1. **Ask what you're building** - STARTER, SAAS, AI APP, MARKETPLACE, or CUSTOM
+2. **Configure your stack** - Database, payments, email, analytics, AI, and more
+3. **Generate `.env.local`** - With all required environment variables
+4. **Copy a starter landing page** - Pre-built template matching your app type
+5. **Run database setup** - Prisma generate + db:push automatically
+6. **Start dev server** - Opens http://localhost:3000 in your browser
+
+**Templates included:**
+- **STARTER** - Basic landing page with hero, features, CTA
+- **SAAS** - Features grid, pricing tiers, FAQ section
+- **AI APP** - Demo section, AI capabilities, credit-based pricing
+- **MARKETPLACE** - Categories, how it works, seller benefits
+- **CUSTOM** - Uses starter template as a generic starting point
+
+### Option 2: Manual Setup
+
 ```bash
 # Clone and install
 git clone https://github.com/THEFT-DEV/fabrk.git
@@ -48,9 +77,6 @@ npm install --legacy-peer-deps
 # Set up environment
 cp .env.example .env.local
 # Edit .env.local with your credentials (see Configuration below)
-#
-# ⚡ Quick win: Get free RESEND_API_KEY in 2 minutes
-# → https://resend.com/api-keys (required for email/magic link auth)
 
 # Set up database
 npm run db:push
@@ -134,7 +160,7 @@ Git commits automatically run:
 
 ## 🎨 Customizing Components
 
-All 77 UI components support customization through className props and CSS variables.
+all 77 UI components support customization through className props and CSS variables.
 
 ### Quick Customization Examples
 
@@ -446,7 +472,7 @@ Full design system documentation: `docs/08-design/DESIGN_SYSTEM.md`
 │                     NEXT.JS SERVER (Edge/Node)                   │
 │  ┌───────────────┐  ┌───────────────┐  ┌────────────────┐      │
 │  │  Page Routes  │  │  API Routes   │  │  Middleware    │      │
-│  │  (RSC/SSR)    │  │  (30+ endpoints)│  │  Auth/CSRF    │      │
+│  │  (RSC/SSR)    │  │  (72+ endpoints)│  │  Auth/CSRF    │      │
 │  └───────┬───────┘  └───────┬───────┘  └────────┬───────┘      │
 │          │                  │                     │              │
 │          ▼                  ▼                     ▼              │
@@ -501,7 +527,7 @@ fabrk/
 │   ├── app/
 │   │   ├── (platform)/      # Dashboard and app pages
 │   │   ├── (auth)/          # Auth pages (login, register, etc.)
-│   │   ├── api/             # API routes (30+ endpoints)
+│   │   ├── api/             # API routes (72+ endpoints)
 │   │   ├── docs/            # Documentation site
 │   │   └── library/         # Template showcase
 │   ├── components/
@@ -654,7 +680,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 ### Component Documentation
 
 **Component API documentation** at `/docs/components`:
-- All 77 UI components with props, variants, examples
+- all 77 UI components with props, variants, examples
 - Accessibility compliance notes
 - Terminal styling patterns
 - Copy-paste ready code
@@ -779,7 +805,7 @@ fabrk/
 3. Visit http://localhost:3000/docs → Interactive docs
     ↓
 4. Browse:
-   • /docs/components → See All 77 UI components
+   • /docs/components → See all 77 UI components
    • /docs/features → Learn to add payments, auth, etc.
    • /library → Copy-paste ready templates
     ↓
@@ -815,7 +841,7 @@ A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/
 
 **Q: Can I use this for client projects?**
 
-A: Yes! The license allows unlimited client projects. Each developer needs their own seat (€299).
+A: Yes! The license allows unlimited client projects. Each developer needs their own seat ($299).
 
 **Q: Is this a template or a starter kit?**
 
@@ -857,9 +883,9 @@ A: Free updates for all v1.x releases (1.0 → 1.1 → 1.9). Major versions (v2.
 
 A: Yes, that's the primary use case. Sell subscriptions, charge customers, keep 100% of revenue.
 
-**Q: Team of 5 developers = €1,495 total?**
+**Q: Team of 5 developers = $1,495 total?**
 
-A: Correct. €299 × 5 seats. Contact support@fabrek.dev for volume pricing (10+ seats).
+A: Correct. $299 × 5 seats. Contact support@fabrek.dev for volume pricing (10+ seats).
 
 ### Features
 
@@ -1171,7 +1197,7 @@ Contributions welcome! Please:
 
 **Proprietary Commercial License** — Full legal terms in `LICENSE.md`
 
-**Pricing:** €299 per developer seat (one-time payment, perpetual license for v1.x)
+**Pricing:** $299 per developer seat (one-time payment, perpetual license for v1.x)
 
 **What's Included:**
 - ✅ Unlimited projects for you or your clients
@@ -1204,3 +1230,5 @@ Contributions welcome! Please:
 ---
 
 **© 2025 THEFT BV. All rights reserved.**
+
+**Last Updated:** 2025-12-20

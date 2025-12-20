@@ -1,54 +1,76 @@
-# 🚀 Fabrk Launch Checklist
+# Fabrk Launch Checklist
 
 This checklist covers everything needed to launch Fabrk (the boilerplate product) to customers.
 
-**Status:** Ready for Launch 🟢
-**Target Date:** Immediate
+**Last Updated:** 2025-12-20
 
 ---
 
 ## 1. Pre-Launch Verification (The "Must Haves")
 
+### Core Features
+- [x] **Setup Wizard:** `npm run setup` works for all 5 templates (STARTER, SAAS, AI APP, MARKETPLACE, CUSTOM)
+- [x] **Landing Page Templates:** All 5 page templates copy correctly
+- [x] **77 UI Components:** All components verified in `/src/components/ui/`
+- [x] **12 terminal themes:** All themes working with live switching
+- [x] **Multi-Provider Payments:** Stripe, Polar.sh, Lemonsqueezy configured
+
 ### Code Quality & Security
-- [x] **Resolve TODOs/FIXMEs:** Verified 0 instances in `src/`
-- [x] **Configuration:** Replaced all placeholders in `src/config.js`
 - [x] **Type Safety:** TypeScript strict mode enabled (no `any` types)
 - [x] **Linting:** ESLint passing with zero errors
 - [x] **Dependencies:** `npm audit` check for critical vulnerabilities
+- [x] **Pre-commit Hooks:** Husky + lint-staged configured
 - [ ] **Tests:** Run `npm run test:all` (Target: 95%+ pass rate)
 - [ ] **Build:** Verify `npm run build` succeeds without errors
 
 ### Documentation
-- [x] **README.md:** Updated with correct setup instructions
-- [x] **ONBOARDING-CHECKLIST.md:** Verified for customer clarity
+- [x] **README.md:** Updated with setup wizard instructions
+- [x] **QUICK-START.md:** Setup wizard flow documented
+- [x] **COMPONENTS-INVENTORY.md:** 77+ components listed
 - [x] **LICENSE.md:** Commercial license terms verified
 - [x] **SECURITY.md:** Security policy and reporting contacts correct
-- [x] **DISTRIBUTION.md:** Delivery process documented
 
 ### Legal & Business
-- [x] **Pricing:** Confirmed $199 one-time price in `src/config.js`
+- [x] **Pricing:** Confirmed $299 one-time price
 - [x] **Support:** Support email `support@fabrek.dev` configured
 - [x] **Terms:** License agreement ready for distribution
 
 ---
 
-## 2. Stripe & Payments Setup (Detailed)
+## 2. Payment Provider Setup
 
-### Product Configuration
-- [ ] **Create Products:** Create "Fabrk Starter", "Fabrk Professional", "Fabrk Enterprise" in Stripe Dashboard.
-- [ ] **Set Prices:** Set one-time prices (e.g., $199).
-- [ ] **Get IDs:** Copy Price IDs (starts with `price_`) to `.env` (`NEXT_PUBLIC_STRIPE_PRICE_*`).
-- [ ] **Coupons:** Create "EARLYBIRD" coupon (optional) and add ID to `src/config.js`.
+Choose ONE payment provider (Stripe recommended, but Polar.sh and Lemonsqueezy also supported).
 
-### Webhook Configuration
-- [ ] **Endpoint:** Add `https://your-domain.com/api/stripe/webhook` to Stripe Webhooks.
-- [ ] **Events:** Select `checkout.session.completed`, `customer.subscription.*`, `payment_intent.*`.
-- [ ] **Secret:** Copy Signing Secret (`whsec_...`) to `.env` (`STRIPE_WEBHOOK_SECRET`).
+### Option A: Stripe (Recommended)
 
-### Checkout Flow Verification
-- [ ] **Custom Fields:** Verify "GitHub Username" field appears on checkout (Required for auto-distribution).
-- [ ] **Test Purchase:** Run a test mode purchase.
-- [ ] **Verify Database:** Check `User` table for `licenseKey` and `githubUsername`.
+**Product Configuration:**
+- [ ] Create products in Stripe Dashboard
+- [ ] Set one-time prices ($299)
+- [ ] Copy Price IDs to `.env` (`NEXT_PUBLIC_STRIPE_PRICE_*`)
+
+**Webhook Configuration:**
+- [ ] Add `https://your-domain.com/api/webhooks/stripe` endpoint
+- [ ] Select events: `checkout.session.completed`, `payment_intent.*`
+- [ ] Copy Signing Secret to `.env` (`STRIPE_WEBHOOK_SECRET`)
+
+### Option B: Polar.sh
+
+**Configuration:**
+- [ ] Create products in Polar Dashboard
+- [ ] Add webhook: `https://your-domain.com/api/webhooks/polar`
+- [ ] Copy access token to `.env` (`POLAR_ACCESS_TOKEN`)
+- [ ] Copy webhook secret to `.env` (`POLAR_WEBHOOK_SECRET`)
+
+### Option C: Lemonsqueezy
+
+**Configuration:**
+- [ ] Create products in Lemonsqueezy Dashboard
+- [ ] Add webhook: `https://your-domain.com/api/webhooks/lemonsqueezy`
+- [ ] Copy API key to `.env` (`LEMONSQUEEZY_API_KEY`)
+- [ ] Copy webhook secret to `.env` (`LEMONSQUEEZY_WEBHOOK_SECRET`)
+
+### Webhook Validation
+- [ ] Run `npm run validate:webhooks` to verify all endpoints exist
 
 ---
 

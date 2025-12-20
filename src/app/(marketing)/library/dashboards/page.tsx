@@ -3,14 +3,13 @@
  * Uses CategoryShowcasePage template for consistent styling
  */
 import { CategoryShowcasePage } from '@/components/library';
-import { getTemplatesByCategory, getCategoryInfo } from '../library-data';
+import { getTemplatesByCategory } from '../library-data';
 
 const categoryId = 'dashboard';
-const categoryInfo = getCategoryInfo(categoryId);
 const categoryTemplates = getTemplatesByCategory(categoryId);
 
 // Strip icon functions for client component serialization
-const serializableTemplates = categoryTemplates.map(({ icon, ...rest }) => rest);
+const serializableTemplates = categoryTemplates.map(({ icon: _icon, ...rest }) => rest);
 
 const features = [
   'Analytics Dashboard with charts and metrics',

@@ -5,7 +5,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, Volume2, Play, Pause, Upload, Download, Loader2 } from 'lucide-react';
+import { Mic, Volume2, Play, Pause, Upload, Download } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
