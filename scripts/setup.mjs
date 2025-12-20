@@ -896,7 +896,107 @@ async function finalize() {
         await generatePromptsFile();
       }
     }
+
+    // Run post-setup commands
+    await runPostSetup();
   }
+}
+
+async function runPostSetup() {
+  // Check if DATABASE_URL has a real value (not a placeholder)
+  const envPath = join(ROOT_DIR, '.env.local');
+  const envContent = await readFile(envPath, 'utf-8');
+  const hasValidDb = envContent.includes('DATABASE_URL=') &&
+    !envContent.includes('DATABASE_URL="postgresql://USER:PASSWORD');
+
+  state.postSetupResults = [];
+
+  // Show cursor for command output
+  showCursor();
+  if (stdin.isTTY) stdin.setRawMode(false);
+
+  clear();
+  console.log(`${c.amber}`);
+  console.log(`  ███████╗ █████╗ ██████╗ ██████╗ ██╗  ██╗`);
+  console.log(`  ██╔════╝██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝`);
+  console.log(`  █████╗  ███████║██████╔╝██████╔╝█████╔╝   ${c.amberBright}RUNNING SETUP${c.amber}`);
+  console.log(`  ██╔══╝  ██╔══██║██╔══██╗██╔══██╗██╔═██╗`);
+  console.log(`  ██║     ██║  ██║██████╔╝██║  ██║██║  ██╗`);
+  console.log(`  ╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝`);
+  console.log(`${c.reset}`);
+  console.log('');
+
+  // Always run prisma generate first
+  console.log(`${c.amber}[1/3]${c.reset} ${c.amberBright}Generating Prisma client...${c.reset}`);
+  try {
+    execSync('npx prisma generate', { cwd: ROOT_DIR, stdio: 'inherit' });
+    state.postSetupResults.push({ cmd: 'prisma generate', status: 'success' });
+    console.log(`${c.amberBright}✓${c.reset} Prisma client generated`);
+  } catch (error) {
+    state.postSetupResults.push({ cmd: 'prisma generate', status: 'failed', error: error.message });
+    console.log(`${c.amber}✗${c.reset} Prisma generate failed`);
+  }
+  console.log('');
+
+  // Run db:push if we have a valid database URL
+  if (hasValidDb) {
+    console.log(`${c.amber}[2/3]${c.reset} ${c.amberBright}Pushing database schema...${c.reset}`);
+    try {
+      execSync('npm run db:push', { cwd: ROOT_DIR, stdio: 'inherit' });
+      state.postSetupResults.push({ cmd: 'db:push', status: 'success' });
+      console.log(`${c.amberBright}✓${c.reset} Database schema pushed`);
+    } catch (error) {
+      state.postSetupResults.push({ cmd: 'db:push', status: 'failed', error: error.message });
+      console.log(`${c.amber}✗${c.reset} Database push failed - check your DATABASE_URL`);
+    }
+  } else {
+    console.log(`${c.amber}[2/3]${c.reset} ${c.amberDim}Skipping db:push - DATABASE_URL not configured${c.reset}`);
+    state.postSetupResults.push({ cmd: 'db:push', status: 'skipped', reason: 'DATABASE_URL not configured' });
+  }
+  console.log('');
+
+  // Start dev server
+  console.log(`${c.amber}[3/3]${c.reset} ${c.amberBright}Starting development server...${c.reset}`);
+  console.log('');
+
+  // Open browser after a short delay
+  setTimeout(() => {
+    const openCmd = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'start' : 'xdg-open';
+    try {
+      execSync(`${openCmd} http://localhost:3000`, { stdio: 'ignore' });
+    } catch {
+      // Browser open failed, that's ok
+    }
+  }, 3000);
+
+  console.log(`${c.amberBright}╔══════════════════════════════════════════════════════════════════════╗${c.reset}`);
+  console.log(`${c.amberBright}║                         SETUP COMPLETE                               ║${c.reset}`);
+  console.log(`${c.amberBright}╚══════════════════════════════════════════════════════════════════════╝${c.reset}`);
+  console.log('');
+  console.log(`  ${c.amberBright}✓${c.reset} .env.local created`);
+  if (state.wantsStarterPage) {
+    console.log(`  ${c.amberBright}✓${c.reset} Landing page copied`);
+  }
+  console.log(`  ${c.amberBright}✓${c.reset} Prisma client generated`);
+  if (state.postSetupResults.find((r) => r.cmd === 'db:push' && r.status === 'success')) {
+    console.log(`  ${c.amberBright}✓${c.reset} Database schema pushed`);
+  } else if (state.postSetupResults.find((r) => r.cmd === 'db:push' && r.status === 'skipped')) {
+    console.log(`  ${c.amber}○${c.reset} Database: Update DATABASE_URL in .env.local, then run: npm run db:push`);
+  }
+  console.log('');
+  console.log(`  ${c.amberBright}Opening http://localhost:3000 in your browser...${c.reset}`);
+  console.log('');
+  console.log(`  ${c.amberDim}Press Ctrl+C to stop the server${c.reset}`);
+  console.log('');
+
+  // Run dev server (this will keep running until Ctrl+C)
+  try {
+    execSync('npm run dev', { cwd: ROOT_DIR, stdio: 'inherit' });
+  } catch {
+    // User pressed Ctrl+C
+  }
+
+  process.exit(0);
 }
 
 // ============================================================================
