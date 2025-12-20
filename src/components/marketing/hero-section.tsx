@@ -1,6 +1,7 @@
 /**
  * ✅ FABRK COMPONENT
- * Hero Section - Terminal console [SYSTEM INIT] style
+ * Hero Section - Clean, bold, terminal-first
+ * Single panel design with integrated pricing
  * Production-ready ✓
  */
 'use client';
@@ -21,11 +22,9 @@ import {
 } from 'simple-icons';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card, CardHeader, CardContent, Badge as CardBadge } from '@/components/ui/card';
-import { HeroDashboardPreview } from './hero-dashboard-preview';
-import { PRICING } from '@/data/landing';
-import { TypeWriter } from '@/components/ui/typewriter';
+import { Badge as CardBadge } from '@/components/ui/card';
 import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
+import { Check } from 'lucide-react';
 
 const techStack = [
   { name: 'NEXT.JS', path: siNextdotjs.path },
@@ -37,178 +36,117 @@ const techStack = [
   { name: 'RESEND', path: siResend.path },
 ];
 
+const features = [
+  'Auth + Payments + Teams',
+  '77+ Components',
+  '12 Terminal Themes',
+  'Lifetime Updates',
+];
+
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden px-4 pt-8 pb-16 sm:px-0 lg:min-h-screen lg:pt-12 lg:pb-20">
+    <section className="relative min-h-[85vh] overflow-hidden px-4 pt-12 pb-16 sm:px-0 lg:pt-20 lg:pb-24">
       <Container size="2xl">
-        <div className="relative">
-          {/* Main Hero Window - Wider, behind */}
-          <div className="relative isolate z-0 max-w-2xl lg:ml-16 animate-in fade-in zoom-in-[0.98] duration-600">
-            <Card size="auto">
-              <CardHeader code="0x00" title="SYSTEM INIT" meta="SAAS BOILERPLATE v2.0" />
-              <CardContent className="space-y-4 p-8">
-                {/* Headline */}
-                <div className="max-w-2xl">
-                  <h1 className={cn('mb-2 text-xs', mode.color.text.muted, mode.font)}>
-                    [FABRK INIT]
-                  </h1>
-                  {/* Mobile: Simple text headline */}
-                  <h2
-                    className={cn(
-                      'mb-4 text-2xl leading-tight font-bold md:hidden',
-                      mode.color.text.accent,
-                      mode.font
-                    )}
-                  >
-                    BUILD IN
-                    <br />
-                    MINUTES
-                  </h2>
-                  {/* Desktop: ASCII art */}
-                  <pre
-                    className={cn(
-                      'mb-4 hidden text-xs leading-none md:block lg:text-xs',
-                      mode.color.text.accent,
-                      mode.font
-                    )}
-                  >
-                    {` ███████████  █████  █████ █████ █████       ██████████      █████ ██████   █████
-░░███░░░░░███░░███  ░░███ ░░███ ░░███       ░░███░░░░███    ░░███ ░░██████ ░░███
- ░███    ░███ ░███   ░███  ░███  ░███        ░███   ░░███    ░░███  ░███░███ ░███
- ░██████████  ░███   ░███  ░███  ░███        ░███    ░███    ░███  ░███░░███░███
- ░███░░░░░███ ░███   ░███  ░███  ░███        ░███    ░███    ░███  ░███ ░░██████
- ░███    ░███ ░███   ░███  ░███  ░███      █ ░███    ███     ░███  ░███  ░░█████
- ███████████  ░░████████   █████ ███████████ ██████████      █████ █████  ░░█████
-░░░░░░░░░░░    ░░░░░░░░   ░░░░░ ░░░░░░░░░░░ ░░░░░░░░░░      ░░░░░ ░░░░░    ░░░░░
-
-
-
- ██████   ██████ █████ ██████   █████ █████  █████ ███████████ ██████████  █████████
-░░██████ ██████ ░░███ ░░██████ ░░███ ░░███  ░░███ ░█░░░███░░░█░░███░░░░░█ ███░░░░░███
- ░███░█████░███  ░███  ░███░███ ░███  ░███   ░███ ░   ░███  ░  ░███  █ ░ ░███    ░░░
- ░███░░███ ░███  ░███  ░███░░███░███  ░███   ░███     ░███     ░██████   ░░█████████
- ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███   ░███     ░███     ░███░░█    ░░░░░░░░███
- ░███      ░███  ░███  ░███  ░░█████  ░███   ░███     ░███     ░███ ░   █ ███    ░███
- █████     █████ █████ █████  ░░█████ ░░████████      █████    ██████████░░█████████
-░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░   ░░░░░░░░      ░░░░░    ░░░░░░░░░░  ░░░░░░░░░`}
-                  </pre>
-                  <p className={cn('mb-0 text-sm leading-relaxed', mode.color.text.muted)}>
-                    <TypeWriter
-                      text="Ship your product this weekend not next quarter."
-                      delay={0.5}
-                      speed={40}
-                      showCursor
-                      cursorAtEnd
-                    />
-                  </p>
-                </div>
-
-                {/* Quick stats inline */}
-                <div className="flex flex-wrap gap-4">
-                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className="text-primary font-semibold">{COMPONENT_COUNT_STRING}</span>{' '}
-                    Components
-                  </span>
-                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className="text-primary font-semibold">{TEMPLATE_COUNT_STRING}</span>{' '}
-                    Templates
-                  </span>
-                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>•</span>
-                  <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
-                    <span className="text-primary font-semibold">{'< 5 MIN'}</span> Setup
-                  </span>
-                </div>
-
-                {/* CTAs - Primary Dominant */}
-                <div className="flex flex-col gap-4 sm:flex-row">
-                  <PolarCheckoutButton
-                    className={cn(
-                      'bg-accent text-accent-foreground px-8 py-4 text-sm transition-all hover:scale-105',
-                      mode.radius,
-                      mode.font
-                    )}
-                  >
-                    &gt; {PRICING.cta.label} — {PRICING.display.launch}
-                  </PolarCheckoutButton>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    asChild
-                    className={cn('text-xs', mode.radius, mode.font)}
-                  >
-                    <Link href="/library">&gt; EXPLORE DEMOS</Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+        {/* Centered Hero Content */}
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Status Badge */}
+          <div className="mb-8 inline-flex items-center gap-2 border border-primary/30 bg-primary/5 px-4 py-2">
+            <span className="h-2 w-2 animate-pulse bg-green-500" />
+            <span className={cn('text-xs uppercase tracking-wider', mode.font, mode.color.text.muted)}>
+              SYSTEM ONLINE // SAAS BOILERPLATE v2.0
+            </span>
           </div>
 
-          {/* Right Column - Visual Proof (Hidden on mobile, overlays on desktop) */}
-          <div className="mt-8 lg:absolute lg:top-12 lg:-right-16 lg:mt-0 lg:w-full lg:max-w-[280px] animate-in fade-in slide-in-from-right-5 duration-600 delay-300">
-            {/* Urgency Card - Top */}
-            <Card size="auto" className="border-primary border-2 lg:-mr-8">
-              <CardHeader code="0x03" title="LAUNCH OFFER.SH" />
-              <CardContent className="space-y-4 p-4">
-                {/* Price - Big and Bold */}
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="flex items-baseline gap-2">
-                      <span className={cn('text-4xl font-bold text-primary', mode.font)}>
-                        $199
-                      </span>
-                      <span className={cn('text-2xl line-through', mode.color.text.muted)}>
-                        $299
-                      </span>
-                    </div>
-                    <div className={cn('mt-1 text-xs', mode.color.text.muted, mode.font)}>
-                      ONE-TIME PAYMENT
-                    </div>
-                  </div>
-                  <div
-                    className={cn(
-                      'bg-primary text-primary-foreground border-primary animate-pulse border-2 px-4 py-1.5 text-sm font-bold',
-                      mode.font
-                    )}
-                  >
-                    -$100
-                  </div>
-                </div>
+          {/* Main Headline */}
+          <h1 className={cn('text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-primary mb-6', mode.font)}>
+            SHIP YOUR SAAS
+            <br />
+            <span className="text-foreground">THIS WEEKEND</span>
+          </h1>
 
-                {/* Launch Pricing */}
-                <div className="border-primary space-y-1 border-l-2 pl-3">
-                  <div className={cn('text-xs font-bold text-primary', mode.font)}>
-                    LAUNCH PRICE: $199
-                  </div>
-                  <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-                    $299 after first 100 buyers
-                  </div>
-                </div>
+          {/* Subheadline */}
+          <p className={cn('text-lg md:text-xl max-w-2xl mx-auto mb-8', mode.font, mode.color.text.muted)}>
+            Terminal-first boilerplate with auth, payments, and multi-tenancy.
+            <br className="hidden md:block" />
+            <span className="text-primary">875+ hours</span> of work, ready to deploy.
+          </p>
 
-                {/* Speed Messaging */}
-                <div className="border-primary flex items-center justify-center gap-4 border-t pt-3">
-                  <div className={cn('text-sm font-bold', mode.font, mode.color.text.muted)}>
-                    FROM IDEA
-                  </div>
-                  <div className={cn('text-sm font-bold text-primary', mode.font)}>
-                    │
-                  </div>
-                  <div className={cn('text-sm font-bold', mode.font, mode.color.text.success)}>
-                    TO LIVE
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Stats Row */}
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
+            <div className="text-center">
+              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>{COMPONENT_COUNT_STRING}</div>
+              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Components</div>
+            </div>
+            <div className="h-8 w-px bg-border" />
+            <div className="text-center">
+              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>{TEMPLATE_COUNT_STRING}</div>
+              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Templates</div>
+            </div>
+            <div className="h-8 w-px bg-border" />
+            <div className="text-center">
+              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>12</div>
+              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Themes</div>
+            </div>
+            <div className="h-8 w-px bg-border" />
+            <div className="text-center">
+              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>&lt;5</div>
+              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Min Setup</div>
+            </div>
+          </div>
 
-            {/* Live Dashboard Preview - Show, don't tell (hidden on mobile) */}
-            <div className="mt-8 hidden lg:-ml-24 lg:block">
-              <HeroDashboardPreview />
+          {/* CTA Section */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <PolarCheckoutButton
+              className={cn(
+                'bg-primary text-primary-foreground px-8 py-4 text-base font-bold transition-all hover:scale-105',
+                mode.radius,
+                mode.font
+              )}
+            >
+              &gt; GET FABRK — $199
+              <span className="ml-2 text-sm line-through opacity-60">$299</span>
+            </PolarCheckoutButton>
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className={cn('px-8 py-4 text-sm', mode.radius, mode.font)}
+            >
+              <Link href="/library">&gt; EXPLORE DEMOS</Link>
+            </Button>
+          </div>
+
+          {/* Feature Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+            {features.map((feature) => (
+              <div
+                key={feature}
+                className={cn('flex items-center gap-2 border px-3 py-1.5 text-xs', mode.font, mode.color.text.muted)}
+              >
+                <Check className="h-3 w-3 text-green-500" />
+                {feature}
+              </div>
+            ))}
+          </div>
+
+          {/* Launch Offer Badge */}
+          <div className="inline-flex items-center gap-4 border-2 border-primary bg-primary/5 px-6 py-3">
+            <div className="text-left">
+              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>[LAUNCH OFFER]</div>
+              <div className={cn('text-sm', mode.font)}>
+                <span className="text-primary font-bold">$199</span>
+                <span className={cn('ml-2 line-through', mode.color.text.muted)}>$299</span>
+                <span className={cn('ml-2', mode.color.text.muted)}>• First 100 buyers</span>
+              </div>
+            </div>
+            <div className="bg-primary text-primary-foreground px-3 py-1 text-sm font-bold animate-pulse">
+              -$100
             </div>
           </div>
         </div>
 
         {/* Tech Stack - Below Hero */}
-        <div className="mt-16 lg:mt-20 animate-in fade-in slide-in-from-bottom-3 duration-600 delay-500">
+        <div className="mt-16 lg:mt-20">
           <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech) => (
