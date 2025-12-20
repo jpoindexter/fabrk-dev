@@ -20,7 +20,7 @@ This guide provides a comprehensive script and production checklist for creating
 
 **On-screen text**:
 - "Fabrk Component Library"
-- "46 Components • 17,822 Test Lines • 100% Coverage"
+- "77+ components • 17,822 Test Lines • 100% Coverage"
 
 ---
 
@@ -87,7 +87,7 @@ This guide provides a comprehensive script and production checklist for creating
 
 **Show**:
 - Theme dropdown menu
-- Switch between all 20 themes:
+- Switch between all 12 themes:
   - Purple (default)
   - Ocean Blue
   - Forest Green
@@ -122,7 +122,7 @@ This guide provides a comprehensive script and production checklist for creating
 **Visual**: Show test files and run tests in terminal
 
 **Voiceover**:
-> "Quality is built-in. Every single component has comprehensive unit tests - that's 44 test files, over 17,000 lines of test code, and 100% component coverage. Tests cover rendering, interactions, keyboard navigation, edge cases, and full accessibility compliance."
+> "Quality is built-in. Every single component has comprehensive unit tests - that's 23+ test files, over 17,000 lines of test code, and 100% component coverage. Tests cover rendering, interactions, keyboard navigation, edge cases, and full accessibility compliance."
 
 **Show**:
 - File tree with test files
@@ -276,7 +276,7 @@ export function MyComponent() {
 ### Shot 1: Landing Page Hero (5 seconds)
 - Start with page fully loaded
 - Slow zoom in on hero section
-- Show "46 Components" badge
+- Show "77+ components" badge
 - Show theme switcher
 
 ### Shot 2: Component Grid (10 seconds)
@@ -315,7 +315,7 @@ export function MyComponent() {
 
 ### Shot 8: Theme Switching (15 seconds)
 - Open theme switcher dropdown
-- Switch through all 20 themes
+- Switch through all 12 themes
 - Show component adapting in real-time
 
 ### Shot 9: Template Gallery (24 seconds)
@@ -383,7 +383,7 @@ export function MyComponent() {
 Fabrk is a production-ready React component library with 46 fully-tested components for modern SaaS applications.
 
 ⭐ Features:
-• 46 components with 100% test coverage
+• 77+ components with 100% test coverage
 • 6 beautiful themes with OKLCH color space
 • 8 production-ready page templates
 • Built on Radix UI for accessibility
@@ -443,7 +443,7 @@ Fabrk is a production-ready React component library with 46 fully-tested compone
 **Text**: Large, bold, high contrast
 **Elements**:
 - Fabrk logo
-- "46 Components"
+- "77+ components"
 - "100% Test Coverage"
 - Component screenshots in background
 - Bright, eye-catching colors

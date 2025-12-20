@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2025-12-20T11:06:13.639Z",
+  "counts": {
+    "uiComponents": 77,
+    "themes": 12,
+    "templates": 48,
+    "apiRoutes": 72,
+    "testFiles": 23,
+    "languages": 6,
+    "docsPages": 131,
+    "liveDocsPages": 158
+  },
+  "strings": {
+    "components": "77+",
+    "themes": "12",
+    "templates": "48+",
+    "apiRoutes": "72+",
+    "testFiles": "23+",
+    "languages": "6",
+    "docsPages": "131+"
+  }
+}

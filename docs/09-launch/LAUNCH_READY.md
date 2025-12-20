@@ -321,7 +321,7 @@ Fabrk is a **SOLID $99 boilerplate** (currently priced at $99 on sale from $199)
 
 ### Marketing Message
 **Before:** "100% production-ready SaaS boilerplate"
-**Better:** "Premium Next.js 15 SaaS starter with 234 components, strong technical foundation, and active development"
+**Better:** "Premium Next.js 15 SaaS starter with 77+ components, strong technical foundation, and active development"
 
 **Truth wins long-term.** 🎯
 

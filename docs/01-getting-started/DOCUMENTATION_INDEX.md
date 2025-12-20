@@ -1,6 +1,6 @@
 # Fabrk Premium - Documentation Index
 
-**Fabrk Premium:** $299 | 77 UI Components | 34+ Templates | 12 Terminal Themes
+**Fabrk Premium:** $299 | 77 UI Components | 48+ Templates | 12 Terminal Themes
 
 Complete index of all documentation organized into numbered sections for easy navigation.
 
@@ -39,7 +39,7 @@ docs/
 ### New Developer
 1. **Run `npm run setup`** - Interactive wizard configures everything
 2. [QUICK-START.md](./QUICK-START.md) - Detailed setup options
-3. [COMPONENTS-INVENTORY.md](../02-components/COMPONENTS-INVENTORY.md) - See all 77 components
+3. [COMPONENTS-INVENTORY.md](../02-components/COMPONENTS-INVENTORY.md) - See all 77+ components
 
 ### Preparing for Launch
 1. [09-launch/LAUNCH-CHECKLIST.md](../09-launch/LAUNCH_CHECKLIST.md) - Pre-launch checklist
@@ -189,7 +189,7 @@ docs/
 ### Components & Templates
 - **77 UI components** - Production-ready library
 - **5 landing page templates** - Setup wizard starter pages
-- **34+ page templates** - Copy-paste layouts in `/library`
+- **48+ page templates** - Copy-paste layouts in `/library`
 - **12 terminal themes** - OKLCH color schemes
 
 ### Setup Wizard

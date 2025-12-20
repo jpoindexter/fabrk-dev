@@ -35,28 +35,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 
-### Dynamic Counts (Auto-Calculated)
+### Dynamic Counts (Auto-Calculated from Source Files)
 
-| Metric | Source | Value |
-|--------|--------|-------|
-| UI Components | `src/data/component-counts.json` | 77 |
-| Templates | `library-nav-data.ts` (auto-counted) | 34+ |
+All counts are dynamically calculated from actual source files:
+
+| Metric | Source Directory | Value |
+|--------|-----------------|-------|
+| UI Components | `src/components/ui/**/*.tsx` | 77 |
+| Templates | `src/app/(marketing)/library/**/page.tsx` | 48+ |
 | Themes | `src/data/themes.ts` | 12 |
+| API Routes | `src/app/api/**/route.ts` | 72 |
+| Test Files | `src/**/*.test.{ts,tsx}` | 23 |
+| Languages | `src/config/i18n.ts` | 6 |
+| Docs Pages | `docs/**/*.md` | 131 |
 
-**IMPORTANT:** Never hardcode component/template counts in marketing copy. Import from:
+**IMPORTANT:** Never hardcode counts in marketing copy. Import from:
 
 ```typescript
-import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
-// Returns "77+" and "34+"
+import { COUNTS, COUNT_STRINGS } from '@/data/counts';
+
+// Numbers
+console.log(COUNTS.components);    // 77
+console.log(COUNTS.templates);     // 48
+
+// Marketing strings (with + suffix)
+console.log(COUNT_STRINGS.components);  // "77+"
+console.log(COUNT_STRINGS.templates);   // "48+"
 ```
 
-**Auto-sync:** Counts in README.md and CLAUDE.md update automatically via `prebuild` hook on every `npm run build`.
+**Auto-sync:** Counts in all markdown files update automatically via:
+- `npm run update-markdown-counts` (manual)
+- `npm run build` (automatic via prebuild hook)
+
+**JSON Source:** `src/data/dynamic-counts.json` (regenerated on each build)
 
 ---
 
 ## Commands
 
 ```bash
+# Setup (Interactive Wizard - Start Here!)
+npm run setup            # Configure database, payments, email, themes
+npm run setup -- --dry-run  # Preview without making changes
+
 # Development
 npm run dev              # Start dev server (auto-kills port 3000)
 npm run build            # Production build (includes prisma generate)
@@ -123,7 +144,7 @@ className="bg-purple-500 text-white"
 ### 4. NEVER modify base UI components without explicit permission
 
 **Protected Components** (DO NOT MODIFY):
-- `src/components/ui/` - All 77 UI components
+- `src/components/ui/` - all 77 UI components
 - `src/components/marketing/navigation.tsx`
 - `src/components/navigation/site-navigation.tsx`
 - `src/components/shared/` - All shared components (logo, footer, etc.)
@@ -267,9 +288,9 @@ Fabrk supports 3 payment processors with identical patterns:
 
 | Provider | Checkout API | Webhook |
 |----------|-------------|---------|
-| Stripe | `/api/stripe/checkout` | `/api/webhooks/stripe` |
-| Polar.sh | `/api/polar/checkout` | `/api/webhooks/polar` |
-| Lemonsqueezy | `/api/lemonsqueezy/checkout` | `/api/webhooks/lemonsqueezy` |
+| Stripe | `/api/stripe/checkout` | `/api/stripe/webhook` |
+| Polar.sh | `/api/polar/checkout` | `/api/polar/webhook` |
+| Lemonsqueezy | `/api/lemonsqueezy/checkout` | `/api/lemonsqueezy/webhook` |
 
 ---
 
