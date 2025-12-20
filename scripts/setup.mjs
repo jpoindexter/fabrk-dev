@@ -629,7 +629,7 @@ function renderReviewTab() {
   lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
   lines.push(`  ${c.amberBright}✓${c.reset} .env.local`);
   if (state.wantsStarterPage) {
-    lines.push(`  ${c.amberBright}✓${c.reset} src/app/(marketing)/page.tsx`);
+    lines.push(`  ${c.amberBright}✓${c.reset} src/app/page.tsx`);
     lines.push(`  ${c.amberBright}✓${c.reset} FABRK-PROMPTS.md`);
   }
 
@@ -702,7 +702,7 @@ function renderCompleteTab() {
       '',
       `${c.amber}Would create:${c.reset}`,
       `  • .env.local`,
-      state.wantsStarterPage ? `  • src/app/(marketing)/page.tsx` : '',
+      state.wantsStarterPage ? `  • src/app/page.tsx` : '',
       state.wantsStarterPage ? `  • FABRK-PROMPTS.md` : '',
       '',
       `${c.amberDim}Run ${c.amber}npm run setup${c.amberDim} to apply.${c.reset}`,
@@ -838,7 +838,7 @@ async function copyStarterPage(templateKey, marketplaceStyle = null) {
   if (!sourceFile) return false;
 
   const sourcePath = join(templatesDir, sourceFile);
-  const destPath = join(ROOT_DIR, 'src/app/(marketing)/page.tsx');
+  const destPath = join(ROOT_DIR, 'src/app/page.tsx');
 
   if (!existsSync(sourcePath)) return false;
 
@@ -856,7 +856,7 @@ Copy-paste these prompts into Cursor, Claude Code, or Windsurf.
 
 ## QUICK START - Update Your Landing Page
 \`\`\`
-Update src/app/(marketing)/page.tsx:
+Update src/app/page.tsx:
 1. Replace placeholder text with my app name and tagline
 2. Update the 3-6 features to match what my product does
 3. Keep the terminal aesthetic (font-mono, rounded-none, uppercase headings)
@@ -865,14 +865,14 @@ Update src/app/(marketing)/page.tsx:
 
 ## ADD PRICING PAGE
 \`\`\`
-Create src/app/(marketing)/pricing/page.tsx with 3 tiers (Free, Pro, Enterprise).
+Create src/app/pricing/page.tsx with 3 tiers (Free, Pro, Enterprise).
 Match the terminal style from the landing page.
 Include a FAQ section at the bottom.
 \`\`\`
 
 ## ADD ABOUT PAGE
 \`\`\`
-Create src/app/(marketing)/about/page.tsx with:
+Create src/app/about/page.tsx with:
 - Brief company/founder story
 - Mission statement
 - Team section (if applicable)
@@ -881,7 +881,7 @@ Keep terminal aesthetic consistent.
 
 ## ADD BLOG
 \`\`\`
-Create a blog at src/app/(marketing)/blog/ with:
+Create a blog at src/app/blog/ with:
 - List page showing all posts
 - Individual post pages from MDX files
 - Categories and tags support
