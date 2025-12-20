@@ -119,6 +119,7 @@ public/
 # ============================================
 scripts/setup.mjs
 scripts/templates/
+scripts/page-templates/
 scripts/generate-theme.mjs
 scripts/validate-themes.mjs
 scripts/validate-themes.ts
