@@ -889,10 +889,12 @@ async function finalize() {
     // Write .env.local
     await writeFile(join(ROOT_DIR, '.env.local'), envContent, 'utf-8');
 
-    // Copy starter page if requested
+    // Copy starter page if requested and available
+    state.landingPageCopied = false;
     if (state.wantsStarterPage && ['saas', 'ai-app', 'marketplace'].includes(state.templateKey)) {
       const copied = await copyStarterPage(state.templateKey, state.marketplaceStyle);
       if (copied) {
+        state.landingPageCopied = true;
         await generatePromptsFile();
       }
     }
@@ -974,7 +976,7 @@ async function runPostSetup() {
   console.log(`${c.amberBright}╚══════════════════════════════════════════════════════════════════════╝${c.reset}`);
   console.log('');
   console.log(`  ${c.amberBright}✓${c.reset} .env.local created`);
-  if (state.wantsStarterPage) {
+  if (state.landingPageCopied) {
     console.log(`  ${c.amberBright}✓${c.reset} Landing page copied`);
   }
   console.log(`  ${c.amberBright}✓${c.reset} Prisma client generated`);
