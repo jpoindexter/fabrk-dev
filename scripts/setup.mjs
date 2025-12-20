@@ -11,7 +11,7 @@ import { readFile, writeFile, copyFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomBytes } from 'node:crypto';
-import { execSync } from 'node:child_process';
+import { execSync, spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 
 const args = process.argv.slice(2);
@@ -940,19 +940,37 @@ async function copyStarterPage(templateKey, marketplaceStyle = null, productInfo
 
   // Apply template interpolation if we have product info
   if (productInfo && Object.keys(productInfo).length > 0) {
-    const replacements = {
-      // Basic product info
-      'YOUR PRODUCT HEADLINE GOES HERE': (productInfo.tagline || 'YOUR PRODUCT HEADLINE GOES HERE').toUpperCase(),
-      'A clear, compelling description of what your product does and why it matters.\\n            Focus on the benefit to the user, not just features.': productInfo.description || 'A clear, compelling description of what your product does and why it matters.',
-      'your-product.com': productInfo.productUrl || 'your-product.com',
-      '[YOUR PRODUCT SCREENSHOT]': `[${(productInfo.productName || 'PRODUCT').toUpperCase()} SCREENSHOT]`,
+    // Replace headline
+    if (productInfo.tagline) {
+      content = content.replace(
+        /YOUR PRODUCT HEADLINE GOES HERE/g,
+        productInfo.tagline.toUpperCase()
+      );
+    }
 
-      // Update the product preview placeholder text
-      'Replace this with an actual screenshot or demo video': `Your ${productInfo.productName || 'product'} dashboard goes here`,
-    };
+    // Replace description (handle multi-line)
+    if (productInfo.description) {
+      content = content.replace(
+        /A clear, compelling description of what your product does and why it matters\.\s*Focus on the benefit to the user, not just features\./g,
+        productInfo.description
+      );
+    }
 
-    for (const [search, replace] of Object.entries(replacements)) {
-      content = content.replace(new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replace);
+    // Replace domain
+    if (productInfo.productUrl) {
+      content = content.replace(/your-product\.com/g, productInfo.productUrl);
+    }
+
+    // Replace screenshot placeholder
+    if (productInfo.productName) {
+      content = content.replace(
+        /\[YOUR PRODUCT SCREENSHOT\]/g,
+        `[${productInfo.productName.toUpperCase()} SCREENSHOT]`
+      );
+      content = content.replace(
+        /Replace this with an actual screenshot or demo video/g,
+        `Your ${productInfo.productName} dashboard goes here`
+      );
     }
 
     // Add a comment at the top noting customization
@@ -1133,16 +1151,6 @@ async function runPostSetup() {
   console.log(`${c.amber}[3/3]${c.reset} ${c.amberBright}Starting development server...${c.reset}`);
   console.log('');
 
-  // Open browser after a short delay
-  setTimeout(() => {
-    const openCmd = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'start' : 'xdg-open';
-    try {
-      execSync(`${openCmd} http://localhost:3000`, { stdio: 'ignore' });
-    } catch {
-      // Browser open failed, that's ok
-    }
-  }, 3000);
-
   console.log(`${c.amberBright}╔══════════════════════════════════════════════════════════════════════╗${c.reset}`);
   console.log(`${c.amberBright}║                         SETUP COMPLETE                               ║${c.reset}`);
   console.log(`${c.amberBright}╚══════════════════════════════════════════════════════════════════════╝${c.reset}`);
@@ -1158,19 +1166,32 @@ async function runPostSetup() {
     console.log(`  ${c.amber}○${c.reset} Database: Update DATABASE_URL in .env.local, then run: npm run db:push`);
   }
   console.log('');
-  console.log(`  ${c.amberBright}Opening http://localhost:3000 in your browser...${c.reset}`);
+  console.log(`  ${c.amberDim}Starting dev server and opening browser...${c.reset}`);
   console.log('');
   console.log(`  ${c.amberDim}Press Ctrl+C to stop the server${c.reset}`);
   console.log('');
 
-  // Run dev server (this will keep running until Ctrl+C)
-  try {
-    execSync('npm run dev', { cwd: ROOT_DIR, stdio: 'inherit' });
-  } catch {
-    // User pressed Ctrl+C
-  }
+  // Run dev server with spawn (non-blocking) so we can open browser
+  const devServer = spawn('npm', ['run', 'dev'], {
+    cwd: ROOT_DIR,
+    stdio: 'inherit',
+    shell: true
+  });
 
-  process.exit(0);
+  // Open browser after server starts (wait for it to be ready)
+  setTimeout(() => {
+    const openCmd = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'start' : 'xdg-open';
+    try {
+      execSync(`${openCmd} http://localhost:3000`, { stdio: 'ignore' });
+    } catch {
+      // Browser open failed, that's ok
+    }
+  }, 4000);
+
+  // Handle Ctrl+C
+  devServer.on('close', () => {
+    process.exit(0);
+  });
 }
 
 // ============================================================================
