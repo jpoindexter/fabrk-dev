@@ -21,9 +21,8 @@ export function HeroPlaygroundFull() {
   const [activeTab, setActiveTab] = useState('components');
 
   return (
-    <section className="border-border border-t py-16">
-      <div className="container mx-auto max-w-[1800px] px-12 lg:px-24">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
+    <div>
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
           {/* Header with tabs */}
           <div className="mb-8">
             <TabsList className="bg-transparent">
@@ -47,8 +46,7 @@ export function HeroPlaygroundFull() {
           <TabsContent value="profile">
             <ProfilePreview />
           </TabsContent>
-        </Tabs>
-      </div>
-    </section>
+      </Tabs>
+    </div>
   );
 }

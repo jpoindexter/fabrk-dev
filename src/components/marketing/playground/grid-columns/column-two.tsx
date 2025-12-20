@@ -74,14 +74,11 @@ export function GridColumnTwo() {
         <Skeleton className="h-10 w-full" />
       </div>
 
-      {/* Progress Bars */}
+      {/* Progress Bar */}
       <Card>
         <div className="p-4">
           <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[PROGRESS]</h3>
-          <div className="space-y-3">
-            <Progress value={75} label="Upload" showPercentage barWidth={20} size="sm" />
-            <Progress value={45} label="Storage" showPercentage barWidth={20} size="sm" />
-          </div>
+          <Progress value={75} label="Upload" showPercentage barWidth={16} size="sm" />
         </div>
       </Card>
 

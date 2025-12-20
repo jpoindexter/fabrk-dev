@@ -38,16 +38,12 @@ export function GridColumnOne() {
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
-              <TabsTrigger value="reports">Reports</TabsTrigger>
             </TabsList>
             <TabsContent value="overview" className="mt-4 text-xs">
               <p>Performance metrics and key insights.</p>
             </TabsContent>
             <TabsContent value="analytics" className="mt-4 text-xs">
               <p>Detailed analytics data and trends.</p>
-            </TabsContent>
-            <TabsContent value="reports" className="mt-4 text-xs">
-              <p>Generated reports and exports.</p>
             </TabsContent>
           </Tabs>
         </div>
