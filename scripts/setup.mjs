@@ -1400,8 +1400,10 @@ async function goToNextTab() {
     });
   }
 
-  // Handle Starter Page tab - finalize before Complete
-  if (tabName === 'Starter Page') {
+  // Finalize when the NEXT tab is Complete (handles both Starter Page → Complete and Product Info → Complete)
+  const nextTabIndex = state.currentTab + 1;
+  const nextTabName = state.tabs[nextTabIndex];
+  if (nextTabName === 'Complete') {
     await finalize();
   }
 
