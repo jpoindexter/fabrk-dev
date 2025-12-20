@@ -8,11 +8,14 @@ Deploy Fabrk to production in under 15 minutes.
 
 This guide covers deploying to **Vercel** (recommended), but Fabrk works on any Node.js hosting platform (Railway, Render, Fly.io, etc.).
 
+**Before Deployment:** If you haven't already, run `npm run setup` locally to configure your stack. The setup wizard generates `.env.local` with all required variables.
+
 **What you'll deploy:**
-- Next.js app on Vercel
-- PostgreSQL database (Supabase/Railway/Vercel Postgres)
-- Stripe webhooks configured for production
-- Emails via Resend
+- Next.js 16 app on Vercel
+- PostgreSQL database (Neon/Supabase/Railway/Vercel Postgres)
+- Payment webhooks (Stripe, Polar.sh, or Lemonsqueezy)
+- Transactional emails (Resend, Postmark, or SendGrid)
+- 12 terminal themes (OKLCH color system)
 
 ---
 

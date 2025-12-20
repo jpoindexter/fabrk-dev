@@ -2,19 +2,41 @@
 
 Complete list of all prebuilt components, templates, pages, and APIs in the Fabrk boilerplate.
 
-Last Updated: 2025-12-13 (Component count verified and corrected)
+Last Updated: 2025-12-20
 
 ---
 
 ## 📊 Summary Statistics
 
 - **77 UI Components** (Verified count from `/src/components/ui/`)
-- **26 Pre-built Pages** (Auth, Dashboard, Admin, Legal, Landing)
+- **5 Landing Page Templates** (Setup wizard starter pages)
+- **26+ Pre-built Pages** (Auth, Dashboard, Admin, Legal, Landing)
 - **16 API Routes** (Auth, Payments, Webhooks, Health)
 - **7 Email Templates** (Transactional emails)
+- **12 Terminal Themes** (OKLCH-based color schemes)
 - **Enterprise Features** (MFA, Jobs, Teams, Files, AI)
 
 **Total: 77 Production-Ready UI Components + Full-Stack Features**
+
+---
+
+## 🚀 Setup Wizard Templates (5 Total)
+
+The `npm run setup` wizard includes starter landing pages for different app types:
+
+| Template | File | Sections Included |
+|----------|------|-------------------|
+| **STARTER** | `scripts/page-templates/starter.tsx` | Hero, Features (3), CTA |
+| **SAAS** | `scripts/page-templates/saas.tsx` | Hero, Features (6), Pricing (3 tiers), FAQ |
+| **AI APP** | `scripts/page-templates/ai-app.tsx` | Hero, Demo, Capabilities (4), Credit-based Pricing, Trust |
+| **MARKETPLACE** | `scripts/page-templates/marketplace.tsx` | Hero, Categories (4), How It Works, Seller Benefits, Trust |
+| **CUSTOM** | Uses `starter.tsx` | Same as Starter (generic starting point) |
+
+Each template includes:
+- **[SETUP] instruction banner** with file path
+- **TODO comments** marking what to customize
+- **Placeholder text** that clearly needs replacement
+- **Terminal aesthetic** (font-mono, rounded-none, uppercase headings)
 
 ---
 

@@ -39,6 +39,35 @@
 
 ## ⚡ Quick Start
 
+### Option 1: Interactive Setup Wizard (Recommended)
+
+```bash
+# Clone and install
+git clone https://github.com/THEFT-DEV/fabrk.git
+cd fabrk
+npm install --legacy-peer-deps
+
+# Run the interactive setup wizard
+npm run setup
+```
+
+The setup wizard will:
+1. **Ask what you're building** - STARTER, SAAS, AI APP, MARKETPLACE, or CUSTOM
+2. **Configure your stack** - Database, payments, email, analytics, AI, and more
+3. **Generate `.env.local`** - With all required environment variables
+4. **Copy a starter landing page** - Pre-built template matching your app type
+5. **Run database setup** - Prisma generate + db:push automatically
+6. **Start dev server** - Opens http://localhost:3000 in your browser
+
+**Templates included:**
+- **STARTER** - Basic landing page with hero, features, CTA
+- **SAAS** - Features grid, pricing tiers, FAQ section
+- **AI APP** - Demo section, AI capabilities, credit-based pricing
+- **MARKETPLACE** - Categories, how it works, seller benefits
+- **CUSTOM** - Uses starter template as a generic starting point
+
+### Option 2: Manual Setup
+
 ```bash
 # Clone and install
 git clone https://github.com/THEFT-DEV/fabrk.git
@@ -48,9 +77,6 @@ npm install --legacy-peer-deps
 # Set up environment
 cp .env.example .env.local
 # Edit .env.local with your credentials (see Configuration below)
-#
-# ⚡ Quick win: Get free RESEND_API_KEY in 2 minutes
-# → https://resend.com/api-keys (required for email/magic link auth)
 
 # Set up database
 npm run db:push

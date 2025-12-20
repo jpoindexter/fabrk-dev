@@ -2,18 +2,20 @@
 
 Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 
+Last Updated: 2025-12-20
+
 ---
 
 ## Executive Summary
 
-- **83 Production-Ready UI Components**
-- **9 Copy-Paste Templates**
-- **6 Professional Color Themes**
-- **17,822 Lines of Test Code**
-- **77 documented components**
-- **44 Test Files with Vitest + Playwright**
+- **77 Production-Ready UI Components** (verified count from `/src/components/ui/`)
+- **5 Setup Wizard Landing Page Templates** (STARTER, SAAS, AI APP, MARKETPLACE, CUSTOM)
+- **34+ Copy-Paste Page Templates** (in `/library`)
+- **12 Terminal Themes** (OKLCH-based color schemes)
+- **Interactive Setup Wizard** (`npm run setup`)
+- **Multi-Provider Payments** (Stripe, Polar.sh, Lemonsqueezy)
 - **Next.js 16 + TypeScript Strict**
-- **26,813 Lines of Documentation**
+- **Comprehensive Documentation** (150+ pages)
 
 **Price:** $299
 **Market Position:** Premium Enterprise Boilerplate
@@ -288,28 +290,41 @@ Complete feature list for the **$299 Premium Enterprise Next.js Boilerplate**
 
 ---
 
-## 3. Theme System (6 Color Schemes)
+## 3. Theme System (12 Terminal Themes)
 
 ### Available Themes
-1. **Purple (Default)** - `oklch(71.5% 0.197 354.23)` - Modern SaaS aesthetic
-2. **Ocean Blue** - `oklch(65% 0.2 250)` - Professional corporate
-3. **Forest Green** - `oklch(70% 0.18 145)` - Eco-friendly, health apps
-4. **Sunset Orange** - `oklch(72% 0.19 45)` - Creative, energetic
-5. **Hot Pink** - `oklch(70% 0.22 350)` - Bold, trendy, youth-focused
-6. **Ruby Red** - `oklch(60% 0.22 25)` - Enterprise, financial
+
+**CRT Phosphor Themes (5):**
+1. **Green** - Classic terminal green phosphor
+2. **Red** - Red CRT aesthetic
+3. **Blue** - Blue phosphor display
+4. **Amber** - Warm amber monochrome
+5. **Purple** - Modern purple CRT
+
+**Retro Computer Themes (4):**
+6. **C64** - Commodore 64 blue
+7. **GameBoy** - Original GameBoy green
+8. **VIC-20** - VIC-20 cyan
+9. **Atari** - Atari computer colors
+
+**Handheld/Other (3):**
+10. **GB Pocket** - GameBoy Pocket gray
+11. **Spectrum** - ZX Spectrum colors
+12. **B&W** - High-contrast black and white
 
 ### Technology
 - **OKLCH Color Space** - Perceptually uniform colors (better than HSL/RGB)
 - **Design Tokens** - CSS custom properties for consistency
 - **Live Switching** - Instant theme changes without page reload
 - **Persistent** - localStorage saves user preference
-- **Component Integration** - All 234 components theme-responsive
+- **Component Integration** - All 77 components theme-responsive
+- **Terminal Aesthetic** - `rounded-none`, `font-mono` throughout
 
 ### Features
-- Dropdown menu with color preview swatches
+- Theme switcher dropdown in navigation
 - Current theme indicator badge
-- Integrated into `/components` and `/variations` pages
-- Dark mode compatible (adapts theme colors to dark background)
+- Dark-only design (terminal aesthetic)
+- WCAG 2.2 AA accessible contrast ratios
 
 ---
 
