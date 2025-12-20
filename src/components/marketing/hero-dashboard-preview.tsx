@@ -21,10 +21,10 @@ export function HeroDashboardPreview() {
       <CardHeader code="0x04" title="SYSTEM STATUS.LOG" />
       <CardContent className="space-y-4 p-4">
         {stats.map((stat) => (
-          <div key={stat.label} className="border-accent flex items-center border-l-2 pl-3">
+          <div key={stat.label} className="border-primary flex items-center border-l-2 pl-3">
             <div className="flex-1">
               <span className={cn('text-xs', mode.color.text.muted, mode.font)}>{stat.label}:</span>
-              <span className={cn('ml-2 text-sm font-bold', mode.font, mode.color.text.accent)}>
+              <span className={cn('ml-2 text-sm font-bold text-primary', mode.font)}>
                 {stat.value}
               </span>
             </div>
@@ -34,12 +34,12 @@ export function HeroDashboardPreview() {
           </div>
         ))}
 
-        <div className="border-accent mt-4 border-t pt-3">
+        <div className="border-primary mt-4 border-t pt-3">
           <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-            <span className={mode.color.text.accent}>▸</span> AUTH, BILLING, DASHBOARD
+            <span className="text-primary">▸</span> AUTH, BILLING, DASHBOARD
           </div>
           <div className={cn('text-xs', mode.color.text.muted, mode.font)}>
-            <span className={mode.color.text.accent}>▸</span> PAYMENTS, EMAIL, STORAGE
+            <span className="text-primary">▸</span> PAYMENTS, EMAIL, STORAGE
           </div>
           <div className={cn('text-xs', mode.color.text.success, mode.font)}>
             <span>▸</span> ALL SYSTEMS OPERATIONAL

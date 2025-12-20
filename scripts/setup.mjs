@@ -1118,15 +1118,23 @@ async function runPostSetup() {
   console.log(`${c.reset}`);
   console.log('');
 
-  // Always run prisma generate first
+  // Check if dependencies are installed
+  const nodeModulesExists = fs.existsSync(path.join(ROOT_DIR, 'node_modules'));
+
+  // Run prisma generate (skip if no node_modules - user needs to run npm install first)
   console.log(`${c.amber}[1/3]${c.reset} ${c.amberBright}Generating Prisma client...${c.reset}`);
-  try {
-    execSync('npx prisma generate', { cwd: ROOT_DIR, stdio: 'inherit' });
-    state.postSetupResults.push({ cmd: 'prisma generate', status: 'success' });
-    console.log(`${c.amberBright}✓${c.reset} Prisma client generated`);
-  } catch (error) {
-    state.postSetupResults.push({ cmd: 'prisma generate', status: 'failed', error: error.message });
-    console.log(`${c.amber}✗${c.reset} Prisma generate failed`);
+  if (!nodeModulesExists) {
+    console.log(`${c.amber}⚠${c.reset} Dependencies not installed. Run ${c.amberBright}npm install${c.reset} first, then ${c.amberBright}npx prisma generate${c.reset}`);
+    state.postSetupResults.push({ cmd: 'prisma generate', status: 'skipped', error: 'node_modules not found' });
+  } else {
+    try {
+      execSync('npx prisma generate', { cwd: ROOT_DIR, stdio: 'inherit' });
+      state.postSetupResults.push({ cmd: 'prisma generate', status: 'success' });
+      console.log(`${c.amberBright}✓${c.reset} Prisma client generated`);
+    } catch (error) {
+      state.postSetupResults.push({ cmd: 'prisma generate', status: 'failed', error: error.message });
+      console.log(`${c.amber}✗${c.reset} Prisma generate failed`);
+    }
   }
   console.log('');
 
