@@ -1,7 +1,7 @@
 /**
  * ✅ FABRK COMPONENT
- * Hero Section - Clean, bold, terminal-first
- * Single panel design with integrated pricing
+ * Hero Section - Framer/Radix style
+ * Small headline left, live component preview right
  * Production-ready ✓
  */
 'use client';
@@ -10,159 +10,176 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
-import { SimpleIcon } from '@/components/ui/simple-icon';
-import {
-  siNextdotjs,
-  siReact,
-  siTailwindcss,
-  siPrisma,
-  siTypescript,
-  siStripe,
-  siResend,
-} from 'simple-icons';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Badge as CardBadge } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { COMPONENT_COUNT_STRING, TEMPLATE_COUNT_STRING } from '@/data/landing/stats';
-import { Check } from 'lucide-react';
-
-const techStack = [
-  { name: 'NEXT.JS', path: siNextdotjs.path },
-  { name: 'REACT', path: siReact.path },
-  { name: 'TYPESCRIPT', path: siTypescript.path },
-  { name: 'TAILWIND', path: siTailwindcss.path },
-  { name: 'PRISMA', path: siPrisma.path },
-  { name: 'STRIPE', path: siStripe.path },
-  { name: 'RESEND', path: siResend.path },
-];
-
-const features = [
-  'Auth + Payments + Teams',
-  '77+ Components',
-  '12 Terminal Themes',
-  'Lifetime Updates',
-];
+import { ArrowRight, DollarSign, Users, TrendingUp, Activity, Check } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] overflow-hidden px-4 pt-12 pb-16 sm:px-0 lg:pt-20 lg:pb-24">
+    <section className="relative overflow-hidden px-4 pt-8 pb-12 sm:px-0 lg:pt-12 lg:pb-16">
       <Container size="2xl">
-        {/* Centered Hero Content */}
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Status Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 border border-primary/30 bg-primary/5 px-4 py-2">
-            <span className="h-2 w-2 animate-pulse bg-green-500" />
-            <span className={cn('text-xs uppercase tracking-wider', mode.font, mode.color.text.muted)}>
-              SYSTEM ONLINE // SAAS BOILERPLATE v2.0
-            </span>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className={cn('text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] text-primary mb-6', mode.font)}>
-            SHIP YOUR SAAS
-            <br />
-            <span className="text-foreground">THIS WEEKEND</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className={cn('text-lg md:text-xl max-w-2xl mx-auto mb-8', mode.font, mode.color.text.muted)}>
-            Terminal-first boilerplate with auth, payments, and multi-tenancy.
-            <br className="hidden md:block" />
-            <span className="text-primary">875+ hours</span> of work, ready to deploy.
-          </p>
-
-          {/* Stats Row */}
-          <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
-            <div className="text-center">
-              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>{COMPONENT_COUNT_STRING}</div>
-              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Components</div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="text-center">
-              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>{TEMPLATE_COUNT_STRING}</div>
-              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Templates</div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="text-center">
-              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>12</div>
-              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Themes</div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="text-center">
-              <div className={cn('text-2xl md:text-3xl font-bold text-primary', mode.font)}>&lt;5</div>
-              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>Min Setup</div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <PolarCheckoutButton
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-start">
+          {/* LEFT: Compact headline + CTAs */}
+          <div className="lg:sticky lg:top-24 space-y-6">
+            {/* Small badge */}
+            <Link
+              href="/docs/changelog"
               className={cn(
-                'bg-primary text-primary-foreground px-8 py-4 text-base font-bold transition-all hover:scale-105',
-                mode.radius,
-                mode.font
+                'inline-flex items-center gap-2 border px-3 py-1.5 text-xs transition-colors hover:border-primary',
+                mode.font,
+                mode.color.text.muted
               )}
             >
-              &gt; GET FABRK — $199
-              <span className="ml-2 text-sm line-through opacity-60">$299</span>
-            </PolarCheckoutButton>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className={cn('px-8 py-4 text-sm', mode.radius, mode.font)}
-            >
-              <Link href="/library">&gt; EXPLORE DEMOS</Link>
-            </Button>
-          </div>
+              <span className="h-1.5 w-1.5 animate-pulse bg-green-500" />
+              Fabrk v2.0 — See what&apos;s new
+              <ArrowRight className="h-3 w-3" />
+            </Link>
 
-          {/* Feature Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-            {features.map((feature) => (
-              <div
-                key={feature}
-                className={cn('flex items-center gap-2 border px-3 py-1.5 text-xs', mode.font, mode.color.text.muted)}
-              >
-                <Check className="h-3 w-3 text-green-500" />
-                {feature}
+            {/* Headline */}
+            <h1 className={cn('text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]', mode.font)}>
+              Start building
+              <br />
+              <span className="text-primary">your app now</span>
+            </h1>
+
+            {/* Description */}
+            <p className={cn('text-base lg:text-lg max-w-md leading-relaxed', mode.font, mode.color.text.muted)}>
+              A production-ready SaaS boilerplate with auth, payments, and multi-tenancy.
+              Just import and go—no configuration required.
+            </p>
+
+            {/* Code snippet */}
+            <div className={cn('border bg-muted/50 p-4 text-xs', mode.font)}>
+              <div className={mode.color.text.muted}>import &quot;@fabrk/styles.css&quot;;</div>
+              <div className={mode.color.text.muted}>import {'{'} Auth, Billing {'}'} from &quot;@fabrk&quot;;</div>
+              <div className="mt-2">
+                <span className={mode.color.text.muted}>export default</span> () =&gt; {'{'}
               </div>
-            ))}
-          </div>
-
-          {/* Launch Offer Badge */}
-          <div className="inline-flex items-center gap-4 border-2 border-primary bg-primary/5 px-6 py-3">
-            <div className="text-left">
-              <div className={cn('text-xs uppercase', mode.font, mode.color.text.muted)}>[LAUNCH OFFER]</div>
-              <div className={cn('text-sm', mode.font)}>
-                <span className="text-primary font-bold">$199</span>
-                <span className={cn('ml-2 line-through', mode.color.text.muted)}>$299</span>
-                <span className={cn('ml-2', mode.color.text.muted)}>• First 100 buyers</span>
+              <div className="pl-4">
+                <span className="text-primary">&lt;Auth&gt;</span>
+                <span className="text-green-500">&lt;Billing /&gt;</span>
+                <span className="text-primary">&lt;/Auth&gt;</span>
               </div>
+              <div>{'}'}</div>
             </div>
-            <div className="bg-primary text-primary-foreground px-3 py-1 text-sm font-bold animate-pulse">
-              -$100
-            </div>
-          </div>
-        </div>
 
-        {/* Tech Stack - Below Hero */}
-        <div className="mt-16 lg:mt-20">
-          <CardBadge code="0x02" label="POWERED BY" meta="FIB[1,1,2,3,5,8,13]" className="mb-6" />
-          <div className="flex flex-wrap gap-2">
-            {techStack.map((tech) => (
-              <div
-                key={tech.name}
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3">
+              <PolarCheckoutButton
                 className={cn(
-                  'flex items-center gap-2 border px-2 py-1',
-                  mode.color.border.default,
-                  mode.color.bg.surface
+                  'bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium',
+                  mode.radius,
+                  mode.font
                 )}
               >
-                <SimpleIcon path={tech.path} className="size-3.5" />
-                <span className={cn('text-xs', mode.font)}>{tech.name}</span>
-                <span className={cn('text-xs', mode.color.text.success, mode.font)}>[OK]</span>
-              </div>
-            ))}
+                Get started — $199
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </PolarCheckoutButton>
+              <Button
+                variant="outline"
+                asChild
+                className={cn('px-5 py-2.5 text-sm', mode.radius, mode.font)}
+              >
+                <Link href="/library">Playground</Link>
+              </Button>
+            </div>
+
+            {/* Stats inline */}
+            <div className={cn('flex items-center gap-6 text-sm pt-2', mode.font, mode.color.text.muted)}>
+              <span><span className="text-foreground font-medium">{COMPONENT_COUNT_STRING}</span> components</span>
+              <span><span className="text-foreground font-medium">{TEMPLATE_COUNT_STRING}</span> templates</span>
+              <span><span className="text-foreground font-medium">12</span> themes</span>
+            </div>
+          </div>
+
+          {/* RIGHT: Live component preview */}
+          <div className="space-y-4">
+            {/* Dashboard Preview */}
+            <Card size="auto">
+              <CardHeader code="0x01" title="DASHBOARD" />
+              <CardContent className="p-4">
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { label: 'REVENUE', value: '$45,231', change: '+20.1%', icon: DollarSign },
+                    { label: 'USERS', value: '2,350', change: '+15.3%', icon: Users },
+                    { label: 'GROWTH', value: '12.5%', change: '+4.2%', icon: TrendingUp },
+                    { label: 'ACTIVE', value: '1,234', change: '+8.7%', icon: Activity },
+                  ].map((stat) => (
+                    <div key={stat.label} className="border p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className={cn('text-[10px]', mode.font, mode.color.text.muted)}>{stat.label}</span>
+                        <stat.icon className={cn('h-3 w-3', mode.color.text.muted)} />
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className={cn('text-lg font-bold', mode.font)}>{stat.value}</span>
+                        <span className={cn('text-[10px]', mode.font, mode.color.text.success)}>{stat.change}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Auth Preview */}
+            <div className="grid grid-cols-2 gap-4">
+              <Card size="auto">
+                <CardHeader code="0x02" title="AUTH" />
+                <CardContent className="p-4 space-y-3">
+                  <div className="space-y-1">
+                    <Label className={cn('text-[10px]', mode.font)}>EMAIL</Label>
+                    <Input placeholder="user@example.com" className="h-8 text-xs" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label className={cn('text-[10px]', mode.font)}>PASSWORD</Label>
+                    <Input type="password" placeholder="••••••••" className="h-8 text-xs" />
+                  </div>
+                  <Button size="sm" className={cn('w-full text-xs', mode.font)}>&gt; SIGN IN</Button>
+                </CardContent>
+              </Card>
+
+              <Card size="auto">
+                <CardHeader code="0x03" title="BILLING" />
+                <CardContent className="p-4 space-y-2">
+                  <div className="flex items-baseline gap-2">
+                    <span className={cn('text-2xl font-bold text-primary', mode.font)}>$199</span>
+                    <span className={cn('text-xs line-through', mode.color.text.muted)}>$299</span>
+                  </div>
+                  <div className="space-y-1.5 text-[10px]">
+                    {['Full source code', '77+ components', 'Lifetime updates'].map((f) => (
+                      <div key={f} className={cn('flex items-center gap-1.5', mode.font, mode.color.text.muted)}>
+                        <Check className="h-2.5 w-2.5 text-green-500" />
+                        {f}
+                      </div>
+                    ))}
+                  </div>
+                  <Button size="sm" className={cn('w-full text-xs mt-2', mode.font)}>&gt; BUY NOW</Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Activity Log */}
+            <Card size="auto">
+              <CardHeader code="0x04" title="ACTIVITY" />
+              <CardContent className="p-4">
+                <div className="space-y-2">
+                  {[
+                    { text: 'Payment received from user_4821', time: '2m ago' },
+                    { text: 'New subscription started', time: '5m ago' },
+                    { text: 'Invoice #1234 paid', time: '12m ago' },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 border-l-2 border-primary pl-3 py-1">
+                      <Check className={cn('h-3 w-3', mode.color.text.success)} />
+                      <span className={cn('text-xs flex-1', mode.font)}>{item.text}</span>
+                      <span className={cn('text-[10px]', mode.font, mode.color.text.muted)}>{item.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </Container>
