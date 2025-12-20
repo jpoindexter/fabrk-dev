@@ -2,22 +2,26 @@
 
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
+import { MetricCard } from '@/components/ui/card';
 
 interface StatCardProps {
   icon: LucideIcon;
   value: string;
   label: string;
   index: number;
+  /** Optional hex code for header (auto-generates if not provided) */
+  code?: string;
 }
 
 /**
- * StatCard Component
- * Displays a single metric with icon, value, and label
+ * StatCard Component - Animated wrapper around MetricCard
+ * Adds scroll-triggered animations to the base MetricCard component
  * Used in Stats section to show trust indicators
  */
-export function StatCard({ icon: Icon, value, label, index }: StatCardProps) {
+export function StatCard({ icon: Icon, value, label, index, code }: StatCardProps) {
+  // Convert label to SNAKE_CASE for terminal header
+  const headerTitle = label.toUpperCase().replace(/\s+/g, '_');
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -28,26 +32,14 @@ export function StatCard({ icon: Icon, value, label, index }: StatCardProps) {
         delay: index * 0.1,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
-      className={cn(
-        'group border-border bg-card hover:bg-muted/50 relative flex flex-col items-center gap-4 border p-6 text-center transition-colors',
-        mode.radius
-      )}
     >
-      {/* Icon */}
-      <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-      >
-        <Icon className={cn('size-8', mode.color.text.accent)} />
-      </motion.div>
-
-      {/* Value */}
-      <div className={cn('text-4xl font-bold tracking-tight', mode.font, mode.color.text.primary)}>
-        {value}
-      </div>
-
-      {/* Label */}
-      <div className={cn('text-xs tracking-wider', mode.font, mode.color.text.muted)}>{label}</div>
+      <MetricCard
+        code={code}
+        title={headerTitle}
+        value={value}
+        label={label}
+        icon={<Icon className="size-5" />}
+      />
     </motion.div>
   );
 }

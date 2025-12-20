@@ -2,9 +2,9 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { DocsSection, DocsCard as DocsCardComponent } from '@/components/docs';
-import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardFooter, MetricCard } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Settings } from 'lucide-react';
+import { Settings, Box, Palette, Route, Code } from 'lucide-react';
 
 export default function CardPage() {
   return (
@@ -12,7 +12,7 @@ export default function CardPage() {
       code="[UI.10]"
       title="Card"
       description="Terminal-styled card component with header code prefix, optional icons, and flexible content areas. Uses the [ [0xXX] TITLE ] pattern for consistency."
-      importCode={`import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";`}
+      importCode={`import { Card, CardHeader, CardContent, CardFooter, MetricCard } from "@/components/ui/card";`}
       mainPreview={{
         preview: (
           <Card className="w-[350px]">
@@ -188,39 +188,47 @@ export default function CardPage() {
 </div>`,
         },
         {
-          title: 'Stat Cards',
-          description: 'Cards displaying statistics or metrics',
+          title: 'MetricCard',
+          description: 'Terminal-style card for displaying key metrics and stats',
           preview: (
-            <div className="grid grid-cols-3 gap-4">
-              <Card>
-                <CardHeader code="0x09" title="TOTAL USERS" meta="1,234" />
-                <CardContent>
-                  <p className="text-muted-foreground text-xs">+12% from last month</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader code="0x0A" title="REVENUE" meta="$45.2K" />
-                <CardContent>
-                  <p className="text-muted-foreground text-xs">+8% from last month</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader code="0x0B" title="CONVERSION" meta="3.2%" />
-                <CardContent>
-                  <p className="text-muted-foreground text-xs">-2% from last month</p>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-2 gap-4">
+              <MetricCard
+                code="0x1A"
+                title="UI_COMPONENTS"
+                value="77+"
+                label="UI Components"
+                icon={<Box className="size-5" />}
+              />
+              <MetricCard
+                code="0x1B"
+                title="THEMES"
+                value="12"
+                label="Themes"
+                icon={<Palette className="size-5" />}
+              />
+              <MetricCard
+                code="0x1C"
+                title="API_ROUTES"
+                value="72"
+                label="API Routes"
+                icon={<Route className="size-5" />}
+              />
+              <MetricCard
+                code="0x1D"
+                title="TYPESCRIPT"
+                value="100%"
+                label="TypeScript"
+                icon={<Code className="size-5" />}
+              />
             </div>
           ),
-          code: `<div className="grid grid-cols-3 gap-4">
-  <Card>
-    <CardHeader code="0x09" title="TOTAL USERS" meta="1,234" />
-    <CardContent>
-      <p className="text-xs text-muted-foreground">+12% from last month</p>
-    </CardContent>
-  </Card>
-  {/* More stat cards... */}
-</div>`,
+          code: `<MetricCard
+  code="0x1A"
+  title="UI_COMPONENTS"
+  value="77+"
+  label="UI Components"
+  icon={<Box className="size-5" />}
+/>`,
         },
       ]}
       props={[
@@ -268,6 +276,27 @@ export default function CardPage() {
           type: '"sm" | "md" | "lg"',
           default: '"md"',
           description: 'Padding size for CardContent (sm=8px, md=16px, lg=24px)',
+        },
+        // MetricCard props
+        {
+          name: 'MetricCard.title',
+          type: 'string',
+          description: 'Header title in SNAKE_CASE format (e.g., "UI_COMPONENTS")',
+        },
+        {
+          name: 'MetricCard.value',
+          type: 'string | number',
+          description: 'Large display value (e.g., "77+", "$199", "100%")',
+        },
+        {
+          name: 'MetricCard.label',
+          type: 'string',
+          description: 'Label text displayed below the value',
+        },
+        {
+          name: 'MetricCard.icon',
+          type: 'React.ReactNode',
+          description: 'Icon displayed in header right side',
         },
       ]}
       accessibility={[
