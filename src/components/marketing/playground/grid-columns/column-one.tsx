@@ -63,6 +63,7 @@ export function GridColumnOne() {
       {/* Accordion */}
       <Card>
         <div className="p-4">
+          <h2 className="sr-only">Documentation Sections</h2>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-xs">Getting Started</AccordionTrigger>
