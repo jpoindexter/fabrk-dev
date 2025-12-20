@@ -8,7 +8,6 @@
  * as teaching examples. These are pedagogical - showing users how to customize.
  * Design system audit should skip this file.
  */
-import Link from 'next/link';
 import { Palette, CheckCircle } from 'lucide-react';
 import { LibraryGuideTemplate, LibraryCodeBlock } from '@/components/library';
 

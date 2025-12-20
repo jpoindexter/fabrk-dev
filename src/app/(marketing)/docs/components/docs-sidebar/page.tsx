@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { DocsSidebar, type NavSection, type NavItem } from '@/components/docs/docs-sidebar';
+import { DocsSidebar, type NavSection } from '@/components/docs/docs-sidebar';
 import { BookOpen, Rocket, Shield } from 'lucide-react';
 
 const exampleNavigation: NavSection[] = [

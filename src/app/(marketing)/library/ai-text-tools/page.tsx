@@ -14,7 +14,6 @@ import {
   Wand2,
   Copy,
   Check,
-  Loader2,
 } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

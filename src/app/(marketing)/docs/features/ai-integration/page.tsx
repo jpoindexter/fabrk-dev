@@ -2,12 +2,9 @@ import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import Link from 'next/link';
 import {
-  Sparkles,
-  Bot,
   Coins,
   FileCode,
   Cpu,
-  Zap,
   MessageSquare,
   FileText,
   Image,

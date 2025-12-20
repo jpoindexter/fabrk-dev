@@ -5,7 +5,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Image as ImageIcon, Download, Loader2, Sparkles } from 'lucide-react';
+import { Download, Sparkles } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';

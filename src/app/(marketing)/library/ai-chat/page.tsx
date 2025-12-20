@@ -33,18 +33,21 @@ export default function Page() {
   );
 }`;
 
+// Static timestamp for initial message (avoids impure Date.now() during render)
+const INITIAL_TIMESTAMP = 1703116800000; // 2023-12-21 00:00:00 UTC
+
 function AIChatPreview() {
   return (
     <TemplatePreviewWrapper minHeight="700px">
       <BrowserChrome title="AI Uplink">
-        <AiChat 
-          className="h-[600px] border-none" 
+        <AiChat
+          className="h-[600px] border-none"
           initialMessages={[
              {
                id: 'welcome',
                role: 'assistant',
                content: 'Hello. I am ready to assist you with your tasks.\n\nType a command to begin.',
-               timestamp: Date.now()
+               timestamp: INITIAL_TIMESTAMP
              }
           ]}
         />
