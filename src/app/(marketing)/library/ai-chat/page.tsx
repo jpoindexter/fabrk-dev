@@ -17,7 +17,7 @@ import { AiChat } from '@/components/library/ai-chat';
 
 export default function Page() {
   return (
-    <div className="h-[600px] w-full">
+    <div className="h-150 w-full">
       <AiChat 
         defaultModelId="gpt-4o"
         initialMessages={[
@@ -41,7 +41,7 @@ function AIChatPreview() {
     <TemplatePreviewWrapper minHeight="700px">
       <BrowserChrome title="AI Uplink">
         <AiChat
-          className="h-[600px] border-none"
+          className="h-150 border-none"
           initialMessages={[
              {
                id: 'welcome',
