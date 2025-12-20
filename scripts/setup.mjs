@@ -82,6 +82,14 @@ const STARTER_PAGES = {
   custom: { source: 'starter.tsx', name: 'Starter Landing' }, // Same as starter - generic starting point
 };
 
+// Product info prompts for landing page customization
+const PRODUCT_INFO_PROMPTS = [
+  { key: 'productName', label: 'PRODUCT NAME', placeholder: 'Acme Analytics', desc: 'Your product name' },
+  { key: 'tagline', label: 'HEADLINE', placeholder: 'Track Everything. Miss Nothing.', desc: 'Main headline (compelling!)' },
+  { key: 'description', label: 'DESCRIPTION', placeholder: 'The analytics platform that helps you understand...', desc: 'Brief description of what you do' },
+  { key: 'productUrl', label: 'DOMAIN', placeholder: 'acme.com', desc: 'Your website domain' },
+];
+
 const API_KEY_INFO = {
   // Database
   DATABASE_URL: { format: 'postgresql://user:pass@host:5432/db', where: 'supabase.com / neon.tech / vercel.com/storage', placeholder: 'postgresql://USER:PASSWORD@HOST:5432/DATABASE' },
@@ -332,6 +340,9 @@ const state = {
   marketplaceStyle: null,
   apiKeyValues: {},
   wantsStarterPage: false,
+  // Product info for landing page customization
+  productInfo: {},
+  productInfoIndex: 0,
   // UI state for current screen
   selectedIndex: 0,
   inputValue: '',
@@ -419,6 +430,9 @@ function renderScreen() {
       break;
     case 'Starter Page':
       renderStarterPageTab();
+      break;
+    case 'Product Info':
+      renderProductInfoTab();
       break;
     case 'Complete':
       renderCompleteTab();
@@ -623,13 +637,29 @@ function renderReviewTab() {
     lines.push(`  ${c.amberDim}No optional features${c.reset}`);
   }
 
+  // Product info section (if applicable)
+  if (state.wantsStarterPage && Object.keys(state.productInfo).length > 0) {
+    lines.push('');
+    lines.push(`${c.amber}PRODUCT INFO${c.reset}`);
+    lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
+    if (state.productInfo.productName) {
+      lines.push(`  ${c.amberDim}Name:${c.reset} ${c.amberBright}${state.productInfo.productName}${c.reset}`);
+    }
+    if (state.productInfo.tagline) {
+      lines.push(`  ${c.amberDim}Headline:${c.reset} ${c.amber}${state.productInfo.tagline.length > 35 ? state.productInfo.tagline.slice(0, 35) + '...' : state.productInfo.tagline}${c.reset}`);
+    }
+    if (state.productInfo.productUrl) {
+      lines.push(`  ${c.amberDim}Domain:${c.reset} ${c.amber}${state.productInfo.productUrl}${c.reset}`);
+    }
+  }
+
   // Files section
   lines.push('');
   lines.push(`${c.amber}WILL CREATE${c.reset}`);
   lines.push(`${c.amber}${'─'.repeat(40)}${c.reset}`);
   lines.push(`  ${c.amberBright}✓${c.reset} .env.local`);
   if (state.wantsStarterPage) {
-    lines.push(`  ${c.amberBright}✓${c.reset} src/app/page.tsx`);
+    lines.push(`  ${c.amberBright}✓${c.reset} src/app/page.tsx ${c.amberDim}(customized)${c.reset}`);
     lines.push(`  ${c.amberBright}✓${c.reset} FABRK-PROMPTS.md`);
   }
 
@@ -671,13 +701,13 @@ function renderReviewTab() {
 
 function renderStarterPageTab() {
   const options = [
-    { name: 'YES', desc: 'Copy pre-built landing page + FABRK-PROMPTS.md' },
+    { name: 'YES', desc: 'Generate a customized landing page with YOUR product info' },
     { name: 'NO', desc: 'Skip - keep existing page.tsx' },
   ];
 
   const lines = [
     '',
-    `${c.amberBright}> Copy a starter landing page?${c.reset}`,
+    `${c.amberBright}> Generate a custom landing page?${c.reset}`,
     '',
   ];
 
@@ -692,6 +722,60 @@ function renderStarterPageTab() {
   });
 
   renderBox('STARTER PAGE', lines);
+}
+
+function renderProductInfoTab() {
+  const lines = [''];
+
+  // Show what's entered so far
+  lines.push(`${c.amberBright}> Tell us about your product${c.reset}`);
+  lines.push(`${c.amberDim}This info will be used to customize your landing page${c.reset}`);
+  lines.push('');
+
+  // Show all prompts with their status
+  PRODUCT_INFO_PROMPTS.forEach((prompt, i) => {
+    const isCurrent = i === state.productInfoIndex;
+    const isComplete = i < state.productInfoIndex;
+    const value = state.productInfo[prompt.key];
+
+    let status;
+    if (isComplete) {
+      status = value ? `${c.amberBright}✓${c.reset}` : `${c.amberDim}skipped${c.reset}`;
+    } else if (isCurrent) {
+      status = `${c.amberBright}◀${c.reset}`;
+    } else {
+      status = `${c.amberDim}...${c.reset}`;
+    }
+
+    const label = isCurrent
+      ? `${c.amberBright}${c.bold}${prompt.label}${c.reset}`
+      : isComplete
+        ? `${c.amberDim}${prompt.label}${c.reset}`
+        : `${c.amber}${prompt.label}${c.reset}`;
+
+    const displayValue = isComplete && value ? `: ${c.amber}${value.length > 30 ? value.slice(0, 30) + '...' : value}${c.reset}` : '';
+
+    lines.push(`  ${status}  ${label}${displayValue}`);
+  });
+
+  lines.push('');
+  lines.push(`${c.amber}${'─'.repeat(66)}${c.reset}`);
+  lines.push('');
+
+  // Current prompt details
+  const currentPrompt = PRODUCT_INFO_PROMPTS[state.productInfoIndex];
+  if (currentPrompt) {
+    lines.push(`${c.amber}${currentPrompt.desc}${c.reset}`);
+    lines.push(`${c.amberDim}Example: ${currentPrompt.placeholder}${c.reset}`);
+    lines.push('');
+    lines.push(`${c.amberDim}Press Enter to use default · Type to customize${c.reset}`);
+    lines.push('');
+    lines.push(`${c.amberBright}>${c.reset} ${state.inputValue || `${c.amberDim}${currentPrompt.placeholder}${c.reset}`}█`);
+  }
+
+  lines.push('');
+
+  renderBox('PRODUCT INFO', lines);
 }
 
 function renderCompleteTab() {
@@ -710,13 +794,14 @@ function renderCompleteTab() {
     ].filter(Boolean);
     renderBox('DRY RUN COMPLETE', lines);
   } else {
+    const productName = state.productInfo.productName || 'Starter';
     const lines = [
       '',
       `${c.amberBright}✓ Setup Complete!${c.reset}`,
       '',
       `${c.amber}Created:${c.reset}`,
       `  ${c.amberBright}✓${c.reset} .env.local`,
-      state.wantsStarterPage ? `  ${c.amberBright}✓${c.reset} Landing page copied` : '',
+      state.wantsStarterPage ? `  ${c.amberBright}✓${c.reset} Landing page for "${productName}"` : '',
       state.wantsStarterPage ? `  ${c.amberBright}✓${c.reset} FABRK-PROMPTS.md` : '',
       '',
       `${c.amber}Next steps:${c.reset}`,
@@ -739,6 +824,10 @@ function renderFooter() {
     // Key entry mode
     hints.push(`${c.amberDim}type${c.reset} ${c.amber}value${c.reset}`);
     hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}next key${c.reset}`);
+  } else if (tabName === 'Product Info') {
+    // Product info entry mode
+    hints.push(`${c.amberDim}type${c.reset} ${c.amber}value${c.reset}`);
+    hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}next / use default${c.reset}`);
   } else if (tabName === 'Template' || tabName === 'Starter Page' || (isCategory && state.categoryPhase === 'selection')) {
     hints.push(`${c.amberDim}↑/↓${c.reset} ${c.amber}select${c.reset}`);
     hints.push(`${c.amberDim}Enter${c.reset} ${c.amber}confirm${c.reset}`);
@@ -818,7 +907,7 @@ async function buildEnvContent(template, values = {}) {
   return lines.join('\n') + '\n';
 }
 
-async function copyStarterPage(templateKey, marketplaceStyle = null) {
+async function copyStarterPage(templateKey, marketplaceStyle = null, productInfo = {}) {
   const templatesDir = join(__dirname, 'page-templates');
   let sourceFile;
 
@@ -845,7 +934,48 @@ async function copyStarterPage(templateKey, marketplaceStyle = null) {
   if (existsSync(destPath)) {
     await copyFile(destPath, destPath + '.backup');
   }
-  await copyFile(sourcePath, destPath);
+
+  // Read template content
+  let content = await readFile(sourcePath, 'utf-8');
+
+  // Apply template interpolation if we have product info
+  if (productInfo && Object.keys(productInfo).length > 0) {
+    const replacements = {
+      // Basic product info
+      'YOUR PRODUCT HEADLINE GOES HERE': (productInfo.tagline || 'YOUR PRODUCT HEADLINE GOES HERE').toUpperCase(),
+      'A clear, compelling description of what your product does and why it matters.\\n            Focus on the benefit to the user, not just features.': productInfo.description || 'A clear, compelling description of what your product does and why it matters.',
+      'your-product.com': productInfo.productUrl || 'your-product.com',
+      '[YOUR PRODUCT SCREENSHOT]': `[${(productInfo.productName || 'PRODUCT').toUpperCase()} SCREENSHOT]`,
+
+      // Update the product preview placeholder text
+      'Replace this with an actual screenshot or demo video': `Your ${productInfo.productName || 'product'} dashboard goes here`,
+    };
+
+    for (const [search, replace] of Object.entries(replacements)) {
+      content = content.replace(new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replace);
+    }
+
+    // Add a comment at the top noting customization
+    const customHeader = `/**
+ * ${(productInfo.productName || 'Product').toUpperCase()} LANDING PAGE
+ * Generated by Fabrk Setup Wizard
+ *
+ * Product: ${productInfo.productName || 'My Product'}
+ * Tagline: ${productInfo.tagline || 'Your tagline'}
+ *
+ * NEXT STEPS:
+ * 1. Replace the placeholder product screenshot
+ * 2. Update features with your actual features
+ * 3. Set your pricing
+ * 4. Update FAQ with your questions
+ */
+
+`;
+    // Replace existing header comment if present
+    content = content.replace(/\/\*\*[\s\S]*?\*\/\s*\n\n'use client';/, customHeader + "'use client';");
+  }
+
+  await writeFile(destPath, content, 'utf-8');
   return true;
 }
 
@@ -934,7 +1064,7 @@ async function finalize() {
     // Copy starter page if requested and available
     state.landingPageCopied = false;
     if (state.wantsStarterPage && STARTER_PAGES[state.templateKey]) {
-      const copied = await copyStarterPage(state.templateKey, state.marketplaceStyle);
+      const copied = await copyStarterPage(state.templateKey, state.marketplaceStyle, state.productInfo);
       if (copied) {
         state.landingPageCopied = true;
         await generatePromptsFile();
@@ -1100,10 +1230,44 @@ async function handleKeypress(str, key) {
         renderScreen();
       } else if (key.name === 'return') {
         state.wantsStarterPage = state.selectedIndex === 0;
+        if (state.wantsStarterPage) {
+          // Insert Product Info tab after Starter Page
+          const starterPageIndex = state.tabs.indexOf('Starter Page');
+          if (starterPageIndex >= 0 && !state.tabs.includes('Product Info')) {
+            state.tabs.splice(starterPageIndex + 1, 0, 'Product Info');
+          }
+          state.productInfoIndex = 0;
+          state.inputValue = '';
+        }
         await goToNextTab();
       } else if (str === '1' || str === '2') {
         state.selectedIndex = parseInt(str, 10) - 1;
         state.wantsStarterPage = state.selectedIndex === 0;
+        renderScreen();
+      }
+      break;
+
+    case 'Product Info':
+      if (key.name === 'return') {
+        // Save current value (or use default placeholder)
+        const currentPrompt = PRODUCT_INFO_PROMPTS[state.productInfoIndex];
+        const value = state.inputValue.trim() || currentPrompt.placeholder;
+        state.productInfo[currentPrompt.key] = value;
+        state.inputValue = '';
+        state.productInfoIndex++;
+
+        if (state.productInfoIndex >= PRODUCT_INFO_PROMPTS.length) {
+          // Done with product info, advance to next tab
+          state.productInfoIndex = 0;
+          await goToNextTab();
+        } else {
+          renderScreen();
+        }
+      } else if (key.name === 'backspace') {
+        state.inputValue = state.inputValue.slice(0, -1);
+        renderScreen();
+      } else if (str && str.length === 1 && !key.ctrl) {
+        state.inputValue += str;
         renderScreen();
       }
       break;

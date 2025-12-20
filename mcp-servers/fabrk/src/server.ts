@@ -24,6 +24,7 @@ import { generateComponent } from './tools/generate-component.js';
 import { generatePage } from './tools/generate-page.js';
 import { queryComponent } from './tools/query-component.js';
 import { validateCode } from './tools/validate-code.js';
+import { buildCustomLanding, getAvailableIcons, type BuildCustomLandingArgs } from './tools/build-custom-landing.js';
 
 // Import prompts
 import { buildLandingPrompt } from './prompts/build-landing.js';
@@ -228,6 +229,134 @@ export async function createServer() {
           required: ['code'],
         },
       },
+      {
+        name: 'build_custom_landing_page',
+        description:
+          'Generate a complete, customized landing page with your product info. Returns ready-to-use page.tsx content.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            productName: {
+              type: 'string',
+              description: 'Name of your product (e.g., "Acme Analytics")',
+            },
+            tagline: {
+              type: 'string',
+              description: 'Main headline/tagline (e.g., "Track Everything. Miss Nothing.")',
+            },
+            description: {
+              type: 'string',
+              description: 'Brief description of what your product does',
+            },
+            productUrl: {
+              type: 'string',
+              description: 'Your product domain (e.g., "acme.com")',
+            },
+            trustBadge: {
+              type: 'string',
+              description: 'Social proof badge text (e.g., "TRUSTED BY 1,000+ USERS")',
+            },
+            primaryCtaText: {
+              type: 'string',
+              description: 'Primary button text (e.g., "GET STARTED FREE")',
+            },
+            primaryCtaUrl: {
+              type: 'string',
+              description: 'Primary button URL (e.g., "/signup")',
+            },
+            secondaryCtaText: {
+              type: 'string',
+              description: 'Secondary button text (e.g., "WATCH DEMO")',
+            },
+            secondaryCtaUrl: {
+              type: 'string',
+              description: 'Secondary button URL (e.g., "/demo")',
+            },
+            features: {
+              type: 'array',
+              description: 'Array of 4 features with icon, title, description',
+              items: {
+                type: 'object',
+                properties: {
+                  icon: {
+                    type: 'string',
+                    description: 'Lucide icon name: Zap, Shield, Globe, BarChart3, Users, Clock, Star, Rocket, Target, Sparkles, Lock, Code, Database, Cpu, Cloud, Server',
+                  },
+                  title: { type: 'string' },
+                  description: { type: 'string' },
+                },
+                required: ['title', 'description'],
+              },
+            },
+            stats: {
+              type: 'array',
+              description: 'Array of 4 stats with value and label',
+              items: {
+                type: 'object',
+                properties: {
+                  value: { type: 'string', description: 'e.g., "10,000+"' },
+                  label: { type: 'string', description: 'e.g., "Active Users"' },
+                },
+                required: ['value', 'label'],
+              },
+            },
+            steps: {
+              type: 'array',
+              description: 'Array of 3 steps for "How It Works" section',
+              items: {
+                type: 'object',
+                properties: {
+                  title: { type: 'string' },
+                  description: { type: 'string' },
+                },
+                required: ['title', 'description'],
+              },
+            },
+            pricing: {
+              type: 'array',
+              description: 'Array of 3 pricing tiers',
+              items: {
+                type: 'object',
+                properties: {
+                  name: { type: 'string', description: 'Tier name (e.g., "STARTER")' },
+                  price: { type: 'string', description: 'Price (e.g., "$29")' },
+                  period: { type: 'string', description: 'Period (e.g., "/month")' },
+                  description: { type: 'string' },
+                  features: {
+                    type: 'array',
+                    items: { type: 'string' },
+                    description: 'List of features included',
+                  },
+                  cta: { type: 'string', description: 'Button text' },
+                  popular: { type: 'boolean', description: 'Mark as most popular' },
+                },
+                required: ['name', 'price', 'description', 'features', 'cta'],
+              },
+            },
+            faqs: {
+              type: 'array',
+              description: 'Array of FAQ items (up to 5)',
+              items: {
+                type: 'object',
+                properties: {
+                  question: { type: 'string' },
+                  answer: { type: 'string' },
+                },
+                required: ['question', 'answer'],
+              },
+            },
+          },
+          required: ['productName', 'tagline', 'description'],
+        },
+      },
+      {
+        name: 'get_landing_page_icons',
+        description: 'Get the list of available Lucide icons for landing page features',
+        inputSchema: {
+          type: 'object',
+          properties: {},
+        },
+      },
     ],
   }));
 
@@ -276,6 +405,33 @@ export async function createServer() {
               type: 'text' as const,
               text: JSON.stringify(
                 validateCode(args as unknown as Parameters<typeof validateCode>[0]),
+                null,
+                2
+              ),
+            },
+          ],
+        };
+
+      case 'build_custom_landing_page':
+        return {
+          content: [
+            {
+              type: 'text' as const,
+              text: buildCustomLanding(args as unknown as BuildCustomLandingArgs),
+            },
+          ],
+        };
+
+      case 'get_landing_page_icons':
+        return {
+          content: [
+            {
+              type: 'text' as const,
+              text: JSON.stringify(
+                {
+                  icons: getAvailableIcons(),
+                  usage: 'Use these icon names in the "icon" field of features array',
+                },
                 null,
                 2
               ),
