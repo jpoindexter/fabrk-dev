@@ -1,6 +1,9 @@
 /**
  * MARKETPLACE LANDING PAGE TEMPLATE
  *
+ * A clean marketplace landing page with categories and seller info.
+ * Uses terminal aesthetic but keeps styling simple for customization.
+ *
  * NEXT STEPS:
  * 1. Update the marketplace name and what's being sold
  * 2. Replace the category examples with your actual categories
@@ -15,8 +18,6 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
@@ -24,7 +25,7 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* INSTRUCTION BANNER - Remove when done */}
-      <Alert className="rounded-none border-x-0 border-t-0 bg-amber-500/10">
+      <Alert className="border-x-0 border-t-0 bg-amber-500/10">
         <AlertDescription className="text-center">
           <strong>[SETUP]</strong> Edit this page at{' '}
           <code className="bg-muted px-1">src/app/page.tsx</code>
@@ -34,7 +35,10 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-24 text-center">
-        <Badge variant="secondary" className="mb-4">TRUSTED MARKETPLACE</Badge>
+        <span className="mb-4 border bg-muted px-3 py-1 text-sm">
+          TRUSTED MARKETPLACE
+        </span>
+
         {/* TODO: Update marketplace name and what's being sold */}
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">
           BUY AND SELL [YOUR PRODUCT TYPE]
@@ -43,6 +47,7 @@ export default function HomePage() {
           The trusted marketplace for [product type]. Connect with verified sellers
           and buyers. Secure transactions, quality guaranteed.
         </p>
+
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Button size="lg" asChild>
             <Link href="/browse">&gt; BROWSE LISTINGS</Link>
@@ -63,6 +68,7 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Find exactly what you're looking for
           </p>
+
           {/* TODO: Replace with your actual categories */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
@@ -71,12 +77,13 @@ export default function HomePage() {
               { name: 'CATEGORY 3', count: '890 listings' },
               { name: 'CATEGORY 4', count: '456 listings' },
             ].map((cat) => (
-              <Card key={cat.name} className="cursor-pointer transition-colors hover:border-primary">
-                <CardHeader title={cat.name} />
-                <CardContent>
-                  <p className="text-muted-foreground">{cat.count}</p>
-                </CardContent>
-              </Card>
+              <div
+                key={cat.name}
+                className="cursor-pointer border border-border p-4 transition-colors hover:border-primary"
+              >
+                <h3 className="font-semibold">{cat.name}</h3>
+                <p className="text-sm text-muted-foreground">{cat.count}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -89,21 +96,19 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Simple, secure, straightforward
           </p>
+
           {/* TODO: Update steps for your marketplace */}
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             {[
               { step: '01', title: 'LIST OR BROWSE', desc: 'Create a listing in minutes or browse thousands of verified listings' },
               { step: '02', title: 'CONNECT', desc: 'Message sellers directly. Ask questions. Negotiate terms.' },
               { step: '03', title: 'TRANSACT', desc: 'Secure payment processing. Buyer protection included.' },
             ].map((s) => (
-              <Card key={s.step}>
-                <CardHeader title={s.title}>
-                  <div className="mb-2 text-4xl font-bold text-muted-foreground">{s.step}</div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{s.desc}</p>
-                </CardContent>
-              </Card>
+              <div key={s.step} className="space-y-3">
+                <div className="text-4xl font-bold text-muted-foreground">{s.step}</div>
+                <h3 className="text-lg font-semibold">{s.title}</h3>
+                <p className="text-muted-foreground">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -116,20 +121,19 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Everything you need to succeed
           </p>
+
           {/* TODO: Update seller benefits */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               { title: 'FREE LISTINGS', desc: 'List as many items as you want, free forever' },
               { title: 'LOW FEES', desc: 'Only 5% transaction fee when you sell' },
               { title: 'FAST PAYOUTS', desc: 'Get paid within 2 business days' },
               { title: 'SELLER TOOLS', desc: 'Analytics, inventory management, and more' },
             ].map((benefit) => (
-              <Card key={benefit.title}>
-                <CardHeader title={benefit.title} />
-                <CardContent>
-                  <p className="text-muted-foreground">{benefit.desc}</p>
-                </CardContent>
-              </Card>
+              <div key={benefit.title} className="space-y-3">
+                <h3 className="text-lg font-semibold">{benefit.title}</h3>
+                <p className="text-muted-foreground">{benefit.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -139,6 +143,7 @@ export default function HomePage() {
       <section className="border-t px-4 py-24">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-12 text-3xl font-bold">TRUSTED BY THOUSANDS</h2>
+
           {/* TODO: Update with your actual stats */}
           <div className="grid gap-6 md:grid-cols-4">
             {[

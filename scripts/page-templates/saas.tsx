@@ -1,22 +1,23 @@
 /**
  * SAAS LANDING PAGE TEMPLATE
  *
+ * A clean SaaS landing page with pricing tiers and feature highlights.
+ * Uses terminal aesthetic but keeps styling simple for customization.
+ *
  * NEXT STEPS:
- * 1. Update the headline and value proposition
- * 2. Replace the 6 features with your actual features
- * 3. Update pricing tiers and features
- * 4. Add your FAQ questions
- * 5. Remove the instruction banner when done
+ * 1. Update your SaaS product name and headline
+ * 2. Set your pricing tiers and features
+ * 3. Update the feature list for your product
+ * 4. Remove the instruction banner when done
  *
  * CUSTOMIZATION:
- * - Add testimonials section for social proof
- * - Add integrations/partners section
- * - Customize colors in globals.css
+ * - Add testimonials section
+ * - Add FAQ section
+ * - Add integration logos
+ * - Check /docs for all available UI components
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
@@ -24,7 +25,7 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* INSTRUCTION BANNER - Remove when done */}
-      <Alert className="rounded-none border-x-0 border-t-0 bg-amber-500/10">
+      <Alert className="border-x-0 border-t-0 bg-amber-500/10">
         <AlertDescription className="text-center">
           <strong>[SETUP]</strong> Edit this page at{' '}
           <code className="bg-muted px-1">src/app/page.tsx</code>
@@ -34,16 +35,19 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-24 text-center">
-        <Badge variant="secondary" className="mb-4">NOW IN BETA</Badge>
+        <span className="mb-4 border bg-muted px-3 py-1 text-sm">
+          NOW IN BETA
+        </span>
+
         {/* TODO: Update headline */}
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">
           BUILD YOUR SAAS FASTER THAN EVER
         </h1>
-        {/* TODO: Update value proposition */}
         <p className="mt-6 max-w-2xl text-xl text-muted-foreground">
           Stop wasting time on boilerplate. Start with auth, payments, and dashboards
           already built. Ship your product in days, not months.
         </p>
+
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Button size="lg" asChild>
             <Link href="/signup">&gt; START FREE TRIAL</Link>
@@ -64,8 +68,9 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             All the features you need to launch and grow your SaaS
           </p>
+
           {/* TODO: Replace with your features */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {[
               { title: 'AUTHENTICATION', desc: 'Email, OAuth, magic links - all pre-configured' },
               { title: 'PAYMENTS', desc: 'Stripe integration with subscriptions and invoices' },
@@ -74,12 +79,10 @@ export default function HomePage() {
               { title: 'EMAIL', desc: 'Transactional emails with templates ready' },
               { title: 'API', desc: 'RESTful API with rate limiting and docs' },
             ].map((feature) => (
-              <Card key={feature.title}>
-                <CardHeader title={feature.title} />
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.desc}</p>
-                </CardContent>
-              </Card>
+              <div key={feature.title} className="space-y-3">
+                <h3 className="text-lg font-semibold">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -92,6 +95,7 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Choose the plan that works for you
           </p>
+
           {/* TODO: Update pricing tiers */}
           <div className="grid gap-6 md:grid-cols-3">
             {[
@@ -99,23 +103,30 @@ export default function HomePage() {
               { name: 'PRO', price: '$29', desc: 'For small teams', features: ['5 users', '10,000 requests/mo', 'Priority support'], popular: true },
               { name: 'ENTERPRISE', price: '$99', desc: 'For large teams', features: ['Unlimited users', 'Unlimited requests', '24/7 support'] },
             ].map((plan) => (
-              <Card key={plan.name} className={plan.popular ? 'border-primary' : ''}>
-                <CardHeader title={plan.name}>
-                  {plan.popular && <Badge className="mb-2 w-fit">MOST POPULAR</Badge>}
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-2">{plan.desc}</p>
-                  <div className="text-4xl font-bold mb-4">{plan.price}<span className="text-lg font-normal text-muted-foreground">/mo</span></div>
-                  <ul className="space-y-2 text-sm">
-                    {plan.features.map((f) => (
-                      <li key={f}>✓ {f}</li>
-                    ))}
-                  </ul>
-                  <Button className="mt-6 w-full" variant={plan.popular ? 'default' : 'outline'}>
-                    GET STARTED
-                  </Button>
-                </CardContent>
-              </Card>
+              <div
+                key={plan.name}
+                className={`border p-6 ${plan.popular ? 'border-primary' : 'border-border'}`}
+              >
+                {plan.popular && (
+                  <span className="mb-2 inline-block bg-primary px-2 py-1 text-xs text-primary-foreground">
+                    MOST POPULAR
+                  </span>
+                )}
+                <h3 className="text-xl font-bold">{plan.name}</h3>
+                <p className="mb-4 text-sm text-muted-foreground">{plan.desc}</p>
+                <div className="mb-4">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  <span className="text-muted-foreground">/mo</span>
+                </div>
+                <ul className="mb-6 space-y-2 text-sm">
+                  {plan.features.map((f) => (
+                    <li key={f}>&gt; {f}</li>
+                  ))}
+                </ul>
+                <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
+                  GET STARTED
+                </Button>
+              </div>
             ))}
           </div>
         </div>
@@ -125,6 +136,7 @@ export default function HomePage() {
       <section className="border-t bg-muted/50 px-4 py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-12 text-center text-3xl font-bold">FAQ</h2>
+
           {/* TODO: Add your FAQ */}
           <div className="space-y-6">
             {[
@@ -132,12 +144,10 @@ export default function HomePage() {
               { q: 'Can I cancel anytime?', a: 'Yes, you can cancel your subscription at any time with no questions asked.' },
               { q: 'Do you offer refunds?', a: 'Yes, we offer a 30-day money-back guarantee on all plans.' },
             ].map((faq) => (
-              <Card key={faq.q}>
-                <CardHeader title={faq.q} />
-                <CardContent>
-                  <p className="text-muted-foreground">{faq.a}</p>
-                </CardContent>
-              </Card>
+              <div key={faq.q} className="border border-border p-4">
+                <h3 className="font-semibold">{faq.q}</h3>
+                <p className="mt-2 text-muted-foreground">{faq.a}</p>
+              </div>
             ))}
           </div>
         </div>

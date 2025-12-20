@@ -1,6 +1,9 @@
 /**
  * AI APP LANDING PAGE TEMPLATE
  *
+ * A clean landing page for AI-powered products with credit-based pricing.
+ * Uses terminal aesthetic but keeps styling simple for customization.
+ *
  * NEXT STEPS:
  * 1. Update the headline - replace [TASK] with what your AI does
  * 2. Add a demo video or interactive demo
@@ -15,8 +18,6 @@
  */
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
@@ -24,7 +25,7 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* INSTRUCTION BANNER - Remove when done */}
-      <Alert className="rounded-none border-x-0 border-t-0 bg-amber-500/10">
+      <Alert className="border-x-0 border-t-0 bg-amber-500/10">
         <AlertDescription className="text-center">
           <strong>[SETUP]</strong> Edit this page at{' '}
           <code className="bg-muted px-1">src/app/page.tsx</code>
@@ -34,7 +35,10 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-24 text-center">
-        <Badge variant="secondary" className="mb-4">POWERED BY AI</Badge>
+        <span className="mb-4 border bg-muted px-3 py-1 text-sm">
+          POWERED BY AI
+        </span>
+
         {/* TODO: Replace [TASK] with what your AI does */}
         <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-6xl">
           YOUR AI ASSISTANT FOR [TASK]
@@ -43,6 +47,7 @@ export default function HomePage() {
           Automate [task] with the power of AI. Save hours every week and focus on what matters.
           Built on the latest language models.
         </p>
+
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Button size="lg" asChild>
             <Link href="/signup">&gt; TRY FOR FREE</Link>
@@ -63,15 +68,14 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Watch how our AI transforms your workflow
           </p>
+
           {/* TODO: Add demo video or interactive demo */}
-          <Card className="aspect-video">
-            <CardContent className="flex h-full items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <p className="text-lg">[ADD DEMO VIDEO OR INTERACTIVE DEMO]</p>
-                <p className="text-sm">Replace with your product demo</p>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="flex aspect-video items-center justify-center border border-border bg-muted/50">
+            <div className="text-center text-muted-foreground">
+              <p className="text-lg">[ADD DEMO VIDEO OR INTERACTIVE DEMO]</p>
+              <p className="text-sm">Replace with your product demo</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -82,20 +86,19 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Powerful AI capabilities at your fingertips
           </p>
+
           {/* TODO: Update with your AI's capabilities */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               { title: 'GENERATE', desc: 'Create content, code, or ideas instantly' },
               { title: 'ANALYZE', desc: 'Extract insights from any data' },
               { title: 'AUTOMATE', desc: 'Set up workflows that run themselves' },
               { title: 'LEARN', desc: 'Adapts to your preferences over time' },
             ].map((cap) => (
-              <Card key={cap.title}>
-                <CardHeader title={cap.title} />
-                <CardContent>
-                  <p className="text-muted-foreground">{cap.desc}</p>
-                </CardContent>
-              </Card>
+              <div key={cap.title} className="space-y-3">
+                <h3 className="text-lg font-semibold">{cap.title}</h3>
+                <p className="text-muted-foreground">{cap.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -108,6 +111,7 @@ export default function HomePage() {
           <p className="mb-12 text-center text-muted-foreground">
             Pay for what you use. No surprises.
           </p>
+
           {/* TODO: Update pricing */}
           <div className="grid gap-6 md:grid-cols-3">
             {[
@@ -115,20 +119,27 @@ export default function HomePage() {
               { name: 'STARTER', price: '$19', credits: '1,000', desc: 'For individuals', popular: true },
               { name: 'PRO', price: '$49', credits: '5,000', desc: 'For power users' },
             ].map((plan) => (
-              <Card key={plan.name} className={plan.popular ? 'border-primary' : ''}>
-                <CardHeader title={plan.name}>
-                  {plan.popular && <Badge className="mb-2 w-fit">MOST POPULAR</Badge>}
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-2">{plan.desc}</p>
-                  <div className="text-4xl font-bold mb-4">{plan.price}<span className="text-lg font-normal text-muted-foreground">/mo</span></div>
-                  <p className="text-2xl font-semibold">{plan.credits} credits</p>
-                  <p className="text-sm text-muted-foreground">per month</p>
-                  <Button className="mt-6 w-full" variant={plan.popular ? 'default' : 'outline'}>
-                    GET STARTED
-                  </Button>
-                </CardContent>
-              </Card>
+              <div
+                key={plan.name}
+                className={`border p-6 ${plan.popular ? 'border-primary' : 'border-border'}`}
+              >
+                {plan.popular && (
+                  <span className="mb-2 inline-block bg-primary px-2 py-1 text-xs text-primary-foreground">
+                    MOST POPULAR
+                  </span>
+                )}
+                <h3 className="text-xl font-bold">{plan.name}</h3>
+                <p className="mb-2 text-sm text-muted-foreground">{plan.desc}</p>
+                <div className="mb-4">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  <span className="text-muted-foreground">/mo</span>
+                </div>
+                <p className="text-2xl font-semibold">{plan.credits} credits</p>
+                <p className="mb-6 text-sm text-muted-foreground">per month</p>
+                <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
+                  GET STARTED
+                </Button>
+              </div>
             ))}
           </div>
         </div>
@@ -138,6 +149,7 @@ export default function HomePage() {
       <section className="border-t px-4 py-24">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-12 text-3xl font-bold">TRUSTED BY DEVELOPERS</h2>
+
           {/* TODO: Update with your stats */}
           <div className="grid gap-6 md:grid-cols-3">
             {[
