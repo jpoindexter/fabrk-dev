@@ -237,26 +237,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <Providers>
           <Analytics />
-          <div className="skip-links">
-            <a
-              href="#main-content"
-              className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-4 focus:font-semibold focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            >
-              Skip to main content
-            </a>
-            <a
-              href="#navigation"
-              className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-20 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-4 focus:font-semibold focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            >
-              Skip to navigation
-            </a>
-            <a
-              href="#footer"
-              className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-36 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-4 focus:font-semibold focus:ring-2 focus:ring-offset-2 focus:outline-none"
-            >
-              Skip to footer
-            </a>
-          </div>
+          {/* Skip link - points to main content only (navigation/footer are page-specific) */}
+          <a
+            href="#main-content"
+            className="skip-link focus:bg-primary focus:text-primary-foreground focus:ring-ring sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-none focus:px-6 focus:py-4 focus:font-semibold focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          >
+            Skip to main content
+          </a>
           <div className="bg-background relative isolate flex min-h-screen flex-col">
             <TerminalBackground />
             <main id="main-content" className="flex-1">

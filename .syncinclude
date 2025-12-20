@@ -74,15 +74,21 @@ cspell.json
 # Customers get the SaaS boilerplate ONLY
 # NO Fabrk marketing website, components, or content
 
-# App Routes (Platform & Auth ONLY)
+# App Routes (All application routes)
 src/app/(platform)/
 src/app/(auth)/
+src/app/(marketing)/
 src/app/api/
 src/app/globals.css
 src/app/typography.css
 src/app/layout.tsx
 src/app/not-found.tsx
 src/app/error.tsx
+src/app/global-error.tsx
+src/app/loading.tsx
+src/app/robots.ts
+src/app/sitemap.ts
+src/app/maintenance/
 
 # Components (ALL components - they're templates/boilerplate)
 src/components/
@@ -93,26 +99,34 @@ src/design-system/
 src/config/
 src/styles/
 src/types/
+src/hooks/
+src/emails/
+src/i18n/
+src/instrumentation.ts
+src/proxy.ts
+src/test/
+src/generated/
 
-# Data (Generic only - NO Fabrk marketing content)
+# Data (All data files for boilerplate)
 src/data/changelog.ts
 src/data/component-counts.json
 src/data/themes.ts
 src/data/examples/
-# EXCLUDED: src/data/landing/ - Your Fabrk pricing, benefits, FAQs, testimonials
+src/data/landing/
+src/data/counts.ts
+src/data/dynamic-counts.json
 
 # Database & Assets
 prisma/
 public/
 
 # ============================================
-# EXCLUDED - Fabrk's Marketing Website
+# NOTE - Marketing folder is NOW included
 # ============================================
-# Customers DO NOT GET:
-# - src/app/(marketing)/ - Landing, pricing, about, blog, purchase pages
-# - src/components/landing/ - Landing page components
-# - src/data/landing/ - Marketing copy, FAQs, benefits, comparison
-# - Any Fabrk website content
+# Customers now get the full marketing folder as templates:
+# - src/app/(marketing)/ - Landing pages, pricing, docs, library
+# - src/components/landing/ - Landing page components (via src/components/)
+# - src/data/landing/ - Pricing, benefits, FAQs data
 
 # ============================================
 # CUSTOMER SCRIPTS
