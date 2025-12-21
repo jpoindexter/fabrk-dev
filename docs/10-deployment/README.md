@@ -1,14 +1,15 @@
 # Deployment & Launch Documentation
 
-This folder contains everything needed for launching and deploying your application, from pre-launch preparation to post-launch monitoring.
+This folder contains everything needed for launching and deploying your application.
+
+## Marketing & Launch
+
+- **MARKETING-PLAN.md** - Complete distribution strategy, platform list, and launch copy templates
 
 ## Launch Preparation
 
-- **V1-BLOCKER-FIXES.md** - ⚠️ Critical fixes before v1.0 launch
-- **LAUNCH-TIMELINE.md** - Complete launch checklist and timeline
+- **V1-BLOCKER-FIXES.md** - Critical fixes before v1.0 launch
 - **DEMO-VIDEO-GUIDE.md** - How to record a professional demo video
-- **PRODUCT-HUNT.md** - Product Hunt launch strategy and tips
-- **WEEK-2-COMPLETION-REPORT.md** - Historical milestone report
 
 ## Deployment Guides
 
@@ -51,9 +52,11 @@ This folder contains everything needed for launching and deploying your applicat
 
 ## Quick Links
 
+**Marketing:**
+- [Marketing Plan](./MARKETING-PLAN.md) - Distribution channels, launch copy, timeline
+
 **Pre-Launch:**
 - [V1 Blocker Fixes](./V1-BLOCKER-FIXES.md) - Must fix before launch
-- [Launch Timeline](./LAUNCH-TIMELINE.md) - Complete checklist
 
 **Deployment:**
 - [Vercel Deployment](./DEPLOYMENT.md) - Step-by-step guide
