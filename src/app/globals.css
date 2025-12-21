@@ -743,7 +743,7 @@
   --input: 50% 0.2 300; /* Increased from 30% for better visibility */
   --ring: 60% 0.2 300; /* Darkened from 70% */
 
-  --bg-dot-opacity: 0.2;
+  --bg-dot-opacity: 0.35;
 
   /* Status colors - all monochrome purple */
   --success: 70% 0.2 300;
