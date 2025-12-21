@@ -11,6 +11,7 @@ import { mode } from '@/design-system';
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, InfoNote, Badge } from '@/components/ui/card';
 import { PricingCard } from '@/components/landing/pricing-card';
+import { PromoBanner } from '@/components/polar/promo-banner';
 
 export function PricingSection() {
   return (
@@ -19,6 +20,9 @@ export function PricingSection() {
       className={cn('scroll-mt-16 border-t py-42 lg:py-40', mode.color.border.default)}
     >
       <Container size="2xl">
+        {/* Promo Banner - auto-hides when exhausted */}
+        <PromoBanner />
+
         {/* Two Column Layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Pricing Card */}

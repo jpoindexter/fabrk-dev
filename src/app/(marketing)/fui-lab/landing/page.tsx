@@ -365,7 +365,7 @@ export default function LandingV3Page() {
                         backgroundColor: `${C.primary}10`,
                       }}
                     >
-                      {'>'} GET FABRK — {PRICING.display.launch}
+                      {'>'} GET FABRK — {PRICING.display.current}
                     </Link>
                   </div>
 
@@ -374,7 +374,7 @@ export default function LandingV3Page() {
                     <Panel label="LAUNCH_OFFER" className="p-3">
                       <div className="text-center">
                         <div className="text-[8px] uppercase mb-2" style={{ color: C.accent }}>LIMITED TIME</div>
-                        <div className="text-3xl font-bold" style={{ color: C.primary }}>{PRICING.display.launch}</div>
+                        <div className="text-3xl font-bold" style={{ color: C.primary }}>{PRICING.display.current}</div>
                         <div className="text-lg line-through" style={{ color: C.textDim }}>{PRICING.display.regular}</div>
                         <div className="text-[8px] uppercase mt-2" style={{ color: C.textDim }}>ONE-TIME PAYMENT</div>
                       </div>

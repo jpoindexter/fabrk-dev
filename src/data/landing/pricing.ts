@@ -6,17 +6,18 @@
 import { COMPONENT_COUNT_STRING } from './stats';
 
 export const PRICING = {
-  launch: 199,
+  current: 199,
   regular: 299,
   currency: 'USD',
   display: {
-    launch: '$199',
+    current: '$199',
     regular: '$299',
   },
-  discount: {
+  promo: {
+    code: 'EARLY100',
     amount: 100,
-    totalCoupons: 100,
-    label: 'LAUNCH PRICE - First 100 buyers',
+    limit: 100,
+    label: '$100 OFF for first 100 customers',
   },
   features: [
     `${COMPONENT_COUNT_STRING} PRODUCTION-READY COMPONENTS`,

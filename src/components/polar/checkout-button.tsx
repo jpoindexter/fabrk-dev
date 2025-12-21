@@ -16,8 +16,10 @@ interface PolarCheckoutButtonProps {
   customerEmail?: string;
   className?: string;
   children?: React.ReactNode;
-  /** Optional Polar discount ID to apply at checkout */
+  /** Optional Polar discount ID to apply at checkout (defaults to env var) */
   discountId?: string;
+  /** Skip auto-applying the early bird discount */
+  skipDiscount?: boolean;
 }
 
 export function PolarCheckoutButton({
@@ -25,7 +27,12 @@ export function PolarCheckoutButton({
   className,
   children = '> GET FABRK - $199',
   discountId,
+  skipDiscount = false,
 }: PolarCheckoutButtonProps) {
+  // Auto-apply early bird discount from env if not explicitly provided
+  const effectiveDiscountId = skipDiscount
+    ? undefined
+    : (discountId || process.env.NEXT_PUBLIC_POLAR_DISCOUNT_ID);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleCheckout = async () => {
@@ -56,7 +63,7 @@ export function PolarCheckoutButton({
         },
         body: JSON.stringify({
           customerEmail,
-          discountId,
+          discountId: effectiveDiscountId,
           metadata: {
             timestamp: new Date().toISOString(),
           },

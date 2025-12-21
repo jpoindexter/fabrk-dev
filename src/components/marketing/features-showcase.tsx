@@ -210,7 +210,7 @@ export function FeaturesShowcase() {
                 <Stat label="Components" value={COMPONENT_COUNT_STRING} />
                 <Stat label="Features" value={`${totalBenefits}`} />
                 <Stat label="Themes" value="12" />
-                <Stat label="Launch Price" value={PRICING.display.launch} />
+                <Stat label="Launch Price" value={PRICING.display.current} />
               </StatGroup>
             </CardContent>
           </Card>

@@ -48,10 +48,10 @@ export function PricingCard({ className }: PricingCardProps) {
             {PRICING.display.regular}
           </p>
           <p className={cn('text-primary text-7xl font-bold leading-none lg:text-8xl', mode.font)}>
-            {PRICING.display.launch}
+            {PRICING.display.current}
           </p>
           <p className={cn('text-primary mt-1 text-sm font-bold uppercase', mode.font)}>
-            SAVE ${PRICING.discount.amount} Instantly!
+            SAVE ${PRICING.promo.amount} Instantly!
           </p>
           <p
             className={cn(
@@ -72,7 +72,7 @@ export function PricingCard({ className }: PricingCardProps) {
           )}
         >
           <span>
-            {PRICING.cta.label} — {PRICING.display.launch}
+            {PRICING.cta.label} — {PRICING.display.current}
           </span>
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </PolarCheckoutButton>
