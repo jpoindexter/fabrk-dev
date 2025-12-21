@@ -71,6 +71,9 @@ const eslintConfig = [{
     "*.generated.ts",
     "*.generated.js",
     "**/generated-sources.ts", // Auto-generated component sources
+    // Experimental lab directories - intentionally use non-standard patterns
+    "**/fui-lab/**",
+    "**/hero-lab/**",
   ],
 }, ...nextFlatConfigs, {
   files: ["**/*.ts", "**/*.tsx"],
@@ -239,6 +242,25 @@ const eslintConfig = [{
   ],
   rules: {
     'design-system/no-inline-styles': 'off'
+  }
+},
+{
+  // Components that legitimately need hardcoded colors (QR codes, canvas drawing, etc.)
+  files: [
+    "src/components/library/ai-qr-generator/index.tsx", // QR codes need #ffffff/#000000 for output
+    "src/components/marketing/perspective-grid.tsx", // Canvas API requires rgba() strings
+  ],
+  rules: {
+    'design-system/no-hardcoded-colors': 'off',
+  }
+},
+{
+  // Pages with dynamic images that need raw <img> tags (external URLs, data URLs)
+  files: [
+    "src/app/(marketing)/library/ai-image/page.tsx", // Demo shows dynamically generated images
+  ],
+  rules: {
+    '@next/next/no-img-element': 'off',
   }
 }, {
   settings: {

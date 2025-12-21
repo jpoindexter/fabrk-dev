@@ -8,14 +8,14 @@ import { auth } from '@/lib/auth';
 import { generateImage } from '@/lib/ai';
 
 // Image generation settings
-const IMAGE_SIZES = ['256x256', '512x512', '1024x1024', '1792x1024', '1024x1792'] as const;
-type ImageSize = (typeof IMAGE_SIZES)[number];
+const _IMAGE_SIZES = ['256x256', '512x512', '1024x1024', '1792x1024', '1024x1792'] as const;
+type ImageSize = (typeof _IMAGE_SIZES)[number];
 
-const IMAGE_STYLES = ['vivid', 'natural'] as const;
-type ImageStyle = (typeof IMAGE_STYLES)[number];
+const _IMAGE_STYLES = ['vivid', 'natural'] as const;
+type ImageStyle = (typeof _IMAGE_STYLES)[number];
 
-const IMAGE_QUALITIES = ['standard', 'hd'] as const;
-type ImageQuality = (typeof IMAGE_QUALITIES)[number];
+const _IMAGE_QUALITIES = ['standard', 'hd'] as const;
+type ImageQuality = (typeof _IMAGE_QUALITIES)[number];
 
 interface ImageRequest {
   prompt: string;
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     // Get session (optional)
     const session = await auth();
-    const userId = session?.user?.id;
+    const _userId = session?.user?.id;
 
     // Parse request body
     const {

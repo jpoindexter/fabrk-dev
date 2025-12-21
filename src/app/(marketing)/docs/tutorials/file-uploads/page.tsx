@@ -1,8 +1,6 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Upload, Image, Shield, FileCheck } from 'lucide-react';
-import { mode } from '@/design-system';
-import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'File Uploads - Fabrk Docs',

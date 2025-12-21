@@ -12,8 +12,8 @@ const VOICES = ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'] as const;
 type Voice = (typeof VOICES)[number];
 
 // Available models
-const MODELS = ['tts-1', 'tts-1-hd'] as const;
-type Model = (typeof MODELS)[number];
+const _MODELS = ['tts-1', 'tts-1-hd'] as const;
+type Model = (typeof _MODELS)[number];
 
 interface TTSRequest {
   text: string;
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 
     // Get session (optional)
     const session = await auth();
-    const userId = session?.user?.id;
+    const _userId = session?.user?.id;
 
     // Parse request body
     const { text, voice = 'alloy', model = 'tts-1' }: TTSRequest = await req.json();

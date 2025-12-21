@@ -1,4 +1,4 @@
-/* eslint-disable design-system/no-hardcoded-colors -- FUI Lab is an experimental playground with custom styling */
+ 
 /**
  * HolographicCard - FUI-style card with corner brackets and data labels
  * Inspired by film interfaces (Oblivion, Blade Runner, Alien)

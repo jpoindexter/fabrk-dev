@@ -3,7 +3,6 @@
  */
 'use client';
 
-import { useState } from 'react';
 import {
   MoreHorizontal,
   ChevronDown,
@@ -13,7 +12,6 @@ import {
   Home,
   ChevronRight,
   FileText,
-  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -32,7 +30,6 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
 export function GridColumnTwo() {
-  const [uploadComplete, setUploadComplete] = useState(false);
 
   return (
     <div className="space-y-4">
@@ -84,7 +81,6 @@ export function GridColumnTwo() {
           <AnimatedSolidProgress
             label="Upload"
             duration={3000}
-            onComplete={() => setUploadComplete(true)}
           />
         </div>
       </Card>

@@ -59,7 +59,7 @@ export function AiForms({
         await new Promise(resolve => setTimeout(resolve, 1500));
         setForm(DEMO_FORM); 
       }
-    } catch (err) {
+    } catch {
       setError('Failed to generate form');
     } finally {
       setIsLoading(false);

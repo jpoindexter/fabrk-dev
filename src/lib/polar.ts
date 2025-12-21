@@ -43,20 +43,14 @@ export async function createCheckoutSession(params: {
     throw new Error('Polar product ID not configured');
   }
 
-  // Build checkout payload (no discount for testing)
-  const checkoutPayload: any = {
+  // Build checkout payload
+  const checkout = await polar.checkouts.create({
     products: [FABRK_PRODUCT_ID],
     customerEmail: params.customerEmail,
     successUrl: params.successUrl,
     metadata: params.metadata,
-  };
-
-  // Only add discountId if explicitly provided
-  if (params.discountId) {
-    checkoutPayload.discountId = params.discountId;
-  }
-
-  const checkout = await polar.checkouts.create(checkoutPayload);
+    discountId: params.discountId,
+  });
 
   return checkout;
 }

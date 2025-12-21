@@ -26,7 +26,7 @@ export function DiscountCounter() {
             setUsage(data);
           }
         }
-      } catch (error) {
+      } catch {
         // Silently fail - counter just won't show
       } finally {
         setLoading(false);

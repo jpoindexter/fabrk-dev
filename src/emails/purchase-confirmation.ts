@@ -1,4 +1,4 @@
-/* eslint-disable design-system/no-hardcoded-colors -- Email clients don't support CSS variables */
+ 
 /**
  * ✅ FABRK COMPONENT
  * Purchase Confirmation Email Template - Simple HTML

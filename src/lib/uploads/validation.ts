@@ -13,11 +13,14 @@
  */
 
 import { MAGIC_BYTES, EXECUTABLE_SIGNATURES, matchesMagicBytes } from './file-signatures';
-import { FILE_TYPE_CONFIGS, type FileTypeConfig, type ValidationResult } from './file-type-configs';
+import type { FileTypeConfig, ValidationResult } from './file-type-configs';
 
 // Re-export for backwards compatibility
 export { MAGIC_BYTES } from './file-signatures';
 export { FILE_TYPE_CONFIGS, type FileTypeConfig, type ValidationResult } from './file-type-configs';
+
+// Unused type imports for module augmentation
+export type { FileTypeConfig as _FileTypeConfig, ValidationResult as _ValidationResult };
 
 /**
  * Validate file type using magic bytes

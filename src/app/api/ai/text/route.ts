@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
 
     // Get session (optional)
     const session = await auth();
-    const userId = session?.user?.id;
+    const _userId = session?.user?.id;
 
     // Parse request body
     const { text, operation, options }: TextRequest = await req.json();

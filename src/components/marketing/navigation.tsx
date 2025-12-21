@@ -120,8 +120,12 @@ export function Navigation() {
         <div className="fixed inset-0 z-[100] md:hidden">
           {/* Backdrop */}
           <div
+            role="button"
+            tabIndex={0}
             className="bg-background/80 absolute inset-0 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
+            onKeyDown={(e) => e.key === 'Escape' && setIsOpen(false)}
+            aria-label="Close menu"
           />
 
           {/* Menu Panel */}

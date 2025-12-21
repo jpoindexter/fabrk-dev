@@ -72,7 +72,7 @@ export const FuiCard = React.forwardRef<HTMLDivElement, FuiCardProps>(
           {/* Inner Content Area */}
           <div className="p-6 relative flex-1">
             {/* Scanline Effect Layer */}
-            {/* eslint-disable-next-line design-system/no-hardcoded-colors */}
+            { }
             <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]" />
             
             {/* Sub-header decoration */}

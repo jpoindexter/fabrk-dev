@@ -4,7 +4,6 @@
  */
 
 import { Box, Palette, Route, Code } from 'lucide-react';
-import { docsNavigation } from '@/app/(marketing)/docs/docs-nav-data';
 import { TEMPLATE_COUNT_STRING } from '@/app/(marketing)/library/library-nav-data';
 import { themes } from '@/data/themes';
 import componentCounts from '@/data/component-counts.json'; // Import the JSON file

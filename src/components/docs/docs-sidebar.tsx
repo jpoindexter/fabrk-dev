@@ -165,21 +165,24 @@ export function DocsSidebar({
   useEffect(() => {
     const newActiveIndex = findActiveSectionIndex(pathname, navigation);
     if (newActiveIndex >= 0) {
-      setExpandedSections((prev) => {
-        if (prev.has(newActiveIndex)) return prev;
-        return new Set([...prev, newActiveIndex]);
-      });
-      const section = navigation[newActiveIndex];
-      if (section.subSections) {
-        const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
-        if (activeSubIndex >= 0) {
-          const subKey = `${newActiveIndex}-${activeSubIndex}`;
-          setExpandedSubSections((prev) => {
-            if (prev.has(subKey)) return prev;
-            return new Set([...prev, subKey]);
-          });
+      // Use queueMicrotask to avoid synchronous setState cascading
+      queueMicrotask(() => {
+        setExpandedSections((prev) => {
+          if (prev.has(newActiveIndex)) return prev;
+          return new Set([...prev, newActiveIndex]);
+        });
+        const section = navigation[newActiveIndex];
+        if (section.subSections) {
+          const activeSubIndex = findActiveSubSectionIndex(pathname, section.subSections);
+          if (activeSubIndex >= 0) {
+            const subKey = `${newActiveIndex}-${activeSubIndex}`;
+            setExpandedSubSections((prev) => {
+              if (prev.has(subKey)) return prev;
+              return new Set([...prev, subKey]);
+            });
+          }
         }
-      }
+      });
     }
   }, [pathname, navigation]);
 

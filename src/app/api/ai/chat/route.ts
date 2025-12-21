@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
 
     // Get session (optional - chat can work without auth)
     const session = await auth();
-    const userId = session?.user?.id;
+    const _userId = session?.user?.id;
 
     // Parse request body
     const { messages, systemPrompt } = await req.json();

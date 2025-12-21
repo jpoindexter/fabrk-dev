@@ -1,10 +1,10 @@
 /**
- * Hero Section - Full Screen with ASCII Background
- * Large animated ASCII art backdrop
+ * Hero Section - Full Screen with Terminal Background
+ * Clean terminal aesthetic with typewriter effect
  */
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
@@ -12,7 +12,6 @@ import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { ArrowRight } from 'lucide-react';
-import { FuiBackground } from './fui-background';
 
 const ROTATING_WORDS = [
   'AUTH',
@@ -30,6 +29,10 @@ export function HeroSection() {
   const [displayText, setDisplayText] = useState('');
   const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting'>('typing');
 
+  const advancePhase = useCallback(() => {
+    setPhase('pausing');
+  }, []);
+
   useEffect(() => {
     const word = ROTATING_WORDS[wordIndex];
     let delay = 80;
@@ -38,8 +41,9 @@ export function HeroSection() {
       if (displayText.length < word.length) {
         delay = 80;
       } else {
-        setPhase('pausing');
-        return;
+        // Use setTimeout to avoid synchronous setState in effect
+        const phaseTimer = setTimeout(advancePhase, 0);
+        return () => clearTimeout(phaseTimer);
       }
     } else if (phase === 'pausing') {
       delay = 1500;
@@ -63,14 +67,12 @@ export function HeroSection() {
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [displayText, phase, wordIndex]);
+  }, [displayText, phase, wordIndex, advancePhase]);
 
   const currentWord = displayText;
 
   return (
     <section className="sticky top-0 z-10 min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* FUI Background */}
-      <FuiBackground />
 
       <Container size="lg" className="relative z-10">
         <div className="flex flex-col items-center justify-center text-center">

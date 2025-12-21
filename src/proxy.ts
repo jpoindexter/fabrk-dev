@@ -49,7 +49,7 @@ export default async function proxy(req: NextRequest) {
   });
 
   // Build CSP with actual nonce (proxy.ts must set headers, not modify them)
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  const _isDevelopment = process.env.NODE_ENV === 'development';
 
   const csp = [
     "default-src 'self'",

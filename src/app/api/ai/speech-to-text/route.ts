@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     // Get session (optional)
     const session = await auth();
-    const userId = session?.user?.id;
+    const _userId = session?.user?.id;
 
     // Parse form data
     const formData = await req.formData();

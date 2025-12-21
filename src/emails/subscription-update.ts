@@ -1,4 +1,4 @@
-/* eslint-disable design-system/no-hardcoded-colors -- Email clients don't support CSS variables */
+ 
 /**
  * ✅ FABRK COMPONENT
  * Subscription Update Email Template - Simple HTML

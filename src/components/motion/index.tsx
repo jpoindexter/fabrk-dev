@@ -220,6 +220,7 @@ export function Magnetic({ children, className, strength = 0.3 }: MagneticProps)
   return (
     <div
       ref={ref}
+      role="presentation"
       className={cn('inline-block transition-transform duration-200 ease-out', className)}
       style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
       onMouseMove={handleMouseMove}

@@ -1,4 +1,4 @@
-/* eslint-disable design-system/no-hardcoded-colors -- Email clients don't support CSS variables */
+ 
 /**
  * Password Reset Template
  * Simple, clean design for email client compatibility
