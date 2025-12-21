@@ -21,6 +21,7 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { BrowserFrame } from './browser-frame';
 import { LeftNavigation } from './left-navigation';
+import { Reveal } from '@/components/motion';
 
 // User Management components
 import { columns } from '@/app/(marketing)/library/user-management/components/user-table-columns';
@@ -82,30 +83,36 @@ export function TablePreview() {
       <div className="flex-1 overflow-auto p-8">
         <div className="space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
-            <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-              <UserPlus className="mr-2 h-4 w-4" />
-              &gt; ADD USER
-            </Button>
-          </div>
+          <Reveal delay={0}>
+            <div className="flex items-center justify-between">
+              <h1 className={cn(mode.font, 'text-2xl font-semibold')}>User Management</h1>
+              <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+                <UserPlus className="mr-2 h-4 w-4" />
+                &gt; ADD USER
+              </Button>
+            </div>
+          </Reveal>
 
           {/* Stats Cards */}
-          <StatsCards users={mockUsers} />
+          <Reveal delay={100}>
+            <StatsCards users={mockUsers} />
+          </Reveal>
 
           {/* Main Table Card */}
-          <Card>
-            <div className="p-4">
-              {/* Toolbar */}
-              <TableToolbar table={table} onExportCSV={exportToCSV} />
+          <Reveal delay={200}>
+            <Card>
+              <div className="p-4">
+                {/* Toolbar */}
+                <TableToolbar table={table} onExportCSV={exportToCSV} />
 
-              {/* Terminal Table */}
-              <UserDataTable table={table} />
+                {/* Terminal Table */}
+                <UserDataTable table={table} />
 
-              {/* Pagination */}
-              <PaginationControls table={table} />
-            </div>
-          </Card>
+                {/* Pagination */}
+                <PaginationControls table={table} />
+              </div>
+            </Card>
+          </Reveal>
         </div>
       </div>
     </BrowserFrame>

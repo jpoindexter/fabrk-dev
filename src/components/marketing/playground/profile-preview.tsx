@@ -5,6 +5,7 @@
 
 import { BrowserFrame } from './browser-frame';
 import { LeftNavigation } from './left-navigation';
+import { Reveal } from '@/components/motion';
 import {
   mockProfileUser,
   mockProfileActivity,
@@ -24,13 +25,19 @@ export function ProfilePreview() {
       <div className="flex-1 overflow-auto p-8">
         <div className="container mx-auto max-w-7xl space-y-6 [&_>*>*:first-child]:hidden">
           {/* Profile Header */}
-          <ProfileHeader user={mockProfileUser} />
+          <Reveal delay={0}>
+            <ProfileHeader user={mockProfileUser} />
+          </Reveal>
 
           {/* Badges Section */}
-          <BadgesSection badges={mockProfileBadges} />
+          <Reveal delay={100}>
+            <BadgesSection badges={mockProfileBadges} />
+          </Reveal>
 
           {/* Profile Tabs */}
-          <ProfileTabs activity={mockProfileActivity} projects={mockProfileProjects} />
+          <Reveal delay={200}>
+            <ProfileTabs activity={mockProfileActivity} projects={mockProfileProjects} />
+          </Reveal>
         </div>
       </div>
     </BrowserFrame>

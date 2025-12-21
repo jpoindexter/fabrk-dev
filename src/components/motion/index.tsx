@@ -34,35 +34,40 @@ export function Reveal({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
           if (!reversible) observer.disconnect();
-        } else if (reversible) {
+        } else if (reversible && !entry.isIntersecting) {
           setIsVisible(false);
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      {
+        threshold: 0.05,
+        // Trigger earlier on entry, later on exit for smoother feel
+        rootMargin: '50px 0px -100px 0px'
+      }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(element);
     return () => observer.disconnect();
   }, [reversible]);
 
   const transforms = {
-    up: isVisible ? 'translate-y-0' : 'translate-y-4',
-    left: isVisible ? 'translate-x-0' : 'translate-x-4',
-    right: isVisible ? 'translate-x-0' : '-translate-x-4',
+    up: isVisible ? 'translate-y-0' : 'translate-y-6',
+    left: isVisible ? 'translate-x-0' : 'translate-x-6',
+    right: isVisible ? 'translate-x-0' : '-translate-x-6',
   };
 
   return (
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-500',
-        // Step-based timing feels more digital
-        'ease-[steps(8,end)]',
+        'transition-all duration-700 ease-out',
         isVisible ? 'opacity-100' : 'opacity-0',
         transforms[direction],
         className
