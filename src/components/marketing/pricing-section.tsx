@@ -35,7 +35,7 @@ export function PricingSection() {
 
             {/* Enterprise Link */}
             <Link
-              href="mailto:hello@fabrk.dev?subject=Enterprise%20Licensing"
+              href="mailto:support@fabrk.dev?subject=Enterprise%20Licensing"
               className={cn(
                 'group mt-6 flex items-center gap-2 text-xs transition-colors',
                 mode.color.text.muted,
