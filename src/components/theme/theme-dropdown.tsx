@@ -1,6 +1,6 @@
 /**
  * ✅ FABRK COMPONENT
- * Color theme picker dropdown for navbar (Light/Dark only)
+ * Color theme picker dropdown for navbar
  * Production-ready ✓
  */
 
@@ -20,35 +20,9 @@ import {
 import { cn } from '@/lib/utils';
 
 import { mode } from '@/design-system';
+import { themeGroups, themes, type ColorTheme } from '@/data/themes';
 
-// Grouped themes for organized dropdown
-/* eslint-disable design-system/no-hardcoded-colors -- Theme preview swatches require hex colors for visual reference */
-const themeGroups = {
-  'Standard CRT': [
-    { id: 'amber', name: 'Amber CRT', preview: '#ffb000' },
-    { id: 'blue', name: 'Blue CRT', preview: '#55ccff' },
-    { id: 'green', name: 'Green CRT', preview: '#33ff66' },
-    { id: 'purple', name: 'Purple CRT', preview: '#bb88ff' },
-    { id: 'red', name: 'Red CRT', preview: '#ff6655' },
-  ],
-  'Retro Computer': [
-    { id: 'atari', name: 'Atari 800', preview: '#305070' },
-    { id: 'c64', name: 'C64 Blue', preview: '#352879' },
-    { id: 'spectrum', name: 'ZX Spectrum', preview: '#ffffff' },
-    { id: 'vic20', name: 'VIC-20', preview: '#e0ffff' },
-  ],
-  Handheld: [
-    { id: 'gameboy', name: 'Game Boy', preview: '#9bbc0f' },
-    { id: 'gbpocket', name: 'GB Pocket', preview: '#8a8a8a' },
-  ],
-  Light: [{ id: 'bw', name: 'Black & White', preview: '#ffffff' }],
-} as const;
-/* eslint-enable design-system/no-hardcoded-colors */
-
-// Flattened list for type safety and easy lookup
-const themes = Object.values(themeGroups).flat();
-
-export type ColorTheme = (typeof themes)[number]['id'];
+export type { ColorTheme };
 
 export function ThemeDropdown() {
   const [currentTheme, setCurrentTheme] = useState<ColorTheme>('green');
@@ -85,39 +59,21 @@ export function ThemeDropdown() {
     localStorage.setItem('theme', themeId);
     document.documentElement.setAttribute('data-theme', themeId);
 
-    // Smart Link: Auto-switch monitor effect based on theme type
-    let effect = '';
+    // Get effect from theme data (dynamic, not hardcoded)
+    const theme = themes.find((t) => t.id === themeId);
+    const effect = theme?.effect || 'none';
 
-    // 1. LCD Handheld Themes
-    if (['gameboy', 'gbpocket'].includes(themeId)) {
-      effect = 'lcd';
+    // Remove all potential effect classes
+    ['effect-crt', 'effect-lcd', 'effect-vhs', 'effect-none'].forEach((c) =>
+      document.documentElement.classList.remove(c)
+    );
+    if (effect !== 'none') {
+      document.documentElement.classList.add(`effect-${effect}`);
     }
-    // 2. Retro Computer / CRT Themes
-    else if (
-      ['amber', 'green', 'blue', 'red', 'purple', 'c64', 'vic20', 'atari', 'spectrum'].includes(
-        themeId
-      )
-    ) {
-      effect = 'crt';
-    }
-    // 3. Light Themes
-    else if (['bw'].includes(themeId)) {
-      effect = 'none';
-    }
+    localStorage.setItem('monitor-preset', effect);
 
-    if (effect) {
-      // Remove all potential effect classes
-      ['effect-crt', 'effect-lcd', 'effect-vhs', 'effect-none'].forEach((c) =>
-        document.documentElement.classList.remove(c)
-      );
-      if (effect !== 'none') {
-        document.documentElement.classList.add(`effect-${effect}`);
-      }
-      localStorage.setItem('monitor-preset', effect);
-
-      // Dispatch storage event to sync other components if they listen
-      window.dispatchEvent(new Event('storage'));
-    }
+    // Dispatch storage event to sync other components if they listen
+    window.dispatchEvent(new Event('storage'));
   };
 
   if (!mounted) {
