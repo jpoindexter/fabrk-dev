@@ -98,7 +98,7 @@ export function DocsToc({ mainRef, className }: DocsTocProps) {
                     <a
                       href={`#${heading.id}`}
                       className={cn(
-                        'flex items-start gap-1 px-2 py-1.5 transition-colors',
+                        'flex items-start gap-1 px-2 py-2 transition-colors',
                         isActive
                           ? 'border-primary bg-primary/10 text-foreground border-l-2 font-medium'
                           : 'text-muted-foreground hover:bg-muted hover:text-foreground'

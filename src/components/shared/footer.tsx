@@ -62,7 +62,8 @@ export function Footer() {
               <Link
                 href="/"
                 className={cn(
-                  'mb-4 flex items-center gap-2 transition-opacity hover:opacity-80',
+                  'mb-4 flex items-center gap-2 transition-opacity',
+                  mode.state.hover.linkOpacity,
                   mode.font
                 )}
               >

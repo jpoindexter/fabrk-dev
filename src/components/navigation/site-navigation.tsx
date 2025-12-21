@@ -58,7 +58,7 @@ export function SiteNavigation() {
         >
           <Link
             href="/"
-            className={cn(mode.font, 'flex items-center gap-2 transition-opacity hover:opacity-80')}
+            className={cn(mode.font, 'flex items-center gap-2 transition-opacity', mode.state.hover.linkOpacity)}
           >
             <span className="text-primary text-xs">&gt;</span>
             <span className="text-sm font-semibold tracking-tight">FABRK</span>

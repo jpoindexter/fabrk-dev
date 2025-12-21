@@ -37,7 +37,7 @@ export function FinalCTASection() {
             >
               <span
                 className={cn(
-                  'border-border bg-card inline-flex items-center gap-2 border px-4 py-1.5',
+                  'border-border bg-card inline-flex items-center gap-2 border px-4 py-2',
                   mode.radius,
                   mode.font
                 )}

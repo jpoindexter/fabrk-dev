@@ -62,7 +62,7 @@ export function AiChatSidebar({
 
       {/* Footer */}
       <div className={cn('p-2 border-t', mode.color.border.default)}>
-        <div className={cn('flex items-center gap-2 px-2 py-1.5 text-xs', mode.color.text.muted)}>
+        <div className={cn('flex items-center gap-2 px-2 py-2 text-xs', mode.color.text.muted)}>
           {/* Strictly square indicator for terminal theme */}
           <div className={cn('size-2', mode.radius, mode.color.bg.success)} />
           <span className="uppercase">System Online</span>

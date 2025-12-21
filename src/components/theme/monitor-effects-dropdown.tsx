@@ -106,7 +106,7 @@ export function MonitorEffectsDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={cn('w-48', mode.radius)}>
-        <div className="border-border mb-2 border-b px-2 py-1.5">
+        <div className="border-border mb-2 border-b px-2 py-2">
           <span className="text-muted-foreground font-mono text-xs">[DISPLAY MODE]</span>
         </div>
         {effects.map((effect) => (

@@ -35,7 +35,7 @@ export function BrowserFrame({ children }: BrowserFrameProps) {
         </div>
 
         {/* Address Bar */}
-        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-4 py-1.5">
+        <div className="border-border bg-background flex flex-1 items-center gap-2 border px-4 py-2">
           <Lock className="text-success h-3.5 w-3.5" />
           <span className="text-foreground flex-1 text-xs">https://app.fabrk.dev/dashboard</span>
         </div>

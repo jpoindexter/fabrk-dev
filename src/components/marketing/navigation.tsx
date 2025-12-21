@@ -50,7 +50,8 @@ export function Navigation() {
             <Link
               href="/"
               className={cn(
-                'flex items-center gap-2 transition-opacity hover:opacity-80',
+                'flex items-center gap-2 transition-opacity',
+                mode.state.hover.linkOpacity,
                 mode.font
               )}
             >

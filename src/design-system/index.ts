@@ -216,6 +216,7 @@ export interface ModeConfig {
       card: string;
       cardSubtle: string;
       link: string;
+      linkOpacity: string;
       listItem: string;
       opacity: string;
     };
@@ -353,6 +354,7 @@ export const mode: ModeConfig = {
       card: 'hover:bg-muted/50',
       cardSubtle: 'hover:bg-muted/30',
       link: 'hover:text-primary',
+      linkOpacity: 'hover:opacity-80',
       listItem: 'hover:bg-muted/50',
       opacity: 'hover:opacity-90',
     },

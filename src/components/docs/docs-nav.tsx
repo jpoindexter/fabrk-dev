@@ -197,7 +197,7 @@ export function DocsNav() {
         {/* Logo/Home Link - Terminal Style */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-mono transition-opacity hover:opacity-80"
+          className={cn('flex items-center gap-2 font-mono transition-opacity', mode.state.hover.linkOpacity)}
         >
           <span className={cn('text-xs', mode.color.text.accent)}>&gt;</span>
           <span className="text-sm font-semibold tracking-tight">FABRK</span>
