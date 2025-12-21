@@ -50,7 +50,7 @@ export function PricingCard({
   return (
     <Card size="auto" className={cn('w-full max-w-sm', className)}>
       {/* Custom Header with Terminal Icon */}
-      <div className="border-border bg-card flex h-11 items-center justify-between border-b px-4">
+      <div className={cn(mode.color.border.default, 'bg-card flex h-11 items-center justify-between border-b px-4')}>
         <span className={cn('text-muted-foreground text-xs tracking-wide', mode.font)}>
           [{headerCode}] PRICING_CONFIG
         </span>

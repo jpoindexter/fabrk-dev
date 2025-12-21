@@ -106,8 +106,8 @@ const getUsagePercentage = (used: number, limit: number) => {
 };
 
 const getUsageColor = (percentage: number) => {
-  if (percentage >= 90) return 'bg-destructive';
-  if (percentage >= 75) return 'bg-warning';
+  if (percentage >= 90) return mode.color.bg.danger;
+  if (percentage >= 75) return mode.color.bg.warning;
   return 'bg-primary';
 };
 
@@ -138,7 +138,7 @@ function PlanDetailsSection({
             {formatPrice(plan.price, plan.interval)}
           </p>
           {status === 'trial' && trialEnd && (
-            <p className={cn('text-warning mt-2 text-xs', mode.font)}>
+            <p className={cn(mode.color.text.warning, 'mt-2 text-xs', mode.font)}>
               Trial ends in {getDaysRemaining(trialEnd)} days
             </p>
           )}
@@ -148,7 +148,7 @@ function PlanDetailsSection({
             </p>
           )}
           {status === 'past_due' && (
-            <p className={cn('text-destructive mt-2 text-xs', mode.font)}>
+            <p className={cn(mode.color.text.danger, 'mt-2 text-xs', mode.font)}>
               Action required: Update payment method
             </p>
           )}
@@ -201,14 +201,14 @@ function UsageSection({ usage }: UsageSectionProps) {
                   {item.unit && ` ${item.unit}`}
                 </span>
               </div>
-              <div className={cn('bg-muted relative h-2 w-full overflow-hidden', mode.radius)}>
+              <div className={cn(mode.color.bg.muted, 'relative h-2 w-full overflow-hidden', mode.radius)}>
                 <div
                   className={cn('h-full transition-all', getUsageColor(percentage))}
                   style={{ width: `${percentage}%` }}
                 />
               </div>
               {percentage >= 90 && (
-                <p className={cn('text-destructive mt-1 text-xs', mode.font)}>
+                <p className={cn(mode.color.text.danger, 'mt-1 text-xs', mode.font)}>
                   <AlertTriangle className="mr-1 inline h-3 w-3" />
                   Approaching limit
                 </p>
@@ -259,7 +259,7 @@ function ActionsSection({
           onClick={onCancel}
           variant="ghost"
           size="sm"
-          className={cn('text-destructive hover:text-destructive', mode.radius, mode.font)}
+          className={cn(mode.color.text.danger, 'hover:text-destructive', mode.radius, mode.font)}
         >
           CANCEL
         </Button>
@@ -346,8 +346,8 @@ export function UsageMeter({
   const percentage = Math.min(Math.round((used / limit) * 100), 100);
 
   const getColor = () => {
-    if (percentage >= 90) return 'bg-destructive';
-    if (percentage >= 75) return 'bg-warning';
+    if (percentage >= 90) return mode.color.bg.danger;
+    if (percentage >= 75) return mode.color.bg.warning;
     return 'bg-primary';
   };
 
@@ -368,7 +368,7 @@ export function UsageMeter({
         </span>
       </div>
       <div
-        className={cn('bg-muted relative w-full overflow-hidden', sizeClasses[size], mode.radius)}
+        className={cn(mode.color.bg.muted, 'relative w-full overflow-hidden', sizeClasses[size], mode.radius)}
       >
         <div
           className={cn('h-full transition-all', getColor())}
@@ -466,7 +466,7 @@ export function PlanSelector({
                   key={index}
                   className={cn('text-muted-foreground flex items-center gap-2 text-xs', mode.font)}
                 >
-                  <CheckCircle className="text-success h-3 w-3 flex-shrink-0" />
+                  <CheckCircle className={cn('h-3 w-3 flex-shrink-0', mode.color.text.success)} />
                   {feature}
                 </li>
               ))}

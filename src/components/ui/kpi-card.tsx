@@ -43,11 +43,11 @@ const KpiCard = React.forwardRef<HTMLDivElement, KpiCardProps>(
     const getTrendColor = () => {
       switch (trend) {
         case 'up':
-          return 'text-success';
+          return mode.color.text.success;
         case 'down':
-          return 'text-destructive';
+          return mode.color.text.danger;
         case 'neutral':
-          return 'text-muted-foreground';
+          return mode.color.text.muted;
         default:
           return '';
       }

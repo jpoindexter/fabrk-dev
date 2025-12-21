@@ -56,10 +56,10 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
           {[...Array(3)].map((_, i) => (
             <div key={i} className={`animate-pulse`}>
               <div className={`flex gap-6`}>
-                <div className={cn(`"h-8 w-8" border-border bg-card border`, mode.radius)} />
+                <div className={cn(`"h-8 w-8"`, mode.color.border.default, mode.color.bg.surface, 'border', mode.radius)} />
                 <div className={`flex-1 space-y-2`}>
-                  <div className={cn('border-border bg-card h-4 w-3/4 border', mode.radius)} />
-                  <div className={cn('border-border bg-card h-3 w-1/2 border', mode.radius)} />
+                  <div className={cn(mode.color.border.default, mode.color.bg.surface, 'h-4 w-3/4 border', mode.radius)} />
+                  <div className={cn(mode.color.border.default, mode.color.bg.surface, 'h-3 w-1/2 border', mode.radius)} />
                 </div>
               </div>
             </div>
@@ -70,7 +70,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
 
     if (error) {
       return (
-        <div className={cn('text-destructive p-6', className, '')}>Error loading notifications</div>
+        <div className={cn(mode.color.text.danger, 'p-6', className, '')}>Error loading notifications</div>
       );
     }
 
@@ -85,7 +85,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
             />
           );
         case 'error':
-          return <X className={`"h-4 w-4" text-destructive`} />;
+          return <X className={cn(`"h-4 w-4"`, mode.color.text.danger)} />;
         default:
           return <Bell className={`"h-4 w-4" text-primary dark:text-primary`} />;
       }
@@ -123,7 +123,10 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                 <div className={`flex gap-6`}>
                   <div
                     className={cn(
-                      `"h-8 w-8" border-border bg-card flex items-center justify-center border transition-transform hover:scale-110`,
+                      `"h-8 w-8"`,
+                      mode.color.border.default,
+                      mode.color.bg.surface,
+                      'flex items-center justify-center border transition-transform hover:scale-110',
                       mode.radius
                     )}
                   >
@@ -152,7 +155,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                         e.stopPropagation();
                         onDismiss(notification.id);
                       }}
-                      className="text-muted-foreground hover:text-destructive focus-visible:ring-ring dark:text-muted-foreground dark:hover:text-destructive transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
+                      className={cn(mode.color.text.muted, 'hover:text-destructive focus-visible:ring-ring dark:text-muted-foreground dark:hover:text-destructive transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none')}
                       aria-label="Dismiss notification"
                     >
                       <X className={`"h-4 w-4"`} />

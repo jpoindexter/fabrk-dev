@@ -228,7 +228,7 @@ interface LogEntryItemProps {
 function LogEntryItem({ log, isLast, onShowDetails }: LogEntryItemProps) {
   return (
     <div className="relative p-4">
-      {!isLast && <div className="border-border absolute top-13 left-13 h-full w-px border-l" />}
+      {!isLast && <div className={cn(mode.color.border.default, 'absolute top-13 left-13 h-full w-px border-l')} />}
 
       <div className="flex items-start gap-4">
         <Avatar className="border-border h-10 w-10 border-2">
@@ -323,7 +323,7 @@ function LogDetailsSheet({ log, onClose }: LogDetailsSheetProps) {
               {/* Action Details */}
               <div className="space-y-2">
                 <p className={cn('text-xs font-semibold', mode.font)}>[ACTION]:</p>
-                <div className="bg-muted border-border space-y-1 border px-4 py-2">
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
                   <div className="flex justify-between text-xs">
                     <span className={cn('text-muted-foreground', mode.font)}>[TYPE]:</span>
                     <Badge variant={getActionBadgeVariant(log.action)} className={cn(mode.font)}>
@@ -344,7 +344,7 @@ function LogDetailsSheet({ log, onClose }: LogDetailsSheetProps) {
               {/* Security Info */}
               <div className="space-y-2">
                 <p className={cn('text-xs font-semibold', mode.font)}>[SECURITY]:</p>
-                <div className="bg-muted border-border space-y-1 border px-4 py-2">
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
                   <div className="flex justify-between text-xs">
                     <span className={cn('text-muted-foreground', mode.font)}>[IP ADDRESS]:</span>
                     <span className={cn(mode.font)}>{log.ipAddress}</span>
@@ -362,7 +362,7 @@ function LogDetailsSheet({ log, onClose }: LogDetailsSheetProps) {
               {Object.keys(log.metadata).length > 0 && (
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
-                  <div className="bg-muted border-border space-y-1 border px-4 py-2">
+                  <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
                     {Object.entries(log.metadata).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-xs">
                         <span className={cn('text-muted-foreground', mode.font)}>

@@ -78,7 +78,7 @@ const buttonVariants = cva(
           'hover:bg-muted/50'
         ),
         // Secondary - uses mode secondary tokens
-        secondary: cn('bg-secondary text-secondary-foreground hover:bg-secondary/80 crt-scanlines'),
+        secondary: cn(mode.color.bg.secondary, 'text-secondary-foreground hover:bg-secondary/80 crt-scanlines'),
         // Ghost - uses mode text tokens
         ghost: cn(mode.color.text.primary, 'hover:bg-foreground/10'),
         // Link - uses mode accent text
@@ -92,7 +92,8 @@ const buttonVariants = cva(
           'crt-scanlines crt-glow'
         ),
         secondaryCta: cn(
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+          mode.color.bg.secondary,
+          'text-secondary-foreground hover:bg-secondary/80',
           mode.spacing.button.lg,
           'crt-scanlines'
         ),

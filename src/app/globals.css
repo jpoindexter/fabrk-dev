@@ -1378,11 +1378,11 @@
   --input: 35% 0.18 25;
   --ring: 10% 0 0;
 
-  --success: 65% 0.2 145; /* Green success */
+  --success: 45% 0.22 25; /* Monotone red - darker shade */
   --success-foreground: 10% 0 0;
-  --warning: 80% 0.2 85; /* Amber warning */
+  --warning: 55% 0.25 25; /* Monotone red - medium shade */
   --warning-foreground: 10% 0 0;
-  --info: 70% 0.2 220; /* Blue info */
+  --info: 50% 0.2 25; /* Monotone red - lighter shade */
   --info-foreground: 10% 0 0;
 
   --chart-1: 10% 0 0;

@@ -143,7 +143,7 @@ function MonthYearDropdowns({
   onYearChange,
 }: MonthYearDropdownsProps) {
   return (
-    <div className="border-border flex gap-2 border-b p-4">
+    <div className={cn(visualMode.color.border.default, 'flex gap-2 border-b p-4')}>
       <Select value={month.getMonth().toString()} onValueChange={onMonthChange}>
         <SelectTrigger className={cn('h-8 flex-1 text-xs', visualMode.radius, visualMode.font)}>
           <SelectValue />
@@ -187,7 +187,7 @@ interface PresetSelectorProps {
 
 function PresetSelector({ presets, onPresetSelect }: PresetSelectorProps) {
   return (
-    <div className="border-border border-b p-4">
+    <div className={cn(visualMode.color.border.default, 'border-b p-4')}>
       <Select onValueChange={onPresetSelect}>
         <SelectTrigger className={cn('h-8 w-full text-xs', visualMode.radius, visualMode.font)}>
           <SelectValue placeholder="Quick select..." />
@@ -226,7 +226,7 @@ function MonthOnlyGrid({
 }: MonthOnlyGridProps) {
   return (
     <>
-      <div className="border-border flex items-center justify-between border-b p-4">
+      <div className={cn(visualMode.color.border.default, 'flex items-center justify-between border-b p-4')}>
         <Button
           variant="outline"
           size="sm"
@@ -406,7 +406,7 @@ interface DatePickerFooterProps {
 
 function DatePickerFooter({ mode: _mode, showTime, value, onClear, onApply }: DatePickerFooterProps) {
   return (
-    <div className="border-border flex gap-2 border-t p-4">
+    <div className={cn(visualMode.color.border.default, 'flex gap-2 border-t p-4')}>
       <Button
         variant="outline"
         size="sm"
@@ -666,7 +666,7 @@ function DatePicker({
           /* Date + Time Picker */
           <Tabs defaultValue="date" className="w-full">
             <TabsList
-              className={cn('border-border bg-muted/50 w-full border-b', visualMode.radius)}
+              className={cn(visualMode.color.border.default, 'bg-muted/50 w-full border-b', visualMode.radius)}
             >
               <TabsTrigger
                 value="date"

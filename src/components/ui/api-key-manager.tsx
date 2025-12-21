@@ -184,9 +184,9 @@ export function ApiKeyManager({
               </div>
 
               {generatedKey && (
-                <div className="bg-muted border-border space-y-2 border p-4">
-                  <p className={cn('text-muted-foreground text-xs', mode.font)}>[KEY GENERATED]:</p>
-                  <div className="bg-background border-border flex items-center gap-2 border p-2">
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-2 border p-4')}>
+                  <p className={cn(mode.color.text.muted, 'text-xs', mode.font)}>[KEY GENERATED]:</p>
+                  <div className={cn(mode.color.bg.base, mode.color.border.default, 'flex items-center gap-2 border p-2')}>
                     <code className={cn('flex-1 text-xs', mode.font)}>{generatedKey.key}</code>
                     <Button
                       size="sm"
@@ -200,7 +200,7 @@ export function ApiKeyManager({
                       )}
                     </Button>
                   </div>
-                  <p className="text-destructive text-xs">
+                  <p className={cn(mode.color.text.danger, 'text-xs')}>
                     [WARNING] Copy this key now. You won't be able to see it again.
                   </p>
                 </div>
@@ -295,7 +295,7 @@ export function ApiKeyManager({
                 <DropdownMenuContent align="end" className={cn(mode.radius, mode.font)}>
                   <DropdownMenuItem
                     onClick={() => setRevokeId(key.id)}
-                    className="text-destructive focus:text-destructive"
+                    className={cn(mode.color.text.danger, 'focus:text-destructive')}
                   >
                     <Trash2 className="mr-2 h-4 w-4" />
                     {'> '}REVOKE
@@ -323,7 +323,7 @@ export function ApiKeyManager({
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={() => revokeId && handleRevoke(revokeId)}
-              className={cn('bg-destructive hover:bg-destructive/90', mode.radius, mode.font)}
+              className={cn(mode.color.bg.danger, 'hover:bg-destructive/90', mode.radius, mode.font)}
             >
               {'> '}REVOKE
             </AlertDialogAction>

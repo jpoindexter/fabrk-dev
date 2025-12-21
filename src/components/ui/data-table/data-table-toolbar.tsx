@@ -4,6 +4,8 @@ import { Table } from '@tanstack/react-table';
 import { X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -26,7 +28,7 @@ export function DataTableToolbar<TData>({
             placeholder={searchPlaceholder}
             value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ''}
             onChange={(event) => table.getColumn(searchKey)?.setFilterValue(event.target.value)}
-            className="border-border h-10 w-full max-w-sm border"
+            className={cn(mode.color.border.default, 'h-10 w-full max-w-sm border')}
           />
         )}
         {isFiltered && (

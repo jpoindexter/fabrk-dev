@@ -1,3 +1,4 @@
+/* eslint-disable design-system/no-hardcoded-colors -- FUI Lab is an experimental playground with custom styling */
 'use client';
 
 import {

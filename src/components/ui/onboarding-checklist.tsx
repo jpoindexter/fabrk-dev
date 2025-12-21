@@ -108,7 +108,7 @@ export function OnboardingChecklist({
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className="bg-muted relative h-2 w-24 overflow-hidden">
+          <div className={cn(mode.color.bg.muted, 'relative h-2 w-24 overflow-hidden')}>
             <div
               className="bg-primary absolute top-0 left-0 h-full transition-all duration-300"
               style={{ width: `${progress}%` }}
@@ -127,7 +127,7 @@ export function OnboardingChecklist({
   return (
     <Card className={cn('relative overflow-hidden', mode.radius, className)}>
       {/* Progress Bar - Full width visual strip at top */}
-      <div className="bg-muted relative h-2 w-full">
+      <div className={cn(mode.color.bg.muted, 'relative h-2 w-full')}>
         <div
           className="bg-primary absolute top-0 left-0 h-full transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -163,7 +163,7 @@ export function OnboardingChecklist({
             <h3 className={cn('text-sm font-semibold tracking-tight', mode.font)}>
               [ GETTING STARTED ]
             </h3>
-            {isComplete && <span className="text-success text-xs">✓ COMPLETE</span>}
+            {isComplete && <span className={cn(mode.color.text.success, 'text-xs')}>✓ COMPLETE</span>}
           </div>
           <p className={cn('text-muted-foreground mt-1 text-xs', mode.font)}>
             {completedCount}/{totalCount} tasks completed • {Math.round(progress)}%
@@ -241,7 +241,7 @@ export function OnboardingChecklist({
                           transition={{ duration: 0.2 }}
                           className="overflow-hidden"
                         >
-                          <div className="bg-muted border-border space-y-2 border px-4 py-2">
+                          <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-2 border px-4 py-2')}>
                             <p className={cn('text-muted-foreground text-xs', mode.font)}>
                               {task.description}
                             </p>
@@ -272,8 +272,8 @@ export function OnboardingChecklist({
 
       {/* Completion Message */}
       {isComplete && (
-        <div className="bg-success/10 border-success border-t p-4">
-          <p className={cn('text-success text-sm', mode.font)}>
+        <div className={cn(mode.color.bg.successMuted, mode.color.border.success, 'border-t p-4')}>
+          <p className={cn(mode.color.text.success, 'text-sm', mode.font)}>
             [SETUP_COMPLETE]: You're all set! Start building amazing things.
           </p>
         </div>

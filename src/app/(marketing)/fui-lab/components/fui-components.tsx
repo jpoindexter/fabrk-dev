@@ -1,3 +1,4 @@
+/* eslint-disable design-system/no-hardcoded-colors -- FUI Lab is an experimental playground with custom styling */
 /**
  * FUI Component Library
  * Architect Command Center style - Yellow/Black with Blue accents

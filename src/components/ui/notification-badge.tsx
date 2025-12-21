@@ -55,12 +55,12 @@ const NotificationBadge = React.forwardRef<HTMLDivElement, NotificationBadgeProp
           : '';
     const shouldShow = count === undefined ? dot : count > 0 || showZero;
 
-    // Variant styles
+    // Variant styles - using mode tokens
     const variantStyles = {
-      primary: 'bg-primary text-primary-foreground border-primary',
-      destructive: 'bg-destructive text-destructive-foreground border-destructive',
-      success: 'bg-success text-success-foreground border-success',
-      warning: 'bg-warning text-warning-foreground border-warning',
+      primary: `bg-primary text-primary-foreground border-primary`,
+      destructive: `${mode.color.bg.danger} ${mode.color.text.dangerOnColor} ${mode.color.border.danger}`,
+      success: `${mode.color.bg.success} ${mode.color.text.successOnColor} ${mode.color.border.success}`,
+      warning: `${mode.color.bg.warning} ${mode.color.text.warningOnColor} ${mode.color.border.warning}`,
     };
 
     // Position styles

@@ -50,7 +50,7 @@ const getNotificationIcon = (type: Notification['type']) => {
     case 'warning':
       return <AlertTriangle className={cn(iconClass, 'text-accent')} />;
     case 'error':
-      return <XCircle className={cn(iconClass, 'text-destructive')} />;
+      return <XCircle className={cn(iconClass, mode.color.text.danger)} />;
     case 'mention':
       return <AtSign className={cn(iconClass, 'text-primary')} />;
     default:
@@ -226,19 +226,19 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
             {!notification.read && onMarkAsRead && (
               <button
                 onClick={handleMarkAsRead}
-                className={cn('hover:bg-muted p-1 transition-colors', mode.radius)}
+                className={cn(mode.state.hover.card, 'p-1 transition-colors', mode.radius)}
                 aria-label="Mark as read"
               >
-                <Check className="text-success h-4 w-4" aria-hidden="true" />
+                <Check className={cn('h-4 w-4', mode.color.text.success)} aria-hidden="true" />
               </button>
             )}
             {onDelete && (
               <button
                 onClick={handleDelete}
-                className={cn('hover:bg-muted p-1 transition-colors', mode.radius)}
+                className={cn(mode.state.hover.card, 'p-1 transition-colors', mode.radius)}
                 aria-label="Delete notification"
               >
-                <X className="text-destructive h-4 w-4" aria-hidden="true" />
+                <X className={cn('h-4 w-4', mode.color.text.danger)} aria-hidden="true" />
               </button>
             )}
           </div>
@@ -276,7 +276,7 @@ function NotificationCenterHeader({
           <Button
             variant="ghost"
             size="sm"
-            className="text-destructive hover:text-destructive h-8 text-xs"
+            className={cn(mode.color.text.danger, 'hover:text-destructive h-8 text-xs')}
             onClick={onClearAll}
           >
             <X className="mr-1 h-3 w-3" />
@@ -291,7 +291,7 @@ function NotificationCenterHeader({
 function EmptyNotificationsState() {
   return (
     <div className="flex flex-col items-center justify-center px-4 py-12">
-      <div className={cn('bg-muted mb-4 flex h-16 w-16 items-center justify-center', mode.radius)}>
+      <div className={cn(mode.color.bg.muted, 'mb-4 flex h-16 w-16 items-center justify-center', mode.radius)}>
         <Bell className="text-muted-foreground h-8 w-8" />
       </div>
       <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>
@@ -325,8 +325,8 @@ function NotificationGroupsList({
         {Object.entries(groupedNotifications).map(([group, items]) => (
           <div key={group}>
             {groupByDate && (
-              <div className={cn('bg-muted sticky top-0 z-10 mb-2 px-4 py-2', mode.radius)}>
-                <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+              <div className={cn(mode.color.bg.muted, 'sticky top-0 z-10 mb-2 px-4 py-2', mode.radius)}>
+                <span className={cn(mode.color.text.muted, 'text-xs font-semibold tracking-wide uppercase')}>
                   {group}
                 </span>
               </div>
@@ -387,7 +387,9 @@ export const NotificationCenter = React.forwardRef<HTMLDivElement, NotificationC
             {unreadCount > 0 && (
               <span
                 className={cn(
-                  'bg-destructive text-destructive-foreground absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center border text-xs font-semibold',
+                  mode.color.bg.danger,
+                  mode.color.text.dangerOnColor,
+                  'absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center border text-xs font-semibold',
                   mode.radius
                 )}
               >

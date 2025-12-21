@@ -56,7 +56,8 @@ const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
           onChange={(e) => onValueChange?.(e.target.value)}
           disabled={disabled}
           className={cn(
-            'border-border bg-background flex h-8 w-full border py-2 pr-4 pl-10 text-sm transition-colors',
+            mode.color.border.default,
+            'bg-background flex h-8 w-full border py-2 pr-4 pl-10 text-sm transition-colors',
             mode.radius,
             mode.font,
             'placeholder:text-muted-foreground',

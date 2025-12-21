@@ -46,11 +46,11 @@ const getStatusColor = (status?: 'online' | 'away' | 'offline') => {
     case 'online':
       return 'bg-accent';
     case 'away':
-      return 'bg-warning';
+      return mode.color.bg.warning;
     case 'offline':
-      return 'bg-muted';
+      return mode.color.bg.muted;
     default:
-      return 'bg-muted';
+      return mode.color.bg.muted;
   }
 };
 
@@ -147,7 +147,7 @@ function MemberActionsDropdown({
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() => onRemove(member)}
-            className="text-destructive focus:text-destructive"
+            className={cn(mode.color.text.danger, 'focus:text-destructive')}
           >
             <Trash2 className="mr-2 h-4 w-4" />
             Remove

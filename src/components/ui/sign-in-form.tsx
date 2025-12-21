@@ -88,7 +88,10 @@ function ErrorMessage({ error }: ErrorMessageProps) {
   return (
     <div
       className={cn(
-        'border-destructive bg-destructive/10 text-destructive border px-4 py-2 text-xs',
+        mode.color.border.danger,
+        mode.color.bg.dangerMuted,
+        mode.color.text.danger,
+        'border px-4 py-2 text-xs',
         mode.radius,
         mode.font
       )}
@@ -106,7 +109,7 @@ function SocialAuthDivider({ label = 'Or continue with' }: SocialAuthDividerProp
   return (
     <div className="relative">
       <div className="absolute inset-0 flex items-center">
-        <span className="border-border w-full border-t" />
+        <span className={cn(mode.color.border.default, 'w-full border-t')} />
       </div>
       <div className="relative flex justify-center text-xs uppercase">
         <span className={cn('bg-background text-muted-foreground px-2', mode.font)}>{label}</span>

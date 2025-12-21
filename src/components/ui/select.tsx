@@ -199,7 +199,8 @@ const SelectItem = React.forwardRef<
       mode.radius,
       mode.font,
       // Subtle muted background for hover/focus instead of dark accent
-      'hover:bg-muted/50 focus:bg-muted/50',
+      mode.state.hover.card,
+      'focus:bg-muted/50',
       className
     )}
     {...props}
@@ -237,7 +238,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn('bg-border -mx-1 my-1 h-px', className)}
+    className={cn(mode.color.bg.muted, '-mx-1 my-1 h-px', className)}
     {...props}
   />
 ));

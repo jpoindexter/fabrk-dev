@@ -110,7 +110,7 @@ export function BarChart({
       ({ active, payload, label }: any) => {
         if (active && payload && payload.length) {
           return (
-            <div className={cn('border-border bg-card border px-4 py-2', mode.radius)}>
+            <div className={cn(mode.color.border.default, 'bg-card border px-4 py-2', mode.radius)}>
               <p className={cn('text-foreground mb-2 text-xs font-semibold', mode.font)}>
                 {xAxisFormatter ? xAxisFormatter(String(label ?? '')) : label}
               </p>

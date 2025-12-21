@@ -115,7 +115,7 @@ export function SparklineCard({
   className,
 }: SparklineCardProps) {
   const isPositive = change && change.value >= 0;
-  const changeColor = isPositive ? 'text-success' : 'text-destructive';
+  const changeColor = isPositive ? mode.color.text.success : mode.color.text.danger;
 
   return (
     <div className={cn('bg-card border p-4', mode.radius, className)}>

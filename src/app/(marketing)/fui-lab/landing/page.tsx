@@ -1,3 +1,4 @@
+/* eslint-disable design-system/no-hardcoded-colors -- FUI Lab is an experimental playground with custom styling */
 /**
  * Landing V3 - Sci-Fi FUI Design (SYSTEM OVERLOAD style)
  * Dark navy + cyan + pink aesthetic with dense data panels

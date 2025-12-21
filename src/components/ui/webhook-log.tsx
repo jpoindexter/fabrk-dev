@@ -204,14 +204,16 @@ function WebhookLogEntryItem({
             className={cn(
               'w-20 justify-center',
               mode.font,
-              log.status === 'success' && 'bg-success/20 text-success border-success'
+              log.status === 'success' && `${mode.color.bg.successMuted} ${mode.color.text.success} ${mode.color.border.success}`
             )}
           >
             {getStatusIcon(log.status)} {log.status.toUpperCase()}
           </Badge>
           <span
             className={cn(
-              'text-muted-foreground border-border rounded border px-2 py-1 text-xs',
+              mode.color.text.muted,
+              mode.color.border.default,
+              'rounded border px-2 py-1 text-xs',
               mode.font
             )}
           >
@@ -270,8 +272,8 @@ function WebhookLogEntryItem({
           </div>
 
           {log.error && (
-            <div className="bg-destructive/10 border-destructive rounded border px-4 py-2">
-              <p className={cn('text-destructive text-xs', mode.font)}>[ERROR]: {log.error}</p>
+            <div className={cn(mode.color.bg.dangerMuted, mode.color.border.danger, 'rounded border px-4 py-2')}>
+              <p className={cn(mode.color.text.danger, 'text-xs', mode.font)}>[ERROR]: {log.error}</p>
             </div>
           )}
         </div>
@@ -300,7 +302,7 @@ function WebhookDetailsSheet({ log, onClose }: WebhookDetailsSheetProps) {
               {/* Metadata */}
               <div className="space-y-2">
                 <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
-                <div className="bg-muted border-border space-y-1 border px-4 py-2">
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
                   <div className="flex justify-between text-xs">
                     <span className={cn('text-muted-foreground', mode.font)}>[ID]:</span>
                     <span className={cn(mode.font)}>{log.id}</span>
@@ -344,8 +346,8 @@ function WebhookDetailsSheet({ log, onClose }: WebhookDetailsSheetProps) {
               {log.error && (
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[ERROR]:</p>
-                  <div className="bg-destructive/10 border-destructive border p-4">
-                    <p className={cn('text-destructive text-xs', mode.font)}>{log.error}</p>
+                  <div className={cn(mode.color.bg.dangerMuted, mode.color.border.danger, 'border p-4')}>
+                    <p className={cn(mode.color.text.danger, 'text-xs', mode.font)}>{log.error}</p>
                   </div>
                 </div>
               )}

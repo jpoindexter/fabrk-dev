@@ -71,7 +71,8 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
           onKeyDown={handleKeyDown}
           aria-label="Upload files"
           className={cn(
-            'border-border cursor-pointer border-2 border-dashed p-8 text-center transition-colors',
+            mode.color.border.default,
+            'cursor-pointer border-2 border-dashed p-8 text-center transition-colors',
             mode.radius,
             isDragOver && 'border-primary bg-primary/5',
             className

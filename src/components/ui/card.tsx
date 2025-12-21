@@ -56,8 +56,8 @@ export type CardProps = React.HTMLAttributes<HTMLDivElement> & {
 const toneStyles: Record<CardTone, string> = {
   neutral: mode.color.border.default,
   primary: mode.color.border.accent,
-  success: 'border-success',
-  warning: 'border-warning',
+  success: mode.color.border.success,
+  warning: mode.color.border.warning,
   danger: mode.color.border.danger,
 };
 
