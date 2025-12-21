@@ -1583,6 +1583,220 @@
 }
 
 /* ============================================
+   FUI THEMES - Futuristic User Interface
+   ============================================ */
+
+/* BLUEPRINT - Light technical/NASA style */
+[data-theme='blueprint'] {
+  --background: 96% 0 0;
+  --foreground: 15% 0 0;
+  --card: 98% 0 0;
+  --card-foreground: 15% 0 0;
+  --popover: 98% 0 0;
+  --popover-foreground: 15% 0 0;
+  --primary: 20% 0 0;
+  --primary-foreground: 98% 0 0;
+  --secondary: 92% 0 0;
+  --secondary-foreground: 15% 0 0;
+  --muted: 92% 0 0;
+  --muted-foreground: 45% 0 0;
+  --accent: 35% 0 0;
+  --accent-foreground: 98% 0 0;
+  --destructive: 55% 0.28 25;
+  --destructive-foreground: 98% 0 0;
+  --border: 80% 0 0;
+  --input: 80% 0 0;
+  --ring: 20% 0 0;
+  --success: 50% 0.15 145;
+  --success-foreground: 98% 0 0;
+  --warning: 70% 0.15 85;
+  --warning-foreground: 15% 0 0;
+  --info: 55% 0.15 230;
+  --info-foreground: 98% 0 0;
+  --chart-1: 20% 0 0;
+  --chart-2: 35% 0 0;
+  --chart-3: 50% 0 0;
+  --chart-4: 65% 0 0;
+  --chart-5: 80% 0 0;
+}
+
+/* CYBERPUNK - Neon pink on black */
+[data-theme='cyberpunk'] {
+  --background: 6% 0.02 330;
+  --foreground: 85% 0.08 330;
+  --card: 8% 0.02 330;
+  --card-foreground: 85% 0.08 330;
+  --popover: 10% 0.02 330;
+  --popover-foreground: 85% 0.08 330;
+  --primary: 55% 0.25 330;
+  --primary-foreground: 98% 0 0;
+  --secondary: 12% 0.02 330;
+  --secondary-foreground: 85% 0.08 330;
+  --muted: 12% 0.02 330;
+  --muted-foreground: 55% 0.08 330;
+  --accent: 60% 0.22 330;
+  --accent-foreground: 98% 0 0;
+  --destructive: 60% 0.3 25;
+  --destructive-foreground: 98% 0 0;
+  --border: 25% 0.1 330;
+  --input: 25% 0.1 330;
+  --ring: 55% 0.25 330;
+  --success: 60% 0.2 145;
+  --success-foreground: 98% 0 0;
+  --warning: 70% 0.2 85;
+  --warning-foreground: 6% 0 0;
+  --info: 60% 0.2 210;
+  --info-foreground: 98% 0 0;
+  --chart-1: 55% 0.25 330;
+  --chart-2: 60% 0.22 330;
+  --chart-3: 50% 0.2 330;
+  --chart-4: 65% 0.18 330;
+  --chart-5: 45% 0.15 330;
+}
+
+/* NAVIGATOR - Amber technical */
+[data-theme='navigator'] {
+  --background: 5% 0.01 50;
+  --foreground: 80% 0.12 50;
+  --card: 7% 0.01 50;
+  --card-foreground: 80% 0.12 50;
+  --popover: 9% 0.01 50;
+  --popover-foreground: 80% 0.12 50;
+  --primary: 65% 0.18 50;
+  --primary-foreground: 5% 0 0;
+  --secondary: 10% 0.01 50;
+  --secondary-foreground: 80% 0.12 50;
+  --muted: 10% 0.01 50;
+  --muted-foreground: 50% 0.08 50;
+  --accent: 70% 0.15 50;
+  --accent-foreground: 5% 0 0;
+  --destructive: 55% 0.28 25;
+  --destructive-foreground: 98% 0 0;
+  --border: 30% 0.08 50;
+  --input: 30% 0.08 50;
+  --ring: 65% 0.18 50;
+  --success: 60% 0.18 50;
+  --success-foreground: 5% 0 0;
+  --warning: 70% 0.15 50;
+  --warning-foreground: 5% 0 0;
+  --info: 55% 0.12 50;
+  --info-foreground: 98% 0 0;
+  --chart-1: 65% 0.18 50;
+  --chart-2: 55% 0.15 50;
+  --chart-3: 75% 0.12 50;
+  --chart-4: 60% 0.1 50;
+  --chart-5: 50% 0.08 50;
+}
+
+/* PHOSPHOR - Green CRT terminal */
+[data-theme='phosphor'] {
+  --background: 3% 0.015 140;
+  --foreground: 75% 0.2 140;
+  --card: 5% 0.015 140;
+  --card-foreground: 75% 0.2 140;
+  --popover: 7% 0.015 140;
+  --popover-foreground: 75% 0.2 140;
+  --primary: 60% 0.2 140;
+  --primary-foreground: 3% 0 0;
+  --secondary: 8% 0.02 140;
+  --secondary-foreground: 75% 0.2 140;
+  --muted: 8% 0.02 140;
+  --muted-foreground: 40% 0.1 140;
+  --accent: 65% 0.18 140;
+  --accent-foreground: 3% 0 0;
+  --destructive: 55% 0.28 25;
+  --destructive-foreground: 98% 0 0;
+  --border: 25% 0.1 140;
+  --input: 25% 0.1 140;
+  --ring: 60% 0.2 140;
+  --success: 65% 0.2 140;
+  --success-foreground: 3% 0 0;
+  --warning: 70% 0.18 85;
+  --warning-foreground: 3% 0 0;
+  --info: 55% 0.15 200;
+  --info-foreground: 98% 0 0;
+  --chart-1: 60% 0.2 140;
+  --chart-2: 50% 0.15 140;
+  --chart-3: 70% 0.18 140;
+  --chart-4: 55% 0.12 140;
+  --chart-5: 45% 0.1 140;
+}
+
+/* HOLOGRAPHIC - Cyan minimal */
+[data-theme='holographic'] {
+  --background: 8% 0.015 210;
+  --foreground: 92% 0.04 210;
+  --card: 10% 0.015 210;
+  --card-foreground: 92% 0.04 210;
+  --popover: 12% 0.015 210;
+  --popover-foreground: 92% 0.04 210;
+  --primary: 70% 0.12 195;
+  --primary-foreground: 8% 0 0;
+  --secondary: 14% 0.015 210;
+  --secondary-foreground: 92% 0.04 210;
+  --muted: 14% 0.015 210;
+  --muted-foreground: 55% 0.04 210;
+  --accent: 75% 0.1 195;
+  --accent-foreground: 8% 0 0;
+  --destructive: 55% 0.28 25;
+  --destructive-foreground: 98% 0 0;
+  --border: 35% 0.06 195;
+  --input: 35% 0.06 195;
+  --ring: 70% 0.12 195;
+  --success: 65% 0.15 145;
+  --success-foreground: 8% 0 0;
+  --warning: 70% 0.15 85;
+  --warning-foreground: 8% 0 0;
+  --info: 70% 0.12 195;
+  --info-foreground: 8% 0 0;
+  --chart-1: 70% 0.12 195;
+  --chart-2: 60% 0.1 195;
+  --chart-3: 80% 0.08 195;
+  --chart-4: 65% 0.06 195;
+  --chart-5: 55% 0.04 195;
+}
+
+/* FUI Theme body effects */
+[data-theme='blueprint'] body {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+[data-theme='cyberpunk'] body {
+  text-shadow: 0 0 15px oklch(55% 0.25 330 / 0.4);
+  background-image:
+    linear-gradient(rgba(255, 0, 80, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 80, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+[data-theme='navigator'] body {
+  text-shadow: 0 0 10px oklch(65% 0.18 50 / 0.3);
+  background-image:
+    linear-gradient(rgba(255, 140, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 140, 0, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+[data-theme='phosphor'] body {
+  text-shadow: 0 0 8px oklch(60% 0.2 140 / 0.5);
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+[data-theme='holographic'] body {
+  text-shadow: 0 0 12px oklch(70% 0.12 195 / 0.3);
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ============================================
    CRT GLOW EFFECTS - Apply to all text
    ============================================ */
 

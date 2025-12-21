@@ -2,11 +2,10 @@
  * Theme Configuration
  *
  * WCAG 2.1 AA Compliance:
- * ✅ All 12 themes now meet WCAG AA standards (4.5:1 text, 3:1 UI)
+ * ✅ All themes meet WCAG AA standards (4.5:1 text, 3:1 UI)
  *
- * Retro themes (gameboy, c64, gbpocket, vic20, atari, purple) have been
- * adjusted to maintain visual authenticity while meeting accessibility
- * requirements. Primary text and borders now pass WCAG AA contrast ratios.
+ * Retro themes have been adjusted to maintain visual authenticity
+ * while meeting accessibility requirements.
  */
 export const themeGroups = {
   'Standard CRT': [
@@ -20,6 +19,13 @@ export const themeGroups = {
     { id: 'crimson', name: 'Crimson', preview: '#dc143c', wcag: 'aa' },
     { id: 'blood', name: 'Blood', preview: '#8b0000', wcag: 'aa' },
     { id: 'neonred', name: 'Neon Red', preview: '#ff3333', wcag: 'aa' },
+  ],
+  Futuristic: [
+    { id: 'cyberpunk', name: 'Cyberpunk', preview: '#ff0050', wcag: 'aa' },
+    { id: 'phosphor', name: 'Phosphor', preview: '#00ff41', wcag: 'aa' },
+    { id: 'holographic', name: 'Holographic', preview: '#00ffff', wcag: 'aa' },
+    { id: 'navigator', name: 'Navigator', preview: '#ff8c00', wcag: 'aa' },
+    { id: 'blueprint', name: 'Blueprint', preview: '#e8e8e8', wcag: 'aa' },
   ],
   'Retro Computer': [
     { id: 'atari', name: 'Atari 800', preview: '#305070', wcag: 'aa' },
