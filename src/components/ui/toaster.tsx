@@ -15,6 +15,7 @@
 
 import { Toast, ToastProvider } from '@/components/ui/toast';
 import * as React from 'react';
+import { mode } from '@/design-system';
 
 // Types
 interface ToastItem {
@@ -69,7 +70,7 @@ export const ToastTitle = ({ children }: ToastContentProps) => (
 );
 ToastTitle.displayName = 'ToastTitle';
 export const ToastDescription = ({ children }: ToastContentProps) => (
-  <div data-slot="toast-description" className={`"text-sm" dark:text-muted-foreground opacity-90`}>
+  <div data-slot="toast-description" className={`text-sm dark:text-muted-foreground ${mode.state.hover.opacity}`}>
     {children}
   </div>
 );

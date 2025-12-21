@@ -112,8 +112,8 @@ function Calendar({
             `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`
           ),
           today: cn(mode.color.bg.muted, mode.color.text.primary, 'font-semibold'),
-          outside: cn(mode.color.text.muted, 'opacity-50'),
-          disabled: cn(mode.color.text.muted, 'opacity-50'),
+          outside: cn(mode.color.text.muted, mode.state.muted.opacity),
+          disabled: cn(mode.color.text.muted, mode.state.muted.opacity),
           hidden: 'invisible',
 
           // Range selection

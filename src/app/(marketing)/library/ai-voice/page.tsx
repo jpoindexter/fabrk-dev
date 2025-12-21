@@ -195,7 +195,7 @@ function AIVoicePreview() {
               </div>
 
               {/* Transcribe Button */}
-              <Button disabled className={cn('mb-6 text-xs opacity-50', mode.radius, mode.font)}>
+              <Button disabled className={cn('mb-6 text-xs', mode.state.muted.opacity, mode.radius, mode.font)}>
                 <Mic className="mr-2 size-4" />
                 &gt; TRANSCRIBE
               </Button>
@@ -269,7 +269,7 @@ function AIVoicePreview() {
               </div>
 
               {/* Generate Button */}
-              <Button disabled className={cn('mb-6 text-xs opacity-50', mode.radius, mode.font)}>
+              <Button disabled className={cn('mb-6 text-xs', mode.state.muted.opacity, mode.radius, mode.font)}>
                 <Volume2 className="mr-2 size-4" />
                 &gt; GENERATE SPEECH
               </Button>

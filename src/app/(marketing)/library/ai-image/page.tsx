@@ -199,7 +199,7 @@ function AIImagePreview() {
           </div>
 
           {/* Generate Button */}
-          <Button disabled className={cn('mb-6 text-xs opacity-50', mode.radius, mode.font)}>
+          <Button disabled className={cn('mb-6 text-xs', mode.state.muted.opacity, mode.radius, mode.font)}>
             <Sparkles className="mr-2 size-4" />
             &gt; GENERATE IMAGE
           </Button>

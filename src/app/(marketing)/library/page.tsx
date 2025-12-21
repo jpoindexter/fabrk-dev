@@ -328,7 +328,7 @@ export default function LibraryIndexPage() {
                   <PaginationPrevious
                     onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                     className={cn(
-                      currentPage === 1 && 'pointer-events-none opacity-50',
+                      currentPage === 1 && `pointer-events-none ${mode.state.muted.opacity}`,
                       'min-h-[44px]'
                     )}
                   />
@@ -356,7 +356,7 @@ export default function LibraryIndexPage() {
                   <PaginationNext
                     onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                     className={cn(
-                      currentPage === totalPages && 'pointer-events-none opacity-50',
+                      currentPage === totalPages && `pointer-events-none ${mode.state.muted.opacity}`,
                       'min-h-[44px]'
                     )}
                   />
