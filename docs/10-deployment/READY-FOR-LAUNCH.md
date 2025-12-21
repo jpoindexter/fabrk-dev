@@ -241,7 +241,7 @@ npm run dev
 - [ ] Remove 2 console.log statements
 - [ ] Update $299 pricing across all pages
 - [ ] Record 3-5 minute demo video
-- [ ] Verify theme switching works (all 12 themes)
+- [ ] Verify theme switching works (all 18 themes)
 - [ ] Run full test suite (all passing)
 - [ ] Build production bundle (zero errors)
 
@@ -282,7 +282,7 @@ npm run dev
 - [ ] `npm run lint` - CLEAN
 - [ ] `npm run test` - ALL GREEN
 - [ ] `npm run build` - SUCCESS
-- [ ] Manual theme switching test - all 12 themes WORK
+- [ ] Manual theme switching test - all 18 themes WORK
 
 ### Content (2-4 hours)
 - [ ] Demo video uploaded to YouTube

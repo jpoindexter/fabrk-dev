@@ -829,7 +829,7 @@ Production-ready React component library with 83 accessible components, Radix UI
 
 - 🎨 **78+ components** - Comprehensive UI component library
 - ♿ **Accessible** - WCAG 2.1 AA compliant with Radix UI
-- 🎭 **12 Themes** - Green, Amber, Blue, Red, Purple, Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W
+- 🎭 **18 Themes** - Green, Amber, Blue, Red, Purple, Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W
 - 🎯 **TypeScript** - Full type safety with exported definitions
 - 🌳 **Tree-shakeable** - Optimized bundle size with ESM
 - 📱 **Responsive** - Mobile-first design

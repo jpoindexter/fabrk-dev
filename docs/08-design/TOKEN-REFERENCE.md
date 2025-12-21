@@ -37,7 +37,7 @@ globals.css
 ├── @theme (Tailwind v4 mapping)
 │   └── --color-* mappings (27) ─────► Tailwind utility classes
 │
-└── [data-theme='*'] (12 themes)
+└── [data-theme='*'] (18 themes)
     └── Override all tokens per theme
 ```
 
@@ -443,5 +443,5 @@ function Card({ children }) {
 
 - [Design System Overview](./DESIGN-SYSTEM.md) - Complete design system guide
 - [Customization Guide](./CUSTOMIZATION-GUIDE.md) - How to customize tokens
-- [Theme Guide](./THEME-GUIDE.md) - Explore all 12 themes
+- [Theme Guide](./THEME-GUIDE.md) - Explore all 18 themes
 - [Component Authoring](./COMPONENT-AUTHORING.md) - Create custom components

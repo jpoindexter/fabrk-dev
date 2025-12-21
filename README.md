@@ -392,7 +392,7 @@ bg-white, bg-gray-500, text-black, #hexvalues
 
 ### Theme Switching
 
-A theme switcher dropdown is included in the navigation bar (top right). Click the palette icon to choose from 12 terminal themes.
+A theme switcher dropdown is included in the navigation bar (top right). Click the palette icon to choose from 18 terminal themes.
 
 **To use the theme switcher in your own components:**
 
@@ -549,7 +549,7 @@ fabrk/
 │   │   ├── stripe.ts        # Payment provider config
 │   │   └── i18n.ts          # Internationalization
 │   └── design-system/
-│       └── themes/          # 12 terminal themes (OKLCH colors)
+│       └── themes/          # 18 terminal themes (OKLCH colors)
 ├── prisma/
 │   ├── schema.prisma        # Database schema
 │   └── seed.ts              # Database seeding
@@ -837,7 +837,7 @@ When **stuck or troubleshooting**:
 
 **Q: What makes Fabrk different from other SaaS boilerplates?**
 
-A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 78 production-ready components, and 100% OKLCH color system for perfect theme consistency.
+A: Terminal-first design aesthetic (18 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 78 production-ready components, and 100% OKLCH color system for perfect theme consistency.
 
 **Q: Can I use this for client projects?**
 
@@ -867,7 +867,7 @@ A: Yes. SQLite for local dev (fast, no Docker), PostgreSQL for production (Verce
 
 **Q: Why OKLCH colors instead of RGB/HSL?**
 
-A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. all 12 themes maintain WCAG 2.2 AA contrast ratios automatically.
+A: OKLCH is perceptually uniform (consistent lightness across hues), perfect for theming. all 18 themes maintain WCAG 2.2 AA contrast ratios automatically.
 
 **Q: Can I change the terminal aesthetic to rounded corners?**
 

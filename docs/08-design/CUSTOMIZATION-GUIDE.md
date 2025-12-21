@@ -531,7 +531,7 @@ Open on mobile (or DevTools responsive mode):
 
 ## Next Steps
 
-- **[Theme Gallery](./THEME-GUIDE.md)** - See all 12 themes with screenshots
+- **[Theme Gallery](./THEME-GUIDE.md)** - See all 18 themes with screenshots
 - **[Component Authoring](./COMPONENT-AUTHORING.md)** - Extend design system safely
 - **[Design System Reference](./DESIGN_SYSTEM.md)** - Complete token documentation
 

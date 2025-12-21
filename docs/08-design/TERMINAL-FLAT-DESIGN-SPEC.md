@@ -399,7 +399,7 @@ export const mode = {
 
 **Non-Text Contrast:**
 - UI components (borders, icons, focus indicators): 3:1 minimum
-- Pre-commit hook validates border contrast across all 12 themes
+- Pre-commit hook validates border contrast across all 18 themes
 
 **Tools:**
 - `scripts/check-aria-labels.mjs` - Accessibility audit
@@ -946,7 +946,7 @@ All 78+ components audited on December 12, 2025:
 
 **Location:** `src/app/globals.css`
 
-all 12 themes audited:
+all 18 themes audited:
 - ✅ Red, Blue, Green, Amber, Purple (CRT phosphor)
 - ✅ GameBoy, C64, GBPocket, VIC-20 (retro computers)
 - ✅ Atari, ZX Spectrum (handhelds)

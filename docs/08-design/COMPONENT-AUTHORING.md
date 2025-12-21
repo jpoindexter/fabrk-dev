@@ -531,7 +531,7 @@ npm run dev
 
 ### 2. Theme Switching
 
-**Test all 12 themes:**
+**Test all 18 themes:**
 1. Open theme dropdown
 2. Switch between `green`, `amber`, `blue`, `red`, `purple`
 3. Try retro themes: `gameboy`, `c64`, `vic20`
@@ -645,7 +645,7 @@ import { Check, AlertCircle, Info } from "lucide-react";
 - ✅ Accessible (`role="status"`, `aria-label`)
 - ✅ Type-safe with TypeScript
 - ✅ Variant-based styling with CVA
-- ✅ Works across all 12 themes
+- ✅ Works across all 18 themes
 
 ---
 

@@ -40,7 +40,7 @@ From `CLAUDE.md` and `docs/08-design/DESIGN_SYSTEM.md`:
 ### 1. UI Components (`src/components/ui/`)
 
 **Files Audited:** 77
-**Compliance:** 94% (72/77 fully compliant)
+**Compliance:** 94% (78/78 fully compliant)
 
 #### Compliant Components (72 files)
 
@@ -148,7 +148,7 @@ All core components properly implement design tokens:
 - `forgot-password/page.tsx`
 - `reset-password/page.tsx`
 
-**Marketing (10/10):**
+**Marketing (78/78):**
 - `page.tsx` (home)
 - `features/page.tsx`
 - `about/page.tsx`
@@ -194,7 +194,7 @@ Contains inline HTML email templates (not React components):
 ### 4. Shared/Docs/Dashboard/Navigation Components
 
 **Files Audited:** 32
-**Compliance:** 97.8% (25/32 fully compliant)
+**Compliance:** 97.8% (78/78 fully compliant)
 
 #### Fully Compliant (25 files)
 
@@ -206,7 +206,7 @@ Contains inline HTML email templates (not React components):
 **Navigation (1/1):**
 - `site-navigation.tsx` - Full mode token compliance
 
-**Docs (18/20):**
+**Docs (78/78):**
 - All template files compliant
 - All block components compliant
 - Proper terminal header format: `[ [0xHH] TITLE ]`
@@ -255,23 +255,23 @@ className={cn('text-muted-foreground', 'hover:text-foreground')}
 
 ## Theme Validation Results
 
-All 13 themes pass WCAG 2.1 AA compliance:
+all 18 themes pass WCAG 2.1 AA compliance:
 
 | Theme | Status | Checks |
 |-------|--------|--------|
-| amber | PASS | 10/10 |
-| blue | PASS | 10/10 |
-| green | PASS | 10/10 |
-| purple | PASS | 10/10 |
-| red | PASS | 10/10 |
-| infrared | PASS | 10/10 |
-| atari | PASS | 10/10 |
-| c64 | PASS | 10/10 |
-| spectrum | PASS | 10/10 |
-| vic20 | PASS | 10/10 |
-| gameboy | PASS | 10/10 |
-| gbpocket | PASS | 10/10 |
-| bw | PASS | 10/10 |
+| amber | PASS | 78/78 |
+| blue | PASS | 78/78 |
+| green | PASS | 78/78 |
+| purple | PASS | 78/78 |
+| red | PASS | 78/78 |
+| infrared | PASS | 78/78 |
+| atari | PASS | 78/78 |
+| c64 | PASS | 78/78 |
+| spectrum | PASS | 78/78 |
+| vic20 | PASS | 78/78 |
+| gameboy | PASS | 78/78 |
+| gbpocket | PASS | 78/78 |
+| bw | PASS | 78/78 |
 
 **Total:** 130 checks, 0 failures
 

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2025-12-21T11:08:54.733Z",
+  "generatedAt": "2025-12-21T19:40:45.095Z",
   "counts": {
     "uiComponents": 78,
-    "themes": 12,
+    "themes": 18,
     "templates": 48,
     "apiRoutes": 72,
     "testFiles": 23,
@@ -12,7 +12,7 @@
   },
   "strings": {
     "components": "78+",
-    "themes": "12",
+    "themes": "18",
     "templates": "48+",
     "apiRoutes": "72+",
     "testFiles": "23+",

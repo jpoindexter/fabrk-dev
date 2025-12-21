@@ -11,7 +11,7 @@ Last Updated: 2025-12-20
 - **78 production-ready UI components** (verified count from `/src/components/ui/`)
 - **5 Setup Wizard Landing Page Templates** (STARTER, SAAS, AI APP, MARKETPLACE, CUSTOM)
 - **34+ Copy-Paste Page Templates** (in `/library`)
-- **12 terminal themes** (OKLCH-based color schemes)
+- **18 terminal themes** (OKLCH-based color schemes)
 - **Interactive Setup Wizard** (`npm run setup`)
 - **Multi-Provider Payments** (Stripe, Polar.sh, Lemonsqueezy)
 - **Next.js 16 + TypeScript Strict**
@@ -290,7 +290,7 @@ Last Updated: 2025-12-20
 
 ---
 
-## 3. Theme System (12 terminal themes)
+## 3. Theme System (18 terminal themes)
 
 ### Available Themes
 

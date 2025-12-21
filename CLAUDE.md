@@ -37,7 +37,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Fabrk** is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.
 
-**Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
+**Tech Stack:** Next.js 16.0.10 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (18 themes)
 
 **Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 
@@ -189,7 +189,7 @@ src/
 │   └── shared/            # Shared components (LOCKED)
 ├── config/                # App, stripe, i18n configs
 ├── lib/                   # Business logic (auth, payments, email, etc.)
-└── design-system/         # 12 terminal themes (OKLCH colors)
+└── design-system/         # 18 terminal themes (OKLCH colors)
 ```
 
 ### Critical Files

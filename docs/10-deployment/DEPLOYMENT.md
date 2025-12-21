@@ -15,7 +15,7 @@ This guide covers deploying to **Vercel** (recommended), but Fabrk works on any 
 - PostgreSQL database (Neon/Supabase/Railway/Vercel Postgres)
 - Payment webhooks (Stripe, Polar.sh, or Lemonsqueezy)
 - Transactional emails (Resend, Postmark, or SendGrid)
-- 12 terminal themes (OKLCH color system)
+- 18 terminal themes (OKLCH color system)
 
 ---
 

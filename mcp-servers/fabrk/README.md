@@ -22,7 +22,7 @@ This MCP server gives AI assistants (Claude Code, Cursor, etc.) deep knowledge o
 | Feature | Description |
 |---------|-------------|
 | **78+ components** | Full catalog with props, variants, and examples |
-| **12 Themes** | CRT phosphor, retro computer, handheld, monochrome |
+| **18 Themes** | CRT phosphor, retro computer, handheld, monochrome |
 | **Design Tokens** | Colors, spacing, typography, mode object |
 | **Code Generation** | Generate components and pages following Fabrk patterns |
 | **Validation** | Check code against design system rules |
