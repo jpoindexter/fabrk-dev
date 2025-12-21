@@ -725,11 +725,11 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
         ref={ref}
         data-slot="feature-card"
         className={cn(
-          'relative flex flex-col border border-l-2 border-l-warning',
+          'relative flex flex-col border',
           mode.color.bg.surface,
           mode.color.border.default,
           mode.radius,
-          'group transition-all duration-300 hover:border-warning/50 hover:border-l-warning',
+          'group transition-colors hover:border-primary/50',
           className
         )}
         {...props}

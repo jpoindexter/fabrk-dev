@@ -41,11 +41,11 @@ export function UseCaseCard({
     >
       <div
         className={cn(
-          'relative flex h-full flex-col border border-l-2 border-l-warning',
+          'relative flex h-full flex-col border',
           mode.color.bg.surface,
           mode.color.border.default,
           mode.radius,
-          'group transition-all duration-300 hover:border-warning/50 hover:border-l-warning'
+          'group transition-colors hover:border-primary/50'
         )}
       >
         {/* Header */}
