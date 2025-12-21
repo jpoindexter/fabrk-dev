@@ -59,16 +59,16 @@ export function Reveal({
   }, [reversible]);
 
   const transforms = {
-    up: isVisible ? 'translate-y-0' : 'translate-y-8',
-    left: isVisible ? 'translate-x-0' : 'translate-x-8',
-    right: isVisible ? 'translate-x-0' : '-translate-x-8',
+    up: isVisible ? 'translate-y-0' : 'translate-y-12',
+    left: isVisible ? 'translate-x-0' : 'translate-x-12',
+    right: isVisible ? 'translate-x-0' : '-translate-x-12',
   };
 
   return (
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-500 ease-out',
+        'transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]',
         isVisible ? 'opacity-100' : 'opacity-0',
         transforms[direction],
         className
