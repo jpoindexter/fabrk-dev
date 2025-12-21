@@ -84,7 +84,7 @@ export function TestimonialsSection() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className="group hover:border-primary/50 transition-colors"
+              className="group hover:bg-muted/50 transition-colors"
             >
               <Card>
                 <CardHeader

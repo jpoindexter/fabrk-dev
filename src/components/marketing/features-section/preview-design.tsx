@@ -73,7 +73,7 @@ export function DesignSystemPreview() {
               whileHover={{ x: 4 }}
               className={cn(
                 mode.radius,
-                'border-border bg-background hover:border-primary/50 flex cursor-pointer items-center justify-between border p-4 transition-colors'
+                'border-border bg-background hover:bg-muted/50 flex cursor-pointer items-center justify-between border p-4 transition-colors'
               )}
             >
               <div className="flex items-center gap-4">

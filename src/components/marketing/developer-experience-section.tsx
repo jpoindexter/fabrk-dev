@@ -125,7 +125,7 @@ export function DeveloperExperienceSection() {
                 }}
                 className="group"
               >
-                <Card className="hover:border-primary/50 transition-colors">
+                <Card className="hover:bg-muted/50 transition-colors">
                   <CardHeader
                     code={`0x${(index + 51).toString(16).toUpperCase()}`}
                     title=""

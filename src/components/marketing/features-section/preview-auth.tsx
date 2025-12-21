@@ -128,7 +128,7 @@ export function AuthPreview() {
               className={cn(
                 mode.radius,
                 mode.font,
-                'border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center text-xs transition-colors'
+                'border-border hover:bg-muted/50 cursor-pointer border px-4 py-2 text-center text-xs transition-colors'
               )}
             >
               GOOGLE
@@ -137,7 +137,7 @@ export function AuthPreview() {
               className={cn(
                 mode.radius,
                 mode.font,
-                'border-border hover:border-primary/50 cursor-pointer border px-4 py-2 text-center text-xs transition-colors'
+                'border-border hover:bg-muted/50 cursor-pointer border px-4 py-2 text-center text-xs transition-colors'
               )}
             >
               MICROSOFT

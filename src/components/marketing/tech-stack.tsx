@@ -66,7 +66,7 @@ export function TechStack() {
               }}
               className="group"
             >
-              <Card className="hover:border-primary/50 transition-colors">
+              <Card className="hover:bg-muted/50 transition-colors">
                 <CardHeader code={tech.id} title="" />
                 <CardContent className="flex flex-col items-center justify-center gap-4 p-4">
                   <SimpleIcon

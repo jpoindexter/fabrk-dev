@@ -75,7 +75,7 @@ const buttonVariants = cva(
           mode.color.bg.base,
           'border hover:bg-muted',
           mode.color.border.accent,
-          'hover:border-primary/50'
+          'hover:bg-muted/50'
         ),
         // Secondary - uses mode secondary tokens
         secondary: cn('bg-secondary text-secondary-foreground hover:bg-secondary/80 crt-scanlines'),

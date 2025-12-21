@@ -399,7 +399,7 @@ export function ManageBillingButton() {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard title="FREE TRIALS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="FREE TRIALS" className="hover:bg-muted/50 h-full transition-all">
               Free Trials
               <p className="mb-6">Let users try your product before paying with trial periods.</p>
             </DocsCard>
@@ -407,7 +407,7 @@ export function ManageBillingButton() {
           <Link href="/docs/features/emails">
             <DocsCard
               title="TRANSACTIONAL EMAILS"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               <p className="mb-6">Send purchase confirmations and invoices to customers.</p>
             </DocsCard>

@@ -205,7 +205,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
               <Link
                 key={component.name}
                 href={`/docs/components/${component.name}`}
-                className="border-border bg-card hover:border-primary/50 hover:bg-primary/5 block border p-4 transition-colors"
+                className="border-border bg-card hover:bg-muted/50 hover:bg-primary/5 block border p-4 transition-colors"
               >
                 <div className="font-mono text-sm font-medium uppercase">{component.name}</div>
                 <div className="text-muted-foreground mt-1 font-mono text-xs">

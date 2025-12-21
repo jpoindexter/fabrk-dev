@@ -376,7 +376,7 @@ export async function getProduct() {
           <Link href="/docs/features/lemonsqueezy">
             <DocsCard
               title="LEMON SQUEEZY"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               Lemon Squeezy
               <p className="mb-6">Alternative with merchant of record for global tax handling.</p>
@@ -385,7 +385,7 @@ export async function getProduct() {
           <Link href="/docs/features/payments">
             <DocsCard
               title="STRIPE PAYMENTS"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               Stripe Setup
               <p className="mb-6">Industry-standard payment processing with subscriptions.</p>

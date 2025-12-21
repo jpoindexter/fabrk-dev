@@ -55,7 +55,8 @@ export function BenefitCard({
           mode.color.bg.surface,
           mode.color.border.default,
           mode.radius,
-          'group transition-colors hover:bg-muted/50'
+          'group transition-colors',
+          mode.state.hover.card
         )}
       >
         {/* Header */}

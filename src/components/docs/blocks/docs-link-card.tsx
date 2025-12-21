@@ -31,7 +31,7 @@ export function DocsLinkCard({
 
   return (
     <Link href={href} className={cn('group block', className)}>
-      <div className="border-border bg-card hover:border-primary/50 h-full border transition-all">
+      <div className="border-border bg-card hover:bg-muted/50 h-full border transition-all">
         {/* Terminal Header */}
         <div className="border-border border-b px-4 py-2">
           <span className="text-muted-foreground group-hover:text-primary font-mono text-xs transition-colors">

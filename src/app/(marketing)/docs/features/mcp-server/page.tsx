@@ -381,12 +381,12 @@ export function PricingCard({ plan, price, features }: { plan: string; price: nu
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/design/theme-guide">
-            <DocsCard title="THEME GUIDE" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="THEME GUIDE" className="hover:bg-muted/50 h-full transition-all">
               <p>Learn about Fabrk's 12 terminal themes and how to customize them.</p>
             </DocsCard>
           </Link>
           <Link href="/docs/components/button">
-            <DocsCard title="COMPONENTS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="COMPONENTS" className="hover:bg-muted/50 h-full transition-all">
               <p>
                 Browse all {COMPONENT_COUNT_STRING} components with examples and usage
                 documentation.

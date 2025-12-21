@@ -204,7 +204,7 @@ const audioBlob = await ttsResponse.blob();`,
       <DocsSection title="AI Features">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Link href="/library/ai-chat">
-            <DocsCard title="AI CHAT" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="AI CHAT" className="hover:bg-muted/50 h-full transition-all">
               <div className="mb-2 flex items-center gap-2">
                 <MessageSquare className="text-primary size-4" />
                 <span className="text-xs font-medium">STREAMING</span>
@@ -222,7 +222,7 @@ const audioBlob = await ttsResponse.blob();`,
           </Link>
 
           <Link href="/library/ai-text-tools">
-            <DocsCard title="TEXT TOOLS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="TEXT TOOLS" className="hover:bg-muted/50 h-full transition-all">
               <div className="mb-2 flex items-center gap-2">
                 <FileText className="text-primary size-4" />
                 <span className="text-xs font-medium">6 OPERATIONS</span>
@@ -242,7 +242,7 @@ const audioBlob = await ttsResponse.blob();`,
           <Link href="/library/ai-image">
             <DocsCard
               title="IMAGE GENERATION"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               <div className="mb-2 flex items-center gap-2">
                 {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -262,7 +262,7 @@ const audioBlob = await ttsResponse.blob();`,
           </Link>
 
           <Link href="/library/ai-voice">
-            <DocsCard title="VOICE" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="VOICE" className="hover:bg-muted/50 h-full transition-all">
               <div className="mb-2 flex items-center gap-2">
                 <Volume2 className="text-primary size-4" />
                 <span className="text-xs font-medium">STT + TTS</span>
@@ -280,7 +280,7 @@ const audioBlob = await ttsResponse.blob();`,
           </Link>
 
           <Link href="/library/ai-forms">
-            <DocsCard title="AI FORMS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="AI FORMS" className="hover:bg-muted/50 h-full transition-all">
               <div className="mb-2 flex items-center gap-2">
                 <FileCode className="text-primary size-4" />
                 <span className="text-xs font-medium">CODE GEN</span>
@@ -299,7 +299,7 @@ const audioBlob = await ttsResponse.blob();`,
           </Link>
 
           <Link href="/docs/features/ai-credits">
-            <DocsCard title="AI CREDITS" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="AI CREDITS" className="hover:bg-muted/50 h-full transition-all">
               <div className="mb-2 flex items-center gap-2">
                 <Coins className="text-primary size-4" />
                 <span className="text-xs font-medium">BILLING</span>
@@ -513,7 +513,7 @@ const audioBlob = await ttsResponse.blob();`,
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/library/ai-chat">
-            <DocsCard title="TRY AI CHAT" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="TRY AI CHAT" className="hover:bg-muted/50 h-full transition-all">
               <p className="text-muted-foreground">
                 Interactive demo of the AI chat component with streaming responses.
               </p>
@@ -522,7 +522,7 @@ const audioBlob = await ttsResponse.blob();`,
           <Link href="/docs/features/ai-credits">
             <DocsCard
               title="AI CREDITS DEEP DIVE"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               <p className="text-muted-foreground">
                 Full documentation on credit-based billing, tier allowances, and usage tracking.
@@ -532,7 +532,7 @@ const audioBlob = await ttsResponse.blob();`,
           <Link href="/docs/features/mcp-server">
             <DocsCard
               title="MCP SERVER SETUP"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               <p className="text-muted-foreground">
                 Connect Claude Code or Cursor for AI-assisted development with design system
@@ -543,7 +543,7 @@ const audioBlob = await ttsResponse.blob();`,
           <Link href="/library/ai-forms">
             <DocsCard
               title="AI FORMS DEMO"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               <p className="text-muted-foreground">
                 Try the AI form generator. See how natural language becomes React components.

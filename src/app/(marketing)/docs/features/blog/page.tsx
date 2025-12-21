@@ -172,7 +172,7 @@ export default async function BlogPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
           <Link key={post.id} href={\`/blog/\${post.slug}\`}>
-            <article className="border border-border p-6 hover:border-primary/50 transition-colors">
+            <article className="border border-border p-6 hover:bg-muted/50 transition-colors">
               {post.category && (
                 <span className="text-xs text-primary font-mono">
                   {post.category.name}
@@ -434,7 +434,7 @@ export function formatDate(date: Date | string): string {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/seo">
-            <DocsCard title="SEO SETUP" className="hover:border-primary/50 h-full transition-all">
+            <DocsCard title="SEO SETUP" className="hover:bg-muted/50 h-full transition-all">
               SEO Configuration
               <p className="mb-6">Learn how to optimize your blog posts for search engines.</p>
             </DocsCard>
@@ -442,7 +442,7 @@ export function formatDate(date: Date | string): string {
           <Link href="/docs/tutorials/file-uploads">
             <DocsCard
               title="FILE UPLOADS"
-              className="hover:border-primary/50 h-full transition-all"
+              className="hover:bg-muted/50 h-full transition-all"
             >
               File Uploads
               <p className="mb-6">Upload featured images and media for your blog posts.</p>

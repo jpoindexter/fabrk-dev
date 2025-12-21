@@ -30,7 +30,7 @@ function FeaturesDemo() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="border-border bg-card hover:border-primary/50 border p-4 transition-colors"
+            className="border-border bg-card hover:bg-muted/50 border p-4 transition-colors"
           >
             <div className="mb-4 flex items-center gap-2">
               <feature.icon className="text-primary h-4 w-4" />
@@ -113,7 +113,7 @@ export default function LandingPage() {
           title: 'Feature Card',
           description: 'Individual feature card component',
           preview: (
-            <div className="border-border bg-card hover:border-primary/50 max-w-sm border p-4 transition-colors">
+            <div className="border-border bg-card hover:bg-muted/50 max-w-sm border p-4 transition-colors">
               <div className="mb-4 flex items-center gap-2">
                 <Shield className="text-primary h-4 w-4" />
                 <span className="font-mono text-xs font-semibold">AUTHENTICATION</span>
@@ -123,7 +123,7 @@ export default function LandingPage() {
               </p>
             </div>
           ),
-          code: `<div className="border border-border bg-card p-4 hover:border-primary/50">
+          code: `<div className="border border-border bg-card p-4 hover:bg-muted/50">
   <div className="flex items-center gap-2 mb-4">
     <Shield className="h-4 w-4 text-primary" />
     <span className="font-mono text-xs font-semibold">AUTHENTICATION</span>

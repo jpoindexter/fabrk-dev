@@ -94,7 +94,7 @@ export function QualitySection() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <Card className="hover:border-primary/50 transition-all">
+                <Card className="hover:bg-muted/50 transition-all">
                   <CardContent className="p-8">
                     <div className="bg-accent-surface mb-4 inline-flex items-center justify-center p-4">
                       {item.iconComponent === 'testTube' ? (

@@ -48,7 +48,7 @@ export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsF
         return (
           <div
             key={index}
-            className="group border-border bg-card hover:border-primary/50 border transition-colors"
+            className="group border-border bg-card hover:bg-muted/50 border transition-colors"
           >
             {/* Module Header */}
             <div className="border-border flex items-center justify-between border-b px-4 py-2">

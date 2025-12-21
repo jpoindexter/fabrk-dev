@@ -78,7 +78,7 @@ function FAQCategoriesDemo() {
               'border px-4 py-2 font-mono text-xs transition-colors',
               active === cat.toLowerCase()
                 ? 'border-primary bg-primary text-primary-foreground'
-                : 'border-border bg-card text-muted-foreground hover:border-primary/50'
+                : 'border-border bg-card text-muted-foreground hover:bg-muted/50'
             )}
           >
             &gt; {cat}

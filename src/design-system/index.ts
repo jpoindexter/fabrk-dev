@@ -213,6 +213,7 @@ export interface ModeConfig {
     hover: {
       bg: string;
       text: string;
+      card: string;
     };
     focus: {
       ring: string;
@@ -333,6 +334,7 @@ export const mode: ModeConfig = {
     hover: {
       bg: 'hover:bg-primary/90',
       text: 'hover:text-foreground',
+      card: 'hover:bg-muted/50',
     },
     focus: {
       ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
