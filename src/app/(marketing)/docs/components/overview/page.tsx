@@ -45,7 +45,7 @@ const componentCategories = [
       { name: 'avatar', description: 'User avatar' },
       { name: 'badge', description: 'Status badge/tag' },
       { name: 'card', description: 'Content container card' },
-      { name: 'code-block', description: 'Syntax highlighted code' },
+      { name: 'code-block', description: 'Syntax highlighted snippets' },
       { name: 'data-table-header', description: 'Table header with sorting' },
       { name: 'empty-state', description: 'Empty state placeholder' },
       { name: 'kpi-card', description: 'Key performance indicator' },
@@ -128,7 +128,7 @@ const componentCategories = [
       { name: 'onboarding-checklist', description: 'User onboarding checklist' },
       { name: 'plan-selector', description: 'Pricing plan selector' },
       { name: 'sign-up-form', description: 'User registration form' },
-      { name: 'webhook-log', description: 'Webhook event log' },
+      { name: 'webhook-log', description: 'Webhook event history' },
     ],
   },
   {

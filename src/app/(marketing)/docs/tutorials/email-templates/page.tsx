@@ -41,7 +41,7 @@ export default function EmailTemplatesTutorialPage() {
       setup={[
         {
           title: 'Configure Resend',
-          description: 'Sign up at resend.com and get your API key',
+          description: 'Sign up at resend.com and obtain your API credentials',
           code: `# .env.local
 
 RESEND_API_KEY="re_xxxxxxxxxxxx"

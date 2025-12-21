@@ -81,7 +81,7 @@ NEXT_PUBLIC_LEMONSQUEEZY_VARIANT_ENTERPRISE="123458"`,
         },
         {
           title: 'Setup Webhooks',
-          description: "In Settings → Webhooks, create a webhook pointing to your app's endpoint.",
+          description: "In Settings → Webhooks, create a webhook pointing to your application's endpoint.",
           code: `# Production webhook URL
 https://your-domain.com/api/lemonsqueezy/webhook
 

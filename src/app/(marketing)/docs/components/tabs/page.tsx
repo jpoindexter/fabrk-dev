@@ -302,7 +302,7 @@ export default function TabsPage() {
         {
           name: 'disabled',
           type: 'boolean',
-          description: 'When true on TabsTrigger, prevents interaction with that tab',
+          description: 'When true on TabsTrigger, prevents user interaction',
           default: 'false',
         },
       ]}

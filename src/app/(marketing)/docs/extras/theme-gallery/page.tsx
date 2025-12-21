@@ -82,7 +82,7 @@ document.documentElement.setAttribute('data-theme', savedTheme);`,
         },
         {
           title: 'Programmatic Theme Switching',
-          description: 'Change themes via code',
+          description: 'Change themes programmatically',
           code: `// Update theme attribute
 document.documentElement.setAttribute('data-theme', 'c64');
 

@@ -50,7 +50,7 @@ STRIPE_WEBHOOK_SECRET="whsec_..."  # Get from stripe listen command (see step 2)
         },
         {
           title: 'Create a Product with Lookup Key',
-          description: 'Set up your product in Stripe Dashboard with a lookup key',
+          description: 'Set up your product in Stripe Dashboard with a lookup identifier',
           code: `# Step 1: Go to https://dashboard.stripe.com/products
 # Step 2: Click "+ Add product"
 # Step 3: Fill in product details:

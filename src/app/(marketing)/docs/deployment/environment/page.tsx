@@ -80,7 +80,7 @@ DATABASE_URL="postgresql://postgres:password@containers-us-west-123.railway.app:
       usage={[
         {
           title: 'Required Variables',
-          description: 'These must be set for the app to run',
+          description: 'These must be set for the application to function',
           code: `# .env.local
 
 # Database - Replace with YOUR actual PostgreSQL connection string
@@ -304,7 +304,7 @@ NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"`,
           <DocsLinkCard
             href="/docs/deployment/vercel"
             title="Deploy to Vercel"
-            description="Deploy your configured app"
+            description="Deploy your configured application"
           />
         </div>
       </DocsSection>

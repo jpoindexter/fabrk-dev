@@ -65,7 +65,7 @@ export default function HomePage() {
         },
         {
           title: 'Configure App Metadata',
-          description: 'Open src/config.js to customize your app',
+          description: 'Open src/config.js to customize your application',
           code: `const config = {
   app: {
     name: "Acme Corp",

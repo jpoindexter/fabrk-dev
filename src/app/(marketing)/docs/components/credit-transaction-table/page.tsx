@@ -33,7 +33,7 @@ const mixedTransactions = [
     id: '4',
     amount: 1000,
     type: 'SUBSCRIPTION_REFILL',
-    description: 'Monthly refill for starter tier',
+    description: 'Monthly refill for starter plan',
     endpoint: null,
     createdAt: '2024-12-07T15:00:00.000Z',
   },
@@ -71,7 +71,7 @@ const refillTransactions = [
     id: '1',
     amount: 1000,
     type: 'SUBSCRIPTION_REFILL',
-    description: 'Monthly refill for starter tier',
+    description: 'Monthly refill for starter plan',
     endpoint: null,
     createdAt: '2024-11-08T15:00:00.000Z',
   },
@@ -79,7 +79,7 @@ const refillTransactions = [
     id: '2',
     amount: 1000,
     type: 'SUBSCRIPTION_REFILL',
-    description: 'Monthly refill for starter tier',
+    description: 'Monthly refill for starter plan',
     endpoint: null,
     createdAt: '2024-10-08T15:00:00.000Z',
   },
@@ -249,7 +249,7 @@ enum CreditTransactionType {
     {
       "amount": 1000,
       "type": "SUBSCRIPTION_REFILL",
-      "description": "Monthly refill for starter tier",
+      "description": "Monthly refill for starter plan",
       "endpoint": null,
       "createdAt": "2024-12-07T15:00:00.000Z"
     }

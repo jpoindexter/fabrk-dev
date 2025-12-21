@@ -241,7 +241,7 @@ export async function POST(request: NextRequest) {
         },
         {
           title: 'Middleware Protection',
-          description: 'Add bot detection at the edge',
+          description: 'Add bot detection at the network edge',
           code: `// src/middleware.ts
 
 import { NextRequest, NextResponse } from "next/server";

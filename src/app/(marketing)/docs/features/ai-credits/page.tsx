@@ -73,7 +73,7 @@ export const CREDIT_COSTS = {
         },
         {
           title: 'Configure Tier Allowances',
-          description: 'Set monthly credit allowances per subscription tier',
+          description: 'Set monthly credit allowances per subscription level',
           code: `// src/lib/credits/pricing.ts
 export const TIER_ALLOWANCES = {
   free: 100,

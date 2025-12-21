@@ -260,7 +260,7 @@ const initialTasks: OnboardingTask[] = [
   },
   {
     id: "4",
-    title: "Generate API key",
+    title: "Generate API token",
     description: "Create an API key for programmatic access to your data.",
     completed: false,
     link: { text: "Manage API keys", href: "/api-keys" },
@@ -314,7 +314,7 @@ function ChecklistPreview() {
     },
     {
       id: '4',
-      title: 'Generate API key',
+      title: 'Generate API token',
       description: 'Create an API key for programmatic access to your data.',
       completed: false,
       link: { text: 'Manage API keys', href: '#' },
