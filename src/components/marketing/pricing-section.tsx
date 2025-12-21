@@ -6,6 +6,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { Container } from '@/components/ui/container';
@@ -30,6 +32,20 @@ export function PricingSection() {
             className="flex flex-col items-center justify-center"
           >
             <PricingCard />
+
+            {/* Enterprise Link */}
+            <Link
+              href="mailto:hello@fabrk.dev?subject=Enterprise%20Licensing"
+              className={cn(
+                'group mt-6 flex items-center gap-2 text-xs transition-colors',
+                mode.color.text.muted,
+                'hover:text-primary',
+                mode.font
+              )}
+            >
+              <span>Need team or enterprise licensing?</span>
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+            </Link>
           </motion.div>
 
           {/* Right Column - Description */}
