@@ -31,32 +31,11 @@ const techStack = [
 export function Footer() {
   return (
     <footer id="footer" className="border-border bg-background border-t">
-      {/* Tech Stack Bar */}
-      <div className="border-border border-b px-4 py-6 sm:px-6">
-        <div>
-          <div className={cn('text-muted-foreground mb-4 text-xs', mode.font)}>
-            [ [0x70] TECH STACK ] FIB[1,1,2,3,5,8,13] DEPS
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            {techStack.map((tech) => (
-              <div
-                key={tech.name}
-                className="border-border bg-card flex items-center gap-2 border px-2 py-1"
-              >
-                <SimpleIcon path={tech.path} className="size-3.5" />
-                <span className={cn('text-xs', mode.font)}>{tech.name}</span>
-                <span className={cn('text-success text-xs', mode.font)}>[OK]</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="px-4 py-12 sm:px-6">
         <div>
           <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
-            {/* Left: Logo + Tagline */}
+            {/* Left: Logo + Status + Powered By */}
             <div>
               <Badge code="0x71" label="SYSTEM INFO" className="mb-4" />
               <Link
@@ -73,6 +52,25 @@ export function Footer() {
               <div className="mt-4 flex items-center gap-2">
                 <span className={cn('text-muted-foreground text-xs', mode.font)}>└─ [STATUS]:</span>
                 <span className={cn('text-success text-xs', mode.font)}>■ OPERATIONAL</span>
+              </div>
+
+              {/* Powered By - Tech Stack Icons */}
+              <div className="mt-6">
+                <div className={cn('text-muted-foreground mb-3 text-xs', mode.font)}>
+                  └─ [POWERED BY]:
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  {techStack.map((tech) => (
+                    <div
+                      key={tech.name}
+                      className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors"
+                      title={tech.name}
+                    >
+                      <SimpleIcon path={tech.path} className="size-3.5" />
+                      <span className={cn('text-xs', mode.font)}>{tech.name}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
