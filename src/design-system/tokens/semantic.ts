@@ -173,6 +173,9 @@ export interface StateTokens {
   muted: {
     opacity: string; // 0.50 (muted/dimmed state)
   };
+  subtle: {
+    opacity: string; // 0.40 (very subtle/faint state)
+  };
   secondary: {
     opacity: string; // 0.70 (secondary/subdued state)
   };
@@ -387,6 +390,9 @@ export const cssVariableNames = {
     },
     muted: {
       opacity: '--state-muted-opacity',
+    },
+    subtle: {
+      opacity: '--state-subtle-opacity',
     },
     secondary: {
       opacity: '--state-secondary-opacity',

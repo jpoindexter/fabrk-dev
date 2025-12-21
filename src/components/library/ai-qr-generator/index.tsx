@@ -169,7 +169,8 @@ export function AiQrGenerator({
       <Card className="flex-1">
         <CardHeader code="0x02" title="QR_OUTPUT" />
         <CardContent padding="md" className="flex flex-col items-center gap-4">
-          {/* QR Code */}
+          {/* QR Code - white background required for scanability */}
+          {/* eslint-disable-next-line design-system/no-hardcoded-colors -- QR codes require high contrast black-on-white for scanner compatibility */}
           <div
             ref={qrRef}
             className={cn(
@@ -178,6 +179,7 @@ export function AiQrGenerator({
               mode.color.border.default
             )}
           >
+            {/* eslint-disable-next-line design-system/no-hardcoded-colors -- QR code colors are industry standard */}
             <QRCodeSVG
               value={value || ' '}
               size={parseInt(size)}

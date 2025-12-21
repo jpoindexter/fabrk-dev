@@ -141,7 +141,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           <span className="flex-1 truncate text-left text-sm font-medium">
             {currentOrg?.name || 'Select organization'}
           </span>
-          <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDown className={cn('h-4 w-4 shrink-0', mode.state.muted.opacity)} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

@@ -3,6 +3,7 @@
 import { Column } from '@tanstack/react-table';
 import { ArrowDown, ArrowUp, ChevronsUpDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
@@ -30,7 +31,7 @@ export function DataTableColumnHeader<TData, TValue>({
         ) : column.getIsSorted() === 'asc' ? (
           <ArrowUp className="h-4 w-4" />
         ) : (
-          <ChevronsUpDown className="h-4 w-4 opacity-50" />
+          <ChevronsUpDown className={cn('h-4 w-4', mode.state.muted.opacity)} />
         )}
       </button>
     </div>

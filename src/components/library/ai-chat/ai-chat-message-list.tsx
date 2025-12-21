@@ -71,7 +71,7 @@ function MessageItem({ message }: { message: Message }) {
           <span className={cn('text-[10px] font-bold uppercase tracking-wider', mode.state.secondary.opacity, mode.font)}>
             {isUser ? 'OPERATOR' : 'SYSTEM'}
           </span>
-          <span className={cn('text-[10px] opacity-40', mode.font)}>
+          <span className={cn('text-[10px]', mode.state.subtle.opacity, mode.font)}>
              {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </span>
         </div>

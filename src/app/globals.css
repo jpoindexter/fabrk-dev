@@ -370,6 +370,7 @@
   --state-secondary-opacity: 0.70;
   --state-completed-opacity: 0.60;
   --state-muted-opacity: 0.50;
+  --state-subtle-opacity: 0.40;
   --state-disabled-opacity: 0.38;
 }
 

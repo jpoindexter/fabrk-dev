@@ -232,6 +232,9 @@ export interface ModeConfig {
     muted: {
       opacity: string;
     };
+    subtle: {
+      opacity: string;
+    };
     secondary: {
       opacity: string;
     };
@@ -365,6 +368,9 @@ export const mode: ModeConfig = {
     },
     muted: {
       opacity: 'opacity-50',
+    },
+    subtle: {
+      opacity: 'opacity-40',
     },
     secondary: {
       opacity: 'opacity-70',

@@ -63,7 +63,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="size-4 opacity-50" />
+      <ChevronDown className={cn('size-4', mode.state.muted.opacity)} />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));

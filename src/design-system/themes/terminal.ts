@@ -226,6 +226,9 @@ export const terminalTheme: SemanticTokens = {
     muted: {
       opacity: '0.50',
     },
+    subtle: {
+      opacity: '0.40',
+    },
     secondary: {
       opacity: '0.70',
     },

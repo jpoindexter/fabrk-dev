@@ -159,7 +159,7 @@ export function AiChatInput({
       </div>
 
       <div className="flex justify-center">
-        <span className={cn('text-[10px] uppercase opacity-40', mode.font)}>
+        <span className={cn('text-[10px] uppercase', mode.state.subtle.opacity, mode.font)}>
           AI can make mistakes. Verify important information.
         </span>
       </div>
