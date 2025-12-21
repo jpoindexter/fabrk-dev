@@ -378,46 +378,46 @@
    ADDITIONAL THEMES
    ============================================ */
 
-/* Red Theme - Monochrome Red CRT (hue 0) */
+/* Red Theme - Monochrome Red CRT (hue 25) */
 [data-theme='red'] {
-  --background: 5% 0.01 0;
-  --foreground: 82% 0.3 0;
-  --card: 8% 0.02 0;
-  --card-foreground: 82% 0.3 0;
-  --popover: 10% 0.03 0;
-  --popover-foreground: 82% 0.3 0;
-  --primary: 40% 0.25 0; /* Decreased from 45% for WCAG AA (4.5:1+) */
-  --primary-foreground: 95% 0.01 0;
-  --secondary: 70% 0.26 0;
-  --secondary-foreground: 5% 0.01 0;
-  --muted: 18% 0.05 0;
-  --muted-foreground: 70% 0.24 0;
-  --accent: 60% 0.25 0; /* Darkened from 88% */
-  --accent-foreground: 5% 0.01 0;
-  --destructive: 85% 0.3 0;
-  --destructive-foreground: 5% 0.01 0;
-  --border: 42% 0.2 0;
-  --input: 42% 0.2 0;
-  --ring: 60% 0.25 0; /* Darkened from 88% */
+  --background: 5% 0.01 25;
+  --foreground: 70% 0.3 25; /* True red, hue 25 */
+  --card: 8% 0.02 25;
+  --card-foreground: 70% 0.3 25;
+  --popover: 10% 0.03 25;
+  --popover-foreground: 70% 0.3 25;
+  --primary: 55% 0.28 25; /* Bold red */
+  --primary-foreground: 5% 0.01 25;
+  --secondary: 60% 0.26 25;
+  --secondary-foreground: 5% 0.01 25;
+  --muted: 18% 0.05 25;
+  --muted-foreground: 55% 0.22 25;
+  --accent: 65% 0.28 25;
+  --accent-foreground: 5% 0.01 25;
+  --destructive: 75% 0.32 25;
+  --destructive-foreground: 5% 0.01 25;
+  --border: 42% 0.2 25;
+  --input: 42% 0.2 25;
+  --ring: 60% 0.25 25;
 
   /* Status colors - all monochrome red */
-  --success: 75% 0.28 0;
-  --success-foreground: 5% 0.01 0;
-  --warning: 80% 0.26 0;
-  --warning-foreground: 5% 0.01 0;
-  --info: 70% 0.24 0;
-  --info-foreground: 5% 0.01 0;
+  --success: 65% 0.28 25;
+  --success-foreground: 5% 0.01 25;
+  --warning: 70% 0.26 25;
+  --warning-foreground: 5% 0.01 25;
+  --info: 60% 0.24 25;
+  --info-foreground: 5% 0.01 25;
 
   /* Chart colors - all monochrome red */
-  --chart-1: 75% 0.28 0;
-  --chart-2: 65% 0.24 0;
-  --chart-3: 80% 0.26 0;
-  --chart-4: 70% 0.22 0;
-  --chart-5: 60% 0.2 0;
-  --chart-6: 85% 0.3 0;
-  --chart-7: 55% 0.18 0;
-  --chart-8: 72% 0.25 0;
-  --chart-9: 68% 0.23 0;
+  --chart-1: 65% 0.28 25;
+  --chart-2: 55% 0.24 25;
+  --chart-3: 70% 0.26 25;
+  --chart-4: 60% 0.22 25;
+  --chart-5: 50% 0.2 25;
+  --chart-6: 75% 0.3 25;
+  --chart-7: 45% 0.18 25;
+  --chart-8: 62% 0.25 25;
+  --chart-9: 58% 0.23 25;
 
   /* Semantic mappings */
   --color-bg-canvas: var(--background);
@@ -445,16 +445,16 @@
   --color-status-info: var(--info);
   --color-status-info-bg: var(--info);
 
-  /* Code syntax highlighting (Prism) */
-  --code-fg: oklch(67% 0.09 81);
-  --code-bg: oklch(12% 0.02 80);
-  --code-comment: oklch(41% 0.07 83);
-  --code-string: oklch(72% 0.07 81);
-  --code-punctuation: oklch(55% 0.09 82);
-  --code-number: oklch(60% 0.09 81);
-  --code-keyword: oklch(70% 0.08 80);
-  --code-function: oklch(74% 0.08 88);
-  --code-selector: oklch(67% 0.09 81);
+  /* Code syntax highlighting (Prism) - red hue 25 */
+  --code-fg: oklch(65% 0.25 25);
+  --code-bg: oklch(8% 0.02 25);
+  --code-comment: oklch(40% 0.15 25);
+  --code-string: oklch(60% 0.22 25);
+  --code-punctuation: oklch(50% 0.2 25);
+  --code-number: oklch(55% 0.22 25);
+  --code-keyword: oklch(65% 0.25 25);
+  --code-function: oklch(70% 0.28 25);
+  --code-selector: oklch(60% 0.22 25);
 }
 
 /* Blue Theme - Monochrome Blue CRT (hue 200) */
@@ -1356,48 +1356,44 @@
   --code-selector: oklch(0% 0 0);
 }
 
-/* ============================================
-   CRIMSON Theme - Bold red on true black (inspired by wodniack.dev)
-   High contrast, bold aesthetic
-   ============================================ */
+/* INFRARED - Inverted red (red background, black text) */
+[data-theme='infrared'] {
+  --background: 55% 0.28 25; /* Bright red background */
+  --foreground: 10% 0 0; /* Black text */
+  --card: 50% 0.25 25; /* Slightly darker red */
+  --card-foreground: 10% 0 0;
+  --popover: 48% 0.23 25;
+  --popover-foreground: 10% 0 0;
+  --primary: 8% 0 0; /* Black primary */
+  --primary-foreground: 55% 0.28 25; /* Red text on primary */
+  --secondary: 45% 0.22 25;
+  --secondary-foreground: 10% 0 0;
+  --muted: 48% 0.2 25;
+  --muted-foreground: 18% 0.05 25;
+  --accent: 12% 0 0;
+  --accent-foreground: 55% 0.28 25;
+  --destructive: 98% 0.02 0; /* White for destructive actions */
+  --destructive-foreground: 10% 0 0;
+  --border: 35% 0.18 25;
+  --input: 35% 0.18 25;
+  --ring: 10% 0 0;
 
-[data-theme='crimson'] {
-  --background: 0% 0 0; /* True black */
-  --foreground: 60% 0.28 25; /* Bright crimson red */
-  --card: 5% 0.02 25;
-  --card-foreground: 60% 0.28 25;
-  --popover: 8% 0.03 25;
-  --popover-foreground: 60% 0.28 25;
-  --primary: 55% 0.3 25; /* Bold crimson */
-  --primary-foreground: 0% 0 0;
-  --secondary: 45% 0.25 25;
-  --secondary-foreground: 0% 0 0;
-  --muted: 12% 0.04 25;
-  --muted-foreground: 50% 0.2 25;
-  --accent: 65% 0.32 25;
-  --accent-foreground: 0% 0 0;
-  --destructive: 70% 0.35 25;
-  --destructive-foreground: 0% 0 0;
-  --border: 40% 0.2 25;
-  --input: 40% 0.2 25;
-  --ring: 60% 0.28 25;
+  --success: 65% 0.2 145; /* Green success */
+  --success-foreground: 10% 0 0;
+  --warning: 80% 0.2 85; /* Amber warning */
+  --warning-foreground: 10% 0 0;
+  --info: 70% 0.2 220; /* Blue info */
+  --info-foreground: 10% 0 0;
 
-  --success: 55% 0.28 25;
-  --success-foreground: 0% 0 0;
-  --warning: 60% 0.26 25;
-  --warning-foreground: 0% 0 0;
-  --info: 50% 0.24 25;
-  --info-foreground: 0% 0 0;
-
-  --chart-1: 55% 0.28 25;
-  --chart-2: 45% 0.24 25;
-  --chart-3: 65% 0.26 25;
-  --chart-4: 50% 0.22 25;
-  --chart-5: 40% 0.2 25;
-  --chart-6: 70% 0.3 25;
-  --chart-7: 35% 0.18 25;
-  --chart-8: 52% 0.25 25;
-  --chart-9: 48% 0.23 25;
+  --chart-1: 10% 0 0;
+  --chart-2: 18% 0.05 25;
+  --chart-3: 25% 0.1 25;
+  --chart-4: 32% 0.15 25;
+  --chart-5: 40% 0.18 25;
+  --chart-6: 5% 0 0;
+  --chart-7: 22% 0.08 25;
+  --chart-8: 28% 0.12 25;
+  --chart-9: 35% 0.15 25;
 
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
@@ -1421,203 +1417,64 @@
   --color-status-info: var(--info);
   --color-status-info-bg: var(--info);
 
-  --code-fg: oklch(60% 0.28 25);
-  --code-bg: oklch(5% 0.02 25);
-  --code-comment: oklch(35% 0.1 25);
-  --code-string: oklch(55% 0.25 25);
-  --code-punctuation: oklch(45% 0.2 25);
-  --code-number: oklch(50% 0.22 25);
-  --code-keyword: oklch(60% 0.28 25);
-  --code-function: oklch(65% 0.3 25);
-  --code-selector: oklch(55% 0.25 25);
-}
-
-/* ============================================
-   BLOOD Theme - Deep blood red on black
-   ============================================ */
-
-[data-theme='blood'] {
-  --background: 3% 0.02 15; /* Near black with slight red */
-  --foreground: 50% 0.3 15; /* Blood red */
-  --card: 7% 0.03 15;
-  --card-foreground: 50% 0.3 15;
-  --popover: 10% 0.04 15;
-  --popover-foreground: 50% 0.3 15;
-  --primary: 45% 0.32 15; /* Deep blood red */
-  --primary-foreground: 95% 0.02 15;
-  --secondary: 35% 0.25 15;
-  --secondary-foreground: 95% 0.02 15;
-  --muted: 15% 0.06 15;
-  --muted-foreground: 40% 0.2 15;
-  --accent: 55% 0.35 15;
-  --accent-foreground: 3% 0.02 15;
-  --destructive: 60% 0.38 15;
-  --destructive-foreground: 3% 0.02 15;
-  --border: 35% 0.18 15;
-  --input: 35% 0.18 15;
-  --ring: 50% 0.3 15;
-
-  --success: 45% 0.28 15;
-  --success-foreground: 95% 0.02 15;
-  --warning: 50% 0.26 15;
-  --warning-foreground: 3% 0.02 15;
-  --info: 40% 0.24 15;
-  --info-foreground: 95% 0.02 15;
-
-  --chart-1: 45% 0.28 15;
-  --chart-2: 35% 0.24 15;
-  --chart-3: 55% 0.26 15;
-  --chart-4: 40% 0.22 15;
-  --chart-5: 30% 0.2 15;
-  --chart-6: 60% 0.3 15;
-  --chart-7: 25% 0.18 15;
-  --chart-8: 42% 0.25 15;
-  --chart-9: 38% 0.23 15;
-
-  --color-bg-canvas: var(--background);
-  --color-bg-surface: var(--card);
-  --color-bg-elevated: var(--popover);
-  --color-bg-sunken: var(--muted);
-  --color-text-primary: var(--foreground);
-  --color-text-secondary: var(--muted-foreground);
-  --color-text-tertiary: var(--secondary-foreground);
-  --color-text-inverse: var(--primary-foreground);
-  --color-text-disabled: var(--muted-foreground);
-  --color-border-default: var(--border);
-  --color-border-muted: var(--input);
-  --color-border-strong: var(--ring);
-  --color-border-focus: var(--ring);
-  --color-status-success: var(--success);
-  --color-status-success-bg: var(--success);
-  --color-status-warning: var(--warning);
-  --color-status-warning-bg: var(--warning);
-  --color-status-error: var(--destructive);
-  --color-status-error-bg: var(--destructive);
-  --color-status-info: var(--info);
-  --color-status-info-bg: var(--info);
-
-  --code-fg: oklch(50% 0.3 15);
-  --code-bg: oklch(7% 0.03 15);
-  --code-comment: oklch(30% 0.12 15);
-  --code-string: oklch(45% 0.28 15);
-  --code-punctuation: oklch(35% 0.2 15);
-  --code-number: oklch(40% 0.24 15);
-  --code-keyword: oklch(50% 0.3 15);
-  --code-function: oklch(55% 0.32 15);
-  --code-selector: oklch(45% 0.28 15);
-}
-
-/* ============================================
-   NEONRED Theme - Bright neon red on black
-   ============================================ */
-
-[data-theme='neonred'] {
-  --background: 0% 0 0; /* Pure black */
-  --foreground: 70% 0.35 30; /* Bright neon red-orange */
-  --card: 5% 0.01 30;
-  --card-foreground: 70% 0.35 30;
-  --popover: 8% 0.02 30;
-  --popover-foreground: 70% 0.35 30;
-  --primary: 65% 0.38 30; /* Neon red */
-  --primary-foreground: 0% 0 0;
-  --secondary: 55% 0.32 30;
-  --secondary-foreground: 0% 0 0;
-  --muted: 12% 0.03 30;
-  --muted-foreground: 55% 0.25 30;
-  --accent: 75% 0.4 30;
-  --accent-foreground: 0% 0 0;
-  --destructive: 80% 0.42 30;
-  --destructive-foreground: 0% 0 0;
-  --border: 45% 0.22 30;
-  --input: 45% 0.22 30;
-  --ring: 70% 0.35 30;
-
-  --success: 65% 0.35 30;
-  --success-foreground: 0% 0 0;
-  --warning: 70% 0.32 30;
-  --warning-foreground: 0% 0 0;
-  --info: 60% 0.28 30;
-  --info-foreground: 0% 0 0;
-
-  --chart-1: 65% 0.35 30;
-  --chart-2: 55% 0.3 30;
-  --chart-3: 75% 0.32 30;
-  --chart-4: 60% 0.28 30;
-  --chart-5: 50% 0.25 30;
-  --chart-6: 80% 0.38 30;
-  --chart-7: 45% 0.22 30;
-  --chart-8: 62% 0.32 30;
-  --chart-9: 58% 0.28 30;
-
-  --color-bg-canvas: var(--background);
-  --color-bg-surface: var(--card);
-  --color-bg-elevated: var(--popover);
-  --color-bg-sunken: var(--muted);
-  --color-text-primary: var(--foreground);
-  --color-text-secondary: var(--muted-foreground);
-  --color-text-tertiary: var(--secondary-foreground);
-  --color-text-inverse: var(--primary-foreground);
-  --color-text-disabled: var(--muted-foreground);
-  --color-border-default: var(--border);
-  --color-border-muted: var(--input);
-  --color-border-strong: var(--ring);
-  --color-border-focus: var(--ring);
-  --color-status-success: var(--success);
-  --color-status-success-bg: var(--success);
-  --color-status-warning: var(--warning);
-  --color-status-warning-bg: var(--warning);
-  --color-status-error: var(--destructive);
-  --color-status-error-bg: var(--destructive);
-  --color-status-info: var(--info);
-  --color-status-info-bg: var(--info);
-
-  --code-fg: oklch(70% 0.35 30);
-  --code-bg: oklch(5% 0.01 30);
-  --code-comment: oklch(40% 0.15 30);
-  --code-string: oklch(65% 0.32 30);
-  --code-punctuation: oklch(55% 0.25 30);
-  --code-number: oklch(60% 0.28 30);
-  --code-keyword: oklch(70% 0.35 30);
-  --code-function: oklch(75% 0.38 30);
-  --code-selector: oklch(65% 0.32 30);
+  --code-fg: oklch(10% 0 0);
+  --code-bg: oklch(48% 0.2 25);
+  --code-comment: oklch(25% 0.1 25);
+  --code-string: oklch(15% 0.05 25);
+  --code-punctuation: oklch(20% 0.08 25);
+  --code-number: oklch(12% 0.03 25);
+  --code-keyword: oklch(8% 0 0);
+  --code-function: oklch(5% 0 0);
+  --code-selector: oklch(15% 0.05 25);
 }
 
 /* ============================================
    FUI THEMES - Futuristic User Interface
    ============================================ */
 
-/* BLUEPRINT - Light technical/NASA style */
+/* BLUEPRINT - Classic blueprint blue with white lines */
 [data-theme='blueprint'] {
-  --background: 96% 0 0;
-  --foreground: 15% 0 0;
-  --card: 98% 0 0;
-  --card-foreground: 15% 0 0;
-  --popover: 98% 0 0;
-  --popover-foreground: 15% 0 0;
-  --primary: 20% 0 0;
-  --primary-foreground: 98% 0 0;
-  --secondary: 92% 0 0;
-  --secondary-foreground: 15% 0 0;
-  --muted: 92% 0 0;
-  --muted-foreground: 45% 0 0;
-  --accent: 35% 0 0;
-  --accent-foreground: 98% 0 0;
-  --destructive: 55% 0.28 25;
-  --destructive-foreground: 98% 0 0;
-  --border: 80% 0 0;
-  --input: 80% 0 0;
-  --ring: 20% 0 0;
-  --success: 50% 0.15 145;
-  --success-foreground: 98% 0 0;
-  --warning: 70% 0.15 85;
-  --warning-foreground: 15% 0 0;
-  --info: 55% 0.15 230;
-  --info-foreground: 98% 0 0;
-  --chart-1: 20% 0 0;
-  --chart-2: 35% 0 0;
-  --chart-3: 50% 0 0;
-  --chart-4: 65% 0 0;
-  --chart-5: 80% 0 0;
+  --background: 25% 0.12 230; /* Classic blueprint blue */
+  --foreground: 95% 0.02 230; /* Off-white/cream text */
+  --card: 28% 0.1 230;
+  --card-foreground: 95% 0.02 230;
+  --popover: 30% 0.1 230;
+  --popover-foreground: 95% 0.02 230;
+  --primary: 92% 0.02 230; /* White primary */
+  --primary-foreground: 25% 0.12 230;
+  --secondary: 35% 0.08 230;
+  --secondary-foreground: 92% 0.02 230;
+  --muted: 22% 0.1 230;
+  --muted-foreground: 75% 0.04 230;
+  --accent: 88% 0.03 230;
+  --accent-foreground: 25% 0.12 230;
+  --destructive: 65% 0.2 25;
+  --destructive-foreground: 95% 0.02 230;
+  --border: 45% 0.08 230;
+  --input: 45% 0.08 230;
+  --ring: 92% 0.02 230;
+  --success: 70% 0.15 145;
+  --success-foreground: 25% 0.12 230;
+  --warning: 80% 0.15 85;
+  --warning-foreground: 25% 0.12 230;
+  --info: 85% 0.05 230;
+  --info-foreground: 25% 0.12 230;
+  --chart-1: 95% 0.02 230;
+  --chart-2: 85% 0.04 230;
+  --chart-3: 75% 0.06 230;
+  --chart-4: 65% 0.08 230;
+  --chart-5: 55% 0.1 230;
+
+  /* Code syntax - blueprint style */
+  --code-fg: oklch(92% 0.02 230);
+  --code-bg: oklch(22% 0.1 230);
+  --code-comment: oklch(60% 0.06 230);
+  --code-string: oklch(85% 0.04 230);
+  --code-punctuation: oklch(70% 0.05 230);
+  --code-number: oklch(80% 0.04 230);
+  --code-keyword: oklch(95% 0.02 230);
+  --code-function: oklch(90% 0.03 230);
+  --code-selector: oklch(85% 0.04 230);
 }
 
 /* CYBERPUNK - Neon pink on black */
@@ -1758,10 +1615,11 @@
 
 /* FUI Theme body effects */
 [data-theme='blueprint'] body {
+  /* Blueprint grid - white lines on blue */
   background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-  background-size: 16px 16px;
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 [data-theme='cyberpunk'] body {
@@ -1800,25 +1658,14 @@
    CRT GLOW EFFECTS - Apply to all text
    ============================================ */
 
-[data-theme='crimson'] body {
-  text-shadow:
-    0 0 3px oklch(60% 0.28 25 / 0.4),
-    0 0 6px oklch(60% 0.28 25 / 0.2);
-}
-[data-theme='blood'] body {
-  text-shadow:
-    0 0 2px oklch(50% 0.3 15 / 0.3),
-    0 0 4px oklch(50% 0.3 15 / 0.15);
-}
-[data-theme='neonred'] body {
-  text-shadow:
-    0 0 4px oklch(70% 0.35 30 / 0.5),
-    0 0 8px oklch(70% 0.35 30 / 0.25);
+[data-theme='infrared'] body {
+  /* Dark text on light red - subtle shadow for depth */
+  text-shadow: 0 1px 0 oklch(65% 0.25 25 / 0.15);
 }
 [data-theme='red'] body {
   text-shadow:
-    0 0 2px oklch(82% 0.3 0 / 0.3),
-    0 0 4px oklch(82% 0.3 0 / 0.15);
+    0 0 2px oklch(70% 0.3 25 / 0.3),
+    0 0 4px oklch(70% 0.3 25 / 0.15);
 }
 [data-theme='blue'] body {
   text-shadow:

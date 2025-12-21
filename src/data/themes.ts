@@ -19,17 +19,15 @@ export const themeGroups = {
     { id: 'purple', name: 'Purple CRT', preview: '#bb88ff', wcag: 'aa', effect: 'crt' as MonitorEffect },
     { id: 'red', name: 'Red CRT', preview: '#ff6655', wcag: 'aa', effect: 'crt' as MonitorEffect },
   ],
-  'Bold Red': [
-    { id: 'crimson', name: 'Crimson', preview: '#dc143c', wcag: 'aa', effect: 'crt' as MonitorEffect },
-    { id: 'blood', name: 'Blood', preview: '#8b0000', wcag: 'aa', effect: 'crt' as MonitorEffect },
-    { id: 'neonred', name: 'Neon Red', preview: '#ff3333', wcag: 'aa', effect: 'crt' as MonitorEffect },
+  Inverted: [
+    { id: 'infrared', name: 'Infrared', preview: '#cc3333', wcag: 'aa', effect: 'none' as MonitorEffect },
   ],
   Futuristic: [
     { id: 'cyberpunk', name: 'Cyberpunk', preview: '#ff0050', wcag: 'aa', effect: 'none' as MonitorEffect },
     { id: 'phosphor', name: 'Phosphor', preview: '#00ff41', wcag: 'aa', effect: 'none' as MonitorEffect },
     { id: 'holographic', name: 'Holographic', preview: '#00ffff', wcag: 'aa', effect: 'none' as MonitorEffect },
     { id: 'navigator', name: 'Navigator', preview: '#ff8c00', wcag: 'aa', effect: 'none' as MonitorEffect },
-    { id: 'blueprint', name: 'Blueprint', preview: '#e8e8e8', wcag: 'aa', effect: 'none' as MonitorEffect },
+    { id: 'blueprint', name: 'Blueprint', preview: '#1a3a5c', wcag: 'aa', effect: 'none' as MonitorEffect },
   ],
   'Retro Computer': [
     { id: 'atari', name: 'Atari 800', preview: '#305070', wcag: 'aa', effect: 'crt' as MonitorEffect },
