@@ -11,6 +11,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Providers } from '@/components/providers';
+import { TerminalBackground } from '@/components/shared/terminal-background';
 import { Analytics } from '@vercel/analytics/next';
 import { GeistSans } from 'geist/font/sans';
 import localFont from 'next/font/local';
@@ -239,6 +240,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Providers>
           {/* Vercel Analytics - Only when deployed to Vercel */}
           {process.env.VERCEL && <Analytics />}
+          {/* Terminal dot grid background */}
+          <TerminalBackground />
           {/* Skip link - points to main content only (navigation/footer are page-specific) */}
           <a
             href="#main-content"
