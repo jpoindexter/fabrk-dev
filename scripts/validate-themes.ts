@@ -24,10 +24,12 @@ import {
 // CONFIGURATION
 // =============================================================================
 
-// All 12 themes from src/data/themes.ts
+// All 13 themes from src/data/themes.ts
 const THEMES = [
   // Standard CRT
   'amber', 'blue', 'green', 'purple', 'red',
+  // Inverted
+  'infrared',
   // Retro Computer
   'atari', 'c64', 'spectrum', 'vic20',
   // Handheld
