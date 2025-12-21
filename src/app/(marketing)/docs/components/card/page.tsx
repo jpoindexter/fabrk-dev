@@ -2,9 +2,9 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { DocsSection, DocsCard as DocsCardComponent } from '@/components/docs';
-import { Card, CardHeader, CardContent, CardFooter, MetricCard } from '@/components/ui/card';
+import { Card, CardHeader, CardContent, CardFooter, MetricCard, FeatureCard } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Settings, Box, Palette, Route, Code } from 'lucide-react';
+import { Settings, Box, Palette, Route, Code, Shield, Mail } from 'lucide-react';
 
 export default function CardPage() {
   return (
@@ -228,6 +228,66 @@ export default function CardPage() {
   value="77+"
   label="UI Components"
   icon={<Box className="size-5" />}
+/>`,
+        },
+        {
+          title: 'FeatureCard',
+          description: 'Full marketing feature card with header, stats band, includes list, and CTA',
+          preview: (
+            <div className="grid gap-4 md:grid-cols-2">
+              <FeatureCard
+                code="0x10"
+                title="AUTH_SYSTEM"
+                icon={<Shield className="size-4" />}
+                headline="PRODUCTION-READY AUTH"
+                description="NextAuth v5 with JWT sessions, social providers, and role-based access control."
+                stats={[
+                  { label: 'SETUP TIME', value: '5 MIN' },
+                  { label: 'PROVIDERS', value: '6+' },
+                ]}
+                includes={[
+                  'OAuth (Google, GitHub)',
+                  'Email/Password auth',
+                  'Role-based permissions',
+                ]}
+                ctaLabel="AUTH DOCS"
+                ctaHref="/docs/features/auth"
+              />
+              <FeatureCard
+                code="0x30"
+                title="EMAIL_SYSTEM"
+                icon={<Mail className="size-4" />}
+                headline="TRANSACTIONAL EMAIL"
+                description="Resend integration with React Email templates."
+                stats={[
+                  { label: 'TEMPLATES', value: '8+' },
+                  { label: 'SETUP', value: '2 MIN' },
+                ]}
+                includes={[
+                  'React Email templates',
+                  'Resend API integration',
+                ]}
+                ctaLabel="EMAIL DOCS"
+                ctaHref="/docs/features/email"
+              />
+            </div>
+          ),
+          code: `<FeatureCard
+  code="0x10"
+  title="AUTH_SYSTEM"
+  icon={<Shield className="size-4" />}
+  headline="PRODUCTION-READY AUTH"
+  description="NextAuth v5 with JWT sessions..."
+  stats={[
+    { label: 'SETUP TIME', value: '5 MIN' },
+    { label: 'PROVIDERS', value: '6+' },
+  ]}
+  includes={[
+    'OAuth (Google, GitHub)',
+    'Email/Password auth',
+  ]}
+  ctaLabel="AUTH DOCS"
+  ctaHref="/docs/features/auth"
 />`,
         },
       ]}

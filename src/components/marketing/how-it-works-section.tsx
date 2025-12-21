@@ -27,7 +27,7 @@ const STEPS = [
     number: 3,
     icon: Rocket,
     title: 'SHIP',
-    description: 'Deploy to Vercel, Railway, or any platform. Your SaaS is live in hours.',
+    description: 'Deploy to Vercel, Railway, or any platform. Your SaaS goes live within hours.',
     command: 'vercel deploy --prod',
   },
 ] as const;
@@ -45,7 +45,7 @@ export function HowItWorksSection() {
           badge="PROCESS"
           code="0x50"
           title="HOW IT WORKS"
-          description="Three simple steps from purchase to production. No complicated setup, just clone and ship."
+          description="Three simple steps from purchase to production. No complicated setup—just clone and deploy."
           align="center"
         />
 

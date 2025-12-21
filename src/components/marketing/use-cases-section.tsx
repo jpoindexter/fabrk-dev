@@ -18,7 +18,7 @@ export function UseCasesSection() {
           badge="WHO IT'S FOR"
           code="0x40"
           title="BUILT FOR BUILDERS LIKE YOU"
-          description="Whether you're shipping solo or leading a team, Fabrk adapts to your workflow."
+          description="Whether you're shipping solo or leading a team, Fabrk adapts to your workflow perfectly."
           align="center"
         />
 

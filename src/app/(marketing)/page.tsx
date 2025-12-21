@@ -45,7 +45,7 @@ export default function HomePage() {
       <FinalCTASection />
 
       {/* Overlays */}
-      <StickyCTABar message="Launch your SaaS in days, not months" ctaText="Get Fabrk Now" />
+      <StickyCTABar message="Launch your SaaS in days—not months" ctaText="Get Fabrk Now" />
     </>
   );
 }

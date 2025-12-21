@@ -99,7 +99,7 @@ export const CORE_BENEFITS = [
     title: 'Terminal Design',
     benefit: '12 terminal themes. Stand out from Bootstrap clones.',
     description:
-      'A design language that makes your SaaS memorable. OKLCH color system for perfect contrast. Dark mode built-in. Every component follows the terminal aesthetic. Your users will remember you.',
+      "A design language that makes your SaaS memorable. OKLCH color system for perfect contrast. Dark mode built-in. Every component follows the terminal aesthetic. Your users won't forget your brand.",
     timeSaved: '60+ HRS',
     costSaved: '$6K',
     features: [
@@ -141,7 +141,7 @@ export const CORE_BENEFITS = [
     module: 'EMAIL_SYSTEM',
     code: '0x15',
     title: 'Email System',
-    benefit: 'Transactional emails that just work',
+    benefit: 'Transactional emails that deliver reliably',
     description:
       'Resend integration with React Email templates. Welcome, password reset, invoice, notifications. Email queue with retry logic. Preview in development. No more "check your spam folder".',
     timeSaved: '30+ HRS',
@@ -231,7 +231,7 @@ export const CORE_BENEFITS = [
     title: 'Internationalization',
     benefit: '6 languages ready. Add more in minutes.',
     description:
-      'next-intl integration with EN, ES, FR, DE, JA, ZH. Type-safe translations. RTL support ready. Date/number formatting. Language detection. SEO-friendly URLs.',
+      'next-intl integration with EN, ES, FR, DE, JA, ZH. Type-safe translations. RTL support ready. Date/number formatting. Language detection. SEO-optimized routing.',
     timeSaved: '45+ HRS',
     costSaved: '$4.5K',
     features: [
@@ -295,9 +295,9 @@ export const CORE_BENEFITS = [
     module: 'MCP_SERVER',
     code: '0x1C',
     title: 'MCP Server',
-    benefit: 'AI-assisted development built into the boilerplate',
+    benefit: 'AI-assisted development built into the core',
     description:
-      'Model Context Protocol server for Claude/Cursor. Query your codebase, generate components, understand patterns. The boilerplate that helps you build on it.',
+      'Model Context Protocol server for Claude and Cursor. Query your codebase, generate components, and understand patterns instantly.',
     timeSaved: '20+ HRS',
     costSaved: '$2K',
     features: [
@@ -317,7 +317,7 @@ export const CORE_BENEFITS = [
     module: 'SETUP_WIZARD',
     code: '0x1D',
     title: 'Setup Wizard',
-    benefit: 'npm run setup. Pick your stack. Done.',
+    benefit: 'npm run setup. Choose your stack. Ship today.',
     description:
       'Interactive CLI wizard configures everything. Choose payment provider, email service, database. Generates .env, validates config, runs migrations. Zero manual setup.',
     timeSaved: '15+ HRS',
@@ -361,7 +361,7 @@ export const CORE_BENEFITS = [
     module: 'THEMING',
     code: '0x1F',
     title: 'Theme System',
-    benefit: 'Change colors without touching code',
+    benefit: 'Customize colors without editing source files',
     description:
       'CSS variables for complete customization. Theme generator creates new palettes. Dark mode respects system preference. Consistent across all components. Brand it in 5 minutes.',
     timeSaved: '20+ HRS',

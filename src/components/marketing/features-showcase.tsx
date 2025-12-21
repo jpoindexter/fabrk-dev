@@ -71,7 +71,7 @@ export function FeaturesShowcase() {
           badge="WHAT MAKES FABRK DIFFERENT"
           code="0x10"
           title="SHIP YOUR AI SAAS BEFORE YOUR RUNWAY ENDS"
-          description="AI credit system: done. Multi-provider billing: done. Production components: done. 875+ hours of work you don't have to do. Launch this weekend, not next quarter."
+          description="AI credit system: done. Multi-provider billing: done. Production components: done. 875+ hours of work—saved. Launch this weekend, not next quarter."
           align="center"
         />
 

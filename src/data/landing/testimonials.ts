@@ -19,7 +19,7 @@ export const TESTIMONIALS = [
   {
     id: 'example-2',
     quote:
-      "[EXAMPLE]: Best Next.js boilerplate I've used. Auth and billing just work out of the box.",
+      "[EXAMPLE]: Best Next.js boilerplate I've used. Auth and billing work perfectly from day one.",
     author: '[EXAMPLE] Customer Name',
     role: 'CTO, Tech Company',
     avatar: '/avatars/placeholder-2.jpg',

@@ -15,7 +15,7 @@ export const FAQ_QUESTIONS = [
     id: 'license',
     question: 'What does the commercial license include?',
     answer:
-      'The commercial license includes unlimited projects, unlimited clients, lifetime updates, and no recurring fees. You can use Fabrk to build and sell as many SaaS products as you want.',
+      'The commercial license includes unlimited projects, unlimited clients, lifetime updates, and no recurring fees. Build and sell as many SaaS products as you need—no limits.',
   },
   {
     id: 'updates',
@@ -39,7 +39,7 @@ export const FAQ_QUESTIONS = [
     id: 'tech-stack',
     question: 'What technologies are included?',
     answer:
-      'Next.js 16 (App Router), React 19, TypeScript, NextAuth v5, Stripe/Lemon Squeezy/Polar.sh, Prisma, PostgreSQL, Tailwind CSS 4, Radix UI, Framer Motion, and more. Full stack ready.',
+      'Next.js 16 (App Router), React 19, TypeScript, NextAuth v5, Stripe/Lemon Squeezy/Polar.sh, Prisma, PostgreSQL, Tailwind CSS 4, Radix UI, Framer Motion, and more. Production-ready full stack.',
   },
   {
     id: 'customization',

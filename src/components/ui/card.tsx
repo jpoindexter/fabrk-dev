@@ -658,6 +658,210 @@ const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
 );
 MetricCard.displayName = 'MetricCard';
 
+/**
+ * FeatureCard - Terminal-style feature card with stats and includes
+ * Full marketing feature card with header, description, stats band, feature list, and CTA
+ *
+ * @example
+ * ```tsx
+ * <FeatureCard
+ *   code="0x15"
+ *   title="EMAIL_SYSTEM"
+ *   icon={<Mail className="size-5" />}
+ *   headline="Transactional emails that just work"
+ *   description="Resend integration with React Email templates..."
+ *   stats={[
+ *     { label: "TIME SAVED", value: "30+ HRS" },
+ *     { label: "COST SAVED", value: "$3K" }
+ *   ]}
+ *   includes={["Resend Integration", "React Email Templates"]}
+ *   ctaLabel="EMAIL TEMPLATES"
+ *   ctaHref="/docs/features/email"
+ * />
+ * ```
+ */
+export type FeatureCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Hex code for header */
+  code?: string;
+  /** Header title in SNAKE_CASE */
+  title: string;
+  /** Icon for header */
+  icon?: React.ReactNode;
+  /** Main headline text */
+  headline: string;
+  /** Description paragraph */
+  description: string;
+  /** Stats to display in band (2 max) */
+  stats?: Array<{ label: string; value: string }>;
+  /** Features included list */
+  includes?: string[];
+  /** CTA button label */
+  ctaLabel?: string;
+  /** CTA button href */
+  ctaHref?: string;
+};
+
+const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
+  (
+    {
+      code,
+      title,
+      icon,
+      headline,
+      description,
+      stats,
+      includes,
+      ctaLabel,
+      ctaHref,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const hexCode = code ?? generateHexFromTitle(title);
+
+    return (
+      <div
+        ref={ref}
+        data-slot="feature-card"
+        className={cn(
+          'relative flex flex-col border border-l-2 border-l-warning',
+          mode.color.bg.surface,
+          mode.color.border.default,
+          mode.radius,
+          'group transition-all duration-300 hover:border-warning/50 hover:border-l-warning',
+          className
+        )}
+        {...props}
+      >
+        {/* Header */}
+        <div
+          className={cn(
+            'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
+            mode.color.border.default,
+            'bg-muted/30'
+          )}
+        >
+          <span className={cn('text-[11px] tracking-wide', mode.font, mode.color.text.muted)}>
+            [{hexCode}] {title}
+          </span>
+          {icon && <span className={mode.color.text.accent}>{icon}</span>}
+        </div>
+
+        {/* Main Content */}
+        <div className="flex flex-col p-6 pb-0">
+          {/* Headline - max 2 lines */}
+          <h3
+            className={cn(
+              'text-sm font-bold leading-tight uppercase tracking-wide line-clamp-2 min-h-[2.5rem]',
+              mode.font,
+              'text-foreground'
+            )}
+          >
+            {headline}
+          </h3>
+
+          {/* Description - fixed height for consistency */}
+          <p
+            className={cn(
+              'text-sm leading-relaxed mt-3 line-clamp-3 min-h-[3.75rem]',
+              mode.font,
+              mode.color.text.muted
+            )}
+          >
+            {description}
+          </p>
+        </div>
+
+        {/* Stats Band */}
+        {stats && stats.length > 0 && (
+          <div className="border-y border-border bg-background py-4 px-6 flex gap-4 mt-4">
+            {stats.map((stat, index) => (
+              <React.Fragment key={stat.label}>
+                {index > 0 && <div className="w-px bg-border" />}
+                <div className={cn('flex-1 flex flex-col gap-1', index > 0 && 'pl-2')}>
+                  <p
+                    className={cn(
+                      'text-[11px] uppercase tracking-[0.05em] font-medium',
+                      mode.font,
+                      mode.color.text.muted
+                    )}
+                  >
+                    {stat.label}
+                  </p>
+                  <p
+                    className={cn(
+                      'text-xl font-bold leading-none tracking-tight text-warning',
+                      mode.font
+                    )}
+                  >
+                    {stat.value}
+                  </p>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
+        )}
+
+        {/* Includes List - always show 3 items for consistency */}
+        {includes && includes.length > 0 && (
+          <div className="p-6 flex flex-col gap-3">
+            <p
+              className={cn(
+                'text-[11px] font-bold uppercase tracking-wider mb-1',
+                mode.font,
+                mode.color.text.muted
+              )}
+            >
+              [INCLUDES]:
+            </p>
+            <ul className="flex flex-col gap-2">
+              {includes.slice(0, 3).map((item) => (
+                <li key={item} className="flex items-start gap-3 group/item">
+                  <span className="font-bold text-sm mt-[1px] text-warning">
+                    ✓
+                  </span>
+                  <span
+                    className={cn(
+                      'text-sm group-hover/item:text-foreground transition-colors line-clamp-1',
+                      mode.font,
+                      mode.color.text.muted
+                    )}
+                  >
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* CTA Button */}
+        {ctaLabel && ctaHref && (
+          <div className="p-6 pt-0 mt-auto">
+            <a
+              href={ctaHref}
+              className={cn(
+                'flex items-center justify-center gap-2 w-full h-10 border text-xs font-medium',
+                'bg-transparent transition-all duration-200',
+                mode.color.border.default,
+                mode.color.text.muted,
+                mode.radius,
+                mode.font,
+                'hover:border-warning hover:text-warning'
+              )}
+            >
+              &gt; {ctaLabel}
+              <span className="text-sm">→</span>
+            </a>
+          </div>
+        )}
+      </div>
+    );
+  }
+);
+FeatureCard.displayName = 'FeatureCard';
+
 // Export all components
 export {
   // Core Card components
@@ -667,6 +871,8 @@ export {
   CardFooter,
   // Metric Card (terminal-style stats)
   MetricCard,
+  // Feature Card (terminal-style marketing card)
+  FeatureCard,
   // Stat components
   Stat,
   StatGroup,

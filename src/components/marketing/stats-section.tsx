@@ -18,7 +18,7 @@ export function StatsSection() {
           badge="PRODUCT METRICS"
           code="0x20"
           title="BUILT FOR PRODUCTION"
-          description="Every component, theme, and feature is production-ready. No placeholders, no TODOs, just ship."
+          description="Every component, theme, and feature is production-ready. No placeholders, no TODOs—just ship it."
           align="center"
         />
 

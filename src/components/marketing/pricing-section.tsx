@@ -58,16 +58,15 @@ export function PricingSection() {
 
             <div className={cn('mb-6 border-l-2 pl-4', mode.color.border.default)}>
               <p className={cn('text-sm', mode.color.text.muted, mode.font)}>
-                Upon purchase, you can use the starter kits for personal and commercial projects
-                with no restrictions on the number of developers or projects.
+                Upon purchase, use the starter kit for personal and commercial projects—no restrictions on developers or deployments.
               </p>
             </div>
 
             <Card size="auto">
               <CardContent padding="sm">
                 <InfoNote label="NOTE" className="mt-0">
-                  Fabrk is 40-70% more affordable than comparable Next.js starter kits. No hidden
-                  charges.
+                  Fabrk is 40-70% more affordable than comparable Next.js starter kits. Zero hidden
+                  charges or fees.
                 </InfoNote>
               </CardContent>
             </Card>

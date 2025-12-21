@@ -1,10 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { LucideIcon, Check } from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 interface UseCaseCardProps {
   icon: LucideIcon;
@@ -17,7 +16,7 @@ interface UseCaseCardProps {
 
 /**
  * UseCaseCard Component
- * Displays a target persona with their pain point, solution, and key features
+ * Terminal-style card with gold accents for target personas
  * Used in Use Cases section to show who benefits from Fabrk
  */
 export function UseCaseCard({
@@ -40,47 +39,104 @@ export function UseCaseCard({
       }}
       className="h-full"
     >
-      <Card className="h-full">
-        <CardHeader
-          code={`0x${(40 + index).toString(16).toUpperCase()}`}
-          title={persona}
-          icon={
-            <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
-              <Icon className={cn('size-5', mode.color.text.accent)} />
-            </motion.div>
-          }
-        />
-        <CardContent>
-          {/* Pain Point */}
-          <div className="mb-4">
-            <span className={cn('text-xs', mode.font, mode.color.text.muted)}>[PROBLEM]:</span>
-            <p className={cn('mt-1 text-xs', mode.font, mode.color.text.primary)}>{painPoint}</p>
-          </div>
+      <div
+        className={cn(
+          'relative flex h-full flex-col border border-l-2 border-l-warning',
+          mode.color.bg.surface,
+          mode.color.border.default,
+          mode.radius,
+          'group transition-all duration-300 hover:border-warning/50 hover:border-l-warning'
+        )}
+      >
+        {/* Header */}
+        <div
+          className={cn(
+            'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
+            mode.color.border.default,
+            'bg-muted/30'
+          )}
+        >
+          <span className={cn('text-[11px] tracking-wide', mode.font, mode.color.text.muted)}>
+            [0x{(40 + index).toString(16).toUpperCase()}] {persona}
+          </span>
+          <motion.div whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400 }}>
+            <Icon className="size-4 text-warning" />
+          </motion.div>
+        </div>
 
-          {/* Solution */}
-          <div className="mb-4">
-            <span className={cn('text-xs', mode.font, mode.color.text.accent)}>[SOLUTION]:</span>
-            <p className={cn('mt-1 text-xs font-medium', mode.font, mode.color.text.primary)}>
-              {solution}
-            </p>
-          </div>
+        {/* Main Content */}
+        <div className="flex flex-col p-6 pb-0">
+          {/* Pain Point - max 2 lines */}
+          <p
+            className={cn(
+              'text-[11px] font-bold uppercase tracking-wider mb-1',
+              mode.font,
+              mode.color.text.muted
+            )}
+          >
+            [PROBLEM]:
+          </p>
+          <p
+            className={cn(
+              'text-sm leading-relaxed line-clamp-2 min-h-[2.5rem]',
+              mode.font,
+              mode.color.text.muted
+            )}
+          >
+            {painPoint}
+          </p>
+        </div>
 
-          {/* Features */}
-          <div>
-            <span className={cn('text-xs', mode.font, mode.color.text.muted)}>[KEY_FEATURES]:</span>
-            <ul className="mt-2 space-y-2">
-              {features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <Check className={cn('mt-0.5 size-3 shrink-0', mode.color.text.success)} />
-                  <span className={cn('text-xs', mode.font, mode.color.text.primary)}>
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
+        {/* Solution Band */}
+        <div className="border-y border-border bg-background py-4 px-6 mt-4">
+          <p
+            className={cn(
+              'text-[11px] uppercase tracking-[0.05em] font-medium mb-1',
+              mode.font,
+              mode.color.text.muted
+            )}
+          >
+            [SOLUTION]:
+          </p>
+          <p
+            className={cn(
+              'text-sm font-bold leading-tight text-warning line-clamp-3 min-h-[3.75rem]',
+              mode.font
+            )}
+          >
+            {solution}
+          </p>
+        </div>
+
+        {/* Features List - always show 3 items */}
+        <div className="p-6 flex flex-col gap-3">
+          <p
+            className={cn(
+              'text-[11px] font-bold uppercase tracking-wider mb-1',
+              mode.font,
+              mode.color.text.muted
+            )}
+          >
+            [KEY FEATURES]:
+          </p>
+          <ul className="flex flex-col gap-2">
+            {features.slice(0, 3).map((feature) => (
+              <li key={feature} className="flex items-start gap-3 group/item">
+                <span className="font-bold text-sm mt-[1px] text-warning">✓</span>
+                <span
+                  className={cn(
+                    'text-sm group-hover/item:text-foreground transition-colors line-clamp-1',
+                    mode.font,
+                    mode.color.text.muted
+                  )}
+                >
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </motion.div>
   );
 }
