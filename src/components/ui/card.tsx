@@ -630,8 +630,7 @@ const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
         <div
           className={cn(
             'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
-            mode.color.border.default,
-            'bg-muted/30'
+            mode.color.border.default
           )}
         >
           <span className={cn('text-[11px] tracking-wide', mode.font, mode.color.text.muted)}>
@@ -739,8 +738,7 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
         <div
           className={cn(
             'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
-            mode.color.border.default,
-            'bg-muted/30'
+            mode.color.border.default
           )}
         >
           <span className={cn('text-[11px] tracking-wide', mode.font, mode.color.text.muted)}>
