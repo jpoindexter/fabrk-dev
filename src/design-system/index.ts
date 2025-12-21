@@ -214,6 +214,9 @@ export interface ModeConfig {
       bg: string;
       text: string;
       card: string;
+      cardSubtle: string;
+      link: string;
+      listItem: string;
     };
     focus: {
       ring: string;
@@ -335,6 +338,9 @@ export const mode: ModeConfig = {
       bg: 'hover:bg-primary/90',
       text: 'hover:text-foreground',
       card: 'hover:bg-muted/50',
+      cardSubtle: 'hover:bg-muted/30',
+      link: 'hover:text-primary',
+      listItem: 'hover:bg-muted/50',
     },
     focus: {
       ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
