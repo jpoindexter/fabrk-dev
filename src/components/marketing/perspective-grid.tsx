@@ -14,7 +14,7 @@ interface PerspectiveGridProps {
 export function PerspectiveGrid({ className }: PerspectiveGridProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollRef = useRef(0);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const canvas = canvasRef.current;
