@@ -39,7 +39,7 @@ export function HeroSection() {
             <Link
               href="/changelog"
               className={cn(
-                'inline-flex items-center gap-2 border px-2 py-1 text-xs transition-colors hover:border-primary',
+                'inline-flex items-center gap-2 border px-2 py-1 text-xs transition-colors hover:bg-muted/50',
                 mode.font,
                 mode.color.text.muted
               )}
@@ -119,7 +119,8 @@ export function HeroSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      'flex items-center gap-2 border px-2 py-1 text-xs transition-colors hover:border-primary hover:text-foreground',
+                      'flex items-center gap-2 border px-2 py-1 text-xs transition-colors hover:text-foreground',
+                      mode.state.hover.card,
                       mode.font,
                       mode.color.text.muted
                     )}

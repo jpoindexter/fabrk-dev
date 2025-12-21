@@ -286,7 +286,8 @@ export default function LibraryIndexPage() {
                     }}
                     className={cn(
                       mode.font,
-                      'border-border hover:border-primary hover:text-primary min-h-[44px] border px-4 py-2 text-xs transition-colors'
+                      'border-border min-h-[44px] border px-4 py-2 text-xs transition-colors hover:text-primary',
+                      mode.state.hover.card
                     )}
                   >
                     {suggestion}

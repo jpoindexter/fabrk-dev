@@ -5,6 +5,7 @@
  */
 
 import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 // Generate deterministic hex code from string (consistent but varied)
 function generateHexFromTitle(title: string): string {
@@ -28,9 +29,11 @@ interface DocsCardProps {
   code?: string;
   /** Terminal header title */
   title?: string;
+  /** Enable hover state (default: true) */
+  interactive?: boolean;
 }
 
-export function DocsCard({ children, className, code, title }: DocsCardProps) {
+export function DocsCard({ children, className, code, title, interactive = true }: DocsCardProps) {
   const hasHeader = code !== undefined || title;
   const headerTitle = title?.toUpperCase() || 'INFO';
 
@@ -40,7 +43,7 @@ export function DocsCard({ children, className, code, title }: DocsCardProps) {
     : generateHexFromTitle(headerTitle);
 
   return (
-    <div className={cn('border-border bg-card border', className)}>
+    <div className={cn('border-border bg-card border transition-colors', interactive && mode.state.hover.card, className)}>
       {hasHeader && (
         <div className="border-border border-b px-4 py-2">
           <span className="text-muted-foreground font-mono text-xs">

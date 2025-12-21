@@ -13,6 +13,8 @@ import { DocsCallout } from '../blocks/docs-callout';
 import { DocsNavFooter } from '../blocks/docs-nav-footer';
 import { docsTypography } from '../typography';
 import { docsSpacing } from '../spacing';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Feature {
   icon: LucideIcon;
@@ -181,7 +183,7 @@ export function GettingStartedTemplate({
               <a
                 key={index}
                 href={link.href}
-                className="group border-border hover:border-primary block border p-4 transition-colors"
+                className={cn('group border-border block border p-4 transition-colors', mode.state.hover.card)}
               >
                 <div className="flex items-center gap-4">
                   {link.icon && (

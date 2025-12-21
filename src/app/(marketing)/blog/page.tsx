@@ -7,6 +7,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPublishedPosts, getCategories, formatDate, formatReadTime } from '@/lib/blog';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Blog | Fabrk',
@@ -56,7 +58,7 @@ export default async function BlogPage({
                 className={`border px-4 py-1 font-mono text-xs transition-colors ${
                   !categorySlug
                     ? 'border-primary bg-primary text-primary-foreground'
-                    : 'border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground'
+                    : cn('border-border bg-card text-muted-foreground hover:text-foreground', mode.state.hover.card)
                 }`}
               >
                 ALL ({posts.length})
@@ -68,7 +70,7 @@ export default async function BlogPage({
                   className={`border px-4 py-1 font-mono text-xs transition-colors ${
                     categorySlug === cat.slug
                       ? 'border-primary bg-primary text-primary-foreground'
-                      : 'border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground'
+                      : cn('border-border bg-card text-muted-foreground hover:text-foreground', mode.state.hover.card)
                   }`}
                 >
                   {cat.name.toUpperCase()} ({cat._count.posts})
@@ -87,7 +89,7 @@ export default async function BlogPage({
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className="group border-border bg-card hover:border-primary border transition-all"
+                  className={cn('group border-border bg-card border transition-all', mode.state.hover.card)}
                 >
                   {post.featuredImage && (
                     <div className="border-border relative aspect-video overflow-hidden border-b">
@@ -130,7 +132,7 @@ export default async function BlogPage({
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className="group border-border bg-card hover:border-primary border p-4 transition-all"
+                  className={cn('group border-border bg-card border p-4 transition-all', mode.state.hover.card)}
                 >
                   <div className="text-muted-foreground mb-2 flex items-center gap-2 font-mono text-xs">
                     {post.category && (

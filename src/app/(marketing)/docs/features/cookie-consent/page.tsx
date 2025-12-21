@@ -5,6 +5,8 @@ import { DocsSection, DocsCard, DocsLinkCard, DocsPreview } from '@/components/d
 import { CardHeader } from '@/components/ui/card';
 import { Cookie, Shield, Settings, Download } from 'lucide-react';
 import { useState } from 'react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Terminal-styled cookie consent preview
 function CookieConsentDemo() {
@@ -54,7 +56,7 @@ function CookieConsentDemo() {
                   preferences[item.key as keyof typeof preferences]
                     ? 'border-success text-success'
                     : 'border-border text-muted-foreground'
-                } ${item.locked ? 'cursor-not-allowed opacity-50' : 'hover:border-primary cursor-pointer'}`}
+                } ${item.locked ? 'cursor-not-allowed opacity-50' : 'hover:bg-muted/50 cursor-pointer'}`}
                 disabled={item.locked}
               >
                 {preferences[item.key as keyof typeof preferences] ? '[ON]' : '[OFF]'}
@@ -64,7 +66,7 @@ function CookieConsentDemo() {
         </div>
 
         <div className="flex gap-2">
-          <button className="border-border bg-background hover:border-primary flex-1 border px-4 py-2 font-mono text-xs">
+          <button className={cn('border-border bg-background flex-1 border px-4 py-2 font-mono text-xs transition-colors', mode.state.hover.card)}>
             &gt; REJECT ALL
           </button>
           <button className="border-primary bg-primary text-primary-foreground flex-1 border px-4 py-2 font-mono text-xs">
