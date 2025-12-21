@@ -30,12 +30,12 @@ export default function DeployVercelPage() {
         {
           icon: Layers,
           title: 'Preview URLs',
-          description: 'Every PR gets a URL.',
+          description: 'Every PR gets a unique preview.',
         },
         {
           icon: Rocket,
           title: 'Edge Functions',
-          description: 'Middleware at the edge.',
+          description: 'Run middleware at the network edge.',
         },
       ]}
       setup={[

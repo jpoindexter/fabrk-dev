@@ -14,7 +14,7 @@ export default function AuthenticationTutorialPage() {
       code="[0x20]"
       category="Tutorials"
       title="User Authentication"
-      description="Let users create accounts, log in, and securely access your app."
+      description="Let users create accounts, log in, and securely access your application."
       overview="Complete authentication system with email/password, Google OAuth, email verification, password reset, two-factor auth, and protected routes. Session-based auth with 30-day expiry."
       features={[
         {
