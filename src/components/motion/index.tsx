@@ -18,6 +18,7 @@ interface RevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** Direction element slides IN from: 'left' = comes from left, 'right' = comes from right */
   direction?: 'up' | 'left' | 'right';
   /** If true, element will animate out when scrolled away */
   reversible?: boolean;
@@ -27,7 +28,7 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  direction = 'up',
+  direction = 'left',
   reversible = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -58,10 +59,14 @@ export function Reveal({
     return () => observer.disconnect();
   }, [reversible]);
 
+  // Direction = where element comes FROM when entering
+  // left: starts off-screen left, slides right into view
+  // right: starts off-screen right, slides left into view
+  // up: starts below, slides up into view
   const transforms = {
     up: isVisible ? 'translate-y-0' : 'translate-y-12',
-    left: isVisible ? 'translate-x-0' : 'translate-x-12',
-    right: isVisible ? 'translate-x-0' : '-translate-x-12',
+    left: isVisible ? 'translate-x-0' : '-translate-x-16',
+    right: isVisible ? 'translate-x-0' : 'translate-x-16',
   };
 
   return (
