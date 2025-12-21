@@ -70,7 +70,7 @@ export function GridColumnTwo() {
       </Card>
 
       {/* Loading Skeletons - Tighter spacing */}
-      <div className="border-border space-y-4 border p-4">
+      <div className={cn('space-y-4 border p-4', mode.color.border.default)}>
         <h3 className={cn('text-xs font-semibold', mode.font)}>[LOADING...]</h3>
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
@@ -90,7 +90,7 @@ export function GridColumnTwo() {
       </Card>
 
       {/* Breadcrumbs - Inline, no card */}
-      <div className="border-l-primary bg-muted/20 flex items-center gap-1 border-l-2 p-4 text-xs">
+      <div className={cn('flex items-center gap-1 border-l-2 p-4 text-xs', mode.color.border.accent, mode.color.bg.mutedSubtle)}>
         <Home className="h-3 w-3" />
         <ChevronRight className="text-muted-foreground h-3 w-3" />
         <span className="text-muted-foreground">Projects</span>
@@ -99,7 +99,7 @@ export function GridColumnTwo() {
       </div>
 
       {/* Badge Variations - Compact, no card */}
-      <div className="border-border bg-muted/30 space-y-2 border p-4">
+      <div className={cn('space-y-2 border p-4', mode.color.border.default, mode.color.bg.mutedLight)}>
         <h3 className={cn('text-xs font-semibold', mode.font)}>[BADGES]</h3>
         <div className="flex flex-wrap gap-2">
           <Badge>DEFAULT</Badge>
@@ -110,7 +110,7 @@ export function GridColumnTwo() {
       </div>
 
       {/* Empty State - Minimal, no card */}
-      <div className="border-border border border-dashed p-8 text-center">
+      <div className={cn('border border-dashed p-8 text-center', mode.color.border.default)}>
         <FileText className="text-muted-foreground mx-auto mb-2 h-8 w-8" />
         <h3 className={cn('mb-1 text-xs font-semibold', mode.font)}>[NO DATA]</h3>
         <p className="text-muted-foreground text-xs">No items found</p>

@@ -167,7 +167,8 @@ export function BenefitCard({
                 mode.color.text.muted,
                 mode.radius,
                 mode.font,
-                'hover:border-warning hover:text-warning'
+                mode.state.hover.borderWarning,
+                mode.state.hover.textWarning
               )}
             >
               &gt; {ctaLabel}

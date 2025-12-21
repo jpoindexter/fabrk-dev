@@ -14,18 +14,20 @@ import {
   AccordionContent,
 } from '@/components/ui/accordion';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export function GridColumnOne() {
   return (
     <div className="space-y-4">
       {/* Alerts - NO CARD, direct background */}
-      <Alert className="border-l-primary border-l-4">
+      <Alert className={cn('border-l-4', mode.color.border.accent)}>
         <Info className="h-4 w-4" />
         <AlertTitle className="text-xs font-semibold">[INFO]</AlertTitle>
         <AlertDescription className="text-xs">New features available in v2.0</AlertDescription>
       </Alert>
 
-      <Alert variant="destructive" className="border-l-destructive border-l-4">
+      <Alert variant="destructive" className={cn('border-l-4', mode.color.border.danger)}>
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle className="text-xs font-semibold">[ERROR]</AlertTitle>
         <AlertDescription className="text-xs">Failed to connect to server</AlertDescription>
@@ -50,7 +52,7 @@ export function GridColumnOne() {
       </Card>
 
       {/* File Upload - NO CARD, just border */}
-      <div className="border-border bg-muted/20 flex flex-col items-center justify-center border-2 border-dashed p-8">
+      <div className={cn('flex flex-col items-center justify-center border-2 border-dashed p-8', mode.color.border.default, mode.color.bg.mutedSubtle)}>
         <Upload className="text-muted-foreground mb-4 h-12 w-12" />
         <p className="mb-1 text-xs font-semibold">[DROP FILES HERE]</p>
         <p className="text-muted-foreground text-xs">or click to browse</p>

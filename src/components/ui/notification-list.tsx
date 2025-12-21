@@ -87,14 +87,14 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
         case 'error':
           return <X className={cn(`"h-4 w-4"`, mode.color.text.danger)} />;
         default:
-          return <Bell className={`"h-4 w-4" text-primary dark:text-primary`} />;
+          return <Bell className="h-4 w-4 text-primary" />;
       }
     };
 
     return (
       <div ref={ref} className={cn('', className, '')} {...props}>
         {notifications.length === 0 ? (
-          <div className="text-muted-foreground dark:text-muted-foreground p-8 text-center">
+          <div className="text-muted-foreground p-8 text-center">
             No notifications
           </div>
         ) : (
@@ -106,7 +106,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                   'cursor-pointer p-6 transition-all duration-200',
                   'hover:bg-primary/50 hover:translate-x-1',
                   'focus-within:ring-ring focus-within:ring-2 focus-visible:outline-none',
-                  !notification.read && 'bg-primary/10 dark:bg-primary/5',
+                  !notification.read && mode.color.bg.primaryLight,
                   ''
                 )}
                 onClick={() => onMarkAsRead?.(notification.id)}
@@ -133,18 +133,18 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                     {getIcon(notification.type)}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="hover:text-primary dark:text-muted-foreground dark:hover:text-primary line-clamp-1 font-medium transition-colors">
+                    <p className="hover:text-primary line-clamp-1 font-medium transition-colors">
                       {notification.title}
                     </p>
                     {notification.description && (
                       <p
-                        className={`"text-sm" text-muted-foreground dark:text-muted-foreground dark:hover:text-muted-foreground line-clamp-2 transition-colors`}
+                        className="text-sm text-muted-foreground line-clamp-2 transition-colors"
                       >
                         {notification.description}
                       </p>
                     )}
                     <p
-                      className={`"text-xs" text-muted-foreground dark:text-muted-foreground dark:hover:text-muted-foreground mt-2 transition-colors`}
+                      className="text-xs text-muted-foreground mt-2 transition-colors"
                     >
                       {notification.time}
                     </p>
@@ -155,7 +155,7 @@ export const NotificationList = React.forwardRef<HTMLDivElement, NotificationLis
                         e.stopPropagation();
                         onDismiss(notification.id);
                       }}
-                      className={cn(mode.color.text.muted, 'hover:text-destructive focus-visible:ring-ring dark:text-muted-foreground dark:hover:text-destructive transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none')}
+                      className={cn(mode.color.text.muted, 'hover:text-destructive focus-visible:ring-ring transition-all hover:scale-110 focus-visible:ring-2 focus-visible:outline-none')}
                       aria-label="Dismiss notification"
                     >
                       <X className={`"h-4 w-4"`} />

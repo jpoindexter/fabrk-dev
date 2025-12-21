@@ -43,7 +43,7 @@ export function LeftNavigation({ activeSection }: LeftNavigationProps) {
   const showUtilities = activeSection === 'dashboard';
 
   return (
-    <div className="border-border bg-muted/20 flex w-64 flex-col border-r p-4">
+    <div className={cn('flex w-64 flex-col border-r p-4', mode.color.border.default, mode.color.bg.mutedSubtle)}>
       <div className="mb-6">
         <div className="flex items-center gap-2 text-sm font-semibold">
           <Activity className="h-4 w-4" />
@@ -61,7 +61,8 @@ export function LeftNavigation({ activeSection }: LeftNavigationProps) {
               <button
                 key={item.id}
                 className={cn(
-                  'flex w-full items-center gap-2 rounded-none px-4 py-2 text-xs transition-colors',
+                  'flex w-full items-center gap-2 px-4 py-2 text-xs transition-colors',
+                  mode.radius,
                   activeSection === item.id
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'

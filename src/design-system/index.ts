@@ -132,6 +132,9 @@ export interface ModeConfig {
       accent: string;
       accentMuted: string;
       accentHover: string;
+      primarySubtle: string;
+      primaryLight: string;
+      successSubtle: string;
       danger: string;
       dangerMuted: string;
       success: string;
@@ -141,6 +144,9 @@ export interface ModeConfig {
       info: string;
       infoMuted: string;
       muted: string;
+      mutedSubtle: string;
+      mutedLight: string;
+      mutedMedium: string;
       secondary: string;
     };
     text: {
@@ -165,6 +171,8 @@ export interface ModeConfig {
       danger: string;
       success: string;
       warning: string;
+      accentSubtle: string;
+      mutedSubtle: string;
     };
     icon: {
       primary: string;
@@ -219,6 +227,10 @@ export interface ModeConfig {
       linkOpacity: string;
       listItem: string;
       opacity: string;
+      borderWarning: string;
+      textWarning: string;
+      borderAccent: string;
+      textAccent: string;
     };
     focus: {
       ring: string;
@@ -267,6 +279,9 @@ export const mode: ModeConfig = {
       accent: 'bg-accent', // Purple accent for CTAs
       accentMuted: 'bg-accent/10',
       accentHover: 'bg-accent/90',
+      primarySubtle: 'bg-primary/5',
+      primaryLight: 'bg-primary/10',
+      successSubtle: 'bg-success/20',
       danger: 'bg-destructive',
       dangerMuted: 'bg-destructive/10',
       success: 'bg-success',
@@ -276,6 +291,9 @@ export const mode: ModeConfig = {
       info: 'bg-info',
       infoMuted: 'bg-info/10',
       muted: 'bg-muted',
+      mutedSubtle: 'bg-muted/20',
+      mutedLight: 'bg-muted/30',
+      mutedMedium: 'bg-muted/50',
       secondary: 'bg-secondary',
     },
     text: {
@@ -300,6 +318,8 @@ export const mode: ModeConfig = {
       danger: 'border-destructive',
       success: 'border-success',
       warning: 'border-warning',
+      accentSubtle: 'border-primary/30',
+      mutedSubtle: 'border-muted-foreground/30',
     },
     icon: {
       primary: 'text-foreground',
@@ -357,6 +377,11 @@ export const mode: ModeConfig = {
       linkOpacity: 'hover:opacity-80',
       listItem: 'hover:bg-muted/50',
       opacity: 'hover:opacity-90',
+      // Semantic hover states
+      borderWarning: 'hover:border-warning',
+      textWarning: 'hover:text-warning',
+      borderAccent: 'hover:border-primary',
+      textAccent: 'hover:text-primary',
     },
     focus: {
       ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',

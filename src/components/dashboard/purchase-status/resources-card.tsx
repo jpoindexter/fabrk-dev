@@ -48,7 +48,7 @@ export function ResourcesCard({ hasAccess }: ResourcesCardProps) {
         </Button>
 
         {!hasAccess && (
-          <p className="text-muted-foreground dark:text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-xs">
             [NOTE]: Purchase Fabrk to unlock all resources
           </p>
         )}

@@ -27,7 +27,7 @@ export function SignupSuccessMessage({ email }: { email: string }) {
   // UX Heuristic #1: Visibility of system status
   return (
     <div className="p-6 text-center">
-      <CheckCircle className="text-primary dark:text-primary mx-auto h-16 w-16" />
+      <CheckCircle className="text-primary mx-auto h-16 w-16" />
       <h2 className={cn('m-4 text-xs font-semibold', mode.font)}>Check your email</h2>
       <p className="m-4">We&apos;ve sent a verification email to {email}</p>
       <p className="m-4 text-xs">Please click the link in the email to verify your account.</p>

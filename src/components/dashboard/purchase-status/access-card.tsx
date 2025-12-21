@@ -22,7 +22,7 @@ export function AccessCard({
       <Card tone="danger">
         <CardHeader code="0x01" title="NO ACCESS" icon={<XCircle className="h-4 w-4" />} />
         <CardContent padding="md">
-          <p className="text-muted-foreground dark:text-muted-foreground mb-4 text-sm">
+          <p className="text-muted-foreground mb-4 text-sm">
             [STATUS]: Purchase required to access Fabrk boilerplate
           </p>
           <Button
@@ -44,7 +44,7 @@ export function AccessCard({
           <Badge variant="secondary" className="mb-2">
             COMPLETE_PACKAGE
           </Badge>
-          <p className="text-muted-foreground dark:text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm">
             [STATUS]: Lifetime access to all Fabrk components, templates, and updates
           </p>
         </div>

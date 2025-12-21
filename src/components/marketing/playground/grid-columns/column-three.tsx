@@ -18,8 +18,8 @@ export function GridColumnThree() {
   return (
     <div className="space-y-4">
       {/* Radio Group - Border only, no card */}
-      <div className="border-primary/30 bg-primary/5 border-2 p-4">
-        <h3 className={cn('text-primary mb-4 text-xs font-semibold', mode.font)}>[RADIO GROUP]</h3>
+      <div className={cn('border-2 p-4', mode.color.border.accentSubtle, mode.color.bg.primarySubtle)}>
+        <h3 className={cn('mb-4 text-xs font-semibold', mode.font, mode.color.text.accent)}>[RADIO GROUP]</h3>
         <RadioGroup defaultValue="option-1">
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="option-1" id="option-1" />
@@ -37,7 +37,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Switches - Terminal style with border */}
-      <div className="border-border bg-card border p-4">
+      <div className={cn('border p-4', mode.color.border.default, mode.color.bg.surface)}>
         <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SWITCHES]</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between">
@@ -52,8 +52,8 @@ export function GridColumnThree() {
       </div>
 
       {/* Mini Data Table - Dense with separators */}
-      <div className="divide-border border-border bg-card divide-y border">
-        <div className="bg-muted/50 p-4">
+      <div className={cn('divide-y border', mode.color.border.default, mode.color.bg.surface)}>
+        <div className={cn('p-4', mode.color.bg.mutedMedium)}>
           <h3 className={cn('text-xs font-semibold', mode.font)}>[DATA TABLE]</h3>
         </div>
         <div className="space-y-0">
@@ -63,7 +63,7 @@ export function GridColumnThree() {
           ].map((row, i) => (
             <div
               key={i}
-              className="border-border flex items-center justify-between border-b p-4 text-xs last:border-b-0"
+              className={cn('flex items-center justify-between border-b p-4 text-xs last:border-b-0', mode.color.border.default)}
             >
               <span>{row.metric}</span>
               <div className="flex items-center gap-2">
@@ -76,7 +76,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Filter Chips - Terminal card style */}
-      <div className="border-border bg-card border p-4">
+      <div className={cn('border p-4', mode.color.border.default, mode.color.bg.surface)}>
         <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[ACTIVE FILTERS]</h3>
         <div className="flex flex-wrap gap-2">
           {['Status: Active', 'Role: Admin'].map((filter, i) => (
@@ -89,7 +89,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Date & Time - Outline style */}
-      <div className="border-muted-foreground/30 border-2 border-dashed p-4">
+      <div className={cn('border-2 border-dashed p-4', mode.color.border.mutedSubtle)}>
         <h3 className={cn('text-muted-foreground mb-4 text-xs font-semibold', mode.font)}>
           [TIMESTAMPS]
         </h3>
@@ -106,17 +106,17 @@ export function GridColumnThree() {
       </div>
 
       {/* Live Stats Card */}
-      <div className="border-border bg-card space-y-3 border p-4">
+      <div className={cn('space-y-3 border p-4', mode.color.border.default, mode.color.bg.surface)}>
         <div className="flex items-center justify-between">
           <h3 className={cn('text-xs font-semibold', mode.font)}>[LIVE STATS]</h3>
-          <div className="bg-success/20 flex items-center gap-1 px-2 py-0.5">
+          <div className={cn('flex items-center gap-1 px-2 py-0.5', mode.color.bg.successSubtle)}>
             <span className="bg-success h-1.5 w-1.5 animate-pulse rounded-full" />
             <span className={cn('text-success text-xs', mode.font)}>LIVE</span>
           </div>
         </div>
 
         {/* Revenue */}
-        <div className="border-border space-y-1 border-l-2 border-l-primary pl-3">
+        <div className={cn('space-y-1 border-l-2 pl-3', mode.color.border.default, mode.color.border.accent)}>
           <div className={cn('text-muted-foreground text-xs', mode.font)}>MRR</div>
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-bold">$12,450</span>
@@ -128,7 +128,7 @@ export function GridColumnThree() {
         </div>
 
         {/* Active Users */}
-        <div className="border-border space-y-1 border-l-2 border-l-accent pl-3">
+        <div className={cn('space-y-1 border-l-2 pl-3', mode.color.border.default, 'border-l-accent')}>
           <div className={cn('text-muted-foreground text-xs', mode.font)}>ACTIVE USERS</div>
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-bold">847</span>
@@ -140,7 +140,7 @@ export function GridColumnThree() {
         </div>
 
         {/* Conversion rate */}
-        <div className="border-border flex items-center justify-between border-t pt-3 text-xs">
+        <div className={cn('flex items-center justify-between border-t pt-3 text-xs', mode.color.border.default)}>
           <span className={cn('text-muted-foreground', mode.font)}>Conversion</span>
           <span className="font-mono font-semibold">4.2%</span>
         </div>

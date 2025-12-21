@@ -22,7 +22,7 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
       <CardHeader code="0x02" title="LICENSE KEY" icon={<Key className="h-4 w-4" />} />
       <CardContent padding="md">
         <div className="space-y-4">
-          <div className={cn('bg-muted dark:bg-muted p-6 text-sm', mode.font, mode.radius)}>
+          <div className={cn('bg-muted p-6 text-sm', mode.font, mode.radius)}>
             {licenseKey}
           </div>
           <Button
@@ -39,7 +39,7 @@ export function LicenseCard({ licenseKey, onCopyLicense, copiedLicense }: Licens
               </>
             )}
           </Button>
-          <p className="text-muted-foreground dark:text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-xs">
             [NOTE]: Keep this key safe. You&apos;ll need it for future updates and support.
           </p>
         </div>

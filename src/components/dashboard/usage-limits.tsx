@@ -46,7 +46,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <AlertCircle className="text-primary focus-visible:ring-ring h-5 w-5 focus-visible:ring-2 focus-visible:outline-none" />
-          <h3 className={cn('text-muted-foreground dark:text-muted-foreground font-semibold', mode.font)}>
+          <h3 className={cn('text-muted-foreground font-semibold', mode.font)}>
             Free Tier Usage Limits
           </h3>
         </div>
@@ -65,11 +65,11 @@ export function UsageLimits({ user }: UsageLimitsProps) {
           const isNearLimit = percentage >= 80;
 
           return (
-            <div key={resource} className={cn('bg-background dark:bg-muted p-4', mode.radius)}>
+            <div key={resource} className={cn('bg-muted p-4', mode.radius)}>
               <div className="mb-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="text-muted-foreground h-4 w-4" />
-                  <span className="text-muted-foreground dark:text-muted-foreground text-sm font-medium">
+                  <span className="text-muted-foreground text-sm font-medium">
                     {resourceLabels[resource]}
                   </span>
                 </div>
@@ -77,7 +77,7 @@ export function UsageLimits({ user }: UsageLimitsProps) {
                   className={`text-sm font-medium ${
                     isNearLimit
                       ? 'text-destructive'
-                      : 'text-muted-foreground dark:text-muted-foreground'
+                      : 'text-muted-foreground'
                   }`}
                 >
                   {display}
@@ -98,8 +98,8 @@ export function UsageLimits({ user }: UsageLimitsProps) {
         })}
       </div>
 
-      <div className={cn('bg-primary dark:bg-primary/30 mt-4 p-4', mode.radius)}>
-        <p className="text-primary dark:text-primary text-sm">
+      <div className={cn('bg-primary/10 mt-4 p-4', mode.radius)}>
+        <p className="text-primary text-sm">
           <strong>[TIP]:</strong> Upgrade to Starter to get 10x more resources and unlock premium
           features like OAuth, payments, and email integration.
         </p>
