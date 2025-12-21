@@ -10,7 +10,6 @@ import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 import { BrowserFrame } from './browser-frame';
 import { LeftNavigation } from './left-navigation';
-import { Reveal } from '@/components/motion';
 
 // Analytics Dashboard components
 import { MetricCards } from '@/app/(marketing)/library/analytics-dashboard/components/metric-cards';
@@ -35,48 +34,40 @@ export function DashboardPreview() {
       <div className="flex-1 overflow-auto p-8">
         <div className="space-y-6">
           {/* Header */}
-          <Reveal delay={0} once={true}>
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Analytics Dashboard</h1>
-                <p className="text-muted-foreground text-sm">
-                  Track revenue, users, conversions, and growth metrics
-                </p>
-              </div>
-              <Button className={cn(mode.radius, mode.font, 'text-xs')}>
-                <Download className="mr-2 h-4 w-4" />
-                &gt; EXPORT DATA
-              </Button>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className={cn(mode.font, 'text-2xl font-semibold')}>Analytics Dashboard</h1>
+              <p className="text-muted-foreground text-sm">
+                Track revenue, users, conversions, and growth metrics
+              </p>
             </div>
-          </Reveal>
+            <Button className={cn(mode.radius, mode.font, 'text-xs')}>
+              <Download className="mr-2 h-4 w-4" />
+              &gt; EXPORT DATA
+            </Button>
+          </div>
 
           {/* Metric Cards - Reduced font sizes for playground */}
-          <Reveal delay={0.1} once={true}>
-            <div className="[&_.text-4xl]:text-xl! [&_.text-xs]:text-xs!">
-              <MetricCards metrics={metrics} />
-            </div>
-          </Reveal>
+          <div className="[&_.text-4xl]:text-xl! [&_.text-xs]:text-xs!">
+            <MetricCards metrics={metrics} />
+          </div>
 
           {/* Charts Section - Hide CardHeaders */}
-          <Reveal delay={0.2} once={true}>
-            <div className="grid gap-4 lg:grid-cols-7 [&_>*>*:first-child]:hidden">
-              <RevenueChart data={revenueData} />
-              <ActivityFeed activities={activityData} />
-            </div>
-          </Reveal>
+          <div className="grid gap-4 lg:grid-cols-7 [&_>*>*:first-child]:hidden">
+            <RevenueChart data={revenueData} />
+            <ActivityFeed activities={activityData} />
+          </div>
 
           {/* Tabs Section - Hide CardHeader */}
-          <Reveal delay={0.3} once={true}>
-            <div className="[&_>*>*:first-child]:hidden">
-              <AnalyticsTabs
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
-                pageData={pageData}
-                trafficSources={trafficSources}
-                deviceBreakdown={deviceBreakdown}
-              />
-            </div>
-          </Reveal>
+          <div className="[&_>*>*:first-child]:hidden">
+            <AnalyticsTabs
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              pageData={pageData}
+              trafficSources={trafficSources}
+              deviceBreakdown={deviceBreakdown}
+            />
+          </div>
         </div>
       </div>
     </BrowserFrame>

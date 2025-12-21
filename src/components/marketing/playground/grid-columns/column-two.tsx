@@ -14,12 +14,12 @@ import {
   ChevronRight,
   FileText,
   X,
-  CheckCircle2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { AnimatedSolidProgress } from '@/components/ui/progress';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,7 +28,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { AnimatedLoadingBar } from '@/components/motion';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -82,28 +81,11 @@ export function GridColumnTwo() {
       <Card>
         <div className="p-4">
           <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[PROGRESS]</h3>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs">
-              <span className={mode.font}>Upload</span>
-              {uploadComplete ? (
-                <span className={cn('text-success flex items-center gap-1', mode.font)}>
-                  <CheckCircle2 className="h-3 w-3" />
-                  COMPLETE
-                </span>
-              ) : (
-                <span className={cn('text-muted-foreground animate-pulse', mode.font)}>
-                  UPLOADING...
-                </span>
-              )}
-            </div>
-            <AnimatedLoadingBar
-              duration={3000}
-              width={24}
-              showPercent
-              onComplete={() => setUploadComplete(true)}
-              className="text-xs"
-            />
-          </div>
+          <AnimatedSolidProgress
+            label="Upload"
+            duration={3000}
+            onComplete={() => setUploadComplete(true)}
+          />
         </div>
       </Card>
 

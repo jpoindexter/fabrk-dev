@@ -9,7 +9,6 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Switch } from '@/components/ui/switch';
-import { Counter } from '@/components/motion';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -106,7 +105,7 @@ export function GridColumnThree() {
         </div>
       </div>
 
-      {/* Live Revenue Counter - Animated stats */}
+      {/* Live Stats Card */}
       <div className="border-border bg-card space-y-3 border p-4">
         <div className="flex items-center justify-between">
           <h3 className={cn('text-xs font-semibold', mode.font)}>[LIVE STATS]</h3>
@@ -116,16 +115,11 @@ export function GridColumnThree() {
           </div>
         </div>
 
-        {/* Revenue with animated counter */}
+        {/* Revenue */}
         <div className="border-border space-y-1 border-l-2 border-l-primary pl-3">
           <div className={cn('text-muted-foreground text-xs', mode.font)}>MRR</div>
           <div className="flex items-baseline gap-2">
-            <Counter
-              end={12450}
-              prefix="$"
-              duration={2000}
-              className="text-xl font-bold"
-            />
+            <span className="text-xl font-bold">$12,450</span>
             <span className={cn('text-success flex items-center text-xs', mode.font)}>
               <ArrowUpRight className="h-3 w-3" />
               15.3%
@@ -133,15 +127,11 @@ export function GridColumnThree() {
           </div>
         </div>
 
-        {/* Active Users counter */}
+        {/* Active Users */}
         <div className="border-border space-y-1 border-l-2 border-l-accent pl-3">
           <div className={cn('text-muted-foreground text-xs', mode.font)}>ACTIVE USERS</div>
           <div className="flex items-baseline gap-2">
-            <Counter
-              end={847}
-              duration={1800}
-              className="text-xl font-bold"
-            />
+            <span className="text-xl font-bold">847</span>
             <span className={cn('text-success flex items-center text-xs', mode.font)}>
               <TrendingUp className="h-3 w-3" />
               +23
@@ -152,12 +142,7 @@ export function GridColumnThree() {
         {/* Conversion rate */}
         <div className="border-border flex items-center justify-between border-t pt-3 text-xs">
           <span className={cn('text-muted-foreground', mode.font)}>Conversion</span>
-          <Counter
-            end={4}
-            suffix=".2%"
-            duration={1500}
-            className="font-mono font-semibold"
-          />
+          <span className="font-mono font-semibold">4.2%</span>
         </div>
       </div>
     </div>

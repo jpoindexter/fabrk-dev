@@ -414,14 +414,16 @@ export function AnimatedLoadingBar({
   onComplete,
 }: AnimatedLoadingBarProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const hasStartedRef = useRef(false);
   const [progress, setProgress] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
+        if (entry.isIntersecting && !hasStartedRef.current) {
+          hasStartedRef.current = true;
+          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -430,10 +432,10 @@ export function AnimatedLoadingBar({
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [hasStarted]);
+  }, []);
 
   useEffect(() => {
-    if (!hasStarted) return;
+    if (!isVisible) return;
 
     const startTime = Date.now();
     const animate = () => {
@@ -449,7 +451,7 @@ export function AnimatedLoadingBar({
     };
 
     requestAnimationFrame(animate);
-  }, [hasStarted, duration, onComplete]);
+  }, [isVisible, duration, onComplete]);
 
   return (
     <span ref={ref} className={cn('font-mono', className)}>
