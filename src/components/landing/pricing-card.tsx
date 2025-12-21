@@ -6,6 +6,7 @@
  */
 'use client';
 
+import Link from 'next/link';
 import { ArrowRight, Terminal } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
@@ -92,6 +93,19 @@ export function PricingCard({ className }: PricingCardProps) {
         <p className={cn('text-muted-foreground mt-4 text-center text-xs', mode.font)}>
           {PRICING.trustLine}
         </p>
+
+        {/* Enterprise Link */}
+        <Link
+          href="mailto:support@fabrk.dev?subject=Enterprise%20Licensing"
+          className={cn(
+            'group mt-4 flex items-center gap-1.5 text-xs transition-colors',
+            'text-muted-foreground hover:text-primary',
+            mode.font
+          )}
+        >
+          <span>Need enterprise licensing?</span>
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </CardContent>
     </Card>
   );
