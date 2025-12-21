@@ -123,7 +123,7 @@ export function FinalCTASection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center lg:justify-end"
           >
-            <PricingCard variant="full" showFeatures={true} showDiscountCounter={true} />
+            <PricingCard />
           </motion.div>
         </div>
       </Container>

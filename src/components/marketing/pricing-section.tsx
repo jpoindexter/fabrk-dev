@@ -29,7 +29,7 @@ export function PricingSection() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center justify-center"
           >
-            <PricingCard variant="full" showFeatures={true} showDiscountCounter={true} />
+            <PricingCard />
           </motion.div>
 
           {/* Right Column - Description */}
