@@ -11,6 +11,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Providers } from '@/components/providers';
+import { TerminalBackground } from '@/components/shared/terminal-background';
 import { Analytics } from '@vercel/analytics/next';
 import { GeistSans } from 'geist/font/sans';
 import localFont from 'next/font/local';
@@ -239,6 +240,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Providers>
           {/* Vercel Analytics - Only when deployed to Vercel */}
           {process.env.VERCEL && <Analytics />}
+          {/* Terminal dot grid background - visible through transparent content areas */}
+          <TerminalBackground />
           {/* Skip link - points to main content only (navigation/footer are page-specific) */}
           <a
             href="#main-content"
@@ -246,7 +249,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           >
             Skip to main content
           </a>
-          <div className="bg-background relative isolate flex min-h-screen flex-col">
+          <div className="relative isolate flex min-h-screen flex-col">
             <main id="main-content" className="flex-1">
               <Suspense>{children}</Suspense>
             </main>
