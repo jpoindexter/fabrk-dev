@@ -15,7 +15,7 @@ export function TerminalBackground() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(circle, oklch(var(--foreground) / 0.12) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, oklch(var(--foreground) / var(--bg-dot-opacity, 0.15)) 1px, transparent 1px)`,
           backgroundSize: '32px 32px',
         }}
       />

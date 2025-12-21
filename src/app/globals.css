@@ -372,6 +372,9 @@
   --state-muted-opacity: 0.50;
   --state-subtle-opacity: 0.40;
   --state-disabled-opacity: 0.38;
+
+  /* Background Dot Pattern Opacity */
+  --bg-dot-opacity: 0.15;
 }
 
 /* ============================================
@@ -740,6 +743,8 @@
   --input: 50% 0.2 300; /* Increased from 30% for better visibility */
   --ring: 60% 0.2 300; /* Darkened from 70% */
 
+  --bg-dot-opacity: 0.2;
+
   /* Status colors - all monochrome purple */
   --success: 70% 0.2 300;
   --success-foreground: 5% 0.01 300;
@@ -816,6 +821,8 @@
   --border: 32% 0.14 85; /* Darkened from 55% for WCAG 2.2 3:1 border contrast */
   --input: 32% 0.14 85;
   --ring: 20% 0.14 85;
+
+  --bg-dot-opacity: 0.25;
 
   /* Status colors - Game Boy green spectrum */
   --success: 25% 0.14 85;
@@ -971,6 +978,8 @@
   --input: 35% 0.01 0;
   --ring: 18% 0.01 0;
 
+  --bg-dot-opacity: 0.25;
+
   /* Status colors - grayscale */
   --success: 22% 0.01 0;
   --success-foreground: 94% 0.01 0;
@@ -1047,6 +1056,8 @@
   --border: 38% 0.08 180; /* Darkened from 60% for WCAG 2.2 3:1 border contrast */
   --input: 38% 0.08 180;
   --ring: 22% 0.12 180;
+
+  --bg-dot-opacity: 0.25;
 
   /* Status colors - cyan spectrum */
   --success: 25% 0.12 180;
@@ -1202,6 +1213,8 @@
   --input: 47% 0.06 250;
   --ring: 15% 0.12 250;
 
+  --bg-dot-opacity: 0.25;
+
   /* Status colors - spectrum */
   --success: 20% 0.12 250;
   --success-foreground: 96% 0.02 250;
@@ -1298,6 +1311,8 @@
   /* Ring - Focus indicator (pure black) */
   --ring: 0% 0 0;
 
+  --bg-dot-opacity: 0.3;
+
   /* Status colors - Grayscale spectrum */
   --success: 20% 0 0; /* Dark gray for success */
   --success-foreground: 100% 0 0; /* White text */
@@ -1377,6 +1392,8 @@
   --border: 35% 0.15 25; /* Medium-dark red border */
   --input: 35% 0.15 25;
   --ring: 18% 0.18 25;
+
+  --bg-dot-opacity: 0.25;
 
   --success: 28% 0.2 25; /* Dark red badge */
   --success-foreground: 75% 0.18 25;
