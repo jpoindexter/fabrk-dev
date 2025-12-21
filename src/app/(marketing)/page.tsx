@@ -17,32 +17,35 @@ import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
 export default function HomePage() {
   return (
     <>
-      {/* Hero - Updated with verified social proof */}
+      {/* Hero - Sticky card effect */}
       <HeroSection />
 
-      {/* Interactive Playground - Lazy loaded for better LCP */}
-      <LazyPlayground />
+      {/* Content slides up over the hero */}
+      <div className="relative z-20 bg-background">
+        {/* Interactive Playground - Lazy loaded for better LCP */}
+        <LazyPlayground />
 
-      {/* What Makes Fabrk Different - Unique features (Terminal UI, 31 Demos, AI Credits, 3 Providers) */}
-      <FeaturesShowcase />
+        {/* What Makes Fabrk Different - Unique features (Terminal UI, 31 Demos, AI Credits, 3 Providers) */}
+        <FeaturesShowcase />
 
-      {/* Trust Indicators - Updated with verifiable stats */}
-      <StatsSection />
+        {/* Trust Indicators - Updated with verifiable stats */}
+        <StatsSection />
 
-      {/* Target Personas - Who Fabrk is for */}
-      <UseCasesSection />
+        {/* Target Personas - Who Fabrk is for */}
+        <UseCasesSection />
 
-      {/* Pricing - Launch price ($199) for first 100 buyers */}
-      <PricingSection />
+        {/* Pricing - Launch price ($199) for first 100 buyers */}
+        <PricingSection />
 
-      {/* What's Included - NEW: Auth/Billing/Multi-tenancy checklist */}
-      <WhatsIncludedSection />
+        {/* What's Included - NEW: Auth/Billing/Multi-tenancy checklist */}
+        <WhatsIncludedSection />
 
-      {/* FAQ */}
-      <FAQSection />
+        {/* FAQ */}
+        <FAQSection />
 
-      {/* Final Conversion Push */}
-      <FinalCTASection />
+        {/* Final Conversion Push */}
+        <FinalCTASection />
+      </div>
 
       {/* Overlays */}
       <StickyCTABar message="Launch your SaaS in days—not months" ctaText="Get Fabrk Now" />

@@ -57,7 +57,7 @@ export function HeroMinimalCTA() {
 
         {/* Trust Line */}
         <div className={cn('mt-12 text-xs', mode.font, mode.color.text.muted)}>
-          500+ developers • 4.9/5 rating • 14-day money-back guarantee
+          500+ developers • 4.9/5 rating • Lifetime updates
         </div>
       </div>
     </Container>

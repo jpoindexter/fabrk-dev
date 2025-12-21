@@ -1357,9 +1357,250 @@
 }
 
 /* ============================================
+   CRIMSON Theme - Bold red on true black (inspired by wodniack.dev)
+   High contrast, bold aesthetic
+   ============================================ */
+
+[data-theme='crimson'] {
+  --background: 0% 0 0; /* True black */
+  --foreground: 60% 0.28 25; /* Bright crimson red */
+  --card: 5% 0.02 25;
+  --card-foreground: 60% 0.28 25;
+  --popover: 8% 0.03 25;
+  --popover-foreground: 60% 0.28 25;
+  --primary: 55% 0.3 25; /* Bold crimson */
+  --primary-foreground: 0% 0 0;
+  --secondary: 45% 0.25 25;
+  --secondary-foreground: 0% 0 0;
+  --muted: 12% 0.04 25;
+  --muted-foreground: 50% 0.2 25;
+  --accent: 65% 0.32 25;
+  --accent-foreground: 0% 0 0;
+  --destructive: 70% 0.35 25;
+  --destructive-foreground: 0% 0 0;
+  --border: 40% 0.2 25;
+  --input: 40% 0.2 25;
+  --ring: 60% 0.28 25;
+
+  --success: 55% 0.28 25;
+  --success-foreground: 0% 0 0;
+  --warning: 60% 0.26 25;
+  --warning-foreground: 0% 0 0;
+  --info: 50% 0.24 25;
+  --info-foreground: 0% 0 0;
+
+  --chart-1: 55% 0.28 25;
+  --chart-2: 45% 0.24 25;
+  --chart-3: 65% 0.26 25;
+  --chart-4: 50% 0.22 25;
+  --chart-5: 40% 0.2 25;
+  --chart-6: 70% 0.3 25;
+  --chart-7: 35% 0.18 25;
+  --chart-8: 52% 0.25 25;
+  --chart-9: 48% 0.23 25;
+
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
+
+  --code-fg: oklch(60% 0.28 25);
+  --code-bg: oklch(5% 0.02 25);
+  --code-comment: oklch(35% 0.1 25);
+  --code-string: oklch(55% 0.25 25);
+  --code-punctuation: oklch(45% 0.2 25);
+  --code-number: oklch(50% 0.22 25);
+  --code-keyword: oklch(60% 0.28 25);
+  --code-function: oklch(65% 0.3 25);
+  --code-selector: oklch(55% 0.25 25);
+}
+
+/* ============================================
+   BLOOD Theme - Deep blood red on black
+   ============================================ */
+
+[data-theme='blood'] {
+  --background: 3% 0.02 15; /* Near black with slight red */
+  --foreground: 50% 0.3 15; /* Blood red */
+  --card: 7% 0.03 15;
+  --card-foreground: 50% 0.3 15;
+  --popover: 10% 0.04 15;
+  --popover-foreground: 50% 0.3 15;
+  --primary: 45% 0.32 15; /* Deep blood red */
+  --primary-foreground: 95% 0.02 15;
+  --secondary: 35% 0.25 15;
+  --secondary-foreground: 95% 0.02 15;
+  --muted: 15% 0.06 15;
+  --muted-foreground: 40% 0.2 15;
+  --accent: 55% 0.35 15;
+  --accent-foreground: 3% 0.02 15;
+  --destructive: 60% 0.38 15;
+  --destructive-foreground: 3% 0.02 15;
+  --border: 35% 0.18 15;
+  --input: 35% 0.18 15;
+  --ring: 50% 0.3 15;
+
+  --success: 45% 0.28 15;
+  --success-foreground: 95% 0.02 15;
+  --warning: 50% 0.26 15;
+  --warning-foreground: 3% 0.02 15;
+  --info: 40% 0.24 15;
+  --info-foreground: 95% 0.02 15;
+
+  --chart-1: 45% 0.28 15;
+  --chart-2: 35% 0.24 15;
+  --chart-3: 55% 0.26 15;
+  --chart-4: 40% 0.22 15;
+  --chart-5: 30% 0.2 15;
+  --chart-6: 60% 0.3 15;
+  --chart-7: 25% 0.18 15;
+  --chart-8: 42% 0.25 15;
+  --chart-9: 38% 0.23 15;
+
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
+
+  --code-fg: oklch(50% 0.3 15);
+  --code-bg: oklch(7% 0.03 15);
+  --code-comment: oklch(30% 0.12 15);
+  --code-string: oklch(45% 0.28 15);
+  --code-punctuation: oklch(35% 0.2 15);
+  --code-number: oklch(40% 0.24 15);
+  --code-keyword: oklch(50% 0.3 15);
+  --code-function: oklch(55% 0.32 15);
+  --code-selector: oklch(45% 0.28 15);
+}
+
+/* ============================================
+   NEONRED Theme - Bright neon red on black
+   ============================================ */
+
+[data-theme='neonred'] {
+  --background: 0% 0 0; /* Pure black */
+  --foreground: 70% 0.35 30; /* Bright neon red-orange */
+  --card: 5% 0.01 30;
+  --card-foreground: 70% 0.35 30;
+  --popover: 8% 0.02 30;
+  --popover-foreground: 70% 0.35 30;
+  --primary: 65% 0.38 30; /* Neon red */
+  --primary-foreground: 0% 0 0;
+  --secondary: 55% 0.32 30;
+  --secondary-foreground: 0% 0 0;
+  --muted: 12% 0.03 30;
+  --muted-foreground: 55% 0.25 30;
+  --accent: 75% 0.4 30;
+  --accent-foreground: 0% 0 0;
+  --destructive: 80% 0.42 30;
+  --destructive-foreground: 0% 0 0;
+  --border: 45% 0.22 30;
+  --input: 45% 0.22 30;
+  --ring: 70% 0.35 30;
+
+  --success: 65% 0.35 30;
+  --success-foreground: 0% 0 0;
+  --warning: 70% 0.32 30;
+  --warning-foreground: 0% 0 0;
+  --info: 60% 0.28 30;
+  --info-foreground: 0% 0 0;
+
+  --chart-1: 65% 0.35 30;
+  --chart-2: 55% 0.3 30;
+  --chart-3: 75% 0.32 30;
+  --chart-4: 60% 0.28 30;
+  --chart-5: 50% 0.25 30;
+  --chart-6: 80% 0.38 30;
+  --chart-7: 45% 0.22 30;
+  --chart-8: 62% 0.32 30;
+  --chart-9: 58% 0.28 30;
+
+  --color-bg-canvas: var(--background);
+  --color-bg-surface: var(--card);
+  --color-bg-elevated: var(--popover);
+  --color-bg-sunken: var(--muted);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--muted-foreground);
+  --color-text-tertiary: var(--secondary-foreground);
+  --color-text-inverse: var(--primary-foreground);
+  --color-text-disabled: var(--muted-foreground);
+  --color-border-default: var(--border);
+  --color-border-muted: var(--input);
+  --color-border-strong: var(--ring);
+  --color-border-focus: var(--ring);
+  --color-status-success: var(--success);
+  --color-status-success-bg: var(--success);
+  --color-status-warning: var(--warning);
+  --color-status-warning-bg: var(--warning);
+  --color-status-error: var(--destructive);
+  --color-status-error-bg: var(--destructive);
+  --color-status-info: var(--info);
+  --color-status-info-bg: var(--info);
+
+  --code-fg: oklch(70% 0.35 30);
+  --code-bg: oklch(5% 0.01 30);
+  --code-comment: oklch(40% 0.15 30);
+  --code-string: oklch(65% 0.32 30);
+  --code-punctuation: oklch(55% 0.25 30);
+  --code-number: oklch(60% 0.28 30);
+  --code-keyword: oklch(70% 0.35 30);
+  --code-function: oklch(75% 0.38 30);
+  --code-selector: oklch(65% 0.32 30);
+}
+
+/* ============================================
    CRT GLOW EFFECTS - Apply to all text
    ============================================ */
 
+[data-theme='crimson'] body {
+  text-shadow:
+    0 0 3px oklch(60% 0.28 25 / 0.4),
+    0 0 6px oklch(60% 0.28 25 / 0.2);
+}
+[data-theme='blood'] body {
+  text-shadow:
+    0 0 2px oklch(50% 0.3 15 / 0.3),
+    0 0 4px oklch(50% 0.3 15 / 0.15);
+}
+[data-theme='neonred'] body {
+  text-shadow:
+    0 0 4px oklch(70% 0.35 30 / 0.5),
+    0 0 8px oklch(70% 0.35 30 / 0.25);
+}
 [data-theme='red'] body {
   text-shadow:
     0 0 2px oklch(82% 0.3 0 / 0.3),
@@ -1553,4 +1794,54 @@
 .text-gradient-animated {
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
+}
+
+/* ============================================
+   FUI (Futuristic UI) Background Animations
+   ============================================ */
+
+@keyframes scan-vertical {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(calc(100vh + 100%));
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes flow-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100%));
+    opacity: 0;
+  }
+}
+
+.animate-scan-vertical {
+  animation: scan-vertical linear infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-flow-down {
+  animation: flow-down linear infinite;
 }

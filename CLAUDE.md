@@ -27,6 +27,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+## Business Policy
+
+**No Refunds:** Fabrk does not offer refunds. All sales are final. Do not mention refunds, money-back guarantees, or 14-day guarantees in any marketing copy.
+
+---
+
 ## Project Overview
 
 **Fabrk** is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.

@@ -111,7 +111,7 @@ export function HeroCommandLine() {
           <span>•</span>
           <span>500+ DEVS</span>
           <span>•</span>
-          <span>14-DAY REFUND</span>
+          <span>LIFETIME UPDATES</span>
         </div>
       </div>
     </Container>

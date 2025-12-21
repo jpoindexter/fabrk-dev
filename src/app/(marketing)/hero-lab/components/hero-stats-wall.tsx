@@ -106,7 +106,7 @@ export function HeroStatsWall() {
           <span>•</span>
           <span>4.9/5 RATING</span>
           <span>•</span>
-          <span>14-DAY REFUND</span>
+          <span>LIFETIME UPDATES</span>
         </div>
       </div>
     </Container>

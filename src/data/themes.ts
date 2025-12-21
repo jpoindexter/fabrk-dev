@@ -16,6 +16,11 @@ export const themeGroups = {
     { id: 'purple', name: 'Purple CRT', preview: '#bb88ff', wcag: 'aa' },
     { id: 'red', name: 'Red CRT', preview: '#ff6655', wcag: 'aa' },
   ],
+  'Bold Red': [
+    { id: 'crimson', name: 'Crimson', preview: '#dc143c', wcag: 'aa' },
+    { id: 'blood', name: 'Blood', preview: '#8b0000', wcag: 'aa' },
+    { id: 'neonred', name: 'Neon Red', preview: '#ff3333', wcag: 'aa' },
+  ],
   'Retro Computer': [
     { id: 'atari', name: 'Atari 800', preview: '#305070', wcag: 'aa' },
     { id: 'c64', name: 'C64 Blue', preview: '#352879', wcag: 'aa' },

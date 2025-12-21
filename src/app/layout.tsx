@@ -15,7 +15,6 @@ import { Analytics } from '@vercel/analytics/next';
 import { GeistSans } from 'geist/font/sans';
 import localFont from 'next/font/local';
 import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadata';
-import { TerminalBackground } from '@/components/shared/terminal-background';
 import { ThemeScript } from '@/design-system/providers';
 import { MonitorEffectScript } from '@/components/theme/monitor-effect-script';
 import { getNonce } from '@/lib/nonce';
@@ -248,7 +247,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             Skip to main content
           </a>
           <div className="bg-background relative isolate flex min-h-screen flex-col">
-            <TerminalBackground />
             <main id="main-content" className="flex-1">
               <Suspense>{children}</Suspense>
             </main>

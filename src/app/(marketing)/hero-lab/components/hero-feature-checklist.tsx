@@ -1,5 +1,5 @@
 /**
- * Hero Variation 7: FEATURE CHECKLIST
+ * Hero Variation 7: FEATURE CHECKLIST (COMPACT)
  * Hook: Completeness flex with animated checkmarks
  */
 'use client';
@@ -8,61 +8,15 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { ArrowRight, Check, Square } from 'lucide-react';
 
-const FEATURE_GROUPS = [
-  {
-    name: 'AUTHENTICATION',
-    code: '0x01',
-    features: [
-      'NextAuth v5 integration',
-      'Google OAuth provider',
-      'GitHub OAuth provider',
-      'Magic link email auth',
-      'Session management',
-      'Protected routes',
-    ],
-  },
-  {
-    name: 'PAYMENTS',
-    code: '0x02',
-    features: [
-      'Stripe subscriptions',
-      'Polar.sh integration',
-      'Lemonsqueezy support',
-      'Webhook handlers',
-      'Customer portal',
-      'Usage-based billing',
-    ],
-  },
-  {
-    name: 'UI COMPONENTS',
-    code: '0x03',
-    features: [
-      '78 production components',
-      '7 chart types',
-      'Form components',
-      'Data tables',
-      'Navigation',
-      'Feedback components',
-    ],
-  },
-  {
-    name: 'DESIGN SYSTEM',
-    code: '0x04',
-    features: [
-      '12 terminal themes',
-      'OKLCH color system',
-      'Dark mode support',
-      'Responsive layouts',
-      'Typography scale',
-      'Animation tokens',
-    ],
-  },
+const FEATURES = [
+  { name: 'AUTH', items: ['NextAuth v5', 'OAuth providers', 'Magic links'] },
+  { name: 'PAYMENTS', items: ['Stripe', 'Polar.sh', 'Webhooks'] },
+  { name: 'UI', items: ['78 components', '12 themes', 'OKLCH colors'] },
 ];
 
 function FeatureItem({ text, delay }: { text: string; delay: number }) {
@@ -83,14 +37,14 @@ function FeatureItem({ text, delay }: { text: string; delay: number }) {
     >
       <div
         className={cn(
-          'h-4 w-4 border flex items-center justify-center transition-colors',
+          'h-3 w-3 border flex items-center justify-center transition-colors',
           checked ? 'border-success bg-success/20' : 'border-muted'
         )}
       >
         {checked ? (
-          <Check className="h-3 w-3 text-success" />
+          <Check className="h-2 w-2 text-success" />
         ) : (
-          <Square className="h-3 w-3 text-muted" />
+          <Square className="h-2 w-2 text-muted" />
         )}
       </div>
       <span className={checked ? '' : 'line-through'}>{text}</span>
@@ -100,93 +54,68 @@ function FeatureItem({ text, delay }: { text: string; delay: number }) {
 
 export function HeroFeatureChecklist() {
   const [totalChecked, setTotalChecked] = useState(0);
-  const totalFeatures = FEATURE_GROUPS.reduce((acc, g) => acc + g.features.length, 0);
+  const totalFeatures = FEATURES.reduce((acc, g) => acc + g.items.length, 0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTotalChecked((prev) => (prev < totalFeatures ? prev + 1 : prev));
-    }, 100);
+    }, 150);
     return () => clearInterval(interval);
   }, [totalFeatures]);
 
   return (
     <Container size="2xl">
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <h1 className={cn('text-4xl sm:text-5xl font-bold tracking-tight', mode.font)}>
-            EVERYTHING YOU NEED
-            <br />
-            <span className="text-primary">NOTHING YOU DON&apos;T</span>
-          </h1>
-          <p className={cn('text-sm', mode.font, mode.color.text.muted)}>
-            Every feature has been battle-tested in production.
-            No bloat, no unused code, no guesswork.
-          </p>
+      <div className="py-8 max-h-[70vh] flex flex-col justify-center">
+        <div className="grid gap-8 lg:grid-cols-2 items-center">
+          {/* LEFT: Feature Grid */}
+          <div className="space-y-4">
+            <div className={cn('flex items-center justify-between', mode.font)}>
+              <span className={cn('text-xs', mode.color.text.muted)}>[FEATURES INCLUDED]</span>
+              <span className={cn('text-sm font-bold', mode.color.text.success)}>
+                {totalChecked}/{totalFeatures}
+              </span>
+            </div>
 
-          {/* Progress */}
-          <div className={cn('flex items-center justify-center gap-4', mode.font)}>
-            <span className={cn('text-2xl font-bold', mode.color.text.success)}>
-              {totalChecked}/{totalFeatures}
-            </span>
-            <span className={cn('text-xs', mode.color.text.muted)}>FEATURES INCLUDED</span>
-          </div>
-        </div>
-
-        {/* Feature Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURE_GROUPS.map((group, groupIndex) => (
-            <Card key={group.name} size="auto">
-              <CardHeader code={group.code} title={group.name} />
-              <CardContent padding="md">
-                <div className="space-y-2">
-                  {group.features.map((feature, featureIndex) => (
+            <div className="grid grid-cols-3 gap-4">
+              {FEATURES.map((group, groupIndex) => (
+                <div key={group.name} className="border p-3 space-y-2">
+                  <div className={cn('text-xs font-bold', mode.font, mode.color.text.accent)}>
+                    {group.name}
+                  </div>
+                  {group.items.map((item, itemIndex) => (
                     <FeatureItem
-                      key={feature}
-                      text={feature}
-                      delay={(groupIndex * group.features.length + featureIndex) * 100}
+                      key={item}
+                      text={item}
+                      delay={(groupIndex * 3 + itemIndex) * 150}
                     />
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Bottom Section */}
-        <div className="grid gap-8 lg:grid-cols-2 items-center pt-8 border-t">
-          {/* What You Skip */}
-          <Card size="auto">
-            <CardHeader code="0x05" title="WHAT YOU DON'T HAVE TO BUILD" />
-            <CardContent padding="md">
-              <div className={cn('space-y-2 text-xs', mode.font)}>
-                {[
-                  { item: 'Auth system from scratch', time: '40 hours' },
-                  { item: 'Stripe integration', time: '24 hours' },
-                  { item: 'Component library', time: '120 hours' },
-                  { item: 'Design system', time: '32 hours' },
-                  { item: 'Testing infrastructure', time: '16 hours' },
-                ].map((row) => (
-                  <div key={row.item} className="flex items-center justify-between">
-                    <span className={cn('line-through', mode.color.text.muted)}>{row.item}</span>
-                    <span className="text-success">-{row.time}</span>
-                  </div>
-                ))}
-                <div className="border-t pt-2 mt-2 flex items-center justify-between font-bold">
-                  <span>TOTAL SAVED</span>
-                  <span className="text-success">232 HOURS</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* CTA */}
-          <div className="space-y-6">
-            <div className={cn('text-sm', mode.font, mode.color.text.muted)}>
-              Stop reinventing the wheel. Get everything you need to ship your SaaS,
-              with code you can actually understand and modify.
+              ))}
             </div>
 
+            {/* Time Saved */}
+            <div className={cn('border p-3', mode.font)}>
+              <div className="flex items-center justify-between text-xs">
+                <span className={mode.color.text.muted}>TOTAL DEV TIME SAVED</span>
+                <span className="font-bold text-success">232 HOURS</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Copy */}
+          <div className="space-y-6">
+            <h1 className={cn('text-3xl sm:text-4xl font-bold tracking-tight', mode.font)}>
+              EVERYTHING YOU NEED
+              <br />
+              <span className="text-primary">NOTHING YOU DON&apos;T</span>
+            </h1>
+
+            <p className={cn('text-sm', mode.font, mode.color.text.muted)}>
+              Every feature has been battle-tested in production.
+              No bloat, no unused code, no guesswork.
+            </p>
+
+            {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
               <PolarCheckoutButton
                 className={cn(
