@@ -59,7 +59,7 @@ function TemplateGrid({ templates }: { templates: CategoryTemplate[] }) {
     <div className="grid gap-4 md:grid-cols-2">
       {templates.map((template) => (
         <Link key={template.id} href={template.href}>
-          <div className="group border-border bg-card hover:bg-muted/50 border transition-colors">
+          <div className={cn('group border-border bg-card border transition-colors', mode.state.hover.card)}>
             {/* Card Header */}
             <div className="border-border flex items-center justify-between border-b px-4 py-2">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>

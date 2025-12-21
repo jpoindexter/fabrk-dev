@@ -35,7 +35,7 @@ function FAQItem({ question, answer, index }: FAQItemProps) {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
-          className="hover:bg-muted/50 flex w-full items-center justify-between p-4 text-left transition-colors"
+          className={cn('flex w-full items-center justify-between p-4 text-left transition-colors', mode.state.hover.card)}
         >
           <span className={cn('text-sm', mode.font)}>
             <span className="text-primary">├─</span>

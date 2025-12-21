@@ -84,7 +84,7 @@ export function TestimonialsSection() {
                 y: -4,
                 transition: { duration: 0.2 },
               }}
-              className="group hover:bg-muted/50 transition-colors"
+              className={cn('group transition-colors', mode.state.hover.card)}
             >
               <Card>
                 <CardHeader

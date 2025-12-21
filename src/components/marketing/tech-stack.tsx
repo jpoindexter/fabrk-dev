@@ -66,7 +66,7 @@ export function TechStack() {
               }}
               className="group"
             >
-              <Card className="hover:bg-muted/50 transition-colors">
+              <Card className={cn('transition-colors', mode.state.hover.card)}>
                 <CardHeader code={tech.id} title="" />
                 <CardContent className="flex flex-col items-center justify-center gap-4 p-4">
                   <SimpleIcon

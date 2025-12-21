@@ -133,7 +133,7 @@ export function EnterpriseFeaturesSection() {
                 }}
                 className="group"
               >
-                <Card className="hover:bg-muted/50 transition-colors">
+                <Card className={cn('transition-colors', mode.state.hover.card)}>
                   <CardHeader
                     code={`0x${(index + 40).toString(16).toUpperCase()}`}
                     title={feature.title

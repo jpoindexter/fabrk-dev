@@ -39,7 +39,8 @@ export function HeroSection() {
             <Link
               href="/changelog"
               className={cn(
-                'inline-flex items-center gap-2 border px-2 py-1 text-xs transition-colors hover:bg-muted/50',
+                'inline-flex items-center gap-2 border px-2 py-1 text-xs transition-colors',
+                mode.state.hover.card,
                 mode.font,
                 mode.color.text.muted
               )}

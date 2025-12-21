@@ -162,7 +162,7 @@ export function PricingComparison({
                       {getFeaturesByCategory(category).map((feature, featureIndex) => (
                         <tr
                           key={`${category}-${featureIndex}`}
-                          className="border-border hover:bg-muted/50 border-t transition-colors"
+                          className={cn('border-border border-t transition-colors', mode.state.hover.card)}
                         >
                           <td className="p-4">
                             <span className="text-foreground text-sm">{feature.name}</span>
