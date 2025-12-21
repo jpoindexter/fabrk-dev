@@ -100,7 +100,7 @@ export function AiChatInput({
             <Button
               variant="ghost"
               size="icon"
-              className="hover:bg-muted/50 size-8"
+              className={cn('size-8', mode.state.hover.card)}
               aria-label="Attach file"
             >
               <Paperclip className="size-4" aria-hidden="true" />
@@ -112,7 +112,7 @@ export function AiChatInput({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="hover:bg-muted/50 h-8 gap-2 text-xs uppercase"
+                    className={cn('h-8 gap-2 text-xs uppercase', mode.state.hover.card)}
                   >
                     <span>{currentModel?.name || 'SELECT MODEL'}</span>
                     <ChevronDown className="size-3 opacity-50" />

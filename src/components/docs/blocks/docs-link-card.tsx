@@ -6,6 +6,7 @@
 
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface DocsLinkCardProps {
   /** Link destination */
@@ -31,7 +32,7 @@ export function DocsLinkCard({
 
   return (
     <Link href={href} className={cn('group block', className)}>
-      <div className="border-border bg-card hover:bg-muted/50 h-full border transition-all">
+      <div className={cn('border-border bg-card h-full border transition-all', mode.state.hover.card)}>
         {/* Terminal Header */}
         <div className="border-border border-b px-4 py-2">
           <span className="text-muted-foreground group-hover:text-primary font-mono text-xs transition-colors">

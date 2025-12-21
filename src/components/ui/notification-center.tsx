@@ -155,7 +155,8 @@ const NotificationItem = React.forwardRef<HTMLDivElement, NotificationItemProps>
         className={cn(
           'relative flex gap-4 border border-transparent p-4 transition-all',
           mode.radius,
-          'hover:bg-muted/50 cursor-pointer hover:border',
+          'cursor-pointer hover:border',
+          mode.state.hover.card,
           !notification.read && 'bg-primary/5'
         )}
         onMouseEnter={() => setIsHovered(true)}

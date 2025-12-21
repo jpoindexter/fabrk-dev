@@ -172,7 +172,7 @@ export function MyNavbar() {
             { name: 'Light', desc: 'Clean white background', color: '#ffffff' },
             { name: 'Dark', desc: 'Pure black background', color: '#1d232a' },
           ].map((theme) => (
-            <Card key={theme.name} interactive className="hover:bg-muted/50 transition-all">
+            <Card key={theme.name} interactive className="transition-all">
               <CardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div
@@ -198,7 +198,7 @@ export function MyNavbar() {
             { name: 'Terminal', desc: 'Sharp edges, monospace font', icon: '[]' },
             { name: 'Modern', desc: 'Rounded edges, sans-serif font', icon: '()' },
           ].map((theme) => (
-            <Card key={theme.name} interactive className="hover:bg-muted/50 transition-all">
+            <Card key={theme.name} interactive className="transition-all">
               <CardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div className="border-border flex h-6 w-6 items-center justify-center rounded-none border-2">

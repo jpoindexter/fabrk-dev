@@ -260,7 +260,7 @@ export function AiSearch({
                     mode.radius,
                     mode.font,
                     mode.color.border.default,
-                    'hover:bg-muted hover:bg-muted/50'
+                    mode.state.hover.card
                   )}
                 >
                   {suggestion}
@@ -310,7 +310,7 @@ export function AiSearch({
                         'flex w-full items-start gap-3 border p-3 text-left transition-colors',
                         mode.radius,
                         mode.color.border.default,
-                        'hover:bg-muted hover:bg-muted/50'
+                        mode.state.hover.card
                       )}
                     >
                       <div

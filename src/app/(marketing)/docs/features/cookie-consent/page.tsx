@@ -56,7 +56,7 @@ function CookieConsentDemo() {
                   preferences[item.key as keyof typeof preferences]
                     ? 'border-success text-success'
                     : 'border-border text-muted-foreground'
-                } ${item.locked ? 'cursor-not-allowed opacity-50' : 'hover:bg-muted/50 cursor-pointer'}`}
+                } ${item.locked ? 'cursor-not-allowed opacity-50' : cn(mode.state.hover.card, 'cursor-pointer')}`}
                 disabled={item.locked}
               >
                 {preferences[item.key as keyof typeof preferences] ? '[ON]' : '[OFF]'}

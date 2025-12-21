@@ -425,7 +425,7 @@ export function PlanSelector({
               mode.radius,
               isSelected
                 ? 'border-primary ring-primary ring-2'
-                : 'border-border hover:bg-muted/50',
+                : cn('border-border', mode.state.hover.card),
               plan.popular && 'ring-primary/20 ring-2'
             )}
           >

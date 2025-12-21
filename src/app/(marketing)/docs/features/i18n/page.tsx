@@ -418,7 +418,7 @@ export const localeFlags: Record<Locale, string> = {
           <Link href="/docs/features/seo">
             <DocsCard
               title="SEO LOCALIZATION"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               SEO for Multiple Languages
               <p className="mb-6">Learn how to optimize SEO metadata for each locale.</p>
@@ -427,7 +427,7 @@ export const localeFlags: Record<Locale, string> = {
           <Link href="/docs/features/lemonsqueezy">
             <DocsCard
               title="GLOBAL PAYMENTS"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               Global Payments
               <p className="mb-6">Accept payments from users worldwide with Lemon Squeezy.</p>

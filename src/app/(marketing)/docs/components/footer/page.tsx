@@ -3,6 +3,8 @@
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import Link from 'next/link';
 import { CardHeader } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Simplified Footer Demo
 function FooterDemo() {
@@ -175,19 +177,19 @@ export default function LandingPage() {
             <div className="flex gap-2">
               <Link
                 href="#"
-                className="border-border text-muted-foreground hover:bg-muted/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs"
+                className={cn('border-border text-muted-foreground hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs', mode.state.hover.card)}
               >
                 X
               </Link>
               <Link
                 href="#"
-                className="border-border text-muted-foreground hover:bg-muted/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs"
+                className={cn('border-border text-muted-foreground hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs', mode.state.hover.card)}
               >
                 GitHub
               </Link>
               <Link
                 href="#"
-                className="border-border text-muted-foreground hover:bg-muted/50 hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs"
+                className={cn('border-border text-muted-foreground hover:text-foreground flex items-center gap-2 border px-4 py-2 font-mono text-xs', mode.state.hover.card)}
               >
                 Discord
               </Link>

@@ -2,6 +2,8 @@ import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection } from '@/components/docs';
 import { Component, Layers, Code, Palette } from 'lucide-react';
 import Link from 'next/link';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'UI Components Overview - Fabrk Docs',
@@ -205,7 +207,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";`,
               <Link
                 key={component.name}
                 href={`/docs/components/${component.name}`}
-                className="border-border bg-card hover:bg-muted/50 hover:bg-primary/5 block border p-4 transition-colors"
+                className={cn('border-border bg-card block border p-4 transition-colors', mode.state.hover.card)}
               >
                 <div className="font-mono text-sm font-medium uppercase">{component.name}</div>
                 <div className="text-muted-foreground mt-1 font-mono text-xs">

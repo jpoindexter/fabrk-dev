@@ -69,7 +69,8 @@ export function AiFormsInput({ prompt, setPrompt, isLoading, onGenerate, example
                 key={ex}
                 onClick={() => setPrompt(ex)}
                 className={cn(
-                  'border px-3 py-1 text-xs opacity-70 hover:opacity-100 hover:bg-muted/50 transition-all',
+                  'border px-3 py-1 text-xs opacity-70 hover:opacity-100 transition-all',
+                  mode.state.hover.card,
                   mode.radius,
                   mode.font,
                   mode.color.border.default

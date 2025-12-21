@@ -146,7 +146,7 @@ export default function BlogPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {regularPosts.map((post) => (
           <Link key={post.id} href={\`/blog/\${post.id}\`}>
-            <div className="group border border-border hover:bg-muted/50 transition-colors">
+            <div className={cn('group border border-border transition-colors', mode.state.hover.card)}>
               <div className="border-b border-border px-4 py-2">
                 <span className="font-mono text-xs text-muted-foreground">
                   [ [0x0{post.id}] POST_{post.id} ]

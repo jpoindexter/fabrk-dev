@@ -98,7 +98,7 @@ function MessageItem({ message }: { message: Message }) {
 
           {!isUser && (
              <div className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100 flex gap-1">
-               <button onClick={copyToClipboard} className="p-1 hover:bg-muted/50">
+               <button onClick={copyToClipboard} className={cn('p-1', mode.state.hover.card)}>
                  {copied ? <Check className="size-3" /> : <Copy className="size-3" />}
                </button>
              </div>

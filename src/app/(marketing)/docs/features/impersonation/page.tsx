@@ -439,7 +439,7 @@ export default function DashboardLayout({ children }) {
           <Link href="/docs/security/audit-logging">
             <DocsCard
               title="AUDIT LOGGING"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               Audit Logging
               <p className="mb-6">
@@ -450,7 +450,7 @@ export default function DashboardLayout({ children }) {
           <Link href="/docs/features/organizations">
             <DocsCard
               title="ORGANIZATIONS"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               Organizations
               <p className="mb-6">Manage teams and organization-level permissions.</p>

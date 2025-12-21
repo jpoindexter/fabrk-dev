@@ -191,7 +191,7 @@ export default function LibraryDocsPage() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {categoryGuides.map((guide) => (
               <Link key={guide.href} href={guide.href}>
-                <Card className="hover:bg-muted/50 group border-border h-full transition-all">
+                <Card className={cn('group border-border h-full transition-all', mode.state.hover.card)}>
                   {/* Card Header */}
                   <div className="border-border flex items-center justify-between border-b px-4 py-2">
                     <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
@@ -274,7 +274,8 @@ export default function LibraryDocsPage() {
                 className={cn(
                   mode.font,
                   mode.radius,
-                  'border-border bg-card hover:bg-muted/50 inline-flex items-center gap-2 border px-4 py-2 text-xs transition-colors'
+                  'border-border bg-card inline-flex items-center gap-2 border px-4 py-2 text-xs transition-colors',
+                  mode.state.hover.card
                 )}
               >
                 <Code className="h-4 w-4" />

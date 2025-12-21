@@ -4,6 +4,8 @@
  */
 
 import { LucideIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 interface Feature {
   icon: LucideIcon;
@@ -48,7 +50,7 @@ export function DocsFeatureList({ features, columns = 3, startIndex = 1 }: DocsF
         return (
           <div
             key={index}
-            className="group border-border bg-card hover:bg-muted/50 border transition-colors"
+            className={cn('group border-border bg-card border transition-colors', mode.state.hover.card)}
           >
             {/* Module Header */}
             <div className="border-border flex items-center justify-between border-b px-4 py-2">

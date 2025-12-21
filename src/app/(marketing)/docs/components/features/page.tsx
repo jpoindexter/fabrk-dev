@@ -2,6 +2,8 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Shield, Zap, Lock, Database, Mail, CreditCard } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Simplified Features Demo
 function FeaturesDemo() {
@@ -30,7 +32,7 @@ function FeaturesDemo() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="border-border bg-card hover:bg-muted/50 border p-4 transition-colors"
+            className={cn('border-border bg-card border p-4 transition-colors', mode.state.hover.card)}
           >
             <div className="mb-4 flex items-center gap-2">
               <feature.icon className="text-primary h-4 w-4" />
@@ -113,7 +115,7 @@ export default function LandingPage() {
           title: 'Feature Card',
           description: 'Individual feature card component',
           preview: (
-            <div className="border-border bg-card hover:bg-muted/50 max-w-sm border p-4 transition-colors">
+            <div className={cn('border-border bg-card max-w-sm border p-4 transition-colors', mode.state.hover.card)}>
               <div className="mb-4 flex items-center gap-2">
                 <Shield className="text-primary h-4 w-4" />
                 <span className="font-mono text-xs font-semibold">AUTHENTICATION</span>

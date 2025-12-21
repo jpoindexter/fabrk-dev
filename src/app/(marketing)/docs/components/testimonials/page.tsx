@@ -2,6 +2,8 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Simplified Testimonials Demo - EXAMPLE_PLACEHOLDER data
 function TestimonialsDemo() {
@@ -37,7 +39,7 @@ function TestimonialsDemo() {
         {testimonials.map((t, i) => (
           <div
             key={i}
-            className="border-border bg-card hover:bg-muted/50 border p-4 transition-all"
+            className={cn('border-border bg-card border p-4 transition-all', mode.state.hover.card)}
           >
             <div className="text-muted-foreground mb-2 text-xs">[0x0{i + 1}]</div>
             <p className="text-muted-foreground mb-4 text-xs">&quot;{t.quote}&quot;</p>

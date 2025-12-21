@@ -48,7 +48,7 @@ export function AiChatSidebar({
               mode.font,
               activeId === conv.id
                 ? cn(mode.color.bg.surfaceRaised, mode.color.border.default)
-                : 'hover:bg-muted/50 hover:border-border/50'
+                : cn(mode.state.hover.card, 'hover:border-border/50')
             )}
           >
             <MessageSquare className="size-3.5 shrink-0 opacity-70" />

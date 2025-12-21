@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Upload, Image, Shield, FileCheck } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'File Uploads - Fabrk Docs',
@@ -238,7 +240,7 @@ export function FileUploadForm() {
     <div className="space-y-4">
       <div
         {...getRootProps()}
-        className="border-2 border-dashed p-6 text-center cursor-pointer transition-colors hover:bg-muted/50"
+        className={cn('border-2 border-dashed p-6 text-center cursor-pointer transition-colors', mode.state.hover.card)}
       >
         <input {...getInputProps()} />
         <p className="font-mono text-sm text-muted-foreground">

@@ -394,7 +394,7 @@ function BillingPreview() {
             </Card>
 
             {/* Add New Card */}
-            <button className="border-border hover:bg-muted/50 flex h-48 flex-col items-center justify-center gap-2 border border-dashed transition-colors">
+            <button className={cn('border-border flex h-48 flex-col items-center justify-center gap-2 border border-dashed transition-colors', mode.state.hover.card)}>
               <Plus className="text-muted-foreground size-6" />
               <span className={cn(mode.font, 'text-muted-foreground text-sm')}>Add New Card</span>
             </button>

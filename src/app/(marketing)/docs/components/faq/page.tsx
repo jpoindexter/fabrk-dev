@@ -4,6 +4,7 @@ import { ComponentShowcaseTemplate } from '@/components/docs';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { mode } from '@/design-system';
 
 // Simplified FAQ Demo
 function FAQDemo() {
@@ -37,7 +38,7 @@ function FAQDemo() {
           <div key={i} className="border-border bg-card border">
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="hover:bg-muted/50 flex w-full items-center justify-between p-4 text-left transition-colors"
+              className={cn('flex w-full items-center justify-between p-4 text-left transition-colors', mode.state.hover.card)}
             >
               <span className="font-mono text-xs">
                 <span className="text-primary">├─</span>
@@ -78,7 +79,7 @@ function FAQCategoriesDemo() {
               'border px-4 py-2 font-mono text-xs transition-colors',
               active === cat.toLowerCase()
                 ? 'border-primary bg-primary text-primary-foreground'
-                : 'border-border bg-card text-muted-foreground hover:bg-muted/50'
+                : cn('border-border bg-card text-muted-foreground', mode.state.hover.card)
             )}
           >
             &gt; {cat}
