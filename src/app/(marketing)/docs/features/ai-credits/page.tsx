@@ -329,7 +329,7 @@ export async function POST(request: Request) {
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Link href="/docs/components/balance-display">
-            <DocsCard title="BALANCE" className="hover:bg-muted/50 h-full transition-all">
+            <DocsCard title="BALANCE" className="h-full transition-all">
               <p className="text-muted-foreground text-sm">
                 Current credit balance with color-coded progress bar. Auto-fetches from API.
               </p>
@@ -337,7 +337,7 @@ export async function POST(request: Request) {
           </Link>
 
           <Link href="/docs/components/usage-meter">
-            <DocsCard title="METER" className="hover:bg-muted/50 h-full transition-all">
+            <DocsCard title="METER" className="h-full transition-all">
               <p className="text-muted-foreground text-sm">
                 Progress bar for resource usage. Warnings at 75%/90% thresholds.
               </p>
@@ -345,7 +345,7 @@ export async function POST(request: Request) {
           </Link>
 
           <Link href="/docs/components/plan-selector">
-            <DocsCard title="PLANS" className="hover:bg-muted/50 h-full transition-all">
+            <DocsCard title="PLANS" className="h-full transition-all">
               <p className="text-muted-foreground text-sm">
                 Pricing cards for upgrade flows. Popular badge and current plan indicator.
               </p>
@@ -353,7 +353,7 @@ export async function POST(request: Request) {
           </Link>
 
           <Link href="/docs/components/credit-usage-chart">
-            <DocsCard title="CHART" className="hover:bg-muted/50 h-full transition-all">
+            <DocsCard title="CHART" className="h-full transition-all">
               <p className="text-muted-foreground text-sm">
                 14-day bar chart of daily consumption. Hover tooltips show exact values.
               </p>
@@ -361,7 +361,7 @@ export async function POST(request: Request) {
           </Link>
 
           <Link href="/docs/components/credit-transaction-table">
-            <DocsCard title="HISTORY" className="hover:bg-muted/50 h-full transition-all">
+            <DocsCard title="HISTORY" className="h-full transition-all">
               <p className="text-muted-foreground text-sm">
                 Complete transaction history with type icons, amounts, and timestamps.
               </p>
@@ -376,7 +376,7 @@ export async function POST(request: Request) {
           <Link href="/docs/features/payments">
             <DocsCard
               title="STRIPE INTEGRATION"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               Stripe Payments
               <p className="mb-6">Sell credit packs or subscriptions with different allowances.</p>
@@ -385,7 +385,7 @@ export async function POST(request: Request) {
           <Link href="/docs/features/analytics">
             <DocsCard
               title="USAGE ANALYTICS"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               Analytics
               <p className="mb-6">Track which AI features users consume most.</p>

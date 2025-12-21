@@ -327,7 +327,7 @@ export async function POST(req: Request) {
       <DocsSection title="Next Steps">
         <div className="grid gap-4 sm:grid-cols-2">
           <Link href="/docs/features/trial">
-            <DocsCard title="FREE TRIALS" className="hover:bg-muted/50 h-full transition-all">
+            <DocsCard title="FREE TRIALS" className="h-full transition-all">
               Free Trials
               <p className="mb-6">Let users try your product before paying with trial periods.</p>
             </DocsCard>
@@ -335,7 +335,7 @@ export async function POST(req: Request) {
           <Link href="/docs/features/payments">
             <DocsCard
               title="STRIPE PAYMENTS"
-              className="hover:bg-muted/50 h-full transition-all"
+              className="h-full transition-all"
             >
               Stripe Setup
               <p className="mb-6">Set up Stripe for direct payment processing with lower fees.</p>
