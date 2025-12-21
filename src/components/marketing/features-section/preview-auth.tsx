@@ -104,7 +104,7 @@ export function AuthPreview() {
           <div
             className={cn(
               mode.radius,
-              'bg-primary cursor-pointer px-4 py-2 text-center transition-opacity hover:opacity-90'
+              `bg-primary cursor-pointer px-4 py-2 text-center transition-opacity ${mode.state.hover.opacity}`
             )}
           >
             <span className={cn(mode.font, 'text-primary-foreground text-xs')}>

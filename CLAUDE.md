@@ -144,7 +144,7 @@ className="bg-purple-500 text-white"
 ### 4. NEVER modify base UI components without explicit permission
 
 **Protected Components** (DO NOT MODIFY):
-- `src/components/ui/` - all 77 UI components
+- `src/components/ui/` - all 78 UI components
 - `src/components/marketing/navigation.tsx`
 - `src/components/navigation/site-navigation.tsx`
 - `src/components/shared/` - All shared components (logo, footer, etc.)
@@ -176,7 +176,7 @@ src/
 │   ├── (auth)/            # Auth pages
 │   └── api/               # API routes
 ├── components/
-│   ├── ui/                # Radix primitives (LOCKED - 77+ components)
+│   ├── ui/                # Radix primitives (LOCKED - 78+ components)
 │   ├── docs/              # Docs components & templates
 │   ├── landing/           # Landing sections
 │   ├── dashboard/         # Dashboard components

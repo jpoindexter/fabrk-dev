@@ -37,13 +37,13 @@ export function AiFormsPreview({ form }: AiFormsPreviewProps) {
           <div className="p-6">
             <div className="mb-6 pb-4 border-b border-dashed">
               <h3 className={cn('text-sm font-bold uppercase', mode.font)}>{form.name}</h3>
-              <p className={cn('text-xs opacity-70', mode.font)}>{form.description}</p>
+              <p className={cn('text-xs', mode.state.secondary.opacity, mode.font)}>{form.description}</p>
             </div>
             
             <form className="space-y-4 max-w-lg">
               {form.fields.map((field) => (
                 <div key={field.name} className="space-y-1">
-                  <label className={cn('text-xs uppercase font-bold opacity-70', mode.font)}>
+                  <label className={cn('text-xs uppercase font-bold', mode.state.secondary.opacity, mode.font)}>
                     [{field.label}]
                     {field.required && <span className="text-destructive ml-1">*</span>}
                   </label>

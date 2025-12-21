@@ -310,7 +310,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
               {/* Close button - positioned in header row */}
               <button
                 onClick={closeModal}
-                className="focus:ring-ring absolute top-1.5 right-2 z-10 p-1.5 opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none"
+                className={cn('focus:ring-ring absolute top-1.5 right-2 z-10 p-1.5 transition-opacity hover:opacity-100 focus:ring-2 focus:outline-none', mode.state.secondary.opacity)}
                 aria-label="Close"
               >
                 <X className="size-4" />

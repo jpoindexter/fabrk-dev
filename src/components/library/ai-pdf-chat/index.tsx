@@ -253,7 +253,7 @@ export function AiPdfChat({ onAskQuestion, className }: PdfChatProps) {
                   {messages.map((msg) => (
                     <div
                       key={msg.id}
-                      className={cn('flex gap-3', msg.role === 'user' && 'justify-end')}
+                      className={cn('flex gap-4', msg.role === 'user' && 'justify-end')}
                     >
                       {msg.role === 'assistant' && (
                         <div
@@ -299,7 +299,7 @@ export function AiPdfChat({ onAskQuestion, className }: PdfChatProps) {
                     </div>
                   ))}
                   {isLoading && (
-                    <div className="flex gap-3">
+                    <div className="flex gap-4">
                       <div
                         className={cn(
                           'flex size-8 shrink-0 items-center justify-center border',

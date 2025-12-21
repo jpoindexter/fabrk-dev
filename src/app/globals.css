@@ -364,6 +364,13 @@
   --code-keyword: oklch(84% 0.14 133);
   --code-function: oklch(86% 0.1 137);
   --code-selector: oklch(84% 0.13 134);
+
+  /* State Opacity Tokens */
+  --state-hover-opacity: 0.90;
+  --state-secondary-opacity: 0.70;
+  --state-completed-opacity: 0.60;
+  --state-muted-opacity: 0.50;
+  --state-disabled-opacity: 0.38;
 }
 
 /* ============================================

@@ -806,7 +806,7 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
 
         {/* Includes List - always show 3 items for consistency */}
         {includes && includes.length > 0 && (
-          <div className="p-6 flex flex-col gap-3">
+          <div className="p-6 flex flex-col gap-2">
             <p
               className={cn(
                 'text-[11px] font-bold uppercase tracking-wider mb-1',
@@ -818,7 +818,7 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
             </p>
             <ul className="flex flex-col gap-2">
               {includes.slice(0, 3).map((item) => (
-                <li key={item} className="flex items-start gap-3 group/item">
+                <li key={item} className="flex items-start gap-2 group/item">
                   <span className="font-bold text-sm mt-[1px] text-warning">
                     ✓
                   </span>

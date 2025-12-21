@@ -207,6 +207,7 @@ export const terminalTheme: SemanticTokens = {
     hover: {
       bgOpacity: '0.08',
       borderOpacity: '0.5',
+      opacity: '0.90',
     },
     active: {
       bgOpacity: '0.12',
@@ -218,6 +219,15 @@ export const terminalTheme: SemanticTokens = {
     },
     disabled: {
       opacity: '0.38', // WCAG-compliant disabled opacity
+    },
+    completed: {
+      opacity: '0.60',
+    },
+    muted: {
+      opacity: '0.50',
+    },
+    secondary: {
+      opacity: '0.70',
     },
   },
 };

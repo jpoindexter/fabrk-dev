@@ -160,7 +160,7 @@ Git commits automatically run:
 
 ## 🎨 Customizing Components
 
-all 77 UI components support customization through className props and CSS variables.
+all 78 UI components support customization through className props and CSS variables.
 
 ### Quick Customization Examples
 
@@ -680,7 +680,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 ### Component Documentation
 
 **Component API documentation** at `/docs/components`:
-- all 77 UI components with props, variants, examples
+- all 78 UI components with props, variants, examples
 - Accessibility compliance notes
 - Terminal styling patterns
 - Copy-paste ready code
@@ -805,7 +805,7 @@ fabrk/
 3. Visit http://localhost:3000/docs → Interactive docs
     ↓
 4. Browse:
-   • /docs/components → See all 77 UI components
+   • /docs/components → See all 78 UI components
    • /docs/features → Learn to add payments, auth, etc.
    • /library → Copy-paste ready templates
     ↓

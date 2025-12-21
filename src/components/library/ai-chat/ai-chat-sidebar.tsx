@@ -51,10 +51,10 @@ export function AiChatSidebar({
                 : cn(mode.state.hover.card, 'hover:border-border/50')
             )}
           >
-            <MessageSquare className="size-3.5 shrink-0 opacity-70" />
+            <MessageSquare className={cn('size-3.5 shrink-0', mode.state.secondary.opacity)} />
             <span className="flex-1 truncate uppercase">{conv.title}</span>
             {activeId === conv.id && (
-              <MoreHorizontal className="size-3.5 opacity-50" />
+              <MoreHorizontal className={cn('size-3.5', mode.state.muted.opacity)} />
             )}
           </button>
         ))}

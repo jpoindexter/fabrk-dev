@@ -154,6 +154,7 @@ export interface StateTokens {
   hover: {
     bgOpacity: string; // 0.08 (8% overlay)
     borderOpacity: string; // 0.5 (50% stronger)
+    opacity: string; // 0.90 (hover state)
   };
   active: {
     bgOpacity: string; // 0.12 (12% overlay)
@@ -165,6 +166,15 @@ export interface StateTokens {
   };
   disabled: {
     opacity: string; // 0.38 (WCAG-compliant)
+  };
+  completed: {
+    opacity: string; // 0.60 (completed state)
+  };
+  muted: {
+    opacity: string; // 0.50 (muted/dimmed state)
+  };
+  secondary: {
+    opacity: string; // 0.70 (secondary/subdued state)
   };
 }
 
@@ -359,6 +369,7 @@ export const cssVariableNames = {
     hover: {
       bgOpacity: '--state-hover-bg-opacity',
       borderOpacity: '--state-hover-border-opacity',
+      opacity: '--state-hover-opacity',
     },
     active: {
       bgOpacity: '--state-active-bg-opacity',
@@ -370,6 +381,15 @@ export const cssVariableNames = {
     },
     disabled: {
       opacity: '--state-disabled-opacity',
+    },
+    completed: {
+      opacity: '--state-completed-opacity',
+    },
+    muted: {
+      opacity: '--state-muted-opacity',
+    },
+    secondary: {
+      opacity: '--state-secondary-opacity',
     },
   },
 } as const;

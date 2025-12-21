@@ -26,7 +26,7 @@ This checklist covers everything needed to launch Fabrk (the boilerplate product
 ### Documentation
 - [x] **README.md:** Updated with setup wizard instructions
 - [x] **QUICK-START.md:** Setup wizard flow documented
-- [x] **COMPONENTS-INVENTORY.md:** 77+ components listed
+- [x] **COMPONENTS-INVENTORY.md:** 78+ components listed
 - [x] **LICENSE.md:** Commercial license terms verified
 - [x] **SECURITY.md:** Security policy and reporting contacts correct
 

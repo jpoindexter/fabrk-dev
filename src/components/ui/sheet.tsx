@@ -71,7 +71,7 @@ const SheetContent = React.forwardRef<
       {children}
       <SheetPrimitive.Close
         className={cn(
-          'absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed',
+          `absolute top-4 right-4 ${mode.state.secondary.opacity} transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed`,
           `data-[state=open]:${mode.color.bg.muted}`,
           mode.state.focus.ring,
           mode.radius

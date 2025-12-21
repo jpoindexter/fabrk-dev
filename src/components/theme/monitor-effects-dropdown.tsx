@@ -119,7 +119,7 @@ export function MonitorEffectsDropdown() {
               <span className="font-semibold">{effect.name}</span>
               {activeEffect === effect.id && <span className="text-xs">✓</span>}
             </div>
-            <span className="text-xs opacity-70">{effect.description}</span>
+            <span className={cn('text-xs', mode.state.secondary.opacity)}>{effect.description}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

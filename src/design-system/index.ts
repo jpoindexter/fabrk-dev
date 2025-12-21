@@ -217,6 +217,7 @@ export interface ModeConfig {
       cardSubtle: string;
       link: string;
       listItem: string;
+      opacity: string;
     };
     focus: {
       ring: string;
@@ -224,6 +225,15 @@ export interface ModeConfig {
     disabled: {
       opacity: string;
       cursor: string;
+    };
+    completed: {
+      opacity: string;
+    };
+    muted: {
+      opacity: string;
+    };
+    secondary: {
+      opacity: string;
     };
   };
 }
@@ -341,13 +351,23 @@ export const mode: ModeConfig = {
       cardSubtle: 'hover:bg-muted/30',
       link: 'hover:text-primary',
       listItem: 'hover:bg-muted/50',
+      opacity: 'hover:opacity-90',
     },
     focus: {
       ring: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
     },
     disabled: {
-      opacity: 'disabled:opacity-[var(--state-disabled-opacity)]',
+      opacity: 'disabled:opacity-50',
       cursor: 'disabled:cursor-not-allowed',
+    },
+    completed: {
+      opacity: 'opacity-60',
+    },
+    muted: {
+      opacity: 'opacity-50',
+    },
+    secondary: {
+      opacity: 'opacity-70',
     },
   },
 };

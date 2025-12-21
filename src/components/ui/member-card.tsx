@@ -188,7 +188,7 @@ const CompactMemberCard = React.forwardRef<HTMLDivElement, CompactMemberCardProp
       <div
         ref={ref}
         className={cn(
-          'bg-card flex items-center gap-4 border p-4 transition-all hover:opacity-90',
+          `bg-card flex items-center gap-4 border p-4 transition-all ${mode.state.hover.opacity}`,
           mode.radius,
           className
         )}
@@ -283,7 +283,7 @@ const FullMemberCard = React.forwardRef<HTMLDivElement, FullMemberCardProps>(
     return (
       <div
         ref={ref}
-        className={cn('bg-card border p-6 transition-all hover:opacity-90', mode.radius, className)}
+        className={cn(`bg-card border p-6 transition-all ${mode.state.hover.opacity}`, mode.radius, className)}
         {...props}
       >
         <div className="flex flex-col items-center space-y-4">

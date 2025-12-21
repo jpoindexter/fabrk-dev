@@ -409,7 +409,7 @@ export const mode = {
 
 ## 6) COMPONENT LIBRARY — VISUAL SPEC
 
-### Component Inventory (77+ components)
+### Component Inventory (78+ components)
 
 **Location:** `src/components/ui/`
 
@@ -936,7 +936,7 @@ const easing = {
 
 **Location:** `src/components/ui/`
 
-All 77+ components audited on December 12, 2025:
+All 78+ components audited on December 12, 2025:
 - ✅ 100% use design tokens (no hardcoded colors)
 - ✅ 100% use `mode.font` for typography
 - ✅ 100% use `mode.radius` for borders
@@ -997,11 +997,11 @@ all 12 themes audited:
 - [x] No hardcoded colors or styles
 
 **Evidence:**
-- 77+ components audited (December 12, 2025)
+- 78+ components audited (December 12, 2025)
 - ESLint rule `design-system/no-hardcoded-colors` enforced
 - Pre-commit hooks block violations
 
-**Status:** ✅ **PASS** (77/77+ components compliant)
+**Status:** ✅ **PASS** (77/78+ components compliant)
 
 ---
 
@@ -1165,7 +1165,7 @@ all 12 themes audited:
    - Token architecture
 
 3. **Components**
-   - Component catalog (77+ components)
+   - Component catalog (78+ components)
    - Props and variants
    - Usage examples
    - Accessibility notes

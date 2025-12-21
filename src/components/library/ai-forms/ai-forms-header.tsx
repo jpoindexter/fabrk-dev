@@ -13,7 +13,7 @@ export function AiFormsHeader() {
       </div>
       <div>
         <h1 className={cn('text-2xl font-bold uppercase', mode.font)}>AI Form Generator</h1>
-        <p className={cn('text-sm opacity-70', mode.font)}>
+        <p className={cn('text-sm', mode.state.secondary.opacity, mode.font)}>
           Generate React Hook Form + Zod code from natural language
         </p>
       </div>

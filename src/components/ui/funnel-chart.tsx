@@ -156,7 +156,7 @@ export function FunnelChart({
             role="presentation"
             className={cn(
               'flex items-center gap-2 transition-opacity',
-              hoveredIndex !== null && hoveredIndex !== index && 'opacity-50'
+              hoveredIndex !== null && hoveredIndex !== index && mode.state.muted.opacity
             )}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}

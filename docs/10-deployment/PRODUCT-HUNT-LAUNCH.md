@@ -35,14 +35,14 @@ Launch Fabrk on Product Hunt to reach 50K+ developers and generate buzz for your
 **Design Tips**:
 - Use your primary color (purple)
 - Show product dashboard/UI
-- Include "77+ components" or "$299"
+- Include "78+ components" or "$299"
 - Keep clean and minimal
 
 **Example thumbnail elements**:
 - Primary color background
 - Product screenshot in center
 - Large headline: "Fabrk - SaaS Boilerplate"
-- Smaller subheading: "77+ components. Production-ready. $299"
+- Smaller subheading: "78+ components. Production-ready. $299"
 
 ### 3. Write Your Tagline (T-14 days)
 
@@ -53,7 +53,7 @@ Launch Fabrk on Product Hunt to reach 50K+ developers and generate buzz for your
 
 Alternative ideas:
 - "The complete Next.js 15 SaaS boilerplate"
-- "77+ components + payments + auth + docs. Launch ready."
+- "78+ components + payments + auth + docs. Launch ready."
 - "3x faster to launch with production-ready code"
 
 ### 4. Create Gallery (T-7 days)
@@ -108,7 +108,7 @@ Fabrk is production-ready SaaS boilerplate with:
 
 ## What's Inside
 
-**77+ components**:
+**78+ components**:
 - 9 landing page components
 - 8 dashboard templates
 - 25 UI primitives
@@ -129,14 +129,14 @@ Fabrk is production-ready SaaS boilerplate with:
 ## Why This Matters
 
 **For indie hackers**: Launch in 1 week instead of 2 months
-**For agencies**: 77+ components = no UI building
+**For agencies**: 78+ components = no UI building
 **For teams**: Production-ready = fewer bugs
 **For everyone**: $299 investment, save thousands in dev time
 
 ## By The Numbers
 
 - **156 files** vs competitors' 450-1000
-- **77+ components** vs shadcn/ui's 67 (30% more)
+- **78+ components** vs shadcn/ui's 67 (30% more)
 - **Fully documented** with examples
 - **64% test coverage** with 931+ tests
 - **400KB docs** with 24 guides
@@ -256,7 +256,7 @@ TL;DR: 87 production components + auth + payments + docs. Ship SaaS in days.
 Mention when relevant:
 - "Built by indie developers, for indie developers"
 - "Production-ready = tested, documented, no bugs"
-- "77+ components saves 3-4 weeks of dev time"
+- "78+ components saves 3-4 weeks of dev time"
 - "Same price as Makerkit, 45% more components"
 - "Lifetime access, infinite projects"
 

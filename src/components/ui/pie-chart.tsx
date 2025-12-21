@@ -128,7 +128,7 @@ export function PieChart({
                 fill={segment.color}
                 stroke="var(--color-background)"
                 strokeWidth={2}
-                className={cn('cursor-pointer transition-all', isHovered && 'opacity-90')}
+                className={cn('cursor-pointer transition-all', isHovered && mode.state.hover.opacity.replace('hover:', ''))}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => onSegmentClick?.(segment, index)}
@@ -159,7 +159,7 @@ export function PieChart({
               aria-label={`${segment.label}: ${segment.percentage.toFixed(1)}%`}
               className={cn(
                 'flex cursor-pointer items-center gap-2 transition-opacity',
-                hoveredIndex !== null && hoveredIndex !== index && 'opacity-50'
+                hoveredIndex !== null && hoveredIndex !== index && mode.state.muted.opacity
               )}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}

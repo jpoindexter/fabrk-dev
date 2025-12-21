@@ -115,7 +115,7 @@ export function AiChatInput({
                     className={cn('h-8 gap-2 text-xs uppercase', mode.state.hover.card)}
                   >
                     <span>{currentModel?.name || 'SELECT MODEL'}</span>
-                    <ChevronDown className="size-3 opacity-50" />
+                    <ChevronDown className={cn('size-3', mode.state.muted.opacity)} />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-[200px]">

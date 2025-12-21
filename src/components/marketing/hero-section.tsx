@@ -63,7 +63,7 @@ export function HeroSection() {
             </p>
 
             {/* Code snippet - compressed */}
-            <div className={cn('border bg-muted/50 p-3 text-xs', mode.font)}>
+            <div className={cn('border bg-muted/50 p-4 text-xs', mode.font)}>
               <div className={mode.color.text.muted}>import {'{'} Auth, Billing {'}'} from &quot;@fabrk&quot;;</div>
               <div className="mt-1">
                 <span className={mode.color.text.accent}>&lt;Auth&gt;</span>
@@ -74,7 +74,7 @@ export function HeroSection() {
             </div>
 
             {/* CTAs - clear hierarchy */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <PolarCheckoutButton
                 className={cn(
                   'bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium',
@@ -83,7 +83,7 @@ export function HeroSection() {
                 )}
               >
                 &gt; GET STARTED
-                <span className="ml-2 opacity-70 text-xs">$199</span>
+                <span className={cn('ml-2 text-xs', mode.state.secondary.opacity)}>$199</span>
                 <ArrowRight className="ml-1 h-4 w-4" />
               </PolarCheckoutButton>
               <Button
@@ -201,7 +201,7 @@ export function HeroSection() {
                     { text: 'New subscription started', time: '5m ago' },
                     { text: 'Invoice #1234 paid', time: '12m ago' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 border-l-2 border-primary pl-3 py-1">
+                    <div key={i} className="flex items-center gap-4 border-l-2 border-primary pl-4 py-1">
                       <Check className={cn('h-3 w-3', mode.color.text.success)} />
                       <span className={cn('text-xs flex-1', mode.font)}>{item.text}</span>
                       <span className={cn('text-xs', mode.font, mode.color.text.muted)}>{item.time}</span>

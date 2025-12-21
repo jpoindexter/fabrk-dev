@@ -68,7 +68,7 @@ const DialogContent = React.forwardRef<
       {children}
       <DialogPrimitive.Close
         className={cn(
-          'absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed',
+          `absolute top-4 right-4 ${mode.state.secondary.opacity} transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed`,
           mode.state.focus.ring,
           `data-[state=open]:${mode.color.bg.accent} data-[state=open]:${mode.color.text.muted}`,
           mode.radius

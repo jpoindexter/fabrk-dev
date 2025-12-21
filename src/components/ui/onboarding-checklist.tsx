@@ -205,7 +205,7 @@ export function OnboardingChecklist({
                   className={cn(
                     'cursor-pointer text-sm',
                     mode.font,
-                    task.completed && 'text-muted-foreground line-through opacity-60'
+                    task.completed && `text-muted-foreground line-through ${mode.state.completed.opacity}`
                   )}
                 >
                   [{String(index + 1).padStart(2, '0')}]: {task.title}

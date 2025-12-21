@@ -128,7 +128,7 @@ export function BenefitCard({
         </div>
 
         {/* Features List - always show 3 items for consistency */}
-        <div className="p-6 flex flex-col gap-3">
+        <div className="p-6 flex flex-col gap-2">
           <p
             className={cn(
               'text-[11px] font-bold uppercase tracking-wider mb-1',
@@ -140,7 +140,7 @@ export function BenefitCard({
           </p>
           <ul className="flex flex-col gap-2">
             {features.slice(0, 3).map((feature) => (
-              <li key={feature} className="flex items-start gap-3 group/item">
+              <li key={feature} className="flex items-start gap-2 group/item">
                 <span className="font-bold text-sm mt-[1px] text-warning">✓</span>
                 <span
                   className={cn(

@@ -28,7 +28,7 @@ export function AiChatMessageList({ messages, isLoading, className }: AiChatMess
       className={cn('flex-1 overflow-y-auto p-4 space-y-6', mode.color.bg.base, className)}
     >
       {messages.length === 0 && (
-        <div className="flex h-full flex-col items-center justify-center gap-4 opacity-50">
+        <div className={cn('flex h-full flex-col items-center justify-center gap-4', mode.state.muted.opacity)}>
           <Terminal className="size-12" />
           <p className={cn('text-sm uppercase tracking-widest', mode.font)}>System Ready</p>
         </div>
@@ -68,7 +68,7 @@ function MessageItem({ message }: { message: Message }) {
 
       <div className={cn('flex min-w-0 flex-1 flex-col gap-1', isUser ? 'items-end' : 'items-start')}>
         <div className="flex items-center gap-2 px-1">
-          <span className={cn('text-[10px] font-bold uppercase tracking-wider opacity-70', mode.font)}>
+          <span className={cn('text-[10px] font-bold uppercase tracking-wider', mode.state.secondary.opacity, mode.font)}>
             {isUser ? 'OPERATOR' : 'SYSTEM'}
           </span>
           <span className={cn('text-[10px] opacity-40', mode.font)}>
@@ -89,7 +89,7 @@ function MessageItem({ message }: { message: Message }) {
           {message.attachments && message.attachments.length > 0 && (
             <div className="mt-2 flex flex-wrap gap-2">
               {message.attachments.map((att, i) => (
-                <Badge key={i} variant="outline" className="opacity-70">
+                <Badge key={i} variant="outline" className={mode.state.secondary.opacity}>
                   FILE: {att.name}
                 </Badge>
               ))}

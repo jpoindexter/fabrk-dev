@@ -21,13 +21,13 @@ export function AiFormsInput({ prompt, setPrompt, isLoading, onGenerate, example
     <Card>
       <CardHeader code="0x00" title="FORM PROMPT" />
       <CardContent>
-        <p className={cn('mb-4 text-xs opacity-70', mode.font)}>
+        <p className={cn('mb-4 text-xs', mode.state.secondary.opacity, mode.font)}>
           &gt; Describe the form you want to create. Be specific about fields, validation, and purpose.
         </p>
 
         <div className={cn('border bg-background relative', mode.radius, mode.color.border.default)}>
           <div className={cn('border-b px-4 py-2 bg-muted/20', mode.color.border.default)}>
-            <span className={cn('text-xs opacity-50 uppercase', mode.font)}>
+            <span className={cn('text-xs uppercase', mode.state.muted.opacity, mode.font)}>
               [ INPUT ]
             </span>
           </div>
@@ -45,7 +45,7 @@ export function AiFormsInput({ prompt, setPrompt, isLoading, onGenerate, example
             />
             
             <div className="mt-4 flex items-center justify-between">
-              <span className={cn('text-xs opacity-50', mode.font)}>
+              <span className={cn('text-xs', mode.state.muted.opacity, mode.font)}>
                 {isLoading ? 'GENERATING...' : 'READY'}
               </span>
               <Button
@@ -62,14 +62,15 @@ export function AiFormsInput({ prompt, setPrompt, isLoading, onGenerate, example
         </div>
 
         <div className="mt-4 space-y-2">
-          <p className={cn('text-xs opacity-50 uppercase', mode.font)}>[EXAMPLES]:</p>
+          <p className={cn('text-xs uppercase', mode.state.muted.opacity, mode.font)}>[EXAMPLES]:</p>
           <div className="flex flex-wrap gap-2">
             {examples.map((ex) => (
               <button
                 key={ex}
                 onClick={() => setPrompt(ex)}
                 className={cn(
-                  'border px-3 py-1 text-xs opacity-70 hover:opacity-100 transition-all',
+                  'border px-3 py-1 text-xs hover:opacity-100 transition-all',
+                  mode.state.secondary.opacity,
                   mode.state.hover.card,
                   mode.radius,
                   mode.font,

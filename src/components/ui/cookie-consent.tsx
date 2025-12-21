@@ -170,7 +170,7 @@ export function CookieConsent({
             </span>
             <button
               onClick={handleRejectAll}
-              className={cn('text-xs hover:opacity-70', mode.color.text.muted)}
+              className={cn('text-xs', mode.state.secondary.opacity, 'hover:opacity-100', mode.color.text.muted)}
               aria-label="Dismiss"
             >
               ✕

@@ -42,10 +42,10 @@ const CATEGORY_ICONS = {
 };
 
 const CATEGORY_COLORS = {
-  document: 'text-blue-500',
-  user: 'text-green-500',
-  setting: 'text-orange-500',
-  analytics: 'text-purple-500',
+  document: 'text-info',
+  user: 'text-success',
+  setting: 'text-warning',
+  analytics: 'text-primary',
 };
 
 // Demo search results
@@ -307,7 +307,7 @@ export function AiSearch({
                     <button
                       key={result.id}
                       className={cn(
-                        'flex w-full items-start gap-3 border p-3 text-left transition-colors',
+                        'flex w-full items-start gap-4 border p-4 text-left transition-colors',
                         mode.radius,
                         mode.color.border.default,
                         mode.state.hover.card
