@@ -68,7 +68,7 @@ export function HeroSection() {
   const currentWord = displayText;
 
   return (
-    <section className="sticky top-0 z-10 min-h-screen flex items-center justify-center overflow-hidden bg-background shadow-2xl">
+    <section className="sticky top-0 z-10 min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* FUI Background */}
       <FuiBackground />
 
