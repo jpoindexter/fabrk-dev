@@ -41,7 +41,7 @@ All counts are dynamically calculated from actual source files:
 
 | Metric | Source Directory | Value |
 |--------|-----------------|-------|
-| UI Components | `src/components/ui/**/*.tsx` | 77 |
+| UI Components | `src/components/ui/**/*.tsx` | 78 |
 | Templates | `src/app/(marketing)/library/**/page.tsx` | 48+ |
 | Themes | `src/data/themes.ts` | 12 |
 | API Routes | `src/app/api/**/route.ts` | 72 |
@@ -55,11 +55,11 @@ All counts are dynamically calculated from actual source files:
 import { COUNTS, COUNT_STRINGS } from '@/data/counts';
 
 // Numbers
-console.log(COUNTS.components);    // 77
+console.log(COUNTS.components);    // 78
 console.log(COUNTS.templates);     // 48
 
 // Marketing strings (with + suffix)
-console.log(COUNT_STRINGS.components);  // "77+"
+console.log(COUNT_STRINGS.components);  // "78+"
 console.log(COUNT_STRINGS.templates);   // "48+"
 ```
 

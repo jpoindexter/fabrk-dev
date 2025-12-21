@@ -51,7 +51,7 @@
 
 #### Test Coverage & Quality
 - [ ] **Unit tests (Vitest)**
-  - [ ] All 46 components have tests
+  - [ ] All 78+ components have tests
   - [ ] 100% test coverage verified: `npm run test:coverage`
   - [ ] No failing tests: `npm run test`
   - [ ] Accessibility tests passing: `npm run test:a11y`
@@ -65,7 +65,7 @@
   - [ ] Run `npm run test:e2e` - all green
 
 - [ ] **Manual testing**
-  - [ ] Test all 77 components in showcase: `#Component showcase at /components`
+  - [ ] Test all 78+ components in showcase: `#Component showcase at /components`
   - [ ] Test all 28 templates in browser
   - [ ] Test all 6 theme variations
   - [ ] Test on mobile devices (iOS Safari, Android Chrome)
@@ -136,7 +136,7 @@
 - [ ] **README.md polish**
   - [ ] Hero section compelling (see template below)
   - [ ] Quick start guide accurate (test from scratch)
-  - [ ] Feature list complete (46 components, 28 templates, 20 themes)
+  - [ ] Feature list complete (78+ components, 28 templates, 20 themes)
   - [ ] Tech stack documented
   - [ ] Installation steps verified
   - [ ] Links working (GitHub, Discord, support email)
@@ -520,7 +520,7 @@ We're excited to announce the initial release of **Fabrk**, a production-ready N
 
 ## Highlights
 
-- **46 Production-Ready Components** - All tested with 100% coverage
+- **78 production-ready components** - All tested with 100% coverage
 - **28 Copy-Paste Templates** - Analytics, Team Dashboard, User Management, and more
 - **12 Theme Variations** - Green, Amber, Blue, Red, Purple + Retro: Game Boy, C64, GB Pocket, VIC-20, Atari, Spectrum, B&W
 - **17,822 Lines of Test Code** - Vitest + Playwright + Accessibility tests
@@ -529,7 +529,7 @@ We're excited to announce the initial release of **Fabrk**, a production-ready N
 
 ## What's Included
 
-### Components (46 total)
+### Components (78 Total)
 - **UI Primitives (25)**: Button, Card, Input, Dialog, Select, Tabs, and more
 - **Landing (9)**: Hero variations, pricing layouts, features, FAQ
 - **Dashboard (8)**: Stats, analytics, user management, billing
@@ -594,7 +594,7 @@ Thank you to all contributors who made this release possible!
 ```
 🚀 Introducing Fabrk v1.0 - The anti-bloat Next.js boilerplate
 
-✅ 46 components (100% tested)
+✅ 78+ components (100% tested)
 ✅ 8 production-ready templates
 ✅ 6 theme variations
 ✅ Next.js 15 + TypeScript strict
@@ -617,7 +617,7 @@ After months of development, I'm thrilled to announce Fabrk v1.0 - a production-
 What makes Fabrk different?
 
 🎯 Quality over quantity
-- 46 components, each with 100% test coverage
+- 78+ components, each with 100% test coverage
 - 17,822 lines of test code (Vitest + Playwright + a11y)
 - TypeScript strict mode, zero `any` types
 
@@ -674,7 +674,7 @@ Every component is:
 
 ## What's Included
 
-### 46 Production-Ready Components
+### 78 production-ready components
 
 [Component breakdown with code examples]
 
@@ -690,7 +690,7 @@ Every component is:
 
 - **17,822 lines** of test code
 - **100% coverage** on all components
-- **46 components** fully tested
+- **78+ components** fully tested
 - **28 templates** ready to use
 - **20 themes** to choose from
 
@@ -739,7 +739,7 @@ Hey HN! I built Fabrk as an alternative to bloated boilerplates with 1000+ files
 
 Key stats:
 - 161 essential files (not 1000+)
-- 46 components with 100% test coverage
+- 78+ components with 100% test coverage
 - 17,822 lines of test code
 - TypeScript strict mode (zero `any` types)
 - Next.js 15, NextAuth v5, Stripe, PostgreSQL
@@ -855,7 +855,7 @@ I'm excited to announce that **Fabrk v1.0** is now live!
 After [X months] of development and testing, Fabrk is ready for production use.
 
 **What's Included:**
-• 77 production-ready components (100% tested)
+• 78 production-ready components (100% tested)
 • 28 copy-paste templates
 • 6 theme variations
 • Next.js 15, TypeScript, NextAuth v5, Stripe

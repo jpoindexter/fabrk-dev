@@ -262,7 +262,7 @@ After fixes, test theme switching:
 
 2. **Test pages:**
    - Navigate to `/components`
-   - Switch between all 20 themes (Purple, Ocean, Forest, Sunset, Pink, Ruby)
+   - Switch between all 12 themes (Purple, Ocean, Forest, Sunset, Pink, Ruby)
    - Verify all components update colors correctly
 
 3. **Test specific components:**
@@ -679,7 +679,7 @@ echo "6️⃣ Visual Test..."
 npm run dev
 # Then manually test:
 # - Navigate to /components
-# - Switch all 20 themes
+# - Switch all 12 themes
 # - Verify colors update correctly
 ```
 
@@ -690,7 +690,7 @@ npm run dev
 - [ ] **Console.log:** Only in story files (dev-only)
 - [ ] **Build:** `npm run build` succeeds
 - [ ] **Lint:** `npm run lint` shows 0 errors
-- [ ] **Theme Switching:** All 20 themes work on `/components` page
+- [ ] **Theme Switching:** all 12 themes work on `/components` page
 - [ ] **Charts:** Recharts use theme colors
 - [ ] **Color Picker:** Shows theme-aware defaults
 

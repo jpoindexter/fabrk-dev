@@ -57,7 +57,7 @@ This document provides quick links to preview all components and variations in t
 **Features:**
 - Sortable columns (click headers)
 - Filterable rows (search by name)
-- Pagination (10/25/50/100 rows per page)
+- Pagination (78/78/78/78 rows per page)
 - Row selection
 - Stats cards
 - Mock data with 12 users
@@ -115,7 +115,7 @@ This document provides quick links to preview all components and variations in t
 **File:** `src/components/landing/hero-split.tsx`
 **Best for:** Showcasing product UI, visual products
 **Features:**
-- 50/50 text/visual layout
+- 78/78 text/visual layout
 - Dashboard mockup (or custom image)
 - Configurable image position (left/right)
 - Trust badges as pills

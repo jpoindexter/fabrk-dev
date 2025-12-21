@@ -161,45 +161,22 @@ async function saveCountsToJson(counts) {
 }
 
 // =============================================================================
-// MARKDOWN FILES TO UPDATE
+// MARKDOWN FILES TO UPDATE (auto-discovered)
 // =============================================================================
 
-const MARKDOWN_FILES = [
-  // Root documentation
-  'README.md',
-  'CLAUDE.md',
-  // Getting started
-  'docs/01-getting-started/README.md',
-  'docs/01-getting-started/DOCUMENTATION_INDEX.md',
-  'docs/01-getting-started/QUICK-START.md',
-  // Components
-  'docs/02-components/README.md',
-  'docs/02-components/COMPONENTS-INVENTORY.md',
-  // Features
-  'docs/06-features/README.md',
-  'docs/06-features/FEATURES-INVENTORY.md',
-  'docs/06-features/I18N-IMPLEMENTATION.md',
-  // Design
-  'docs/08-design/TERMINAL-FLAT-DESIGN-SPEC.md',
-  'docs/08-design/COMPONENT-AUTHORING.md',
-  'docs/08-design/CUSTOMIZATION-GUIDE.md',
-  'docs/08-design/TOKEN-REFERENCE.md',
-  'docs/08-design/THEME-GUIDE.md',
-  'docs/08-design/DESIGN_SYSTEM.md',
-  // Launch
-  'docs/09-launch/README.md',
-  'docs/09-launch/LAUNCH-CHECKLIST.md',
-  'docs/09-launch/LAUNCH_READY.md',
-  // Deployment
-  'docs/10-deployment/DEPLOYMENT.md',
-  'docs/10-deployment/PRODUCT-HUNT-LAUNCH.md',
-  'docs/10-deployment/NPM-PACKAGE-GUIDE.md',
-  'docs/10-deployment/DEMO-VIDEO-GUIDE.md',
-  // Development
-  'docs/04-development/README.md',
-  'docs/04-development/API_DOCUMENTATION.md',
-  'docs/04-development/TESTING-GUIDE.md',
-];
+async function getMarkdownFiles() {
+  // Get ALL markdown files in the project
+  const allMdFiles = await glob('**/*.md', {
+    cwd: ROOT,
+    ignore: [
+      'node_modules/**',
+      '.next/**',
+      '.git/**',
+      'CHANGELOG.md',  // Preserve historical references
+    ],
+  });
+  return allMdFiles;
+}
 
 // =============================================================================
 // REPLACEMENT PATTERNS
@@ -236,6 +213,51 @@ function getReplacements(counts) {
       // "all 77 UI components" → correct count
       pattern: /all\s+\d{2,3}\s+UI\s+components/gi,
       replacement: `all ${components} UI components`,
+    },
+    {
+      // "77 production-ready components" → correct count
+      pattern: /\b\d{2,3}\s+production-ready\s+components/gi,
+      replacement: `${components} production-ready components`,
+    },
+    {
+      // "77 documented components" → correct count
+      pattern: /\b\d{2,3}\s+documented\s+components/gi,
+      replacement: `${components} documented components`,
+    },
+    {
+      // "(77 Total" or "(78 Total" in headers → correct count
+      pattern: /\(\d{2,3}\s+Total/gi,
+      replacement: `(${components} Total`,
+    },
+    {
+      // "77 UI Components" (exact case) → correct count
+      pattern: /\b\d{2,3}\s+UI\s+Components\b/g,
+      replacement: `${components} UI Components`,
+    },
+    {
+      // "77 UI components" (lowercase) → correct count
+      pattern: /\b\d{2,3}\s+UI\s+components\b/g,
+      replacement: `${components} UI components`,
+    },
+    {
+      // "77/77" or "77/78" review counts → correct count
+      pattern: /\b\d{2,3}\/\d{2,3}\b/g,
+      replacement: `${components}/${components}`,
+    },
+    {
+      // "# 77 UI components" in directory comments → correct count
+      pattern: /#\s+\d{2,3}\s+UI\s+components/gi,
+      replacement: `# ${components} UI components`,
+    },
+    {
+      // "# 77 UI component docs" → correct count (singular)
+      pattern: /#\s+\d{2,3}\s+UI\s+component\s+docs/gi,
+      replacement: `# ${components} UI component docs`,
+    },
+    {
+      // "77 production-ready UI components" → correct count
+      pattern: /\b\d{2,3}\s+production-ready\s+UI\s+components/gi,
+      replacement: `${components} production-ready UI components`,
     },
 
     // =========================================================================
@@ -362,7 +384,7 @@ function updateMarkdownFile(filePath, replacements) {
     console.log(`✅ Updated: ${filePath} (${changes} patterns matched)`);
     return { updated: true, changes };
   } else {
-    console.log(`⏭️  No changes: ${filePath}`);
+    // Silent for no changes to reduce noise
     return { updated: false, changes: 0 };
   }
 }
@@ -407,7 +429,11 @@ async function main() {
   let totalUpdated = 0;
   let totalChanges = 0;
 
-  for (const file of MARKDOWN_FILES) {
+  // Get all markdown files dynamically
+  const markdownFiles = await getMarkdownFiles();
+  console.log(`📁 Found ${markdownFiles.length} markdown files to scan\n`);
+
+  for (const file of markdownFiles) {
     const result = updateMarkdownFile(file, replacements);
     if (result.updated) {
       totalUpdated++;

@@ -2,7 +2,7 @@
 
 **Status**: Production Standard
 **Last Updated**: December 15, 2025
-**Audit Score**: 100/100 (127 compliant files)
+**Audit Score**: 78/78 (127 compliant files)
 
 ---
 

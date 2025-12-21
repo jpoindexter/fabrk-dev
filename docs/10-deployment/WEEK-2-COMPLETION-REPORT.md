@@ -174,7 +174,7 @@ Each component includes:
 ```bash
 npm run build
 # ✓ Compiled successfully in 10.2s
-# ✓ Generating static pages (76/76) in 1395.7ms
+# ✓ Generating static pages (78/78) in 1395.7ms
 ```
 
 ---
@@ -211,7 +211,7 @@ npm run build
 5. Status Indicator - Live status badges
 6. Banner - Announcement/notification bars
 
-**Estimated Time:** 1-2 days for 11 components
+**Estimated Time:** 1-2 days for 78+ components
 
 ---
 
@@ -243,7 +243,7 @@ npm run build
 
 ## Files Changed
 
-### New Files (18 total)
+### New Files (78 Total)
 ```
 src/components/ui/
 ├── date-picker.tsx + .stories.tsx

@@ -92,7 +92,7 @@ Visit **http://localhost:3000** 🎉
 
 ## 🚀 What's Inside
 
-### UI Components (77 Total)
+### UI Components (78 Total)
 
 - **Forms**: Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Calendar, Date Picker, File Upload
 - **Navigation**: Navbar, Sidebar, Tabs, Breadcrumbs, Pagination, Command Palette
@@ -131,7 +131,7 @@ Visit **http://localhost:3000** 🎉
 | **Email** | Resend with React Email templates |
 | **Validation** | Zod schemas (runtime type safety) |
 
-### Security Features (10/10 Audit Score)
+### Security Features (78/78 Audit Score)
 
 ✅ **Secrets Management** - Environment validation with Zod, .env.local exclusion
 ✅ **CSRF Protection** - Token-based with middleware injection
@@ -531,7 +531,7 @@ fabrk/
 │   │   ├── docs/            # Documentation site
 │   │   └── library/         # Template showcase
 │   ├── components/
-│   │   ├── ui/              # 77 UI components (Radix primitives)
+│   │   ├── ui/              # 78 UI components (Radix primitives)
 │   │   ├── docs/            # Documentation templates
 │   │   ├── dashboard/       # Dashboard components
 │   │   ├── theme/           # Theme switcher components
@@ -734,7 +734,7 @@ fabrk/
 │
 ├── src/app/(marketing)/
 │   ├── docs/                         # Live documentation site (Next.js pages)
-│   │   ├── components/               # 77 UI component docs with live previews
+│   │   ├── components/               # 78 UI component docs with live previews
 │   │   ├── features/                 # Feature guides (payments, auth, etc.)
 │   │   ├── security/                 # Security guides (CSRF, headers, etc.)
 │   │   ├── design/                   # Design system guides
@@ -837,7 +837,7 @@ When **stuck or troubleshooting**:
 
 **Q: What makes Fabrk different from other SaaS boilerplates?**
 
-A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 77 production-ready components, and 100% OKLCH color system for perfect theme consistency.
+A: Terminal-first design aesthetic (12 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 78 production-ready components, and 100% OKLCH color system for perfect theme consistency.
 
 **Q: Can I use this for client projects?**
 
@@ -1186,7 +1186,7 @@ Contributions welcome! Please:
 1. **Configure authentication** - Set up NextAuth providers in `.env.local`
 2. **Set up payments** - Configure Stripe, Polar, or Lemonsqueezy webhooks
 3. **Customize design** - Choose your terminal theme, adjust colors
-4. **Add features** - Build on top of 77 UI components
+4. **Add features** - Build on top of 78 UI components
 5. **Deploy** - Push to Vercel, set environment variables, go live
 
 **Read CLAUDE.md for AI assistant guidance** - Optimized for Claude Code and other AI tools.

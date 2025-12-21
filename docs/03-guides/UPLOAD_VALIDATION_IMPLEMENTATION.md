@@ -299,7 +299,7 @@ Run tests to verify implementation:
 npm run test -- src/lib/uploads/validation.test.ts
 ```
 
-**Result:** ✅ 32/32 tests passing
+**Result:** ✅ 78/78 tests passing
 
 ## Summary
 

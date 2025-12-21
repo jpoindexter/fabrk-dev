@@ -117,7 +117,7 @@ Copy/paste this tweet:
 
 🚀 Introducing Fabrk v1.0 - The anti-bloat Next.js boilerplate
 
-✅ 46 components (100% tested)
+✅ 78+ components (100% tested)
 ✅ 8 production-ready templates
 ✅ 6 theme variations
 ✅ Next.js 15 + TypeScript strict

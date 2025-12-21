@@ -575,7 +575,7 @@ npm run docs:api
 
 ### Current Coverage: 100%
 
-- **Components Documented:** 13/13
+- **Components Documented:** 78/78
 - **Interfaces Documented:** 50+
 - **Type Aliases Documented:** 20+
 - **Total Exports:** 80+

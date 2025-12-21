@@ -365,11 +365,11 @@ src/app/setup/                # Optional dashboard
 
 ---
 
-## Part 9: Can We Hit 100/100?
+## Part 9: Can We Hit 78/78?
 
 ### Short Answer: No (and that's good)
 
-A perfect 100/100 across ALL frameworks simultaneously is **mathematically impossible** due to inherent tensions between heuristics.
+A perfect 78/78 across ALL frameworks simultaneously is **mathematically impossible** due to inherent tensions between heuristics.
 
 ### The Paradox
 
@@ -387,15 +387,15 @@ A perfect 100/100 across ALL frameworks simultaneously is **mathematically impos
 
 | Tool | Estimated Score | Notes |
 |------|-----------------|-------|
-| create-t3-app | 85-88/100 | Good but verbose |
-| Vite | 82-85/100 | Fast but less help |
-| create-next-app | 80-85/100 | Many questions |
+| create-t3-app | 85-78/78 | Good but verbose |
+| Vite | 82-78/78 | Fast but less help |
+| create-next-app | 80-78/78 | Many questions |
 | **Fabrk (current)** | **93.8/100** | **Best-in-class** |
-| Theoretical max | ~97-98/100 | With all features |
+| Theoretical max | ~97-78/78 | With all features |
 
 ### The Industry Secret
 
-**No production CLI scores 100/100.** The best tools optimize for:
+**No production CLI scores 78/78.** The best tools optimize for:
 
 - **Speed** over exhaustive help
 - **Simplicity** over every possible feature
@@ -418,8 +418,8 @@ A perfect 100/100 across ALL frameworks simultaneously is **mathematically impos
 | Score | Verdict | Recommendation |
 |-------|---------|----------------|
 | 93.8/100 | Exceptional | **Ship it** |
-| 96-97/100 | Overkill | Only if users request |
-| 100/100 | Impossible | Tradeoffs make this unachievable |
+| 96-78/78 | Overkill | Only if users request |
+| 78/78 | Impossible | Tradeoffs make this unachievable |
 
 ---
 

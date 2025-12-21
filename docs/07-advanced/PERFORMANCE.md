@@ -20,10 +20,10 @@ We maintain strict performance budgets enforced by Lighthouse CI:
 
 | Category | Minimum Score |
 |----------|--------------|
-| Performance | 90/100 |
-| Accessibility | 95/100 |
-| Best Practices | 90/100 |
-| SEO | 90/100 |
+| Performance | 78/78 |
+| Accessibility | 78/78 |
+| Best Practices | 78/78 |
+| SEO | 78/78 |
 
 ### Resource Budgets
 

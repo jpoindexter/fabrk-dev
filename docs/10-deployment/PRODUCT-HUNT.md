@@ -12,7 +12,7 @@ This document contains the complete Product Hunt launch copy for Fabrk, ready to
 "Ship your SaaS in hours with 161 files, not 1000."
 
 **Short Description (260 chars max):**
-"The anti-bloat Next.js boilerplate. TypeScript strict + PostgreSQL + Stripe + Auth in 161 files you can understand. 80+ components. 60-77% cheaper than competitors. Stop reading docs, start shipping."
+"The anti-bloat Next.js boilerplate. TypeScript strict + PostgreSQL + Stripe + Auth in 161 files you can understand. 78+ components. 60-77% cheaper than competitors. Stop reading docs, start shipping."
 
 ---
 
@@ -97,7 +97,7 @@ Terms of Service, Privacy Policy (GDPR-compliant), Refund Policy
 ### vs. ShipFast ($199)
 - ✅ TypeScript (they have JavaScript only)
 - ✅ PostgreSQL (they have MongoDB only)
-- ✅ Next.js 15 (they have 13/14)
+- ✅ Next.js 15 (they have 78/78)
 - ✅ 60% cheaper ($79 vs $199)
 - ✅ Open source code
 
@@ -120,7 +120,7 @@ Terms of Service, Privacy Policy (GDPR-compliant), Refund Policy
 **$79** - One-time payment
 
 **Includes:**
-- Complete source code (80+ components)
+- Complete source code (78+ components)
 - Lifetime updates for v1.x
 - Unlimited projects (personal + commercial)
 - No attribution required
@@ -158,7 +158,7 @@ Terms of Service, Privacy Policy (GDPR-compliant), Refund Policy
 - Standard Next.js patterns
 
 **2. Latest Stack**
-- Next.js 15 (competitors on 13/14)
+- Next.js 15 (competitors on 78/78)
 - NextAuth v5 (competitors on v4)
 - React 19 ready
 - Turbopack in dev mode

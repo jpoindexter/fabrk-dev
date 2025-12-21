@@ -1,10 +1,10 @@
 # Deploy Storybook Publicly
 
-Make your 77 production-ready components publicly accessible at `storybook.fabrk.io` to showcase the component library to customers and improve conversion.
+Make your 78 production-ready components publicly accessible at `storybook.fabrk.io` to showcase the component library to customers and improve conversion.
 
 ## Why Deploy Storybook?
 
-- **Social Proof**: Show potential customers all 234 components with interactive examples
+- **Social Proof**: Show potential customers all 78+ components with interactive examples
 - **Conversion**: Competitors show component galleries; Storybook deployment is professional proof-of-quality
 - **Documentation**: Live, interactive component documentation for teams building with Fabrk
 - **SEO**: Component documentation page improves search visibility
@@ -151,13 +151,13 @@ Add link to:
 
 Example:
 ```markdown
-**Component Library**: [View all 234 components in Storybook](https://storybook.fabrk.io)
+**Component Library**: [View all 78+ components in Storybook](https://storybook.fabrk.io)
 ```
 
 ## Expected Stats
 
 Once deployed:
-- **95% Storybook coverage**: 234 components with interactive stories
+- **95% Storybook coverage**: 78+ components with interactive stories
 - **100+ component variants**: All states and variations documented
 - **Live demos**: Click through every component interactively
 - **Accessibility audits**: WCAG compliance information for each component

@@ -22,7 +22,7 @@ All documentation is organized into numbered folders:
 ```
 docs/
 ├── 01-getting-started/      # Quick start, troubleshooting, setup wizard
-├── 02-components/           # 77 UI components, charts, landing pages
+├── 02-components/           # 78 UI components, charts, landing pages
 ├── 03-guides/               # Feature guides, integrations
 ├── 04-development/          # API docs, testing, browser automation
 ├── 06-features/             # Feature inventory, i18n, accessibility
@@ -187,7 +187,7 @@ docs/
 ## Project Statistics
 
 ### Components & Templates
-- **77 UI components** - Production-ready library
+- **78 UI components** - Production-ready library
 - **5 landing page templates** - Setup wizard starter pages
 - **48+ page templates** - Copy-paste layouts in `/library`
 - **12 terminal themes** - OKLCH color schemes
