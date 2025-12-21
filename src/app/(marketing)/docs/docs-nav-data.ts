@@ -1,4 +1,5 @@
 import { NavSection } from '@/components/docs/docs-sidebar';
+import { COUNTS } from '@/data/counts';
 import {
   BookOpen,
   Rocket,
@@ -677,17 +678,12 @@ const rawNavigation: NavSection[] = [
   },
 ];
 
-// Calculate component count
+// Use dynamic component count from source files (not nav items)
 const componentsSection = rawNavigation.find((s) => s.title === 'COMPONENTS');
-if (componentsSection && componentsSection.subSections) {
-  let count = 0;
-  componentsSection.subSections.forEach((sub) => {
-    count += sub.items.length;
-  });
-
+if (componentsSection) {
   const overviewItem = componentsSection.items.find((i) => i.href === '/docs/components/overview');
   if (overviewItem) {
-    overviewItem.title = `UI LIBRARY ${count}`;
+    overviewItem.title = `UI LIBRARY ${COUNTS.components}`;
   }
 }
 
