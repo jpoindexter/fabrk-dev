@@ -94,7 +94,7 @@ export function BenefitCard({
         </div>
 
         {/* Stats Band */}
-        <div className="border-y border-border bg-background py-4 px-6 flex gap-4 mt-4">
+        <div className={cn('border-y py-4 px-6 flex gap-4 mt-4', mode.color.border.default, mode.color.bg.base)}>
           <div className="flex-1 flex flex-col gap-1">
             <p
               className={cn(
@@ -105,11 +105,11 @@ export function BenefitCard({
             >
               TIME SAVED
             </p>
-            <p className={cn('text-xl font-bold leading-none tracking-tight text-warning', mode.font)}>
+            <p className={cn('text-xl font-bold leading-none tracking-tight', mode.font, mode.color.text.accent)}>
               {timeSaved}
             </p>
           </div>
-          <div className="w-px bg-border" />
+          <div className={cn('w-px', mode.color.bg.muted)} />
           <div className="flex-1 flex flex-col gap-1 pl-2">
             <p
               className={cn(
@@ -120,7 +120,7 @@ export function BenefitCard({
             >
               COST SAVED
             </p>
-            <p className={cn('text-xl font-bold leading-none tracking-tight text-warning', mode.font)}>
+            <p className={cn('text-xl font-bold leading-none tracking-tight', mode.font, mode.color.text.accent)}>
               {costSaved}
             </p>
           </div>
