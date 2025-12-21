@@ -466,6 +466,7 @@ const rawNavigation: NavSection[] = [
             icon: Check,
           },
           { title: 'PLAN SELECTOR', href: '/docs/components/plan-selector', icon: CreditCard },
+          { title: 'PRICING CARD', href: '/docs/components/pricing-card', icon: CreditCard },
           { title: 'SIGN IN FORM', href: '/docs/components/sign-in-form', icon: Users },
           { title: 'SIGN UP FORM', href: '/docs/components/sign-up-form', icon: Users },
           { title: 'WEBHOOK LOG', href: '/docs/components/webhook-log', icon: Webhook },
