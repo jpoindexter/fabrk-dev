@@ -1,27 +1,29 @@
 /**
  * Motion Design System
  * Terminal-themed, subtle animations for a dynamic feel
- * Uses step-based timing and terminal characters
+ * Uses Framer Motion for smooth, reversible scroll animations
  */
 'use client';
 
 import { useEffect, useRef, useState, ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 // Terminal characters for scramble effect
 const TERMINAL_CHARS = '█▓▒░│─┌┐└┘├┤┬┴┼╔╗╚╝═║<>[]{}/*#@$%&';
 
 // ============================================
-// 1. SCROLL REVEAL - Terminal-style fade up
+// 1. SCROLL REVEAL - Smooth scroll-triggered animation
 // ============================================
 interface RevealProps {
   children: ReactNode;
   className?: string;
+  /** Delay in seconds */
   delay?: number;
   /** Direction element slides IN from: 'left' = comes from left, 'right' = comes from right */
   direction?: 'up' | 'left' | 'right';
-  /** If true, element will animate out when scrolled away */
-  reversible?: boolean;
+  /** If true, element will animate out when scrolled away (default: true) */
+  once?: boolean;
 }
 
 export function Reveal({
@@ -29,59 +31,29 @@ export function Reveal({
   className,
   delay = 0,
   direction = 'left',
-  reversible = true,
+  once = false,
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            if (!reversible) observer.disconnect();
-          } else if (reversible) {
-            setIsVisible(false);
-          }
-        });
-      },
-      {
-        threshold: 0,
-        rootMargin: '0px'
-      }
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [reversible]);
-
   // Direction = where element comes FROM when entering
-  // left: starts off-screen left, slides right into view
-  // right: starts off-screen right, slides left into view
-  // up: starts below, slides up into view
-  const transforms = {
-    up: isVisible ? 'translate-y-0' : 'translate-y-12',
-    left: isVisible ? 'translate-x-0' : '-translate-x-16',
-    right: isVisible ? 'translate-x-0' : 'translate-x-16',
+  const directions = {
+    up: { hidden: { y: 60 }, visible: { y: 0 } },
+    left: { hidden: { x: -60 }, visible: { x: 0 } },
+    right: { hidden: { x: 60 }, visible: { x: 0 } },
   };
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        'transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]',
-        isVisible ? 'opacity-100' : 'opacity-0',
-        transforms[direction],
-        className
-      )}
-      style={{ transitionDelay: `${delay}ms` }}
+    <motion.div
+      initial={{ opacity: 0, ...directions[direction].hidden }}
+      whileInView={{ opacity: 1, ...directions[direction].visible }}
+      viewport={{ once, amount: 0.15 }}
+      transition={{
+        duration: 0.9,
+        delay,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -91,54 +63,55 @@ export function Reveal({
 interface StaggerProps {
   children: ReactNode;
   className?: string;
+  /** Delay between each child in seconds */
   staggerDelay?: number;
-  /** If true, children will animate out when scrolled away */
-  reversible?: boolean;
+  /** If true, animation only plays once */
+  once?: boolean;
 }
 
 export function Stagger({
   children,
   className,
-  staggerDelay = 100,
-  reversible = true,
+  staggerDelay = 0.1,
+  once = false,
 }: StaggerProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (!reversible) observer.disconnect();
-        } else if (reversible) {
-          setIsVisible(false);
-        }
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: staggerDelay,
       },
-      { threshold: 0.1 }
-    );
+    },
+  };
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [reversible]);
+  const itemVariants = {
+    hidden: { opacity: 0, x: -40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1] as const,
+      },
+    },
+  };
 
   return (
-    <div ref={ref} className={className}>
+    <motion.div
+      className={className}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, amount: 0.15 }}
+    >
       {Array.isArray(children)
         ? children.map((child, i) => (
-            <div
-              key={i}
-              className={cn(
-                'transition-all duration-500 ease-[steps(8,end)]',
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              )}
-              style={{ transitionDelay: `${i * staggerDelay}ms` }}
-            >
+            <motion.div key={i} variants={itemVariants}>
               {child}
-            </div>
+            </motion.div>
           ))
         : children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -339,47 +312,29 @@ export function Scramble({
 }
 
 // ============================================
-// 6. FADE SECTION - Terminal-style section reveal
+// 6. FADE SECTION - Smooth section reveal
 // ============================================
 interface FadeSectionProps {
   children: ReactNode;
   className?: string;
-  /** If true, section will fade out when scrolled away */
-  reversible?: boolean;
+  /** If true, animation only plays once */
+  once?: boolean;
 }
 
-export function FadeSection({ children, className, reversible = true }: FadeSectionProps) {
-  const ref = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (!reversible) observer.disconnect();
-        } else if (reversible) {
-          setIsVisible(false);
-        }
-      },
-      { threshold: 0.05 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [reversible]);
-
+export function FadeSection({ children, className, once = false }: FadeSectionProps) {
   return (
-    <section
-      ref={ref}
-      className={cn(
-        'transition-opacity duration-700 ease-[steps(12,end)]',
-        isVisible ? 'opacity-100' : 'opacity-0',
-        className
-      )}
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once, amount: 0.1 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      className={className}
     >
       {children}
-    </section>
+    </motion.section>
   );
 }
 

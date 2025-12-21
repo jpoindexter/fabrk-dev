@@ -25,17 +25,17 @@ export function ProfilePreview() {
       <div className="flex-1 overflow-auto p-8">
         <div className="container mx-auto max-w-7xl space-y-6 [&_>*>*:first-child]:hidden">
           {/* Profile Header */}
-          <Reveal delay={0}>
+          <Reveal delay={0} once={true}>
             <ProfileHeader user={mockProfileUser} />
           </Reveal>
 
           {/* Badges Section */}
-          <Reveal delay={100}>
+          <Reveal delay={0.1} once={true}>
             <BadgesSection badges={mockProfileBadges} />
           </Reveal>
 
           {/* Profile Tabs */}
-          <Reveal delay={200}>
+          <Reveal delay={0.2} once={true}>
             <ProfileTabs activity={mockProfileActivity} projects={mockProfileProjects} />
           </Reveal>
         </div>

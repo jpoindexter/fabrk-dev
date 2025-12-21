@@ -10,16 +10,16 @@ import { Reveal } from '@/components/motion';
 export function ComponentsGrid() {
   return (
     <div className="grid items-start gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
-      <Reveal delay={0} reversible={false}>
+      <Reveal delay={0} once={true}>
         <GridColumnOne />
       </Reveal>
-      <Reveal delay={150} reversible={false}>
+      <Reveal delay={0.15} once={true}>
         <GridColumnTwo />
       </Reveal>
-      <Reveal delay={300} reversible={false}>
+      <Reveal delay={0.3} once={true}>
         <GridColumnThree />
       </Reveal>
-      <Reveal delay={450} reversible={false}>
+      <Reveal delay={0.45} once={true}>
         <GridColumnFour />
       </Reveal>
     </div>
