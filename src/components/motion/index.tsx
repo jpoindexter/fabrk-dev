@@ -38,18 +38,19 @@ export function Reveal({
     if (!element) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (!reversible) observer.disconnect();
-        } else if (reversible && !entry.isIntersecting) {
-          setIsVisible(false);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (!reversible) observer.disconnect();
+          } else if (reversible) {
+            setIsVisible(false);
+          }
+        });
       },
       {
-        threshold: 0.05,
-        // Trigger earlier on entry, later on exit for smoother feel
-        rootMargin: '50px 0px -100px 0px'
+        threshold: 0,
+        rootMargin: '0px'
       }
     );
 
@@ -58,16 +59,16 @@ export function Reveal({
   }, [reversible]);
 
   const transforms = {
-    up: isVisible ? 'translate-y-0' : 'translate-y-6',
-    left: isVisible ? 'translate-x-0' : 'translate-x-6',
-    right: isVisible ? 'translate-x-0' : '-translate-x-6',
+    up: isVisible ? 'translate-y-0' : 'translate-y-8',
+    left: isVisible ? 'translate-x-0' : 'translate-x-8',
+    right: isVisible ? 'translate-x-0' : '-translate-x-8',
   };
 
   return (
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-700 ease-out',
+        'transition-all duration-500 ease-out',
         isVisible ? 'opacity-100' : 'opacity-0',
         transforms[direction],
         className
