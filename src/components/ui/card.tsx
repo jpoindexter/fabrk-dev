@@ -94,7 +94,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         sizeStyles[size],
 
         // Interactive states
-        interactive && cn('group transition-colors', 'hover:border-primary/50'),
+        interactive && cn('group transition-colors', 'hover:bg-muted/50'),
 
         className
       )}
@@ -729,7 +729,7 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
           mode.color.bg.surface,
           mode.color.border.default,
           mode.radius,
-          'group transition-colors hover:border-primary/50',
+          'group transition-colors hover:bg-muted/50',
           className
         )}
         {...props}

@@ -45,7 +45,7 @@ export function UseCaseCard({
           mode.color.bg.surface,
           mode.color.border.default,
           mode.radius,
-          'group transition-colors hover:border-primary/50'
+          'group transition-colors hover:bg-muted/50'
         )}
       >
         {/* Header */}
