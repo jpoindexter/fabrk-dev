@@ -249,7 +249,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           >
             Skip to main content
           </a>
-          <div className="relative isolate flex min-h-screen flex-col">
+          <div className="relative isolate z-10 flex min-h-screen flex-col">
             <main id="main-content" className="flex-1">
               <Suspense>{children}</Suspense>
             </main>
