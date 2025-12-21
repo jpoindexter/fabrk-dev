@@ -14,6 +14,8 @@ import { WhatsIncludedSection } from '@/components/marketing/whats-included-sect
 import { FAQSection } from '@/components/marketing/faq-section';
 import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { StickyCTABar } from '@/components/marketing/sticky-cta-bar';
+import { Reveal } from '@/components/motion';
+
 export default function HomePage() {
   return (
     <>
@@ -23,28 +25,44 @@ export default function HomePage() {
       {/* Content slides up over the hero */}
       <div className="relative z-20 bg-background">
         {/* Interactive Playground - Lazy loaded for better LCP */}
-        <LazyPlayground />
+        <Reveal>
+          <LazyPlayground />
+        </Reveal>
 
         {/* What Makes Fabrk Different - Unique features (Terminal UI, 31 Demos, AI Credits, 3 Providers) */}
-        <FeaturesShowcase />
+        <Reveal>
+          <FeaturesShowcase />
+        </Reveal>
 
         {/* Trust Indicators - Updated with verifiable stats */}
-        <StatsSection />
+        <Reveal>
+          <StatsSection />
+        </Reveal>
 
         {/* Target Personas - Who Fabrk is for */}
-        <UseCasesSection />
+        <Reveal>
+          <UseCasesSection />
+        </Reveal>
 
         {/* Pricing - Launch price ($199) for first 100 buyers */}
-        <PricingSection />
+        <Reveal>
+          <PricingSection />
+        </Reveal>
 
         {/* What's Included - NEW: Auth/Billing/Multi-tenancy checklist */}
-        <WhatsIncludedSection />
+        <Reveal>
+          <WhatsIncludedSection />
+        </Reveal>
 
         {/* FAQ */}
-        <FAQSection />
+        <Reveal>
+          <FAQSection />
+        </Reveal>
 
         {/* Final Conversion Push */}
-        <FinalCTASection />
+        <Reveal>
+          <FinalCTASection />
+        </Reveal>
       </div>
 
       {/* Overlays */}
