@@ -1356,44 +1356,44 @@
   --code-selector: oklch(0% 0 0);
 }
 
-/* INFRARED - Inverted red (red background, black text) - WCAG 2.2 AA compliant */
+/* INFRARED - Inverted red MONOTONE (only red hues) - WCAG 2.2 AA compliant */
 [data-theme='infrared'] {
-  --background: 60% 0.25 25; /* Lighter red background for better contrast */
-  --foreground: 5% 0 0; /* Pure black text - 7:1+ contrast */
-  --card: 55% 0.22 25; /* Slightly darker red */
-  --card-foreground: 5% 0 0;
-  --popover: 52% 0.2 25;
-  --popover-foreground: 5% 0 0;
-  --primary: 5% 0 0; /* Pure black primary */
-  --primary-foreground: 95% 0.02 25; /* Near-white on primary */
-  --secondary: 50% 0.2 25;
-  --secondary-foreground: 5% 0 0;
-  --muted: 52% 0.18 25;
-  --muted-foreground: 8% 0.02 25; /* Very dark - 5.5:1+ contrast */
-  --accent: 8% 0 0;
-  --accent-foreground: 95% 0.02 25;
-  --destructive: 95% 0.02 0; /* Near-white for destructive */
-  --destructive-foreground: 5% 0 0;
-  --border: 30% 0.15 25; /* Darker border for visibility */
-  --input: 30% 0.15 25;
-  --ring: 5% 0 0;
+  --background: 65% 0.22 25; /* Light red background */
+  --foreground: 12% 0.15 25; /* Very dark red text */
+  --card: 60% 0.2 25; /* Slightly darker red */
+  --card-foreground: 12% 0.15 25;
+  --popover: 58% 0.18 25;
+  --popover-foreground: 12% 0.15 25;
+  --primary: 18% 0.18 25; /* Dark red primary */
+  --primary-foreground: 75% 0.2 25; /* Light red on primary */
+  --secondary: 55% 0.18 25;
+  --secondary-foreground: 12% 0.15 25;
+  --muted: 58% 0.16 25;
+  --muted-foreground: 15% 0.12 25; /* Dark red muted text */
+  --accent: 20% 0.2 25; /* Dark red accent */
+  --accent-foreground: 75% 0.2 25;
+  --destructive: 25% 0.22 25; /* Darker red for destructive */
+  --destructive-foreground: 75% 0.18 25;
+  --border: 35% 0.15 25; /* Medium-dark red border */
+  --input: 35% 0.15 25;
+  --ring: 18% 0.18 25;
 
-  --success: 30% 0.18 25; /* Dark red - visible on light bg */
-  --success-foreground: 95% 0.02 25;
-  --warning: 25% 0.15 25; /* Darker red shade */
-  --warning-foreground: 95% 0.02 25;
-  --info: 35% 0.18 25; /* Medium-dark red */
-  --info-foreground: 95% 0.02 25;
+  --success: 28% 0.2 25; /* Dark red badge */
+  --success-foreground: 75% 0.18 25;
+  --warning: 22% 0.18 25; /* Darker red badge */
+  --warning-foreground: 75% 0.18 25;
+  --info: 30% 0.2 25; /* Medium-dark red badge */
+  --info-foreground: 76% 0.18 25;
 
-  --chart-1: 5% 0 0;
-  --chart-2: 12% 0.05 25;
-  --chart-3: 18% 0.08 25;
-  --chart-4: 25% 0.12 25;
-  --chart-5: 32% 0.15 25;
-  --chart-6: 8% 0 0;
-  --chart-7: 15% 0.06 25;
-  --chart-8: 22% 0.1 25;
-  --chart-9: 28% 0.12 25;
+  --chart-1: 15% 0.15 25;
+  --chart-2: 20% 0.16 25;
+  --chart-3: 25% 0.17 25;
+  --chart-4: 30% 0.18 25;
+  --chart-5: 35% 0.19 25;
+  --chart-6: 18% 0.15 25;
+  --chart-7: 23% 0.16 25;
+  --chart-8: 28% 0.17 25;
+  --chart-9: 33% 0.18 25;
 
   --color-bg-canvas: var(--background);
   --color-bg-surface: var(--card);
@@ -1417,15 +1417,15 @@
   --color-status-info: var(--info);
   --color-status-info-bg: var(--info);
 
-  --code-fg: oklch(5% 0 0);
-  --code-bg: oklch(52% 0.18 25);
-  --code-comment: oklch(18% 0.08 25);
-  --code-string: oklch(8% 0.03 25);
-  --code-punctuation: oklch(12% 0.05 25);
-  --code-number: oklch(6% 0.02 25);
-  --code-keyword: oklch(5% 0 0);
-  --code-function: oklch(3% 0 0);
-  --code-selector: oklch(8% 0.03 25);
+  --code-fg: oklch(12% 0.15 25);
+  --code-bg: oklch(58% 0.16 25);
+  --code-comment: oklch(35% 0.12 25);
+  --code-string: oklch(18% 0.16 25);
+  --code-punctuation: oklch(25% 0.14 25);
+  --code-number: oklch(15% 0.15 25);
+  --code-keyword: oklch(20% 0.18 25);
+  --code-function: oklch(22% 0.17 25);
+  --code-selector: oklch(18% 0.16 25);
 }
 
 /* ============================================
