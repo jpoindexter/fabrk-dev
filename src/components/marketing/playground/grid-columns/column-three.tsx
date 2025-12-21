@@ -4,12 +4,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Clock, Calendar, X } from 'lucide-react';
+import { Clock, Calendar, X, TrendingUp, ArrowUpRight } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Switch } from '@/components/ui/switch';
-import { Separator } from '@/components/ui/separator';
+import { Counter } from '@/components/motion';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -106,17 +106,58 @@ export function GridColumnThree() {
         </div>
       </div>
 
-      {/* Statistics - Accent background with border */}
-      <div className="border-success/50 bg-success/10 space-y-4 border-2 p-4">
-        <h3 className={cn('text-success text-xs font-semibold', mode.font)}>[REVENUE UP]</h3>
-        <div className="flex justify-between text-xs">
-          <span>Total</span>
-          <span className="text-2xl font-bold">$12,450</span>
+      {/* Live Revenue Counter - Animated stats */}
+      <div className="border-border bg-card space-y-3 border p-4">
+        <div className="flex items-center justify-between">
+          <h3 className={cn('text-xs font-semibold', mode.font)}>[LIVE STATS]</h3>
+          <div className="bg-success/20 flex items-center gap-1 px-2 py-0.5">
+            <span className="bg-success h-1.5 w-1.5 animate-pulse rounded-full" />
+            <span className={cn('text-success text-xs', mode.font)}>LIVE</span>
+          </div>
         </div>
-        <Separator />
-        <div className="flex justify-between text-xs">
-          <span>Change</span>
-          <span className="text-success text-2xl font-bold">+15.3%</span>
+
+        {/* Revenue with animated counter */}
+        <div className="border-border space-y-1 border-l-2 border-l-primary pl-3">
+          <div className={cn('text-muted-foreground text-xs', mode.font)}>MRR</div>
+          <div className="flex items-baseline gap-2">
+            <Counter
+              end={12450}
+              prefix="$"
+              duration={2000}
+              className="text-xl font-bold"
+            />
+            <span className={cn('text-success flex items-center text-xs', mode.font)}>
+              <ArrowUpRight className="h-3 w-3" />
+              15.3%
+            </span>
+          </div>
+        </div>
+
+        {/* Active Users counter */}
+        <div className="border-border space-y-1 border-l-2 border-l-accent pl-3">
+          <div className={cn('text-muted-foreground text-xs', mode.font)}>ACTIVE USERS</div>
+          <div className="flex items-baseline gap-2">
+            <Counter
+              end={847}
+              duration={1800}
+              className="text-xl font-bold"
+            />
+            <span className={cn('text-success flex items-center text-xs', mode.font)}>
+              <TrendingUp className="h-3 w-3" />
+              +23
+            </span>
+          </div>
+        </div>
+
+        {/* Conversion rate */}
+        <div className="border-border flex items-center justify-between border-t pt-3 text-xs">
+          <span className={cn('text-muted-foreground', mode.font)}>Conversion</span>
+          <Counter
+            end={4}
+            suffix=".2%"
+            duration={1500}
+            className="font-mono font-semibold"
+          />
         </div>
       </div>
     </div>
