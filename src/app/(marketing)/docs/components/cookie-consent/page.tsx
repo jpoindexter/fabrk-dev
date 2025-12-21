@@ -15,7 +15,7 @@ function CookieConsentDemo() {
           <span className={cn('text-xs', mode.font, mode.color.text.muted)}>
             [0x09] COOKIE_POLICY
           </span>
-          <button className={cn('text-xs hover:opacity-70', mode.color.text.muted)}>✕</button>
+          <button className={cn('text-xs', mode.state.hover.linkOpacity, mode.color.text.muted)}>✕</button>
         </div>
         <div className="space-y-4 px-4 py-2">
           <p className={cn('text-xs leading-relaxed', mode.font, mode.color.text.muted)}>
