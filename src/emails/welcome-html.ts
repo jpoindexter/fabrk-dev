@@ -1,9 +1,10 @@
- 
 /**
  * ✅ FABRK COMPONENT
  * Welcome Email Template - Clean Professional Style
  * Production-ready ✓
  */
+
+import { THEME_COUNT_STRING } from '@/data/landing/stats';
 
 export interface WelcomeEmailProps {
   name: string;
@@ -45,7 +46,7 @@ export function generateWelcomeEmailHTML({
                 Hi ${name},
               </p>
               <p style="margin: 0 0 24px 0; color: #3f3f46; font-size: 16px; line-height: 1.6;">
-                Thank you for purchasing Fabrk! You've just gained access to the anti-bloat Next.js boilerplate with 161 files (not 1000) that will help you ship your SaaS in hours, not weeks.
+                Thank you for purchasing Fabrk! You've just gained access to the terminal-aesthetic Next.js boilerplate that will help you ship your SaaS in hours, not weeks.
               </p>
 
               <!-- License Section -->
@@ -83,7 +84,7 @@ export function generateWelcomeEmailHTML({
                   <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> Stripe Payments Integration</td></tr>
                   <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> PostgreSQL Database with Prisma</td></tr>
                   <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> TypeScript Strict Mode + Next.js 15</td></tr>
-                  <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> 161 Essential Files (Not 1000)</td></tr>
+                  <tr><td style="padding: 4px 0;"><span style="color: #22c55e;">✓</span> ${THEME_COUNT_STRING} Terminal Themes (OKLCH Colors)</td></tr>
                 </table>
               </div>
 
@@ -128,7 +129,7 @@ Welcome to Fabrk!
 
 Hi ${name},
 
-Thank you for purchasing Fabrk! You've just gained access to the anti-bloat Next.js boilerplate with 161 files (not 1000).
+Thank you for purchasing Fabrk! You've just gained access to the terminal-aesthetic Next.js boilerplate.
 
 LICENSE KEY:
 ${licenseKey}
@@ -147,7 +148,7 @@ WHAT'S INCLUDED:
 ✓ Stripe Payments Integration
 ✓ PostgreSQL Database with Prisma
 ✓ TypeScript Strict Mode + Next.js 15
-✓ 161 Essential Files (Not 1000)
+✓ ${THEME_COUNT_STRING} Terminal Themes (OKLCH Colors)
 
 Important: Keep your license key safe. It's required for updates and support.
 

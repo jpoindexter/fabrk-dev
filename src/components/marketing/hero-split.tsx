@@ -17,8 +17,8 @@ interface HeroSplitProps {
 }
 
 export function HeroSplit({
-  headline = 'THE ANTI-BLOAT NEXTJS BOILERPLATE',
-  subheadline = '> 161 FILES NOT 1000 // Ship your SaaS in hours, not weeks',
+  headline = 'TERMINAL-AESTHETIC NEXTJS BOILERPLATE',
+  subheadline = '> STAND OUT // Ship your SaaS in hours, not weeks',
   ctaPrimary = { text: '> GET FABRK', href: '#pricing' },
   ctaSecondary = { text: '> VIEW DOCS', href: '/docs' },
   trustBadges = [
@@ -173,7 +173,7 @@ export function HeroSplit({
                   'border-foreground bg-primary absolute -right-4 -bottom-4 border-2 px-6 py-4'
                 )}
               >
-                <p className="text-primary-foreground text-xs font-semibold">[161_FILES]</p>
+                <p className="text-primary-foreground text-xs font-semibold">[TERMINAL_UI]</p>
               </div>
             </div>
 

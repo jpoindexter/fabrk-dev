@@ -19,8 +19,8 @@ interface HeroVideoProps {
 }
 
 export function HeroVideo({
-  headline = 'THE ANTI-BLOAT NEXTJS BOILERPLATE',
-  subheadline = '161 files. Not 1000. Ship your SaaS in hours, not weeks.',
+  headline = 'TERMINAL-AESTHETIC NEXTJS BOILERPLATE',
+  subheadline = 'Stand out from the crowd. Ship your SaaS in hours, not weeks.',
   ctaPrimary = { text: 'Get Fabrk', href: '#pricing' },
   ctaSecondary = { text: 'View Demo', href: '#demo' },
   trustBadges = [

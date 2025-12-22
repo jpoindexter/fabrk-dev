@@ -22,7 +22,7 @@ export const THEME_COUNT_STRING = `${THEME_COUNT_INT}`;
 // Manual Constants (Centralized)
 // These would ideally also be dynamic (e.g., from build scripts or metadata)
 export const ROUTE_COUNT_STRING = '250+'; // Needs dynamic calculation
-export const FILE_COUNT_STRING = '161'; // Needs dynamic calculation
+// FILE_COUNT_STRING removed - not used in marketing
 export const TEST_COVERAGE_STRING = '100%'; // Used for "TypeScript" stat, but also for "coverage" text
 export const TEST_LINES_STRING = '17,822 Test Lines'; // For "17,822 Test Lines"
 export const TOTAL_DOC_SIZE_STRING = '~300KB';
