@@ -5,18 +5,64 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```
 ╔═══════════════════════════════════════════════════════════════════╗
 ║  YOUR SAAS BOILERPLATE                                            ║
-║  Terminal-first design. Ship fast. Look sharp.                    ║
+║  78+ UI components included. USE THEM.                            ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
 
-> Terminal-first SaaS boilerplate. Ship fast. Look sharp.
+---
+
+## RULE #1: USE THE EXISTING COMPONENTS
+
+**This boilerplate has 78+ pre-built UI components in `src/components/ui/`. You MUST use them.**
+
+```tsx
+// ALWAYS import from @/components/ui/
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Table, TableHeader, TableBody, TableRow, TableCell } from '@/components/ui/table';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Select, SelectTrigger, SelectContent, SelectItem } from '@/components/ui/select';
+```
+
+**NEVER build UI from scratch.** Before creating any element, check `src/components/ui/` first.
+
+### Component Quick Reference
+
+| Need | Component | Import Path |
+|------|-----------|-------------|
+| Button | `<Button>` | `@/components/ui/button` |
+| Card/Panel | `<Card>`, `<CardHeader>`, `<CardContent>` | `@/components/ui/card` |
+| Form input | `<Input>` | `@/components/ui/input` |
+| Search input | `<InputSearch>` | `@/components/ui/input-search` |
+| Dropdown select | `<Select>` | `@/components/ui/select` |
+| Modal/Dialog | `<Dialog>` | `@/components/ui/dialog` |
+| Tabs | `<Tabs>` | `@/components/ui/tabs` |
+| Data table | `<Table>` | `@/components/ui/table` |
+| Status label | `<Badge>` | `@/components/ui/badge` |
+| Menu | `<DropdownMenu>` | `@/components/ui/dropdown-menu` |
+| Alert/Toast | `<Alert>` | `@/components/ui/alert` |
+| Loading state | `<Skeleton>` | `@/components/ui/skeleton` |
+| Checkbox | `<Checkbox>` | `@/components/ui/checkbox` |
+| Switch toggle | `<Switch>` | `@/components/ui/switch` |
+| Tooltip | `<Tooltip>` | `@/components/ui/tooltip` |
+| Progress bar | `<Progress>` | `@/components/ui/progress` |
+| Avatar | `<Avatar>` | `@/components/ui/avatar` |
+| Separator | `<Separator>` | `@/components/ui/separator` |
+| Icons | `lucide-react` | `import { Icon } from 'lucide-react'` |
+
+**List all components:** `ls src/components/ui/`
+
+---
 
 ## Quick Reference
 
 | Need | Do This |
 |------|---------|
+| Find a component | Check `src/components/ui/` first |
 | Design system rules | See `docs/08-design/DESIGN_SYSTEM.md` |
-| Pre-commit checks | Automatic via Husky (type-check + lint-staged) |
 | Config files | `src/config/index.ts` |
 | Environment setup | Copy `.env.example` → `.env.local` |
 
@@ -24,9 +70,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.
+Next.js 16 SaaS boilerplate with terminal-inspired design.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (18 themes)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript 5.x • NextAuth v5 • Stripe/Polar/Lemonsqueezy • Prisma 7 + PostgreSQL • Tailwind CSS 4 • 18 terminal themes
 
 **Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 
@@ -70,18 +116,18 @@ npm run validate:webhooks  # Validate webhook endpoints
 
 ### 1. Dynamic Design System
 
-All components use the design system:
-- `mode.radius` for elements with full borders (dynamic via `--radius` CSS variable)
-- `font-mono` for ALL text (body tag uses `className="font-mono"`)
-- Design tokens only (no hardcoded colors or radius)
+All components use the `mode` design system for theme-aware styling:
+- `mode.radius` for border radius (dynamic via `--radius` CSS variable)
+- `mode.font` for monospace font (`font-mono`)
+- Design tokens only (no hardcoded colors)
+
+**IMPORTANT:** The `<body>` tag MUST have `className="font-mono antialiased"` to apply the monospace font globally.
 
 **Radius Rules:**
 - Full borders (`border`, `border-2`) → NEED `mode.radius`
-- Partial borders (`border-t`, `border-b`) → NO `mode.radius`
-- Table cells → NO `mode.radius` (breaks layout)
-- Switches → Always `rounded-full`
-
-**IMPORTANT:** The `<body>` tag MUST have `className="font-mono antialiased"` to apply the monospace font globally.
+- Partial borders (`border-t`, `border-b`, `border-l`, `border-r`) → NO `mode.radius`
+- Table cells (`<th>`, `<td>`) → NO `mode.radius` (breaks layout)
+- Switches → Always `rounded-full` (pill-shaped by design)
 
 ### 2. NEVER hardcode colors
 
@@ -106,16 +152,10 @@ className="bg-purple-500 text-white"
 
 **Never use underscores in user-facing text.** Use spaces for readability.
 
-### 4. Component Guidelines
+### 4. Safe to Create/Modify
 
-**Core UI Components** (`src/components/ui/`):
-- 78+ ready-to-use terminal-styled components
-- Based on Radix UI primitives
-- All follow the design system
-
-**Safe to Create/Modify:**
 - `/src/app/` - Your page files
-- New components in `src/components/`
+- New components in `src/components/` (that compose UI primitives)
 - Custom hooks in `src/hooks/`
 
 ---
@@ -167,16 +207,28 @@ Import `mode` from `@/design-system` for consistent styling:
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
+// For elements with full borders - ADD mode.radius
+<Card className={cn("border border-border", mode.radius)}>
+  Content
+</Card>
+
+// For elements with partial borders - NO mode.radius
+<div className="border-b border-border">
+  Divider line stays straight
+</div>
+
+// Button example
 <Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
   > SUBMIT
 </Button>
 ```
 
 The `mode` object provides:
-- `mode.radius` - Dynamic border radius (`rounded-dynamic` → `var(--radius)`)
+- `mode.radius` - Border radius (`rounded-dynamic` → uses CSS `var(--radius)`)
 - `mode.font` - Font family (`font-mono`)
 - `mode.color.bg.*` - Background tokens
 - `mode.color.text.*` - Text color tokens
+- `mode.color.border.*` - Border color tokens
 - `mode.spacing.*` - Spacing tokens (8-point grid)
 
 ### Allowed Colors
