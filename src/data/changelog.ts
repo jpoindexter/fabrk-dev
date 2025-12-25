@@ -22,6 +22,49 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.0.1",
+    date: "2025-12-25",
+    title: "DYNAMIC_RADIUS_SYSTEM",
+    changes: [
+      {
+        type: 'changed',
+        description: "Dynamic Border Radius System - Components now use mode.radius (CSS var(--radius)) for theme-controlled border radius"
+      },
+      {
+        type: 'changed',
+        description: "All 78+ UI components updated to use mode.radius instead of hardcoded rounded-none"
+      },
+      {
+        type: 'changed',
+        description: "Design system documentation comprehensively updated across 18+ files"
+      },
+      {
+        type: 'fixed',
+        description: "Calendar component layout and centering issues"
+      },
+      {
+        type: 'fixed',
+        description: "ScrollArea radius applied to correct element (outer container)"
+      },
+      {
+        type: 'fixed',
+        description: "InputOTP spacing when rounded"
+      },
+      {
+        type: 'fixed',
+        description: "Progress bar height and radius support"
+      },
+      {
+        type: 'fixed',
+        description: "Table headers no longer break when themes use rounded corners"
+      },
+      {
+        type: 'removed',
+        description: "Sticky CTA bar from landing pages (component retained for optional use)"
+      }
+    ]
+  },
+  {
     version: "1.0.0",
     date: "2025-12-24",
     title: "INITIAL_RELEASE",
