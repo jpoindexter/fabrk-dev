@@ -700,7 +700,7 @@ export default function StyleShowcasePage() {
           <div>© 2084 ARCHITECT_CORE. All rights reserved. // DATA_INTEGRITY: HIGH</div>
           <div className="flex gap-4 mt-2 md:mt-0 font-mono" style={{ color: `${PRIMARY}99` }}>
             <span className="flex items-center gap-1">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+              <div className="w-1.5 h-1.5 bg-success rounded-full" />
               SYS_READY
             </span>
             <span>[ OK ]</span>

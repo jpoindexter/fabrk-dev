@@ -151,20 +151,20 @@ interface FUIHeaderProps {
 
 export function FUIHeader({ title, code, status = 'active', className = '' }: FUIHeaderProps) {
   const statusColors = {
-    active: 'bg-green-500',
-    standby: 'bg-yellow-500',
-    alert: 'bg-red-500',
+    active: 'bg-success',
+    standby: 'bg-warning',
+    alert: 'bg-destructive',
   };
 
   return (
     <div className={cn('flex items-center justify-between border-b border-border px-3 py-1.5', className)}>
       <div className="flex items-center gap-2">
-        {code && <span className="text-[9px] font-mono text-muted-foreground tracking-wider">[{code}]</span>}
-        <span className="text-[11px] font-mono uppercase tracking-wider">{title}</span>
+        {code && <span className="text-3xs font-mono text-muted-foreground tracking-wider">[{code}]</span>}
+        <span className="text-xs font-mono uppercase tracking-wider">{title}</span>
       </div>
       <div className="flex items-center gap-1.5">
         <div className={cn('w-1.5 h-1.5 rounded-full', statusColors[status])} />
-        <span className="text-[8px] font-mono text-muted-foreground uppercase">{status}</span>
+        <span className="text-3xs font-mono text-muted-foreground uppercase">{status}</span>
       </div>
     </div>
   );
