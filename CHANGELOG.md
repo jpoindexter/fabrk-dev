@@ -5,6 +5,31 @@ All notable changes to Fabrk will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-12-25
+
+### Changed
+- **Dynamic Border Radius System** - Components now use `mode.radius` which maps to CSS `var(--radius)`, allowing themes to control border radius dynamically
+- All 78+ UI components updated to use `mode.radius` instead of hardcoded `rounded-none`
+- Design system documentation comprehensively updated across 18+ files
+
+### Fixed
+- Calendar component layout and centering issues
+- ScrollArea radius applied to correct element (outer container)
+- InputOTP spacing when rounded
+- Progress bar height and radius support
+- Table headers no longer break when themes use rounded corners
+
+### Removed
+- Sticky CTA bar from landing pages (component retained for optional use)
+
+### Documentation
+- Updated CLAUDE.md, README.md, GEMINI.md with new radius rules
+- Updated all component specs in `docs/design-system/spec/`
+- Updated COMPONENT-AUTHORING.md, COMPONENT-BEST-PRACTICES.md
+- Updated CUSTOMIZATION-GUIDE.md, FABRK_STYLE_GUIDE.md, TOKEN-REFERENCE.md
+
+---
+
 ## [1.0.0] - 2025-12-14
 
 ### Initial Release
