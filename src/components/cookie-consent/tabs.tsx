@@ -190,7 +190,7 @@ export function DetailsTabContent({ preferences, setPreferences }: DetailsTabCon
           </div>
           <div className="space-y-2">
             {category.cookies.map((cookie) => (
-              <div key={cookie.name} className="bg-muted !rounded-none border p-4">
+              <div key={cookie.name} className={cn('bg-muted border p-4', mode.radius)}>
                 <div className="flex items-center justify-between">
                   <span className={cn('text-xs font-semibold', mode.font)}>{cookie.name}</span>
                   <span className={cn('text-muted-foreground text-xs font-normal', mode.font)}>
@@ -255,7 +255,7 @@ export function AboutTabContent({}: AboutTabContentProps) {
           </ul>
         </div>
 
-        <div className="bg-primary/10 !rounded-none border p-4">
+        <div className={cn('bg-primary/10 border p-4', mode.radius)}>
           <h4 className={cn('text-primary text-sm font-semibold', mode.font)}>GDPR COMPLIANT</h4>
           <p className={cn('text-primary/80 mt-1 text-xs', mode.font)}>
             Our cookie policy and consent management comply with GDPR requirements.

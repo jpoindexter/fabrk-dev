@@ -54,7 +54,7 @@ export function HeroBrowserMockup() {
 
           {/* RIGHT: Browser (3 cols) */}
           <div className="lg:col-span-3">
-            <div className={cn('border overflow-hidden')}>
+            <div className={cn('border overflow-hidden', mode.radius)}>
               {/* Browser Chrome */}
               <div className={cn('flex items-center gap-2 px-3 py-2 border-b bg-muted/50', mode.font)}>
                 <div className="flex gap-1.5">
@@ -72,7 +72,7 @@ export function HeroBrowserMockup() {
               <div className="p-4 bg-background">
                 <div className="grid grid-cols-4 gap-3">
                   {/* Sidebar */}
-                  <div className="border p-2 space-y-2">
+                  <div className={cn('border p-2 space-y-2', mode.radius)}>
                     <div className={cn('h-4 w-full bg-primary/20', mode.radius)} />
                     <div className={cn('h-3 w-3/4 bg-muted', mode.radius)} />
                     <div className={cn('h-3 w-2/3 bg-muted', mode.radius)} />
@@ -82,13 +82,13 @@ export function HeroBrowserMockup() {
                     {/* Stats */}
                     <div className="grid grid-cols-3 gap-2">
                       {['$12,847', '1,234', '+23%'].map((v, i) => (
-                        <div key={i} className="border p-2 text-center">
+                        <div key={i} className={cn('border p-2 text-center', mode.radius)}>
                           <div className={cn('text-sm font-bold', mode.font)}>{v}</div>
                         </div>
                       ))}
                     </div>
                     {/* Chart */}
-                    <div className="border p-3">
+                    <div className={cn('border p-3', mode.radius)}>
                       <div className="flex items-end gap-1 h-12">
                         {[40, 65, 45, 80, 55, 70, 60].map((h, i) => (
                           <div

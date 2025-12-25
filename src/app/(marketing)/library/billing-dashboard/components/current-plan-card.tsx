@@ -33,7 +33,7 @@ export function CurrentPlanCard({ subscription, formatDate }: CurrentPlanCardPro
           <div className="mb-2 flex items-center gap-2">
             <span className={cn(mode.font, 'text-muted-foreground text-xs')}>[CURRENT PLAN]:</span>
             <span
-              className={cn(mode.font, 'border-success/50 text-success border px-2 py-0.5 text-xs')}
+              className={cn(mode.font, 'border-success/50 text-success border px-2 py-0.5 text-xs', mode.radius)}
             >
               ACTIVE
             </span>

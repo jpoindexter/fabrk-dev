@@ -11,8 +11,7 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
-import { ThemeDropdown } from '@/components/theme/theme-dropdown';
-import { MonitorEffectsDropdown } from '@/components/theme/monitor-effects-dropdown';
+import { ThemePlaygroundTrigger } from '@/components/theme/theme-playground-panel';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -48,7 +47,7 @@ export function SiteNavigation() {
   const suffix = sectionSuffix[currentSection] || 'CONSOLE';
 
   return (
-    <nav id="navigation" className="border-border bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <nav id="navigation" className={cn("border-border bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur", mode.radius)}>
       <div className="flex h-16 w-full items-center px-4 sm:px-6">
         {/* Logo */}
         <motion.div
@@ -114,10 +113,14 @@ export function SiteNavigation() {
           {/* Separator */}
           <div className="bg-border h-6 w-px" />
 
-          {/* Theme + Monitor Effects + CTA Buttons */}
+          {/* Customize */}
+          <ThemePlaygroundTrigger />
+
+          {/* Separator */}
+          <div className="bg-border h-6 w-px" />
+
+          {/* CTA Buttons */}
           <div className="flex items-center gap-2">
-            <ThemeDropdown />
-            <MonitorEffectsDropdown />
             <Button variant="outline" asChild className={cn(mode.radius, mode.font, 'text-xs')}>
               <Link href="/library">&gt; VIEW LIBRARY</Link>
             </Button>
@@ -183,15 +186,6 @@ export function SiteNavigation() {
                     </SheetClose>
                   );
                 })}
-                <div className="border-border border-t pt-6">
-                  <span className={cn(mode.font, 'text-muted-foreground mb-4 block text-xs')}>
-                    [DISPLAY]:
-                  </span>
-                  <div className="mb-4 flex flex-col gap-2">
-                    <ThemeDropdown />
-                    <MonitorEffectsDropdown />
-                  </div>
-                </div>
                 <div className="border-border border-t pt-6">
                   <span className={cn(mode.font, 'text-muted-foreground mb-4 block text-xs')}>
                     [ACTIONS]:

@@ -5,6 +5,8 @@ import { ToastTitle, ToastDescription, ToastClose, ToastViewport } from '@/compo
 import { Toast, ToastProvider } from '@/components/ui/toast';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 function ToasterDemo() {
   const [toasts, setToasts] = useState<Array<{ id: string; title: string; description?: string }>>(
@@ -24,21 +26,21 @@ function ToasterDemo() {
       <div className="flex flex-wrap gap-2">
         <Button
           variant="outline"
-          className="rounded-none"
+          className={cn(mode.radius)}
           onClick={() => showToast('Success', 'Your changes have been saved.')}
         >
           Show Toast
         </Button>
         <Button
           variant="outline"
-          className="rounded-none"
+          className={cn(mode.radius)}
           onClick={() => showToast('Error', 'Something went wrong.')}
         >
           Show Error
         </Button>
         <Button
           variant="outline"
-          className="rounded-none"
+          className={cn(mode.radius)}
           onClick={() => showToast('Simple notification')}
         >
           Simple Toast
@@ -151,7 +153,7 @@ function App() {
           title: 'With Title Only',
           description: 'Simple toast with just a title',
           preview: (
-            <div className="border-border bg-background w-full max-w-md rounded-none border p-6">
+            <div className={cn('border-border bg-background w-full max-w-md border p-6', mode.radius)}>
               <div className="font-medium">Notification sent</div>
             </div>
           ),
@@ -164,7 +166,7 @@ function App() {
           title: 'With Title and Description',
           description: 'Toast with title and supporting text',
           preview: (
-            <div className="border-border bg-background w-full max-w-md rounded-none border p-6">
+            <div className={cn('border-border bg-background w-full max-w-md border p-6', mode.radius)}>
               <div className="grid gap-1">
                 <div className="font-medium">Changes saved</div>
                 <div className="opacity-90">Your profile has been updated successfully.</div>
@@ -185,12 +187,12 @@ function App() {
           title: 'With Action Button',
           description: 'Toast with an actionable button',
           preview: (
-            <div className="border-border bg-background flex w-full max-w-md items-center justify-between gap-6 rounded-none border p-6">
+            <div className={cn('border-border bg-background flex w-full max-w-md items-center justify-between gap-6 border p-6', mode.radius)}>
               <div className="grid gap-1">
                 <div className="font-medium">File deleted</div>
                 <div className="opacity-90">Your file has been moved to trash.</div>
               </div>
-              <button className="border-border bg-background inline-flex h-8 shrink-0 items-center justify-center rounded-none border px-4 text-sm font-medium">
+              <button className={cn('border-border bg-background inline-flex h-8 shrink-0 items-center justify-center border px-4 text-sm font-medium', mode.radius)}>
                 Undo
               </button>
             </div>
@@ -212,7 +214,7 @@ function App() {
           title: 'Destructive Variant',
           description: 'Error toast with destructive styling',
           preview: (
-            <div className="border-destructive bg-destructive text-destructive-foreground w-full max-w-md rounded-none border p-6">
+            <div className={cn('border-destructive bg-destructive text-destructive-foreground w-full max-w-md border p-6', mode.radius)}>
               <div className="grid gap-1">
                 <div className="font-medium">Error</div>
                 <div className="opacity-90">Failed to save changes. Please try again.</div>

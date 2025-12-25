@@ -221,7 +221,7 @@ export function CookieConsent({
 
           <div className="space-y-4 py-4">
             {/* Necessary Cookies */}
-            <div className={cn(mode.color.bg.muted, mode.color.border.default, 'flex items-start justify-between gap-4 border p-4')}>
+            <div className={cn(mode.color.bg.muted, mode.color.border.default, 'flex items-start justify-between gap-4 border p-4', mode.radius)}>
               <div className="flex gap-4">
                 <Shield className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
@@ -236,7 +236,7 @@ export function CookieConsent({
             </div>
 
             {/* Analytics Cookies */}
-            <div className={cn(mode.color.border.default, 'flex items-start justify-between gap-4 border p-4')}>
+            <div className={cn(mode.color.border.default, 'flex items-start justify-between gap-4 border p-4', mode.radius)}>
               <div className="flex gap-4">
                 <BarChart3 className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
@@ -257,7 +257,7 @@ export function CookieConsent({
             </div>
 
             {/* Marketing Cookies */}
-            <div className={cn(mode.color.border.default, 'flex items-start justify-between gap-4 border p-4')}>
+            <div className={cn(mode.color.border.default, 'flex items-start justify-between gap-4 border p-4', mode.radius)}>
               <div className="flex gap-4">
                 <Target className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">
@@ -278,7 +278,7 @@ export function CookieConsent({
             </div>
 
             {/* Preferences Cookies */}
-            <div className={cn(mode.color.border.default, 'flex items-start justify-between gap-4 border p-4')}>
+            <div className={cn(mode.color.border.default, 'flex items-start justify-between gap-4 border p-4', mode.radius)}>
               <div className="flex gap-4">
                 <Cookie className="text-primary mt-1 h-5 w-5 flex-shrink-0" />
                 <div className="space-y-1">

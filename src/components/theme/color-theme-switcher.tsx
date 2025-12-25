@@ -48,7 +48,7 @@ export function ColorThemeSwitcher() {
 
   // Prevent hydration mismatch
   if (!mounted) {
-    return <div className="bg-muted h-8 w-full animate-pulse rounded" />;
+    return <div className={cn('bg-muted h-8 w-full animate-pulse', mode.radius)} />;
   }
 
   return (

@@ -44,9 +44,9 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     data-slot="select-trigger"
     className={cn(
-      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile, h-8 on desktop
+      // WCAG 2.1 AA: h-12 ensures adequate touch target on mobile, h-8 on desktop
       // Uses mode tokens for consistent theming
-      'flex h-[48px] w-full items-center justify-between border px-4 transition-colors focus-visible:outline-none sm:h-8 [&>span]:line-clamp-1',
+      'flex h-12 w-full items-center justify-between border px-4 transition-colors focus-visible:outline-none sm:h-8 [&>span]:line-clamp-1',
       mode.color.bg.base,
       mode.color.text.primary,
       mode.color.text.muted.replace('text-', 'placeholder:text-'),
@@ -192,9 +192,9 @@ const SelectItem = React.forwardRef<
     ref={ref}
     data-slot="select-item"
     className={cn(
-      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
+      // WCAG 2.1 AA: h-12 ensures adequate touch target on mobile
       // Uses mode tokens for consistent theming - subtle hover for better contrast
-      'relative flex h-[48px] w-full cursor-default items-center pr-2 pl-8 select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      'relative flex h-12 w-full cursor-default items-center pr-2 pl-8 select-none focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 sm:h-auto sm:py-2',
       mode.typography.input,
       mode.radius,
       mode.font,

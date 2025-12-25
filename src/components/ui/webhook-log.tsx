@@ -213,7 +213,8 @@ function WebhookLogEntryItem({
             className={cn(
               mode.color.text.muted,
               mode.color.border.default,
-              'rounded border px-2 py-1 text-xs',
+              'border px-2 py-1 text-xs',
+              mode.radius,
               mode.font
             )}
           >
@@ -272,7 +273,7 @@ function WebhookLogEntryItem({
           </div>
 
           {log.error && (
-            <div className={cn(mode.color.bg.dangerMuted, mode.color.border.danger, 'rounded border px-4 py-2')}>
+            <div className={cn(mode.color.bg.dangerMuted, mode.color.border.danger, 'border px-4 py-2', mode.radius)}>
               <p className={cn(mode.color.text.danger, 'text-xs', mode.font)}>[ERROR]: {log.error}</p>
             </div>
           )}
@@ -302,7 +303,7 @@ function WebhookDetailsSheet({ log, onClose }: WebhookDetailsSheetProps) {
               {/* Metadata */}
               <div className="space-y-2">
                 <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
-                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2', mode.radius)}>
                   <div className="flex justify-between text-xs">
                     <span className={cn('text-muted-foreground', mode.font)}>[ID]:</span>
                     <span className={cn(mode.font)}>{log.id}</span>
@@ -346,7 +347,7 @@ function WebhookDetailsSheet({ log, onClose }: WebhookDetailsSheetProps) {
               {log.error && (
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[ERROR]:</p>
-                  <div className={cn(mode.color.bg.dangerMuted, mode.color.border.danger, 'border p-4')}>
+                  <div className={cn(mode.color.bg.dangerMuted, mode.color.border.danger, 'border p-4', mode.radius)}>
                     <p className={cn(mode.color.text.danger, 'text-xs', mode.font)}>{log.error}</p>
                   </div>
                 </div>

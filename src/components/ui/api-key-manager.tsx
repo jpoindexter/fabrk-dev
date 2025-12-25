@@ -184,9 +184,9 @@ export function ApiKeyManager({
               </div>
 
               {generatedKey && (
-                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-2 border p-4')}>
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-2 border p-4', mode.radius)}>
                   <p className={cn(mode.color.text.muted, 'text-xs', mode.font)}>[KEY GENERATED]:</p>
-                  <div className={cn(mode.color.bg.base, mode.color.border.default, 'flex items-center gap-2 border p-2')}>
+                  <div className={cn(mode.color.bg.base, mode.color.border.default, 'flex items-center gap-2 border p-2', mode.radius)}>
                     <code className={cn('flex-1 text-xs', mode.font)}>{generatedKey.key}</code>
                     <Button
                       size="sm"

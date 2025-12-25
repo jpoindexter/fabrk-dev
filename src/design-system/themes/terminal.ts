@@ -277,15 +277,15 @@ export function formatStatusText(status: string): string {
 // =============================================================================
 
 export const terminalClasses = {
-  radius: 'rounded-none',
+  radius: 'rounded-dynamic',
   font: 'font-mono',
   text: 'uppercase',
   cardHeader: 'font-mono text-xs text-muted-foreground',
   label: 'font-mono text-xs text-muted-foreground uppercase',
-  button: 'rounded-none font-mono uppercase',
-  input: 'rounded-none font-mono border-border',
-  card: 'rounded-none border border-border',
-  badge: 'rounded-none font-mono text-xs uppercase', // Terminal aesthetic: sharp corners
+  button: 'rounded-dynamic font-mono uppercase',
+  input: 'rounded-dynamic font-mono border-border',
+  card: 'rounded-dynamic border border-border',
+  badge: 'rounded-dynamic font-mono text-xs uppercase',
 } as const;
 
 export default terminalTheme;

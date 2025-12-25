@@ -30,7 +30,7 @@ export function HolographicCard({
 }: HolographicCardProps) {
   return (
     <div
-      className={cn('relative border bg-card/80 backdrop-blur-sm', className)}
+      className={cn('relative border bg-card/80 backdrop-blur-sm rounded-none', className)}
       style={{ borderColor: `color-mix(in oklch, ${accentColor} 30%, transparent)` }}
     >
       {/* Corner brackets */}
@@ -120,7 +120,7 @@ interface FUIPanelProps {
 
 export function FUIPanel({ children, className = '', label }: FUIPanelProps) {
   return (
-    <div className={cn('relative border border-border', className)}>
+    <div className={cn('relative border border-border rounded-none', className)}>
       {/* Corner brackets using primary color */}
       <div className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 border-primary" />
       <div className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 border-primary" />

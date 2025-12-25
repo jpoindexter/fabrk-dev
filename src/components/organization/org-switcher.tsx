@@ -127,14 +127,14 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
           aria-expanded={open}
           aria-label="Select organization"
           className={cn(
-            'border-border w-[200px] justify-between gap-2 border transition-all',
+            'border-border w-52 justify-between gap-2 border transition-all',
             mode.radius,
             className
           )}
         >
           {currentOrg?.logo ? (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img src={currentOrg.logo} alt={currentOrg.name} className="h-5 w-5 rounded" />
+            <img src={currentOrg.logo} alt={currentOrg.name} className={cn('h-5 w-5', mode.radius)} />
           ) : (
             <Building2 className="text-muted-foreground h-4 w-4" />
           )}
@@ -146,7 +146,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className={cn('border-border w-[200px] border', mode.radius)}
+        className={cn('border-border w-52 border', mode.radius)}
       >
         <DropdownMenuLabel className="text-muted-foreground text-xs">
           Your Organizations
@@ -161,7 +161,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
             <div className="flex w-full items-center gap-2">
               {org.logo ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
-                <img src={org.logo} alt={org.name} className="h-5 w-5 rounded" />
+                <img src={org.logo} alt={org.name} className={cn('h-5 w-5', mode.radius)} />
               ) : (
                 <Building2 className="text-muted-foreground h-4 w-4" />
               )}

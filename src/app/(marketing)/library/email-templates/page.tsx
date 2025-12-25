@@ -103,9 +103,9 @@ function EmailTemplatesPreview() {
                   </div>
 
                   {/* Email Preview */}
-                  <div className={cn(mode.radius, 'border-border bg-muted mb-6 border p-8')}>
+                  <div className={cn("border-border bg-muted mb-6 border p-8", mode.radius)}>
                     <div
-                      className="border-border bg-background mx-auto block min-h-[400px] max-w-[600px] border p-6"
+                      className={cn("border-border bg-background mx-auto block min-h-[400px] max-w-[600px] border p-6", mode.radius)}
                       // SECURITY: Sanitized with DOMPurify to prevent XSS
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(template.preview),

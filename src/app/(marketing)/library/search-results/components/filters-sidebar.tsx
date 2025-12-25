@@ -72,11 +72,13 @@ export function FiltersSidebar({
                   <button
                     key={category.id}
                     onClick={() => onCategoryChange(category.id)}
-                    className={`border-border flex w-full items-center justify-between border px-2 py-2 font-mono text-xs transition-colors ${
+                    className={cn(
+                      'border-border flex w-full items-center justify-between border px-2 py-2 font-mono text-xs transition-colors',
+                      mode.radius,
                       selectedCategory === category.id
                         ? 'bg-primary text-primary-foreground'
                         : 'hover:bg-muted'
-                    }`}
+                    )}
                   >
                     <span>{category.label}</span>
                     <span className="text-xs">({category.count})</span>

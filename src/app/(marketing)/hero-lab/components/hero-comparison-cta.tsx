@@ -25,7 +25,7 @@ export function HeroComparisonCTA() {
       <div className="py-8 max-h-[70vh] flex flex-col justify-center">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* LEFT: Comparison Table */}
-          <div className={cn('border', mode.font)}>
+          <div className={cn('border', mode.font, mode.radius)}>
             {/* Header */}
             <div className="grid grid-cols-3 border-b">
               <div className="p-3 text-xs" />

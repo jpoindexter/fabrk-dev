@@ -2,6 +2,8 @@ import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Palette, Sun, Moon, Sparkles } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Theming & Colors - Fabrk Docs',
@@ -172,11 +174,11 @@ export function MyNavbar() {
             { name: 'Light', desc: 'Clean white background', color: '#ffffff' },
             { name: 'Dark', desc: 'Pure black background', color: '#1d232a' },
           ].map((theme) => (
-            <Card key={theme.name} interactive className="transition-all">
+            <Card key={theme.name} interactive className={cn("transition-all", mode.radius)}>
               <CardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
                   <div
-                    className="border-border h-6 w-6 rounded-none border-2"
+                    className={cn('border-border h-6 w-6 border-2', mode.radius)}
                     style={{ backgroundColor: theme.color }}
                   />
                   <div>
@@ -198,10 +200,10 @@ export function MyNavbar() {
             { name: 'Terminal', desc: 'Sharp edges, monospace font', icon: '[]' },
             { name: 'Modern', desc: 'Rounded edges, sans-serif font', icon: '()' },
           ].map((theme) => (
-            <Card key={theme.name} interactive className="transition-all">
+            <Card key={theme.name} interactive className={cn("transition-all", mode.radius)}>
               <CardContent padding="sm" className="p-4">
                 <div className="flex items-center gap-2">
-                  <div className="border-border flex h-6 w-6 items-center justify-center rounded-none border-2">
+                  <div className={cn('border-border flex h-6 w-6 items-center justify-center border-2', mode.radius)}>
                     <span className="font-mono text-xs">{theme.icon}</span>
                   </div>
                   <div>

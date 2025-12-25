@@ -46,7 +46,8 @@ export function PlanCards({ plans }: PlanCardsProps) {
                   <span
                     className={cn(
                       mode.font,
-                      'border-primary/50 text-primary border px-2 py-0.5 text-xs'
+                      'border-primary/50 text-primary border px-2 py-0.5 text-xs',
+                      mode.radius
                     )}
                   >
                     CURRENT

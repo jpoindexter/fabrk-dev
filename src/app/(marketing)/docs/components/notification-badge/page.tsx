@@ -5,6 +5,8 @@ import { NotificationBadge } from '@/components/ui/notification-badge';
 import { Button } from '@/components/ui/button';
 import { Bell, Mail, ShoppingCart, MessageSquare } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function NotificationBadgePage() {
   return (
@@ -126,33 +128,33 @@ export default function NotificationBadgePage() {
           preview: (
             <div className="flex items-center gap-6">
               <NotificationBadge count={5} position="top-right">
-                <div className="border-border bg-card h-12 w-12 rounded-none border" />
+                <div className={cn('border-border bg-card h-12 w-12 border', mode.radius)} />
               </NotificationBadge>
               <NotificationBadge count={5} position="top-left">
-                <div className="border-border bg-card h-12 w-12 rounded-none border" />
+                <div className={cn('border-border bg-card h-12 w-12 border', mode.radius)} />
               </NotificationBadge>
               <NotificationBadge count={5} position="bottom-right">
-                <div className="border-border bg-card h-12 w-12 rounded-none border" />
+                <div className={cn('border-border bg-card h-12 w-12 border', mode.radius)} />
               </NotificationBadge>
               <NotificationBadge count={5} position="bottom-left">
-                <div className="border-border bg-card h-12 w-12 rounded-none border" />
+                <div className={cn('border-border bg-card h-12 w-12 border', mode.radius)} />
               </NotificationBadge>
             </div>
           ),
           code: `<NotificationBadge count={5} position="top-right">
-  <div className="h-12 w-12 rounded-none border" />
+  <div className="h-12 w-12 border" />
 </NotificationBadge>
 
 <NotificationBadge count={5} position="top-left">
-  <div className="h-12 w-12 rounded-none border" />
+  <div className="h-12 w-12 border" />
 </NotificationBadge>
 
 <NotificationBadge count={5} position="bottom-right">
-  <div className="h-12 w-12 rounded-none border" />
+  <div className="h-12 w-12 border" />
 </NotificationBadge>
 
 <NotificationBadge count={5} position="bottom-left">
-  <div className="h-12 w-12 rounded-none border" />
+  <div className="h-12 w-12 border" />
 </NotificationBadge>`,
         },
         {

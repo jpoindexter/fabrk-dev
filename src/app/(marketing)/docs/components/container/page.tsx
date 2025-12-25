@@ -2,6 +2,8 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Container } from '@/components/ui/container';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function ContainerPage() {
   return (
@@ -13,8 +15,8 @@ export default function ContainerPage() {
       importCode={`import { Container } from "@/components/ui/container"`}
       mainPreview={{
         preview: (
-          <Container className="border-border bg-card border">
-            <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+          <Container className={cn('border-border bg-card border', mode.radius)}>
+            <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
               <span className="text-primary">&gt;</span> Container with default size (2xl)
             </div>
           </Container>
@@ -28,8 +30,8 @@ export default function ContainerPage() {
           title: 'Small',
           description: 'Compact container for focused content (640px max).',
           preview: (
-            <Container size="sm" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container size="sm" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 max-w-screen-sm
               </div>
             </Container>
@@ -42,8 +44,8 @@ export default function ContainerPage() {
           title: 'Medium',
           description: 'Medium width for articles and forms (768px max).',
           preview: (
-            <Container size="md" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container size="md" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 max-w-screen-md
               </div>
             </Container>
@@ -56,8 +58,8 @@ export default function ContainerPage() {
           title: 'Large',
           description: 'Large container for dashboards (1024px max).',
           preview: (
-            <Container size="lg" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container size="lg" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 max-w-screen-lg
               </div>
             </Container>
@@ -70,8 +72,8 @@ export default function ContainerPage() {
           title: 'Extra Large',
           description: 'Wide container for data tables (1280px max).',
           preview: (
-            <Container size="xl" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container size="xl" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 max-w-screen-xl
               </div>
             </Container>
@@ -84,8 +86,8 @@ export default function ContainerPage() {
           title: '2XL (Default)',
           description: 'Maximum width for full layouts (1536px max).',
           preview: (
-            <Container size="2xl" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container size="2xl" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 max-w-screen-2xl
               </div>
             </Container>
@@ -98,8 +100,8 @@ export default function ContainerPage() {
           title: 'Prose',
           description: 'Optimized for long-form reading (65ch max).',
           preview: (
-            <Container size="prose" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container size="prose" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 max-w-prose
               </div>
             </Container>
@@ -112,8 +114,8 @@ export default function ContainerPage() {
           title: 'No Padding',
           description: 'Remove horizontal padding for custom spacing.',
           preview: (
-            <Container padding="none" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container padding="none" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 No padding applied
               </div>
             </Container>
@@ -126,8 +128,8 @@ export default function ContainerPage() {
           title: 'As Main Element',
           description: 'Render as semantic <main> element.',
           preview: (
-            <Container as="main" className="border-border bg-card border">
-              <div className="border-muted-foreground/30 rounded-none border border-dashed p-4">
+            <Container as="main" className={cn('border-border bg-card border', mode.radius)}>
+              <div className={cn('border-muted-foreground/30 border border-dashed p-4', mode.radius)}>
                 &lt;main&gt; element
               </div>
             </Container>

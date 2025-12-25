@@ -26,7 +26,7 @@ export function HeroSplitScreen() {
     <Container size="2xl">
       <div className="py-8 max-h-[70vh] flex flex-col justify-center">
         {/* Split View */}
-        <div className="grid lg:grid-cols-2 gap-0 border max-w-4xl mx-auto mb-8">
+        <div className={cn('grid lg:grid-cols-2 gap-0 border max-w-4xl mx-auto mb-8', mode.radius)}>
           {/* Left: Code */}
           <div className="border-r">
             <div className={cn('px-4 py-2 border-b bg-muted/30 flex items-center gap-2', mode.font)}>

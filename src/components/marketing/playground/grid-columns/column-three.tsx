@@ -18,7 +18,7 @@ export function GridColumnThree() {
   return (
     <div className="space-y-4">
       {/* Radio Group - Border only, no card */}
-      <div className={cn('border-2 p-4', mode.color.border.accentSubtle, mode.color.bg.primarySubtle)}>
+      <div className={cn('border-2 p-4', mode.color.border.accentSubtle, mode.color.bg.primarySubtle, mode.radius)}>
         <h3 className={cn('mb-4 text-xs font-semibold', mode.font, mode.color.text.accent)}>[RADIO GROUP]</h3>
         <RadioGroup defaultValue="option-1">
           <div className="flex items-center space-x-2">
@@ -37,7 +37,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Switches - Terminal style with border */}
-      <div className={cn('border p-4', mode.color.border.default, mode.color.bg.surface)}>
+      <div className={cn('border p-4', mode.color.border.default, mode.color.bg.surface, mode.radius)}>
         <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[SWITCHES]</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between">
@@ -52,7 +52,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Mini Data Table - Dense with separators */}
-      <div className={cn('divide-y border', mode.color.border.default, mode.color.bg.surface)}>
+      <div className={cn('divide-y border', mode.color.border.default, mode.color.bg.surface, mode.radius)}>
         <div className={cn('p-4', mode.color.bg.mutedMedium)}>
           <h3 className={cn('text-xs font-semibold', mode.font)}>[DATA TABLE]</h3>
         </div>
@@ -76,7 +76,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Filter Chips - Terminal card style */}
-      <div className={cn('border p-4', mode.color.border.default, mode.color.bg.surface)}>
+      <div className={cn('border p-4', mode.color.border.default, mode.color.bg.surface, mode.radius)}>
         <h3 className={cn('mb-4 text-xs font-semibold', mode.font)}>[ACTIVE FILTERS]</h3>
         <div className="flex flex-wrap gap-2">
           {['Status: Active', 'Role: Admin'].map((filter, i) => (
@@ -89,7 +89,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Date & Time - Outline style */}
-      <div className={cn('border-2 border-dashed p-4', mode.color.border.mutedSubtle)}>
+      <div className={cn('border-2 border-dashed p-4', mode.color.border.mutedSubtle, mode.radius)}>
         <h3 className={cn('text-muted-foreground mb-4 text-xs font-semibold', mode.font)}>
           [TIMESTAMPS]
         </h3>
@@ -106,7 +106,7 @@ export function GridColumnThree() {
       </div>
 
       {/* Live Stats Card */}
-      <div className={cn('space-y-3 border p-4', mode.color.border.default, mode.color.bg.surface)}>
+      <div className={cn('space-y-3 border p-4', mode.color.border.default, mode.color.bg.surface, mode.radius)}>
         <div className="flex items-center justify-between">
           <h3 className={cn('text-xs font-semibold', mode.font)}>[LIVE STATS]</h3>
           <div className={cn('flex items-center gap-1 px-2 py-0.5', mode.color.bg.successSubtle)}>

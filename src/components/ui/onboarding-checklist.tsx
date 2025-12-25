@@ -241,7 +241,7 @@ export function OnboardingChecklist({
                           transition={{ duration: 0.2 }}
                           className="overflow-hidden"
                         >
-                          <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-2 border px-4 py-2')}>
+                          <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-2 border px-4 py-2', mode.radius)}>
                             <p className={cn('text-muted-foreground text-xs', mode.font)}>
                               {task.description}
                             </p>

@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Clock, CreditCard, Bell, TrendingUp } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Free Trial System - Fabrk Docs',
@@ -207,29 +209,29 @@ const subscription = await stripe.subscriptions.create({
       <DocsSection title="Trial Banner States">
         <DocsCard title="BANNER STATES">
           <div className="space-y-4">
-            <div className="border-border bg-card flex items-center gap-4 border p-4">
-              <div className="bg-success h-3 w-3 rounded-none"></div>
+            <div className={cn('border-border bg-card flex items-center gap-4 border p-4', mode.radius)}>
+              <div className={cn('bg-success h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Plenty of time (8+ days)</p>
                 <p>&quot;You have 12 days left in your trial&quot;</p>
               </div>
             </div>
-            <div className="border-border bg-card flex items-center gap-4 border p-4">
-              <div className="bg-warning h-3 w-3 rounded-none"></div>
+            <div className={cn('border-border bg-card flex items-center gap-4 border p-4', mode.radius)}>
+              <div className={cn('bg-warning h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Running low (4-7 days)</p>
                 <p>&quot;5 days left - Subscribe to keep access&quot;</p>
               </div>
             </div>
-            <div className="border-border bg-card flex items-center gap-4 border p-4">
-              <div className="bg-destructive h-3 w-3 rounded-none"></div>
+            <div className={cn('border-border bg-card flex items-center gap-4 border p-4', mode.radius)}>
+              <div className={cn('bg-destructive h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Urgent (1-3 days)</p>
                 <p>&quot;Trial ends tomorrow! Subscribe now&quot;</p>
               </div>
             </div>
-            <div className="border-border bg-card flex items-center gap-4 border p-4">
-              <div className="bg-muted-foreground h-3 w-3 rounded-none"></div>
+            <div className={cn('border-border bg-card flex items-center gap-4 border p-4', mode.radius)}>
+              <div className={cn('bg-muted-foreground h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Expired</p>
                 <p>&quot;Your trial has ended. Subscribe to continue&quot;</p>
@@ -285,7 +287,7 @@ const subscription = await stripe.subscriptions.create({
       {/* Common Questions Section */}
       <DocsSection title="Common Questions">
         <div className="space-y-4">
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-medium">
               Can users get multiple free trials?
             </summary>
@@ -297,7 +299,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-medium">
               What happens to user data when trial expires?
             </summary>
@@ -309,7 +311,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-medium">
               Should I require a credit card for trials?
             </summary>
@@ -322,7 +324,7 @@ const subscription = await stripe.subscriptions.create({
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-medium">
               How do I extend someone&apos;s trial?
             </summary>

@@ -40,18 +40,18 @@ export function ComparisonTable({ features }: ComparisonTableProps) {
           [FEATURE COMPARISON]:
         </div>
 
-        <div className="border-border overflow-x-auto border">
+        <div className={cn("border-border overflow-x-auto border", mode.radius)}>
           <table className={cn(mode.font, 'w-full text-xs')}>
             <thead>
-              <tr className="border-border bg-muted/30 rounded-none border-b">
-                <th className="text-muted-foreground rounded-none px-4 py-4 text-left">
+              <tr className={cn('border-border bg-muted/30 border-b', mode.radius)}>
+                <th className="text-muted-foreground px-4 py-4 text-left">
                   [FEATURE]
                 </th>
-                <th className="text-muted-foreground rounded-none px-4 py-4 text-center">
+                <th className="text-muted-foreground px-4 py-4 text-center">
                   STARTER
                 </th>
-                <th className="text-primary rounded-none px-4 py-4 text-center">PRO</th>
-                <th className="text-muted-foreground rounded-none px-4 py-4 text-center">
+                <th className="text-primary px-4 py-4 text-center">PRO</th>
+                <th className="text-muted-foreground px-4 py-4 text-center">
                   ENTERPRISE
                 </th>
               </tr>

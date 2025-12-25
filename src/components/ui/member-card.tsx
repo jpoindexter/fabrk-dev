@@ -79,10 +79,10 @@ const MemberCardSkeleton = ({ variant = 'card' }: { variant?: 'card' | 'compact'
           <div className={cn('bg-muted h-10 w-10 animate-pulse', mode.radius)} />
         </div>
         <div className="flex-1 space-y-2">
-          <div className="bg-muted h-4 w-32 animate-pulse rounded" />
-          <div className="bg-muted h-3 w-24 animate-pulse rounded" />
+          <div className={cn('bg-muted h-4 w-32 animate-pulse', mode.radius)} />
+          <div className={cn('bg-muted h-3 w-24 animate-pulse', mode.radius)} />
         </div>
-        <div className="bg-muted h-8 w-8 animate-pulse rounded" />
+        <div className={cn('bg-muted h-8 w-8 animate-pulse', mode.radius)} />
       </div>
     );
   }
@@ -94,10 +94,10 @@ const MemberCardSkeleton = ({ variant = 'card' }: { variant?: 'card' | 'compact'
           <div className={cn('bg-muted h-20 w-20 animate-pulse', mode.radius)} />
         </div>
         <div className="w-full space-y-2">
-          <div className="bg-muted mx-auto h-5 w-3/4 animate-pulse rounded" />
-          <div className="bg-muted mx-auto h-4 w-1/2 animate-pulse rounded" />
-          <div className="bg-muted h-3 w-full animate-pulse rounded" />
-          <div className="bg-muted h-3 w-5/6 animate-pulse rounded" />
+          <div className={cn('bg-muted mx-auto h-5 w-3/4 animate-pulse', mode.radius)} />
+          <div className={cn('bg-muted mx-auto h-4 w-1/2 animate-pulse', mode.radius)} />
+          <div className={cn('bg-muted h-3 w-full animate-pulse', mode.radius)} />
+          <div className={cn('bg-muted h-3 w-5/6 animate-pulse', mode.radius)} />
         </div>
         <div className="flex gap-2">
           <div className={cn('bg-muted h-9 w-20 animate-pulse', mode.radius)} />

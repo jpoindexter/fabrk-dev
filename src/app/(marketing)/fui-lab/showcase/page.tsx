@@ -119,7 +119,7 @@ export default function StyleShowcasePage() {
       {/* Status bar */}
       <div className="fixed top-0 left-0 w-full h-px z-50" style={{ backgroundColor: PRIMARY }} />
       <div
-        className="fixed top-px left-0 w-full flex justify-between px-4 py-1 text-[9px] uppercase z-40 border-b backdrop-blur-sm"
+        className="fixed top-px left-0 w-full flex justify-between px-4 py-1 text-[9px] uppercase z-40 border-b backdrop-blur-sm rounded-none"
         style={{
           color: PRIMARY,
           backgroundColor: `${BG}ee`,
@@ -137,7 +137,7 @@ export default function StyleShowcasePage() {
 
       {/* Palette selector */}
       <div
-        className="sticky top-6 z-[100] mx-auto max-w-[calc(100%-2rem)] mt-8 mb-4 p-3 border backdrop-blur-md"
+        className="sticky top-6 z-[100] mx-auto max-w-[calc(100%-2rem)] mt-8 mb-4 p-3 border backdrop-blur-md rounded-none"
         style={{
           backgroundColor: `${SURFACE}ee`,
           borderColor: `${PRIMARY}40`,
@@ -161,7 +161,7 @@ export default function StyleShowcasePage() {
             <select
               value={palette.id}
               onChange={(e) => setPalette(PALETTES.find(p => p.id === e.target.value) || PALETTES[0])}
-              className="border text-[10px] p-1.5 outline-none font-bold uppercase cursor-pointer"
+              className="border text-[10px] p-1.5 outline-none font-bold uppercase cursor-pointer rounded-none"
               style={{
                 backgroundColor: BG,
                 borderColor: `${PRIMARY}60`,
@@ -181,7 +181,7 @@ export default function StyleShowcasePage() {
             <button
               key={p.id}
               onClick={() => setPalette(p)}
-              className="w-6 h-6 border-2 transition-transform hover:scale-110"
+              className="w-6 h-6 border-2 transition-transform hover:scale-110 rounded-none"
               style={{
                 backgroundColor: p.bg,
                 borderColor: palette.id === p.id ? p.primary : `${p.primary}40`,
@@ -199,7 +199,7 @@ export default function StyleShowcasePage() {
       <nav className="relative w-full max-w-[calc(100%-2rem)] mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center gap-2 group cursor-pointer">
           <div
-            className="w-8 h-8 border flex items-center justify-center relative transition-colors"
+            className="w-8 h-8 border flex items-center justify-center relative transition-colors rounded-none"
             style={{ borderColor: PRIMARY, backgroundColor: `${PRIMARY}0a` }}
           >
             <span className="font-bold text-lg" style={{ color: PRIMARY }}>A</span>
@@ -229,7 +229,7 @@ export default function StyleShowcasePage() {
             </a>
           ))}
           <button
-            className="px-4 py-1.5 border uppercase font-bold text-[10px] tracking-wide transition-colors"
+            className="px-4 py-1.5 border uppercase font-bold text-[10px] tracking-wide transition-colors rounded-none"
             style={{
               borderColor: PRIMARY,
               color: PRIMARY,
@@ -245,7 +245,7 @@ export default function StyleShowcasePage() {
       <main className="relative w-full max-w-[calc(100%-2rem)] mx-auto px-4 pt-4 pb-16 z-10 grid grid-cols-12 gap-4">
         {/* Hero section */}
         <div
-          className="col-span-12 lg:col-span-8 relative border p-6 pb-2"
+          className="col-span-12 lg:col-span-8 relative border p-6 pb-2 rounded-none"
           style={{
             borderColor: `${PRIMARY}33`,
             backgroundColor: SURFACE,
@@ -260,7 +260,7 @@ export default function StyleShowcasePage() {
 
           {/* Status badge */}
           <div
-            className="inline-flex items-center gap-2 text-[9px] border px-2 py-0.5 uppercase tracking-wide mb-4"
+            className="inline-flex items-center gap-2 text-[9px] border px-2 py-0.5 uppercase tracking-wide mb-4 rounded-none"
             style={{ color: PRIMARY, borderColor: `${PRIMARY}4d`, backgroundColor: `${PRIMARY}0a` }}
           >
             <span className="w-1 h-1" style={{ backgroundColor: PRIMARY }} />
@@ -317,7 +317,7 @@ export default function StyleShowcasePage() {
 
               {/* Data readouts */}
               <div
-                className="absolute top-0 right-0 border p-1 text-[9px] backdrop-blur-sm"
+                className="absolute top-0 right-0 border p-1 text-[9px] backdrop-blur-sm rounded-none"
                 style={{ backgroundColor: `${BG}cc`, borderColor: `${SECONDARY}66`, color: SECONDARY }}
               >
                 <div className="flex justify-between gap-2 border-b mb-0.5 pb-0.5" style={{ borderColor: `${SECONDARY}33` }}>
@@ -330,7 +330,7 @@ export default function StyleShowcasePage() {
               </div>
 
               <div
-                className="absolute bottom-0 left-0 border p-1 text-[9px] backdrop-blur-sm"
+                className="absolute bottom-0 left-0 border p-1 text-[9px] backdrop-blur-sm rounded-none"
                 style={{ backgroundColor: `${BG}cc`, borderColor: `${SECONDARY}66`, color: SECONDARY }}
               >
                 <div className="flex justify-between gap-2 mb-0.5">
@@ -345,7 +345,7 @@ export default function StyleShowcasePage() {
           {/* Action buttons */}
           <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t mt-4" style={{ borderColor: `${SECONDARY}33` }}>
             <button
-              className="px-6 py-2 font-mono text-[10px] tracking-wide uppercase font-bold transition-colors border"
+              className="px-6 py-2 font-mono text-[10px] tracking-wide uppercase font-bold transition-colors border rounded-none"
               style={{
                 borderColor: PRIMARY,
                 color: PRIMARY,
@@ -369,7 +369,7 @@ export default function StyleShowcasePage() {
 
         {/* Log viewer */}
         <div
-          className="col-span-12 lg:col-span-4 relative border p-4 flex flex-col"
+          className="col-span-12 lg:col-span-4 relative border p-4 flex flex-col rounded-none"
           style={{
             borderColor: `${PRIMARY}33`,
             backgroundColor: SURFACE,
@@ -399,7 +399,7 @@ export default function StyleShowcasePage() {
 
         {/* Metrics grid */}
         <div
-          className="col-span-12 lg:col-span-8 h-48 relative border p-4 flex flex-col"
+          className="col-span-12 lg:col-span-8 h-48 relative border p-4 flex flex-col rounded-none"
           style={{
             borderColor: `${PRIMARY}33`,
             backgroundColor: SURFACE,
@@ -427,7 +427,7 @@ export default function StyleShowcasePage() {
             ].map((m, i) => (
               <div
                 key={i}
-                className="flex flex-col justify-between p-3 border"
+                className="flex flex-col justify-between p-3 border rounded-none"
                 style={{
                   borderColor: m.variant === 'primary' ? `${PRIMARY}1a` : `${SECONDARY}1a`,
                   backgroundColor: m.variant === 'primary' ? `${PRIMARY}08` : `${SECONDARY}08`,
@@ -443,7 +443,7 @@ export default function StyleShowcasePage() {
 
         {/* Connections panel */}
         <div
-          className="col-span-12 lg:col-span-4 h-48 relative border p-4 flex flex-col"
+          className="col-span-12 lg:col-span-4 h-48 relative border p-4 flex flex-col rounded-none"
           style={{
             borderColor: `${PRIMARY}33`,
             backgroundColor: SURFACE,
@@ -480,7 +480,7 @@ export default function StyleShowcasePage() {
 
       {/* Marquee */}
       <div
-        className="w-full border-y py-2 overflow-hidden whitespace-nowrap relative text-[10px]"
+        className="w-full border-y py-2 overflow-hidden whitespace-nowrap relative text-[10px] rounded-none"
         style={{ backgroundColor: SURFACE, borderColor: `${PRIMARY}4d` }}
       >
         <div className="absolute left-0 top-0 bottom-0 w-8 z-10" style={{ background: `linear-gradient(to right, ${SURFACE}, transparent)` }} />
@@ -500,7 +500,7 @@ export default function StyleShowcasePage() {
         <div className="flex items-end justify-between mb-8 border-b pb-2" style={{ borderColor: `${PRIMARY}4d` }}>
           <div>
             <span
-              className="text-[9px] tracking-wide px-1.5 py-0.5 uppercase"
+              className="text-[9px] tracking-wide px-1.5 py-0.5 uppercase rounded-none"
               style={{ color: PRIMARY, backgroundColor: `${PRIMARY}1a`, border: `1px solid ${PRIMARY}4d` }}
             >
               ACTIVE_MODULES
@@ -517,7 +517,7 @@ export default function StyleShowcasePage() {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="relative border p-4 flex flex-col group hover:border-opacity-60 transition-colors"
+              className="relative border p-4 flex flex-col group hover:border-opacity-60 transition-colors rounded-none"
               style={{
                 borderColor: `${PRIMARY}33`,
                 backgroundColor: SURFACE,
@@ -531,10 +531,10 @@ export default function StyleShowcasePage() {
               <div className="absolute -bottom-px -right-px w-2 h-2 border-b border-r" style={{ borderColor: PRIMARY }} />
 
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2 border rounded-sm" style={{ borderColor: `${PRIMARY}4d`, backgroundColor: `${PRIMARY}08` }}>
+                <div className="p-2 border rounded-none" style={{ borderColor: `${PRIMARY}4d`, backgroundColor: `${PRIMARY}08` }}>
                   <span className="text-2xl" style={{ color: PRIMARY }}>◆</span>
                 </div>
-                <span className="text-[9px] font-bold border px-1.5 py-1" style={{ color: PRIMARY, borderColor: `${PRIMARY}4d` }}>
+                <span className="text-[9px] font-bold border px-1.5 py-1 rounded-none" style={{ color: PRIMARY, borderColor: `${PRIMARY}4d` }}>
                   {feature.code}
                 </span>
               </div>
@@ -564,7 +564,7 @@ export default function StyleShowcasePage() {
 
         <div className="text-center mb-12 relative z-10">
           <span
-            className="text-[9px] font-bold tracking-wide border px-2 py-0.5 uppercase"
+            className="text-[9px] font-bold tracking-wide border px-2 py-0.5 uppercase rounded-none"
             style={{ color: PRIMARY, borderColor: `${PRIMARY}4d`, backgroundColor: `${PRIMARY}08` }}
           >
             ACCESS_LEVELS
@@ -577,7 +577,7 @@ export default function StyleShowcasePage() {
           {pricingPlans.map((plan, i) => (
             <div
               key={i}
-              className={`relative flex flex-col p-4 transition-colors ${plan.highlighted ? 'transform md:-translate-y-4 z-20' : ''}`}
+              className={`relative flex flex-col p-4 transition-colors rounded-none ${plan.highlighted ? 'transform md:-translate-y-4 z-20' : ''}`}
               style={{
                 border: plan.highlighted ? `2px solid ${PRIMARY}` : `1px solid ${PRIMARY}33`,
                 backgroundColor: SURFACE,
@@ -625,7 +625,7 @@ export default function StyleShowcasePage() {
               </ul>
 
               <button
-                className="w-full px-6 py-2 font-mono text-[10px] tracking-wide uppercase font-bold transition-colors"
+                className="w-full px-6 py-2 font-mono text-[10px] tracking-wide uppercase font-bold transition-colors rounded-none"
                 style={{
                   backgroundColor: plan.highlighted ? PRIMARY : 'transparent',
                   color: plan.highlighted ? BG : PRIMARY,
@@ -641,13 +641,13 @@ export default function StyleShowcasePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t pt-12 pb-6 text-[10px] relative overflow-hidden" style={{ backgroundColor: SURFACE, borderColor: `${PRIMARY}4d` }}>
+      <footer className="border-t pt-12 pb-6 text-[10px] relative overflow-hidden rounded-none" style={{ backgroundColor: SURFACE, borderColor: `${PRIMARY}4d` }}>
         <div className="absolute bottom-0 left-0 w-full h-px opacity-30" style={{ background: `linear-gradient(to right, transparent, ${PRIMARY}, transparent)` }} />
 
         <div className="max-w-[calc(100%-2rem)] mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-6 h-6 border flex items-center justify-center" style={{ borderColor: PRIMARY, backgroundColor: `${PRIMARY}1a` }}>
+              <div className="w-6 h-6 border flex items-center justify-center rounded-none" style={{ borderColor: PRIMARY, backgroundColor: `${PRIMARY}1a` }}>
                 <span className="font-bold text-base" style={{ color: PRIMARY }}>A</span>
               </div>
               <span className="text-base font-bold tracking-wider text-white uppercase">

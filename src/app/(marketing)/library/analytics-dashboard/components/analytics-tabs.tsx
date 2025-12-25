@@ -59,7 +59,7 @@ export function AnalyticsTabs({
       {/* Overview Tab */}
       <StyledTabsContent value="overview">
         {/* Terminal Table */}
-        <div className="border-border border">
+        <div className={cn('border-border border', mode.radius)}>
           <div
             className={cn(
               mode.font,
@@ -80,7 +80,7 @@ export function AnalyticsTabs({
                 <span className="text-foreground">{row.page}</span>
                 <span className="text-muted-foreground">{row.views}</span>
                 <span className="text-muted-foreground">{row.bounce}</span>
-                <span className="border-border block w-20 border px-2 py-0.5 text-center">
+                <span className={cn('border-border block w-20 border px-2 py-0.5 text-center', mode.radius)}>
                   {row.conversion}
                 </span>
               </div>
@@ -91,10 +91,10 @@ export function AnalyticsTabs({
 
       {/* Analytics Tab */}
       <StyledTabsContent value="analytics">
-        <div className="border-border bg-card border p-4">
+        <div className={cn('border-border bg-card border p-4', mode.radius)}>
           <div className="grid gap-4 md:grid-cols-2">
             {/* Traffic Sources */}
-            <div className="border-border border p-4">
+            <div className={cn('border-border border p-4', mode.radius)}>
               <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
                 [TRAFFIC SOURCES]:
               </div>
@@ -112,7 +112,7 @@ export function AnalyticsTabs({
             </div>
 
             {/* Device Breakdown */}
-            <div className="border-border border p-4">
+            <div className={cn('border-border border p-4', mode.radius)}>
               <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
                 [DEVICE BREAKDOWN]:
               </div>
@@ -134,7 +134,7 @@ export function AnalyticsTabs({
 
       {/* Reports Tab */}
       <StyledTabsContent value="reports">
-        <div className="border-border bg-card border p-4">
+        <div className={cn('border-border bg-card border p-4', mode.radius)}>
           <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
             [AVAILABLE REPORTS]:
           </div>
@@ -148,7 +148,7 @@ export function AnalyticsTabs({
               },
               { name: 'CUSTOM REPORT', desc: 'Build your own report' },
             ].map((report, i) => (
-              <div key={i} className="border-border border p-4">
+              <div key={i} className={cn('border-border border p-4', mode.radius)}>
                 <div className="mb-4 flex items-start justify-between">
                   <div>
                     <div className={cn(mode.font, 'text-foreground text-xs')}>[{report.name}]</div>

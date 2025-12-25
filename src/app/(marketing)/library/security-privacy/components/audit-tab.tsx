@@ -36,7 +36,7 @@ export function AuditTab({ auditLog }: AuditTabProps) {
         </div>
 
         {/* Terminal Table */}
-        <div className="border-border border">
+        <div className={cn('border-border border', mode.radius)}>
           <div
             className={cn(
               mode.font,
@@ -58,11 +58,11 @@ export function AuditTab({ auditLog }: AuditTabProps) {
                 <span className="text-muted-foreground">{log.timestamp}</span>
                 <span className="text-muted-foreground">{log.ip}</span>
                 <span
-                  className={`w-fit border px-2 py-0.5 ${
+                  className={cn(`w-fit border px-2 py-0.5 ${
                     log.status === 'success'
                       ? 'border-success/50 text-success'
                       : 'border-destructive/50 text-destructive'
-                  }`}
+                  }`, mode.radius)}
                 >
                   {log.status.toUpperCase()}
                 </span>

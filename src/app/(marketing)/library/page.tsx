@@ -32,7 +32,6 @@ import { templates, categories } from './library-data';
 import { TEMPLATE_COUNT_STRING } from './library-nav-data';
 import { filterTemplates } from '@/lib/search';
 import { AdvancedFilters, TemplateCard, type FilterOptions } from '@/components/library';
-import { ThemePlaygroundPanel } from '@/components/theme/theme-playground-panel';
 
 const ITEMS_PER_PAGE = 9;
 
@@ -389,9 +388,6 @@ export default function LibraryIndexPage() {
           </div>
         </CardContent>
       </Card>
-
-      {/* Theme Playground Panel */}
-      <ThemePlaygroundPanel />
     </div>
   );
 }

@@ -56,7 +56,7 @@ function DashboardDemo() {
               'New subscription started',
               'Invoice #1234 paid',
             ].map((item, i) => (
-              <div key={i} className="border-primary flex items-center gap-4 border-l-2 pl-3">
+              <div key={i} className={cn('border-primary flex items-center gap-4 border-l-2 pl-3', mode.radius)}>
                 <Check className={cn('h-3 w-3', mode.color.text.success)} />
                 <span className={cn('text-xs', mode.font)}>{item}</span>
                 <span className={cn('ml-auto text-xs', mode.color.text.muted, mode.font)}>
@@ -95,10 +95,10 @@ function AuthDemo() {
             />
           </div>
           <Button className={cn('w-full', mode.radius, mode.font, 'text-xs')}>&gt; SIGN IN</Button>
-          <div className="flex items-center gap-2">
-            <div className="bg-border h-px flex-1" />
+          <div className={cn('flex items-center gap-2', mode.radius)}>
+            <div className={cn('bg-border h-px flex-1', mode.radius)} />
             <span className={cn('text-xs', mode.color.text.muted, mode.font)}>OR</span>
-            <div className="bg-border h-px flex-1" />
+            <div className={cn('bg-border h-px flex-1', mode.radius)} />
           </div>
           <Button variant="outline" className={cn('w-full', mode.radius, mode.font, 'text-xs')}>
             &gt; CONTINUE WITH GOOGLE

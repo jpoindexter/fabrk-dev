@@ -43,7 +43,7 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
 
   if (isExpired) {
     return (
-      <Alert className={cn('bg-destructive/10 border', mode.color.border.danger)}>
+      <Alert className={cn('bg-destructive/10 border', mode.color.border.danger, mode.radius)}>
         <Clock className={cn('h-4 w-4', mode.color.text.danger)} />
         <AlertDescription className="flex items-center justify-between">
           <span className={cn('font-medium', mode.color.text.danger)}>
@@ -69,7 +69,8 @@ export function TrialBanner({ trialEndsAt, tier }: TrialBannerProps) {
         'border',
         isUrgent
           ? `${mode.color.border.warning} bg-warning/10`
-          : `${mode.color.border.accent} bg-primary/10`
+          : `${mode.color.border.accent} bg-primary/10`,
+        mode.radius
       )}
     >
       <Clock

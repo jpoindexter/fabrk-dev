@@ -23,7 +23,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
       className={cn(
         `flex h-auto w-full items-center justify-evenly border-b p-0 ${mode.color.border.default}`,
         mode.color.text.primary,
-        mode.radius,
+        // Note: No border-radius on TabsList - it only has border-bottom, radius would curl the underline
         mode.font,
         className
       )}
@@ -48,7 +48,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
         // Active state - primary underline
         'data-[state=active]:border-primary data-[state=active]:text-foreground data-[state=active]:font-semibold',
         mode.state.focus.ring,
-        mode.radius,
+        // Note: No border-radius on TabsTrigger - it uses underline style with border-b
         mode.font,
         className
       )}

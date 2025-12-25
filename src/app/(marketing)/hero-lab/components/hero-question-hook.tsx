@@ -17,7 +17,7 @@ export function HeroQuestionHook() {
     <Container size="lg">
       <div className="py-16 max-h-[70vh] flex flex-col items-center justify-center text-center">
         {/* Question */}
-        <div className={cn('text-xs mb-4 border px-3 py-1', mode.font, mode.color.text.muted)}>
+        <div className={cn('text-xs mb-4 border px-3 py-1', mode.font, mode.color.text.muted, mode.radius)}>
           STILL WRITING BOILERPLATE IN 2025?
         </div>
 

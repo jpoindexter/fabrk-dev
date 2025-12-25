@@ -350,7 +350,7 @@ export default function CardOptionsPage() {
           />
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
             <div
-              className="relative p-4 border border-dashed"
+              className="relative p-4 border border-dashed rounded-none"
               style={{ borderColor: COLORS.primary, backgroundColor: COLORS.surface }}
             >
               <div style={{ color: COLORS.textMuted }}>// PRICING</div>
@@ -359,7 +359,7 @@ export default function CardOptionsPage() {
             </div>
 
             <div
-              className="relative p-4 border border-dashed"
+              className="relative p-4 border border-dashed rounded-none"
               style={{ borderColor: COLORS.primary, backgroundColor: COLORS.surface }}
             >
               <div style={{ color: COLORS.textMuted }}>// COMPONENTS</div>
@@ -368,7 +368,7 @@ export default function CardOptionsPage() {
             </div>
 
             <div
-              className="relative p-4 border border-dashed"
+              className="relative p-4 border border-dashed rounded-none"
               style={{ borderColor: COLORS.primary, backgroundColor: COLORS.surface }}
             >
               <div style={{ color: COLORS.textMuted }}>// FEATURES</div>
@@ -466,21 +466,21 @@ export default function CardOptionsPage() {
             rightText="NESTED"
           />
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="p-1 border" style={{ borderColor: COLORS.primaryDim }}>
+            <div className="p-1 border rounded-none" style={{ borderColor: COLORS.primaryDim }}>
               <FUIPane>
                 <div style={{ color: COLORS.textMuted }}>PRICING</div>
                 <div className="mt-2 text-2xl font-bold" style={{ color: COLORS.textLight }}>$199</div>
               </FUIPane>
             </div>
 
-            <div className="p-1 border" style={{ borderColor: COLORS.primaryDim }}>
+            <div className="p-1 border rounded-none" style={{ borderColor: COLORS.primaryDim }}>
               <FUIPane>
                 <div style={{ color: COLORS.textMuted }}>COMPONENTS</div>
                 <div className="mt-2 text-2xl font-bold" style={{ color: COLORS.primary }}>77+</div>
               </FUIPane>
             </div>
 
-            <div className="p-1 border" style={{ borderColor: COLORS.primaryDim }}>
+            <div className="p-1 border rounded-none" style={{ borderColor: COLORS.primaryDim }}>
               <FUIPane>
                 <div style={{ color: COLORS.textMuted }}>FEATURES</div>
                 <div className="mt-2">Auth · Pay · RBAC</div>

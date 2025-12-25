@@ -26,7 +26,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (12 themes)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (18 themes)
 
 **Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 
@@ -311,7 +311,7 @@ npm run build
 
 The MCP server gives AI tools (Claude Code, Cursor, etc.) knowledge of:
 - All 78+ UI components with props and examples
-- 12 terminal themes with color tokens
+- 18 terminal themes with color tokens
 - Design system rules and patterns
 - Page and component generation
 

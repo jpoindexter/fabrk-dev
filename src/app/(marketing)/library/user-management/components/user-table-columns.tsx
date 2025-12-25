@@ -54,7 +54,8 @@ export const columns: ColumnDef<UserType>[] = [
             'flex h-8 w-8 flex-shrink-0 items-center justify-center border text-xs font-medium',
             mode.color.border.default,
             mode.color.bg.accent,
-            mode.color.text.accent
+            mode.color.text.accent,
+            mode.radius
           )}
         >
           {row
@@ -103,7 +104,8 @@ export const columns: ColumnDef<UserType>[] = [
           <span
             className={cn(
               'inline-flex w-24 items-center justify-center gap-1.5 border px-4 py-1 font-mono text-xs',
-              getRoleClasses()
+              getRoleClasses(),
+              mode.radius
             )}
           >
             <RoleIcon className="h-3.5 w-3.5" />
@@ -145,7 +147,8 @@ export const columns: ColumnDef<UserType>[] = [
               className={cn(
                 'flex h-8 w-8 items-center justify-center border',
                 mode.color.border.default,
-                mode.state.hover.bg
+                mode.state.hover.bg,
+                mode.radius
               )}
             >
               <span className="sr-only">Open menu</span>

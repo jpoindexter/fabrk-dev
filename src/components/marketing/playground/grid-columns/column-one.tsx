@@ -21,13 +21,13 @@ export function GridColumnOne() {
   return (
     <div className="space-y-4">
       {/* Alerts - NO CARD, direct background */}
-      <Alert className={cn('border-l-4', mode.color.border.accent)}>
+      <Alert className={cn('border-l-4', mode.color.border.accent, mode.radius)}>
         <Info className="h-4 w-4" />
         <AlertTitle className="text-xs font-semibold">[INFO]</AlertTitle>
         <AlertDescription className="text-xs">New features available in v2.0</AlertDescription>
       </Alert>
 
-      <Alert variant="destructive" className={cn('border-l-4', mode.color.border.danger)}>
+      <Alert variant="destructive" className={cn('border-l-4', mode.color.border.danger, mode.radius)}>
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle className="text-xs font-semibold">[ERROR]</AlertTitle>
         <AlertDescription className="text-xs">Failed to connect to server</AlertDescription>
@@ -52,7 +52,7 @@ export function GridColumnOne() {
       </Card>
 
       {/* File Upload - NO CARD, just border */}
-      <div className={cn('flex flex-col items-center justify-center border-2 border-dashed p-8', mode.color.border.default, mode.color.bg.mutedSubtle)}>
+      <div className={cn('flex flex-col items-center justify-center border-2 border-dashed p-8', mode.color.border.default, mode.color.bg.mutedSubtle, mode.radius)}>
         <Upload className="text-muted-foreground mb-4 h-12 w-12" />
         <p className="mb-1 text-xs font-semibold">[DROP FILES HERE]</p>
         <p className="text-muted-foreground text-xs">or click to browse</p>

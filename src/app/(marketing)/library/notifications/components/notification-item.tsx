@@ -34,7 +34,7 @@ export function NotificationItem({ notification, onMarkAsRead, onDelete }: Notif
     >
       {/* Icon */}
       <div
-        className={`border-border bg-background flex size-8 flex-shrink-0 items-center justify-center rounded-none border ${colorClass}`}
+        className={cn('border-border bg-background flex size-8 flex-shrink-0 items-center justify-center border', mode.radius, colorClass)}
       >
         <Icon className={`h-4 w-4 ${colorClass}`} />
       </div>

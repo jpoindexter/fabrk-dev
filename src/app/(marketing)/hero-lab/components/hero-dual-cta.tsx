@@ -31,7 +31,7 @@ export function HeroDualCTA() {
         {/* Dual CTA */}
         <div className="grid sm:grid-cols-2 gap-4 w-full max-w-lg">
           {/* Primary: Buy */}
-          <div className={cn('border-2 border-primary p-6 text-center', mode.font)}>
+          <div className={cn('border-2 border-primary p-6 text-center', mode.font, mode.radius)}>
             <div className={cn('text-xs mb-2', mode.color.text.muted)}>FULL ACCESS</div>
             <div className="text-3xl font-bold text-primary mb-4">$299</div>
             <PolarCheckoutButton
@@ -50,7 +50,7 @@ export function HeroDualCTA() {
           </div>
 
           {/* Secondary: Try */}
-          <div className={cn('border p-6 text-center', mode.font)}>
+          <div className={cn('border p-6 text-center', mode.font, mode.radius)}>
             <div className={cn('text-xs mb-2', mode.color.text.muted)}>EXPLORE FIRST</div>
             <div className="text-3xl font-bold mb-4">FREE</div>
             <Button

@@ -73,7 +73,7 @@ export function TimeSavingsSection() {
           ))}
 
           {/* Total */}
-          <Card className={cn('border-2', mode.color.border.default)}>
+          <Card className={cn('border-2', mode.color.border.default, mode.radius)}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <span className={cn('text-sm font-semibold', mode.font)}>TOTAL TIME SAVED</span>

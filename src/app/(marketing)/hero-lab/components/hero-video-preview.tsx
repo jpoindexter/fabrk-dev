@@ -68,7 +68,7 @@ export function HeroVideoPreview() {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Preview Container */}
-              <div className={cn('border overflow-hidden transition-all', isHovered && 'border-primary')}>
+              <div className={cn('border overflow-hidden transition-all', isHovered && 'border-primary', mode.radius)}>
                 {/* Browser Chrome */}
                 <div className={cn('flex items-center gap-2 px-3 py-2 border-b bg-muted/50', mode.font)}>
                   <div className="flex gap-1">
@@ -87,7 +87,7 @@ export function HeroVideoPreview() {
                   {/* Simulated Dashboard */}
                   <div className="grid grid-cols-3 gap-2 h-full">
                     {/* Sidebar */}
-                    <div className="col-span-1 border p-2 space-y-2">
+                    <div className={cn('col-span-1 border p-2 space-y-2', mode.radius)}>
                       <div className={cn('h-4 w-full bg-primary/20', mode.radius)} />
                       <div className={cn('h-3 w-3/4 bg-muted', mode.radius)} />
                       <div className={cn('h-3 w-2/3 bg-muted', mode.radius)} />
@@ -98,14 +98,14 @@ export function HeroVideoPreview() {
                       {/* Stats Row */}
                       <div className="grid grid-cols-3 gap-2">
                         {[1, 2, 3].map((i) => (
-                          <div key={i} className="border p-2">
+                          <div key={i} className={cn('border p-2', mode.radius)}>
                             <div className={cn('h-2 w-1/2 bg-muted mb-1', mode.radius)} />
                             <div className={cn('h-4 w-full bg-primary/30', mode.radius)} />
                           </div>
                         ))}
                       </div>
                       {/* Chart */}
-                      <div className="border p-2 flex-1">
+                      <div className={cn('border p-2 flex-1', mode.radius)}>
                         <div className={cn('h-2 w-1/4 bg-muted mb-2', mode.radius)} />
                         <div className="flex items-end gap-1 h-16">
                           {[40, 65, 45, 80, 55, 70, 60, 75].map((h, i) => (
@@ -127,7 +127,7 @@ export function HeroVideoPreview() {
                       isHovered ? 'opacity-100' : 'opacity-0'
                     )}
                   >
-                    <div className={cn('border-2 border-primary p-4', mode.font)}>
+                    <div className={cn('border-2 border-primary p-4', mode.font, mode.radius)}>
                       <Play className="h-8 w-8 text-primary" />
                     </div>
                   </div>

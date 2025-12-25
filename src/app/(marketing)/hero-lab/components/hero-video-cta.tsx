@@ -35,7 +35,7 @@ export function HeroVideoCTA() {
               </div>
 
               {/* Play Button */}
-              <div className={cn('relative z-10 border-2 border-primary p-4 group-hover:bg-primary transition-colors', mode.font)}>
+              <div className={cn('relative z-10 border-2 border-primary p-4 group-hover:bg-primary transition-colors', mode.font, mode.radius)}>
                 <Play className="h-8 w-8 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
             </button>
@@ -87,11 +87,11 @@ export function HeroVideoCTA() {
             <div className="relative w-full max-w-4xl p-4">
               <button
                 onClick={() => setShowVideo(false)}
-                className={cn('absolute -top-12 right-0 border p-2', mode.state.hover.card)}
+                className={cn('absolute -top-12 right-0 border p-2', mode.state.hover.card, mode.radius)}
               >
                 <X className="h-4 w-4" />
               </button>
-              <div className={cn('border aspect-video flex items-center justify-center bg-muted', mode.font)}>
+              <div className={cn('border aspect-video flex items-center justify-center bg-muted', mode.font, mode.radius)}>
                 <span className={mode.color.text.muted}>[VIDEO PLAYER PLACEHOLDER]</span>
               </div>
             </div>

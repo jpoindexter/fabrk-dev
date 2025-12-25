@@ -67,8 +67,8 @@ export function AdminMetricsCard({
       <CardContent>
         {loading ? (
           <div className="space-y-2">
-            <div className="bg-muted h-8 w-24 animate-pulse rounded" />
-            <div className="bg-muted h-4 w-20 animate-pulse rounded" />
+            <div className={cn('bg-muted h-8 w-24 animate-pulse', mode.radius)} />
+            <div className={cn('bg-muted h-4 w-20 animate-pulse', mode.radius)} />
           </div>
         ) : (
           <>

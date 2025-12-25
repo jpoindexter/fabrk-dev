@@ -10,6 +10,15 @@
 @plugin '@tailwindcss/typography';
 
 /* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+
+/* Dynamic radius utility - responds to --radius CSS variable */
+@utility rounded-dynamic {
+  border-radius: var(--radius);
+}
+
+/* ============================================
    ANIMATIONS
    ============================================ */
 
@@ -255,8 +264,8 @@
   /* Pixelbasel pixel font for Terminal mode */
   --font-terminal: var(--font-pixelbasel), 'Pixelbasel', monospace;
 
-  /* Border radius */
-  --radius: 0.5rem;
+  /* Border radius - Terminal default is 0, theme playground overrides */
+  --radius: 0;
 
   /* Color mappings for Tailwind v4 */
   --color-background: oklch(var(--background));
@@ -1374,9 +1383,6 @@
   --color-status-warning-bg: var(--warning);
   --color-status-error: var(--destructive);
   --color-status-error-bg: var(--destructive);
-
-  /* Terminal radius */
-  --radius: 0rem;
 
   /* Syntax highlighting - Pure B&W */
   --code-bg: oklch(100% 0.01 261);

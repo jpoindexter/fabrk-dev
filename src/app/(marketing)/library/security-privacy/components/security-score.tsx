@@ -35,7 +35,8 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             <div
               className={cn(
                 mode.font,
-                'border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-semibold'
+                'border-border bg-primary/10 text-primary flex h-16 w-16 items-center justify-center border text-xl font-semibold',
+                mode.radius
               )}
             >
               75%
@@ -50,7 +51,7 @@ export function SecurityScore({ user }: SecurityScoreProps) {
             </div>
           </div>
           <span
-            className={cn(mode.font, 'border-warning/50 text-warning border px-2 py-0.5 text-xs')}
+            className={cn(mode.font, 'border-warning/50 text-warning border px-2 py-0.5 text-xs', mode.radius)}
           >
             MEDIUM RISK
           </span>

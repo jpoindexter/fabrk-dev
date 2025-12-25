@@ -57,7 +57,7 @@ export function HeroBeforeAfter() {
               DELETE <span className={cn('text-danger', showAfter && 'line-through')}>10,000</span> LINES.{' '}
               <span className="text-primary">KEEP THE FEATURES.</span>
             </h1>
-            <div className={cn('inline-flex items-center gap-3 border px-4 py-2', mode.font)}>
+            <div className={cn('inline-flex items-center gap-3 border px-4 py-2', mode.font, mode.radius)}>
               <Minus className={cn('h-4 w-4', mode.color.text.danger)} />
               <span className={cn('text-xl font-bold', mode.color.text.danger)}>
                 {linesDeleted.toLocaleString()}

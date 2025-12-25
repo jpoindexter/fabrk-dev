@@ -22,7 +22,7 @@ interface StepCompleteProps {
 export function StepComplete({ formData }: StepCompleteProps) {
   return (
     <div className="space-y-6 text-center">
-      <div className="border-success bg-success/10 mx-auto flex h-16 w-16 items-center justify-center border">
+      <div className={cn('border-success bg-success/10 mx-auto flex h-16 w-16 items-center justify-center border', mode.radius)}>
         <CheckCircle2 className="text-success h-8 w-8" />
       </div>
       <div>
@@ -34,7 +34,7 @@ export function StepComplete({ formData }: StepCompleteProps) {
         </p>
       </div>
 
-      <div className="border-border border p-4 text-left">
+      <div className={cn('border-border border p-4 text-left', mode.radius)}>
         <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
           [ACCOUNT SUMMARY]:
         </div>

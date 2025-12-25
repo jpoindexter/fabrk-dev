@@ -164,7 +164,7 @@ export function TeamActivityFeed({
                     <div key={activity.id} className="group relative flex gap-4">
                       {/* Avatar with icon badge */}
                       <div className="relative flex-shrink-0">
-                        <Avatar className={cn('h-10 w-10 border', mode.color.border.default)}>
+                        <Avatar className={cn('h-10 w-10 border', mode.color.border.default, mode.radius)}>
                           <AvatarFallback
                             className={cn(
                               mode.font,

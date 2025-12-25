@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 export function StepWelcome() {
   return (
     <div className="space-y-6 text-center">
-      <div className="border-primary bg-primary/10 mx-auto flex h-16 w-16 items-center justify-center border">
+      <div className={cn('border-primary bg-primary/10 mx-auto flex h-16 w-16 items-center justify-center border', mode.radius)}>
         <Sparkles className="text-primary h-8 w-8" />
       </div>
       <div>
@@ -21,7 +21,7 @@ export function StepWelcome() {
           Let's get you set up in just a few steps. This will only take about 2 minutes.
         </p>
       </div>
-      <div className="border-border border p-4 text-left">
+      <div className={cn('border-border border p-4 text-left', mode.radius)}>
         <div className={cn(mode.font, 'text-muted-foreground mb-2 text-xs')}>
           [WHAT YOULL SET UP]:
         </div>

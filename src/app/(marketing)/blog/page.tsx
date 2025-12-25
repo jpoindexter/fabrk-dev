@@ -35,7 +35,7 @@ export default async function BlogPage({
     <div className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
-        <div className="border-border bg-card mb-12 border">
+        <div className={cn("border-border bg-card mb-12 border", mode.radius)}>
           <div className="border-border border-b px-6 py-2">
             <span className="text-muted-foreground font-mono text-xs">[ BLOG ]</span>
           </div>
@@ -55,11 +55,11 @@ export default async function BlogPage({
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/blog"
-                className={`border px-4 py-1 font-mono text-xs transition-colors ${
+                className={cn(`border px-4 py-1 font-mono text-xs transition-colors ${
                   !categorySlug
                     ? 'border-primary bg-primary text-primary-foreground'
-                    : cn('border-border bg-card text-muted-foreground hover:text-foreground', mode.state.hover.card)
-                }`}
+                    : 'border-border bg-card text-muted-foreground hover:text-foreground'
+                }`, !categorySlug ? mode.radius : cn(mode.state.hover.card, mode.radius))}
               >
                 ALL ({posts.length})
               </Link>
@@ -67,11 +67,11 @@ export default async function BlogPage({
                 <Link
                   key={cat.id}
                   href={`/blog?category=${cat.slug}`}
-                  className={`border px-4 py-1 font-mono text-xs transition-colors ${
+                  className={cn(`border px-4 py-1 font-mono text-xs transition-colors ${
                     categorySlug === cat.slug
                       ? 'border-primary bg-primary text-primary-foreground'
-                      : cn('border-border bg-card text-muted-foreground hover:text-foreground', mode.state.hover.card)
-                  }`}
+                      : 'border-border bg-card text-muted-foreground hover:text-foreground'
+                  }`, categorySlug === cat.slug ? mode.radius : cn(mode.state.hover.card, mode.radius))}
                 >
                   {cat.name.toUpperCase()} ({cat._count.posts})
                 </Link>
@@ -89,7 +89,7 @@ export default async function BlogPage({
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className={cn('group border-border bg-card border transition-all', mode.state.hover.card)}
+                  className={cn('group border-border bg-card border transition-all', mode.state.hover.card, mode.radius)}
                 >
                   {post.featuredImage && (
                     <div className="border-border relative aspect-video overflow-hidden border-b">
@@ -132,7 +132,7 @@ export default async function BlogPage({
                 <Link
                   key={post.id}
                   href={`/blog/${post.slug}`}
-                  className={cn('group border-border bg-card border p-4 transition-all', mode.state.hover.card)}
+                  className={cn('group border-border bg-card border p-4 transition-all', mode.state.hover.card, mode.radius)}
                 >
                   <div className="text-muted-foreground mb-2 flex items-center gap-2 font-mono text-xs">
                     {post.category && (
@@ -151,7 +151,7 @@ export default async function BlogPage({
             </div>
           </div>
         ) : (
-          <div className="border-border bg-card border p-12 text-center">
+          <div className={cn("border-border bg-card border p-12 text-center", mode.radius)}>
             <p className="text-muted-foreground font-mono">No posts found</p>
           </div>
         )}

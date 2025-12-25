@@ -195,7 +195,7 @@ export default function OrganizationSettingsPage() {
     <div className="mx-auto max-w-4xl space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
-        <div className="border-border bg-primary rounded-none border p-2">
+        <div className={cn('border-border bg-primary border p-2', mode.radius)}>
           <SettingsIcon className="text-primary-foreground h-6 w-6" />
         </div>
         <div>
@@ -225,7 +225,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="Acme Inc."
-                        className="border-border rounded-none border"
+                        className={cn('border-border border', mode.radius)}
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -245,7 +245,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="acme-inc"
-                        className="border-border rounded-none border"
+                        className={cn('border-border border', mode.radius)}
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -267,7 +267,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Textarea
                         placeholder="What does your organization do?"
-                        className="border-border rounded-none border"
+                        className={cn('border-border border', mode.radius)}
                         rows={3}
                         disabled={!isOwnerOrAdmin}
                         {...field}
@@ -287,7 +287,7 @@ export default function OrganizationSettingsPage() {
                     <FormControl>
                       <Input
                         placeholder="https://example.com/logo.png"
-                        className="border-border rounded-none border"
+                        className={cn('border-border border', mode.radius)}
                         disabled={!isOwnerOrAdmin}
                         {...field}
                       />
@@ -324,7 +324,7 @@ export default function OrganizationSettingsPage() {
             icon={<AlertTriangle className="h-4 w-4" />}
           />
           <CardContent padding="lg">
-            <div className="border-destructive bg-destructive/10 flex items-start justify-between rounded-none border p-4">
+            <div className={cn('border-destructive bg-destructive/10 flex items-start justify-between border p-4', mode.radius)}>
               <div className="flex-1">
                 <h4 className={cn(mode.font, 'text-xs', 'font-semibold')}>
                   [DELETE ORGANIZATION]:
@@ -341,7 +341,7 @@ export default function OrganizationSettingsPage() {
                     &gt; DELETE
                   </Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent className="border-border rounded-none border">
+                <AlertDialogContent className={cn('border-border border', mode.radius)}>
                   <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2">
                       <AlertTriangle className="text-destructive h-5 w-5" />

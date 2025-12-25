@@ -5,6 +5,8 @@
 
 import { docsTypography } from '../typography';
 import { CodeBlock } from '@/components/ui/code-block';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface DocsStepProps {
   /** Step number (1, 2, 3...) */
@@ -45,7 +47,7 @@ export function DocsStep({
 
       {/* Tip */}
       {tip && (
-        <p className={`border-primary/50 border-l-2 pl-4 ${docsTypography.caption}`}>
+        <p className={cn(`border-primary/50 border-l-2 pl-4 ${docsTypography.caption}`, mode.radius)}>
           <span className="text-primary font-semibold uppercase">Tip:</span> {tip}
         </p>
       )}

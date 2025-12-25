@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard } from '@/components/docs';
 import { Bell, Database, Zap, CheckCircle } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Notifications System - Fabrk Documentation',
@@ -188,10 +190,10 @@ export function NotificationBell({ userId }: { userId: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="relative p-2 rounded-none hover:bg-muted">
+        <button className={cn('relative p-2 hover:bg-muted', mode.radius)}>
           <Bell className="h-5 w-5" />
           {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-none h-5 w-5 flex items-center justify-center">
+            <span className={cn('absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs h-5 w-5 flex items-center justify-center', mode.radius)}>
               {unreadCount > 9 ? "9+" : unreadCount}
             </span>
           )}

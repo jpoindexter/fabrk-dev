@@ -52,7 +52,7 @@ export function UseCaseCard({
         {/* Header */}
         <div
           className={cn(
-            'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
+            'flex h-11 shrink-0 items-center justify-between border-b px-4',
             mode.color.border.default
           )}
         >

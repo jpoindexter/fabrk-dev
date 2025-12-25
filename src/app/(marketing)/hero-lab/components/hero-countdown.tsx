@@ -41,7 +41,7 @@ function CountdownTimer() {
         { value: time.seconds, label: 'SEC' },
       ].map((unit, i) => (
         <div key={unit.label} className="flex items-center gap-2">
-          <div className={cn('border px-3 py-2 text-center', mode.font)}>
+          <div className={cn('border px-3 py-2 text-center', mode.font, mode.radius)}>
             <div className="text-2xl font-bold text-primary">
               {String(unit.value).padStart(2, '0')}
             </div>
@@ -59,7 +59,7 @@ export function HeroCountdown() {
     <Container size="lg">
       <div className="py-12 max-h-[70vh] flex flex-col items-center justify-center text-center">
         {/* Launch Badge */}
-        <div className={cn('text-xs mb-4 border border-warning px-3 py-1 text-warning', mode.font)}>
+        <div className={cn('text-xs mb-4 border border-warning px-3 py-1 text-warning', mode.font, mode.radius)}>
           <Clock className="h-3 w-3 inline mr-2" />
           LAUNCH SPECIAL ENDING SOON
         </div>

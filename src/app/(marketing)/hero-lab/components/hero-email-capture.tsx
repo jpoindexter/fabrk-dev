@@ -41,7 +41,7 @@ export function HeroEmailCapture() {
         {/* Email Form */}
         {!submitted ? (
           <form onSubmit={handleSubmit} className="w-full max-w-md mb-8">
-            <div className={cn('flex border', mode.font)}>
+            <div className={cn('flex border', mode.font, mode.radius)}>
               <div className="flex items-center px-3 border-r bg-muted/30">
                 <Mail className={cn('h-4 w-4', mode.color.text.muted)} />
               </div>
@@ -69,7 +69,7 @@ export function HeroEmailCapture() {
             </div>
           </form>
         ) : (
-          <div className={cn('border border-success p-6 mb-8', mode.font)}>
+          <div className={cn('border border-success p-6 mb-8', mode.font, mode.radius)}>
             <Check className="h-8 w-8 text-success mx-auto mb-2" />
             <div className="font-bold text-success">YOU&apos;RE ON THE LIST!</div>
             <div className={cn('text-xs mt-2', mode.color.text.muted)}>

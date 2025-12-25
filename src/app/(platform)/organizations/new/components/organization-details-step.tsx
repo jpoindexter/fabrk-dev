@@ -8,6 +8,8 @@ import { UseFormReturn } from 'react-hook-form';
 import { Building2, ChevronRight, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 import {
   Form,
   FormControl,
@@ -59,7 +61,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="Acme Inc."
-                      className="border-border rounded-none border"
+                      className={cn('border-border border', mode.radius)}
                       {...field}
                     />
                   </FormControl>
@@ -78,7 +80,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Input
                       placeholder="acme-inc"
-                      className="border-border rounded-none border"
+                      className={cn('border-border border', mode.radius)}
                       {...field}
                     />
                   </FormControl>
@@ -100,7 +102,7 @@ export function OrganizationDetailsStep({
                   <FormControl>
                     <Textarea
                       placeholder="What does your organization do?"
-                      className="border-border rounded-none border"
+                      className={cn('border-border border', mode.radius)}
                       rows={3}
                       {...field}
                     />

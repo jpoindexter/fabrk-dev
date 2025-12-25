@@ -54,7 +54,7 @@ export function HeroStatsOnly() {
           {STATS.map((stat) => (
             <div
               key={stat.label}
-              className={cn('border p-6 text-center', mode.font)}
+              className={cn('border p-6 text-center', mode.font, mode.radius)}
             >
               <div className="text-5xl sm:text-6xl font-bold text-primary">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />

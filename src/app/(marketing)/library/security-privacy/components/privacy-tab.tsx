@@ -52,7 +52,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
             ].map((setting) => (
               <div
                 key={setting.key}
-                className="border-border flex items-center justify-between border p-4"
+                className={cn('border-border flex items-center justify-between border p-4', mode.radius)}
               >
                 <div>
                   <div>[{setting.label}]:</div>
@@ -102,7 +102,7 @@ export function PrivacyTab({ privacy, onToggle }: PrivacyTabProps) {
             ].map((setting) => (
               <div
                 key={setting.key}
-                className="border-border flex items-center justify-between border p-4"
+                className={cn('border-border flex items-center justify-between border p-4', mode.radius)}
               >
                 <div>
                   <div>[{setting.label}]:</div>

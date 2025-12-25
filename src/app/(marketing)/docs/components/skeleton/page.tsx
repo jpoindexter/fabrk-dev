@@ -3,6 +3,8 @@
 import { ComponentShowcaseTemplate, DocsSection, DocsCard } from '@/components/docs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function SkeletonPage() {
   return (
@@ -60,7 +62,7 @@ export default function SkeletonPage() {
           description: 'Circular skeleton for avatar placeholders',
           preview: (
             <div className="flex items-center space-x-4">
-              <Skeleton className="h-12 w-12 rounded-none" />
+              <Skeleton className={cn('h-12 w-12', mode.radius)} />
               <div className="space-y-2">
                 <Skeleton className="h-4 w-[200px]" />
                 <Skeleton className="h-4 w-[150px]" />
@@ -68,7 +70,7 @@ export default function SkeletonPage() {
             </div>
           ),
           code: `<div className="flex items-center space-x-4">
-  <Skeleton className="h-12 w-12 rounded-none" />
+  <Skeleton className="h-12 w-12" />
   <div className="space-y-2">
     <Skeleton className="h-4 w-[200px]" />
     <Skeleton className="h-4 w-[150px]" />
@@ -82,7 +84,7 @@ export default function SkeletonPage() {
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center space-x-4">
-                  <Skeleton className="h-12 w-12 rounded-none" />
+                  <Skeleton className={cn('h-12 w-12', mode.radius)} />
                   <div className="flex-1 space-y-2">
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-3/4" />
@@ -94,7 +96,7 @@ export default function SkeletonPage() {
           code: `<div className="space-y-4">
   {[1, 2, 3].map((i) => (
     <div key={i} className="flex items-center space-x-4">
-      <Skeleton className="h-12 w-12 rounded-none" />
+      <Skeleton className="h-12 w-12" />
       <div className="space-y-2 flex-1">
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
@@ -108,7 +110,7 @@ export default function SkeletonPage() {
           description: 'Rectangle skeleton for image placeholders',
           preview: (
             <div className="space-y-4">
-              <Skeleton className="h-[200px] w-full rounded-none" />
+              <Skeleton className={cn('h-[200px] w-full', mode.radius)} />
               <div className="space-y-2">
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-4/5" />
@@ -116,7 +118,7 @@ export default function SkeletonPage() {
             </div>
           ),
           code: `<div className="space-y-4">
-  <Skeleton className="h-[200px] w-full rounded-none" />
+  <Skeleton className="h-[200px] w-full" />
   <div className="space-y-2">
     <Skeleton className="h-4 w-full" />
     <Skeleton className="h-4 w-4/5" />
@@ -198,7 +200,7 @@ export default function SkeletonPage() {
         "Consider adding aria-busy='true' or aria-label='Loading content' to parent containers when using skeletons",
         'For screen readers, ensure the actual content has proper loading states with appropriate ARIA live regions',
         'The skeleton should match the layout of the actual content to prevent layout shift',
-        'Use rounded-none for terminal-style design consistency',
+        'Use mode.radius for terminal-style design consistency',
       ]}
       previous={{ title: 'Avatar', href: '/docs/components/avatar' }}
       next={{ title: 'Form Components', href: '/docs/components' }}

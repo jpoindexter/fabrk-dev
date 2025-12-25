@@ -28,7 +28,7 @@ export function DataTableToolbar<TData>({
             placeholder={searchPlaceholder}
             value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ''}
             onChange={(event) => table.getColumn(searchKey)?.setFilterValue(event.target.value)}
-            className={cn(mode.color.border.default, 'h-10 w-full max-w-sm border')}
+            className={cn(mode.color.border.default, 'h-10 w-full max-w-sm border', mode.radius)}
           />
         )}
         {isFiltered && (

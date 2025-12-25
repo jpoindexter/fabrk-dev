@@ -3,6 +3,8 @@
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Simplified Pricing Demo
 function PricingDemo() {
@@ -34,9 +36,9 @@ function PricingDemo() {
   ];
 
   return (
-    <section className="border-border bg-background w-full border p-6">
+    <section className={cn("border-border bg-background w-full border p-6", mode.radius)}>
       <div className="mb-6 text-center">
-        <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
+        <span className={cn("border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs", mode.radius)}>
           [ [0x30] PRICING ] SELECT PLAN
         </span>
         <h2 className="mt-4 font-mono text-xl font-semibold">CHOOSE YOUR PLAN</h2>
@@ -45,7 +47,7 @@ function PricingDemo() {
         {plans.map((plan) => (
           <div
             key={plan.name}
-            className={`bg-card border p-6 ${plan.popular ? 'border-primary' : 'border-border'}`}
+            className={cn(`bg-card border p-6 ${plan.popular ? 'border-primary' : 'border-border'}`, mode.radius)}
           >
             {plan.popular && (
               <span className="text-primary mb-2 inline-block font-mono text-xs">[POPULAR]</span>
@@ -84,7 +86,7 @@ function PricingDemo() {
 // Single Pricing Card
 function PricingCardDemo() {
   return (
-    <div className="border-primary bg-card w-full max-w-sm border p-6">
+    <div className={cn("border-primary bg-card w-full max-w-sm border p-6", mode.radius)}>
       <span className="text-primary mb-2 inline-block font-mono text-xs">[RECOMMENDED]</span>
       <div className="mb-4">
         <span className="text-muted-foreground font-mono text-xs">LIFETIME</span>
@@ -160,7 +162,7 @@ export default function LandingPage() {
           title: 'Price Toggle',
           description: 'Monthly/yearly toggle for subscriptions',
           preview: (
-            <div className="flex items-center justify-center gap-2 p-2">
+            <div className={cn("flex items-center justify-center gap-2 p-2", mode.radius)}>
               <Button variant="default" size="sm" className="font-mono text-xs">
                 &gt; MONTHLY
               </Button>

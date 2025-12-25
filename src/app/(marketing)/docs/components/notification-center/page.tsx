@@ -3,6 +3,8 @@
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { NotificationCenter, Notification } from '@/components/ui/notification-center';
 import { useState } from 'react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Sample notifications
 const createNotifications = (): Notification[] => [
@@ -191,7 +193,7 @@ const notification: Notification = {
                 <p className="text-muted-foreground text-sm">
                   You've used 90% of your storage quota.
                 </p>
-                <button className="border-border bg-background hover:bg-secondary mt-2 h-8 rounded-none border px-4 text-xs font-medium transition-colors">
+                <button className={cn('border-border bg-background hover:bg-secondary mt-2 h-8 border px-4 text-xs font-medium transition-colors', mode.radius)}>
                   &gt; UPGRADE
                 </button>
               </div>
@@ -219,7 +221,7 @@ const notification: Notification = {
               <div className="text-muted-foreground font-mono text-xs">[DATE GROUPS]</div>
               {['Today', 'Yesterday', 'This Week', 'Older'].map((group) => (
                 <div key={group} className="space-y-2">
-                  <div className="bg-muted rounded-none px-4 py-2">
+                  <div className={cn('bg-muted px-4 py-2', mode.radius)}>
                     <span className="text-muted-foreground font-mono text-xs font-semibold tracking-wide uppercase">
                       {group}
                     </span>
@@ -239,7 +241,7 @@ const notification: Notification = {
           description: 'Friendly empty state when no notifications exist',
           preview: (
             <div className="flex flex-col items-center justify-center px-4 py-12">
-              <div className="bg-muted mb-4 flex h-16 w-16 items-center justify-center rounded-none">
+              <div className={cn('bg-muted mb-4 flex h-16 w-16 items-center justify-center', mode.radius)}>
                 <span className="text-muted-foreground font-mono text-2xl">0</span>
               </div>
               <p className="text-foreground mb-1 font-semibold">You're all caught up!</p>

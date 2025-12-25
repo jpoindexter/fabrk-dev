@@ -83,8 +83,9 @@ export function LeftNavigation({ activeSection }: LeftNavigationProps) {
               <button
                 key={item.id}
                 className={cn(
-                  'text-muted-foreground hover:bg-muted hover:text-foreground flex w-full items-center gap-2 rounded-none px-4 py-2 text-xs transition-colors',
-                  mode.font
+                  'text-muted-foreground hover:bg-muted hover:text-foreground flex w-full items-center gap-2 px-4 py-2 text-xs transition-colors',
+                  mode.font,
+                  mode.radius
                 )}
               >
                 <item.icon className="h-4 w-4" />

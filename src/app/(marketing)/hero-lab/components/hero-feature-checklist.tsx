@@ -78,7 +78,7 @@ export function HeroFeatureChecklist() {
 
             <div className="grid grid-cols-3 gap-4">
               {FEATURES.map((group, groupIndex) => (
-                <div key={group.name} className="border p-3 space-y-2">
+                <div key={group.name} className={cn('border p-3 space-y-2', mode.radius)}>
                   <div className={cn('text-xs font-bold', mode.font, mode.color.text.accent)}>
                     {group.name}
                   </div>
@@ -94,7 +94,7 @@ export function HeroFeatureChecklist() {
             </div>
 
             {/* Time Saved */}
-            <div className={cn('border p-3', mode.font)}>
+            <div className={cn('border p-3', mode.font, mode.radius)}>
               <div className="flex items-center justify-between text-xs">
                 <span className={mode.color.text.muted}>TOTAL DEV TIME SAVED</span>
                 <span className="font-bold text-success">232 HOURS</span>

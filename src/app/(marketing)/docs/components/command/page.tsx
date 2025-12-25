@@ -14,6 +14,8 @@ import {
 } from '@/components/ui/command';
 import { useState } from 'react';
 import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function CommandPage() {
   const [open, setOpen] = useState(false);
@@ -37,7 +39,7 @@ export default function CommandPage() {
 } from "@/components/ui/command"`}
       mainPreview={{
         preview: (
-          <Command className="border-border max-w-md border">
+          <Command className={cn("border-border max-w-md border", mode.radius)}>
             <CommandInput placeholder="Type a command or search..." />
             <CommandList>
               <CommandEmpty>No results found.</CommandEmpty>
@@ -130,7 +132,7 @@ export default function CommandPage() {
               </p>
               <button
                 onClick={() => setOpen(true)}
-                className="border-border bg-background hover:bg-primary hover:text-primary-foreground inline-flex h-10 items-center justify-center border px-4 py-2 font-mono text-sm font-medium"
+                className={cn("border-border bg-background hover:bg-primary hover:text-primary-foreground inline-flex h-10 items-center justify-center border px-4 py-2 font-mono text-sm font-medium", mode.radius)}
               >
                 Open Command Menu
               </button>
@@ -194,7 +196,7 @@ return (
           title: 'With Multiple Groups',
           description: 'Command menu with multiple organized groups.',
           preview: (
-            <Command className="border-border max-w-md border">
+            <Command className={cn("border-border max-w-md border", mode.radius)}>
               <CommandInput placeholder="Search..." />
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
@@ -272,7 +274,7 @@ return (
           title: 'Simple Search',
           description: 'Minimal command menu for basic search functionality.',
           preview: (
-            <Command className="border-border max-w-md border">
+            <Command className={cn("border-border max-w-md border", mode.radius)}>
               <CommandInput placeholder="Search files..." />
               <CommandList>
                 <CommandEmpty>No files found.</CommandEmpty>

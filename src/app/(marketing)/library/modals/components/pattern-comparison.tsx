@@ -13,7 +13,7 @@ export function PatternComparison() {
       <CardHeader code="0x01" title="COMPARISON" />
       <CardContent>
         <StyledLabel className="mb-4">WHEN TO USE</StyledLabel>
-        <div className="border-border overflow-x-auto border">
+        <div className={cn('border-border overflow-x-auto border', mode.radius)}>
           <table className={cn(mode.font, 'w-full text-xs')}>
             <thead>
               <tr className="border-border bg-muted/30 border-b">

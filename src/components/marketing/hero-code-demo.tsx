@@ -97,7 +97,7 @@ export function HeroCodeDemo() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: step >= 5 ? 1 : 0 }}
-        className="border-success/30 bg-success/10 mt-4 border p-4"
+        className={cn("border-success/30 bg-success/10 mt-4 border p-4", mode.radius)}
       >
         <div className={mode.color.text.success}>▲ Ready</div>
         <div className={cn('mt-1', mode.color.text.muted)}>

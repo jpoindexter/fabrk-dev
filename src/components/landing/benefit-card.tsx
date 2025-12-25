@@ -62,7 +62,7 @@ export function BenefitCard({
         {/* Header */}
         <div
           className={cn(
-            'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
+            'flex h-11 shrink-0 items-center justify-between border-b px-4',
             mode.color.border.default
           )}
         >
@@ -94,7 +94,7 @@ export function BenefitCard({
         </div>
 
         {/* Stats Band */}
-        <div className={cn('border-y py-4 px-6 flex gap-4 mt-4', mode.color.border.default, mode.color.bg.base)}>
+        <div className={cn('border-y py-4 px-6 flex gap-4 mt-4', mode.color.border.default, mode.color.bg.base, mode.radius)}>
           <div className="flex-1 flex flex-col gap-1">
             <p
               className={cn(

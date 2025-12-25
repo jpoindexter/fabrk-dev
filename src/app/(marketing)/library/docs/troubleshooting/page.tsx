@@ -7,6 +7,8 @@
 import Link from 'next/link';
 import { AlertTriangle, CheckCircle, Terminal, Code } from 'lucide-react';
 import { LibraryGuideTemplate, LibraryCodeBlock } from '@/components/library';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export default function TroubleshootingPage() {
   return (
@@ -22,7 +24,7 @@ export default function TroubleshootingPage() {
           title: 'IMPORT ERRORS',
           content: (
             <>
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ERROR]: Cannot find module '@/design-system'
@@ -59,7 +61,7 @@ export const mode = {
                 />
               </div>
 
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ERROR]: Module not found: Can't resolve '@/components/ui/...'
@@ -90,7 +92,7 @@ export const mode = {
           title: 'TYPESCRIPT ERRORS',
           content: (
             <>
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ERROR]: Property 'mode' does not exist on type '{}'
@@ -115,7 +117,7 @@ npm run type-check`}
                 />
               </div>
 
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ERROR]: Type 'Promise' is not assignable to type 'ReactNode'
@@ -144,7 +146,7 @@ export default async function Page({ params }) {
           title: 'STYLING ISSUES',
           content: (
             <>
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ISSUE]: Tailwind classes not applying
@@ -171,7 +173,7 @@ npm run dev`}
                 />
               </div>
 
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ISSUE]: Terminal aesthetic not working
@@ -203,7 +205,7 @@ import { mode } from "@/design-system";
           title: 'RUNTIME ERRORS',
           content: (
             <>
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ERROR]: Hydration mismatch
@@ -229,7 +231,7 @@ if (!mounted) return null;`}
                 />
               </div>
 
-              <div className="border-border border p-4">
+              <div className={cn('border-border border p-4', mode.radius)}>
                 <p className="text-destructive mb-2 flex items-center gap-2 font-medium">
                   <AlertTriangle className="h-4 w-4" />
                   [ERROR]: Too many re-renders
@@ -337,7 +339,7 @@ function Component() {
               <p>If you're still experiencing issues:</p>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="border-border border p-4">
+                <div className={cn('border-border border p-4', mode.radius)}>
                   <Terminal className="text-primary mb-2 h-5 w-5" />
                   <p className="mb-1 font-medium">Check Console</p>
                   <p className="text-muted-foreground">
@@ -345,7 +347,7 @@ function Component() {
                   </p>
                 </div>
 
-                <div className="border-border border p-4">
+                <div className={cn('border-border border p-4', mode.radius)}>
                   <Code className="text-primary mb-2 h-5 w-5" />
                   <p className="mb-1 font-medium">Review Logs</p>
                   <p className="text-muted-foreground">
@@ -354,7 +356,7 @@ function Component() {
                 </div>
               </div>
 
-              <div className="bg-muted/30 border-border border p-4">
+              <div className={cn('bg-muted/30 border-border border p-4', mode.radius)}>
                 <p className="mb-2 font-medium">Useful debugging commands:</p>
                 <LibraryCodeBlock
                   code={`# Clear cache and restart

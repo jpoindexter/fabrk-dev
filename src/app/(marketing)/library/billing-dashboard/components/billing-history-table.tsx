@@ -51,7 +51,7 @@ export function BillingHistoryTable({
           </div>
 
           {/* Terminal Table */}
-          <div className="border-border border">
+          <div className={cn('border-border border', mode.radius)}>
             <div
               className={cn(
                 mode.font,
@@ -79,13 +79,13 @@ export function BillingHistoryTable({
                     <span>{formatCurrency(payment.amount)}</span>
                     <div className="flex items-center gap-2">
                       <span
-                        className={`border px-2 py-0.5 ${status.color} ${
+                        className={cn(`border px-2 py-0.5 ${status.color} ${
                           payment.status === 'succeeded'
                             ? 'border-success/50'
                             : payment.status === 'failed'
                               ? 'border-destructive/50'
                               : 'border-warning/50'
-                        }`}
+                        }`, mode.radius)}
                       >
                         {status.text}
                       </span>

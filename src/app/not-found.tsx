@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { NotFoundTracker } from '@/components/analytics/not-found-tracker';
 import type { Metadata } from 'next';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: '404: Page Not Found',
@@ -16,7 +18,7 @@ export default function NotFound() {
       <div className="flex min-h-screen flex-col items-center justify-center px-6 font-mono">
       <div className="mx-auto max-w-2xl text-center">
         {/* Terminal Header */}
-        <div className="border-foreground/20 bg-foreground/5 mb-6 inline-block border-2 px-4 py-1">
+        <div className={cn("border-foreground/20 bg-foreground/5 mb-6 inline-block border-2 px-4 py-1", mode.radius)}>
           <span className="text-foreground/60 text-xs tracking-wider">[ [0x404] ERROR PAGE ]</span>
         </div>
 

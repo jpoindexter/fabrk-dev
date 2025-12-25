@@ -20,6 +20,8 @@ import {
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Send, CheckCircle2 } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Extend Window interface for dataLayer
 declare global {
@@ -148,7 +150,7 @@ export function ContactForm() {
                 <SelectTrigger>
                   <SelectValue placeholder="> Select a subject..." />
                 </SelectTrigger>
-                <SelectContent className="rounded-none">
+                <SelectContent className={cn(mode.radius)}>
                   <SelectItem value="sales">SALES INQUIRY</SelectItem>
                   <SelectItem value="support">TECHNICAL SUPPORT</SelectItem>
                   <SelectItem value="billing">BILLING QUESTION</SelectItem>
@@ -181,7 +183,7 @@ export function ContactForm() {
 
             {/* Success Message */}
             {status === 'success' && (
-              <Alert className="bg-success/10 border-success/20 rounded-none" aria-live="polite">
+              <Alert className={cn('bg-success/10 border-success/20', mode.radius)} aria-live="polite">
                 <CheckCircle2 className="text-success size-4" />
                 <AlertDescription className="text-success text-xs">
                   [OK] MESSAGE SENT - We've received your message and will respond within 24 hours.
@@ -191,7 +193,7 @@ export function ContactForm() {
 
             {/* Error Message */}
             {status === 'error' && (
-              <Alert variant="destructive" className="rounded-none" aria-live="polite">
+              <Alert variant="destructive" className={cn(mode.radius)} aria-live="polite">
                 <AlertDescription className="text-xs">[ERROR] {errorMessage}</AlertDescription>
               </Alert>
             )}

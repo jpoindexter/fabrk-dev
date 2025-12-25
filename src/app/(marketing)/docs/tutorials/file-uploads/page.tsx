@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Upload, Image, Shield, FileCheck } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'File Uploads - Fabrk Docs',
@@ -327,7 +329,7 @@ export function FileUploadForm() {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Adjust maxSize in dropzone config and API validation
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// Client (react-dropzone)
 maxSize: 10 * 1024 * 1024  // 10MB
@@ -348,7 +350,7 @@ if (file.size > MAX_SIZE) {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify accept prop matches server-side validation
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// Client and server must match
 // Client
@@ -368,7 +370,7 @@ if (!ALLOWED_TYPES.includes(file.type)) { /* reject */ }`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Check S3/R2 credentials and bucket configuration
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`# Verify credentials in .env.local
 AWS_ACCESS_KEY_ID="..."
@@ -388,7 +390,7 @@ S3_BUCKET="your-bucket"
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Add CORS policy to your S3/R2 bucket
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// S3 Bucket CORS Configuration
 [

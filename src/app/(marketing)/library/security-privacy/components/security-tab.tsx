@@ -40,7 +40,7 @@ export function SecurityTab({
         <CardContent padding="md">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
+              <div className={cn('border-border bg-primary/10 flex h-10 w-10 items-center justify-center border', mode.radius)}>
                 <Smartphone className="text-primary h-5 w-5" />
               </div>
               <div>
@@ -53,11 +53,11 @@ export function SecurityTab({
               </div>
             </div>
             <span
-              className={`border px-2 py-0.5 font-mono text-xs ${
+              className={cn(`border px-2 py-0.5 font-mono text-xs ${
                 twoFactorEnabled
                   ? 'border-success/50 text-success'
                   : 'border-destructive/50 text-destructive'
-              }`}
+              }`, mode.radius)}
             >
               {twoFactorEnabled ? 'ENABLED' : 'DISABLED'}
             </span>
@@ -78,7 +78,7 @@ export function SecurityTab({
         <CardHeader code="0x07" title="SESSIONS" icon={<Clock className="h-4 w-4" />} />
         <CardContent padding="md">
           <div className="mb-4 flex items-center gap-4">
-            <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
+            <div className={cn('border-border bg-primary/10 flex h-10 w-10 items-center justify-center border', mode.radius)}>
               <Clock className="text-primary h-5 w-5" />
             </div>
             <div>
@@ -91,13 +91,13 @@ export function SecurityTab({
             {activeSessions.map((session) => (
               <div
                 key={session.id}
-                className="border-border flex items-center justify-between border p-4"
+                className={cn('border-border flex items-center justify-between border p-4', mode.radius)}
               >
                 <div>
                   <div className="flex items-center gap-2">
                     <span>{session.device}</span>
                     {session.isCurrent && (
-                      <span className="border-primary/50 text-primary border px-1.5 py-0.5">
+                      <span className={cn('border-primary/50 text-primary border px-1.5 py-0.5', mode.radius)}>
                         CURRENT
                       </span>
                     )}
@@ -140,7 +140,7 @@ export function SecurityTab({
         <CardContent padding="md">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="border-border bg-primary/10 flex h-10 w-10 items-center justify-center border">
+              <div className={cn('border-border bg-primary/10 flex h-10 w-10 items-center justify-center border', mode.radius)}>
                 <Key className="text-primary h-5 w-5" />
               </div>
               <div>

@@ -68,7 +68,7 @@ export function HeroReviewScore() {
         </div>
 
         {/* Trust Badge */}
-        <div className={cn('mt-8 text-xs border px-4 py-2', mode.font, mode.color.text.muted)}>
+        <div className={cn('mt-8 text-xs border px-4 py-2', mode.font, mode.color.text.muted, mode.radius)}>
           LIFETIME UPDATES INCLUDED
         </div>
       </div>

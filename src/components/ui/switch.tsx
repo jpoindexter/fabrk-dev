@@ -17,7 +17,7 @@ function Switch({ className, ...props }: React.ComponentProps<typeof SwitchPrimi
         mode.state.disabled.cursor,
         mode.state.disabled.opacity,
         `data-[state=checked]:${mode.color.bg.accent} data-[state=unchecked]:${mode.color.bg.muted}`,
-        mode.radius,
+        'rounded-full', // Switches should always be pill-shaped
         className
       )}
       {...props}
@@ -28,7 +28,7 @@ function Switch({ className, ...props }: React.ComponentProps<typeof SwitchPrimi
           'pointer-events-none block h-3.5 w-3.5 border transition-transform data-[state=checked]:translate-x-4 data-[state=unchecked]:translate-x-0.5',
           'bg-foreground data-[state=checked]:bg-accent-foreground',
           mode.color.border.default,
-          mode.radius
+          'rounded-full' // Thumb should always be round
         )}
       />
     </SwitchPrimitive.Root>

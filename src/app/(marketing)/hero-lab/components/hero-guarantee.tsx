@@ -17,7 +17,7 @@ export function HeroGuarantee() {
     <Container size="lg">
       <div className="py-12 max-h-[70vh] flex flex-col items-center justify-center text-center">
         {/* Shield Badge */}
-        <div className={cn('border-2 border-success p-6 mb-8', mode.font)}>
+        <div className={cn('border-2 border-success p-6 mb-8', mode.font, mode.radius)}>
           <Infinity className="h-12 w-12 text-success mx-auto mb-3" />
           <div className="text-2xl font-bold text-success">LIFETIME UPDATES</div>
           <div className={cn('text-xs mt-1', mode.color.text.muted)}>

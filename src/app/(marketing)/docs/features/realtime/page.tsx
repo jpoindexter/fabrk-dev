@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard } from '@/components/docs';
 import { Bell, Activity, Users, Zap } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Real-Time with Pusher - Fabrk Documentation',
@@ -132,7 +134,7 @@ export function NotificationBell({ userId }: { userId: string }) {
     <button className="relative">
       <BellIcon />
       {unreadCount > 0 && (
-        <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-none text-xs px-1">
+        <span className={cn('absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs px-1', mode.radius)}>
           {unreadCount}
         </span>
       )}
@@ -179,7 +181,7 @@ export function OnlineMembers({ orgId }: { orgId: string }) {
           key={member.id}
           src={member.avatar}
           alt={member.name}
-          className="w-8 h-8 rounded-none border-2 border-background"
+          className={cn('w-8 h-8 border-2 border-background', mode.radius)}
         />
       ))}
     </div>

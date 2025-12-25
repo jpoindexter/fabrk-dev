@@ -72,18 +72,18 @@ export function MembersTable({ members }: MembersTableProps) {
         <div className={cn(mode.font, 'text-muted-foreground mb-4 text-xs')}>
           [TEAM MEMBERS]: COUNT={members.length}
         </div>
-        <div className="border-border overflow-x-auto border">
+        <div className={cn('border-border overflow-x-auto border', mode.radius)}>
           <table className="w-full">
             <thead>
               <tr
-                className={cn(mode.font, 'border-border bg-muted/30 rounded-none border-b text-xs')}
+                className={cn(mode.font, mode.radius, 'border-border bg-muted/30 border-b text-xs')}
               >
-                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[MEMBER]</th>
-                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">[ROLE]</th>
-                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
+                <th className="text-muted-foreground px-4 py-2 text-left">[MEMBER]</th>
+                <th className="text-muted-foreground px-4 py-2 text-left">[ROLE]</th>
+                <th className="text-muted-foreground px-4 py-2 text-left">
                   [LAST ACTIVE]
                 </th>
-                <th className="text-muted-foreground rounded-none px-4 py-2 text-left">
+                <th className="text-muted-foreground px-4 py-2 text-left">
                   [ACTIONS]
                 </th>
               </tr>
@@ -98,7 +98,8 @@ export function MembersTable({ members }: MembersTableProps) {
                         <div
                           className={cn(
                             mode.font,
-                            'border-border bg-muted flex h-8 w-8 items-center justify-center border text-xs'
+                            'border-border bg-muted flex h-8 w-8 items-center justify-center border text-xs',
+                            mode.radius
                           )}
                         >
                           {member.name
@@ -118,7 +119,8 @@ export function MembersTable({ members }: MembersTableProps) {
                       <span
                         className={cn(
                           mode.font,
-                          'border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs'
+                          'border-border inline-flex items-center gap-1 border px-2 py-0.5 text-xs',
+                          mode.radius
                         )}
                       >
                         <RoleIcon className="h-3 w-3" />

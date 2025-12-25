@@ -24,7 +24,7 @@ const columnFlex: Record<string, string> = {
 
 export function DataTable({ table }: DataTableProps) {
   return (
-    <div className="border-border overflow-hidden border">
+    <div className={cn('border-border overflow-hidden border', mode.radius)}>
       {/* Table Header */}
       <div className="border-border bg-muted/50 border-b">
         {table.getHeaderGroups().map((headerGroup) => (

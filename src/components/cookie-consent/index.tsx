@@ -224,10 +224,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
           {bannerVariant === 'full' ? (
             // Full banner with cookie icon
             <div
-              className={cn(
-                'bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300',
-                mode.radius
-              )}
+              className="bg-background text-foreground animate-in slide-in-from-bottom-5 fixed right-6 bottom-6 z-50 flex items-center border transition-all duration-300"
               style={{ transform: 'translate3d(0, 0, 0)' }}
             >
               <button
@@ -262,10 +259,7 @@ export function CookieConsent({ variant = 'full', bannerVariant = 'full' }: Cook
               aria-label="Cookie consent banner"
             >
               <div
-                className={cn(
-                  'bg-card border-accent flex items-center gap-2 border-2 px-4 py-2',
-                  mode.radius
-                )}
+                className="bg-card border-accent flex items-center gap-2 border-2 px-4 py-2"
               >
                 <button
                   onClick={openModal}

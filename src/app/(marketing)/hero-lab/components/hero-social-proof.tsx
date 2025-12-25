@@ -50,7 +50,7 @@ export function HeroSocialProof() {
         <div className="grid gap-8 lg:grid-cols-2 items-center">
           {/* LEFT: Stats Grid */}
           <div className="grid grid-cols-2 gap-4">
-            <div className={cn('border p-4 text-center', mode.font)}>
+            <div className={cn('border p-4 text-center', mode.font, mode.radius)}>
               <GitBranch className={cn('h-5 w-5 mx-auto mb-2', mode.color.text.primary)} />
               <div className="text-2xl font-bold">
                 <AnimatedStat target={1247} />
@@ -58,7 +58,7 @@ export function HeroSocialProof() {
               <div className={cn('text-xs', mode.color.text.muted)}>GITHUB STARS</div>
             </div>
 
-            <div className={cn('border p-4 text-center', mode.font)}>
+            <div className={cn('border p-4 text-center', mode.font, mode.radius)}>
               <Users className={cn('h-5 w-5 mx-auto mb-2', mode.color.text.primary)} />
               <div className="text-2xl font-bold">
                 <AnimatedStat target={500} suffix="+" />
@@ -66,7 +66,7 @@ export function HeroSocialProof() {
               <div className={cn('text-xs', mode.color.text.muted)}>DEVELOPERS</div>
             </div>
 
-            <div className={cn('border p-4 text-center', mode.font)}>
+            <div className={cn('border p-4 text-center', mode.font, mode.radius)}>
               <Download className={cn('h-5 w-5 mx-auto mb-2', mode.color.text.primary)} />
               <div className="text-2xl font-bold">
                 <AnimatedStat target={2834} />
@@ -74,7 +74,7 @@ export function HeroSocialProof() {
               <div className={cn('text-xs', mode.color.text.muted)}>DOWNLOADS</div>
             </div>
 
-            <div className={cn('border p-4 text-center', mode.font)}>
+            <div className={cn('border p-4 text-center', mode.font, mode.radius)}>
               <Star className={cn('h-5 w-5 mx-auto mb-2', mode.color.text.warning)} />
               <div className="text-2xl font-bold">4.9</div>
               <div className={cn('text-xs', mode.color.text.muted)}>AVG RATING</div>
@@ -107,7 +107,7 @@ export function HeroSocialProof() {
                 (badge) => (
                   <span
                     key={badge}
-                    className={cn('text-xs border px-2 py-1', mode.color.text.muted)}
+                    className={cn('text-xs border px-2 py-1', mode.color.text.muted, mode.radius)}
                   >
                     {badge}
                   </span>

@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { PurchaseTracker } from '@/components/analytics/purchase-tracker';
 import Link from 'next/link';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Purchase Successful - Fabrk',
@@ -44,7 +46,7 @@ export default function PurchaseSuccessPage() {
             {/* Email */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="bg-primary/10 rounded-none p-4">
+                <div className={cn('bg-primary/10 p-4', mode.radius)}>
                   <Mail className="text-primary h-6 w-6" />
                 </div>
               </div>
@@ -60,7 +62,7 @@ export default function PurchaseSuccessPage() {
             {/* Access Portal */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="bg-primary/10 rounded-none p-4">
+                <div className={cn('bg-primary/10 p-4', mode.radius)}>
                   <Github className="text-primary h-6 w-6" />
                 </div>
               </div>
@@ -78,7 +80,7 @@ export default function PurchaseSuccessPage() {
             {/* Clone & Build */}
             <div className="flex gap-4">
               <div className="shrink-0">
-                <div className="bg-primary/10 rounded-none p-4">
+                <div className={cn('bg-primary/10 p-4', mode.radius)}>
                   <Download className="text-primary h-6 w-6" />
                 </div>
               </div>
@@ -86,10 +88,10 @@ export default function PurchaseSuccessPage() {
                 <h3 className="mb-2 text-sm font-semibold uppercase">[3] CLONE & BUILD</h3>
                 <p className="text-muted-foreground text-sm">
                   Clone the repository, run{' '}
-                  <code className="bg-muted rounded-none px-2 py-1 text-xs">npm install</code> and{' '}
-                  <code className="bg-muted rounded-none px-2 py-1 text-xs">npm run dev</code>.
+                  <code className={cn('bg-muted px-2 py-1 text-xs', mode.radius)}>npm install</code> and{' '}
+                  <code className={cn('bg-muted px-2 py-1 text-xs', mode.radius)}>npm run dev</code>.
                   Complete setup guide in{' '}
-                  <code className="bg-muted rounded-none px-2 py-1 text-xs">README.md</code>.
+                  <code className={cn('bg-muted px-2 py-1 text-xs', mode.radius)}>README.md</code>.
                 </p>
               </div>
             </div>

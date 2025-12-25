@@ -20,7 +20,7 @@ export function HeroSplitCompact() {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left: Headline + CTA */}
           <div className="space-y-6">
-            <div className={cn('text-xs border px-2 py-1 w-fit', mode.font, mode.color.text.success)}>
+            <div className={cn('text-xs border px-2 py-1 w-fit', mode.font, mode.color.text.success, mode.radius)}>
               <span className="inline-block h-1.5 w-1.5 bg-success animate-pulse mr-2" />
               SHIP IN DAYS, NOT MONTHS
             </div>
@@ -60,7 +60,7 @@ export function HeroSplitCompact() {
           {/* Right: Compact Comparison */}
           <div className="grid grid-cols-2 gap-4">
             {/* WITHOUT */}
-            <div className={cn('border p-4 space-y-3', mode.font)}>
+            <div className={cn('border p-4 space-y-3', mode.font, mode.radius)}>
               <div className="flex items-center gap-2 text-xs">
                 <X className="h-4 w-4 text-danger" />
                 <span className="font-bold">WITHOUT FABRK</span>
@@ -90,7 +90,7 @@ export function HeroSplitCompact() {
             </div>
 
             {/* WITH */}
-            <div className={cn('border border-success p-4 space-y-3', mode.font)}>
+            <div className={cn('border border-success p-4 space-y-3', mode.font, mode.radius)}>
               <div className="flex items-center gap-2 text-xs">
                 <Check className="h-4 w-4 text-success" />
                 <span className="font-bold text-success">WITH FABRK</span>

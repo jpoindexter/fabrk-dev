@@ -41,7 +41,7 @@ export function HeroCommandLine() {
     <Container size="2xl">
       <div className="flex flex-col items-center text-center space-y-6 py-8 max-h-[70vh]">
         {/* Badge */}
-        <div className={cn('text-xs border px-3 py-1', mode.font, mode.color.text.muted)}>
+        <div className={cn('text-xs border px-3 py-1', mode.font, mode.color.text.muted, mode.radius)}>
           78 COMPONENTS • 12 THEMES • $299 ONE-TIME
         </div>
 
@@ -53,7 +53,7 @@ export function HeroCommandLine() {
         </h1>
 
         {/* Terminal Command */}
-        <div className={cn('w-full max-w-xl border bg-muted/30', mode.font)}>
+        <div className={cn('w-full max-w-xl border bg-muted/30', mode.font, mode.radius)}>
           <div className="flex items-center justify-between px-4 py-2 border-b">
             <div className="flex gap-1.5">
               <div className="h-2.5 w-2.5 rounded-full bg-danger/50" />

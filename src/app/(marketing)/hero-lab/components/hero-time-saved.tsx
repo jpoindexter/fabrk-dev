@@ -56,7 +56,7 @@ export function HeroTimeSaved() {
         </div>
 
         {/* Comparison */}
-        <div className={cn('inline-flex justify-center gap-8 p-4 border mx-auto mb-6', mode.font)}>
+        <div className={cn('inline-flex justify-center gap-8 p-4 border mx-auto mb-6', mode.font, mode.radius)}>
           <div className="text-center">
             <div className={cn('text-xs', mode.color.text.muted)}>[FROM SCRATCH]</div>
             <div className="text-xl font-bold line-through opacity-50">6 WEEKS</div>

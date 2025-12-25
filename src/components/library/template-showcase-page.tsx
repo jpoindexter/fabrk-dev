@@ -49,7 +49,7 @@ function PreviewError({
   resetErrorBoundary: () => void;
 }) {
   return (
-    <div className="bg-destructive/5 border-destructive/20 flex min-h-[200px] flex-col items-center justify-center gap-4 border p-8">
+    <div className={cn("bg-destructive/5 border-destructive/20 flex min-h-[200px] flex-col items-center justify-center gap-4 border p-8", mode.radius)}>
       <div className={cn(mode.font, 'text-destructive text-sm font-semibold')}>
         [ERROR]: Preview failed to load
       </div>

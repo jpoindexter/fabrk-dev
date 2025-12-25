@@ -159,17 +159,17 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
           )}
         >
           <div className="inline-block min-w-full align-middle">
-            <table className="border-foreground min-w-full rounded-none border-2">
+            <table className={cn('border-foreground min-w-full border-2', mode.radius)}>
               {/* Header Row */}
               <thead>
                 <tr>
-                  <th className="border-foreground bg-muted sticky left-0 z-10 rounded-none border-r-2 border-b-2 px-6 py-4 text-left">
+                  <th className="border-foreground bg-muted sticky left-0 z-10 border-r-2 border-b-2 px-6 py-4 text-left">
                     <span className="text-muted-foreground text-sm font-semibold">Features</span>
                   </th>
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`border-foreground rounded-none border-b-2 border-l-2 px-6 py-4 ${
+                      className={`border-foreground border-b-2 border-l-2 px-6 py-4 ${
                         plan.highlighted ? 'bg-primary text-primary-foreground' : 'bg-muted'
                       }`}
                     >
@@ -227,9 +227,12 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                     {plans.map((plan) => (
                       <td
                         key={`${plan.name}-${key}`}
-                        className={`border-foreground border-l-2 px-6 py-4 text-center ${
-                          plan.highlighted ? '' : ''
-                        }`}
+                        className={cn(
+                          `border-foreground border-l-2 px-6 py-4 text-center ${
+                            plan.highlighted ? '' : ''
+                          }`,
+                          mode.radius
+                        )}
                       >
                         {renderFeatureValue(plan.features[key] as boolean | string)}
                       </td>
@@ -245,9 +248,12 @@ export function PricingTable({ plans = defaultPlans }: PricingTableProps) {
                   {plans.map((plan) => (
                     <td
                       key={`cta-${plan.name}`}
-                      className={`border-foreground border-l-2 px-6 py-6 ${
-                        plan.highlighted ? '' : 'bg-card'
-                      }`}
+                      className={cn(
+                        `border-foreground border-l-2 px-6 py-6 ${
+                          plan.highlighted ? '' : 'bg-card'
+                        }`,
+                        mode.radius
+                      )}
                     >
                       <Button
                         className={cn(

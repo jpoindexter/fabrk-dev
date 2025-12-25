@@ -123,7 +123,7 @@ export function HeroSpeedRun() {
             )}
 
             {activeStep >= STEPS.length && (
-              <div className={cn('border border-success p-4 text-center', mode.font)}>
+              <div className={cn('border border-success p-4 text-center', mode.font, mode.radius)}>
                 <Check className="h-6 w-6 text-success mx-auto mb-2" />
                 <div className="font-bold">DEPLOYED IN 4 MINUTES</div>
                 <Button onClick={handleStart} variant="ghost" className="mt-2 text-xs">

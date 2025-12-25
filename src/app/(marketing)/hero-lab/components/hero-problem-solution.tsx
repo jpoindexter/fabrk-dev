@@ -19,7 +19,7 @@ export function HeroProblemSolution() {
         {/* Comparison */}
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
           {/* Problem */}
-          <div className={cn('border border-destructive/30 p-6', mode.font)}>
+          <div className={cn('border border-destructive/30 p-6', mode.font, mode.radius)}>
             <div className={cn('text-xs mb-4', mode.color.text.danger)}>
               <X className="h-3 w-3 inline mr-2" />
               THE OLD WAY
@@ -32,7 +32,7 @@ export function HeroProblemSolution() {
           </div>
 
           {/* Solution */}
-          <div className={cn('border border-success p-6', mode.font)}>
+          <div className={cn('border border-success p-6', mode.font, mode.radius)}>
             <div className={cn('text-xs mb-4', mode.color.text.success)}>
               <Check className="h-3 w-3 inline mr-2" />
               THE FABRK WAY

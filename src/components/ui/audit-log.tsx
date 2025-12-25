@@ -175,7 +175,7 @@ function LogFilters({
           value={actionFilter}
           onValueChange={(value) => onActionFilterChange(value as AuditAction | 'all')}
         >
-          <SelectTrigger className={cn('w-full sm:w-[200px]', mode.radius, mode.font)}>
+          <SelectTrigger className={cn('w-full sm:w-52', mode.radius, mode.font)}>
             <SelectValue placeholder="Filter by action" />
           </SelectTrigger>
           <SelectContent className={cn(mode.radius)}>
@@ -323,7 +323,7 @@ function LogDetailsSheet({ log, onClose }: LogDetailsSheetProps) {
               {/* Action Details */}
               <div className="space-y-2">
                 <p className={cn('text-xs font-semibold', mode.font)}>[ACTION]:</p>
-                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2', mode.radius)}>
                   <div className="flex justify-between text-xs">
                     <span className={cn('text-muted-foreground', mode.font)}>[TYPE]:</span>
                     <Badge variant={getActionBadgeVariant(log.action)} className={cn(mode.font)}>
@@ -344,7 +344,7 @@ function LogDetailsSheet({ log, onClose }: LogDetailsSheetProps) {
               {/* Security Info */}
               <div className="space-y-2">
                 <p className={cn('text-xs font-semibold', mode.font)}>[SECURITY]:</p>
-                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
+                <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2', mode.radius)}>
                   <div className="flex justify-between text-xs">
                     <span className={cn('text-muted-foreground', mode.font)}>[IP ADDRESS]:</span>
                     <span className={cn(mode.font)}>{log.ipAddress}</span>
@@ -362,7 +362,7 @@ function LogDetailsSheet({ log, onClose }: LogDetailsSheetProps) {
               {Object.keys(log.metadata).length > 0 && (
                 <div className="space-y-2">
                   <p className={cn('text-xs font-semibold', mode.font)}>[METADATA]:</p>
-                  <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2')}>
+                  <div className={cn(mode.color.bg.muted, mode.color.border.default, 'space-y-1 border px-4 py-2', mode.radius)}>
                     {Object.entries(log.metadata).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-xs">
                         <span className={cn('text-muted-foreground', mode.font)}>

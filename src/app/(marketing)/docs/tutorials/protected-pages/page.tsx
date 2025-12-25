@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Shield, Lock, User, Eye } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Protected Pages - Fabrk Docs',
@@ -215,7 +217,7 @@ export function NavBar() {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Check middleware.ts protected route configuration
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// Ensure login page is NOT in protected routes
 const isOnAuth = pathnameWithoutLocale.startsWith('/auth');
@@ -235,7 +237,7 @@ if (isOnAuth) {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify auth() is imported and middleware is configured
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// In your protected page
 import { auth } from "@/lib/auth";
@@ -258,7 +260,7 @@ export default async function Page() {
                 <strong>Solution:</strong> Ensure page is Server Component (no &quot;use
                 client&quot;)
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// Server Component (correct)
 import { auth } from "@/lib/auth";
@@ -282,7 +284,7 @@ import { auth } from "@/lib/auth"; // Error!
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Add role check in page component
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`const session = await auth();
 

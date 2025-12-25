@@ -83,7 +83,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       data-slot="card"
       className={cn(
         // Base styles - ONE card shell + CRT scanlines in Terminal mode
-        'crt-scanlines relative flex flex-col border',
+        'crt-scanlines relative flex flex-col border overflow-hidden',
         mode.color.bg.surface,
         mode.radius,
 
@@ -627,9 +627,10 @@ const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
         {...props}
       >
         {/* Terminal Header */}
+        {/* Terminal Header */}
         <div
           className={cn(
-            'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
+            'flex h-11 shrink-0 items-center justify-between border-b px-4',
             mode.color.border.default
           )}
         >
@@ -735,9 +736,10 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
         {...props}
       >
         {/* Header */}
+        {/* Terminal Header */}
         <div
           className={cn(
-            'flex h-[44px] shrink-0 items-center justify-between border-b px-4',
+            'flex h-11 shrink-0 items-center justify-between border-b px-4',
             mode.color.border.default
           )}
         >
@@ -774,7 +776,7 @@ const FeatureCard = React.forwardRef<HTMLDivElement, FeatureCardProps>(
 
         {/* Stats Band */}
         {stats && stats.length > 0 && (
-          <div className="border-y border-border bg-background py-4 px-6 flex gap-4 mt-4">
+          <div className={cn('border-y border-border bg-background py-4 px-6 flex gap-4 mt-4')}>
             {stats.map((stat, index) => (
               <React.Fragment key={stat.label}>
                 {index > 0 && <div className="w-px bg-border" />}

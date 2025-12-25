@@ -400,16 +400,9 @@ export default function ThemeGeneratorPage() {
     if (borderRadius > 0) {
       styleEl = document.createElement('style');
       styleEl.id = 'theme-generator-radius-override';
-      styleEl.textContent = `
-        /* Theme Generator Preview - Border Radius Override */
-        .rounded-none {
-          border-radius: ${borderRadius}rem !important;
-        }
-        /* Ensure inputs, buttons, cards all get the radius */
-        button, input, textarea, select, [role="button"] {
-          border-radius: ${borderRadius}rem !important;
-        }
-      `;
+      // NO-OP: We now rely on components using mode.radius (rounded-dynamic)
+      // This prevents unwanted rounding of elements that should stay square (dividers, tabs, etc.)
+      styleEl.textContent = ``;
       document.head.appendChild(styleEl);
     }
 

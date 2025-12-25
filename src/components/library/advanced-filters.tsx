@@ -107,6 +107,7 @@ export function AdvancedFilters({
                 onClick={() => handleDifficultyToggle(level)}
                 className={cn(
                   mode.font,
+                  mode.radius,
                   'border-border px-4 py-2 text-xs transition-all',
                   filters.difficulty === level
                     ? 'bg-primary text-primary-foreground border'
@@ -129,6 +130,7 @@ export function AdvancedFilters({
                 onClick={() => handleSetupTimeToggle(time.value)}
                 className={cn(
                   mode.font,
+                  mode.radius,
                   'border-border px-4 py-2 text-xs transition-all',
                   filters.setupTime === time.value
                     ? 'bg-primary text-primary-foreground border'
@@ -148,6 +150,7 @@ export function AdvancedFilters({
             onClick={handleDependenciesToggle}
             className={cn(
               mode.font,
+              mode.radius,
               'border-border w-full px-4 py-2 text-left text-xs transition-all',
               filters.hasDependencies
                 ? 'bg-primary text-primary-foreground border'
@@ -168,6 +171,7 @@ export function AdvancedFilters({
                 onClick={() => handleFeatureToggle(feature)}
                 className={cn(
                   mode.font,
+                  mode.radius,
                   'border-border px-2 py-1 text-xs transition-all',
                   filters.feature === feature
                     ? 'bg-primary text-primary-foreground border'

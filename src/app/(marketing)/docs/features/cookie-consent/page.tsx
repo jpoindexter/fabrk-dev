@@ -41,7 +41,7 @@ function CookieConsentDemo() {
           ].map((item) => (
             <div
               key={item.key}
-              className="border-border bg-background flex items-center justify-between border p-2"
+              className={cn('border-border bg-background flex items-center justify-between border p-2', mode.radius)}
             >
               <span className="font-mono text-xs">{item.label}</span>
               <button
@@ -52,11 +52,14 @@ function CookieConsentDemo() {
                     [item.key]: !p[item.key as keyof typeof p],
                   }))
                 }
-                className={`border px-2 py-0.5 font-mono text-xs ${
+                className={cn('border px-2 py-0.5 font-mono text-xs',
                   preferences[item.key as keyof typeof preferences]
                     ? 'border-success text-success'
-                    : 'border-border text-muted-foreground'
-                } ${item.locked ? 'cursor-not-allowed opacity-50' : cn(mode.state.hover.card, 'cursor-pointer')}`}
+                    : 'border-border text-muted-foreground',
+                  item.locked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
+                  mode.state.hover.card,
+                  mode.radius
+                )}
                 disabled={item.locked}
               >
                 {preferences[item.key as keyof typeof preferences] ? '[ON]' : '[OFF]'}
@@ -258,9 +261,9 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
           title="Minimal Banner Preview"
           description="Compact terminal-styled banner (as seen on this page)"
           preview={
-            <div className="border-border bg-card relative h-48 w-full border">
+            <div className={cn('border-border bg-card relative h-48 w-full border', mode.radius)}>
               <div className="absolute right-6 bottom-6 z-[60]">
-                <div className="bg-card border-accent flex items-center gap-2 border-2 px-4 py-2">
+                <div className={cn('bg-card border-accent flex items-center gap-2 border-2 px-4 py-2', mode.radius)}>
                   <span className="text-accent font-mono text-xs whitespace-nowrap">
                     [ (0xB7) COOKIE_SETTINGS.CFG ]
                   </span>
@@ -336,8 +339,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       <DocsSection title="Cookie Categories">
         <DocsCard title="COOKIE CATEGORIES">
           <div className="space-y-4">
-            <div className="bg-muted/50 flex items-start gap-4 p-4">
-              <div className="bg-success mt-1 h-3 w-3 rounded-none"></div>
+            <div className={cn('bg-muted/50 flex items-start gap-4 p-4', mode.radius)}>
+              <div className={cn('bg-success mt-1 h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Necessary (Always On)</p>
                 <p className="mb-6">
@@ -346,8 +349,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
                 </p>
               </div>
             </div>
-            <div className="bg-muted/50 flex items-start gap-4 p-4">
-              <div className="bg-info mt-1 h-3 w-3 rounded-none"></div>
+            <div className={cn('bg-muted/50 flex items-start gap-4 p-4', mode.radius)}>
+              <div className={cn('bg-info mt-1 h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Preferences</p>
                 <p className="mb-6">
@@ -355,8 +358,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
                 </p>
               </div>
             </div>
-            <div className="bg-muted/50 flex items-start gap-4 p-4">
-              <div className="bg-warning mt-1 h-3 w-3 rounded-none"></div>
+            <div className={cn('bg-muted/50 flex items-start gap-4 p-4', mode.radius)}>
+              <div className={cn('bg-warning mt-1 h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Statistics</p>
                 <p className="mb-6">
@@ -365,8 +368,8 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
                 </p>
               </div>
             </div>
-            <div className="bg-muted/50 flex items-start gap-4 p-4">
-              <div className="bg-destructive mt-1 h-3 w-3 rounded-none"></div>
+            <div className={cn('bg-muted/50 flex items-start gap-4 p-4', mode.radius)}>
+              <div className={cn('bg-destructive mt-1 h-3 w-3', mode.radius)}></div>
               <div>
                 <p className="font-medium">Marketing</p>
                 <p className="mb-6">
@@ -382,7 +385,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
       {/* Common Questions Section */}
       <DocsSection title="Common Questions">
         <div className="space-y-4">
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono font-medium">
               Do I need this if I don&apos;t have EU users?
             </summary>
@@ -395,7 +398,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono font-medium">
               Why do I need Consent Mode v2 for Google?
             </summary>
@@ -408,7 +411,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono font-medium">
               Can I change the button position?
             </summary>
@@ -423,7 +426,7 @@ if (daysSinceConsent < 365) {  // Change 365 to your desired days
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono font-medium">
               What if the user never makes a choice?
             </summary>

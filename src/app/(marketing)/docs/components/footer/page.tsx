@@ -9,13 +9,13 @@ import { cn } from '@/lib/utils';
 // Simplified Footer Demo
 function FooterDemo() {
   return (
-    <footer className="border-border bg-background w-full border">
+    <footer className={cn("border-border bg-background w-full border", mode.radius)}>
       {/* Tech Stack Bar */}
       <div className="border-border border-b p-4">
         <div className="text-muted-foreground mb-2 font-mono text-xs">[ TECH STACK ]</div>
         <div className="flex flex-wrap gap-2">
           {['NEXT.JS', 'REACT', 'TYPESCRIPT', 'TAILWIND'].map((tech) => (
-            <span key={tech} className="border-border bg-card border px-2 py-1 font-mono text-xs">
+            <span key={tech} className={cn("border-border bg-card border px-2 py-1 font-mono text-xs", mode.radius)}>
               {tech} <span className="text-success">[OK]</span>
             </span>
           ))}
@@ -26,7 +26,7 @@ function FooterDemo() {
       <div className="grid gap-6 p-6 lg:grid-cols-[1fr_auto]">
         {/* Logo & Status */}
         <div>
-          <span className="border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs">
+          <span className={cn("border-border bg-card text-muted-foreground inline-block border px-4 py-1 font-mono text-xs", mode.radius)}>
             [ SYSTEM INFO ]
           </span>
           <Link href="#" className="mt-4 flex items-center gap-2 font-mono">
@@ -40,7 +40,7 @@ function FooterDemo() {
         </div>
 
         {/* Nav Links */}
-        <div className="border-border bg-card border">
+        <div className={cn("border-border bg-card border", mode.radius)}>
           <CardHeader code="0x00" title="COMPONENT" />
           <div className="divide-border grid grid-cols-3 divide-x">
             <div className="p-4">
@@ -111,7 +111,7 @@ function FooterDemo() {
 // Simple Footer variant
 function SimpleFooterDemo() {
   return (
-    <footer className="border-border bg-background w-full border p-4">
+    <footer className={cn("border-border bg-background w-full border p-4", mode.radius)}>
       <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
         <span className="text-muted-foreground font-mono text-xs">© 2024 Your Company</span>
         <nav className="flex gap-4">

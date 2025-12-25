@@ -39,7 +39,7 @@ export function HeroTerminalOnly() {
     <Container size="2xl">
       <div className="py-8 max-h-[70vh] flex flex-col justify-center">
         {/* Terminal */}
-        <div className={cn('border overflow-hidden max-w-3xl mx-auto w-full mb-8')}>
+        <div className={cn('border overflow-hidden max-w-3xl mx-auto w-full mb-8', mode.radius)}>
           {/* Terminal Header */}
           <div className={cn('flex items-center gap-2 px-4 py-2 border-b bg-muted/50', mode.font)}>
             <div className="flex gap-1.5">

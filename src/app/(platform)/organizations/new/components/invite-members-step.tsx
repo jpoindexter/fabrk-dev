@@ -69,7 +69,7 @@ export function InviteMembersStep({
                   <FormControl>
                     <Textarea
                       placeholder="john@example.com&#10;jane@example.com&#10;alex@example.com"
-                      className="border-border rounded-none border text-sm"
+                      className={cn('border-border border text-sm', mode.radius)}
                       rows={5}
                       {...field}
                     />
@@ -90,11 +90,11 @@ export function InviteMembersStep({
                   <FormLabel>Default Role</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="border-border rounded-none border">
+                      <SelectTrigger className={cn('border-border border', mode.radius)}>
                         <SelectValue placeholder="Select a role" />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent className="border-border rounded-none border">
+                    <SelectContent className={cn('border-border border', mode.radius)}>
                       <SelectItem value="MEMBER">
                         <div className="flex items-center gap-2">
                           <Badge variant="secondary">MEMBER</Badge>
@@ -121,7 +121,7 @@ export function InviteMembersStep({
               )}
             />
 
-            <div className="border-border bg-muted rounded-none border p-4">
+            <div className={cn('border-border bg-muted border p-4', mode.radius)}>
               <h4 className={cn(mode.font, 'mb-2', 'text-xs', 'font-semibold')}>
                 [ROLE PERMISSIONS]:
               </h4>

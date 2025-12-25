@@ -3,6 +3,8 @@ import { DocsSection, DocsCard, DocsCallout } from '@/components/docs';
 import Link from 'next/link';
 import { Bot, Code, Palette, Zap, FileCode, CheckCircle } from 'lucide-react';
 import { COMPONENT_COUNT_STRING, THEME_COUNT_STRING } from '@/data/landing/stats';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'MCP Server - Fabrk Docs',
@@ -317,7 +319,7 @@ export function PricingCard({ plan, price, features }: { plan: string; price: nu
       {/* Troubleshooting */}
       <DocsSection title="Troubleshooting">
         <div className="space-y-4">
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               MCP server not responding
             </summary>
@@ -336,7 +338,7 @@ export function PricingCard({ plan, price, features }: { plan: string; price: nu
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               AI generating wrong code style
             </summary>
@@ -349,7 +351,7 @@ export function PricingCard({ plan, price, features }: { plan: string; price: nu
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               Config file not found
             </summary>
@@ -359,7 +361,7 @@ export function PricingCard({ plan, price, features }: { plan: string; price: nu
             </div>
           </details>
 
-          <details className="border-border bg-card border">
+          <details className={cn('border-border bg-card border', mode.radius)}>
             <summary className="cursor-pointer p-4 font-mono text-sm font-medium">
               Cursor MCP setup
             </summary>

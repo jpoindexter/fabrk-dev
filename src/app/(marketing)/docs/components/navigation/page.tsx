@@ -5,11 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 // Simplified Navigation Demo for docs
 function NavigationDemo() {
   return (
-    <nav className="border-border bg-background w-full border">
+    <nav className={cn('border-border bg-background w-full border', mode.radius)}>
       <div className="flex h-14 items-center px-4">
         {/* Logo */}
         <Link href="#" className="flex items-center gap-2 font-mono">
@@ -45,13 +47,13 @@ function NavigationDemo() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-none"
+                className={cn(mode.radius)}
                 aria-label="Open navigation menu"
               >
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] rounded-none">
+            <SheetContent side="right" className={cn('w-[280px]', mode.radius)}>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col gap-4 pt-8">
                 <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>
@@ -97,7 +99,7 @@ export default function LandingPage() {
           title: 'Mobile Menu Open',
           description: 'Sheet-based mobile navigation',
           preview: (
-            <div className="border-border bg-card w-full border p-4">
+            <div className={cn('border-border bg-card w-full border p-4', mode.radius)}>
               <div className="text-muted-foreground mb-4 font-mono text-xs">[SYSTEM MENU]</div>
               <div className="flex flex-col gap-4">
                 <span className="text-muted-foreground font-mono text-xs">[NAVIGATE]:</span>

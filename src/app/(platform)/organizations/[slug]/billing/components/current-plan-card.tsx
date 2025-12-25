@@ -18,6 +18,8 @@ import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import type { Organization, Subscription } from './types';
 import { getStatusBadge } from './utils';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface CurrentPlanCardProps {
   organization: Organization;
@@ -71,7 +73,7 @@ export function CurrentPlanCard({
             <Separator />
 
             <div className="grid gap-4 md:grid-cols-3">
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <Calendar className="h-4 w-4" />
                   Billing Period
@@ -81,7 +83,7 @@ export function CurrentPlanCard({
                 </p>
               </div>
 
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <DollarSign className="h-4 w-4" />
                   Next Payment
@@ -89,7 +91,7 @@ export function CurrentPlanCard({
                 <p className="mt-2 font-medium">${(subscription.plan.amount / 100).toFixed(2)}</p>
               </div>
 
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <div className="text-muted-foreground flex items-center gap-2 text-sm">
                   <CheckCircle2 className="h-4 w-4" />
                   Status
@@ -99,7 +101,7 @@ export function CurrentPlanCard({
             </div>
 
             {subscription.cancelAtPeriodEnd && (
-              <div className="border-border border-destructive bg-destructive/10 rounded-none border p-4">
+              <div className={cn('border-border border-destructive bg-destructive/10 border p-4', mode.radius)}>
                 <div className="flex items-start gap-4">
                   <AlertTriangle className="text-destructive h-5 w-5" />
                   <div>

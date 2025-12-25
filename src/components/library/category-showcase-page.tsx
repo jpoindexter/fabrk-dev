@@ -59,7 +59,7 @@ function TemplateGrid({ templates }: { templates: CategoryTemplate[] }) {
     <div className="grid gap-4 md:grid-cols-2">
       {templates.map((template) => (
         <Link key={template.id} href={template.href}>
-          <div className={cn('group border-border bg-card border transition-colors', mode.state.hover.card)}>
+          <div className={cn('group border-border bg-card border transition-colors', mode.state.hover.card, mode.radius)}>
             {/* Card Header */}
             <div className="border-border flex items-center justify-between border-b px-4 py-2">
               <span className={cn(mode.font, 'text-muted-foreground text-xs')}>
@@ -77,7 +77,7 @@ function TemplateGrid({ templates }: { templates: CategoryTemplate[] }) {
                   <span className="text-success">READY</span>
                 </div>
                 {template.badge && (
-                  <div className="border-primary/50 text-primary border px-2 py-0.5">
+                  <div className={cn("border-primary/50 text-primary border px-2 py-0.5", mode.radius)}>
                     {template.badge.toUpperCase()}
                   </div>
                 )}
@@ -101,7 +101,7 @@ function TemplateGrid({ templates }: { templates: CategoryTemplate[] }) {
                   {template.features.map((feature) => (
                     <span
                       key={feature}
-                      className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs')}
+                      className={cn(mode.font, 'border-border border px-2 py-0.5 text-xs', mode.radius)}
                     >
                       {feature}
                     </span>

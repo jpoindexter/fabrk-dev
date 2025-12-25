@@ -5,6 +5,8 @@
 
 import { DocsStep } from './docs-step';
 import { docsSpacing } from '../spacing';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 interface Step {
   title: string;
@@ -47,7 +49,7 @@ export function DocsStepList({ steps, variant = 'card' }: DocsStepListProps) {
         const hexCode = (index + 1).toString(16).toUpperCase().padStart(2, '0');
         const titleSlug = step.title.toUpperCase();
         return (
-          <div key={index} className="border-border bg-card border">
+          <div key={index} className={cn("border-border bg-card border", mode.radius)}>
             {/* Terminal header */}
             <div className="border-border border-b px-4 py-2">
               <span className="text-muted-foreground font-mono text-xs">

@@ -76,13 +76,13 @@ export function HeroComponentGallery() {
               {COMPONENTS.map((comp, i) => (
                 <MiniComponent key={comp.name} {...comp} index={i} />
               ))}
-              <div className={cn('border border-dashed p-2 flex items-center justify-center', mode.color.text.muted)}>
+              <div className={cn('border border-dashed p-2 flex items-center justify-center', mode.color.text.muted, mode.radius)}>
                 <span className={cn('text-xs', mode.font)}>+70 MORE</span>
               </div>
             </div>
 
             {/* Price Comparison */}
-            <div className={cn('border p-3 space-y-2', mode.font)}>
+            <div className={cn('border p-3 space-y-2', mode.font, mode.radius)}>
               <div className="flex items-center justify-between text-xs">
                 <span className={mode.color.text.muted}>78 COMPONENTS @ $50/EA</span>
                 <span className="line-through opacity-50">$3,900</span>

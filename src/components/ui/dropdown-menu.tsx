@@ -22,8 +22,8 @@ const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      'flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-2',
+      // WCAG 2.1 AA: h-12 ensures adequate touch target on mobile
+      'flex h-12 cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none sm:h-auto sm:py-2',
       `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
       `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       `data-[state=open]:${mode.color.bg.accent} data-[state=open]:${mode.color.text.inverse}`,
@@ -170,8 +170,8 @@ const DropdownMenuItem = React.forwardRef<
     ref={ref}
     data-slot="dropdown-menu-item"
     className={cn(
-      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile (accounts for subpixel rendering)
-      'relative flex h-[48px] cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      // WCAG 2.1 AA: h-12 ensures adequate touch target on mobile (accounts for subpixel rendering)
+      'relative flex h-12 cursor-default items-center px-2 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
       `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
       `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       mode.radius,
@@ -191,8 +191,8 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      'relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      // WCAG 2.1 AA: h-12 ensures adequate touch target on mobile
+      'relative flex h-12 cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
       `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
       `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       mode.radius,
@@ -219,8 +219,8 @@ const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      // WCAG 2.1 AA: h-[48px] ensures adequate touch target on mobile
-      'relative flex h-[48px] cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
+      // WCAG 2.1 AA: h-12 ensures adequate touch target on mobile
+      'relative flex h-12 cursor-default items-center pr-2 pl-8 text-xs transition-colors select-none focus-visible:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 sm:h-auto sm:py-2',
       `hover:${mode.color.bg.accent} hover:${mode.color.text.inverse}`,
       `focus:${mode.color.bg.accent} focus:${mode.color.text.inverse}`,
       mode.radius,

@@ -1,11 +1,42 @@
 'use client';
 
 import { Check, Copy, Moon, Palette, Sun, X } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
 import { cn } from '@/lib/utils';
+
+// =============================================================================
+// CONTEXT - For external control of the panel
+// =============================================================================
+
+interface ThemePlaygroundContextValue {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  toggle: () => void;
+}
+
+const ThemePlaygroundContext = createContext<ThemePlaygroundContextValue | null>(null);
+
+export function useThemePlayground() {
+  const context = useContext(ThemePlaygroundContext);
+  if (!context) {
+    throw new Error('useThemePlayground must be used within ThemePlaygroundProvider');
+  }
+  return context;
+}
+
+export function ThemePlaygroundProvider({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
+
+  return (
+    <ThemePlaygroundContext.Provider value={{ isOpen, setIsOpen, toggle }}>
+      {children}
+    </ThemePlaygroundContext.Provider>
+  );
+}
 
 // =============================================================================
 // TYPES
@@ -27,28 +58,26 @@ interface ThemeConfig {
 // =============================================================================
 
 const ACCENT_COLORS = [
-  // Row 1 - Standard CRT
-  { id: 'amber', color: '#ffb000', name: 'Amber' },
-  { id: 'green', color: '#33ff66', name: 'Green' },
-  { id: 'blue', color: '#55ccff', name: 'Blue' },
-  { id: 'purple', color: '#bb88ff', name: 'Purple' },
-  { id: 'red', color: '#ff6655', name: 'Red' },
-  // Row 2 - Futuristic
-  { id: 'cyberpunk', color: '#ff0050', name: 'Cyberpunk' },
-  { id: 'phosphor', color: '#00ff41', name: 'Phosphor' },
-  { id: 'holographic', color: '#00ffff', name: 'Holographic' },
-  { id: 'navigator', color: '#ff8c00', name: 'Navigator' },
-  { id: 'blueprint', color: '#4a90d9', name: 'Blueprint' },
-  // Row 3 - Retro & Handheld
-  { id: 'atari', color: '#305070', name: 'Atari' },
-  { id: 'c64', color: '#8888ff', name: 'C64' },
-  { id: 'spectrum', color: '#ff00ff', name: 'Spectrum' },
-  { id: 'vic20', color: '#00ffff', name: 'VIC-20' },
-  { id: 'gameboy', color: '#9bbc0f', name: 'Game Boy' },
-  // Row 4 - Additional
-  { id: 'gbpocket', color: '#8a8a8a', name: 'GB Pocket' },
-  { id: 'infrared', color: '#cc3333', name: 'Infrared' },
-  { id: 'bw', color: '#ffffff', name: 'B&W' },
+  // Dark themes - CRT effect
+  { id: 'amber', color: '#ffb000', name: 'Amber', mode: 'dark', effect: 'crt' },
+  { id: 'green', color: '#33ff66', name: 'Green', mode: 'dark', effect: 'crt' },
+  { id: 'blue', color: '#55ccff', name: 'Blue', mode: 'dark', effect: 'crt' },
+  { id: 'purple', color: '#bb88ff', name: 'Purple', mode: 'dark', effect: 'crt' },
+  { id: 'red', color: '#ff6655', name: 'Red', mode: 'dark', effect: 'crt' },
+  { id: 'cyberpunk', color: '#ff0050', name: 'Cyberpunk', mode: 'dark', effect: 'crt' },
+  { id: 'phosphor', color: '#00ff41', name: 'Phosphor', mode: 'dark', effect: 'crt' },
+  { id: 'holographic', color: '#00ffff', name: 'Holographic', mode: 'dark', effect: 'crt' },
+  { id: 'navigator', color: '#ff8c00', name: 'Navigator', mode: 'dark', effect: 'crt' },
+  { id: 'blueprint', color: '#4a90d9', name: 'Blueprint', mode: 'dark', effect: 'crt' },
+  { id: 'atari', color: '#305070', name: 'Atari', mode: 'dark', effect: 'crt' },
+  { id: 'c64', color: '#8888ff', name: 'C64', mode: 'dark', effect: 'crt' },
+  // Light themes - LCD effect for handhelds, none for others
+  { id: 'bw', color: '#ffffff', name: 'B&W', mode: 'light', effect: 'none' },
+  { id: 'vic20', color: '#00ffff', name: 'VIC-20', mode: 'light', effect: 'crt' },
+  { id: 'gbpocket', color: '#8a8a8a', name: 'GB Pocket', mode: 'light', effect: 'lcd' },
+  { id: 'gameboy', color: '#9bbc0f', name: 'Game Boy', mode: 'light', effect: 'lcd' },
+  { id: 'spectrum', color: '#ff00ff', name: 'Spectrum', mode: 'light', effect: 'crt' },
+  { id: 'infrared', color: '#cc3333', name: 'Infrared', mode: 'light', effect: 'none' },
 ] as const;
 
 const RADIUS_OPTIONS: { value: RadiusOption; label: string; cssValue: string }[] = [
@@ -56,23 +85,76 @@ const RADIUS_OPTIONS: { value: RadiusOption; label: string; cssValue: string }[]
   { value: 'sm', label: 'Small', cssValue: '0.25rem' },
   { value: 'md', label: 'Medium', cssValue: '0.5rem' },
   { value: 'lg', label: 'Large', cssValue: '0.75rem' },
-  { value: 'full', label: 'Full', cssValue: '9999px' },
+  { value: 'full', label: 'Full', cssValue: '1rem' }, // Max reasonable radius, not pill-shaped
 ];
 
 const SCALE_OPTIONS: ScaleOption[] = ['90', '95', '100', '105', '110'];
 
 const STORAGE_KEY = 'fabrk-playground-config';
 
+const DISPLAY_EFFECTS = [
+  { id: 'none', name: 'Clean' },
+  { id: 'crt', name: 'CRT' },
+  { id: 'lcd', name: 'LCD' },
+  { id: 'vhs', name: 'VHS' },
+] as const;
+
+type DisplayEffect = (typeof DISPLAY_EFFECTS)[number]['id'];
+
 // =============================================================================
 // COMPONENT
 // =============================================================================
 
-export function ThemePlaygroundPanel() {
+// =============================================================================
+// TRIGGER BUTTON - For use in nav bar
+// =============================================================================
+
+export function ThemePlaygroundTrigger({ className }: { className?: string }) {
+  const { isOpen, toggle } = useThemePlayground();
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      className={cn(
+        'flex h-10 items-center gap-2 px-3',
+        'font-mono text-xs uppercase tracking-wide',
+        'text-muted-foreground transition-colors',
+        'hover:text-foreground hover:bg-muted',
+        'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background',
+        isOpen && 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground',
+        className
+      )}
+      aria-label="Toggle theme playground"
+      aria-pressed={isOpen}
+    >
+      <Palette className="h-4 w-4" />
+      <span>Customize</span>
+    </button>
+  );
+}
+
+// =============================================================================
+// PANEL COMPONENT
+// =============================================================================
+
+interface ThemePlaygroundPanelProps {
+  showTrigger?: boolean;
+}
+
+export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPanelProps) {
+  const playgroundContext = useContext(ThemePlaygroundContext);
   const { colorTheme, setColorTheme } = useThemeContext();
-  const [isOpen, setIsOpen] = useState(false);
+
+  // Use context if available, otherwise use local state (for standalone usage)
+  const [localIsOpen, setLocalIsOpen] = useState(false);
+  const isOpen = playgroundContext?.isOpen ?? localIsOpen;
+  const setIsOpen = playgroundContext?.setIsOpen ?? setLocalIsOpen;
+
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [hoveredColor, setHoveredColor] = useState<string | null>(null);
+  const [displayEffect, setDisplayEffect] = useState<DisplayEffect>('none');
 
   // Playground-specific settings (stored locally, not affecting global theme)
   const [config, setConfig] = useState<ThemeConfig>({
@@ -85,36 +167,60 @@ export function ThemePlaygroundPanel() {
 
   // Load saved config on mount
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Necessary for hydration safety
     setMounted(true);
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved) as Partial<ThemeConfig>;
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Loading from localStorage on mount
         setConfig((prev) => ({ ...prev, ...parsed }));
+      }
+      // Load display effect
+      const savedEffect = localStorage.getItem('monitor-preset') as DisplayEffect;
+      if (savedEffect && DISPLAY_EFFECTS.some((e) => e.id === savedEffect)) {
+        setDisplayEffect(savedEffect);
       }
     } catch {
       // Ignore parsing errors
     }
   }, []);
 
+  // Apply display effect
+  useEffect(() => {
+    if (!mounted) return;
+    // Remove all existing effect classes
+    DISPLAY_EFFECTS.forEach((e) => {
+      document.documentElement.classList.remove(`effect-${e.id}`);
+    });
+    // Add new effect class (if not none)
+    if (displayEffect !== 'none') {
+      document.documentElement.classList.add(`effect-${displayEffect}`);
+    }
+    localStorage.setItem('monitor-preset', displayEffect);
+  }, [displayEffect, mounted]);
+
   // Sync with actual theme
   useEffect(() => {
     if (mounted) {
+      const themeInfo = ACCENT_COLORS.find((c) => c.id === colorTheme);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Syncing external theme state
       setConfig((prev) => ({
         ...prev,
         accentColor: colorTheme,
-        appearance: colorTheme === 'bw' ? 'light' : 'dark',
+        appearance: themeInfo?.mode === 'light' ? 'light' : 'dark',
       }));
     }
   }, [colorTheme, mounted]);
 
-  // Apply radius to document - inject CSS to override rounded-none
+  // Apply radius to document - set CSS variable that .rounded-dynamic uses
   useEffect(() => {
     if (!mounted) return;
-    const radiusValue = RADIUS_OPTIONS.find((r) => r.value === config.radius)?.cssValue || '0';
+    const radiusOption = RADIUS_OPTIONS.find((r) => r.value === config.radius);
+    const radiusValue = radiusOption?.cssValue || '0';
     document.documentElement.style.setProperty('--radius', radiusValue);
 
-    // Inject/update style tag to override Tailwind's rounded-none when radius is not 'none'
+    // Inject/update style tag for special cases only
     let styleTag = document.getElementById('theme-playground-radius');
     if (!styleTag) {
       styleTag = document.createElement('style');
@@ -122,41 +228,45 @@ export function ThemePlaygroundPanel() {
       document.head.appendChild(styleTag);
     }
 
-    if (config.radius === 'none') {
-      // Remove overrides when radius is none (terminal default)
-      styleTag.textContent = '';
-    } else {
-      // Override rounded-none and apply radius to key elements
-      styleTag.textContent = `
-        /* Theme Playground: Override radius */
-        [data-slot="card"],
-        [data-slot="button"],
-        [data-slot="badge"],
-        [data-slot="metric-card"],
-        [data-slot="feature-card"],
-        .rounded-none {
-          border-radius: ${radiusValue} !important;
-        }
+    // The .rounded-dynamic utility now handles most radius changes automatically
+    // We only need overrides for special cases
+    const isFull = config.radius === 'full';
 
-        /* Inputs and form elements */
-        input:not([type="checkbox"]):not([type="radio"]),
-        textarea,
-        select,
-        [data-slot="select-trigger"],
-        [data-slot="input"] {
-          border-radius: ${radiusValue} !important;
-        }
+    styleTag.textContent = `
+      /* Theme Playground: Special case overrides */
 
-        /* Popovers and dropdowns */
-        [data-slot="popover-content"],
-        [data-slot="select-content"],
-        [data-slot="dropdown-menu-content"],
-        [data-slot="dialog-content"],
-        [data-slot="sheet-content"] {
-          border-radius: ${radiusValue} !important;
-        }
-      `;
-    }
+      ${isFull ? `
+      /* For 'full' radius, make buttons/badges pill-shaped */
+      [data-slot="button"],
+      [data-slot="badge"] {
+        border-radius: 9999px !important;
+      }
+
+      /* Cap cards at reasonable max radius */
+      [data-slot="card"],
+      [data-slot="alert"],
+      [role="dialog"] > div,
+      [data-slot="popover-content"],
+      [data-slot="select-content"],
+      [data-slot="dropdown-menu-content"] {
+        border-radius: 1rem !important;
+      }
+      ` : ''}
+
+      /* Never round single-side border elements (dividers, tabs) */
+      hr,
+      [role="separator"] {
+        border-radius: 0 !important;
+      }
+
+      /* Apply theme radius to the panel container and manual controls */
+      #theme-playground-panel,
+      #theme-playground-panel button:not([data-slot="button"]),
+      #theme-playground-panel input,
+      #theme-playground-panel select {
+        border-radius: var(--radius) !important;
+      }
+    `;
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
   }, [config, mounted]);
@@ -182,26 +292,37 @@ export function ThemePlaygroundPanel() {
   const handleAccentChange = useCallback(
     (id: string) => {
       setColorTheme(id as typeof colorTheme);
+      const selectedColor = ACCENT_COLORS.find((c) => c.id === id);
       setConfig((prev) => ({
         ...prev,
         accentColor: id,
-        appearance: id === 'bw' ? 'light' : 'dark',
+        appearance: selectedColor?.mode === 'light' ? 'light' : 'dark',
       }));
+      // Auto-apply the matching display effect
+      if (selectedColor?.effect) {
+        setDisplayEffect(selectedColor.effect as DisplayEffect);
+      }
     },
     [setColorTheme]
   );
 
   const handleAppearanceChange = useCallback(
     (appearance: 'light' | 'dark') => {
-      if (appearance === 'light') {
-        setColorTheme('bw');
-      } else if (config.accentColor === 'bw') {
-        setColorTheme('green'); // Default dark theme
-      }
       setConfig((prev) => ({ ...prev, appearance }));
+      // If current theme doesn't match the new appearance, switch to first theme of that mode
+      const currentThemeMode = ACCENT_COLORS.find((c) => c.id === config.accentColor)?.mode;
+      if (currentThemeMode !== appearance) {
+        const firstThemeOfMode = ACCENT_COLORS.find((c) => c.mode === appearance);
+        if (firstThemeOfMode) {
+          setColorTheme(firstThemeOfMode.id as typeof colorTheme);
+        }
+      }
     },
     [config.accentColor, setColorTheme]
   );
+
+  // Filter colors by current appearance mode
+  const filteredColors = ACCENT_COLORS.filter((c) => c.mode === config.appearance);
 
   const handleCopyTheme = useCallback(async () => {
     const themeCode = `// Theme Configuration
@@ -244,29 +365,13 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
 
   return (
     <>
-      {/* Toggle Button - Top right, below nav */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          'fixed right-6 top-20 z-50',
-          'flex h-10 w-10 items-center justify-center',
-          'border border-border bg-card',
-          'transition-all duration-200',
-          'hover:bg-muted hover:border-primary',
-          'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background',
-          isOpen && 'bg-primary text-primary-foreground hover:bg-primary/90'
-        )}
-        aria-label="Toggle theme playground"
-      >
-        <Palette className="h-4 w-4" />
-      </button>
-
       {/* Panel - Anchored to top right */}
       {isOpen && (
         <div
+          id="theme-playground-panel"
           className={cn(
             'fixed right-6 top-32 z-50',
-            'w-72 max-h-[calc(100vh-10rem)] overflow-y-auto',
+            'w-80 max-h-[calc(100vh-10rem)] overflow-y-auto',
             'border border-border',
             config.panelBackground === 'translucent'
               ? 'bg-card/80 backdrop-blur-md'
@@ -291,12 +396,19 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
           <div className="space-y-6 p-4">
             {/* Accent Color */}
             <div className="space-y-3">
-              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                Accent color
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
+                  Accent color
+                </label>
+                {/* Fixed height to prevent layout shift */}
+                <span className="font-mono text-xs text-foreground h-4">
+                  {hoveredColor || ACCENT_COLORS.find(c => c.id === config.accentColor)?.name || ''}
+                </span>
+              </div>
               <div className="grid grid-cols-6 gap-2">
-                {ACCENT_COLORS.map((color) => (
+                {filteredColors.map((color) => (
                   <button
+                    type="button"
                     key={color.id}
                     onClick={() => handleAccentChange(color.id)}
                     onMouseEnter={() => setHoveredColor(color.name)}
@@ -307,6 +419,7 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
                       'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1',
                       config.accentColor === color.id && 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
                     )}
+                    // eslint-disable-next-line design-system/no-inline-styles -- Dynamic theme color picker requires inline styles
                     style={{ backgroundColor: color.color }}
                     title={color.name}
                     aria-label={`Select ${color.name} theme`}
@@ -323,9 +436,6 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
                   </button>
                 ))}
               </div>
-              {hoveredColor && (
-                <p className="font-mono text-xs text-muted-foreground">{hoveredColor}</p>
-              )}
             </div>
 
             {/* Appearance */}
@@ -381,7 +491,7 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
                         : 'border-border hover:border-muted-foreground'
                     )}
                   >
-                    {/* Visual preview of radius */}
+                    {/* Visual preview of radius - scaled down for 24x24 box */}
                     <div
                       className={cn(
                         'h-6 w-6 border-2',
@@ -394,12 +504,12 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
                           option.value === 'none'
                             ? '0'
                             : option.value === 'sm'
-                              ? '4px'
+                              ? '2px'
                               : option.value === 'md'
-                                ? '8px'
+                                ? '4px'
                                 : option.value === 'lg'
-                                  ? '12px'
-                                  : '50%',
+                                  ? '6px'
+                                  : '8px', // Full - clearly rounded but not a circle
                       }}
                     />
                     <span>{option.label}</span>
@@ -439,6 +549,7 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
               </label>
               <div className="grid grid-cols-2 gap-2">
                 <button
+                  type="button"
                   onClick={() => setConfig((prev) => ({ ...prev, panelBackground: 'solid' }))}
                   className={cn(
                     'border px-4 py-2',
@@ -451,6 +562,7 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
                   Solid
                 </button>
                 <button
+                  type="button"
                   onClick={() => setConfig((prev) => ({ ...prev, panelBackground: 'translucent' }))}
                   className={cn(
                     'border px-4 py-2',
@@ -462,6 +574,31 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
                 >
                   Translucent
                 </button>
+              </div>
+            </div>
+
+            {/* Display Effects */}
+            <div className="space-y-3">
+              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
+                Display effects
+              </label>
+              <div className="grid grid-cols-4 gap-2">
+                {DISPLAY_EFFECTS.map((effect) => (
+                  <button
+                    type="button"
+                    key={effect.id}
+                    onClick={() => setDisplayEffect(effect.id)}
+                    className={cn(
+                      'border px-2 py-2',
+                      'font-mono text-xs transition-all',
+                      displayEffect === effect.id
+                        ? 'border-foreground bg-foreground text-background'
+                        : 'border-border hover:border-muted-foreground'
+                    )}
+                  >
+                    {effect.name}
+                  </button>
+                ))}
               </div>
             </div>
 

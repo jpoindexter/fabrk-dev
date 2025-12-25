@@ -52,7 +52,8 @@ export const FuiCard = React.forwardRef<HTMLDivElement, FuiCardProps>(
         <div className={cn(
           'relative border-2 border-accent/40 flex flex-col transition-all duration-300',
           variant === 'solid' ? 'bg-background/95 shadow-[0_0_40px_rgba(0,0,0,0.5)]' : 'bg-accent/5 backdrop-blur-md',
-          'shadow-[inset_0_0_20px_rgba(var(--accent),0.1)]'
+          'shadow-[inset_0_0_20px_rgba(var(--accent),0.1)]',
+          mode.radius
         )}>
           {/* Top Structural Header */}
           <div className="h-8 border-b-2 border-accent/40 flex items-center bg-accent/10 relative overflow-hidden">

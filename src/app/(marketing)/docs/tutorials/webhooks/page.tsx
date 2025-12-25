@@ -1,6 +1,8 @@
 import { FeatureGuideTemplate } from '@/components/docs';
 import { DocsSection, DocsCard, DocsLinkCard } from '@/components/docs';
 import { Webhook, Shield, RefreshCw, Bell } from 'lucide-react';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 export const metadata = {
   title: 'Webhooks Setup - Fabrk Docs',
@@ -170,7 +172,7 @@ curl -X POST http://localhost:3000/api/test-webhook \\
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Verify WEBHOOK_SECRET matches between sender and receiver
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`# Generate a shared secret
 openssl rand -hex 32
@@ -190,7 +192,7 @@ WEBHOOK_SECRET="your-generated-secret"
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Test webhook URL is accessible
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`# For local testing, expose with ngrok
 ngrok http 3000
@@ -211,7 +213,7 @@ curl https://abc123.ngrok.io/api/webhooks/your-endpoint`}
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Implement idempotency check using delivery ID
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// Store processed delivery IDs
 const deliveryId = request.headers.get("X-Webhook-Delivery-ID");
@@ -235,7 +237,7 @@ if (existing) {
               <p className="mb-2 text-sm">
                 <strong>Solution:</strong> Process webhook asynchronously, respond immediately
               </p>
-              <div className="border-border bg-card rounded-none border p-4">
+              <div className={cn('border-border bg-card border p-4', mode.radius)}>
                 <code className="font-mono text-xs">
                   {`// Don't process synchronously
 export async function POST(request: Request) {

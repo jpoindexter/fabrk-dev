@@ -57,7 +57,7 @@ function MessageItem({ message }: { message: Message }) {
 
   return (
     <div className={cn('mx-auto flex max-w-3xl gap-4 group', isUser ? 'flex-row-reverse' : 'flex-row')}>
-      <Avatar className="size-8 border text-xs font-bold">
+      <Avatar className={cn("size-8 border text-xs font-bold", mode.radius)}>
         <AvatarFallback className={cn(
           isUser ? mode.color.bg.accentMuted : mode.color.bg.surfaceRaised,
           isUser ? mode.color.text.accent : mode.color.text.primary

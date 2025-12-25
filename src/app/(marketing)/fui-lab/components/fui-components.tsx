@@ -34,7 +34,7 @@ export function FUIPane({ children, className = '', hover = true }: FUIPaneProps
   return (
     <div
       className={cn(
-        'relative border p-4 text-[10px] leading-tight transition-colors',
+        'relative border p-4 text-[10px] leading-tight transition-colors rounded-none',
         hover && 'hover:border-[#FDE047]/60',
         className
       )}
@@ -78,7 +78,7 @@ export function FUINav({
       {/* Logo */}
       <div className="flex items-center gap-2 group cursor-pointer">
         <div
-          className="w-8 h-8 border flex items-center justify-center relative transition-colors"
+          className="w-8 h-8 border flex items-center justify-center relative transition-colors rounded-none"
           style={{
             borderColor: COLORS.primary,
             backgroundColor: 'rgba(253, 224, 71, 0.05)',
@@ -119,7 +119,7 @@ export function FUINav({
           </a>
         ))}
         <button
-          className="px-4 py-1.5 border uppercase font-bold text-[10px] tracking-wide transition-colors"
+          className="px-4 py-1.5 border uppercase font-bold text-[10px] tracking-wide transition-colors rounded-none"
           style={{
             borderColor: COLORS.primary,
             color: COLORS.primary,
@@ -162,7 +162,7 @@ export function FUIStatusBar({
       <div className="fixed top-0 left-0 w-full h-px z-50" style={{ backgroundColor: COLORS.primary }} />
       {/* Status bar */}
       <div
-        className="fixed top-px left-0 w-full flex justify-between px-4 py-1 text-[9px] uppercase z-40 border-b backdrop-blur-sm"
+        className="fixed top-px left-0 w-full flex justify-between px-4 py-1 text-[9px] uppercase z-40 border-b backdrop-blur-sm rounded-none"
         style={{
           color: COLORS.primary,
           backgroundColor: 'rgba(0, 0, 0, 0.9)',
@@ -241,7 +241,7 @@ export function FUISectionHeader({ badge, title, rightText, rightSubtext }: FUIS
       <div>
         {badge && (
           <span
-            className="text-[9px] tracking-wide px-1.5 py-0.5 uppercase"
+            className="text-[9px] tracking-wide px-1.5 py-0.5 uppercase rounded-none"
             style={{ color: COLORS.primary, backgroundColor: `${COLORS.primary}10`, border: `1px solid ${COLORS.primary}30` }}
           >
             {badge}
@@ -277,7 +277,7 @@ export function FUIMetricCard({ label, value, subtext, variant = 'primary' }: FU
 
   return (
     <div
-      className="flex flex-col justify-between p-3 border"
+      className="flex flex-col justify-between p-3 border rounded-none"
       style={{ borderColor: colors.border, backgroundColor: colors.bg }}
     >
       <span className="uppercase mb-1 text-[10px]" style={{ color: colors.label }}>{label}</span>
@@ -315,13 +315,13 @@ export function FUIFeatureCard({ icon, code, title, description, stats = [] }: F
       {/* Header */}
       <div className="flex justify-between items-start mb-4">
         <div
-          className="p-2 border rounded-sm"
+          className="p-2 border rounded-none"
           style={{ borderColor: `${COLORS.primary}30`, backgroundColor: `${COLORS.primary}05` }}
         >
           {icon || <span className="text-2xl" style={{ color: COLORS.primary }}>◆</span>}
         </div>
         <span
-          className="text-[9px] font-bold border px-1.5 py-1"
+          className="text-[9px] font-bold border px-1.5 py-1 rounded-none"
           style={{ color: COLORS.primary, borderColor: `${COLORS.primary}30` }}
         >
           {code}
@@ -379,7 +379,7 @@ export function FUIPricingCard({
   return (
     <div
       className={cn(
-        'relative flex flex-col p-4 transition-colors',
+        'relative flex flex-col p-4 transition-colors rounded-none',
         highlighted && 'transform md:-translate-y-4 z-20'
       )}
       style={{
@@ -459,7 +459,7 @@ interface FUIMarqueeProps {
 export function FUIMarquee({ items }: FUIMarqueeProps) {
   return (
     <div
-      className="w-full border-y py-2 overflow-hidden whitespace-nowrap relative text-[10px]"
+      className="w-full border-y py-2 overflow-hidden whitespace-nowrap relative text-[10px] rounded-none"
       style={{
         backgroundColor: COLORS.surface,
         borderColor: `${COLORS.primary}30`,
@@ -562,7 +562,7 @@ interface FUIDataVizPanelProps {
 export function FUIDataVizPanel({ title, subtitle, children, footer, className = '' }: FUIDataVizPanelProps) {
   return (
     <div
-      className={cn('relative border p-3 flex flex-col', className)}
+      className={cn('relative border p-3 flex flex-col rounded-none', className)}
       style={{
         backgroundColor: COLORS.background,
         borderColor: `${COLORS.primary}10`,

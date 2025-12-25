@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Header */}
-        <header className="border-border bg-card mb-8 border">
+        <header className={cn("border-border bg-card mb-8 border", mode.radius)}>
           <div className="border-border border-b px-6 py-2">
             <span className="text-muted-foreground font-mono text-xs">[ ARTICLE ]</span>
           </div>
@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.category && (
               <Link
                 href={`/blog?category=${post.category.slug}`}
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground mb-4 inline-block border px-2 py-1 font-mono text-xs"
+                className={cn("border-primary text-primary hover:bg-primary hover:text-primary-foreground mb-4 inline-block border px-2 py-1 font-mono text-xs", mode.radius)}
               >
                 {post.category.name.toUpperCase()}
               </Link>
@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Featured Image */}
         {post.featuredImage && (
-          <div className="border-border relative mb-8 aspect-video overflow-hidden border">
+          <div className={cn("border-border relative mb-8 aspect-video overflow-hidden border", mode.radius)}>
             <Image
               src={post.featuredImage}
               alt={`Featured image for ${post.title}`}
@@ -123,14 +123,14 @@ export default async function BlogPostPage({ params }: Props) {
         )}
 
         {/* Content - MDX Rendered */}
-        <div className="border-border bg-card border p-6 md:p-8">
+        <div className={cn("border-border bg-card border p-6 md:p-8", mode.radius)}>
           <div className="max-w-none">
             <MDXRemote source={post.content} components={mdxComponents} />
           </div>
         </div>
 
         {/* Footer */}
-        <div className="border-border bg-card mt-8 flex items-center justify-between border p-4">
+        <div className={cn("border-border bg-card mt-8 flex items-center justify-between border p-4", mode.radius)}>
           <Link href="/blog" className="text-muted-foreground hover:text-primary font-mono text-xs">
             &lt;- ALL POSTS
           </Link>

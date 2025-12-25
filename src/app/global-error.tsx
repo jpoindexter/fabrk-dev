@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AlertTriangle, Home } from 'lucide-react';
 import { logger } from '@/lib/logger';
+import { mode } from '@/design-system';
+import { cn } from '@/lib/utils';
 
 /**
  * Global Error Handler
@@ -35,7 +37,7 @@ export default function GlobalError({
           <div className="mx-auto max-w-2xl text-center">
             {/* Error Icon */}
             <div className="mb-8 flex justify-center">
-              <div className="bg-destructive/10 rounded-none p-6">
+              <div className={cn('bg-destructive/10 p-6', mode.radius)}>
                 <AlertTriangle className="text-destructive h-16 w-16" />
               </div>
             </div>
@@ -51,7 +53,7 @@ export default function GlobalError({
 
             {/* Error Details (Development Only) */}
             {process.env.NODE_ENV === 'development' && (
-              <div className="border-destructive/40 bg-destructive/10 mb-8 rounded-none border p-4 text-left">
+              <div className={cn('border-destructive/40 bg-destructive/10 mb-8 border p-4 text-left', mode.radius)}>
                 <p className="text-destructive mb-2 text-sm font-semibold">
                   Error Details (Development Only):
                 </p>
