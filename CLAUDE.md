@@ -106,12 +106,50 @@ className="bg-purple-500 text-white"
 
 **Never use underscores in user-facing text.** Use spaces for readability.
 
-### 4. Component Guidelines
+### 4. USE THE COMPONENTS (Critical)
 
-**Core UI Components** (`src/components/ui/`):
-- 78+ ready-to-use terminal-styled components
-- Based on Radix UI primitives
-- All follow the design system
+**ALWAYS use pre-built components from `src/components/ui/`:**
+
+```tsx
+// ✅ CORRECT - Use the components
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { InputSearch } from '@/components/ui/input-search';
+
+<Card>
+  <CardHeader title="MY_SECTION" code="0x01" />
+  <CardContent>
+    <Badge variant="success">VERIFIED</Badge>
+    <Button>> SUBMIT</Button>
+  </CardContent>
+</Card>
+
+// ❌ WRONG - Don't build from scratch with mode tokens
+<div className={cn('border', mode.radius, mode.color.bg.surface)}>
+  <div className={cn('border-b p-4', mode.color.border.default)}>
+    <span>Title</span>
+  </div>
+  <button className={cn(mode.radius, mode.color.bg.accent)}>Submit</button>
+</div>
+```
+
+**Key Components:**
+
+| Component | Import | Use For |
+|-----------|--------|---------|
+| `Button` | `@/components/ui/button` | All buttons/actions |
+| `Card`, `CardHeader`, `CardContent` | `@/components/ui/card` | Containers, panels |
+| `Badge` | `@/components/ui/badge` | Status, labels, tags |
+| `InputSearch` | `@/components/ui/input-search` | Search inputs |
+| `Input` | `@/components/ui/input` | Form inputs |
+| `Select` | `@/components/ui/select` | Dropdowns |
+| `Tabs` | `@/components/ui/tabs` | Tab navigation |
+| `Dialog` | `@/components/ui/dialog` | Modals |
+| `DropdownMenu` | `@/components/ui/dropdown-menu` | Context menus |
+| `Table` | `@/components/ui/table` | Data tables |
+
+**78+ components available** - check `src/components/ui/` before building anything custom.
 
 **Safe to Create/Modify:**
 - `/src/app/` - Your page files
