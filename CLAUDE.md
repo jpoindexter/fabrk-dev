@@ -4,19 +4,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 ╔═══════════════════════════════════════════════════════════════════╗
-║  YOUR SAAS BOILERPLATE                                            ║
-║  Terminal-first design. Ship fast. Look sharp.                    ║
+║  FABRK - Terminal SaaS Boilerplate                                ║
+║  78+ UI components included. USE THEM.                            ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
 
-> Terminal-first SaaS boilerplate. Ship fast. Look sharp.
+---
+
+## RULE #1: USE THE EXISTING COMPONENTS
+
+**This boilerplate has 78+ pre-built UI components in `src/components/ui/`. You MUST use them.**
+
+```tsx
+// ALWAYS import from @/components/ui/
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Table, TableHeader, TableBody, TableRow, TableCell } from '@/components/ui/table';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Select, SelectTrigger, SelectContent, SelectItem } from '@/components/ui/select';
+```
+
+**NEVER build UI from scratch.** Before creating any element, check `src/components/ui/` first.
+
+### Component Quick Reference
+
+| Need | Component | Import Path |
+|------|-----------|-------------|
+| Button | `<Button>` | `@/components/ui/button` |
+| Card/Panel | `<Card>`, `<CardHeader>`, `<CardContent>` | `@/components/ui/card` |
+| Form input | `<Input>` | `@/components/ui/input` |
+| Search input | `<InputSearch>` | `@/components/ui/input-search` |
+| Dropdown select | `<Select>` | `@/components/ui/select` |
+| Modal/Dialog | `<Dialog>` | `@/components/ui/dialog` |
+| Tabs | `<Tabs>` | `@/components/ui/tabs` |
+| Data table | `<Table>` | `@/components/ui/table` |
+| Status label | `<Badge>` | `@/components/ui/badge` |
+| Menu | `<DropdownMenu>` | `@/components/ui/dropdown-menu` |
+| Alert/Toast | `<Alert>` | `@/components/ui/alert` |
+| Loading state | `<Skeleton>` | `@/components/ui/skeleton` |
+| Checkbox | `<Checkbox>` | `@/components/ui/checkbox` |
+| Switch toggle | `<Switch>` | `@/components/ui/switch` |
+| Tooltip | `<Tooltip>` | `@/components/ui/tooltip` |
+| Progress bar | `<Progress>` | `@/components/ui/progress` |
+| Avatar | `<Avatar>` | `@/components/ui/avatar` |
+| Separator | `<Separator>` | `@/components/ui/separator` |
+| Icons | `lucide-react` | `import { Icon } from 'lucide-react'` |
+
+**List all components:** `ls src/components/ui/`
+
+---
 
 ## Quick Reference
 
 | Need | Do This |
 |------|---------|
+| Find a component | Check `src/components/ui/` first |
 | Design system rules | See `docs/08-design/DESIGN_SYSTEM.md` |
-| Pre-commit checks | Automatic via Husky (type-check + lint-staged) |
 | Config files | `src/config/index.ts` |
 | Environment setup | Copy `.env.example` → `.env.local` |
 
@@ -24,9 +70,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 16 SaaS boilerplate with terminal-inspired design and full-stack features.
+Next.js 16 SaaS boilerplate with terminal-inspired design.
 
-**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript 5.x strict • NextAuth v5 • Multi-provider payments (Stripe, Polar, Lemonsqueezy) • Prisma 7 + PostgreSQL • Resend • Framer Motion • Radix UI + Tailwind CSS 4 • Terminal-only design system (18 themes)
+**Tech Stack:** Next.js 16 (App Router, React 19) • TypeScript 5.x • NextAuth v5 • Stripe/Polar/Lemonsqueezy • Prisma 7 + PostgreSQL • Tailwind CSS 4 • 18 terminal themes
 
 **Requirements:** Node.js 22+ • PostgreSQL 15+ • npm 10+
 
@@ -106,54 +152,10 @@ className="bg-purple-500 text-white"
 
 **Never use underscores in user-facing text.** Use spaces for readability.
 
-### 4. USE THE COMPONENTS (Critical)
+### 4. Safe to Create/Modify
 
-**ALWAYS use pre-built components from `src/components/ui/`:**
-
-```tsx
-// ✅ CORRECT - Use the components
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { InputSearch } from '@/components/ui/input-search';
-
-<Card>
-  <CardHeader title="MY_SECTION" code="0x01" />
-  <CardContent>
-    <Badge variant="success">VERIFIED</Badge>
-    <Button>> SUBMIT</Button>
-  </CardContent>
-</Card>
-
-// ❌ WRONG - Don't build from scratch with mode tokens
-<div className={cn('border', mode.radius, mode.color.bg.surface)}>
-  <div className={cn('border-b p-4', mode.color.border.default)}>
-    <span>Title</span>
-  </div>
-  <button className={cn(mode.radius, mode.color.bg.accent)}>Submit</button>
-</div>
-```
-
-**Key Components:**
-
-| Component | Import | Use For |
-|-----------|--------|---------|
-| `Button` | `@/components/ui/button` | All buttons/actions |
-| `Card`, `CardHeader`, `CardContent` | `@/components/ui/card` | Containers, panels |
-| `Badge` | `@/components/ui/badge` | Status, labels, tags |
-| `InputSearch` | `@/components/ui/input-search` | Search inputs |
-| `Input` | `@/components/ui/input` | Form inputs |
-| `Select` | `@/components/ui/select` | Dropdowns |
-| `Tabs` | `@/components/ui/tabs` | Tab navigation |
-| `Dialog` | `@/components/ui/dialog` | Modals |
-| `DropdownMenu` | `@/components/ui/dropdown-menu` | Context menus |
-| `Table` | `@/components/ui/table` | Data tables |
-
-**78+ components available** - check `src/components/ui/` before building anything custom.
-
-**Safe to Create/Modify:**
 - `/src/app/` - Your page files
-- New components in `src/components/`
+- New components in `src/components/` (that compose UI primitives)
 - Custom hooks in `src/hooks/`
 
 ---
