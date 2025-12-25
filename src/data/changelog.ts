@@ -2,7 +2,7 @@
  * Changelog Data
  *
  * Auto-generated from GitHub releases
- * Last synced: 2025-12-24T12:02:52.556Z
+ * Last synced: 2025-12-25T19:31:18.791Z
  *
  * Run `npm run sync:changelog` to update
  */
@@ -28,11 +28,11 @@ export const CHANGELOG: ChangelogEntry[] = [
     changes: [
       {
         type: 'changed',
-        description: "Dynamic Border Radius System - Components now use mode.radius (CSS var(--radius)) for theme-controlled border radius"
+        description: "**Dynamic Border Radius System** - Components now use `mode.radius` which maps to CSS `var(--radius)`, allowing themes to control border radius dynamically"
       },
       {
         type: 'changed',
-        description: "All 78+ UI components updated to use mode.radius instead of hardcoded rounded-none"
+        description: "All 78+ UI components updated to use `mode.radius` instead of hardcoded `rounded-none`"
       },
       {
         type: 'changed',
