@@ -268,11 +268,35 @@ Based on **Major Third** ratio (1.25) with 16px base.
 
 ## 4. Border Radius
 
-### 4.1 Radius Scale
+### 4.1 Dynamic Radius System
+
+Components use `mode.radius` (`rounded-dynamic`) which resolves to `var(--radius)` at runtime. This allows themes to define their own radius values while maintaining consistency.
+
+**Usage in Components:**
+```tsx
+import { mode } from "@/design-system";
+
+// ✅ Correct - Dynamic radius
+<Button className={mode.radius}>Click</Button>
+
+// ❌ Wrong - Hardcoded radius
+<Button className="rounded-none">Click</Button>
+<Button className="rounded-md">Click</Button>
+```
+
+**When to Apply `mode.radius`:**
+| Element Type | Apply `mode.radius`? | Reason |
+|--------------|---------------------|--------|
+| Full borders (`border`) | YES | Visible corners need rounding |
+| Partial borders (`border-t`) | NO | No visible corners |
+| Table cells (`<th>`, `<td>`) | NO | CSS limitation |
+| Circular elements | Use `rounded-full` | Always pill/circle shape |
+
+### 4.2 Radius Scale (Reference)
 
 | Token         | Value      | Pixels | Usage          |
 | ------------- | ---------- | ------ | -------------- |
-| `radius-none` | `0`        | 0      | Sharp/terminal |
+| `radius-none` | `0`        | 0      | Sharp edges    |
 | `radius-sm`   | `0.125rem` | 2      | Subtle         |
 | `radius-md`   | `0.375rem` | 6      | Default        |
 | `radius-lg`   | `0.5rem`   | 8      | Prominent      |
@@ -281,16 +305,18 @@ Based on **Major Third** ratio (1.25) with 16px base.
 | `radius-3xl`  | `1.5rem`   | 24     | Statement      |
 | `radius-full` | `9999px`   | —      | Circular/pill  |
 
-### 4.2 Semantic Radius (Theme-Resolved)
+### 4.3 Semantic Radius (Theme-Resolved)
 
-| Token           | Terminal | Modern | Soft |
-| --------------- | -------- | ------ | ---- |
-| `radius-button` | none     | md     | lg   |
-| `radius-input`  | none     | md     | lg   |
-| `radius-card`   | none     | lg     | xl   |
-| `radius-modal`  | none     | xl     | 2xl  |
-| `radius-badge`  | sm       | full   | full |
-| `radius-avatar` | none     | full   | full |
+Themes set `--radius` CSS variable. Components inherit via `mode.radius`.
+
+| Token           | Terminal (0px) | Modern (6px) | Soft (12px) |
+| --------------- | -------------- | ------------ | ----------- |
+| `radius-button` | none           | md           | lg          |
+| `radius-input`  | none           | md           | lg          |
+| `radius-card`   | none           | lg           | xl          |
+| `radius-modal`  | none           | xl           | 2xl         |
+| `radius-badge`  | sm             | full         | full        |
+| `radius-avatar` | none           | full         | full        |
 
 ---
 

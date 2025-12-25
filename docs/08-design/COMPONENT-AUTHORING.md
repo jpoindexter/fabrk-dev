@@ -90,23 +90,34 @@ className="border-border"
 
 ---
 
-## Terminal Aesthetic Rules
+## Design System Rules
 
-### 1. Sharp Corners (No Rounding)
+### 1. Dynamic Border Radius
+
+The design system uses `mode.radius` (`rounded-dynamic`) which respects the theme's `--radius` CSS variable. This allows themes to define their own radius values.
 
 ```tsx
-// ✅ CORRECT
+// ✅ CORRECT - Use mode.radius for dynamic theming
 import { mode } from "@/design-system";
 
 <Button className={mode.radius}>Click Me</Button>
-// Renders: rounded-none
+// Renders: rounded-dynamic (uses CSS var(--radius))
 
-// ❌ WRONG
+// ❌ WRONG - Hardcoded radius breaks theme consistency
 <Button className="rounded-md">Click Me</Button>
 <Button className="rounded-lg">Click Me</Button>
+<Button className="rounded-none">Click Me</Button>
 ```
 
-**Why:** Terminal aesthetic requires sharp, structured edges.
+**Radius Rules:**
+| Border Type | Needs `mode.radius`? | Example |
+|-------------|---------------------|---------|
+| Full borders (`border`, `border-2`) | YES | Cards, buttons, inputs |
+| Partial borders (`border-t`, `border-b`) | NO | Dividers, table rows |
+| Table cells (`<th>`, `<td>`) | NO | Tables (breaks layout) |
+| Circular elements | Use `rounded-full` | Avatars, switches |
+
+**Why:** Dynamic radius enables theme flexibility while maintaining visual consistency.
 
 ---
 
@@ -420,11 +431,12 @@ npm run scan:hex
 
 ---
 
-### ☐ 2. Terminal Aesthetic Applied
+### ☐ 2. Design System Applied
 
-- [ ] Uses `mode.radius` (sharp corners)
+- [ ] Uses `mode.radius` for full-bordered elements (dynamic radius)
 - [ ] Uses `mode.font` (monospace)
 - [ ] Uses `shadow-sm` or no shadow (flat aesthetic)
+- [ ] Partial borders (`border-t`, `border-b`) do NOT have `mode.radius`
 
 ---
 
@@ -488,13 +500,14 @@ import { mode } from "@/design-system";
 
 ---
 
-### Pitfall 3: Overriding Terminal Aesthetic
+### Pitfall 3: Hardcoding Border Radius
 
 ```tsx
-// ❌ WRONG - breaks terminal aesthetic
+// ❌ WRONG - breaks theme consistency
 <Card className="rounded-xl shadow-2xl">
+<Card className="rounded-none">  // Also wrong - hardcoded!
 
-// ✅ CORRECT - respects terminal aesthetic
+// ✅ CORRECT - uses dynamic radius from theme
 <Card className={cn(mode.radius, "shadow-sm")}>
 ```
 
@@ -670,4 +683,4 @@ import { Check, AlertCircle, Info } from "lucide-react";
 
 ---
 
-**Remember:** The terminal aesthetic is Fabrk's signature. Keep it sharp, monospace, and token-based. 🚀
+**Remember:** The Fabrk design system is token-based. Use `mode.radius` for dynamic theming, `mode.font` for typography, and never hardcode colors or radius values.

@@ -68,14 +68,20 @@ npm run validate:webhooks  # Validate webhook endpoints
 
 ## Critical Rules
 
-### 1. Terminal Style EVERYWHERE
+### 1. Dynamic Design System
 
-All components use terminal aesthetic:
-- `rounded-none` on all elements
-- `font-mono` for ALL text (body tag uses `className="font-mono"`)
+All components use the `mode` design system for theme-aware styling:
+- `mode.radius` for border radius (dynamic via `--radius` CSS variable)
+- `mode.font` for monospace font (`font-mono`)
 - Design tokens only (no hardcoded colors)
 
 **IMPORTANT:** The `<body>` tag MUST have `className="font-mono antialiased"` to apply the monospace font globally.
+
+**Radius Rules:**
+- Full borders (`border`, `border-2`) → NEED `mode.radius`
+- Partial borders (`border-t`, `border-b`, `border-l`, `border-r`) → NO `mode.radius`
+- Table cells (`<th>`, `<td>`) → NO `mode.radius` (breaks layout)
+- Switches → Always `rounded-full` (pill-shaped by design)
 
 ### 2. NEVER hardcode colors
 
@@ -161,16 +167,28 @@ Import `mode` from `@/design-system` for consistent styling:
 import { mode } from "@/design-system";
 import { cn } from "@/lib/utils";
 
+// For elements with full borders - ADD mode.radius
+<Card className={cn("border border-border", mode.radius)}>
+  Content
+</Card>
+
+// For elements with partial borders - NO mode.radius
+<div className="border-b border-border">
+  Divider line stays straight
+</div>
+
+// Button example
 <Button className={cn(mode.radius, mode.font, "w-full text-xs")}>
   > SUBMIT
 </Button>
 ```
 
 The `mode` object provides:
-- `mode.radius` - Border radius (`rounded-none`)
+- `mode.radius` - Border radius (`rounded-dynamic` → uses CSS `var(--radius)`)
 - `mode.font` - Font family (`font-mono`)
 - `mode.color.bg.*` - Background tokens
 - `mode.color.text.*` - Text color tokens
+- `mode.color.border.*` - Border color tokens
 - `mode.spacing.*` - Spacing tokens (8-point grid)
 
 ### Allowed Colors

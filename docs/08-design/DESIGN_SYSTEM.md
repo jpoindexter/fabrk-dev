@@ -59,7 +59,7 @@ How design tokens flow from CSS variables to Tailwind classes to components:
 │                        design-system/index.ts                                │
 │  ┌─────────────────────────────────────────────────────────────────────┐    │
 │  │  export const mode = {                                               │    │
-│  │    radius: 'rounded-none',           ← Terminal aesthetic           │    │
+│  │    radius: 'rounded-dynamic',        ← Uses CSS var(--radius)       │    │
 │  │    font: 'font-mono',                                               │    │
 │  │    color: {                                                          │    │
 │  │      bg: { surface: 'bg-card', elevated: 'bg-popover' },            │    │
@@ -121,31 +121,31 @@ How design tokens flow from CSS variables to Tailwind classes to components:
 This boilerplate has **TWO distinct design contexts**:
 
 ### 1. Base UI Components (`/src/components/ui/*`)
-**Style: VANILLA / GENERIC** - Like DaisyUI, Shadcn, or Radix
+**Style: THEME-AWARE** - Dynamic styling via `mode` design system
 - **Purpose**: Provide clean, customizable components for users
-- **Philosophy**: NOT opinionated - users can easily theme/style
-- **Borders**: `border border-border` (1px standard)
-- **Radius**: `rounded-md` (standard), `rounded-lg` (cards)
+- **Philosophy**: Theme-aware - components adapt to active theme
+- **Borders**: `border border-border` (1px standard) + `mode.radius`
+- **Radius**: `mode.radius` (dynamic via CSS `--radius` variable)
 - **Shadows**: `shadow-sm`, `shadow` (subtle)
-- **Font**: Sans-serif default, `font-mono` ONLY for code components
+- **Font**: `mode.font` for monospace
 - **Colors**: Semantic tokens only (`bg-card`, `bg-muted`, `text-foreground`)
 
 ### 2. Marketing/Landing Pages (`/src/components/landing/*`, `/src/app/docs/*`)
 **Style: TERMINAL / HACKER AESTHETIC**
 - **Purpose**: Showcase the boilerplate's personality
 - **Philosophy**: Highly opinionated terminal UI style
-- **Borders**: `border border-border` (1px), `rounded-none`
-- **Radius**: Sharp corners (`rounded-none`) except dots (`rounded-full`)
+- **Borders**: `border border-border` (1px) + `mode.radius`
+- **Radius**: `mode.radius` (theme-aware) except dots (`rounded-full`)
 - **Shadows**: Framer Motion scale effects instead
-- **Font**: `font-mono` for everything (JetBrains Mono)
+- **Font**: `mode.font` for everything (JetBrains Mono)
 - **Colors**: Same semantic tokens + ANSI-inspired status colors
 
 ### Key Distinction
 
-| Property | Base UI (Vanilla) | Marketing (Terminal) |
-|----------|-------------------|---------------------|
-| Font | Sans-serif (system) | `font-mono` |
-| Border radius | `rounded-md` / `rounded-lg` | `rounded-none` |
+| Property | Base UI | Marketing |
+|----------|---------|-----------|
+| Font | `mode.font` | `mode.font` |
+| Border radius | `mode.radius` | `mode.radius` |
 | Border width | `border` (1px) | `border` (1px) |
 | Shadows | `shadow-sm` | Framer Motion scale |
 | Text transform | Normal | UPPER_SNAKE_CASE |
@@ -524,14 +524,31 @@ See [Theme Guide](./THEME-GUIDE.md) for detailed descriptions, use cases, and co
 | `border-2` | 2px | Emphasis, brutalist style |
 | `border-4` | 4px | Heavy emphasis |
 
-### Border Radius
+### Border Radius (Dynamic)
 
-| Class | Value | Usage |
+The design system uses `mode.radius` for dynamic, theme-aware border radius:
+
+| Token | Class | Usage |
 |-------|-------|-------|
-| `rounded-none` | 0px | **Primary** - terminal aesthetic |
-| `rounded-full` | 9999px | Circles only (dots, avatars) |
-| `rounded-lg` | 0.5rem | Dashboard cards only |
-| `rounded-md` | 0.375rem | Some form elements |
+| `mode.radius` | `rounded-dynamic` | **Primary** - Uses CSS `var(--radius)` |
+| `rounded-full` | 9999px | Circles only (dots, avatars, switches) |
+
+**Radius Rules:**
+- Full borders (`border`, `border-2`) → ADD `mode.radius`
+- Partial borders (`border-t`, `border-b`, `border-l`, `border-r`) → NO `mode.radius`
+- Table cells (`<th>`, `<td>`) → NO `mode.radius` (breaks table layout)
+- Switches → Always `rounded-full` (pill-shaped by design)
+
+```tsx
+// CORRECT: Full border with mode.radius
+<div className={cn("border border-border", mode.radius)}>
+
+// CORRECT: Partial border without mode.radius
+<div className="border-b border-border">
+
+// WRONG: mode.radius on partial border (creates curved lines)
+<div className={cn("border-l-2", mode.radius)}>  // DON'T DO THIS
+```
 
 ### Border Sides
 

@@ -185,7 +185,7 @@ export function SignInForm() {
           <Label htmlFor="email">Email</Label>
           <Input id="email" name="email" type="email" />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.email}</p>
           )}
         </div>
 
@@ -193,7 +193,7 @@ export function SignInForm() {
           <Label htmlFor="password">Password</Label>
           <Input id="password" name="password" type="password" />
           {errors.password && (
-            <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+            <p className="mt-1 text-sm text-destructive">{errors.password}</p>
           )}
         </div>
 
@@ -281,8 +281,13 @@ import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@
 **Class Order Convention:**
 
 ```tsx
-// ✅ Good: Logical order
-<div className="flex items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md">
+// ✅ Good: Logical order with design tokens
+<div className={cn(
+  "flex items-center justify-between gap-4",
+  "border border-border bg-card p-4 shadow-sm",
+  mode.radius,  // Dynamic radius from theme
+  "hover:shadow-md"
+)}>
 
 // Order:
 // 1. Layout (flex, grid, block)
@@ -290,8 +295,11 @@ import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@
 // 3. Sizing (w-full, h-screen)
 // 4. Spacing (p-4, m-2, gap-4)
 // 5. Typography (text-lg, font-bold)
-// 6. Visual (bg-white, border, rounded)
+// 6. Visual (bg-card, border-border, mode.radius)
 // 7. States (hover:, focus:, active:)
+
+// ❌ Wrong: Hardcoded colors and radius
+<div className="rounded-lg border border-gray-200 bg-white p-4">
 ```
 
 **Responsive Classes:**
@@ -308,10 +316,13 @@ import { Table, TableHeader, TableHead, TableBody, TableRow, TableCell } from "@
 
 ### Custom Styles
 
-**Use Tailwind when possible:**
+**Use design tokens when possible:**
 
 ```tsx
-// ✅ Good: Tailwind utility classes
+// ✅ Good: Design tokens with dynamic radius
+<button className={cn(mode.radius, "bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90")}>
+
+// ❌ Bad: Hardcoded colors and radius
 <button className="rounded-lg bg-purple-600 px-4 py-2 text-white hover:bg-purple-700">
 
 // ❌ Bad: Inline styles
@@ -724,9 +735,9 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         this.props.fallback || (
-          <div className="rounded-lg border border-red-200 bg-red-50 p-4">
-            <h2 className="text-lg font-bold text-red-900">Something went wrong</h2>
-            <p className="text-red-700">Please refresh the page</p>
+          <div className={cn(mode.radius, "border border-destructive/20 bg-destructive/10 p-4")}>
+            <h2 className="text-lg font-bold text-destructive">Something went wrong</h2>
+            <p className="text-destructive/80">Please refresh the page</p>
           </div>
         )
       );
@@ -876,7 +887,8 @@ Before shipping a component, verify:
 ### Styling
 - [ ] Responsive (mobile, tablet, desktop)
 - [ ] Dark mode support
-- [ ] Consistent with design system
+- [ ] Uses design tokens (no hardcoded colors)
+- [ ] Uses `mode.radius` for full-bordered elements
 - [ ] No layout shift (CLS)
 
 ### Code Quality
