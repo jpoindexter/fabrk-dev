@@ -332,22 +332,41 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
   const filteredColors = ACCENT_COLORS.filter((c) => c.mode === config.appearance);
 
   const handleCopyTheme = useCallback(async () => {
-    const themeCode = `// Theme Configuration
-const themeConfig = {
-  accentColor: '${config.accentColor}',
-  appearance: '${config.appearance}',
-  radius: '${config.radius}', // CSS: ${RADIUS_OPTIONS.find((r) => r.value === config.radius)?.cssValue}
-  scale: '${config.scale}%',
-  panelBackground: '${config.panelBackground}',
-};
+    const themeInfo = ACCENT_COLORS.find((c) => c.id === config.accentColor);
+    const radiusValue = RADIUS_OPTIONS.find((r) => r.value === config.radius)?.cssValue || '0';
 
-// Apply to your globals.css:
+    const themeCode = `/* ═══════════════════════════════════════════════════════════════
+   FABRK THEME: ${themeInfo?.name?.toUpperCase() || config.accentColor.toUpperCase()}
+   Mode: ${config.appearance} | Radius: ${config.radius} | Effect: ${displayEffect}
+   ═══════════════════════════════════════════════════════════════ */
+
+// 1. Set border radius in globals.css:
 :root {
-  --radius: ${RADIUS_OPTIONS.find((r) => r.value === config.radius)?.cssValue};
+  --radius: ${radiusValue};
 }
 
-// Set data-theme attribute:
-document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
+// 2. Add to your root layout.tsx <html> tag:
+<html data-theme="${config.accentColor}" className="${config.appearance}">
+
+// 3. Or set theme dynamically with ThemeProvider:
+import { useThemeContext } from '@/design-system/providers/ThemeProvider';
+
+const { setColorTheme } = useThemeContext();
+setColorTheme('${config.accentColor}');
+
+// 4. Display effect (add to <html> element):
+${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${displayEffect}');` : '// Clean mode - no effect'}
+
+/* ───────────────────────────────────────────────────────────────
+   THEME SUMMARY
+   ───────────────────────────────────────────────────────────────
+   Theme ID:      ${config.accentColor}
+   Theme Name:    ${themeInfo?.name || 'Unknown'}
+   Appearance:    ${config.appearance}
+   Border Radius: ${radiusValue}
+   Display Effect:${displayEffect}
+   Accent Color:  ${themeInfo?.color || 'N/A'}
+   ─────────────────────────────────────────────────────────────── */`;
 
     try {
       await navigator.clipboard.writeText(themeCode);
@@ -364,7 +383,7 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
-  }, [config]);
+  }, [config, displayEffect]);
 
   // Drag handlers
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
