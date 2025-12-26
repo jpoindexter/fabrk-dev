@@ -392,7 +392,7 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
         <div
           id="theme-playground-panel"
           className={cn(
-            'fixed left-1/2 top-24 -translate-x-1/2 z-50',
+            'fixed right-6 top-24 z-50',
             isMinimized ? 'w-48' : 'w-80 max-h-[calc(100vh-8rem)]',
             'flex flex-col',
             'border border-border',
