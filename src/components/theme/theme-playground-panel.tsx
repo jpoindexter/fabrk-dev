@@ -1,7 +1,7 @@
 'use client';
 
-import { Check, Copy, Moon, Palette, Sun, X } from 'lucide-react';
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { Check, Copy, GripHorizontal, Moon, Palette, Sun, X } from 'lucide-react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
@@ -77,7 +77,7 @@ const ACCENT_COLORS = [
   { id: 'vic20', color: '#00ffff', name: 'VIC-20', mode: 'light', effect: 'crt' },
   { id: 'gbpocket', color: '#8a8a8a', name: 'GB Pocket', mode: 'light', effect: 'lcd' },
   { id: 'gameboy', color: '#9bbc0f', name: 'Game Boy', mode: 'light', effect: 'lcd' },
-  { id: 'spectrum', color: '#ff00ff', name: 'Spectrum', mode: 'light', effect: 'crt' },
+  { id: 'spectrum', color: '#4455bb', name: 'Spectrum', mode: 'light', effect: 'crt' },
   { id: 'infrared', color: '#cc3333', name: 'Infrared', mode: 'light', effect: 'none' },
 ] as const;
 /* eslint-enable design-system/no-hardcoded-colors */
@@ -157,6 +157,11 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
   const [copied, setCopied] = useState(false);
   const [hoveredColor, setHoveredColor] = useState<string | null>(null);
   const [displayEffect, setDisplayEffect] = useState<DisplayEffect>('none');
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragRef = useRef<{ startX: number; startY: number; startPosX: number; startPosY: number } | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   // Playground-specific settings (stored locally, not affecting global theme)
   const [config, setConfig] = useState<ThemeConfig>({
@@ -361,41 +366,111 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
     }
   }, [config]);
 
+  // Drag handlers
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return; // Don't drag when clicking buttons
+    setIsDragging(true);
+    dragRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      startPosX: position.x,
+      startPosY: position.y,
+    };
+  }, [position]);
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!dragRef.current) return;
+      const deltaX = e.clientX - dragRef.current.startX;
+      const deltaY = e.clientY - dragRef.current.startY;
+      setPosition({
+        x: dragRef.current.startPosX + deltaX,
+        y: dragRef.current.startPosY + deltaY,
+      });
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      dragRef.current = null;
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
   if (!mounted) {
     return null;
   }
 
   return (
     <>
-      {/* Panel - Anchored to top right */}
+      {/* Panel - Anchored to top right, draggable */}
       {isOpen && (
         <div
+          ref={panelRef}
           id="theme-playground-panel"
           className={cn(
-            'fixed right-6 top-32 z-50',
-            'w-80 max-h-[calc(100vh-10rem)] flex flex-col',
+            'fixed z-50',
+            isMinimized ? 'w-48' : 'w-80 max-h-[calc(100vh-10rem)]',
+            'flex flex-col',
             'border border-border',
             config.panelBackground === 'translucent'
               ? 'bg-card/80 backdrop-blur-md'
               : 'bg-card',
-            'animate-in slide-in-from-top-5 duration-200'
+            !isMinimized && 'animate-in slide-in-from-top-5 duration-200',
+            isDragging && 'cursor-grabbing'
           )}
+          // eslint-disable-next-line design-system/no-inline-styles -- Dynamic position for dragging
+          style={{
+            right: position.x === 0 && position.y === 0 ? '1.5rem' : 'auto',
+            top: position.x === 0 && position.y === 0 ? '8rem' : 'auto',
+            left: position.x !== 0 || position.y !== 0 ? `calc(100% - 1.5rem - 20rem + ${position.x}px)` : 'auto',
+            transform: position.x !== 0 || position.y !== 0 ? `translateY(calc(8rem + ${position.y}px))` : 'none',
+          }}
         >
-          {/* Header - Fixed */}
-          <div className="flex shrink-0 items-center justify-between border-b border-border p-4">
-            <span className="font-mono text-sm font-medium uppercase tracking-wide">
-              Theme
-            </span>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Close panel"
-            >
-              <X className="h-4 w-4" />
-            </button>
+          {/* Header - Draggable */}
+          <div
+            className={cn(
+              'flex shrink-0 items-center justify-between border-b border-border p-3',
+              'cursor-grab select-none',
+              isDragging && 'cursor-grabbing'
+            )}
+            onMouseDown={handleMouseDown}
+          >
+            <div className="flex items-center gap-2">
+              <GripHorizontal className="h-4 w-4 text-muted-foreground" />
+              <span className="font-mono text-sm font-medium uppercase tracking-wide">
+                Theme
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => setIsMinimized(!isMinimized)}
+                className="text-muted-foreground hover:text-foreground transition-colors p-1"
+                aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
+              >
+                <div className={cn('h-3 w-3 border border-current', isMinimized ? 'bg-current' : '')} />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors p-1"
+                aria-label="Close panel"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
 
-          {/* Scrollable Content */}
+          {/* Scrollable Content - Hidden when minimized */}
+          {!isMinimized && (
           <div className="space-y-6 p-4 overflow-y-auto flex-1">
             {/* Accent Color */}
             <div className="space-y-3">
@@ -624,6 +699,7 @@ document.documentElement.setAttribute('data-theme', '${config.accentColor}');`;
               )}
             </Button>
           </div>
+          )}
         </div>
       )}
     </>
