@@ -1,7 +1,7 @@
 'use client';
 
-import { Check, Copy, GripHorizontal, Moon, Palette, Sun, X } from 'lucide-react';
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { Check, Copy, Minus, Moon, Palette, Sun, X } from 'lucide-react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
@@ -158,10 +158,6 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
   const [hoveredColor, setHoveredColor] = useState<string | null>(null);
   const [displayEffect, setDisplayEffect] = useState<DisplayEffect>('none');
   const [isMinimized, setIsMinimized] = useState(false);
-  const [position, setPosition] = useState<{ x: number; y: number } | null>(null); // null = default position
-  const [isDragging, setIsDragging] = useState(false);
-  const dragRef = useRef<{ startX: number; startY: number; startPosX: number; startPosY: number } | null>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
 
   // Playground-specific settings (stored locally, not affecting global theme)
   const [config, setConfig] = useState<ThemeConfig>({
@@ -385,110 +381,37 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
     }
   }, [config, displayEffect]);
 
-  // Drag handlers
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).closest('button')) return; // Don't drag when clicking buttons
-    e.preventDefault(); // Prevent text selection while dragging
-
-    // Get current position from element if not already set
-    const panel = panelRef.current;
-    if (!panel) return;
-
-    const rect = panel.getBoundingClientRect();
-    const currentX = position?.x ?? rect.left;
-    const currentY = position?.y ?? rect.top;
-
-    setIsDragging(true);
-    dragRef.current = {
-      startX: e.clientX,
-      startY: e.clientY,
-      startPosX: currentX,
-      startPosY: currentY,
-    };
-  }, [position]);
-
-  useEffect(() => {
-    if (!isDragging) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!dragRef.current) return;
-      const deltaX = e.clientX - dragRef.current.startX;
-      const deltaY = e.clientY - dragRef.current.startY;
-
-      // Calculate new position - minimal bounds, just keep some part visible
-      const newX = dragRef.current.startPosX + deltaX;
-      const newY = dragRef.current.startPosY + deltaY;
-
-      // Only prevent going completely off screen
-      const clampedX = Math.max(-300, Math.min(window.innerWidth - 20, newX));
-      const clampedY = Math.max(-20, Math.min(window.innerHeight - 20, newY));
-
-      setPosition({ x: clampedX, y: clampedY });
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-      dragRef.current = null;
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isDragging]);
-
   if (!mounted) {
     return null;
   }
 
   return (
     <>
-      {/* Panel - Anchored to top right, draggable */}
+      {/* Panel - Centered horizontally, fixed near top */}
       {isOpen && (
         <div
-          ref={panelRef}
           id="theme-playground-panel"
           className={cn(
-            'fixed z-50',
-            isMinimized ? 'w-48' : 'w-80 max-h-[calc(100vh-10rem)]',
+            'fixed left-1/2 top-24 -translate-x-1/2 z-50',
+            isMinimized ? 'w-48' : 'w-80 max-h-[calc(100vh-8rem)]',
             'flex flex-col',
             'border border-border',
             config.panelBackground === 'translucent'
               ? 'bg-card/80 backdrop-blur-md'
               : 'bg-card',
-            !isMinimized && 'animate-in slide-in-from-top-5 duration-200',
-            isDragging && 'cursor-grabbing'
+            !isMinimized && 'animate-in slide-in-from-top-5 duration-200'
           )}
-          // eslint-disable-next-line design-system/no-inline-styles -- Dynamic position for dragging
-          style={position ? {
-            left: 0,
-            top: 0,
-            right: 'auto',
-            transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-            willChange: isDragging ? 'transform' : 'auto',
-          } : {
-            right: '1.5rem',
-            top: '8rem',
-          }}
         >
-          {/* Header - Draggable */}
+          {/* Header */}
           <div
             className={cn(
               'flex shrink-0 items-center justify-between p-3',
-              !isMinimized && 'border-b border-border',
-              'cursor-grab select-none',
-              isDragging && 'cursor-grabbing'
+              !isMinimized && 'border-b border-border'
             )}
-            onMouseDown={handleMouseDown}
           >
-            <div className="flex items-center gap-2">
-              <GripHorizontal className="h-4 w-4 text-muted-foreground" />
-              <span className="font-mono text-sm font-medium uppercase tracking-wide">
-                Theme
-              </span>
-            </div>
+            <span className="font-mono text-sm font-medium uppercase tracking-wide">
+              Theme
+            </span>
             <div className="flex items-center gap-1">
               <button
                 type="button"
@@ -496,7 +419,7 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
                 className="text-muted-foreground hover:text-foreground transition-colors p-1"
                 aria-label={isMinimized ? 'Expand panel' : 'Minimize panel'}
               >
-                <div className={cn('h-3 w-3 border border-current', isMinimized ? 'bg-current' : '')} />
+                <Minus className="h-4 w-4" />
               </button>
               <button
                 type="button"
