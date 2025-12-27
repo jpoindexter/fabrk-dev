@@ -217,15 +217,15 @@ export const FONT_OPTIONS: FontOption[] = [
  * Format: { bodyFont: headlineFont }
  */
 export const FONT_PAIRINGS: Record<string, string> = {
-  // Monospace body → Same mono (terminal consistency) or display headline
-  'jetbrains': 'jetbrains',
-  'fira-code': 'fira-code',
-  'source-code': 'source-code',
-  'ibm-plex': 'ibm-plex',
-  'roboto-mono': 'roboto-mono',
-  'space-mono': 'space-mono',
+  // Monospace body → Display headline for contrast
+  'jetbrains': 'bebas-neue',
+  'fira-code': 'oswald',
+  'source-code': 'anton',
+  'ibm-plex': 'archivo-black',
+  'roboto-mono': 'russo-one',
+  'space-mono': 'bebas-neue',
 
-  // Sans-serif body → Display or contrasting headline
+  // Sans-serif body → Display headline for contrast
   'inter': 'bebas-neue',
   'roboto': 'oswald',
   'open-sans': 'anton',
@@ -239,12 +239,12 @@ export const FONT_PAIRINGS: Record<string, string> = {
   'lora': 'anton',
   'crimson': 'archivo-black',
 
-  // Display body → Same display or mono headline
-  'bebas-neue': 'bebas-neue',
-  'oswald': 'oswald',
-  'anton': 'anton',
-  'archivo-black': 'archivo-black',
-  'russo-one': 'russo-one',
+  // Display body → Monospace headline for terminal feel
+  'bebas-neue': 'jetbrains',
+  'oswald': 'fira-code',
+  'anton': 'source-code',
+  'archivo-black': 'ibm-plex',
+  'russo-one': 'roboto-mono',
 };
 
 /**
@@ -260,36 +260,36 @@ export function getPairedHeadlineFont(bodyFont: string): string {
  * Truly bidirectional: if A ↔ B, selecting either gives you the other.
  */
 export function getPairedBodyFont(headlineFont: string): string {
-  // Mirror of FONT_PAIRINGS - each pair works both directions
+  // Reverse of FONT_PAIRINGS - headline → body
   const reversePairings: Record<string, string> = {
-    // Display ↔ Sans-serif (primary pairings)
+    // Display headline → Sans-serif body
     'bebas-neue': 'inter',
     'oswald': 'roboto',
     'anton': 'open-sans',
     'archivo-black': 'lato',
     'russo-one': 'poppins',
 
-    // Sans-serif ↔ Display (same pairs, other direction)
-    'inter': 'bebas-neue',
-    'roboto': 'oswald',
-    'open-sans': 'anton',
-    'lato': 'archivo-black',
-    'poppins': 'russo-one',
-    'montserrat': 'bebas-neue',
+    // Monospace headline → Display body
+    'jetbrains': 'bebas-neue',
+    'fira-code': 'oswald',
+    'source-code': 'anton',
+    'ibm-plex': 'archivo-black',
+    'roboto-mono': 'russo-one',
+    'space-mono': 'bebas-neue',
 
-    // Monospace ↔ Monospace (self-paired)
-    'jetbrains': 'jetbrains',
-    'fira-code': 'fira-code',
-    'source-code': 'source-code',
-    'ibm-plex': 'ibm-plex',
-    'roboto-mono': 'roboto-mono',
-    'space-mono': 'space-mono',
+    // Sans-serif headline → Monospace body (terminal feel)
+    'inter': 'jetbrains',
+    'roboto': 'jetbrains',
+    'open-sans': 'jetbrains',
+    'lato': 'jetbrains',
+    'poppins': 'jetbrains',
+    'montserrat': 'jetbrains',
 
-    // Serif ↔ Display (contrast pairings)
-    'playfair': 'bebas-neue',
-    'merriweather': 'oswald',
-    'lora': 'anton',
-    'crimson': 'archivo-black',
+    // Serif headline → Monospace body
+    'playfair': 'jetbrains',
+    'merriweather': 'jetbrains',
+    'lora': 'jetbrains',
+    'crimson': 'jetbrains',
   };
 
   return reversePairings[headlineFont] || headlineFont;
