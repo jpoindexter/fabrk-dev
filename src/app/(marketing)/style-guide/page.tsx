@@ -68,28 +68,31 @@ export default function StyleGuidePage() {
     <TooltipProvider>
       <div className="min-h-screen bg-background">
         {/* Header */}
-        <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur z-40">
-          <div className="max-w-7xl mx-auto px-4 py-4">
+        <header className="border-b border-border">
+          <div className="max-w-7xl mx-auto px-4 py-8">
             <div className="flex items-center justify-between">
               <div>
-                <div className="flex items-center gap-2 text-muted-foreground text-xs mb-1">
+                <div className="flex items-center gap-2 text-muted-foreground text-xs mb-2">
                   <Terminal className="w-3 h-3" />
                   <span>DESIGN SYSTEM CONTACT SHEET</span>
                 </div>
-                <h1 className="text-2xl font-headline tracking-tight">Complete Style Guide</h1>
+                <h1 className="text-3xl font-headline tracking-tight">Complete Style Guide</h1>
+                <p className="text-muted-foreground mt-2 text-sm">
+                  Visual validation of all design tokens and components. Switch themes to test.
+                </p>
               </div>
-              <Badge variant="outline">77 Components</Badge>
+              <Badge variant="outline" size="lg">77 Components</Badge>
             </div>
           </div>
         </header>
 
-        {/* Navigation */}
-        <nav className="border-b border-border bg-muted/30 sticky top-[73px] z-30">
+        {/* Section Navigation */}
+        <nav className="border-b border-border bg-muted/50">
           <div className="max-w-7xl mx-auto px-4">
             <ScrollArea className="w-full">
-              <div className="flex gap-4 py-2 text-xs">
-                {['Typography', 'Colors', 'Spacing', 'Forms', 'Buttons', 'Cards', 'Navigation', 'Feedback', 'Overlays', 'Data', 'Charts', 'Effects'].map((section) => (
-                  <a key={section} href={`#${section.toLowerCase()}`} className="text-muted-foreground hover:text-foreground whitespace-nowrap">
+              <div className="flex gap-6 py-3 text-xs">
+                {['Typography', 'Colors', 'Spacing', 'Forms', 'Buttons', 'Cards', 'Navigation', 'Feedback', 'Overlays', 'Data', 'Effects'].map((section) => (
+                  <a key={section} href={`#${section.toLowerCase()}`} className="text-muted-foreground hover:text-foreground whitespace-nowrap transition-colors">
                     {section}
                   </a>
                 ))}
