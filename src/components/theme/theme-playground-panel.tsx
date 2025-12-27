@@ -4,6 +4,7 @@ import { Check, Copy, GripVertical, Minus, Moon, Palette, RotateCcw, Sun, X } fr
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
 import { cn } from '@/lib/utils';
 import { FONT_OPTIONS, DEFAULT_BODY_FONT, DEFAULT_HEADLINE_FONT, getFontCssValue, getPairedHeadlineFont, getPairedBodyFont } from '@/config/fonts';
@@ -815,10 +816,9 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
                 <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
                   Body Font
                 </label>
-                <select
+                <Select
                   value={config.bodyFont}
-                  onChange={(e) => {
-                    const newBodyFont = e.target.value;
+                  onValueChange={(newBodyFont) => {
                     const pairedHeadline = getPairedHeadlineFont(newBodyFont);
                     setConfig((prev) => ({
                       ...prev,
@@ -826,33 +826,37 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
                       headlineFont: pairedHeadline,
                     }));
                   }}
-                  className={cn(
-                    'w-full border border-border bg-background px-3 py-2',
-                    'font-body text-xs text-foreground',
-                    'focus:border-foreground focus:outline-none'
-                  )}
                 >
-                  <optgroup label="Display">
-                    {FONT_OPTIONS.filter(f => f.category === 'display').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Monospace">
-                    {FONT_OPTIONS.filter(f => f.category === 'mono').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Sans-Serif">
-                    {FONT_OPTIONS.filter(f => f.category === 'sans').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Serif">
-                    {FONT_OPTIONS.filter(f => f.category === 'serif').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                </select>
+                  <SelectTrigger className="w-full text-xs h-9">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Display</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'display').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                    <SelectGroup>
+                      <SelectLabel>Monospace</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'mono').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                    <SelectGroup>
+                      <SelectLabel>Sans-Serif</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'sans').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                    <SelectGroup>
+                      <SelectLabel>Serif</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'serif').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Headline Font */}
@@ -860,10 +864,9 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
                 <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
                   Headline Font
                 </label>
-                <select
+                <Select
                   value={config.headlineFont}
-                  onChange={(e) => {
-                    const newHeadlineFont = e.target.value;
+                  onValueChange={(newHeadlineFont) => {
                     const pairedBody = getPairedBodyFont(newHeadlineFont);
                     setConfig((prev) => ({
                       ...prev,
@@ -871,33 +874,37 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
                       bodyFont: pairedBody,
                     }));
                   }}
-                  className={cn(
-                    'w-full border border-border bg-background px-3 py-2',
-                    'font-body text-xs text-foreground',
-                    'focus:border-foreground focus:outline-none'
-                  )}
                 >
-                  <optgroup label="Display">
-                    {FONT_OPTIONS.filter(f => f.category === 'display').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Monospace">
-                    {FONT_OPTIONS.filter(f => f.category === 'mono').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Sans-Serif">
-                    {FONT_OPTIONS.filter(f => f.category === 'sans').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="Serif">
-                    {FONT_OPTIONS.filter(f => f.category === 'serif').map((font) => (
-                      <option key={font.value} value={font.value}>{font.label}</option>
-                    ))}
-                  </optgroup>
-                </select>
+                  <SelectTrigger className="w-full text-xs h-9">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Display</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'display').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                    <SelectGroup>
+                      <SelectLabel>Monospace</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'mono').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                    <SelectGroup>
+                      <SelectLabel>Sans-Serif</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'sans').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                    <SelectGroup>
+                      <SelectLabel>Serif</SelectLabel>
+                      {FONT_OPTIONS.filter(f => f.category === 'serif').map((font) => (
+                        <SelectItem key={font.value} value={font.value}>{font.label}</SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Body Letter Spacing */}
