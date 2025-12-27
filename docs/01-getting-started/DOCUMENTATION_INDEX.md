@@ -1,6 +1,6 @@
 # Fabrk Premium - Documentation Index
 
-**Fabrk Premium:** $299 | 78 UI Components | 48+ Templates | 18 Terminal Themes
+**Fabrk Premium:** $299 | 78 UI Components | 49+ Templates | 18 Terminal Themes
 
 Complete index of all documentation organized into numbered sections for easy navigation.
 
@@ -189,7 +189,7 @@ docs/
 ### Components & Templates
 - **78 UI components** - Production-ready library
 - **5 landing page templates** - Setup wizard starter pages
-- **48+ page templates** - Copy-paste layouts in `/library`
+- **49+ page templates** - Copy-paste layouts in `/library`
 - **18 terminal themes** - OKLCH color schemes
 
 ### Setup Wizard
