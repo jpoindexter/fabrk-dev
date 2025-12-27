@@ -1,7 +1,7 @@
 'use client';
 
-import { Check, Copy, Minus, Moon, Palette, Sun, X } from 'lucide-react';
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { Check, Copy, GripVertical, Minus, Moon, Palette, Sun, X } from 'lucide-react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
@@ -45,12 +45,20 @@ export function ThemePlaygroundProvider({ children }: { children: React.ReactNod
 type RadiusOption = 'none' | 'sm' | 'md' | 'lg' | 'full';
 type ScaleOption = '90' | '95' | '100' | '105' | '110';
 type PanelBackground = 'solid' | 'translucent';
+type LetterSpacingOption = 'tighter' | 'tight' | 'normal' | 'wide' | 'wider';
+type TextCaseOption = 'normal' | 'uppercase';
+
 interface ThemeConfig {
   accentColor: string;
   appearance: 'light' | 'dark';
   radius: RadiusOption;
   scale: ScaleOption;
   panelBackground: PanelBackground;
+  bodyFont: string;
+  headlineFont: string;
+  bodyLetterSpacing: LetterSpacingOption;
+  headlineLetterSpacing: LetterSpacingOption;
+  uiTextCase: TextCaseOption;
 }
 
 // =============================================================================
@@ -87,12 +95,65 @@ const RADIUS_OPTIONS: { value: RadiusOption; label: string; cssValue: string }[]
   { value: 'sm', label: 'Small', cssValue: '0.25rem' },
   { value: 'md', label: 'Medium', cssValue: '0.5rem' },
   { value: 'lg', label: 'Large', cssValue: '0.75rem' },
-  { value: 'full', label: 'Full', cssValue: '1rem' }, // Max reasonable radius, not pill-shaped
+  { value: 'full', label: 'Full', cssValue: '1rem' },
+];
+
+// Font options - ALL fonts loaded via Google Fonts in layout.tsx
+// Customers can add their own fonts by updating the Google Fonts link and this array
+const FONT_OPTIONS: { value: string; label: string; cssValue: string; category: 'display' | 'mono' | 'sans' | 'serif' }[] = [
+  // Display fonts (Google Fonts)
+  { value: 'bebas-neue', label: 'Bebas Neue', cssValue: "'Bebas Neue', Impact, sans-serif", category: 'display' },
+  { value: 'oswald', label: 'Oswald', cssValue: "'Oswald', Impact, sans-serif", category: 'display' },
+  { value: 'anton', label: 'Anton', cssValue: "'Anton', Impact, sans-serif", category: 'display' },
+  { value: 'archivo-black', label: 'Archivo Black', cssValue: "'Archivo Black', Impact, sans-serif", category: 'display' },
+  { value: 'russo-one', label: 'Russo One', cssValue: "'Russo One', Impact, sans-serif", category: 'display' },
+  // Mono fonts (Google Fonts)
+  { value: 'jetbrains', label: 'JetBrains Mono', cssValue: "'JetBrains Mono', ui-monospace, monospace", category: 'mono' },
+  { value: 'fira-code', label: 'Fira Code', cssValue: "'Fira Code', ui-monospace, monospace", category: 'mono' },
+  { value: 'source-code', label: 'Source Code Pro', cssValue: "'Source Code Pro', ui-monospace, monospace", category: 'mono' },
+  { value: 'ibm-plex', label: 'IBM Plex Mono', cssValue: "'IBM Plex Mono', ui-monospace, monospace", category: 'mono' },
+  { value: 'roboto-mono', label: 'Roboto Mono', cssValue: "'Roboto Mono', ui-monospace, monospace", category: 'mono' },
+  { value: 'space-mono', label: 'Space Mono', cssValue: "'Space Mono', ui-monospace, monospace", category: 'mono' },
+  // Sans fonts (Google Fonts)
+  { value: 'inter', label: 'Inter', cssValue: "'Inter', system-ui, sans-serif", category: 'sans' },
+  { value: 'roboto', label: 'Roboto', cssValue: "'Roboto', system-ui, sans-serif", category: 'sans' },
+  { value: 'open-sans', label: 'Open Sans', cssValue: "'Open Sans', system-ui, sans-serif", category: 'sans' },
+  { value: 'lato', label: 'Lato', cssValue: "'Lato', system-ui, sans-serif", category: 'sans' },
+  { value: 'poppins', label: 'Poppins', cssValue: "'Poppins', system-ui, sans-serif", category: 'sans' },
+  { value: 'montserrat', label: 'Montserrat', cssValue: "'Montserrat', system-ui, sans-serif", category: 'sans' },
+  // Serif fonts (Google Fonts)
+  { value: 'playfair', label: 'Playfair Display', cssValue: "'Playfair Display', serif", category: 'serif' },
+  { value: 'merriweather', label: 'Merriweather', cssValue: "'Merriweather', serif", category: 'serif' },
+  { value: 'lora', label: 'Lora', cssValue: "'Lora', serif", category: 'serif' },
+  { value: 'crimson', label: 'Crimson Text', cssValue: "'Crimson Text', serif", category: 'serif' },
+];
+
+const LETTER_SPACING_OPTIONS: { value: LetterSpacingOption; label: string; cssValue: string }[] = [
+  { value: 'tighter', label: 'Tighter', cssValue: '-0.05em' },
+  { value: 'tight', label: 'Tight', cssValue: '-0.025em' },
+  { value: 'normal', label: 'Normal', cssValue: '0' },
+  { value: 'wide', label: 'Wide', cssValue: '0.025em' },
+  { value: 'wider', label: 'Wider', cssValue: '0.05em' },
 ];
 
 const SCALE_OPTIONS: ScaleOption[] = ['90', '95', '100', '105', '110'];
 
 const STORAGE_KEY = 'fabrk-playground-config';
+const PANEL_POSITION_KEY = 'fabrk-playground-position';
+
+interface PanelPosition {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+const DEFAULT_PANEL_POSITION: PanelPosition = {
+  x: -1, // -1 means use default (right side)
+  y: 96,
+  width: 320,
+  height: 600,
+};
 
 const DISPLAY_EFFECTS = [
   { id: 'none', name: 'Clean' },
@@ -104,14 +165,15 @@ const DISPLAY_EFFECTS = [
 type DisplayEffect = (typeof DISPLAY_EFFECTS)[number]['id'];
 
 // =============================================================================
-// COMPONENT
-// =============================================================================
-
-// =============================================================================
 // TRIGGER BUTTON - For use in nav bar
 // =============================================================================
 
-export function ThemePlaygroundTrigger({ className }: { className?: string }) {
+interface ThemePlaygroundTriggerProps {
+  className?: string;
+  iconOnly?: boolean;
+}
+
+export function ThemePlaygroundTrigger({ className, iconOnly = false }: ThemePlaygroundTriggerProps) {
   const { isOpen, toggle } = useThemePlayground();
 
   return (
@@ -119,8 +181,9 @@ export function ThemePlaygroundTrigger({ className }: { className?: string }) {
       type="button"
       onClick={toggle}
       className={cn(
-        'flex h-10 items-center gap-2 px-3 rounded-dynamic',
-        'font-mono text-xs uppercase tracking-wide',
+        'flex items-center gap-2 rounded-dynamic',
+        iconOnly ? 'h-8 w-8 justify-center' : 'h-10 px-3',
+        'font-body text-xs uppercase tracking-wide',
         'text-muted-foreground transition-colors',
         'hover:text-foreground hover:bg-muted',
         'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background',
@@ -131,7 +194,7 @@ export function ThemePlaygroundTrigger({ className }: { className?: string }) {
       aria-pressed={isOpen}
     >
       <Palette className="h-4 w-4" />
-      <span>Customize</span>
+      {!iconOnly && <span>Customize</span>}
     </button>
   );
 }
@@ -159,44 +222,168 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
   const [displayEffect, setDisplayEffect] = useState<DisplayEffect>('none');
   const [isMinimized, setIsMinimized] = useState(false);
 
+  // Drag and resize state
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [panelPosition, setPanelPosition] = useState<PanelPosition>(DEFAULT_PANEL_POSITION);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isResizing, setIsResizing] = useState<string | null>(null);
+  const dragStartRef = useRef<{ x: number; y: number; posX: number; posY: number }>({ x: 0, y: 0, posX: 0, posY: 0 });
+  const resizeStartRef = useRef<{ x: number; y: number; width: number; height: number; posX: number; posY: number }>({ x: 0, y: 0, width: 320, height: 600, posX: 0, posY: 0 });
+
   // Playground-specific settings (stored locally, not affecting global theme)
   const [config, setConfig] = useState<ThemeConfig>({
     accentColor: colorTheme,
     appearance: colorTheme === 'bw' ? 'light' : 'dark',
-    radius: 'none', // Terminal default
+    radius: 'none',
     scale: '100',
     panelBackground: 'solid',
+    bodyFont: 'jetbrains',
+    headlineFont: 'jetbrains',
+    bodyLetterSpacing: 'normal',
+    headlineLetterSpacing: 'tight',
+    uiTextCase: 'uppercase',
   });
 
   // Load saved config on mount
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Necessary for hydration safety
     setMounted(true);
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved) as Partial<ThemeConfig>;
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- Loading from localStorage on mount
         setConfig((prev) => ({ ...prev, ...parsed }));
       }
-      // Load display effect
       const savedEffect = localStorage.getItem('monitor-preset') as DisplayEffect;
       if (savedEffect && DISPLAY_EFFECTS.some((e) => e.id === savedEffect)) {
         setDisplayEffect(savedEffect);
+      }
+      const savedPosition = localStorage.getItem(PANEL_POSITION_KEY);
+      if (savedPosition) {
+        const parsed = JSON.parse(savedPosition) as PanelPosition;
+        setPanelPosition(parsed);
       }
     } catch {
       // Ignore parsing errors
     }
   }, []);
 
+  // Save panel position when it changes
+  useEffect(() => {
+    if (mounted && panelPosition.x !== -1) {
+      localStorage.setItem(PANEL_POSITION_KEY, JSON.stringify(panelPosition));
+    }
+  }, [panelPosition, mounted]);
+
+  // Drag handlers
+  const handleDragStart = useCallback((e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return;
+    e.preventDefault();
+    setIsDragging(true);
+    const currentX = panelPosition.x === -1 ? window.innerWidth - panelPosition.width - 24 : panelPosition.x;
+    dragStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      posX: currentX,
+      posY: panelPosition.y,
+    };
+  }, [panelPosition]);
+
+  const handleDrag = useCallback((e: MouseEvent) => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - dragStartRef.current.x;
+    const deltaY = e.clientY - dragStartRef.current.y;
+    const newX = Math.max(0, Math.min(window.innerWidth - panelPosition.width, dragStartRef.current.posX + deltaX));
+    const newY = Math.max(0, Math.min(window.innerHeight - 100, dragStartRef.current.posY + deltaY));
+    setPanelPosition(prev => ({ ...prev, x: newX, y: newY }));
+  }, [isDragging, panelPosition.width]);
+
+  const handleDragEnd = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Resize handlers
+  const handleResizeStart = useCallback((e: React.MouseEvent, direction: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsResizing(direction);
+    const currentX = panelPosition.x === -1 ? window.innerWidth - panelPosition.width - 24 : panelPosition.x;
+    resizeStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      width: panelPosition.width,
+      height: panelPosition.height,
+      posX: currentX,
+      posY: panelPosition.y,
+    };
+  }, [panelPosition]);
+
+  const handleResize = useCallback((e: MouseEvent) => {
+    if (!isResizing) return;
+    const deltaX = e.clientX - resizeStartRef.current.x;
+    const deltaY = e.clientY - resizeStartRef.current.y;
+
+    let newWidth = resizeStartRef.current.width;
+    let newHeight = resizeStartRef.current.height;
+    let newX = resizeStartRef.current.posX;
+    let newY = resizeStartRef.current.posY;
+
+    if (isResizing.includes('e')) {
+      newWidth = Math.max(280, Math.min(600, resizeStartRef.current.width + deltaX));
+    }
+    if (isResizing.includes('w')) {
+      const widthDelta = -deltaX;
+      newWidth = Math.max(280, Math.min(600, resizeStartRef.current.width + widthDelta));
+      if (newWidth !== resizeStartRef.current.width) {
+        newX = resizeStartRef.current.posX - (newWidth - resizeStartRef.current.width);
+      }
+    }
+    if (isResizing.includes('s')) {
+      newHeight = Math.max(400, Math.min(window.innerHeight - 100, resizeStartRef.current.height + deltaY));
+    }
+    if (isResizing.includes('n')) {
+      const heightDelta = -deltaY;
+      newHeight = Math.max(400, Math.min(window.innerHeight - 100, resizeStartRef.current.height + heightDelta));
+      if (newHeight !== resizeStartRef.current.height) {
+        newY = resizeStartRef.current.posY - (newHeight - resizeStartRef.current.height);
+      }
+    }
+
+    setPanelPosition({ x: newX, y: newY, width: newWidth, height: newHeight });
+  }, [isResizing]);
+
+  const handleResizeEnd = useCallback(() => {
+    setIsResizing(null);
+  }, []);
+
+  // Global mouse event listeners for drag and resize
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener('mousemove', handleDrag);
+      window.addEventListener('mouseup', handleDragEnd);
+      return () => {
+        window.removeEventListener('mousemove', handleDrag);
+        window.removeEventListener('mouseup', handleDragEnd);
+      };
+    }
+  }, [isDragging, handleDrag, handleDragEnd]);
+
+  useEffect(() => {
+    if (isResizing) {
+      window.addEventListener('mousemove', handleResize);
+      window.addEventListener('mouseup', handleResizeEnd);
+      return () => {
+        window.removeEventListener('mousemove', handleResize);
+        window.removeEventListener('mouseup', handleResizeEnd);
+      };
+    }
+  }, [isResizing, handleResize, handleResizeEnd]);
+
   // Apply display effect
   useEffect(() => {
     if (!mounted) return;
-    // Remove all existing effect classes
     DISPLAY_EFFECTS.forEach((e) => {
       document.documentElement.classList.remove(`effect-${e.id}`);
     });
-    // Add new effect class (if not none)
     if (displayEffect !== 'none') {
       document.documentElement.classList.add(`effect-${displayEffect}`);
     }
@@ -207,7 +394,6 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
   useEffect(() => {
     if (mounted) {
       const themeInfo = ACCENT_COLORS.find((c) => c.id === colorTheme);
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Syncing external theme state
       setConfig((prev) => ({
         ...prev,
         accentColor: colorTheme,
@@ -216,14 +402,13 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
     }
   }, [colorTheme, mounted]);
 
-  // Apply radius to document - set CSS variable that .rounded-dynamic uses
+  // Apply radius to document
   useEffect(() => {
     if (!mounted) return;
     const radiusOption = RADIUS_OPTIONS.find((r) => r.value === config.radius);
     const radiusValue = radiusOption?.cssValue || '0';
     document.documentElement.style.setProperty('--radius', radiusValue);
 
-    // Inject/update style tag for special cases only
     let styleTag = document.getElementById('theme-playground-radius');
     if (!styleTag) {
       styleTag = document.createElement('style');
@@ -231,21 +416,15 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
       document.head.appendChild(styleTag);
     }
 
-    // The .rounded-dynamic utility now handles most radius changes automatically
-    // We only need overrides for special cases
     const isFull = config.radius === 'full';
 
     styleTag.textContent = `
       /* Theme Playground: Special case overrides */
-
       ${isFull ? `
-      /* For 'full' radius, make buttons/badges pill-shaped */
       [data-slot="button"],
       [data-slot="badge"] {
         border-radius: 9999px !important;
       }
-
-      /* Cap cards at reasonable max radius */
       [data-slot="card"],
       [data-slot="alert"],
       [role="dialog"] > div,
@@ -255,14 +434,10 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
         border-radius: 1rem !important;
       }
       ` : ''}
-
-      /* Never round single-side border elements (dividers, tabs) */
       hr,
       [role="separator"] {
         border-radius: 0 !important;
       }
-
-      /* Apply theme radius to the panel container and manual controls */
       #theme-playground-panel,
       #theme-playground-panel button:not([data-slot="button"]),
       #theme-playground-panel input,
@@ -279,7 +454,6 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
     if (!mounted) return;
     const scaleValue = parseInt(config.scale) / 100;
     document.documentElement.style.setProperty('--ui-scale', scaleValue.toString());
-    // Apply scale transform to main content
     const main = document.querySelector('main');
     if (main && config.scale !== '100') {
       main.style.transform = `scale(${scaleValue})`;
@@ -292,6 +466,75 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
     }
   }, [config.scale, mounted]);
 
+  // Apply fonts and typography to document
+  useEffect(() => {
+    if (!mounted) return;
+    const bodyFontOption = FONT_OPTIONS.find((f) => f.value === config.bodyFont);
+    const headlineFontOption = FONT_OPTIONS.find((f) => f.value === config.headlineFont);
+    const bodySpacingOption = LETTER_SPACING_OPTIONS.find((l) => l.value === config.bodyLetterSpacing);
+    const headlineSpacingOption = LETTER_SPACING_OPTIONS.find((l) => l.value === config.headlineLetterSpacing);
+
+    const bodyFont = bodyFontOption?.cssValue || "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
+    const headlineFont = headlineFontOption?.cssValue || "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
+    const bodySpacing = bodySpacingOption?.cssValue || '0';
+    const headlineSpacing = headlineSpacingOption?.cssValue || '-0.025em';
+    const uiTextTransform = config.uiTextCase === 'uppercase' ? 'uppercase' : 'none';
+
+    // Set CSS variables
+    document.documentElement.style.setProperty('--font-body', bodyFont);
+    document.documentElement.style.setProperty('--font-headline', headlineFont);
+    document.documentElement.style.setProperty('--letter-spacing-body', bodySpacing);
+    document.documentElement.style.setProperty('--letter-spacing-headline', headlineSpacing);
+
+    let fontStyleTag = document.getElementById('theme-playground-fonts');
+    if (!fontStyleTag) {
+      fontStyleTag = document.createElement('style');
+      fontStyleTag.id = 'theme-playground-fonts';
+      document.head.appendChild(fontStyleTag);
+    }
+
+    fontStyleTag.textContent = `
+      /* Theme Playground: Font & Typography Overrides */
+      :root {
+        --font-body: ${bodyFont};
+        --font-headline: ${headlineFont};
+        --letter-spacing-body: ${bodySpacing};
+        --letter-spacing-headline: ${headlineSpacing};
+        --ui-text-transform: ${uiTextTransform};
+      }
+
+      /* Body text */
+      body, .font-body, p, span, div, li, td, th {
+        font-family: ${bodyFont} !important;
+        letter-spacing: ${bodySpacing};
+      }
+
+      /* Headlines */
+      h1, h2, h3, h4, h5, h6,
+      h1.font-body, h2.font-body, h3.font-body, h4.font-body, h5.font-body, h6.font-body,
+      .font-headline {
+        font-family: ${headlineFont} !important;
+        letter-spacing: ${headlineSpacing};
+      }
+
+      /* UI elements */
+      button, [role="button"], [data-slot="button"],
+      label, [data-slot="badge"],
+      .uppercase {
+        text-transform: ${uiTextTransform};
+        ${uiTextTransform === 'uppercase' ? 'letter-spacing: 0.05em;' : ''}
+      }
+
+      /* Form inputs inherit body font */
+      input, textarea, select {
+        font-family: ${bodyFont} !important;
+        letter-spacing: ${bodySpacing};
+      }
+    `;
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+  }, [config.bodyFont, config.headlineFont, config.bodyLetterSpacing, config.headlineLetterSpacing, config.uiTextCase, mounted]);
+
   const handleAccentChange = useCallback(
     (id: string) => {
       setColorTheme(id as typeof colorTheme);
@@ -301,7 +544,6 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
         accentColor: id,
         appearance: selectedColor?.mode === 'light' ? 'light' : 'dark',
       }));
-      // Auto-apply the matching display effect
       if (selectedColor?.effect) {
         setDisplayEffect(selectedColor.effect as DisplayEffect);
       }
@@ -312,7 +554,6 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
   const handleAppearanceChange = useCallback(
     (appearance: 'light' | 'dark') => {
       setConfig((prev) => ({ ...prev, appearance }));
-      // If current theme doesn't match the new appearance, switch to first theme of that mode
       const currentThemeMode = ACCENT_COLORS.find((c) => c.id === config.accentColor)?.mode;
       if (currentThemeMode !== appearance) {
         const firstThemeOfMode = ACCENT_COLORS.find((c) => c.mode === appearance);
@@ -324,21 +565,24 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
     [config.accentColor, setColorTheme]
   );
 
-  // Filter colors by current appearance mode
   const filteredColors = ACCENT_COLORS.filter((c) => c.mode === config.appearance);
 
   const handleCopyTheme = useCallback(async () => {
     const themeInfo = ACCENT_COLORS.find((c) => c.id === config.accentColor);
     const radiusValue = RADIUS_OPTIONS.find((r) => r.value === config.radius)?.cssValue || '0';
+    const bodyFontOption = FONT_OPTIONS.find((f) => f.value === config.bodyFont);
+    const headlineFontOption = FONT_OPTIONS.find((f) => f.value === config.headlineFont);
 
     const themeCode = `/* ═══════════════════════════════════════════════════════════════
    FABRK THEME: ${themeInfo?.name?.toUpperCase() || config.accentColor.toUpperCase()}
    Mode: ${config.appearance} | Radius: ${config.radius} | Effect: ${displayEffect}
    ═══════════════════════════════════════════════════════════════ */
 
-// 1. Set border radius in globals.css:
+// 1. Set variables in globals.css:
 :root {
   --radius: ${radiusValue};
+  --font-body: ${bodyFontOption?.cssValue || 'ui-monospace, monospace'};
+  --font-headline: ${headlineFontOption?.cssValue || 'ui-monospace, monospace'};
 }
 
 // 2. Add to your root layout.tsx <html> tag:
@@ -346,7 +590,6 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
 
 // 3. Or set theme dynamically with ThemeProvider:
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
-
 const { setColorTheme } = useThemeContext();
 setColorTheme('${config.accentColor}');
 
@@ -356,12 +599,14 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
 /* ───────────────────────────────────────────────────────────────
    THEME SUMMARY
    ───────────────────────────────────────────────────────────────
-   Theme ID:      ${config.accentColor}
-   Theme Name:    ${themeInfo?.name || 'Unknown'}
-   Appearance:    ${config.appearance}
-   Border Radius: ${radiusValue}
-   Display Effect:${displayEffect}
-   Accent Color:  ${themeInfo?.color || 'N/A'}
+   Theme ID:        ${config.accentColor}
+   Theme Name:      ${themeInfo?.name || 'Unknown'}
+   Appearance:      ${config.appearance}
+   Border Radius:   ${radiusValue}
+   Display Effect:  ${displayEffect}
+   Body Font:       ${bodyFontOption?.label || config.bodyFont}
+   Headline Font:   ${headlineFontOption?.label || config.headlineFont}
+   UI Text Case:    ${config.uiTextCase}
    ─────────────────────────────────────────────────────────────── */`;
 
     try {
@@ -369,7 +614,6 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback for older browsers
       const textarea = document.createElement('textarea');
       textarea.value = themeCode;
       document.body.appendChild(textarea);
@@ -387,31 +631,43 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
 
   return (
     <>
-      {/* Panel - Centered horizontally, fixed near top */}
       {isOpen && (
         <div
+          ref={panelRef}
           id="theme-playground-panel"
           className={cn(
-            'fixed right-6 top-24 z-50',
-            isMinimized ? 'w-48' : 'w-80 max-h-[calc(100vh-8rem)]',
-            'flex flex-col',
-            'border border-border',
+            'fixed z-50 flex flex-col',
+            'border border-border shadow-lg',
             config.panelBackground === 'translucent'
               ? 'bg-card/80 backdrop-blur-md'
               : 'bg-card',
-            !isMinimized && 'animate-in slide-in-from-top-5 duration-200'
+            !isDragging && !isResizing && 'animate-in slide-in-from-top-5 duration-200',
+            (isDragging || isResizing) && 'select-none'
           )}
+          style={{
+            left: panelPosition.x === -1 ? 'auto' : panelPosition.x,
+            right: panelPosition.x === -1 ? 24 : 'auto',
+            top: panelPosition.y,
+            width: isMinimized ? 180 : panelPosition.width,
+            height: isMinimized ? 'auto' : panelPosition.height,
+            maxHeight: 'calc(100vh - 100px)',
+          }}
         >
-          {/* Header */}
+          {/* Header - Draggable */}
           <div
             className={cn(
               'flex shrink-0 items-center justify-between p-3',
-              !isMinimized && 'border-b border-border'
+              !isMinimized && 'border-b border-border',
+              'cursor-grab active:cursor-grabbing'
             )}
+            onMouseDown={handleDragStart}
           >
-            <span className="font-mono text-sm font-medium uppercase tracking-wide">
-              Theme
-            </span>
+            <div className="flex items-center gap-2">
+              <GripVertical className="h-4 w-4 text-muted-foreground" />
+              <span className="font-body text-sm font-medium uppercase tracking-wide">
+                Theme
+              </span>
+            </div>
             <div className="flex items-center gap-1">
               <button
                 type="button"
@@ -434,234 +690,426 @@ ${displayEffect !== 'none' ? `document.documentElement.classList.add('effect-${d
 
           {/* Scrollable Content - Hidden when minimized */}
           {!isMinimized && (
-          <div className="space-y-6 p-4 overflow-y-auto flex-1">
-            {/* Accent Color */}
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                  Accent color
-                </label>
-                {/* Fixed height to prevent layout shift */}
-                <span className="font-mono text-xs text-foreground h-4">
-                  {hoveredColor || ACCENT_COLORS.find(c => c.id === config.accentColor)?.name || ''}
-                </span>
-              </div>
-              <div className="grid grid-cols-6 gap-2">
-                {filteredColors.map((color) => (
-                  <button
-                    type="button"
-                    key={color.id}
-                    onClick={() => handleAccentChange(color.id)}
-                    onMouseEnter={() => setHoveredColor(color.name)}
-                    onMouseLeave={() => setHoveredColor(null)}
-                    className={cn(
-                      'relative h-8 w-8 transition-all duration-150',
-                      'hover:scale-110 hover:z-10',
-                      'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1',
-                      config.accentColor === color.id && 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
-                    )}
-                    // eslint-disable-next-line design-system/no-inline-styles -- Dynamic theme color picker requires inline styles
-                    style={{ backgroundColor: color.color }}
-                    title={color.name}
-                    aria-label={`Select ${color.name} theme`}
-                  >
-                    {config.accentColor === color.id && (
-                      <Check
-                        className={cn(
-                          'absolute inset-0 m-auto h-4 w-4',
-                          color.id === 'bw' ? 'text-black' : 'text-white'
-                        )}
-                        strokeWidth={3}
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Appearance */}
-            <div className="space-y-3">
-              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                Appearance
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => handleAppearanceChange('light')}
-                  className={cn(
-                    'flex items-center justify-center gap-2 border px-4 py-2',
-                    'font-mono text-xs transition-all',
-                    config.appearance === 'light'
-                      ? 'border-foreground bg-foreground text-background'
-                      : 'border-border hover:border-muted-foreground'
-                  )}
-                >
-                  <Sun className="h-4 w-4" />
-                  Light
-                </button>
-                <button
-                  onClick={() => handleAppearanceChange('dark')}
-                  className={cn(
-                    'flex items-center justify-center gap-2 border px-4 py-2',
-                    'font-mono text-xs transition-all',
-                    config.appearance === 'dark'
-                      ? 'border-foreground bg-foreground text-background'
-                      : 'border-border hover:border-muted-foreground'
-                  )}
-                >
-                  <Moon className="h-4 w-4" />
-                  Dark
-                </button>
-              </div>
-            </div>
-
-            {/* Radius */}
-            <div className="space-y-3">
-              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                Radius
-              </label>
-              <div className="grid grid-cols-5 gap-2">
-                {RADIUS_OPTIONS.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setConfig((prev) => ({ ...prev, radius: option.value }))}
-                    className={cn(
-                      'flex flex-col items-center gap-1 border px-2 py-2',
-                      'font-mono text-2xs transition-all',
-                      config.radius === option.value
-                        ? 'border-foreground bg-foreground text-background'
-                        : 'border-border hover:border-muted-foreground'
-                    )}
-                  >
-                    {/* Visual preview of radius - scaled down for 24x24 box */}
-                    <div
+            <div className="space-y-6 p-4 overflow-y-auto flex-1">
+              {/* Accent Color */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                    Accent color
+                  </label>
+                  <span className="font-body text-xs text-foreground h-4">
+                    {hoveredColor || ACCENT_COLORS.find(c => c.id === config.accentColor)?.name || ''}
+                  </span>
+                </div>
+                <div className="grid grid-cols-6 gap-2">
+                  {filteredColors.map((color) => (
+                    <button
+                      type="button"
+                      key={color.id}
+                      onClick={() => handleAccentChange(color.id)}
+                      onMouseEnter={() => setHoveredColor(color.name)}
+                      onMouseLeave={() => setHoveredColor(null)}
                       className={cn(
-                        'h-6 w-6 border-2',
-                        config.radius === option.value
-                          ? 'border-background bg-background/20'
-                          : 'border-primary bg-primary/20'
+                        'relative h-8 w-8 transition-all duration-150',
+                        'hover:scale-110 hover:z-10',
+                        'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1',
+                        config.accentColor === color.id && 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
                       )}
-                      style={{
-                        borderRadius:
-                          option.value === 'none'
-                            ? '0'
-                            : option.value === 'sm'
-                              ? '2px'
-                              : option.value === 'md'
-                                ? '4px'
-                                : option.value === 'lg'
-                                  ? '6px'
-                                  : '8px', // Full - clearly rounded but not a circle
-                      }}
-                    />
-                    <span>{option.label}</span>
-                  </button>
-                ))}
+                      style={{ backgroundColor: color.color }}
+                      title={color.name}
+                      aria-label={`Select ${color.name} theme`}
+                    >
+                      {config.accentColor === color.id && (
+                        <Check
+                          className={cn(
+                            'absolute inset-0 m-auto h-4 w-4',
+                            color.id === 'bw' ? 'text-black' : 'text-white'
+                          )}
+                          strokeWidth={3}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Scaling */}
-            <div className="space-y-3">
-              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                Scaling
-              </label>
-              <div className="grid grid-cols-5 gap-2">
-                {SCALE_OPTIONS.map((scale) => (
+              {/* Appearance */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Appearance
+                </label>
+                <div className="grid grid-cols-2 gap-2">
                   <button
-                    key={scale}
-                    onClick={() => setConfig((prev) => ({ ...prev, scale }))}
+                    onClick={() => handleAppearanceChange('light')}
                     className={cn(
-                      'border px-2 py-2',
-                      'font-mono text-xs transition-all',
-                      config.scale === scale
+                      'flex items-center justify-center gap-2 border px-4 py-2',
+                      'font-body text-xs transition-all',
+                      config.appearance === 'light'
                         ? 'border-foreground bg-foreground text-background'
                         : 'border-border hover:border-muted-foreground'
                     )}
                   >
-                    {scale}%
+                    <Sun className="h-4 w-4" />
+                    Light
                   </button>
-                ))}
+                  <button
+                    onClick={() => handleAppearanceChange('dark')}
+                    className={cn(
+                      'flex items-center justify-center gap-2 border px-4 py-2',
+                      'font-body text-xs transition-all',
+                      config.appearance === 'dark'
+                        ? 'border-foreground bg-foreground text-background'
+                        : 'border-border hover:border-muted-foreground'
+                    )}
+                  >
+                    <Moon className="h-4 w-4" />
+                    Dark
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Panel Background */}
-            <div className="space-y-3">
-              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                Panel background
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => setConfig((prev) => ({ ...prev, panelBackground: 'solid' }))}
+              {/* Radius */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Radius
+                </label>
+                <div className="grid grid-cols-5 gap-2">
+                  {RADIUS_OPTIONS.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => setConfig((prev) => ({ ...prev, radius: option.value }))}
+                      className={cn(
+                        'flex flex-col items-center gap-1 border px-2 py-2',
+                        'font-body text-2xs transition-all',
+                        config.radius === option.value
+                          ? 'border-foreground bg-foreground text-background'
+                          : 'border-border hover:border-muted-foreground'
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          'h-6 w-6 border-2',
+                          config.radius === option.value
+                            ? 'border-background bg-background/20'
+                            : 'border-primary bg-primary/20'
+                        )}
+                        style={{
+                          borderRadius:
+                            option.value === 'none'
+                              ? '0'
+                              : option.value === 'sm'
+                                ? '2px'
+                                : option.value === 'md'
+                                  ? '4px'
+                                  : option.value === 'lg'
+                                    ? '6px'
+                                    : '8px',
+                        }}
+                      />
+                      <span>{option.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Body Font */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Body Font
+                </label>
+                <select
+                  value={config.bodyFont}
+                  onChange={(e) => setConfig((prev) => ({ ...prev, bodyFont: e.target.value }))}
                   className={cn(
-                    'border px-4 py-2',
-                    'font-mono text-xs transition-all',
-                    config.panelBackground === 'solid'
-                      ? 'border-foreground bg-foreground text-background'
-                      : 'border-border hover:border-muted-foreground'
+                    'w-full border border-border bg-background px-3 py-2',
+                    'font-body text-xs text-foreground',
+                    'focus:border-foreground focus:outline-none'
                   )}
                 >
-                  Solid
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setConfig((prev) => ({ ...prev, panelBackground: 'translucent' }))}
+                  <optgroup label="Display">
+                    {FONT_OPTIONS.filter(f => f.category === 'display').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Monospace">
+                    {FONT_OPTIONS.filter(f => f.category === 'mono').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Sans-Serif">
+                    {FONT_OPTIONS.filter(f => f.category === 'sans').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Serif">
+                    {FONT_OPTIONS.filter(f => f.category === 'serif').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                </select>
+              </div>
+
+              {/* Headline Font */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Headline Font
+                </label>
+                <select
+                  value={config.headlineFont}
+                  onChange={(e) => setConfig((prev) => ({ ...prev, headlineFont: e.target.value }))}
                   className={cn(
-                    'border px-4 py-2',
-                    'font-mono text-xs transition-all',
-                    config.panelBackground === 'translucent'
-                      ? 'border-foreground bg-foreground text-background'
-                      : 'border-border hover:border-muted-foreground'
+                    'w-full border border-border bg-background px-3 py-2',
+                    'font-body text-xs text-foreground',
+                    'focus:border-foreground focus:outline-none'
                   )}
                 >
-                  Translucent
-                </button>
+                  <optgroup label="Display">
+                    {FONT_OPTIONS.filter(f => f.category === 'display').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Monospace">
+                    {FONT_OPTIONS.filter(f => f.category === 'mono').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Sans-Serif">
+                    {FONT_OPTIONS.filter(f => f.category === 'sans').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="Serif">
+                    {FONT_OPTIONS.filter(f => f.category === 'serif').map((font) => (
+                      <option key={font.value} value={font.value}>{font.label}</option>
+                    ))}
+                  </optgroup>
+                </select>
               </div>
-            </div>
 
-            {/* Display Effects */}
-            <div className="space-y-3">
-              <label className="font-mono text-xs text-muted-foreground uppercase tracking-wide">
-                Display effects
-              </label>
-              <div className="grid grid-cols-4 gap-2">
-                {DISPLAY_EFFECTS.map((effect) => (
+              {/* Body Letter Spacing */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Body Spacing
+                </label>
+                <div className="grid grid-cols-5 gap-1">
+                  {LETTER_SPACING_OPTIONS.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => setConfig((prev) => ({ ...prev, bodyLetterSpacing: option.value }))}
+                      className={cn(
+                        'border px-1 py-1.5',
+                        'font-body text-2xs transition-all',
+                        config.bodyLetterSpacing === option.value
+                          ? 'border-foreground bg-foreground text-background'
+                          : 'border-border hover:border-muted-foreground'
+                      )}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Headline Letter Spacing */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Headline Spacing
+                </label>
+                <div className="grid grid-cols-5 gap-1">
+                  {LETTER_SPACING_OPTIONS.map((option) => (
+                    <button
+                      key={option.value}
+                      onClick={() => setConfig((prev) => ({ ...prev, headlineLetterSpacing: option.value }))}
+                      className={cn(
+                        'border px-1 py-1.5',
+                        'font-body text-2xs transition-all',
+                        config.headlineLetterSpacing === option.value
+                          ? 'border-foreground bg-foreground text-background'
+                          : 'border-border hover:border-muted-foreground'
+                      )}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* UI Text Case */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  UI Text Case
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setConfig((prev) => ({ ...prev, uiTextCase: 'uppercase' }))}
+                    className={cn(
+                      'border px-2 py-2',
+                      'font-body text-xs transition-all uppercase',
+                      config.uiTextCase === 'uppercase'
+                        ? 'border-foreground bg-foreground text-background'
+                        : 'border-border hover:border-muted-foreground'
+                    )}
+                  >
+                    UPPERCASE
+                  </button>
+                  <button
+                    onClick={() => setConfig((prev) => ({ ...prev, uiTextCase: 'normal' }))}
+                    className={cn(
+                      'border px-2 py-2',
+                      'font-body text-xs transition-all',
+                      config.uiTextCase === 'normal'
+                        ? 'border-foreground bg-foreground text-background'
+                        : 'border-border hover:border-muted-foreground'
+                    )}
+                  >
+                    Normal Case
+                  </button>
+                </div>
+              </div>
+
+              {/* Scaling */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Scaling
+                </label>
+                <div className="grid grid-cols-5 gap-2">
+                  {SCALE_OPTIONS.map((scale) => (
+                    <button
+                      key={scale}
+                      onClick={() => setConfig((prev) => ({ ...prev, scale }))}
+                      className={cn(
+                        'border px-2 py-2',
+                        'font-body text-xs transition-all',
+                        config.scale === scale
+                          ? 'border-foreground bg-foreground text-background'
+                          : 'border-border hover:border-muted-foreground'
+                      )}
+                    >
+                      {scale}%
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Panel Background */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Panel background
+                </label>
+                <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
-                    key={effect.id}
-                    onClick={() => setDisplayEffect(effect.id)}
+                    onClick={() => setConfig((prev) => ({ ...prev, panelBackground: 'solid' }))}
                     className={cn(
-                      'border px-2 py-2',
-                      'font-mono text-xs transition-all',
-                      displayEffect === effect.id
+                      'border px-4 py-2',
+                      'font-body text-xs transition-all',
+                      config.panelBackground === 'solid'
                         ? 'border-foreground bg-foreground text-background'
                         : 'border-border hover:border-muted-foreground'
                     )}
                   >
-                    {effect.name}
+                    Solid
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    onClick={() => setConfig((prev) => ({ ...prev, panelBackground: 'translucent' }))}
+                    className={cn(
+                      'border px-4 py-2',
+                      'font-body text-xs transition-all',
+                      config.panelBackground === 'translucent'
+                        ? 'border-foreground bg-foreground text-background'
+                        : 'border-border hover:border-muted-foreground'
+                    )}
+                  >
+                    Translucent
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Copy Theme Button */}
-            <Button
-              onClick={handleCopyTheme}
-              className="w-full"
-              variant="default"
-            >
-              {copied ? (
-                <>
-                  <Check className="mr-2 h-4 w-4" />
-                  COPIED!
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-2 h-4 w-4" />
-                  COPY THEME
-                </>
-              )}
-            </Button>
-          </div>
+              {/* Display Effects */}
+              <div className="space-y-3">
+                <label className="font-body text-xs text-muted-foreground uppercase tracking-wide">
+                  Display effects
+                </label>
+                <div className="grid grid-cols-4 gap-2">
+                  {DISPLAY_EFFECTS.map((effect) => (
+                    <button
+                      type="button"
+                      key={effect.id}
+                      onClick={() => setDisplayEffect(effect.id)}
+                      className={cn(
+                        'border px-2 py-2',
+                        'font-body text-xs transition-all',
+                        displayEffect === effect.id
+                          ? 'border-foreground bg-foreground text-background'
+                          : 'border-border hover:border-muted-foreground'
+                      )}
+                    >
+                      {effect.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Copy Theme Button */}
+              <Button
+                onClick={handleCopyTheme}
+                className="w-full"
+                variant="default"
+              >
+                {copied ? (
+                  <>
+                    <Check className="mr-2 h-4 w-4" />
+                    COPIED!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="mr-2 h-4 w-4" />
+                    COPY THEME
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
+
+          {/* Resize Handles - Only show when not minimized */}
+          {!isMinimized && (
+            <>
+              {/* Edges */}
+              <div
+                className="absolute top-0 left-2 right-2 h-1 cursor-n-resize hover:bg-primary/20"
+                onMouseDown={(e) => handleResizeStart(e, 'n')}
+              />
+              <div
+                className="absolute bottom-0 left-2 right-2 h-1 cursor-s-resize hover:bg-primary/20"
+                onMouseDown={(e) => handleResizeStart(e, 's')}
+              />
+              <div
+                className="absolute left-0 top-2 bottom-2 w-1 cursor-w-resize hover:bg-primary/20"
+                onMouseDown={(e) => handleResizeStart(e, 'w')}
+              />
+              <div
+                className="absolute right-0 top-2 bottom-2 w-1 cursor-e-resize hover:bg-primary/20"
+                onMouseDown={(e) => handleResizeStart(e, 'e')}
+              />
+              {/* Corners */}
+              <div
+                className="absolute top-0 left-0 h-3 w-3 cursor-nw-resize hover:bg-primary/30"
+                onMouseDown={(e) => handleResizeStart(e, 'nw')}
+              />
+              <div
+                className="absolute top-0 right-0 h-3 w-3 cursor-ne-resize hover:bg-primary/30"
+                onMouseDown={(e) => handleResizeStart(e, 'ne')}
+              />
+              <div
+                className="absolute bottom-0 left-0 h-3 w-3 cursor-sw-resize hover:bg-primary/30"
+                onMouseDown={(e) => handleResizeStart(e, 'sw')}
+              />
+              <div
+                className="absolute bottom-0 right-0 h-3 w-3 cursor-se-resize hover:bg-primary/30"
+                onMouseDown={(e) => handleResizeStart(e, 'se')}
+              />
+            </>
           )}
         </div>
       )}

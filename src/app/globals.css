@@ -18,6 +18,15 @@
   border-radius: var(--radius);
 }
 
+/* Dynamic font utilities - for runtime typography switching */
+@utility font-body {
+  font-family: var(--font-body);
+}
+
+@utility font-headline {
+  font-family: var(--font-headline);
+}
+
 /* ===========================================
    DESIGN SYSTEM TOKENS
    8-point grid compliant sizing utilities
@@ -604,6 +613,71 @@
   }
 }
 
+/* ============================================
+   DISPLAY FONTS (Headlines)
+   ============================================ */
+
+/* TT Bluescreens - Condensed display font */
+@font-face {
+  font-family: 'TT Bluescreens';
+  src: url('/fonts/display/TT-Bluescreens-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Bluescreens';
+  src: url('/fonts/display/TT-Bluescreens-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Bluescreens';
+  src: url('/fonts/display/TT-Bluescreens-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bebas Neue - Clean condensed sans */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/fonts/display/bebas-neue-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Oswald - Variable condensed gothic */
+@font-face {
+  font-family: 'Oswald';
+  src: url('/fonts/display/oswald.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Anton - Bold impact display */
+@font-face {
+  font-family: 'Anton';
+  src: url('/fonts/display/anton-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* League Gothic - Classic condensed gothic */
+@font-face {
+  font-family: 'League Gothic';
+  src: url('/fonts/display/league-gothic-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Font families */
   --font-sans: var(--font-geist-sans);
@@ -665,6 +739,10 @@
    ROOT VARIABLES (Default: Green CRT)
    ============================================ */
 :root {
+  /* Typography - Runtime switchable fonts */
+  --font-body: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-headline: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
   /* Default Theme: Green CRT Terminal */
   --background: 5% 0.01 140;
   --foreground: 82% 0.3 140;

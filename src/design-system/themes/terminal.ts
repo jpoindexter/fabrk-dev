@@ -278,7 +278,7 @@ export function formatStatusText(status: string): string {
 
 export const terminalClasses = {
   radius: 'rounded-dynamic',
-  font: 'font-mono',
+  font: 'font-body',
   text: 'uppercase',
   cardHeader: 'font-mono text-xs text-muted-foreground',
   label: 'font-mono text-xs text-muted-foreground uppercase',
