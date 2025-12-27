@@ -1,11 +1,11 @@
+'use client';
+
 /**
  * COMPLETE STYLE GUIDE / CONTACT SHEET
  *
  * 100% coverage of the design system.
  * Use this to validate fonts, colors, spacing, and all components.
  */
-
-import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 // UI Components
@@ -62,12 +62,6 @@ import {
   MoreHorizontal, Search, Settings, Terminal, User, Zap,
   TrendingUp, TrendingDown, Activity, Database
 } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Complete Style Guide | Fabrk',
-  description: '100% coverage of the design system - all components, typography, colors, and effects',
-  robots: { index: false, follow: false },
-};
 
 export default function StyleGuidePage() {
   return (
