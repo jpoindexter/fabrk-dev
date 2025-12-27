@@ -69,45 +69,41 @@ export default function StyleGuidePage() {
       <div className="min-h-screen bg-background">
         {/* Header */}
         <header className="border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="flex items-center gap-2 text-muted-foreground text-xs mb-2">
+                <div className="flex items-center gap-2 text-muted-foreground text-xs mb-1">
                   <Terminal className="w-3 h-3" />
-                  <span>DESIGN SYSTEM CONTACT SHEET</span>
+                  <span>DESIGN SYSTEM</span>
                 </div>
-                <h1 className="text-3xl font-headline tracking-tight">Complete Style Guide</h1>
-                <p className="text-muted-foreground mt-2 text-sm">
-                  Visual validation of all design tokens and components. Switch themes to test.
-                </p>
+                <h1 className="text-2xl font-headline tracking-tight">Style Guide</h1>
               </div>
-              <Badge variant="outline" size="lg">77 Components</Badge>
+              <Badge variant="outline">77 Components</Badge>
             </div>
           </div>
         </header>
 
-        {/* Section Navigation */}
-        <nav className="border-b border-border bg-muted/50">
-          <div className="max-w-7xl mx-auto px-4">
-            <ScrollArea className="w-full">
-              <div className="flex gap-6 py-3 text-xs">
+        <Tabs defaultValue="typography" className="w-full">
+          <div className="border-b border-border">
+            <div className="max-w-7xl mx-auto px-4">
+              <TabsList className="h-auto p-0 bg-transparent gap-0">
                 {['Typography', 'Colors', 'Spacing', 'Forms', 'Buttons', 'Cards', 'Navigation', 'Feedback', 'Overlays', 'Data', 'Effects'].map((section) => (
-                  <a key={section} href={`#${section.toLowerCase()}`} className="text-muted-foreground hover:text-foreground whitespace-nowrap transition-colors">
+                  <TabsTrigger
+                    key={section}
+                    value={section.toLowerCase()}
+                    className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-4 py-3"
+                  >
                     {section}
-                  </a>
+                  </TabsTrigger>
                 ))}
-              </div>
-            </ScrollArea>
+              </TabsList>
+            </div>
           </div>
-        </nav>
 
-        <div className="max-w-7xl mx-auto px-4 py-8 space-y-16">
-
-          {/* ═══════════════════════════════════════════════════════════════
-              TYPOGRAPHY
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="typography">
-            <SectionHeader title="TYPOGRAPHY" count={12} />
+          <div className="max-w-7xl mx-auto px-4 py-8">
+            {/* TYPOGRAPHY */}
+            <TabsContent value="typography" className="mt-0 space-y-6">
+              <SectionHeader title="TYPOGRAPHY" count={12} />
 
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Headlines */}
@@ -205,12 +201,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              COLORS
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="colors">
+            {/* COLORS */}
+            <TabsContent value="colors" className="mt-0 space-y-6">
             <SectionHeader title="COLOR TOKENS" count={16} />
 
             <div className="space-y-6">
@@ -274,12 +268,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              SPACING
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="spacing">
+            {/* SPACING */}
+            <TabsContent value="spacing" className="mt-0 space-y-6">
             <SectionHeader title="SPACING (8-Point Grid)" count={8} />
 
             <Card className={cn('border border-border', mode.radius)}>
@@ -362,12 +354,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              FORM CONTROLS
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="forms">
+            {/* FORMS */}
+            <TabsContent value="forms" className="mt-0 space-y-6">
             <SectionHeader title="FORM CONTROLS" count={12} />
 
             <div className="grid lg:grid-cols-2 gap-6">
@@ -502,12 +492,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              BUTTONS & BADGES
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="buttons">
+            {/* BUTTONS */}
+            <TabsContent value="buttons" className="mt-0 space-y-6">
             <SectionHeader title="BUTTONS & BADGES" count={14} />
 
             <div className="grid lg:grid-cols-2 gap-6">
@@ -575,12 +563,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              CARDS & LAYOUT
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="cards">
+            {/* CARDS */}
+            <TabsContent value="cards" className="mt-0 space-y-6">
             <SectionHeader title="CARDS & LAYOUT" count={6} />
 
             <div className="grid lg:grid-cols-3 gap-6">
@@ -646,12 +632,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              NAVIGATION
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="navigation">
+            {/* NAVIGATION */}
+            <TabsContent value="navigation" className="mt-0 space-y-6">
             <SectionHeader title="NAVIGATION" count={6} />
 
             <div className="grid lg:grid-cols-2 gap-6">
@@ -750,12 +734,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              FEEDBACK
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="feedback">
+            {/* FEEDBACK */}
+            <TabsContent value="feedback" className="mt-0 space-y-6">
             <SectionHeader title="FEEDBACK & STATUS" count={10} />
 
             <div className="grid lg:grid-cols-2 gap-6">
@@ -838,12 +820,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              OVERLAYS
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="overlays">
+            {/* OVERLAYS */}
+            <TabsContent value="overlays" className="mt-0 space-y-6">
             <SectionHeader title="OVERLAYS & POPUPS" count={8} />
 
             <div className="grid lg:grid-cols-3 gap-6">
@@ -989,12 +969,10 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              DATA DISPLAY
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="data">
+            {/* DATA */}
+            <TabsContent value="data" className="mt-0 space-y-6">
             <SectionHeader title="DATA DISPLAY" count={8} />
 
             <div className="space-y-6">
@@ -1118,12 +1096,10 @@ export default function StyleGuidePage() {
                 />
               </div>
             </div>
-          </section>
+            </TabsContent>
 
-          {/* ═══════════════════════════════════════════════════════════════
-              EFFECTS
-              ═══════════════════════════════════════════════════════════════ */}
-          <section id="effects">
+            {/* EFFECTS */}
+            <TabsContent value="effects" className="mt-0 space-y-6">
             <SectionHeader title="EFFECTS & STATES" count={6} />
 
             <div className="grid lg:grid-cols-2 gap-6">
@@ -1180,17 +1156,9 @@ export default function StyleGuidePage() {
                 </CardContent>
               </Card>
             </div>
-          </section>
-
-          {/* Footer */}
-          <footer className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>Complete design system coverage. Switch themes to validate all styles adapt correctly.</p>
-            <p className="mt-2">
-              <code className="bg-muted px-2 py-1 text-xs">font-body</code> and{' '}
-              <code className="bg-muted px-2 py-1 text-xs">font-headline</code> apply globally.
-            </p>
-          </footer>
-        </div>
+            </TabsContent>
+          </div>
+        </Tabs>
       </div>
     </TooltipProvider>
   );
