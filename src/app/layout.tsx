@@ -18,6 +18,7 @@ import { generateOrganizationSchema, generateProductSchema } from '@/lib/metadat
 import { ThemeScript } from '@/design-system/providers';
 import { MonitorEffectScript } from '@/components/theme/monitor-effect-script';
 import { getNonce } from '@/lib/nonce';
+import { GOOGLE_FONTS_URL } from '@/config/fonts';
 import './globals.css';
 import './typography.css';
 import '@/styles/crt-effects.css';
@@ -146,13 +147,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           name="description"
           content="A complete UI system with 169 production-ready components, design tokens, automated testing, and AI workflows. Build faster with enforced quality standards."
         />
-        {/* Google Fonts - Theme playground fonts */}
+        {/* Google Fonts - Theme playground fonts (configured in src/config/fonts.ts) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Crimson+Text:wght@400;700&family=Fira+Code:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Lato:wght@400;700&family=Lora:wght@400;700&family=Merriweather:wght@400;700&family=Montserrat:wght@400;500;700&family=Open+Sans:wght@400;500;700&family=Oswald:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&family=Russo+One&family=Source+Code+Pro:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href={GOOGLE_FONTS_URL} rel="stylesheet" />
         <ThemeScript defaultColorTheme="green" storageKeyPrefix="fabrk-theme" nonce={nonce} />
         <MonitorEffectScript nonce={nonce} />
         {/* Google Tag Manager - Only when GTM_ID is configured */}

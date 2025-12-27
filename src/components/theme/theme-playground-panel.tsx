@@ -6,6 +6,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import { Button } from '@/components/ui/button';
 import { useThemeContext } from '@/design-system/providers/ThemeProvider';
 import { cn } from '@/lib/utils';
+import { FONT_OPTIONS, DEFAULT_BODY_FONT, DEFAULT_HEADLINE_FONT } from '@/config/fonts';
 
 // =============================================================================
 // CONTEXT - For external control of the panel
@@ -96,36 +97,6 @@ const RADIUS_OPTIONS: { value: RadiusOption; label: string; cssValue: string }[]
   { value: 'md', label: 'Medium', cssValue: '0.5rem' },
   { value: 'lg', label: 'Large', cssValue: '0.75rem' },
   { value: 'full', label: 'Full', cssValue: '1rem' },
-];
-
-// Font options - ALL fonts loaded via Google Fonts in layout.tsx
-// Customers can add their own fonts by updating the Google Fonts link and this array
-const FONT_OPTIONS: { value: string; label: string; cssValue: string; category: 'display' | 'mono' | 'sans' | 'serif' }[] = [
-  // Display fonts (Google Fonts)
-  { value: 'bebas-neue', label: 'Bebas Neue', cssValue: "'Bebas Neue', Impact, sans-serif", category: 'display' },
-  { value: 'oswald', label: 'Oswald', cssValue: "'Oswald', Impact, sans-serif", category: 'display' },
-  { value: 'anton', label: 'Anton', cssValue: "'Anton', Impact, sans-serif", category: 'display' },
-  { value: 'archivo-black', label: 'Archivo Black', cssValue: "'Archivo Black', Impact, sans-serif", category: 'display' },
-  { value: 'russo-one', label: 'Russo One', cssValue: "'Russo One', Impact, sans-serif", category: 'display' },
-  // Mono fonts (Google Fonts)
-  { value: 'jetbrains', label: 'JetBrains Mono', cssValue: "'JetBrains Mono', ui-monospace, monospace", category: 'mono' },
-  { value: 'fira-code', label: 'Fira Code', cssValue: "'Fira Code', ui-monospace, monospace", category: 'mono' },
-  { value: 'source-code', label: 'Source Code Pro', cssValue: "'Source Code Pro', ui-monospace, monospace", category: 'mono' },
-  { value: 'ibm-plex', label: 'IBM Plex Mono', cssValue: "'IBM Plex Mono', ui-monospace, monospace", category: 'mono' },
-  { value: 'roboto-mono', label: 'Roboto Mono', cssValue: "'Roboto Mono', ui-monospace, monospace", category: 'mono' },
-  { value: 'space-mono', label: 'Space Mono', cssValue: "'Space Mono', ui-monospace, monospace", category: 'mono' },
-  // Sans fonts (Google Fonts)
-  { value: 'inter', label: 'Inter', cssValue: "'Inter', system-ui, sans-serif", category: 'sans' },
-  { value: 'roboto', label: 'Roboto', cssValue: "'Roboto', system-ui, sans-serif", category: 'sans' },
-  { value: 'open-sans', label: 'Open Sans', cssValue: "'Open Sans', system-ui, sans-serif", category: 'sans' },
-  { value: 'lato', label: 'Lato', cssValue: "'Lato', system-ui, sans-serif", category: 'sans' },
-  { value: 'poppins', label: 'Poppins', cssValue: "'Poppins', system-ui, sans-serif", category: 'sans' },
-  { value: 'montserrat', label: 'Montserrat', cssValue: "'Montserrat', system-ui, sans-serif", category: 'sans' },
-  // Serif fonts (Google Fonts)
-  { value: 'playfair', label: 'Playfair Display', cssValue: "'Playfair Display', serif", category: 'serif' },
-  { value: 'merriweather', label: 'Merriweather', cssValue: "'Merriweather', serif", category: 'serif' },
-  { value: 'lora', label: 'Lora', cssValue: "'Lora', serif", category: 'serif' },
-  { value: 'crimson', label: 'Crimson Text', cssValue: "'Crimson Text', serif", category: 'serif' },
 ];
 
 const LETTER_SPACING_OPTIONS: { value: LetterSpacingOption; label: string; cssValue: string }[] = [
@@ -237,8 +208,8 @@ export function ThemePlaygroundPanel({ showTrigger = false }: ThemePlaygroundPan
     radius: 'none',
     scale: '100',
     panelBackground: 'solid',
-    bodyFont: 'jetbrains',
-    headlineFont: 'jetbrains',
+    bodyFont: DEFAULT_BODY_FONT,
+    headlineFont: DEFAULT_HEADLINE_FONT,
     bodyLetterSpacing: 'normal',
     headlineLetterSpacing: 'tight',
     uiTextCase: 'uppercase',
