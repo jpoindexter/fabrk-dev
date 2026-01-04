@@ -22,6 +22,49 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.2.0",
+    date: "2026-01-04",
+    title: "M3 TYPOGRAPHY SYSTEM",
+    changes: [
+      {
+        type: 'added',
+        description: "**M3 Type Scale** - Complete Material Design 3 typography tokens (display, headline, title, body, label)"
+      },
+      {
+        type: 'added',
+        description: "**Size Variants** - All categories now have l/m/s sizes (e.g., `text-headline-l`, `text-body-m`)"
+      },
+      {
+        type: 'added',
+        description: "**Display XL** - New 88px/96px display size for hero sections"
+      },
+      {
+        type: 'added',
+        description: "**Code Typography** - Dedicated code-l/m/s tokens for terminal output"
+      },
+      {
+        type: 'changed',
+        description: "Line-heights now use fixed pixel values per M3 spec (not ratios)"
+      },
+      {
+        type: 'changed',
+        description: "Font weights aligned to M3 standards (500 for display/headline)"
+      },
+      {
+        type: 'changed',
+        description: "Responsive scaling for screens under 600px width"
+      },
+      {
+        type: 'changed',
+        description: "Design system primitives updated with M3-aligned font sizes"
+      },
+      {
+        type: 'fixed',
+        description: "Letter-spacing values corrected per M3 specification"
+      }
+    ]
+  },
+  {
     version: "1.1.0",
     date: "2025-12-27",
     title: "FONT PAIRINGS AND ACCESSIBILITY",
