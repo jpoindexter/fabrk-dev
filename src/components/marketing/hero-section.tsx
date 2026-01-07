@@ -10,7 +10,7 @@ import { Container } from '@/components/ui/container';
 import { PolarCheckoutButton } from '@/components/polar/checkout-button';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { FuiBackground } from './fui-background';
 import { DemoVideoModal } from './demo-video-modal';
@@ -80,15 +80,15 @@ export function HeroSection() {
           <Link
             href="/changelog"
             className={cn(
-              'group inline-flex items-center gap-2 border border-primary/40 bg-primary/5 px-4 py-1.5 mb-10 text-xs transition-all hover:border-primary hover:bg-primary/10',
+              'group inline-flex items-center gap-2 border border-border bg-background px-4 py-1.5 mb-10 text-sm transition-all hover:border-primary',
               mode.radius,
               mode.font
             )}
           >
-            <Sparkles className="h-3 w-3 text-primary" />
-            <span className="text-primary">v1.3.0</span>
+            <span className={mode.color.text.muted}>v1.3.0</span>
+            <span className="text-border">|</span>
             <span className={mode.color.text.muted}>JUST UPDATED</span>
-            <ArrowRight className="h-3 w-3 text-primary transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight className={cn('h-3 w-3 transition-transform group-hover:translate-x-0.5', mode.color.text.muted)} />
           </Link>
 
           {/* Main Headline */}
