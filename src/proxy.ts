@@ -20,10 +20,32 @@ import { getToken } from 'next-auth/jwt';
 
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
+// Cleanup expired rate limit entries every 5 minutes to prevent memory leaks
+const CLEANUP_INTERVAL = 5 * 60 * 1000;
+let lastCleanup = Date.now();
+
+function cleanupRateLimitStore() {
+  const now = Date.now();
+  if (now - lastCleanup < CLEANUP_INTERVAL) return;
+
+  lastCleanup = now;
+  let cleaned = 0;
+  for (const [key, record] of rateLimitStore.entries()) {
+    if (now > record.resetTime) {
+      rateLimitStore.delete(key);
+      cleaned++;
+    }
+  }
+  if (cleaned > 0) {
+    console.log(`[SECURITY] Cleaned ${cleaned} expired rate limit entries`);
+  }
+}
+
 const RATE_LIMITS = {
   auth: { windowMs: 15 * 60 * 1000, maxRequests: 5 },
   sensitive: { windowMs: 60 * 60 * 1000, maxRequests: 10 },
   payment: { windowMs: 60 * 1000, maxRequests: 10 },
+  ai: { windowMs: 60 * 1000, maxRequests: 10 }, // Strict limit to prevent cost abuse
   api: { windowMs: 60 * 1000, maxRequests: 60 },
   public: { windowMs: 60 * 1000, maxRequests: 100 },
   webhook: { windowMs: 60 * 1000, maxRequests: 100 },
@@ -35,6 +57,8 @@ const ROUTE_PATTERNS = {
   payment: ['/api/stripe/checkout', '/api/polar/checkout', '/api/lemonsqueezy/checkout'],
   admin: ['/api/admin'],
   webhook: ['/api/stripe/webhook', '/api/polar/webhook', '/api/lemonsqueezy/webhook'],
+  // AI routes need stricter rate limiting to prevent cost abuse
+  ai: ['/api/ai/chat', '/api/ai/generate'],
 };
 
 const BAD_BOT_PATTERNS = [/curl/i, /wget/i, /python-requests/i, /scrapy/i, /httpclient/i, /java\//i, /libwww/i, /lwp-/i, /^$/];
@@ -81,6 +105,7 @@ function getRouteTier(pathname: string): keyof typeof RATE_LIMITS {
   if (ROUTE_PATTERNS.payment.some((p) => pathname.startsWith(p))) return 'payment';
   if (ROUTE_PATTERNS.admin.some((p) => pathname.startsWith(p))) return 'sensitive';
   if (ROUTE_PATTERNS.webhook.some((p) => pathname.startsWith(p))) return 'webhook';
+  if (ROUTE_PATTERNS.ai.some((p) => pathname.startsWith(p))) return 'ai';
   if (pathname.startsWith('/api/')) return 'api';
   return 'public';
 }
@@ -128,6 +153,9 @@ export default async function proxy(req: NextRequest) {
 
   // Rate limiting for API routes
   if (pathname.startsWith('/api/')) {
+    // Cleanup expired entries periodically
+    cleanupRateLimitStore();
+
     const tier = getRouteTier(pathname);
     const rateLimit = checkRateLimit(clientId, tier);
 
@@ -183,7 +211,7 @@ export default async function proxy(req: NextRequest) {
     "font-src 'self' data: https://fonts.gstatic.com",
     "connect-src 'self' https://api.stripe.com https://vitals.vercel-insights.com https://api.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com",
     "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://vercel.live https://www.youtube.com https://youtube.com",
-    "frame-ancestors 'self'",
+    "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
     "object-src 'none'",
@@ -201,9 +229,9 @@ export default async function proxy(req: NextRequest) {
   if (!hasValidCsrfCookie(existingCsrfToken)) {
     const newToken = generateCsrfTokenEdge();
     response.cookies.set(CSRF_COOKIE_NAME, newToken, {
-      httpOnly: false,
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'strict',
       path: '/',
       maxAge: 60 * 60 * 24,
     });

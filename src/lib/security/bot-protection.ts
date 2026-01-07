@@ -25,16 +25,24 @@ export interface BotDetectionResult {
 
 /**
  * Known good bots (search engines, AI crawlers)
+ * These are allowed through without rate limiting
  */
 const GOOD_BOTS = [
-  // Search engines
+  // Search engines (always allow)
   'Googlebot',
   'Bingbot',
   'DuckDuckBot',
   'Baiduspider',
   'YandexBot',
   'Slurp', // Yahoo
+
+  // Social media crawlers
   'facebookexternalhit',
+  'Twitterbot',
+  'LinkedInBot',
+  'WhatsApp',
+  'TelegramBot',
+  'Discordbot',
 
   // AI crawlers
   'GPTBot',
@@ -45,27 +53,24 @@ const GOOD_BOTS = [
   'PerplexityBot',
   'CCBot',
 
-  // Monitoring
+  // Monitoring services
   'UptimeRobot',
   'Pingdom',
   'StatusCake',
-
-  // SEO tools
-  'AhrefsBot',
-  'SemrushBot',
-  'DotBot', // Moz
 ];
 
 /**
- * Known bad bots (scrapers, spam bots)
+ * Known bad bots (scrapers, spam bots, aggressive crawlers)
+ * These are blocked or heavily rate-limited
  */
 const BAD_BOTS = [
-  'SemrushBot', // Can be aggressive
-  'AhrefsBot', // Can be aggressive
+  // Aggressive SEO crawlers (block - use their official APIs instead)
+  'SemrushBot',
+  'AhrefsBot',
   'MJ12bot', // Majestic
+  'DotBot', // Moz - aggressive
   'SeznamBot',
   'linkdexbot',
-  'DotBot',
   'AspiegelBot',
   'BLEXBot',
   'DataForSeoBot',
@@ -80,8 +85,12 @@ const BAD_BOTS = [
   'curl',
   'python-requests',
   'scrapy',
+  'httpclient',
+  'java/',
+  'libwww',
+  'lwp-',
 
-  // Spam
+  // Spam bots
   'EmailCollector',
   'EmailSiphon',
   'EmailWolf',

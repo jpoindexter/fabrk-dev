@@ -100,7 +100,7 @@ export function generateCSP(options?: { isDevelopment?: boolean; nonce?: string 
     'form-action': ["'self'"],
 
     // Prevent framing by other sites (clickjacking protection)
-    'frame-ancestors': ["'self'"],
+    'frame-ancestors': ["'none'"],
 
     // Block mixed content
     ...(isDevelopment ? {} : { 'upgrade-insecure-requests': [''] }),
