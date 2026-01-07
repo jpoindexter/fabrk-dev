@@ -4,7 +4,7 @@
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to: **security@fabrk.dev**
+Instead, please report them via email to: **<support@fabrk.dev>**
 
 Include the following information:
 - Type of vulnerability
@@ -92,8 +92,7 @@ You should receive a response within 48 hours. If the issue is confirmed, we wil
 
 ## Security Contacts
 
-- Security Team: security@fabrk.dev
-- General Support: support@fabrk.dev
+- Security Reports: <support@fabrk.dev>
 
 ## Acknowledgments
 
