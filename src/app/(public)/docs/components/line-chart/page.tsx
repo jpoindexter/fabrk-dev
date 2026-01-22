@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { LineChart, LineChartCard } from '@/components/ui/line-chart';
+import { LineChart, LineChartCard } from '@/components/charts/line-chart';
 import { TrendingUp } from 'lucide-react';
 
 const sampleData = [
@@ -20,7 +20,7 @@ export default function LineChartPage() {
       category="Charts"
       title="Line Chart"
       description="A multi-series line chart built with Recharts. Supports multiple data series, tooltips, legends, and customizable styling."
-      importCode={`import { LineChart, LineChartCard } from "@/components/ui/line-chart"`}
+      importCode={`import { LineChart, LineChartCard } from "@/components/charts/line-chart"`}
       mainPreview={{
         preview: (
           <div className="w-full p-4">

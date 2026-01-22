@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { BarChart, BarChartCard, StackedBarChart } from '@/components/ui/bar-chart';
+import { BarChart, BarChartCard, StackedBarChart } from '@/components/charts/bar-chart';
 import { BarChart3 } from 'lucide-react';
 
 const sampleData = [
@@ -28,7 +28,7 @@ export default function BarChartPage() {
       category="Charts"
       title="Bar Chart"
       description="A versatile bar chart built with Recharts. Supports vertical/horizontal layouts, stacked bars, and color customization."
-      importCode={`import { BarChart, BarChartCard, StackedBarChart } from "@/components/ui/bar-chart"`}
+      importCode={`import { BarChart, BarChartCard, StackedBarChart } from "@/components/charts/bar-chart"`}
       mainPreview={{
         preview: (
           <div className="w-full p-4">

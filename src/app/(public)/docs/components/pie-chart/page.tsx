@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { PieChart, PieChartDataItem } from '@/components/ui/pie-chart';
+import { PieChart, PieChartDataItem } from '@/components/charts/pie-chart';
 import { toast } from 'sonner';
 
 export default function PieChartPage() {
@@ -31,7 +31,7 @@ export default function PieChartPage() {
       category="Components"
       title="Pie Chart"
       description="Interactive pie chart visualization component with legend, hover effects, and donut variant support."
-      importCode={`import { PieChart, PieChartDataItem } from "@/components/ui/pie-chart";`}
+      importCode={`import { PieChart, PieChartDataItem } from "@/components/charts/pie-chart";`}
       mainPreview={{
         preview: <PieChart data={sampleData} />,
         code: `const data: PieChartDataItem[] = [

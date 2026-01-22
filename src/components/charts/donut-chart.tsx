@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { PieChart, PieChartDataItem } from './pie-chart';
+import { PieChart, PieChartDataItem } from '@/components/charts/pie-chart';
 import { cn } from '@/lib/utils';
 
 interface DonutChartProps {

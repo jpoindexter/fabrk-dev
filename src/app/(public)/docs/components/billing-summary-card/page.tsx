@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { BillingSummaryCard } from '@/components/ui/billing-summary-card';
+import { BillingSummaryCard } from '@/components/billing/billing-summary-card';
 
 export default function BillingSummaryCardPage() {
   const plan = {
@@ -23,7 +23,7 @@ export default function BillingSummaryCardPage() {
       category="Specialized"
       title="Billing Summary Card"
       description="A subscription status card showing current plan, usage meters, and billing actions. Perfect for SaaS billing dashboards."
-      importCode={`import { BillingSummaryCard } from "@/components/ui/billing-summary-card"`}
+      importCode={`import { BillingSummaryCard } from "@/components/billing/billing-summary-card"`}
       mainPreview={{
         preview: (
           <div className="mx-auto w-full max-w-2xl p-4">

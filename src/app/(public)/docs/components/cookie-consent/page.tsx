@@ -43,7 +43,7 @@ export default function CookieConsentPage() {
       category="Components"
       title="Cookie Consent"
       description="GDPR/Privacy compliance banner with granular consent preferences."
-      importCode={`import { CookieConsent } from "@/components/ui/cookie-consent"`}
+      importCode={`import { CookieConsent } from "@/components/cookie-consent"`}
       mainPreview={{
         preview: <CookieConsentDemo />,
         code: `<CookieConsent

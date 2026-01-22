@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { AreaChart, AreaChartCard, StackedAreaChart } from '@/components/ui/area-chart';
+import { AreaChart, AreaChartCard, StackedAreaChart } from '@/components/charts/area-chart';
 import { TrendingUp } from 'lucide-react';
 
 const sampleData = [
@@ -29,7 +29,7 @@ export default function AreaChartPage() {
       category="Charts"
       title="Area Chart"
       description="A multi-series area chart built with Recharts. Supports gradient fills, stacked areas, and theme-aware colors."
-      importCode={`import { AreaChart, AreaChartCard, StackedAreaChart } from "@/components/ui/area-chart"`}
+      importCode={`import { AreaChart, AreaChartCard, StackedAreaChart } from "@/components/charts/area-chart"`}
       mainPreview={{
         preview: (
           <div className="w-full p-4">

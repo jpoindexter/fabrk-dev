@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { PlanSelector } from '@/components/ui/billing-summary-card';
+import { PlanSelector } from '@/components/billing/billing-summary-card';
 
 const plans = [
   {
@@ -44,7 +44,7 @@ export default function PlanSelectorPage() {
       category="Specialized"
       title="Plan Selector"
       description="A pricing plan selection component for upgrade flows. Shows plan cards with features, popular badge, and selection state."
-      importCode={`import { PlanSelector } from "@/components/ui/billing-summary-card"`}
+      importCode={`import { PlanSelector } from "@/components/billing/billing-summary-card"`}
       mainPreview={{
         preview: (
           <div className="p-4">
@@ -132,7 +132,7 @@ export default function PlanSelectorPage() {
           code: `'use client';
 
 import { useState } from 'react';
-import { PlanSelector } from '@/components/ui/billing-summary-card';
+import { PlanSelector } from '@/components/billing/billing-summary-card';
 import { useRouter } from 'next/navigation';
 
 const plans = [
@@ -221,7 +221,7 @@ export default function UpgradePage() {
           code: `'use client';
 
 import { useEffect, useState } from 'react';
-import { PlanSelector } from '@/components/ui/billing-summary-card';
+import { PlanSelector } from '@/components/billing/billing-summary-card';
 
 export function PricingPage() {
   const [plans, setPlans] = useState([]);

@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { UsageMeter } from '@/components/ui/billing-summary-card';
+import { UsageMeter } from '@/components/billing/billing-summary-card';
 
 export default function UsageMeterPage() {
   return (
@@ -10,7 +10,7 @@ export default function UsageMeterPage() {
       category="Specialized"
       title="Usage Meter"
       description="A progress bar component for displaying resource usage. Shows current vs limit with color-coded warnings when approaching limits."
-      importCode={`import { UsageMeter } from "@/components/ui/billing-summary-card"`}
+      importCode={`import { UsageMeter } from "@/components/billing/billing-summary-card"`}
       mainPreview={{
         preview: (
           <div className="mx-auto max-w-md space-y-4 p-4">
@@ -123,7 +123,7 @@ export default function UsageMeterPage() {
           title: 'Billing Summary Card',
           description:
             'Show multiple resource usage meters in a billing summary. Client-side only, pass data as props.',
-          code: `import { UsageMeter } from '@/components/ui/billing-summary-card';
+          code: `import { UsageMeter } from '@/components/billing/billing-summary-card';
 
 export function BillingCard({ usage }: { usage: UsageData }) {
   return (
@@ -178,7 +178,7 @@ export function BillingCard({ usage }: { usage: UsageData }) {
           code: `'use client';
 
 import { useEffect, useState } from 'react';
-import { UsageMeter } from '@/components/ui/billing-summary-card';
+import { UsageMeter } from '@/components/billing/billing-summary-card';
 
 export function UsageDashboard() {
   const [usage, setUsage] = useState(null);

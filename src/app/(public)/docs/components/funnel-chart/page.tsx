@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { FunnelChart } from '@/components/ui/funnel-chart';
+import { FunnelChart } from '@/components/charts/funnel-chart';
 import { toast } from 'sonner';
 
 export default function FunnelChartPage() {
@@ -32,7 +32,7 @@ export default function FunnelChartPage() {
       category="Components"
       title="Funnel Chart"
       description="Visualize conversion funnels with interactive stages showing values and conversion rates."
-      importCode={`import { FunnelChart } from "@/components/ui/funnel-chart"`}
+      importCode={`import { FunnelChart } from "@/components/charts/funnel-chart"`}
       mainPreview={{
         preview: <FunnelChart data={salesFunnel} />,
         code: `const salesFunnel = [

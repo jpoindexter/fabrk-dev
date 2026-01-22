@@ -2,7 +2,7 @@
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
 import { DocsSection, DocsCard } from '@/components/docs';
-import { SignInForm, SignUpForm } from '@/components/ui/sign-in-form';
+import { SignInForm, SignUpForm } from '@/components/auth/sign-in-form';
 
 export default function SignInFormPage() {
   return (
@@ -11,7 +11,7 @@ export default function SignInFormPage() {
       category="Components"
       title="Sign In Form"
       description="Complete authentication forms with email/password and social providers."
-      importCode={`import { SignInForm, SignUpForm } from "@/components/ui/sign-in-form"`}
+      importCode={`import { SignInForm, SignUpForm } from "@/components/auth/sign-in-form"`}
       mainPreview={{
         preview: (
           <div className="w-full max-w-sm">

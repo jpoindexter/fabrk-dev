@@ -27,10 +27,10 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Button } from './button';
-import { Input } from './input';
-import { Card } from './card';
-import { Badge } from './badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import {
   Dialog,
   DialogContent,
@@ -39,7 +39,7 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from './dialog';
+} from '@/components/ui/dialog';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -49,13 +49,13 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from './alert-dialog';
+} from '@/components/ui/alert-dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 import { Copy, Check, MoreVertical, Plus, Trash2, Search } from 'lucide-react';
 
 export interface ApiKey {

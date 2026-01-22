@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { ApiKeyManager } from '@/components/ui/api-key-manager';
+import { ApiKeyManager } from '@/components/developer/api-key-manager';
 
 // Example keys with masked format to avoid triggering secret scanners
 const mockKeys = [
@@ -28,7 +28,7 @@ export default function ApiKeyManagerPage() {
       category="Pro Pack"
       title="API Key Manager"
       description="Generate, view, and revoke API keys for programmatic access with copy-to-clipboard and search functionality."
-      importCode={`import { ApiKeyManager } from "@/components/ui/api-key-manager"`}
+      importCode={`import { ApiKeyManager } from "@/components/developer/api-key-manager"`}
       mainPreview={{
         preview: (
           <div className="w-full max-w-4xl">

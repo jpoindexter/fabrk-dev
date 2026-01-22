@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/card';
 import { StyledTabs, StyledTabsContent } from '@/components/ui/styled-tabs';
 import { CodeBlock } from '@/components/ui/code-block';
-import { OnboardingChecklist } from '@/components/ui/onboarding-checklist';
+import { OnboardingChecklist } from '@/components/onboarding/onboarding-checklist';
 import { TemplatePreviewWrapper } from '@/components/library';
 import { RelatedTemplates } from '@/components/library/related-templates';
 import { mode } from '@/design-system';
@@ -234,7 +234,7 @@ function OnboardingPreview() {
 const checklistCode = `"use client";
 
 import { useState } from "react";
-import { OnboardingChecklist, OnboardingTask } from "@/components/ui/onboarding-checklist";
+import { OnboardingChecklist, OnboardingTask } from "@/components/onboarding/onboarding-checklist";
 
 const initialTasks: OnboardingTask[] = [
   {

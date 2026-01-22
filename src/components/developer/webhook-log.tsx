@@ -30,13 +30,13 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card } from './card';
-import { Badge } from './badge';
-import { Button } from './button';
-import { Input } from './input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './sheet';
-import { CodeBlock } from './code-block';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { CodeBlock } from '@/components/ui/code-block';
 import { Search, RefreshCw, ExternalLink, Clock } from 'lucide-react';
 
 export type WebhookStatus = 'success' | 'failed' | 'pending' | 'retrying';

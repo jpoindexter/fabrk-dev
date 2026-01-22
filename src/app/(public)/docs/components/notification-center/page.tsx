@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { NotificationCenter, Notification } from '@/components/ui/notification-center';
+import { NotificationCenter, Notification } from '@/components/notifications/notification-center';
 import { useState } from 'react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
@@ -94,7 +94,7 @@ export default function NotificationCenterPage() {
       category="Components"
       title="Notification Center"
       description="A comprehensive notification center dropdown with grouped notifications, read/unread states, and action buttons."
-      importCode={`import { NotificationCenter, Notification } from "@/components/ui/notification-center"`}
+      importCode={`import { NotificationCenter, Notification } from "@/components/notifications/notification-center"`}
       mainPreview={{
         preview: (
           <div className="flex justify-center">

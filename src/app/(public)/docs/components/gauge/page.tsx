@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { Gauge, ScoreGauge } from '@/components/ui/gauge';
+import { Gauge, ScoreGauge } from '@/components/charts/gauge';
 
 export default function GaugePage() {
   /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
@@ -10,7 +10,7 @@ export default function GaugePage() {
       code="[UI.29]"
       title="Gauge"
       description="A circular gauge component for displaying metrics, scores, and progress with a rotating needle indicator."
-      importCode={`import { Gauge, ScoreGauge } from "@/components/ui/gauge";`}
+      importCode={`import { Gauge, ScoreGauge } from "@/components/charts/gauge";`}
       mainPreview={{
         preview: <Gauge value={75} label="Performance" showValue={true} />,
         code: `<Gauge

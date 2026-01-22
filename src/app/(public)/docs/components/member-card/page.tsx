@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { MemberCard, Member } from '@/components/ui/member-card';
+import { MemberCard, Member } from '@/components/organization/member-card';
 
 export default function MemberCardPage() {
   const sampleMember: Member = {
@@ -49,7 +49,7 @@ export default function MemberCardPage() {
       category="Components"
       title="Member Card"
       description="Team member profile card component with avatar, status indicator, actions, and optional compact layout."
-      importCode={`import { MemberCard, Member } from "@/components/ui/member-card";`}
+      importCode={`import { MemberCard, Member } from "@/components/organization/member-card";`}
       mainPreview={{
         preview: (
           <div className="border-border bg-background border p-6 font-mono">

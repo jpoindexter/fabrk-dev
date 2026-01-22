@@ -32,9 +32,9 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card } from './card';
-import { Button } from './button';
-import { Checkbox } from './checkbox';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { ChevronDown, ChevronUp, X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

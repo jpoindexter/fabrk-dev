@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { OnboardingChecklist } from '@/components/ui/onboarding-checklist';
+import { OnboardingChecklist } from '@/components/onboarding/onboarding-checklist';
 import { useState } from 'react';
 
 const mockTasks = [
@@ -56,7 +56,7 @@ export default function OnboardingChecklistPage() {
       category="Pro Pack"
       title="Onboarding Checklist"
       description="Track user setup progress with expandable tasks, progress bar, and celebration animation on completion."
-      importCode={`import { OnboardingChecklist } from "@/components/ui/onboarding-checklist"`}
+      importCode={`import { OnboardingChecklist } from "@/components/onboarding/onboarding-checklist"`}
       mainPreview={{
         preview: (
           <div className="w-full max-w-2xl">

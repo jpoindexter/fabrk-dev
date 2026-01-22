@@ -30,13 +30,13 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
-import { Card } from './card';
-import { Avatar, AvatarFallback, AvatarImage } from './avatar';
-import { Badge } from './badge';
-import { Button } from './button';
-import { Input } from './input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from './sheet';
+import { Card } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import {
   Search,
   Download,

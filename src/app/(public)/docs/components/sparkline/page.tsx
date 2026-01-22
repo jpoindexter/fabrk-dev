@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { Sparkline, SparklineCard, SparklineGroup } from '@/components/ui/sparkline';
+import { Sparkline, SparklineCard, SparklineGroup } from '@/components/charts/sparkline';
 
 export default function SparklinePage() {
   /* eslint-disable design-system/no-hardcoded-colors -- Chart examples require specific colors for demonstrations */
@@ -15,7 +15,7 @@ export default function SparklinePage() {
       code="[UI.28]"
       title="Sparkline"
       description="Compact line charts for showing trends and data patterns inline with text or in small spaces."
-      importCode={`import { Sparkline, SparklineCard, SparklineGroup } from "@/components/ui/sparkline";`}
+      importCode={`import { Sparkline, SparklineCard, SparklineGroup } from "@/components/charts/sparkline";`}
       mainPreview={{
         preview: <Sparkline data={sampleData} width={100} height={30} strokeWidth={2} />,
         code: `<Sparkline

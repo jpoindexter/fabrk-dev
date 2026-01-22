@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { AuditLog } from '@/components/ui/audit-log';
+import { AuditLog } from '@/components/admin/audit-log';
 
 const mockLogs = [
   {
@@ -39,7 +39,7 @@ export default function AuditLogPage() {
       category="Pro Pack"
       title="Audit Log"
       description="Enterprise security timeline tracking all user actions with filtering, search, and CSV export for compliance."
-      importCode={`import { AuditLog } from "@/components/ui/audit-log"`}
+      importCode={`import { AuditLog } from "@/components/admin/audit-log"`}
       mainPreview={{
         preview: (
           <div className="w-full max-w-4xl">

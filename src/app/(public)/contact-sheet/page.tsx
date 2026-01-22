@@ -44,14 +44,14 @@ import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbS
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from '@/components/ui/command';
 import { KpiCard } from '@/components/ui/kpi-card';
 import { StatCard } from '@/components/ui/stat-card';
-import { Gauge } from '@/components/ui/gauge';
+import { Gauge } from '@/components/charts/gauge';
 import { NotificationBadge } from '@/components/ui/notification-badge';
 import { Container } from '@/components/ui/container';
 import { EmptyState } from '@/components/ui/empty-state';
 import { TypeWriter } from '@/components/ui/typewriter';
 import { SimpleIcon } from '@/components/ui/simple-icon';
 import { siGithub, siGoogle } from 'simple-icons';
-import { Sparkline } from '@/components/ui/sparkline';
+import { Sparkline } from '@/components/charts/sparkline';
 import { AlertCircle, Check, Info, ChevronDown, Search, Bell } from 'lucide-react';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';

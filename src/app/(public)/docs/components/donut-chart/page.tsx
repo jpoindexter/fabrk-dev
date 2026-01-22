@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { DonutChart, MetricDonutChart, ProgressDonutChart } from '@/components/ui/donut-chart';
+import { DonutChart, MetricDonutChart, ProgressDonutChart } from '@/components/charts/donut-chart';
 import { useState } from 'react';
 
 export default function DonutChartPage() {
@@ -33,7 +33,7 @@ export default function DonutChartPage() {
       code="[UI.30]"
       title="Donut Chart"
       description="A circular chart component for displaying proportional data with optional center content and interactive segments."
-      importCode={`import { DonutChart, MetricDonutChart, ProgressDonutChart } from "@/components/ui/donut-chart";`}
+      importCode={`import { DonutChart, MetricDonutChart, ProgressDonutChart } from "@/components/charts/donut-chart";`}
       mainPreview={{
         preview: <DonutChart data={categoryData} size={300} thickness={60} showLegend={true} />,
         code: `<DonutChart

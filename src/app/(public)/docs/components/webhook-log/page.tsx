@@ -1,7 +1,7 @@
 'use client';
 
 import { ComponentShowcaseTemplate } from '@/components/docs';
-import { WebhookLog } from '@/components/ui/webhook-log';
+import { WebhookLog } from '@/components/developer/webhook-log';
 
 const mockLogs = [
   {
@@ -59,7 +59,7 @@ export default function WebhookLogPage() {
       category="Pro Pack"
       title="Webhook Log"
       description="Track webhook delivery status with filtering, retry functionality, and detailed request/response debugging."
-      importCode={`import { WebhookLog } from "@/components/ui/webhook-log"`}
+      importCode={`import { WebhookLog } from "@/components/developer/webhook-log"`}
       mainPreview={{
         preview: (
           <div className="w-full max-w-4xl">
