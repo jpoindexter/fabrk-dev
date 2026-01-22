@@ -90,9 +90,21 @@ Visit **http://localhost:3000** 🎉
 
 ---
 
+## 🔔 Stay Updated
+
+Watch this repo to get notified when we ship updates:
+
+1. Click the **Watch** button (top right of this page)
+2. Select **Custom** → Check **Releases**
+3. Click **Apply**
+
+You'll receive an email whenever we release new versions with features, fixes, and improvements.
+
+---
+
 ## 🚀 What's Inside
 
-### UI Components (78 Total)
+### UI Components (62 Total)
 
 - **Forms**: Input, Textarea, Select, Checkbox, Radio, Switch, Slider, Calendar, Date Picker, File Upload
 - **Navigation**: Navbar, Sidebar, Tabs, Breadcrumbs, Pagination, Command Palette
@@ -131,7 +143,7 @@ Visit **http://localhost:3000** 🎉
 | **Email** | Resend with React Email templates |
 | **Validation** | Zod schemas (runtime type safety) |
 
-### Security Features (78/78 Audit Score)
+### Security Features (62/62 Audit Score)
 
 ✅ **Secrets Management** - Environment validation with Zod, .env.local exclusion
 ✅ **CSRF Protection** - Token-based with middleware injection
@@ -160,7 +172,7 @@ Git commits automatically run:
 
 ## 🎨 Customizing Components
 
-all 78 UI components support customization through className props and CSS variables.
+all 62 UI components support customization through className props and CSS variables.
 
 ### Quick Customization Examples
 
@@ -531,7 +543,7 @@ fabrk/
 │   │   ├── docs/            # Documentation site
 │   │   └── library/         # Template showcase
 │   ├── components/
-│   │   ├── ui/              # 78 UI components (Radix primitives)
+│   │   ├── ui/              # 62 UI components (Radix primitives)
 │   │   ├── docs/            # Documentation templates
 │   │   ├── dashboard/       # Dashboard components
 │   │   ├── theme/           # Theme switcher components
@@ -680,7 +692,7 @@ Fabrk documentation follows the [Diátaxis framework](https://diataxis.fr/) for 
 ### Component Documentation
 
 **Component API documentation** at `/docs/components`:
-- all 78 UI components with props, variants, examples
+- all 62 UI components with props, variants, examples
 - Accessibility compliance notes
 - Terminal styling patterns
 - Copy-paste ready code
@@ -734,7 +746,7 @@ fabrk/
 │
 ├── src/app/(public)/
 │   ├── docs/                         # Live documentation site (Next.js pages)
-│   │   ├── components/               # 78 UI component docs with live previews
+│   │   ├── components/               # 62 UI component docs with live previews
 │   │   ├── features/                 # Feature guides (payments, auth, etc.)
 │   │   ├── security/                 # Security guides (CSRF, headers, etc.)
 │   │   ├── design/                   # Design system guides
@@ -805,7 +817,7 @@ fabrk/
 3. Visit http://localhost:3000/docs → Interactive docs
     ↓
 4. Browse:
-   • /docs/components → See all 78 UI components
+   • /docs/components → See all 62 UI components
    • /docs/features → Learn to add payments, auth, etc.
    • /library → Copy-paste ready templates
     ↓
@@ -837,7 +849,7 @@ When **stuck or troubleshooting**:
 
 **Q: What makes Fabrk different from other SaaS boilerplates?**
 
-A: Terminal-first design aesthetic (18 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 78 production-ready components, and 100% OKLCH color system for perfect theme consistency.
+A: Terminal-first design aesthetic (18 themes), multi-provider payments (Stripe/Polar/Lemonsqueezy), 62 production-ready components, and 100% OKLCH color system for perfect theme consistency.
 
 **Q: Can I use this for client projects?**
 
@@ -1186,7 +1198,7 @@ Contributions welcome! Please:
 1. **Configure authentication** - Set up NextAuth providers in `.env.local`
 2. **Set up payments** - Configure Stripe, Polar, or Lemonsqueezy webhooks
 3. **Customize design** - Choose your terminal theme, adjust colors
-4. **Add features** - Build on top of 78 UI components
+4. **Add features** - Build on top of 62 UI components
 5. **Deploy** - Push to Vercel, set environment variables, go live
 
 **Read CLAUDE.md for AI assistant guidance** - Optimized for Claude Code and other AI tools.
@@ -1231,4 +1243,4 @@ Contributions welcome! Please:
 
 **© 2025 THEFT BV. All rights reserved.**
 
-**Last Updated:** 2025-12-20
+**Last Updated:** 2026-01-22
