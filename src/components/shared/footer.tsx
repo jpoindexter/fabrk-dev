@@ -121,6 +121,15 @@ export function Footer() {
                       >
                         &gt; CHANGELOG
                       </Link>
+                      <Link
+                        href="/roadmap"
+                        className={cn(
+                          'text-muted-foreground hover:text-foreground text-xs transition-colors',
+                          mode.font
+                        )}
+                      >
+                        &gt; ROADMAP
+                      </Link>
                     </nav>
                   </div>
 
