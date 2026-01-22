@@ -85,7 +85,7 @@ export function HeroSection() {
               mode.font
             )}
           >
-            <span className={mode.color.text.muted}>v1.3.0</span>
+            <span className={mode.color.text.muted}>v1.3.1</span>
             <span className="text-border">|</span>
             <span className={mode.color.text.muted}>JUST UPDATED</span>
             <ArrowRight className={cn('h-3 w-3 transition-transform group-hover:translate-x-0.5', mode.color.text.muted)} />

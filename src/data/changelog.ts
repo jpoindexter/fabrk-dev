@@ -22,6 +22,33 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.3.1",
+    date: "2026-01-22",
+    title: "COMPONENT ARCHITECTURE CLEANUP",
+    changes: [
+      {
+        type: 'changed',
+        description: "**Clean /ui/ Directory** - Moved 10 business logic components out of /ui/ to feature directories (billing/, auth/, admin/, etc.)"
+      },
+      {
+        type: 'changed',
+        description: "**New /charts/ Directory** - Consolidated 8 chart components (bar, line, area, pie, funnel, gauge, sparkline, donut) into dedicated directory"
+      },
+      {
+        type: 'changed',
+        description: "**card.tsx Split** - Reduced from 890 lines to 250 lines; marketing components moved to terminal-card.tsx"
+      },
+      {
+        type: 'removed',
+        description: "**Duplicate cookie-consent** - Removed /ui/cookie-consent.tsx in favor of /components/cookie-consent/ directory"
+      },
+      {
+        type: 'fixed',
+        description: "/ui/ now contains ONLY primitives (57 files, 7,746 lines) - no business logic"
+      }
+    ]
+  },
+  {
     version: "1.3.0",
     date: "2026-01-07",
     title: "INFRASTRUCTURE IMPROVEMENTS",
