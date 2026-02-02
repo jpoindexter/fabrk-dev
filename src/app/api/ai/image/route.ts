@@ -6,6 +6,7 @@
 import { NextRequest } from 'next/server';
 import { auth } from '@/lib/auth';
 import { generateImage } from '@/lib/ai';
+import { hasCredits, deductCredits, CREDIT_COSTS } from '@/lib/credits';
 
 // Image generation settings
 const _IMAGE_SIZES = ['256x256', '512x512', '1024x1024', '1792x1024', '1024x1792'] as const;
@@ -38,9 +39,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get session (optional)
+    // SECURITY: Require authentication to prevent API cost abuse
     const session = await auth();
-    const _userId = session?.user?.id;
+    if (!session?.user?.id) {
+      return Response.json(
+        { error: 'Unauthorized', message: 'Authentication required to use AI features' },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
 
     // Parse request body
     const {
@@ -73,20 +80,15 @@ export async function POST(req: NextRequest) {
 
     const numImages = Math.min(Math.max(1, n), 1); // DALL-E 3 only supports n=1
 
-    // Optional: Check credits
-    /*
-    if (userId) {
-      const { hasCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      const cost = CREDIT_COSTS.IMAGE_GENERATION * numImages;
-      const hasEnough = await hasCredits(userId, cost);
-      if (!hasEnough) {
-        return Response.json(
-          { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
-          { status: 402 }
-        );
-      }
+    // Check credits before processing (image generation is expensive)
+    const cost = CREDIT_COSTS.IMAGE_GENERATION * numImages;
+    const hasEnough = await hasCredits(userId, cost);
+    if (!hasEnough) {
+      return Response.json(
+        { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
+        { status: 402 }
+      );
     }
-    */
 
     // Generate image using lib/ai wrapper
     const urls = await generateImage({
@@ -97,16 +99,11 @@ export async function POST(req: NextRequest) {
       n: numImages,
     });
 
-    // Optional: Deduct credits
-    /*
-    if (userId) {
-      const { deductCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      await deductCredits(userId, CREDIT_COSTS.IMAGE_GENERATION * numImages, {
-        description: `Image generation (${numImages} image${numImages > 1 ? 's' : ''})`,
-        endpoint: '/api/ai/image',
-      });
-    }
-    */
+    // Deduct credits after successful generation
+    await deductCredits(userId, CREDIT_COSTS.IMAGE_GENERATION * numImages, {
+      description: `Image generation (${numImages} image${numImages > 1 ? 's' : ''})`,
+      endpoint: '/api/ai/image',
+    });
 
     return Response.json({
       images: urls.map((url) => ({ url })),

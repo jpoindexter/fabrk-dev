@@ -47,9 +47,15 @@ const EXAMPLE_JSON = `{
 
 export async function POST(request: NextRequest) {
   try {
-    // Check authentication for credit tracking
+    // SECURITY: Require authentication to prevent API cost abuse
     const session = await auth();
-    const userId = session?.user?.id;
+    if (!session?.user?.id) {
+      return NextResponse.json(
+        { error: 'Unauthorized', message: 'Authentication required to use AI features' },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
 
     // Check if AI is configured
     if (!isAIConfigured()) {
@@ -63,20 +69,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check credits for authenticated users
+    // Check credits before processing
     const creditCost = CREDIT_COSTS.FORM_GENERATION;
-    if (userId) {
-      const hasEnoughCredits = await hasCredits(userId, creditCost);
-      if (!hasEnoughCredits) {
-        return NextResponse.json(
-          {
-            error: 'Insufficient credits',
-            code: 'INSUFFICIENT CREDITS',
-            message: `This operation requires ${creditCost} credits. Please upgrade your plan or wait for your monthly refill.`,
-          },
-          { status: 402 }
-        );
-      }
+    const hasEnoughCredits = await hasCredits(userId, creditCost);
+    if (!hasEnoughCredits) {
+      return NextResponse.json(
+        {
+          error: 'Insufficient credits',
+          code: 'INSUFFICIENT_CREDITS',
+          message: `This operation requires ${creditCost} credits. Please upgrade your plan or wait for your monthly refill.`,
+        },
+        { status: 402 }
+      );
     }
 
     // Parse and validate request body
@@ -166,19 +170,17 @@ Respond with ONLY the JSON object, nothing else.`,
       formSchema = object;
     }
 
-    // Deduct credits for authenticated users after successful generation
-    if (userId) {
-      await deductCredits(userId, creditCost, {
-        description: 'Form generation',
-        endpoint: '/api/ai/generate-form',
-        metadata: { prompt: prompt.slice(0, 100) }, // Store first 100 chars of prompt
-      });
-    }
+    // Deduct credits after successful generation
+    await deductCredits(userId, creditCost, {
+      description: 'Form generation',
+      endpoint: '/api/ai/generate-form',
+      metadata: { prompt: prompt.slice(0, 100) }, // Store first 100 chars of prompt
+    });
 
     return NextResponse.json({
       success: true,
       form: formSchema,
-      creditsUsed: userId ? creditCost : 0,
+      creditsUsed: creditCost,
     });
   } catch (error) {
     console.error('Form generation error:', error);

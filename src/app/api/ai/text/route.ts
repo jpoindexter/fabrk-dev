@@ -7,6 +7,7 @@ import { generateText } from 'ai';
 import { NextRequest } from 'next/server';
 import { auth } from '@/lib/auth';
 import { getModel, isAIConfigured } from '@/lib/ai';
+import { hasCredits, deductCredits, CREDIT_COSTS } from '@/lib/credits';
 
 export type TextOperation = 'summarize' | 'rewrite' | 'translate' | 'expand' | 'grammar' | 'tone';
 
@@ -68,9 +69,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get session (optional)
+    // SECURITY: Require authentication to prevent API cost abuse
     const session = await auth();
-    const _userId = session?.user?.id;
+    if (!session?.user?.id) {
+      return Response.json(
+        { error: 'Unauthorized', message: 'Authentication required to use AI features' },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
 
     // Parse request body
     const { text, operation, options }: TextRequest = await req.json();
@@ -93,19 +100,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Optional: Check credits
-    /*
-    if (userId) {
-      const { hasCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      const hasEnough = await hasCredits(userId, CREDIT_COSTS.TEXT_OPERATION || 2);
-      if (!hasEnough) {
-        return Response.json(
-          { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
-          { status: 402 }
-        );
-      }
+    // Check credits before processing
+    const hasEnough = await hasCredits(userId, CREDIT_COSTS.TEXT_OPERATION);
+    if (!hasEnough) {
+      return Response.json(
+        { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
+        { status: 402 }
+      );
     }
-    */
 
     // Generate the prompt
     const prompt = operationPrompts[operation](text, options);
@@ -118,16 +120,11 @@ export async function POST(req: NextRequest) {
         'You are a helpful writing assistant. Respond only with the transformed text, no explanations or preamble.',
     });
 
-    // Optional: Deduct credits
-    /*
-    if (userId) {
-      const { deductCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      await deductCredits(userId, CREDIT_COSTS.TEXT_OPERATION || 2, {
-        description: `Text ${operation}`,
-        endpoint: '/api/ai/text',
-      });
-    }
-    */
+    // Deduct credits after successful operation
+    await deductCredits(userId, CREDIT_COSTS.TEXT_OPERATION, {
+      description: `Text ${operation}`,
+      endpoint: '/api/ai/text',
+    });
 
     return Response.json({
       result,

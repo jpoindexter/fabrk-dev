@@ -11,6 +11,9 @@ export const CREDIT_COSTS = {
   CHAT_MESSAGE: 1,
   CODE_GENERATION: 20,
   IMAGE_GENERATION: 50,
+  TEXT_OPERATION: 2, // summarize, rewrite, translate, etc.
+  SPEECH_TO_TEXT: 5, // audio transcription
+  TEXT_TO_SPEECH: 5, // speech synthesis
 } as const;
 
 /**

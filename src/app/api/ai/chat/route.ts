@@ -8,6 +8,7 @@ import { streamText } from 'ai';
 import { NextRequest } from 'next/server';
 import { auth } from '@/lib/auth';
 import { getModel, isAIConfigured } from '@/lib/ai';
+import { hasCredits, deductCredits, CREDIT_COSTS } from '@/lib/credits';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -26,9 +27,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get session (optional - chat can work without auth)
+    // SECURITY: Require authentication to prevent API cost abuse
     const session = await auth();
-    const _userId = session?.user?.id;
+    if (!session?.user?.id) {
+      return Response.json(
+        { error: 'Unauthorized', message: 'Authentication required to use AI features' },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
 
     // Parse request body
     const { messages, systemPrompt } = await req.json();
@@ -40,20 +47,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Optional: Check credits if user is authenticated
-    // Uncomment to enable credit-based billing for chat
-    /*
-    if (userId) {
-      const { hasCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      const hasEnough = await hasCredits(userId, CREDIT_COSTS.CHAT_MESSAGE);
-      if (!hasEnough) {
-        return Response.json(
-          { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
-          { status: 402 }
-        );
-      }
+    // Check credits before processing
+    const hasEnough = await hasCredits(userId, CREDIT_COSTS.CHAT_MESSAGE);
+    if (!hasEnough) {
+      return Response.json(
+        { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
+        { status: 402 }
+      );
     }
-    */
 
     // Default system prompt for Fabrk assistant
     const defaultSystemPrompt = `You are a helpful AI assistant. You provide clear, concise, and accurate responses.
@@ -67,19 +68,12 @@ Be direct and professional in your responses.`;
       messages,
     });
 
-    // Optional: Deduct credits after successful response
-    // Uncomment to enable credit-based billing for chat
-    /*
-    if (userId) {
-      const { deductCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      // Note: For streaming, you might want to deduct after stream completes
-      // This is a simplified version
-      await deductCredits(userId, CREDIT_COSTS.CHAT_MESSAGE, {
-        description: 'Chat message',
-        endpoint: '/api/ai/chat',
-      });
-    }
-    */
+    // Deduct credits for the chat message
+    // Note: For streaming, credits are deducted upfront
+    await deductCredits(userId, CREDIT_COSTS.CHAT_MESSAGE, {
+      description: 'Chat message',
+      endpoint: '/api/ai/chat',
+    });
 
     // Return streaming response
     return result.toTextStreamResponse();

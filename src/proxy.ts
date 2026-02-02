@@ -199,11 +199,16 @@ export default async function proxy(req: NextRequest) {
     }
   }
 
-  // Admin route protection
+  // Admin route protection - require admin role
   if (ROUTE_PATTERNS.admin.some((p) => pathname.startsWith(p))) {
     const token = await getToken({ req });
     if (!token) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    // SECURITY: Verify admin role at proxy level (defense in depth)
+    if (token.role !== 'ADMIN') {
+      console.log(`[SECURITY] Non-admin attempted admin route: ${pathname}`, { userId: token.sub });
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
   }
 

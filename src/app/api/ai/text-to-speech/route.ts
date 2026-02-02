@@ -6,6 +6,7 @@
 import { NextRequest } from 'next/server';
 import { auth } from '@/lib/auth';
 import { textToSpeech } from '@/lib/ai';
+import { hasCredits, deductCredits, CREDIT_COSTS } from '@/lib/credits';
 
 // Available voices
 const VOICES = ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'] as const;
@@ -34,9 +35,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get session (optional)
+    // SECURITY: Require authentication to prevent API cost abuse
     const session = await auth();
-    const _userId = session?.user?.id;
+    if (!session?.user?.id) {
+      return Response.json(
+        { error: 'Unauthorized', message: 'Authentication required to use AI features' },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
 
     // Parse request body
     const { text, voice = 'alloy', model = 'tts-1' }: TTSRequest = await req.json();
@@ -62,19 +69,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Optional: Check credits
-    /*
-    if (userId) {
-      const { hasCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      const hasEnough = await hasCredits(userId, CREDIT_COSTS.TEXT_TO_SPEECH || 5);
-      if (!hasEnough) {
-        return Response.json(
-          { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
-          { status: 402 }
-        );
-      }
+    // Check credits before processing
+    const hasEnough = await hasCredits(userId, CREDIT_COSTS.TEXT_TO_SPEECH);
+    if (!hasEnough) {
+      return Response.json(
+        { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
+        { status: 402 }
+      );
     }
-    */
 
     // Generate speech using lib/ai wrapper
     const audioBuffer = await textToSpeech({
@@ -83,16 +85,11 @@ export async function POST(req: NextRequest) {
       model,
     });
 
-    // Optional: Deduct credits
-    /*
-    if (userId) {
-      const { deductCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      await deductCredits(userId, CREDIT_COSTS.TEXT_TO_SPEECH || 5, {
-        description: 'Text-to-speech generation',
-        endpoint: '/api/ai/text-to-speech',
-      });
-    }
-    */
+    // Deduct credits after successful synthesis
+    await deductCredits(userId, CREDIT_COSTS.TEXT_TO_SPEECH, {
+      description: 'Text-to-speech generation',
+      endpoint: '/api/ai/text-to-speech',
+    });
 
     // Return audio as blob - convert Buffer to Uint8Array for Response compatibility
     return new Response(new Uint8Array(audioBuffer), {

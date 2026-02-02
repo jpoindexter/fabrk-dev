@@ -35,6 +35,9 @@ interface FormData {
   email: string;
   subject: string;
   message: string;
+  // SECURITY: Honeypot fields - hidden from users, bots will fill them
+  website: string;
+  _gotcha: string;
 }
 
 export function ContactForm() {
@@ -43,6 +46,9 @@ export function ContactForm() {
     email: '',
     subject: '',
     message: '',
+    // SECURITY: Honeypot fields initialized empty
+    website: '',
+    _gotcha: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -83,7 +89,7 @@ export function ContactForm() {
       });
 
       setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '', website: '', _gotcha: '' });
 
       // Reset success message after 5 seconds
       setTimeout(() => setStatus('idle'), 5000);
@@ -108,6 +114,26 @@ export function ContactForm() {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* SECURITY: Honeypot fields - hidden from users, bots will fill them */}
+            <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+              <input
+                type="text"
+                name="_gotcha"
+                value={formData._gotcha}
+                onChange={(e) => setFormData({ ...formData, _gotcha: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             {/* Name Field */}
             <div className="space-y-2">
               <Label htmlFor="name" className="text-xs">

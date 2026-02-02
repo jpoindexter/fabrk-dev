@@ -6,6 +6,7 @@
 import { NextRequest } from 'next/server';
 import { auth } from '@/lib/auth';
 import { speechToText } from '@/lib/ai';
+import { hasCredits, deductCredits, CREDIT_COSTS } from '@/lib/credits';
 
 // Supported audio formats
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
@@ -23,9 +24,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Get session (optional)
+    // SECURITY: Require authentication to prevent API cost abuse
     const session = await auth();
-    const _userId = session?.user?.id;
+    if (!session?.user?.id) {
+      return Response.json(
+        { error: 'Unauthorized', message: 'Authentication required to use AI features' },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
 
     // Parse form data
     const formData = await req.formData();
@@ -47,33 +54,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Optional: Check credits
-    /*
-    if (userId) {
-      const { hasCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      const hasEnough = await hasCredits(userId, CREDIT_COSTS.SPEECH_TO_TEXT || 5);
-      if (!hasEnough) {
-        return Response.json(
-          { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
-          { status: 402 }
-        );
-      }
+    // Check credits before processing
+    const hasEnough = await hasCredits(userId, CREDIT_COSTS.SPEECH_TO_TEXT);
+    if (!hasEnough) {
+      return Response.json(
+        { error: 'Insufficient credits', code: 'INSUFFICIENT_CREDITS' },
+        { status: 402 }
+      );
     }
-    */
 
     // Transcribe audio using lib/ai wrapper
     const text = await speechToText(audioFile, { language });
 
-    // Optional: Deduct credits
-    /*
-    if (userId) {
-      const { deductCredits, CREDIT_COSTS } = await import('@/lib/credits');
-      await deductCredits(userId, CREDIT_COSTS.SPEECH_TO_TEXT || 5, {
-        description: 'Audio transcription',
-        endpoint: '/api/ai/speech-to-text',
-      });
-    }
-    */
+    // Deduct credits after successful transcription
+    await deductCredits(userId, CREDIT_COSTS.SPEECH_TO_TEXT, {
+      description: 'Audio transcription',
+      endpoint: '/api/ai/speech-to-text',
+    });
 
     return Response.json({
       text,

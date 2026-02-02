@@ -178,8 +178,8 @@ export function detectBot(req: NextRequest): BotDetectionResult {
     confidence += 15;
   }
 
-  // SECURITY: Raised threshold from 50% to 70% to reduce false positives
-  const isBot = confidence >= 70;
+  // SECURITY: Raised threshold to 75% for stricter bot detection
+  const isBot = confidence >= 75;
   if (isBot && botType === 'unknown') {
     botType = confidence >= 85 ? 'bad' : 'unknown';
   }

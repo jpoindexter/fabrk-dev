@@ -4,6 +4,7 @@ import { hash } from 'bcryptjs';
 import { randomBytes } from 'crypto';
 import { env } from '@/lib/env';
 import { checkAuthRateLimit } from '@/lib/rate-limit';
+import { verifyHoneypot } from '@/lib/security/bot-protection';
 
 /**
  * User Registration
@@ -32,7 +33,20 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { email, password, name } = body;
+    const { email, password, name, website, _gotcha } = body;
+
+    // SECURITY: Check honeypot fields - bots will fill these, humans won't
+    if (!verifyHoneypot(website) || !verifyHoneypot(_gotcha)) {
+      console.log('[SECURITY] Honeypot triggered on registration', { ip });
+      // Return same response as success to not reveal bot detection
+      return NextResponse.json(
+        {
+          success: true,
+          message: 'If this email is not already registered, you will receive a verification email shortly.',
+        },
+        { status: 200 }
+      );
+    }
 
     // Validation
     if (!email || !password) {

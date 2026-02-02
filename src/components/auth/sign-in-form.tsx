@@ -307,6 +307,9 @@ export interface SignUpFormData {
   email: string;
   password: string;
   acceptTerms: boolean;
+  // SECURITY: Honeypot fields - hidden from users, bots will fill them
+  website: string;
+  _gotcha: string;
 }
 
 export interface SignUpFormProps {
@@ -343,10 +346,13 @@ export function SignUpForm({
   const [password, setPassword] = React.useState('');
   const [acceptTerms, setAcceptTerms] = React.useState(false);
   const [loadingProvider, setLoadingProvider] = React.useState<string | null>(null);
+  // SECURITY: Honeypot fields
+  const [website, setWebsite] = React.useState('');
+  const [gotcha, setGotcha] = React.useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await onSubmit?.({ name, email, password, acceptTerms });
+    await onSubmit?.({ name, email, password, acceptTerms, website, _gotcha: gotcha });
   };
 
   const handleSocialAuth = async (provider: SocialProvider) => {
@@ -365,6 +371,26 @@ export function SignUpForm({
 
       {/* Sign Up Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* SECURITY: Honeypot fields - hidden from users, bots will fill them */}
+        <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
+          <input
+            type="text"
+            name="website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+          <input
+            type="text"
+            name="_gotcha"
+            value={gotcha}
+            onChange={(e) => setGotcha(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         <div className="space-y-2">
           <Label htmlFor="signup-name" className={cn(mode.font, 'text-xs')}>
             [NAME]:

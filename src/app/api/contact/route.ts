@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { sendEmail } from '@/lib/email';
 import { logger } from '@/lib/logger';
 import { checkRateLimitAuto, getClientIdentifier, RateLimiters } from '@/lib/security/rate-limit';
+import { verifyHoneypot } from '@/lib/security/bot-protection';
 import { env } from '@/lib/env';
 
 // Validation schema for contact form
@@ -25,6 +26,9 @@ const contactSchema = z.object({
     'other',
   ]),
   message: z.string().min(10, 'Message must be at least 10 characters').max(5000),
+  // SECURITY: Honeypot fields - should be empty
+  website: z.string().optional(), // Hidden field - bots will fill this
+  _gotcha: z.string().optional(), // Another honeypot
 });
 
 // Subject display names
@@ -70,7 +74,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, subject, message } = result.data;
+    const { name, email, subject, message, website, _gotcha } = result.data;
+
+    // SECURITY: Check honeypot fields - bots will fill these, humans won't
+    if (!verifyHoneypot(website) || !verifyHoneypot(_gotcha)) {
+      logger.warn('[SECURITY] Honeypot triggered on contact form', { ip: identifier });
+      // Return success to not reveal bot detection
+      return NextResponse.json({ success: true });
+    }
     const subjectLabel = subjectLabels[subject] || subject;
 
     // Build email HTML
