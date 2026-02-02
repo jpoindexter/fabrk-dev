@@ -180,11 +180,16 @@ let ratelimitInstances = new Map<string, unknown>();
 
 /**
  * Get or create Redis client singleton
+ * Supports both Vercel KV and Upstash Redis env vars
  */
 function getRedisClient(): unknown {
   if (redisClient) return redisClient;
 
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  // Support both Vercel KV and Upstash Redis env vars
+  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  if (!url || !token) {
     return null;
   }
 
@@ -192,10 +197,7 @@ function getRedisClient(): unknown {
     const upstashRedis = require('@upstash/redis');
     const { Redis } = upstashRedis;
 
-    redisClient = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
-    });
+    redisClient = new Redis({ url, token });
 
     return redisClient;
   } catch {
