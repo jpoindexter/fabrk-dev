@@ -305,7 +305,7 @@ function BlogPostPreview() {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-4">
               <Avatar className={cn(mode.radius, 'border-border h-10 w-10 border')}>
-                <AvatarImage src={mockArticle.author.avatar || undefined} />
+                <AvatarImage src={mockArticle.author.avatar || undefined} alt={`${mockArticle.author.name} avatar`} />
                 <AvatarFallback className={cn(mode.radius, mode.font, 'text-xs')}>
                   {mockArticle.author.name
                     .split(' ')

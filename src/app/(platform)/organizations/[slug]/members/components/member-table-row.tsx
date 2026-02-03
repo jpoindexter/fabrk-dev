@@ -88,7 +88,7 @@ export function MemberTableRow({
       <TableCell>
         <div className="flex items-center gap-4">
           <Avatar className="border-border h-8 w-8 border">
-            <AvatarImage src={member.user.image || ''} />
+            <AvatarImage src={member.user.image || ''} alt={`${member.user.name || 'Member'} avatar`} />
             <AvatarFallback className="text-xs">
               {member.user.name
                 ?.split(' ')

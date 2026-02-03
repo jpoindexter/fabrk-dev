@@ -108,7 +108,7 @@ export default function ProfilePage() {
           <div className="flex items-center gap-6">
             <div className="relative">
               <Avatar className="h-24 w-24">
-                <AvatarImage src={session?.user?.image || ''} />
+                <AvatarImage src={session?.user?.image || ''} alt="Your profile photo" />
                 <AvatarFallback className="text-2xl">{userInitials}</AvatarFallback>
               </Avatar>
               <label

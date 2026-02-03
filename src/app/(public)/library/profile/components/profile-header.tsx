@@ -51,7 +51,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                 mode.color.border.default
               )}
             >
-              <AvatarImage src={user.avatar || undefined} />
+              <AvatarImage src={user.avatar || undefined} alt={`${user.name} profile photo`} />
               <AvatarFallback
                 className={cn(mode.radius, mode.font, 'text-2xl', mode.color.bg.muted)}
               >

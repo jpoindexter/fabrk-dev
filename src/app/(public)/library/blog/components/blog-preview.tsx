@@ -78,7 +78,7 @@ export function BlogPreview() {
                   >
                     <div className="flex items-center gap-2">
                       <Avatar className={cn(mode.radius, 'border-border h-6 w-6 border')}>
-                        <AvatarImage src={featuredPost.author.avatar || undefined} />
+                        <AvatarImage src={featuredPost.author.avatar || undefined} alt={`${featuredPost.author.name} avatar`} />
                         <AvatarFallback className={cn(mode.radius, 'text-xs')}>
                           {featuredPost.author.name
                             .split(' ')

@@ -29,7 +29,7 @@ export function DashboardHeader({ userName, userImage, userInitials }: Dashboard
         </p>
       </div>
       <Avatar className="h-12 w-12">
-        <AvatarImage src={userImage || ''} />
+        <AvatarImage src={userImage || ''} alt="User profile" />
         <AvatarFallback>{userInitials}</AvatarFallback>
       </Avatar>
     </div>
