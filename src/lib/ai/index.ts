@@ -493,3 +493,18 @@ export {
   getSecurityIssues,
   getDesignViolations,
 } from './validation';
+
+// Testing
+export {
+  // Types
+  type TestResult,
+  type AITestResults,
+  // Classes
+  AITest,
+  // Quick test helpers
+  testDoesNotThrow,
+  testReturnsType,
+  testCompletesInMs,
+  // Common schemas
+  commonSchemas,
+} from './testing';
