@@ -8,3 +8,12 @@
 
 export { FormPreview } from './form-preview';
 export { CodeViewer, generateZodCode, generateComponentCode } from './code-viewer';
+
+// Cost tracking widgets
+export {
+  CostBadge,
+  CostWidget,
+  InlineCost,
+  CostTrend,
+  BudgetAlert,
+} from './cost-widget';
