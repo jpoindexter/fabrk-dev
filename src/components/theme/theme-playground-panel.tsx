@@ -1,5 +1,7 @@
 'use client';
 
+/* eslint-disable react-hooks/set-state-in-effect -- Theme sync requires setState in effects */
+
 import { Check, Copy, GripVertical, Minus, Moon, Palette, RotateCcw, Sun, X } from 'lucide-react';
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 

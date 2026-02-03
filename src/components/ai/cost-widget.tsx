@@ -261,7 +261,8 @@ interface CostTrendProps {
  */
 export function CostTrend({ compareTo = 'yesterday', className }: CostTrendProps) {
   // For now, show a placeholder - would need period comparison endpoint
-  const isUp = Math.random() > 0.5; // Placeholder
+  // Using stable value to avoid impure render
+  const isUp = true; // Placeholder - replace with actual comparison data
 
   return (
     <span

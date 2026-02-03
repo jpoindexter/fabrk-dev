@@ -211,6 +211,7 @@ const eslintConfig = [{
     "src/components/ui/color-picker.tsx",
     "src/components/theme/color-theme-switcher.tsx",
     "src/components/theme/theme-dropdown.tsx",
+    "src/components/theme/theme-playground-panel.tsx", // Theme customization tool
     "src/app/docs/components/color-picker/page.tsx", // Docs page also shows raw colors
     "src/app/docs/extras/theming/page.tsx", // Docs page for theming examples
     "src/app/docs/features/google-oauth/page.tsx", // Google logo SVG has hardcoded brand colors
@@ -227,6 +228,7 @@ const eslintConfig = [{
   // Pragmatic exception for Recharts components requiring inline styles for dynamic colors/fills
   files: [
     "src/components/analytics/**/*.{tsx,jsx}",
+    "src/components/charts/**/*.{tsx,jsx}", // Chart components
     "src/components/ui/donut-chart.tsx",
     "src/components/ui/funnel-chart.tsx",
     "src/components/ui/gauge.tsx",
