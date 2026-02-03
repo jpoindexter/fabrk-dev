@@ -152,6 +152,105 @@ export function validateCode(args: ValidateCodeArgs): ValidationResult {
     }
   }
 
+  // Rule 9: No arbitrary spacing values
+  const arbitrarySpacingPattern = /\[([\d.]+)(px|rem|em)\]/g;
+  lines.forEach((line, index) => {
+    // Skip lines with dynamic values or comments
+    if (line.includes('style={{') || line.includes('transform') || line.trim().startsWith('//')) return;
+
+    const matches = line.match(arbitrarySpacingPattern);
+    if (matches) {
+      warnings.push({
+        rule: 'no-arbitrary-spacing',
+        message: `Found arbitrary spacing: ${matches.join(', ')}`,
+        line: index + 1,
+        severity: 'warning',
+        suggestion: 'Use spacing scale values: p-1, p-2, p-3, p-4, p-6, p-8, gap-4, gap-6, etc.',
+      });
+    }
+  });
+
+  // Rule 10: No arbitrary border radius
+  const arbitraryRadiusPattern = /rounded-\[\d+px\]/g;
+  lines.forEach((line, index) => {
+    const matches = line.match(arbitraryRadiusPattern);
+    if (matches) {
+      errors.push({
+        rule: 'no-arbitrary-radius',
+        message: `Found arbitrary border-radius: ${matches.join(', ')}`,
+        line: index + 1,
+        severity: 'error',
+        suggestion: 'Use mode.radius from @/design-system for theme-aware radius',
+      });
+    }
+  });
+
+  // Rule 11: No arbitrary z-index
+  const arbitraryZPattern = /z-\[\d+\]/g;
+  lines.forEach((line, index) => {
+    const matches = line.match(arbitraryZPattern);
+    if (matches) {
+      warnings.push({
+        rule: 'no-arbitrary-zindex',
+        message: `Found arbitrary z-index: ${matches.join(', ')}`,
+        line: index + 1,
+        severity: 'warning',
+        suggestion: 'Use z-index scale: z-10, z-20, z-30, z-40, z-50 or mode.zIndex',
+      });
+    }
+  });
+
+  // Rule 12: Check for custom button/input elements
+  if (/<button\s+className/.test(code)) {
+    warnings.push({
+      rule: 'use-button-component',
+      message: 'Found custom button element with className',
+      severity: 'warning',
+      suggestion: 'Use <Button> from @/components/ui/button instead of native button',
+    });
+  }
+
+  if (/<input\s+[^>]*className/.test(code)) {
+    warnings.push({
+      rule: 'use-input-component',
+      message: 'Found custom input element with className',
+      severity: 'warning',
+      suggestion: 'Use <Input> from @/components/ui/input instead of native input',
+    });
+  }
+
+  // Rule 13: Check for inline styles
+  const inlineStylePattern = /style\s*=\s*\{\s*\{/g;
+  lines.forEach((line, index) => {
+    // Allow dynamic values like style={{ width: `${percent}%` }}
+    if (line.includes('transform') || /%\}/.test(line)) return;
+
+    if (inlineStylePattern.test(line)) {
+      warnings.push({
+        rule: 'no-inline-styles',
+        message: 'Found inline style object',
+        line: index + 1,
+        severity: 'warning',
+        suggestion: 'Use Tailwind classes instead of inline styles when possible',
+      });
+    }
+  });
+
+  // Rule 14: Suggest using mode object for styling
+  if (code.includes('className') && !hasModeImport && !code.includes('mode.')) {
+    const hasTypographyClasses = /text-(xs|sm|base|lg|xl|2xl|3xl|4xl)/.test(code);
+    const hasColorClasses = /(?:text|bg|border)-(?:primary|secondary|muted|destructive|success|warning)/.test(code);
+
+    if (hasTypographyClasses || hasColorClasses) {
+      warnings.push({
+        rule: 'suggest-mode-object',
+        message: 'Consider using mode object for consistent styling',
+        severity: 'warning',
+        suggestion: "Import { mode } from '@/design-system' and use mode.typography.*, mode.color.*, etc.",
+      });
+    }
+  }
+
   // Calculate score
   const totalIssues = errors.length + warnings.length;
   let score = 100;

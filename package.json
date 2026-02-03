@@ -25,6 +25,8 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "validate:templates": "tsx src/lib/template-inventory.ts",
     "validate:webhooks": "node scripts/validate-webhooks.mjs",
+    "design:lint": "node scripts/design-lint.js src/",
+    "design:lint:ci": "node scripts/design-lint.js src/ --json",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",

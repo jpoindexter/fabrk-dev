@@ -49,6 +49,13 @@ TERMS.md
 THIRD_PARTY_LICENSES.md
 
 # ============================================
+# AI-NATIVE DESIGN SYSTEM
+# ============================================
+# Context files for AI coding assistants
+# Enables 100% design system compliance
+.ai/
+
+# ============================================
 # BUILD CONFIGURATION
 # ============================================
 config/
@@ -190,6 +197,7 @@ scripts/generate-theme.mjs
 scripts/validate-themes.mjs
 scripts/validate-themes.ts
 scripts/validate-webhooks.mjs
+scripts/design-lint.js
 scripts/utilities/
 scripts/utils/
 

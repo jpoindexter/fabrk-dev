@@ -408,8 +408,57 @@ See `mcp-servers/fabrk/README.md` for setup instructions.
 
 ---
 
+## AI-Native Design System
+
+This project includes AI-readable design system documentation in the `.ai/` directory:
+
+```
+.ai/
+├── CONTEXT.md      # Master file - inject into AI conversations
+├── tokens.md       # All design tokens (colors, spacing, typography)
+├── components.md   # Component inventory with usage rules
+├── rules.md        # Hard constraints AI must follow
+├── patterns.md     # Common UI patterns and implementations
+├── prompts/        # Ready-to-use prompt templates
+│   ├── new-feature.md
+│   ├── new-page.md
+│   ├── new-component.md
+│   ├── refactor.md
+│   └── fix-bug.md
+└── examples/       # Before/after code examples
+    ├── bad-button.tsx
+    ├── good-button.tsx
+    ├── bad-card.tsx
+    └── good-card.tsx
+```
+
+### Quick Rules for AI
+
+1. **NO hardcoded colors** - Use `text-primary`, `bg-muted`, etc.
+2. **NO arbitrary values** - Use spacing scale (`p-4`, `gap-6`)
+3. **NO custom components** - Use existing ones from `/components/ui/`
+4. **ALWAYS use `cn()`** - For conditional classes
+5. **ALWAYS use `mode`** - For theme-aware styling
+
+### Validation
+
+```bash
+npm run design:lint           # Check for violations
+npm run design:lint src/app/  # Check specific directory
+```
+
+### If Unsure
+
+1. Check `.ai/components.md` for existing components
+2. Use semantic color tokens from `.ai/tokens.md`
+3. Follow patterns from `.ai/patterns.md`
+
+---
+
 ## Resources
 
+- `.ai/CONTEXT.md` - AI-native design system context (copy into AI conversations)
+- `.ai/` - Full AI documentation (tokens, components, rules, patterns)
 - `docs/08-design/DESIGN_SYSTEM.md` - Complete design system specification
 - `src/app/globals.css` - CSS variables (OKLCH color tokens)
 - `docs/` - Full documentation

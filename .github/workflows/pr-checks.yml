@@ -48,6 +48,10 @@ jobs:
         run: npm run format:check
         continue-on-error: false
 
+      - name: Design system lint
+        run: npm run design:lint
+        continue-on-error: false
+
   test-changes:
     name: Test Changes
     runs-on: ubuntu-latest
