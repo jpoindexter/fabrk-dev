@@ -11,12 +11,26 @@ import { ChangelogEntry } from '@/components/changelog';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
 export const metadata: Metadata = {
-  title: 'Changelog | Fabrk',
-  description: 'Version history and release notes for Fabrk SaaS boilerplate.',
+  title: 'Changelog',
+  description: 'Version history and release notes for Fabrk SaaS boilerplate. Track every update, improvement, and fix.',
+  openGraph: {
+    title: 'Changelog | Fabrk',
+    description: 'Version history and release notes for Fabrk. Track every update and fix.',
+    type: 'website',
+    url: `${baseUrl}/changelog`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Changelog | Fabrk',
+    description: 'Version history and release notes for Fabrk SaaS boilerplate.',
+  },
   alternates: {
+    canonical: `${baseUrl}/changelog`,
     types: {
-      'application/rss+xml': '/changelog/rss',
+      'application/rss+xml': `${baseUrl}/changelog/rss`,
     },
   },
 };

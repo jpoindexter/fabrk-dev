@@ -3,6 +3,7 @@
  * Production-ready
  */
 
+import type { Metadata } from 'next';
 import { HeroSection } from '@/components/marketing/hero-section';
 import { LazyPlayground } from '@/components/marketing/lazy-playground';
 import { FeaturesShowcase } from '@/components/marketing/features-showcase';
@@ -15,6 +16,39 @@ import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { Reveal } from '@/components/motion';
 import { generateFAQSchema, generateWebSiteSchema } from '@/lib/metadata';
 import { FAQ_QUESTIONS } from '@/data/landing';
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
+export const metadata: Metadata = {
+  title: 'Fabrk - Next.js SaaS Boilerplate | Ship Production Apps Fast',
+  description:
+    'The complete Next.js SaaS starter kit with authentication, payments, multi-tenancy, and 62+ terminal-styled UI components. Build and launch your SaaS in days, not months.',
+  keywords: [
+    'Next.js boilerplate',
+    'SaaS starter kit',
+    'React boilerplate',
+    'NextAuth template',
+    'Stripe integration',
+    'TypeScript boilerplate',
+    'Tailwind CSS template',
+    'multi-tenant SaaS',
+  ],
+  openGraph: {
+    title: 'Fabrk - Next.js SaaS Boilerplate | Ship Production Apps Fast',
+    description:
+      'Complete Next.js SaaS starter kit with auth, payments, and 62+ UI components. Launch your SaaS in days.',
+    type: 'website',
+    url: baseUrl,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fabrk - Next.js SaaS Boilerplate',
+    description: 'Ship production SaaS apps fast with 62+ terminal-styled components.',
+  },
+  alternates: {
+    canonical: baseUrl,
+  },
+};
 
 // Generate FAQ schema for SEO
 const faqSchema = generateFAQSchema(

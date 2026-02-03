@@ -1,27 +1,22 @@
-/**
- * Terms - Layout with Metadata
- * Auto-generated SEO metadata
- */
 import type { Metadata } from 'next';
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
 export const metadata: Metadata = {
-  title: 'Terms | Fabrk',
+  title: 'Terms of Service',
   description:
-    'Terms - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+    'Terms of Service for Fabrk. Read about the legal agreement between Fabrk and users.',
   openGraph: {
-    title: 'Terms | Fabrk',
-    description:
-      'Terms - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+    title: 'Terms of Service | Fabrk',
+    description: 'Terms of Service for Fabrk SaaS boilerplate.',
     type: 'website',
+    url: `${baseUrl}/terms`,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Terms | Fabrk',
-    description:
-      'Terms - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+  alternates: {
+    canonical: `${baseUrl}/terms`,
   },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function TermsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

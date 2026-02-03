@@ -1,27 +1,22 @@
-/**
- * Refund - Layout with Metadata
- * Auto-generated SEO metadata
- */
 import type { Metadata } from 'next';
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
 export const metadata: Metadata = {
-  title: 'Refund | Fabrk',
+  title: 'Refund Policy',
   description:
-    'Refund - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+    'Refund Policy for Fabrk. Learn about our satisfaction guarantee and refund process.',
   openGraph: {
-    title: 'Refund | Fabrk',
-    description:
-      'Refund - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+    title: 'Refund Policy | Fabrk',
+    description: 'Refund Policy for Fabrk SaaS boilerplate.',
     type: 'website',
+    url: `${baseUrl}/refund`,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Refund | Fabrk',
-    description:
-      'Refund - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+  alternates: {
+    canonical: `${baseUrl}/refund`,
   },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function RefundLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

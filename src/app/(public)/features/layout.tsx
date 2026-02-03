@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     type: 'website',
     url: `${baseUrl}/features`,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Features | Fabrk',
+    description: `${COMPONENT_COUNT_STRING} UI components, ${THEME_COUNT_STRING} themes, and everything to ship your SaaS.`,
+  },
   alternates: {
     canonical: `${baseUrl}/features`,
   },

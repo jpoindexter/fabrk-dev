@@ -1,27 +1,22 @@
-/**
- * Privacy - Layout with Metadata
- * Auto-generated SEO metadata
- */
 import type { Metadata } from 'next';
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
 export const metadata: Metadata = {
-  title: 'Privacy | Fabrk',
+  title: 'Privacy Policy',
   description:
-    'Privacy - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+    'Privacy Policy for Fabrk. Learn how we collect, use, and protect your personal information.',
   openGraph: {
-    title: 'Privacy | Fabrk',
-    description:
-      'Privacy - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+    title: 'Privacy Policy | Fabrk',
+    description: 'Privacy Policy for Fabrk SaaS boilerplate.',
     type: 'website',
+    url: `${baseUrl}/privacy`,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Privacy | Fabrk',
-    description:
-      'Privacy - Fabrk SaaS boilerplate with terminal-styled design system and production-ready features.',
+  alternates: {
+    canonical: `${baseUrl}/privacy`,
   },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function PrivacyLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

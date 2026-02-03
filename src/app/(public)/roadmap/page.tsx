@@ -10,9 +10,25 @@ import { RoadmapEntry } from '@/components/roadmap';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
 export const metadata: Metadata = {
-  title: 'Roadmap | Fabrk',
-  description: 'See what we are building next. Product roadmap and planned features for Fabrk.',
+  title: 'Roadmap',
+  description: 'See what we are building next. Product roadmap and planned features for Fabrk SaaS boilerplate.',
+  openGraph: {
+    title: 'Roadmap | Fabrk',
+    description: 'Product roadmap and planned features for Fabrk.',
+    type: 'website',
+    url: `${baseUrl}/roadmap`,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Roadmap | Fabrk',
+    description: 'See what we are building next. Product roadmap for Fabrk.',
+  },
+  alternates: {
+    canonical: `${baseUrl}/roadmap`,
+  },
 };
 
 export default function RoadmapPage() {

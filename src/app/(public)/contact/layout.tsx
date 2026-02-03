@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     type: 'website',
     url: `${baseUrl}/contact`,
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Fabrk',
+    description: 'Get in touch with the Fabrk team for sales, support, or partnerships.',
+  },
   alternates: {
     canonical: `${baseUrl}/contact`,
   },
