@@ -196,3 +196,98 @@ export function generateFAQSchema(faqs: { question: string; answer: string }[]) 
     })),
   };
 }
+
+/**
+ * Generate BlogPosting JSON-LD structured data
+ */
+export function generateBlogPostSchema(post: {
+  title: string;
+  description: string;
+  slug: string;
+  publishedAt: string;
+  updatedAt?: string;
+  author?: { name: string; url?: string };
+  image?: string;
+  tags?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    url: `${siteConfig.url}/blog/${post.slug}`,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: post.author?.name || 'Fabrk Team',
+      url: post.author?.url || siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/logo.png`,
+      },
+    },
+    image: post.image || `${siteConfig.url}/og-image.png`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/blog/${post.slug}`,
+    },
+    keywords: post.tags?.join(', '),
+  };
+}
+
+/**
+ * Generate Article JSON-LD for documentation pages
+ */
+export function generateArticleSchema(article: {
+  title: string;
+  description: string;
+  path: string;
+  updatedAt?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: article.title,
+    description: article.description,
+    url: `${siteConfig.url}${article.path}`,
+    dateModified: article.updatedAt || new Date().toISOString(),
+    author: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/logo.png`,
+      },
+    },
+  };
+}
+
+/**
+ * Generate WebSite schema with SearchAction for sitelinks search box
+ */
+export function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteConfig.url}/docs?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}

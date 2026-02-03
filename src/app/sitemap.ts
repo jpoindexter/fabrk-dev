@@ -1,176 +1,119 @@
 import { MetadataRoute } from 'next';
+import { readdirSync, statSync, existsSync } from 'fs';
+import { join } from 'path';
 
 /**
  * Sitemap Generation
- * Generates XML sitemap for SEO and search engine crawlers
- * Automatically includes all static pages, docs, and library templates
+ * Dynamically generates XML sitemap from all public routes
  */
+
+const baseUrl = process.env.NEXTAUTH_URL || 'https://fabrk.dev';
+
+/**
+ * Recursively scan directory for page.tsx files
+ */
+function getRoutes(dir: string, basePath: string = ''): string[] {
+  const routes: string[] = [];
+
+  if (!existsSync(dir)) return routes;
+
+  const items = readdirSync(dir);
+
+  for (const item of items) {
+    const fullPath = join(dir, item);
+    const stat = statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      // Skip private folders and special Next.js folders
+      if (item.startsWith('_') || item.startsWith('.') || item === 'api' || item === 'components') {
+        continue;
+      }
+
+      // Handle route groups (parentheses folders)
+      const routePath = item.startsWith('(') ? basePath : `${basePath}/${item}`;
+      routes.push(...getRoutes(fullPath, routePath));
+    } else if (item === 'page.tsx' || item === 'page.ts') {
+      // Found a page - add the route
+      const route = basePath || '/';
+      if (!routes.includes(route)) {
+        routes.push(route);
+      }
+    }
+  }
+
+  return routes;
+}
+
+/**
+ * Determine priority based on route depth and type
+ */
+function getPriority(route: string): number {
+  if (route === '/') return 1.0;
+  if (route === '/pricing' || route === '/features') return 0.9;
+  if (route === '/docs' || route === '/library' || route === '/blog') return 0.85;
+  if (route.startsWith('/docs/')) return 0.7;
+  if (route.startsWith('/library/')) return 0.6;
+  if (route.startsWith('/blog/')) return 0.7;
+  if (['/terms', '/privacy', '/refund'].includes(route)) return 0.3;
+  if (['/login', '/register'].includes(route)) return 0.4;
+  return 0.5;
+}
+
+/**
+ * Determine change frequency based on route type
+ */
+function getChangeFreq(route: string): 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' {
+  if (route === '/') return 'daily';
+  if (route === '/blog' || route.startsWith('/blog/')) return 'daily';
+  if (route === '/changelog') return 'weekly';
+  if (route === '/pricing' || route === '/features') return 'weekly';
+  if (route.startsWith('/docs/') || route.startsWith('/library/')) return 'weekly';
+  if (['/terms', '/privacy', '/refund'].includes(route)) return 'yearly';
+  return 'monthly';
+}
+
+/**
+ * Filter out routes that shouldn't be in sitemap
+ */
+function shouldIncludeRoute(route: string): boolean {
+  // Exclude authenticated routes
+  const excludePatterns = [
+    '/dashboard',
+    '/settings',
+    '/admin',
+    '/profile',
+    '/onboarding',
+    '/organizations',
+    '/usage',
+    '/two-factor',
+    '/reset-password',
+    '/forgot-password',
+    '/verify-email',
+    '/maintenance',
+    '/purchase',
+  ];
+
+  return !excludePatterns.some(pattern => route.startsWith(pattern));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXTAUTH_URL || 'https://fabrk.dev';
   const currentDate = new Date();
 
-  // Main marketing pages (highest priority)
-  const marketingPages = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/pricing`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/docs`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/library`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-  ];
+  // Get all routes from the app directory
+  const appDir = join(process.cwd(), 'src/app');
+  const allRoutes = getRoutes(appDir);
 
-  // Documentation pages
-  const docsPages = [
-    // Getting Started
-    '/docs/getting-started',
-    '/docs/getting-started/project-structure',
-    '/docs/getting-started/environment-variables',
-    '/docs/getting-started/database-setup',
-    '/docs/getting-started/email-setup',
-    '/docs/getting-started/deployment',
-
-    // Features
-    '/docs/features/authentication',
-    '/docs/features/database',
-    '/docs/features/payments',
-    '/docs/features/google-oauth',
-    '/docs/features/emails',
-    '/docs/features/i18n',
-    '/docs/features/analytics',
-    '/docs/features/monitoring',
-
-    // Security
-    '/docs/security/overview',
-    '/docs/security/authentication',
-    '/docs/security/rate-limiting',
-    '/docs/security/secrets-management',
-    '/docs/security/csrf-protection',
-    '/docs/security/cors',
-
-    // Components
-    '/docs/components/overview',
-    '/docs/components/button',
-    '/docs/components/card',
-    '/docs/components/input',
-    '/docs/components/select',
-    '/docs/components/textarea',
-    '/docs/components/checkbox',
-    '/docs/components/radio',
-    '/docs/components/switch',
-    '/docs/components/slider',
-    '/docs/components/tabs',
-    '/docs/components/accordion',
-    '/docs/components/alert',
-    '/docs/components/badge',
-    '/docs/components/dialog',
-    '/docs/components/drawer',
-    '/docs/components/dropdown',
-    '/docs/components/popover',
-    '/docs/components/tooltip',
-    '/docs/components/navigation',
-    '/docs/components/breadcrumb',
-    '/docs/components/pagination',
-    '/docs/components/table',
-    '/docs/components/form',
-    '/docs/components/calendar',
-    '/docs/components/date-picker',
-    '/docs/components/command',
-    '/docs/components/context-menu',
-    '/docs/components/toast',
-    '/docs/components/sheet',
-    '/docs/components/skeleton',
-    '/docs/components/progress',
-    '/docs/components/avatar',
-    '/docs/components/separator',
-    '/docs/components/scrollarea',
-    '/docs/components/label',
-    '/docs/components/code-block',
-
-    // Design System
-    '/docs/design/overview',
-    '/docs/design/colors',
-    '/docs/design/typography',
-    '/docs/design/spacing',
-    '/docs/design/responsive',
-    '/docs/design/themes',
-    '/docs/design/icons',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
-
-  // Template library pages
-  const libraryPages = [
-    '/library/landing-pages',
-    '/library/pricing-pages',
-    '/library/dashboard-layouts',
-    '/library/auth-pages',
-    '/library/error-pages',
-    '/library/marketing-sections',
-    '/library/forms',
-    '/library/tables',
-    '/library/charts',
-    '/library/cards',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
-  // Auth and legal pages (lower priority)
-  const authAndLegalPages = [
-    {
-      url: `${baseUrl}/login`,
+  // Filter and transform routes
+  const sitemapEntries = allRoutes
+    .filter(shouldIncludeRoute)
+    .map(route => ({
+      url: `${baseUrl}${route === '/' ? '' : route}`,
       lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/register`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/refund`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
-  ];
+      changeFrequency: getChangeFreq(route),
+      priority: getPriority(route),
+    }))
+    // Sort by priority (highest first)
+    .sort((a, b) => b.priority - a.priority);
 
-  return [...marketingPages, ...docsPages, ...libraryPages, ...authAndLegalPages];
+  return sitemapEntries;
 }

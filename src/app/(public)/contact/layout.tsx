@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
@@ -9,6 +11,10 @@ export const metadata: Metadata = {
     description:
       'Get in touch with the Fabrk team for sales, support, or partnership opportunities.',
     type: 'website',
+    url: `${baseUrl}/contact`,
+  },
+  alternates: {
+    canonical: `${baseUrl}/contact`,
   },
 };
 

@@ -13,10 +13,32 @@ import { WhatsIncludedSection } from '@/components/marketing/whats-included-sect
 import { FAQSection } from '@/components/marketing/faq-section';
 import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { Reveal } from '@/components/motion';
+import { generateFAQSchema, generateWebSiteSchema } from '@/lib/metadata';
+import { FAQ_QUESTIONS } from '@/data/landing';
+
+// Generate FAQ schema for SEO
+const faqSchema = generateFAQSchema(
+  FAQ_QUESTIONS.map((faq) => ({
+    question: faq.question,
+    answer: faq.answer,
+  }))
+);
+
+// Generate WebSite schema for sitelinks search
+const webSiteSchema = generateWebSiteSchema();
 
 export default function HomePage() {
   return (
     <>
+      {/* SEO: Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+      />
       {/* Hero - Sticky card effect */}
       <HeroSection />
 
