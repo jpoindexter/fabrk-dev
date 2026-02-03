@@ -260,7 +260,6 @@ const eslintConfig = [{
   files: [
     "src/components/library/ai-qr-generator/index.tsx", // QR codes need #ffffff/#000000 for output
     "src/components/marketing/perspective-grid.tsx", // Canvas API requires rgba() strings
-    "src/components/marketing/fui-background.tsx", // Canvas API for animated dot grid
   ],
   rules: {
     'design-system/no-hardcoded-colors': 'off',

@@ -12,7 +12,6 @@ import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { FuiBackground } from './fui-background';
 import { DemoVideoModal } from './demo-video-modal';
 import dynamicCounts from '@/data/dynamic-counts.json';
 
@@ -72,9 +71,6 @@ export function HeroSection() {
 
   return (
     <section className="sticky top-0 z-10 min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* FUI Background */}
-      <FuiBackground />
-
       <Container size="lg" className="relative z-10">
         <div className="flex flex-col items-center justify-center text-center">
           {/* Version/Update Pill Badge */}

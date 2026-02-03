@@ -79,7 +79,6 @@ const CONFIG = {
     // Canvas/QR code components
     /qr-generator/,
     /perspective-grid/,
-    /fui-background/,
 
     // Layout file (has metadata strings)
     /layout\.tsx$/,
