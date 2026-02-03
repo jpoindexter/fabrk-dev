@@ -2,7 +2,7 @@
  * Changelog Data
  *
  * Auto-generated from GitHub releases
- * Last synced: 2025-12-25T19:31:18.791Z
+ * Last synced: 2026-02-03T19:03:56.451Z
  *
  * Run `npm run sync:changelog` to update
  */
@@ -22,111 +22,104 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
-    version: "1.3.1",
-    date: "2026-01-22",
-    title: "COMPONENT ARCHITECTURE CLEANUP",
-    changes: [
-      {
-        type: 'changed',
-        description: "**Clean /ui/ Directory** - Moved 10 business logic components out of /ui/ to feature directories (billing/, auth/, admin/, etc.). WHY: /ui/ should only contain stateless primitives that customers can safely import without side effects."
-      },
-      {
-        type: 'changed',
-        description: "**New /charts/ Directory** - Consolidated 8 chart components (bar, line, area, pie, funnel, gauge, sparkline, donut) into dedicated directory. WHY: Charts are data visualization components, not UI primitives - separating them makes the architecture clearer."
-      },
-      {
-        type: 'changed',
-        description: "**card.tsx Split** - Reduced from 890 lines to 250 lines; marketing components moved to terminal-card.tsx. WHY: Large files are harder to maintain and understand. Card primitives should be separate from marketing-specific components."
-      },
-      {
-        type: 'removed',
-        description: "**Duplicate cookie-consent** - Removed /ui/cookie-consent.tsx in favor of /components/cookie-consent/ directory. WHY: The directory version was more robust with better GDPR compliance features."
-      },
-      {
-        type: 'fixed',
-        description: "/ui/ now contains ONLY primitives (62 files) - no business logic. WHY: Clear separation makes it easier for customers to understand what they can safely import and customize."
-      }
-    ]
-  },
-  {
     version: "1.3.0",
-    date: "2026-01-07",
-    title: "INFRASTRUCTURE IMPROVEMENTS",
+    date: "2026-02-03",
+    title: "AI-NATIVE_DESIGN_SYSTEM",
     changes: [
       {
-        type: 'security',
-        description: "**HMAC-Signed Impersonation** - Admin impersonation cookies now cryptographically signed to prevent tampering"
+        type: 'added',
+        description: "**CONTEXT.md** - Master context file to paste into AI conversations"
       },
       {
-        type: 'security',
-        description: "**Email Change Verification** - Email updates now require verification before taking effect (prevents account takeover)"
+        type: 'added',
+        description: "**tokens.md** - Complete design token reference"
       },
       {
-        type: 'security',
-        description: "**XSS Prevention** - HTML escaping added to all email templates with user data"
+        type: 'added',
+        description: "**rules.md** - 15 non-negotiable design rules"
       },
       {
-        type: 'security',
-        description: "**Atomic Password Reset** - Token consumption now atomic to prevent race conditions"
+        type: 'added',
+        description: "**components.md** - 40+ component inventory with examples"
       },
       {
-        type: 'security',
-        description: "**IP Validation** - Rate limiting now validates IP format to prevent header injection bypass"
+        type: 'added',
+        description: "**patterns.md** - 15 common UI patterns with full code"
       },
       {
-        type: 'security',
-        description: "**Token Enumeration Prevention** - Generic error messages prevent invite token enumeration"
+        type: 'added',
+        description: "**prompts/** - Ready-to-use prompt templates for common tasks"
       },
       {
-        type: 'security',
-        description: "**DOMPurify Integration** - HTML sanitization now uses DOMPurify (isomorphic-dompurify)"
+        type: 'added',
+        description: "**examples/** - Before/after code examples"
       },
       {
-        type: 'security',
-        description: "**Timing-Safe CSRF** - CSRF comparison now uses crypto.timingSafeEqual"
+        type: 'added',
+        description: "Hardcoded colors (hex, rgb, Tailwind palette)"
       },
       {
-        type: 'security',
-        description: "**ReDoS Prevention** - SQL injection regex patterns refactored to prevent ReDoS attacks"
+        type: 'added',
+        description: "Arbitrary Tailwind values"
       },
       {
-        type: 'changed',
-        description: "Session cache TTL reduced from 5 minutes to 30 seconds for faster security event propagation"
+        type: 'added',
+        description: "Tailwind color classes instead of semantic tokens"
       },
       {
-        type: 'changed',
-        description: "Bot detection threshold raised from 50% to 70% to reduce false positives"
+        type: 'added',
+        description: "**Pre-commit hook** - Runs design-lint before every commit"
       },
       {
-        type: 'changed',
-        description: "CSP `strict-dynamic` removed to prevent third-party script injection"
+        type: 'added',
+        description: "**CI/CD** - PR checks include design-lint validation"
       },
       {
-        type: 'fixed',
-        description: "CORS no longer falls back to localhost origins in production"
+        type: 'added',
+        description: "**MCP Server** - Enhanced validate-code tool with 6 new rules"
       }
     ]
   },
   {
     version: "1.2.0",
     date: "2026-01-04",
-    title: "M3 TYPOGRAPHY SYSTEM",
+    title: "M3_TYPOGRAPHY_SYSTEM",
     changes: [
       {
         type: 'added',
-        description: "**M3 Type Scale** - Complete Material Design 3 typography tokens (display, headline, title, body, label)"
+        description: "**M3 Type Scale** - Complete typography tokens following M3 conventions"
       },
       {
         type: 'added',
-        description: "**Size Variants** - All categories now have l/m/s sizes (e.g., `text-headline-l`, `text-body-m`)"
+        description: "`display-xl/l/m/s` - Hero sections (88px → 36px)"
       },
       {
         type: 'added',
-        description: "**Display XL** - New 88px/96px display size for hero sections"
+        description: "`headline-l/m/s` - Page titles (32px → 24px)"
       },
       {
         type: 'added',
-        description: "**Code Typography** - Dedicated code-l/m/s tokens for terminal output"
+        description: "`title-l/m/s` - Section headers (22px → 14px)"
+      },
+      {
+        type: 'added',
+        description: "`body-l/m/s` - Running text (16px → 12px)"
+      },
+      {
+        type: 'added',
+        description: "`label-l/m/s` - UI components (14px → 11px)"
+      },
+      {
+        type: 'added',
+        description: "`code-l/m/s` - Terminal output (16px → 12px)"
+      },
+      {
+        type: 'added',
+        description: "**Display XL** - New 88px/96px size for hero content"
+      },
+      {
+        type: 'added',
+        description: "**Responsive Scaling** - Automatic size reduction on screens < 600px"
       },
       {
         type: 'changed',
@@ -135,10 +128,6 @@ export const CHANGELOG: ChangelogEntry[] = [
       {
         type: 'changed',
         description: "Font weights aligned to M3 standards (500 for display/headline)"
-      },
-      {
-        type: 'changed',
-        description: "Responsive scaling for screens under 600px width"
       },
       {
         type: 'changed',
@@ -153,7 +142,7 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.1.0",
     date: "2025-12-27",
-    title: "FONT PAIRINGS AND ACCESSIBILITY",
+    title: "FONT_PAIRINGS_&_ACCESSIBILITY",
     changes: [
       {
         type: 'added',
@@ -161,7 +150,7 @@ export const CHANGELOG: ChangelogEntry[] = [
       },
       {
         type: 'added',
-        description: "**6 FUI Themes** - Blueprint, Cyberpunk, Navigator, Phosphor, Holographic, Infrared"
+        description: "**6 FUI (Futuristic UI) Themes** - Blueprint, Cyberpunk, Navigator, Phosphor, Holographic, Infrared"
       },
       {
         type: 'added',
@@ -184,31 +173,47 @@ export const CHANGELOG: ChangelogEntry[] = [
         description: "FUI theme border contrast improved (3:1 minimum for UI components)"
       },
       {
-        type: 'fixed',
-        description: "Blueprint theme border contrast (45% → 55%) for WCAG 3:1"
+        type: 'changed',
+        description: "Code comment contrast fixed for readability in dark themes"
+      },
+      {
+        type: 'changed',
+        description: "Chart color duplicates removed from `:root` theme"
       },
       {
         type: 'fixed',
-        description: "Cyberpunk theme border contrast (25% → 38%) for WCAG 3:1"
+        description: "Blueprint theme border: 45% → 55% for WCAG 3:1"
       },
       {
         type: 'fixed',
-        description: "Navigator theme border contrast (30% → 36%) for WCAG 3:1"
+        description: "Cyberpunk theme border: 25% → 38% for WCAG 3:1"
       },
       {
         type: 'fixed',
-        description: "Phosphor theme border contrast (25% → 35%) for WCAG 3:1"
+        description: "Navigator theme border: 30% → 36% for WCAG 3:1"
       },
       {
         type: 'fixed',
-        description: "Red/Infrared theme code comment contrast for readability"
+        description: "Phosphor theme border: 25% → 35% for WCAG 3:1"
+      },
+      {
+        type: 'fixed',
+        description: "Holographic theme border: 35% → 40% for WCAG 3:1"
+      },
+      {
+        type: 'fixed',
+        description: "Red theme code comments: 40% → 50% for readability"
+      },
+      {
+        type: 'fixed',
+        description: "Infrared theme code comments: 35% → 28% for contrast"
       }
     ]
   },
   {
     version: "1.0.1",
     date: "2025-12-25",
-    title: "DYNAMIC RADIUS SYSTEM",
+    title: "DYNAMIC_RADIUS_SYSTEM",
     changes: [
       {
         type: 'changed',
@@ -251,7 +256,7 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.0.0",
     date: "2025-12-24",
-    title: "INITIAL RELEASE",
+    title: "INITIAL_RELEASE",
     changes: [
       {
         type: 'added',
