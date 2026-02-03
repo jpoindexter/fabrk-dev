@@ -127,6 +127,13 @@ npm run test:a11y        # Accessibility tests
 # Validation
 npm run validate:themes    # Validate theme tokens
 npm run validate:webhooks  # Validate webhook endpoints
+
+# AI Development
+npm run ai:validate        # Validate code for security, design, types
+npm run ai:lint            # AI-specific best practices linting
+npm run ai:security        # Security vulnerability scanning
+npm run ai:cost-report     # Generate AI API cost report
+npm run ai:pre-deploy      # Run all checks before deployment
 ```
 
 ---
@@ -324,6 +331,103 @@ try {
   console.error("Description:", error);
   return NextResponse.json({ error: "Message" }, { status: 500 });
 }
+```
+
+---
+
+## AI Development Features
+
+This boilerplate includes a complete AI development toolkit for cost-aware, type-safe AI integrations.
+
+### Type Utilities
+
+```typescript
+import { APIResponse, AsyncState, AppError, successResponse, errorResponse } from '@/types/ai';
+
+// Type-safe API responses
+async function handler(): Promise<APIResponse<User>> {
+  try {
+    const user = await getUser(id);
+    return successResponse(user);
+  } catch (error) {
+    return errorResponse('USER_NOT_FOUND', 'User does not exist');
+  }
+}
+
+// Typed errors
+throw new AppError('INVALID_INPUT', 'Email is required', 400);
+```
+
+### Cost Tracking
+
+```typescript
+import { getCostTracker } from '@/lib/ai/cost';
+
+const tracker = getCostTracker();
+
+// Track Claude API calls with automatic cost calculation
+const result = await tracker.trackClaudeCall({
+  model: 'claude-sonnet-4-20250514',
+  feature: 'form-generation',
+  userId: session.user.id,
+  fn: async () => {
+    return await anthropic.messages.create({ ... });
+  },
+});
+
+// Check budget before expensive operations
+const budget = await tracker.checkBudget(userId);
+if (!budget.withinBudget) {
+  throw new AppError('BUDGET_EXCEEDED', 'Daily AI budget exceeded', 429);
+}
+```
+
+### Code Validation
+
+```typescript
+import { validateCode, isCodeSafe, getSecurityIssues } from '@/lib/ai/validation';
+
+// Validate AI-generated code
+const result = validateCode(generatedCode);
+if (!result.valid) {
+  console.error('Issues:', result.issues);
+}
+
+// Quick security check
+if (!isCodeSafe(code)) {
+  throw new AppError('UNSAFE_CODE', 'Generated code failed security check');
+}
+```
+
+### AI Testing
+
+```typescript
+import { AITest, commonSchemas } from '@/lib/ai/testing';
+
+// Test AI-generated functions
+await new AITest(generatedFunction)
+  .isAsync()
+  .shouldNotThrow(['valid-input'])
+  .shouldReturnType(userSchema, ['valid-input'])
+  .shouldHandleNull()
+  .shouldCompleteInMs(5000, ['valid-input'])
+  .verifyOrThrow();
+```
+
+### Cost Widgets (React)
+
+```typescript
+import { CostBadge, CostWidget, BudgetAlert } from '@/components/ai';
+import { useCostTracking, useCostBudget } from '@/hooks/use-cost-tracking';
+
+// Header badge
+<CostBadge />
+
+// Dashboard widget
+<CostWidget showFeatures />
+
+// Budget alert (shows when > threshold)
+<BudgetAlert threshold={70} />
 ```
 
 ---
