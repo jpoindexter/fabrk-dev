@@ -10,9 +10,57 @@ export const metadata = {
     'Add user authentication to your SaaS with NextAuth v5. Supports Google OAuth, magic links, credentials, and session management.',
 };
 
+// AEO: HowTo schema for voice search and featured snippets
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Add Authentication to Your Next.js App',
+  description:
+    'Step-by-step guide to set up user authentication with NextAuth v5, including email/password, Google OAuth, and protected routes.',
+  totalTime: 'PT15M',
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Configure Environment Variables',
+      text: 'Set NEXTAUTH_URL to your app URL and NEXTAUTH_SECRET to a secure random string in .env.local',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Generate Secret Key',
+      text: 'Run openssl rand -base64 32 to generate a secure NEXTAUTH_SECRET',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Add Google OAuth (Optional)',
+      text: 'Create OAuth credentials in Google Cloud Console and add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to .env.local',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Use Auth in API Routes',
+      text: 'Import auth from @/lib/auth and call await auth() to get the session and check if user is logged in',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 5,
+      name: 'Use Auth in Components',
+      text: 'Use useSession hook in client components or await auth() in server components to access user session',
+    },
+  ],
+};
+
 export default function AuthenticationTutorialPage() {
   return (
-    <FeatureGuideTemplate
+    <>
+      {/* AEO: HowTo schema for voice search and featured snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <FeatureGuideTemplate
       code="[0x20]"
       category="Tutorials"
       title="User Authentication"
@@ -386,5 +434,6 @@ https://yourdomain.com/api/auth/callback/google
         </div>
       </DocsSection>
     </FeatureGuideTemplate>
+    </>
   );
 }

@@ -29,7 +29,7 @@ export function AboutHero() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <p className={cn('text-muted-foreground mb-2 text-xs', mode.font)}>[FABRK ABOUT]:</p>
-          <h1 className={cn('mb-8 text-xs font-bold tracking-tight', mode.font)}>
+          <h1 className={cn('mb-8 text-4xl font-bold tracking-tight', mode.font)}>
             BUILT BY DEVELOPERS
             <br />
             <span className="text-primary">FOR DEVELOPERS</span>

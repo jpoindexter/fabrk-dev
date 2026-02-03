@@ -33,11 +33,11 @@ export function FeaturesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK FEATURES:</h1>
-            <h2 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
+            <p className={cn('text-muted-foreground mb-2 text-sm', mode.font)}>FABRK FEATURES:</p>
+            <h1 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
               EVERY FEATURE YOU NEED
               <br className="hidden sm:block" /> <span className="text-primary">ALREADY BUILT</span>
-            </h2>
+            </h1>
           </motion.div>
 
           <motion.div

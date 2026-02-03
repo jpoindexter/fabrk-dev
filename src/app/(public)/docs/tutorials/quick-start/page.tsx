@@ -10,9 +10,51 @@ export const metadata = {
     'Launch your MVP in minutes. Assemble a production-ready landing page with authentication, payments, and core SaaS features.',
 };
 
+// AEO: HowTo schema for voice search and featured snippets
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Build a SaaS Landing Page with Fabrk',
+  description:
+    'Step-by-step guide to assemble a production-ready landing page with pre-built components in minutes.',
+  totalTime: 'PT10M',
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Assemble Landing Page',
+      text: 'Import pre-built components (Navigation, HeroSection, FeaturesSection, PricingSection, FAQSection, Footer) into your page.tsx file.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Configure App Metadata',
+      text: 'Open src/config.js and customize your app name, description, URL, author, and support email.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Enable Lead Capture (Optional)',
+      text: 'Swap the CTA button for a WaitlistForm component if launching a Coming Soon page.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Deploy to Production',
+      text: 'Commit your changes and push to main branch. Vercel will automatically deploy with SSL and edge caching.',
+    },
+  ],
+};
+
 export default function QuickStartPage() {
   return (
-    <FeatureGuideTemplate
+    <>
+      {/* AEO: HowTo schema for voice search and featured snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <FeatureGuideTemplate
       code="[0x00]"
       category="Tutorials"
       title="Quick Start"
@@ -185,5 +227,6 @@ npm run dev`}
         </div>
       </DocsSection>
     </FeatureGuideTemplate>
+    </>
   );
 }
