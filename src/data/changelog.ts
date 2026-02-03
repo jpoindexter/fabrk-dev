@@ -2,7 +2,7 @@
  * Changelog Data
  *
  * Auto-generated from GitHub releases
- * Last synced: 2026-02-03T19:03:56.451Z
+ * Last synced: 2026-02-03T19:36:31.407Z
  *
  * Run `npm run sync:changelog` to update
  */
@@ -77,6 +77,18 @@ export const CHANGELOG: ChangelogEntry[] = [
       {
         type: 'added',
         description: "**MCP Server** - Enhanced validate-code tool with 6 new rules"
+      },
+      {
+        type: 'added',
+        description: "Fixed duplicate H1 issue in blog posts"
+      },
+      {
+        type: 'added',
+        description: "MDX headings now properly shift down one level (h1→h2, h2→h3, etc.)"
+      },
+      {
+        type: 'added',
+        description: "Ensures proper SEO heading hierarchy"
       }
     ]
   },
