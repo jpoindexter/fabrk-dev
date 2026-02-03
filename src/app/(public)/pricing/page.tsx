@@ -7,8 +7,27 @@ import { Metadata } from 'next';
 import { MarketingPageHeader } from '@/components/marketing/marketing-header';
 import { PricingSection } from '@/components/marketing/pricing-section';
 import { FAQSection } from '@/components/marketing/faq-section';
+import { generateFAQSchema, generateSoftwareApplicationSchema } from '@/lib/metadata';
+import { FAQ_QUESTIONS } from '@/data/landing';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+
+// AEO: FAQ schema for featured snippets
+const faqSchema = generateFAQSchema(
+  FAQ_QUESTIONS.map((faq) => ({
+    question: faq.question,
+    answer: faq.answer,
+  }))
+);
+
+// GEO: Product schema for AI citations
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Fabrk - Next.js SaaS Boilerplate',
+  description:
+    'Complete SaaS starter kit with 62+ components, authentication, payments, multi-tenancy, and terminal-styled design.',
+  price: '199',
+  priceCurrency: 'USD',
+});
 
 export const metadata: Metadata = {
   title: 'Pricing',
@@ -34,6 +53,15 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
+      {/* AEO + GEO: Structured Data for AI search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
       <MarketingPageHeader
         code="0x00"
         badge="COMMERCIAL LICENSE"

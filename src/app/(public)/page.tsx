@@ -14,7 +14,12 @@ import { WhatsIncludedSection } from '@/components/marketing/whats-included-sect
 import { FAQSection } from '@/components/marketing/faq-section';
 import { FinalCTASection } from '@/components/marketing/final-cta-section';
 import { Reveal } from '@/components/motion';
-import { generateFAQSchema, generateWebSiteSchema } from '@/lib/metadata';
+import {
+  generateFAQSchema,
+  generateWebSiteSchema,
+  generateOrganizationSchema,
+  generateSoftwareApplicationSchema,
+} from '@/lib/metadata';
 import { FAQ_QUESTIONS } from '@/data/landing';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
@@ -50,7 +55,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Generate FAQ schema for SEO
+// Generate FAQ schema for SEO (AEO: Featured snippets, People Also Ask)
 const faqSchema = generateFAQSchema(
   FAQ_QUESTIONS.map((faq) => ({
     question: faq.question,
@@ -61,10 +66,28 @@ const faqSchema = generateFAQSchema(
 // Generate WebSite schema for sitelinks search
 const webSiteSchema = generateWebSiteSchema();
 
+// Generate Organization schema (GEO: Brand recognition by AI)
+const organizationSchema = generateOrganizationSchema({
+  name: 'Fabrk',
+  description:
+    'Fabrk is a production-ready Next.js SaaS boilerplate with terminal-inspired UI, authentication, payments, and multi-tenancy.',
+  foundingDate: '2024',
+  sameAs: ['https://github.com/fabrk-dev/fabrk', 'https://twitter.com/fabrkdev'],
+});
+
+// Generate SoftwareApplication schema (GEO: Product info for AI citations)
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Fabrk - Next.js SaaS Boilerplate',
+  description:
+    'Complete SaaS starter kit with 62+ components, authentication, payments, multi-tenancy, and terminal-styled design.',
+  price: '199',
+  priceCurrency: 'USD',
+});
+
 export default function HomePage() {
   return (
     <>
-      {/* SEO: Structured Data */}
+      {/* SEO: Structured Data for AEO + GEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -72,6 +95,14 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
       {/* Hero - Sticky card effect */}
       <HeroSection />

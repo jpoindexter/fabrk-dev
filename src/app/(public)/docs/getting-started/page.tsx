@@ -10,9 +10,91 @@ export const metadata = {
     'Set up your Fabrk SaaS boilerplate in minutes. Install dependencies, configure environment variables, and launch your first app.',
 };
 
+// AEO: HowTo schema for voice search and featured snippets
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Set Up Fabrk SaaS Boilerplate',
+  description:
+    'Step-by-step guide to install and configure Fabrk, the Next.js SaaS boilerplate, and launch your first app.',
+  totalTime: 'PT30M',
+  estimatedCost: {
+    '@type': 'MonetaryAmount',
+    currency: 'USD',
+    value: '0',
+  },
+  tool: [
+    { '@type': 'HowToTool', name: 'Node.js v18.17 or higher' },
+    { '@type': 'HowToTool', name: 'Git' },
+    { '@type': 'HowToTool', name: 'PostgreSQL database' },
+  ],
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Check Your System',
+      text: 'Ensure Node.js v18.17+ is installed by running node --version',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Download Fabrk',
+      text: 'Clone your purchased repository: git clone https://github.com/YOUR-USERNAME/fabrk.git my-saas',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Install Dependencies',
+      text: 'Run npm install --legacy-peer-deps to download all required libraries',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Create Config File',
+      text: 'Copy the example environment file: cp .env.example .env.local',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 5,
+      name: 'Setup Database',
+      text: 'Add your PostgreSQL connection string to DATABASE_URL in .env.local',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 6,
+      name: 'Generate Secret Key',
+      text: 'Create a secure random string: openssl rand -base64 32',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 7,
+      name: 'Configure Settings',
+      text: 'Add DATABASE_URL, NEXTAUTH_URL, and NEXTAUTH_SECRET to .env.local',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 8,
+      name: 'Initialize Database',
+      text: 'Create database tables: npm run db:push',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 9,
+      name: 'Start Your App',
+      text: 'Launch the development server: npm run dev, then open http://localhost:3000',
+    },
+  ],
+};
+
 export default function GettingStartedPage() {
   return (
-    <FeatureGuideTemplate
+    <>
+      {/* AEO: HowTo schema for voice search and featured snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <FeatureGuideTemplate
       code="[0x00]"
       category="Docs"
       title="Getting Started"
@@ -360,5 +442,6 @@ npm run db:push && npm run dev
         </div>
       </DocsSection>
     </FeatureGuideTemplate>
+    </>
   );
 }

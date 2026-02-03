@@ -124,21 +124,41 @@ export function generateMetadata({
 
 /**
  * Generate JSON-LD structured data for organization
+ * Critical for GEO - helps AI understand your brand
  */
-export function generateOrganizationSchema() {
+export function generateOrganizationSchema(data?: {
+  name?: string;
+  description?: string;
+  foundingDate?: string;
+  sameAs?: string[];
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: siteConfig.name,
-    description: siteConfig.description,
+    '@id': `${siteConfig.url}#organization`,
+    name: data?.name || siteConfig.name,
+    description: data?.description || siteConfig.description,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
-    sameAs: [siteConfig.links.github],
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteConfig.url}/logo.png`,
+      width: 512,
+      height: 512,
+    },
+    foundingDate: data?.foundingDate,
+    sameAs: data?.sameAs || [siteConfig.links.github],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Support',
+      email: 'support@fabrk.dev',
+      availableLanguage: ['English'],
+    },
   };
 }
 
 /**
  * Generate JSON-LD structured data for product/software
+ * Essential for GEO - product info for AI citations
  */
 export function generateProductSchema() {
   return {
@@ -160,6 +180,50 @@ export function generateProductSchema() {
       ratingValue: '4.9',
       ratingCount: '127',
     },
+  };
+}
+
+/**
+ * Generate SoftwareApplication schema with custom data
+ * For GEO optimization with AI search engines
+ */
+export function generateSoftwareApplicationSchema(data?: {
+  name?: string;
+  description?: string;
+  price?: string;
+  priceCurrency?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${siteConfig.url}#software`,
+    name: data?.name || siteConfig.name,
+    description: data?.description || siteConfig.description,
+    url: siteConfig.url,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web, macOS, Windows, Linux',
+    softwareVersion: '1.0',
+    offers: {
+      '@type': 'Offer',
+      price: data?.price || '199',
+      priceCurrency: data?.priceCurrency || 'USD',
+      availability: 'https://schema.org/InStock',
+      url: `${siteConfig.url}/pricing`,
+      validFrom: new Date().toISOString(),
+    },
+    author: {
+      '@type': 'Organization',
+      name: 'Fabrk',
+    },
+    featureList: [
+      '62+ UI Components',
+      'Authentication with NextAuth v5',
+      'Multi-provider Payments (Stripe, Polar, Lemonsqueezy)',
+      'Multi-tenancy Support',
+      '18 Terminal Themes',
+      'TypeScript Support',
+      'Prisma ORM',
+    ],
   };
 }
 
