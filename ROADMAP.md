@@ -42,7 +42,7 @@
 ### v1.1.0 - Font Pairings & Accessibility (December 2025)
 - 34 display/body font combinations
 - 6 FUI themes
-- All 18 themes pass WCAG AA audit
+- all 18 themes pass WCAG AA audit
 
 ---
 

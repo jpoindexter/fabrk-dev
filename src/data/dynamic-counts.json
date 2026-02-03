@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-01-22T16:44:48.703Z",
+  "generatedAt": "2026-02-03T10:30:44.495Z",
   "counts": {
     "uiComponents": 62,
     "themes": 18,
     "templates": 49,
-    "apiRoutes": 72,
+    "apiRoutes": 70,
     "testFiles": 23,
     "languages": 6,
     "docsPages": 118,
@@ -14,7 +14,7 @@
     "components": "62+",
     "themes": "18",
     "templates": "49+",
-    "apiRoutes": "72+",
+    "apiRoutes": "70+",
     "testFiles": "23+",
     "languages": "6",
     "docsPages": "118+"
