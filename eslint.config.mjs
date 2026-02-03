@@ -7,12 +7,20 @@ import tailwindV4 from "eslint-plugin-tailwind-v4";
 import noHardcodedColors from "./config/eslint-rules/no-hardcoded-colors.mjs";
 import noInlineStyles from "./config/eslint-rules/no-inline-styles.mjs";
 
+// Import AI development rules
+import aiRules from "./src/lib/eslint/ai-rules.js";
+
 // Create design-system plugin from custom rules
 const designSystemPlugin = {
   rules: {
     "no-hardcoded-colors": noHardcodedColors,
     "no-inline-styles": noInlineStyles,
   },
+};
+
+// AI development plugin
+const aiPlugin = {
+  rules: aiRules.rules,
 };
 
 
@@ -92,6 +100,7 @@ const eslintConfig = [{
     "tailwind-v4": tailwindV4,
     ...(hasJsxA11yFromNext ? {} : { "jsx-a11y": jsxA11y }),
     "design-system": designSystemPlugin,
+    "ai": aiPlugin,
   },
   rules: {
     // Complexity rules (kept off for productivity)
@@ -116,6 +125,9 @@ const eslintConfig = [{
 
     // Tailwind v4 rules
     // "tailwind-v4/no-undefined-classes": "error",
+
+    // AI development rules (security)
+    "ai/no-unsafe-eval": "error",
   },
 }, {
   files: ["**/*.{js,jsx,ts,tsx}"],
@@ -263,6 +275,38 @@ const eslintConfig = [{
   rules: {
     '@next/next/no-img-element': 'off',
   }
+},
+// AI development rules for API routes
+{
+  files: ["src/app/api/**/*.ts", "src/app/api/**/*.tsx"],
+  rules: {
+    "ai/no-unsafe-eval": "error",
+    "ai/prefer-app-error": "warn",
+    "ai/require-cost-tracking": "off", // Enable as 'warn' to enforce cost tracking
+  },
+},
+// AI development rules for components (design system)
+{
+  files: ["src/components/**/*.tsx", "src/app/**/*.tsx"],
+  ignores: [
+    "src/**/showcase/**",
+    "src/**/examples/**",
+    "src/**/*.demo.tsx",
+    "src/**/*.stories.tsx",
+    "src/**/component-previews/**",
+    "src/components/ui/**", // UI primitives are exempt
+    "src/components/charts/**", // Chart components need flexibility
+    "src/app/(auth)/**", // Auth pages have Google brand colors
+    "src/app/(platform)/admin/ai-costs/**", // Dashboard uses warning colors for budget alerts
+    "src/app/docs/**", // Docs pages need specific widths for demos
+    "src/app/templates/**", // Template pages need flexibility
+    "src/app/(public)/library/**", // Library pages are demos
+  ],
+  rules: {
+    "ai/no-hardcoded-colors": "warn",
+    "ai/no-arbitrary-tailwind": "warn",
+    "ai/use-system-components": "off", // Enable as 'warn' to suggest system components
+  },
 }, {
   settings: {
     tailwindcss: {
