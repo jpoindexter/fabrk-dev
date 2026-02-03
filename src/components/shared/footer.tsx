@@ -130,6 +130,24 @@ export function Footer() {
                       >
                         &gt; ROADMAP
                       </Link>
+                      <Link
+                        href="/blog"
+                        className={cn(
+                          'text-muted-foreground hover:text-foreground text-xs transition-colors',
+                          mode.font
+                        )}
+                      >
+                        &gt; BLOG
+                      </Link>
+                      <Link
+                        href="/feed.xml"
+                        className={cn(
+                          'text-muted-foreground hover:text-foreground text-xs transition-colors',
+                          mode.font
+                        )}
+                      >
+                        &gt; RSS FEED
+                      </Link>
                     </nav>
                   </div>
 

@@ -10,11 +10,11 @@ import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import {
   getPostBySlug,
-  incrementViewCount,
   formatDate,
   formatReadTime,
   mdxComponents,
 } from '@/lib/blog';
+import { generateBlogPostSchema } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: post.seoTitle || `${post.title} | Fabrk Blog`,
-    description: post.seoDescription || post.excerpt || undefined,
+    title: `${post.title} | Fabrk Blog`,
+    description: post.excerpt || undefined,
     openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt || undefined,
+      title: post.title,
+      description: post.excerpt || undefined,
       type: 'article',
       publishedTime: post.publishedAt?.toISOString(),
       authors: [post.author.name || 'Fabrk'],
@@ -52,11 +52,23 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
-  // Increment view count (fire and forget)
-  incrementViewCount(post.id).catch(() => {});
+  // Generate JSON-LD structured data for SEO
+  const blogPostSchema = generateBlogPostSchema({
+    title: post.title,
+    description: post.excerpt || '',
+    slug: post.slug,
+    publishedAt: post.publishedAt?.toISOString() || new Date().toISOString(),
+    author: post.author.name ? { name: post.author.name } : undefined,
+    image: post.featuredImage || undefined,
+  });
 
   return (
     <div className="bg-background min-h-screen">
+      {/* SEO: BlogPosting Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
       <article className="container mx-auto max-w-4xl px-4 py-12">
         {/* Breadcrumb */}
         <div className="mb-8">
@@ -104,8 +116,6 @@ export default async function BlogPostPage({ params }: Props) {
               <span>{formatDate(post.publishedAt || post.createdAt)}</span>
               <span>|</span>
               <span>{formatReadTime(post.readTime || 1)}</span>
-              <span>|</span>
-              <span>{post.viewCount} views</span>
             </div>
           </div>
         </header>

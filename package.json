@@ -140,6 +140,7 @@
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.4.6",
     "nodemailer": "^7.0.10",
+    "outstatic": "^2.0.17",
     "pg": "^8.16.3",
     "pino": "^10.1.0",
     "pino-pretty": "^13.1.3",

@@ -1,6 +1,6 @@
 /**
  * Blog Module
- * Database-driven blog for Fabrk boilerplate
+ * Git-based blog using Outstatic CMS
  */
 
 export {
@@ -8,6 +8,7 @@ export {
   getPostBySlug,
   getPostById,
   getAllPosts,
+  getAllPostsForFeed,
   createPost,
   updatePost,
   deletePost,
@@ -16,7 +17,7 @@ export {
   createCategory,
   deleteCategory,
   type BlogPostWithAuthor,
-} from './queries';
+} from './outstatic';
 
 export { generateSlug, formatDate, formatReadTime, generateExcerpt, isValidSlug } from './utils';
 
