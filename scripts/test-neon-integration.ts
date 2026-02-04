@@ -22,6 +22,9 @@ import {
 } from '@/lib/ai/neon-integration';
 
 async function testNeonIntegration() {
+  // Suppress unhandled promise rejections from Neon client cleanup
+  process.on('unhandledRejection', () => {});
+
   try {
     console.log('🧪 Testing Neon Integration...\n');
 

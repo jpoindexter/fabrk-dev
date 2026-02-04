@@ -65,6 +65,9 @@ function calculateCost(
 }
 
 async function seedCostEvents() {
+  // Suppress unhandled promise rejections from Neon client cleanup
+  process.on('unhandledRejection', () => {});
+
   try {
     console.log('🌱 Seeding AI cost events...');
 
