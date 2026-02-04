@@ -5,6 +5,50 @@ All notable changes to Fabrk will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-02-04
+
+### Added
+- **AI Development Toolkit** - Complete suite for AI-assisted development:
+  - `npm run ai:validate` - Validate AI-generated code
+  - `npm run ai:lint` - ESLint rules for AI code quality
+  - `npm run ai:security` - Security scanning for AI code
+  - `npm run ai:costs` - API cost tracking and reporting
+  - `npm run ai:pre-deploy` - Pre-deployment validation
+- **AI Cost Tracking** - Monitor API spending with dashboard at `/admin/ai-costs`
+- **AI Development Documentation** - 9 comprehensive guides in `docs/11-ai-development/`
+- **New Component Docs** - Added documentation pages for:
+  - Terminal Card (12 components)
+  - Data Table (TanStack Table wrapper)
+  - File Upload (Dropzone)
+- **ESLint AI Rules** - Custom rules for design system compliance
+
+### Changed
+- **Component Refactoring** - Split large components for maintainability:
+  - `sign-in-form.tsx` split into `sign-in-form.tsx`, `sign-up-form.tsx`, `social-auth.tsx`
+  - `ascii-background.tsx` split into component + `ascii-animations.ts`
+- Updated CLAUDE.md with auth component quick reference
+- All files now under 300 line guideline
+
+### Fixed
+- Various TODO comments cleaned up or converted to descriptive comments
+- ESLint warnings resolved with proper fixes (not workarounds)
+
+---
+
+## [1.2.0] - 2026-01-15
+
+### Added
+- **SEO Improvements** - High-priority optimizations for search engines
+- **AEO/GEO Optimizations** - AI search engine optimizations
+- **HowTo Schemas** - Structured data for tutorials
+- **Static llms.txt** - AI crawler guidance file
+
+### Fixed
+- Heading hierarchy fixes for better SEO
+- robots.txt rules improved
+
+---
+
 ## [1.1.0] - 2025-12-27
 
 ### Added
