@@ -8,7 +8,13 @@
  *   npx tsx scripts/seed-ai-costs.ts
  */
 
-import { prisma } from '@/lib/prisma';
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load .env.local explicitly
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+
+import { insertCostEvent } from '@/lib/ai/neon-integration';
 
 const CLAUDE_MODELS = [
   'claude-opus-4-20250514',
@@ -103,24 +109,23 @@ async function seedCostEvents() {
       }
     }
 
-    // Insert all events
+    // Insert all events using Neon integration
+    let inserted = 0;
     for (const event of events) {
-      await prisma.aICostEvent.create({
-        data: {
-          model: event.model,
-          provider: event.provider,
-          promptTokens: event.promptTokens,
-          completionTokens: event.completionTokens,
-          totalTokens: event.totalTokens,
-          costUSD: event.costUSD,
-          feature: event.feature,
-          success: event.success,
-          durationMs: event.durationMs,
-          errorMessage: event.errorMessage,
-          metadata: event.metadata,
-          timestamp: new Date(),
-        },
+      const id = await insertCostEvent({
+        model: event.model,
+        provider: event.provider,
+        promptTokens: event.promptTokens,
+        completionTokens: event.completionTokens,
+        totalTokens: event.totalTokens,
+        costUSD: event.costUSD,
+        feature: event.feature,
+        success: event.success,
+        durationMs: event.durationMs,
+        errorMessage: event.errorMessage,
+        metadata: event.metadata,
       });
+      if (id) inserted++;
     }
 
     const totalCost = events.reduce((sum, e) => sum + e.costUSD, 0);
@@ -128,15 +133,13 @@ async function seedCostEvents() {
     const successRate = (events.filter((e) => e.success).length / totalRequests) * 100;
 
     console.log('✅ Seeding complete!');
-    console.log(`   📊 Inserted ${totalRequests} cost events`);
+    console.log(`   📊 Inserted ${inserted}/${totalRequests} cost events`);
     console.log(`   💰 Total cost: $${totalCost.toFixed(4)}`);
     console.log(`   ✓ Success rate: ${successRate.toFixed(1)}%`);
     console.log(`\n🔗 View dashboard: http://localhost:3000/(platform)/admin/ai-costs`);
   } catch (error) {
     console.error('❌ Error seeding costs:', error);
     process.exit(1);
-  } finally {
-    await prisma.$disconnect();
   }
 }
 

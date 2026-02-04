@@ -8,6 +8,12 @@
  *   npx tsx scripts/test-neon-integration.ts
  */
 
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load .env.local explicitly
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+
 import {
   getNeonClient,
   insertCostEvent,

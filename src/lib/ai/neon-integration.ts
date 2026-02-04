@@ -10,6 +10,17 @@ import { Client } from '@neondatabase/serverless';
 let neonClient: Client | null = null;
 
 /**
+ * Generate a CUID-like ID for database records
+ * Simple implementation: uuid-like format with prefix
+ */
+function generateId(): string {
+  // Simple approach: use timestamp + random suffix
+  const timestamp = Date.now().toString(36);
+  const randomPart = Math.random().toString(36).substring(2, 9);
+  return `c${timestamp}${randomPart}`.substring(0, 24);
+}
+
+/**
  * Initialize Neon serverless client for cost tracking
  * Falls back to Prisma if not using Neon
  */
@@ -61,17 +72,19 @@ export async function insertCostEvent(event: {
   }
 
   try {
+    const id = generateId();
     const result = await client.query(
       `INSERT INTO "AICostEvent" (
-        model, provider, "promptTokens", "completionTokens",
+        id, model, provider, "promptTokens", "completionTokens",
         "totalTokens", "costUSD", feature, success, "durationMs",
         "userId", "errorMessage", metadata, timestamp
       )
       VALUES (
-        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW()
+        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW()
       )
       RETURNING id;`,
       [
+        id,
         event.model,
         event.provider,
         event.promptTokens,
@@ -87,7 +100,7 @@ export async function insertCostEvent(event: {
       ]
     );
 
-    return result.rows[0]?.id;
+    return result.rows[0]?.id || id;
   } catch (error) {
     console.error('Neon insert failed:', error);
     return null;
