@@ -1,73 +1,107 @@
 /**
- * Single Blog Post Page
- * Terminal-styled article with MDX support
+ * Blog Post Detail Page
+ * Uses Outstatic directly (same as indx)
  */
 
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getDocumentBySlug, getDocumentSlugs } from 'outstatic/server';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import {
-  getPostBySlug,
-  formatDate,
-  formatReadTime,
-  mdxComponents,
-} from '@/lib/blog';
 import { generateBlogPostSchema } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 
-interface Props {
+interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  const { getPublishedPosts } = await import('@/lib/blog/get-posts');
-  const posts = getPublishedPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+interface BlogPost {
+  title: string;
+  description?: string;
+  content: string;
+  coverImage?: string;
+  publishedAt: string;
+  author?: { name?: string; picture?: string };
+  category?: string;
+  status?: string;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+function formatDate(dateString: string): string {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
 
-  if (!post) {
+function calculateReadingTime(content: string): string {
+  const wordsPerMinute = 200;
+  const words = content?.split(/\s+/).length || 0;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
+}
+
+export async function generateStaticParams() {
+  const slugs = getDocumentSlugs('posts');
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getDocumentBySlug('posts', slug, [
+    'title',
+    'description',
+    'coverImage',
+    'publishedAt',
+    'author',
+    'status',
+  ]);
+
+  if (!post || post.status === 'draft') {
     return { title: 'Post Not Found' };
   }
 
   return {
     title: `${post.title} | Fabrk Blog`,
-    description: post.excerpt || undefined,
+    description: post.description || undefined,
     openGraph: {
       title: post.title,
-      description: post.excerpt || undefined,
+      description: post.description || undefined,
       type: 'article',
-      publishedTime: post.publishedAt?.toISOString(),
-      authors: [post.author.name || 'Fabrk'],
-      images: post.featuredImage ? [post.featuredImage] : undefined,
+      publishedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
+      authors: [post.author?.name || 'Fabrk'],
+      images: post.coverImage ? [post.coverImage] : undefined,
     },
   };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getDocumentBySlug('posts', slug, [
+    'title',
+    'description',
+    'content',
+    'coverImage',
+    'publishedAt',
+    'author',
+    'category',
+    'status',
+  ]) as BlogPost | null;
 
-  if (!post) {
+  if (!post || post.status === 'draft') {
     notFound();
   }
 
   // Generate JSON-LD structured data for SEO
   const blogPostSchema = generateBlogPostSchema({
     title: post.title,
-    description: post.excerpt || '',
-    slug: post.slug,
-    publishedAt: post.publishedAt?.toISOString() || new Date().toISOString(),
-    author: post.author.name ? { name: post.author.name } : undefined,
-    image: post.featuredImage || undefined,
+    description: post.description || '',
+    slug: slug,
+    publishedAt: post.publishedAt ? new Date(post.publishedAt).toISOString() : new Date().toISOString(),
+    author: post.author?.name ? { name: post.author.name } : undefined,
+    image: post.coverImage || undefined,
   });
 
   return (
@@ -94,10 +128,10 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Category */}
             {post.category && (
               <Link
-                href={`/blog?category=${post.category.slug}`}
+                href={`/blog?category=${String(post.category).toLowerCase().replace(/\s+/g, '-')}`}
                 className={cn("border-primary text-primary hover:bg-primary hover:text-primary-foreground mb-4 inline-block border px-2 py-1 font-mono text-xs", mode.radius)}
               >
-                {post.category.name.toUpperCase()}
+                {String(post.category).toUpperCase()}
               </Link>
             )}
 
@@ -109,30 +143,30 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Meta */}
             <div className="text-muted-foreground flex flex-wrap items-center gap-4 font-mono text-xs">
               <div className="flex items-center gap-2">
-                {post.author.image && (
+                {post.author?.picture && (
                   <Image
-                    src={post.author.image}
+                    src={post.author.picture}
                     alt={`${post.author.name || 'Author'} avatar`}
                     width={24}
                     height={24}
                     className={cn('h-6 w-6', mode.radius)}
                   />
                 )}
-                <span>{post.author.name || 'Anonymous'}</span>
+                <span>{post.author?.name || 'Fabrk Team'}</span>
               </div>
               <span>|</span>
-              <span>{formatDate(post.publishedAt || post.createdAt)}</span>
+              <span>{formatDate(post.publishedAt)}</span>
               <span>|</span>
-              <span>{formatReadTime(post.readTime || 1)}</span>
+              <span>{calculateReadingTime(post.content)}</span>
             </div>
           </div>
         </header>
 
         {/* Featured Image */}
-        {post.featuredImage && (
+        {post.coverImage && (
           <div className={cn("border-border relative mb-8 aspect-video overflow-hidden border", mode.radius)}>
             <Image
-              src={post.featuredImage}
+              src={post.coverImage}
               alt={`Featured image for ${post.title}`}
               fill
               className="object-cover"
@@ -142,8 +176,8 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Content - MDX Rendered */}
         <div className={cn("border-border bg-card border p-6 md:p-8", mode.radius)}>
-          <div className="max-w-none">
-            <MDXRemote source={post.content} components={mdxComponents} />
+          <div className="prose prose-invert max-w-none font-mono">
+            <MDXRemote source={post.content} />
           </div>
         </div>
 
@@ -153,7 +187,7 @@ export default async function BlogPostPage({ params }: Props) {
             &lt;- ALL POSTS
           </Link>
           <div className="text-muted-foreground font-mono text-xs">
-            Published: {formatDate(post.publishedAt || post.createdAt)}
+            Published: {formatDate(post.publishedAt)}
           </div>
         </div>
       </article>

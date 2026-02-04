@@ -1,0 +1,6 @@
+{
+  "version": "2.0",
+  "collections": ["posts"],
+  "repoMediaPath": "/public/images/blog",
+  "publicMediaPath": "/images/blog"
+}
