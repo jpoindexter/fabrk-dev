@@ -199,6 +199,11 @@ scripts/validate-webhooks.mjs
 scripts/design-lint.js
 scripts/utilities/
 scripts/utils/
+scripts/ai-cost-report.ts
+scripts/ai-lint.ts
+scripts/ai-pre-deploy.ts
+scripts/ai-security-scan.ts
+scripts/ai-validate.ts
 
 # ============================================
 # MCP SERVER (AI-assisted development)
@@ -290,6 +295,11 @@ docs/10-deployment/NPM-PACKAGE-GUIDE.md
 docs/10-deployment/POST-LAUNCH-MONITORING.md
 docs/10-deployment/PRODUCTION-DEPLOYMENT.md
 docs/10-deployment/README.md
+
+# ============================================
+# DOCS: AI DEVELOPMENT GUIDE
+# ============================================
+docs/11-ai-development/
 
 # ============================================
 # DOCS: DESIGN SYSTEM SPECS
