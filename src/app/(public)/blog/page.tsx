@@ -6,7 +6,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPublishedPosts, getCategories, formatDate, formatReadTime } from '@/lib/blog';
+import { getPublishedBlogPosts, getFeaturedBlogPosts } from '@/data/blog-posts';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -23,13 +23,35 @@ export default async function BlogPage({
   const params = await searchParams;
   const categorySlug = params.category;
 
-  const [posts, categories] = await Promise.all([
-    getPublishedPosts({ categorySlug, limit: 20 }),
-    getCategories(),
-  ]);
+  // Get posts from data source
+  const allPosts = getPublishedBlogPosts();
+
+  // Filter by category if provided
+  const posts = categorySlug
+    ? allPosts.filter(p => p.category?.slug === categorySlug)
+    : allPosts;
+
+  // Get categories from posts
+  const categoryMap = new Map<string, number>();
+  allPosts.forEach(post => {
+    if (post.category) {
+      categoryMap.set(post.category.slug, (categoryMap.get(post.category.slug) || 0) + 1);
+    }
+  });
+
+  const categories = Array.from(categoryMap.entries()).map(([slug, count]) => ({
+    id: slug,
+    name: slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+    slug,
+    _count: { posts: count },
+  }));
 
   const featuredPosts = posts.filter((p) => p.featured);
   const regularPosts = posts.filter((p) => !p.featured);
+
+  // Format helpers
+  const formatDate = (date: Date) => new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  const formatReadTime = (minutes: number) => `${minutes} min read`;
 
   return (
     <div className="bg-background min-h-screen">
@@ -108,7 +130,7 @@ export default async function BlogPage({
                       )}
                       <span>{formatDate(post.publishedAt || post.createdAt)}</span>
                       <span>•</span>
-                      <span>{formatReadTime(post.readTime || 1)}</span>
+                      <span>{formatReadTime(post.readTime)}</span>
                     </div>
                     <h3 className="text-foreground group-hover:text-primary mb-2 font-mono text-sm font-semibold">
                       {post.title}
