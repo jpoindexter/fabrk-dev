@@ -2444,12 +2444,15 @@
 /* ============================================
    PROSE CODE BLOCK STYLING
    Uses design system tokens for consistent theming
+   Higher specificity to override prose-invert defaults
    ============================================ */
 
 /* Code blocks in prose content - terminal aesthetic (sharp corners) */
-.prose pre {
-  background-color: var(--code-bg);
-  border: 1px solid var(--border);
+.prose pre,
+.prose-invert pre {
+  background-color: var(--code-bg) !important;
+  border: 1px solid oklch(var(--border)) !important;
+  border-radius: 0 !important;
   padding: 1rem;
   overflow-x: auto;
   font-family: var(--font-mono), ui-monospace, monospace;
@@ -2457,20 +2460,23 @@
   line-height: 1.6;
 }
 
-.prose pre code {
-  background-color: transparent;
-  border: none;
+.prose pre code,
+.prose-invert pre code {
+  background-color: transparent !important;
+  border: none !important;
   padding: 0;
-  color: var(--code-fg);
+  color: var(--code-fg) !important;
   font-size: inherit;
 }
 
 /* Inline code in prose content - terminal aesthetic (sharp corners) */
-.prose :not(pre) > code {
-  background-color: var(--muted);
-  border: 1px solid var(--border);
+.prose :not(pre) > code,
+.prose-invert :not(pre) > code {
+  background-color: oklch(var(--muted)) !important;
+  border: 1px solid oklch(var(--border)) !important;
+  border-radius: 0 !important;
   padding: 0.125rem 0.375rem;
-  color: var(--foreground);
+  color: oklch(var(--foreground)) !important;
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.8em;
 }
