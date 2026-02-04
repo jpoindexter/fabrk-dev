@@ -70,6 +70,16 @@ import { DonutChart } from '@/components/charts/donut-chart';
 | Gauge | `<Gauge>` | `@/components/charts/gauge` |
 | Sparkline | `<Sparkline>` | `@/components/charts/sparkline` |
 
+**Auth** (`src/components/auth/`)
+
+| Need | Component | Import Path |
+|------|-----------|-------------|
+| Login form | `<SignInForm>` | `@/components/auth/sign-in-form` |
+| Registration form | `<SignUpForm>` | `@/components/auth/sign-up-form` |
+| OAuth buttons | `<SocialAuthButtons>` | `@/components/auth/social-auth` |
+| OAuth divider | `<SocialAuthDivider>` | `@/components/auth/social-auth` |
+| Auth error | `<AuthErrorMessage>` | `@/components/auth/social-auth` |
+
 **List all components:** `ls src/components/ui/` and `ls src/components/charts/`
 
 ---
