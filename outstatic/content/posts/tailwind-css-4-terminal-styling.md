@@ -38,7 +38,7 @@ Tailwind 4 natively supports OKLCH colors:
 }
 ```
 
-All 18 themes use OKLCH for perceptually uniform colors.
+all 18 themes use OKLCH for perceptually uniform colors.
 
 ---
 

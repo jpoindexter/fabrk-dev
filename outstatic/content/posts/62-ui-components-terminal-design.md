@@ -8,7 +8,7 @@ description: 'Fabrk includes 62 pre-built UI components styled for terminal aest
 publishedAt: '2026-01-31T10:00:00.000Z'
 ---
 
-**62 components. 18 themes. Zero design debt.**
+**62+ components. 18 themes. Zero design debt.**
 
 ---
 
@@ -28,7 +28,7 @@ Fabrk solves this with 62 pre-built components.
 
 ## Component Categories
 
-### Form Controls (12 components)
+### Form Controls (62+ components)
 
 ```tsx
 import { Button } from '@/components/ui/button';
@@ -162,7 +162,7 @@ Components follow terminal conventions:
 
 ## Accessibility
 
-All 62 components are:
+All 62+ components are:
 
 - WCAG 2.2 AA compliant
 - Keyboard navigable
@@ -235,5 +235,5 @@ The base components remain untouched.
 3. Apply `mode.radius` and `mode.font` for terminal styling
 4. Use design tokens for colors
 
-62 components. Zero decisions. Ship faster.
+62+ components. Zero decisions. Ship faster.
 
