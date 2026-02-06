@@ -131,6 +131,23 @@ export function HeroSection() {
             <span className="text-border">|</span>
             <span>LIFETIME UPDATES</span>
           </div>
+
+          {/* Product Hunt Badge - Subtle */}
+          <div className="mt-8">
+            <a
+              href="https://www.producthunt.com/products/fabrk/launches/fabrk?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-fabrk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-60 hover:opacity-100 transition-opacity inline-block"
+            >
+              <img
+                alt="Fabrk - Terminal-aesthetic Next.js boilerplate. Stand out. Ship fast | Product Hunt"
+                width="200"
+                height="43"
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1053948&theme=neutral&t=1770398539306"
+              />
+            </a>
+          </div>
         </div>
       </Container>
     </section>

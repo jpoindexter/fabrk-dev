@@ -72,6 +72,23 @@ export function Footer() {
                   ))}
                 </div>
               </div>
+
+              {/* Product Hunt Badge */}
+              <div className="mt-6">
+                <a
+                  href="https://www.producthunt.com/products/fabrk/launches/fabrk?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-fabrk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-70 hover:opacity-100 transition-opacity inline-block"
+                >
+                  <img
+                    alt="Fabrk - Terminal-aesthetic Next.js boilerplate. Stand out. Ship fast | Product Hunt"
+                    width="250"
+                    height="54"
+                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1053948&theme=neutral&t=1770398539306"
+                  />
+                </a>
+              </div>
             </div>
 
             {/* Right: Nav Links in Terminal Box */}
