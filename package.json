@@ -63,6 +63,10 @@
     "sync:official": "node scripts/sync-to-official.mjs",
     "sync:official:dry": "node scripts/sync-to-official.mjs --dry-run",
     "sync:changelog": "node scripts/sync-changelog.mjs",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:reset": "docker compose down -v && docker compose up -d",
+    "docker:logs": "docker compose logs -f",
     "prepare": "husky"
   },
   "lint-staged": {

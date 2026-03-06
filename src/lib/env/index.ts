@@ -144,6 +144,18 @@ export const env = {
   // PostHog Analytics (Optional)
   NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
   NEXT_PUBLIC_POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+
+  // Service Toggles (Infrastructure)
+  SERVICE_REDIS: process.env.SERVICE_REDIS === 'true',
+  SERVICE_STORAGE: process.env.SERVICE_STORAGE === 'true',
+  SERVICE_VECTOR_DB: process.env.SERVICE_VECTOR_DB === 'true',
+
+  // Feature Toggles (Application Modules)
+  FEATURE_AI: process.env.FEATURE_AI === 'true',
+  FEATURE_BILLING: process.env.FEATURE_BILLING !== 'false', // default true
+  FEATURE_BLOG: process.env.FEATURE_BLOG !== 'false', // default true
+  FEATURE_I18N: process.env.FEATURE_I18N === 'true',
+  FEATURE_ANALYTICS: process.env.FEATURE_ANALYTICS !== 'false', // default true
 } as const;
 
 /**
@@ -165,6 +177,18 @@ export const features = {
   openai: !!env.OPENAI_API_KEY,
   anthropic: !!env.ANTHROPIC_API_KEY,
   posthog: !!env.NEXT_PUBLIC_POSTHOG_KEY,
+
+  // Service toggles
+  serviceRedis: env.SERVICE_REDIS,
+  serviceStorage: env.SERVICE_STORAGE,
+  serviceVectorDb: env.SERVICE_VECTOR_DB,
+
+  // Feature toggles
+  featureAi: env.FEATURE_AI,
+  featureBilling: env.FEATURE_BILLING,
+  featureBlog: env.FEATURE_BLOG,
+  featureI18n: env.FEATURE_I18N,
+  featureAnalytics: env.FEATURE_ANALYTICS,
 } as const;
 
 // Re-export validation functions for manual use

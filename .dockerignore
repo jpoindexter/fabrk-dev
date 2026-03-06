@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.gitignore
+.env.local
+.env*.local
+*.md
+.husky
+.vscode
+.idea
+coverage
+.playwright
+test-results
+playwright-report
+dist

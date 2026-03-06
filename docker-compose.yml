@@ -1,0 +1,51 @@
+# FABRK Local Development
+# Start: docker compose up -d && npm run dev
+# Stop: docker compose down
+# Reset: docker compose down -v && docker compose up -d
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: fabrk-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: fabrk
+      POSTGRES_PASSWORD: fabrk_dev
+      POSTGRES_DB: fabrk_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fabrk -d fabrk_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - fabrk-network
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: fabrk-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - fabrk-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  fabrk-network:
+    driver: bridge
