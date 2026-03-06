@@ -11,19 +11,25 @@
  * } from "@/lib/seo";
  */
 
-// Structured Data (JSON-LD)
+// Structured Data (JSON-LD) - Core schemas
 export {
   generateOrganizationSchema,
   generateSoftwareApplicationSchema,
-  generateArticleSchema,
+  generateProductSchema,
   generateFAQSchema,
-  generateHowToSchema,
   generateBreadcrumbSchema,
-  generateReviewSchema,
   generateWebSiteSchema,
+} from './structured-data';
+
+// Structured Data (JSON-LD) - Content schemas
+export {
+  generateArticleSchema,
+  generateBlogPostSchema,
+  generateHowToSchema,
+  generateReviewSchema,
   generateVideoSchema,
   generateCourseSchema,
-} from './structured-data';
+} from './content-schemas';
 
 // Content Optimization
 export {

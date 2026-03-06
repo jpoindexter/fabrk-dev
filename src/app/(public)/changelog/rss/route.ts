@@ -7,8 +7,8 @@
 
 import { CHANGELOG } from '@/data/changelog';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://fabrk.dev';
-const SITE_NAME = 'Fabrk';
+const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Fabrk';
 const SITE_DESCRIPTION = 'Terminal-first SaaS boilerplate. Ship fast. Look sharp.';
 
 function escapeXml(text: string): string {

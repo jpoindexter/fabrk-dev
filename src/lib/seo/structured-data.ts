@@ -1,14 +1,20 @@
 /**
- * Structured Data (JSON-LD) Generators
- * Comprehensive schema.org markup for SEO, AEO, and GEO
+ * Core Structured Data (JSON-LD) Generators
+ * Organization, SoftwareApplication, Product, WebSite, FAQ, Breadcrumb
  *
- * These schemas help with:
- * - SEO: Traditional search ranking
- * - AEO: Featured snippets, voice search, "People Also Ask"
- * - GEO: AI citations in ChatGPT, Gemini, Google AI Overview
+ * Content schemas (Article, BlogPost, HowTo, etc.) are in content-schemas.ts
  */
 
-import { siteConfig } from '@/lib/metadata';
+import appConfig from '@/config/app';
+
+const siteConfig = {
+  name: appConfig.app.name,
+  description: appConfig.app.description,
+  url: appConfig.app.url,
+  links: {
+    github: 'https://github.com/yourusername/fabrk-boilerplate',
+  },
+};
 
 interface Organization {
   name: string;
@@ -44,43 +50,14 @@ interface Product {
   };
 }
 
-interface Article {
-  headline: string;
-  description: string;
-  author: string;
-  datePublished: string;
-  dateModified?: string;
-  image?: string;
-  articleSection?: string;
-  wordCount?: number;
-}
-
 interface FAQ {
   question: string;
   answer: string;
   acceptedAnswerType?: 'text' | 'html';
 }
 
-interface HowToStep {
-  name: string;
-  text: string;
-  image?: string;
-  url?: string;
-}
-
-interface Review {
-  author: string;
-  datePublished: string;
-  reviewBody: string;
-  reviewRating: {
-    ratingValue: number;
-    bestRating?: number;
-  };
-}
-
 /**
  * Generate Organization schema (for company/brand)
- * Critical for GEO - helps AI understand your brand
  */
 export function generateOrganizationSchema(data?: Partial<Organization>) {
   const baseUrl = siteConfig.url;
@@ -107,7 +84,7 @@ export function generateOrganizationSchema(data?: Partial<Organization>) {
     contactPoint: data?.contactPoint || {
       '@type': 'ContactPoint',
       contactType: 'Customer Support',
-      email: 'support@fabrk.dev',
+      email: appConfig.app.supportEmail,
       availableLanguage: ['English'],
     },
   };
@@ -115,7 +92,6 @@ export function generateOrganizationSchema(data?: Partial<Organization>) {
 
 /**
  * Generate SoftwareApplication schema (for SaaS products)
- * Essential for product-based SEO and AEO
  */
 export function generateSoftwareApplicationSchema(data?: Partial<Product>) {
   const baseUrl = siteConfig.url;
@@ -132,8 +108,8 @@ export function generateSoftwareApplicationSchema(data?: Partial<Product>) {
     softwareVersion: '1.0',
     offers: {
       '@type': 'Offer',
-      price: data?.price || '79',
-      priceCurrency: data?.priceCurrency || 'USD',
+      price: data?.price || String(appConfig.pricing.fabrk.current),
+      priceCurrency: data?.priceCurrency || appConfig.pricing.fabrk.currency,
       availability: 'https://schema.org/InStock',
       url: `${baseUrl}/pricing`,
       validFrom: new Date().toISOString(),
@@ -152,44 +128,33 @@ export function generateSoftwareApplicationSchema(data?: Partial<Product>) {
 }
 
 /**
- * Generate Article schema (for blog posts and content pages)
- * Critical for AEO - helps content appear in featured snippets
+ * Generate Product schema (simpler than SoftwareApplication)
+ * Used in root layout for basic product info
  */
-export function generateArticleSchema(data: Article) {
-  const baseUrl = siteConfig.url;
-
+export function generateProductSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: data.headline,
-    description: data.description,
+    '@type': 'SoftwareApplication',
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: String(appConfig.pricing.fabrk.current),
+      priceCurrency: appConfig.pricing.fabrk.currency,
+      availability: 'https://schema.org/InStock',
+    },
     author: {
-      '@type': 'Person',
-      name: data.author,
-    },
-    publisher: {
       '@type': 'Organization',
-      name: siteConfig.name,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}/logo.png`,
-      },
-    },
-    datePublished: data.datePublished,
-    dateModified: data.dateModified || data.datePublished,
-    image: data.image || `${baseUrl}/og-image.png`,
-    articleSection: data.articleSection,
-    wordCount: data.wordCount,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': baseUrl,
+      name: appConfig.app.author,
     },
   };
 }
 
 /**
  * Generate FAQ schema (for featured snippets)
- * CRITICAL for AEO - directly appears in "People Also Ask"
  */
 export function generateFAQSchema(faqs: FAQ[]) {
   return {
@@ -207,41 +172,7 @@ export function generateFAQSchema(faqs: FAQ[]) {
 }
 
 /**
- * Generate HowTo schema (for tutorial content)
- * Excellent for AEO and voice search optimization
- */
-export function generateHowToSchema(data: {
-  name: string;
-  description: string;
-  steps: HowToStep[];
-  totalTime?: string;
-  estimatedCost?: string;
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: data.name,
-    description: data.description,
-    totalTime: data.totalTime,
-    estimatedCost: data.estimatedCost && {
-      '@type': 'MonetaryAmount',
-      currency: 'USD',
-      value: data.estimatedCost,
-    },
-    step: data.steps.map((step, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
-      name: step.name,
-      text: step.text,
-      image: step.image,
-      url: step.url,
-    })),
-  };
-}
-
-/**
  * Generate Breadcrumb schema (for navigation)
- * Helps with site structure understanding (SEO + GEO)
  */
 export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
   const baseUrl = siteConfig.url;
@@ -259,42 +190,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
 }
 
 /**
- * Generate Review schema (for testimonials)
- * Enhances trust signals for SEO and GEO
- */
-export function generateReviewSchema(reviews: Review[], productName?: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: productName || siteConfig.name,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: (
-        reviews.reduce((sum, r) => sum + r.reviewRating.ratingValue, 0) / reviews.length
-      ).toFixed(1),
-      reviewCount: reviews.length,
-      bestRating: 5,
-    },
-    review: reviews.map((review) => ({
-      '@type': 'Review',
-      author: {
-        '@type': 'Person',
-        name: review.author,
-      },
-      datePublished: review.datePublished,
-      reviewBody: review.reviewBody,
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: review.reviewRating.ratingValue,
-        bestRating: review.reviewRating.bestRating || 5,
-      },
-    })),
-  };
-}
-
-/**
  * Generate WebSite schema with search action
- * Enables site search in search results
  */
 export function generateWebSiteSchema() {
   const baseUrl = siteConfig.url;
@@ -317,51 +213,12 @@ export function generateWebSiteSchema() {
   };
 }
 
-/**
- * Generate VideoObject schema (for video content)
- * Critical for video SEO and rich snippets
- */
-export function generateVideoSchema(data: {
-  name: string;
-  description: string;
-  thumbnailUrl: string;
-  uploadDate: string;
-  duration: string;
-  contentUrl: string;
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'VideoObject',
-    name: data.name,
-    description: data.description,
-    thumbnailUrl: data.thumbnailUrl,
-    uploadDate: data.uploadDate,
-    duration: data.duration,
-    contentUrl: data.contentUrl,
-    embedUrl: data.contentUrl,
-  };
-}
-
-/**
- * Generate Course schema (for educational content)
- * Great for educational SaaS products
- */
-export function generateCourseSchema(data: {
-  name: string;
-  description: string;
-  provider: string;
-}) {
-  const baseUrl = siteConfig.url;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Course',
-    name: data.name,
-    description: data.description,
-    provider: {
-      '@type': 'Organization',
-      name: data.provider,
-      sameAs: baseUrl,
-    },
-  };
-}
+// Re-export content schemas for backward compatibility
+export {
+  generateArticleSchema,
+  generateBlogPostSchema,
+  generateHowToSchema,
+  generateReviewSchema,
+  generateVideoSchema,
+  generateCourseSchema,
+} from './content-schemas';

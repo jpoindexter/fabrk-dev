@@ -6,7 +6,7 @@ import { MetadataRoute } from 'next';
  * Note: Filesystem scanning doesn't work on Vercel serverless
  */
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://fabrk.dev';
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 // Marketing pages
 const MARKETING_ROUTES = [

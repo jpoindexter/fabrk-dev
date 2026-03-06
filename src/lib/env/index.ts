@@ -145,6 +145,9 @@ export const env = {
   NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
   NEXT_PUBLIC_POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
 
+  // Redis (self-hosted)
+  REDIS_URL: process.env.REDIS_URL || 'redis://localhost:6379',
+
   // Service Toggles (Infrastructure)
   SERVICE_REDIS: process.env.SERVICE_REDIS === 'true',
   SERVICE_STORAGE: process.env.SERVICE_STORAGE === 'true',

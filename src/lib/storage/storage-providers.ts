@@ -57,10 +57,11 @@ async function initializeS3Client() {
   try {
     // Dynamic import for optional S3 SDK dependencies
     // These packages are optional - install with: npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
-    // @ts-expect-error - AWS SDK is an optional dependency
-    const s3 = await import('@aws-sdk/client-s3');
-    // @ts-expect-error - AWS SDK is an optional dependency
-    const presigner = await import('@aws-sdk/s3-request-presigner');
+    // Variable aliases prevent Vite's static analysis from failing when packages aren't installed
+    const s3Pkg = '@aws-sdk/client-s3';
+    const presignerPkg = '@aws-sdk/s3-request-presigner';
+    const s3 = await import(/* @vite-ignore */ s3Pkg);
+    const presigner = await import(/* @vite-ignore */ presignerPkg);
 
     S3Client = s3.S3Client;
     PutObjectCommand = s3.PutObjectCommand;

@@ -50,10 +50,8 @@ These require minimal effort but close visible competitive gaps.
 ### 1.4 Recipes Documentation — DONE
 5 recipes in `docs/recipes/`: rebrand, add feature, add payment, customize theme, deploy.
 
-### 1.5 Branding System
-**Gap:** ~30 files with hardcoded "Fabrk" references. Marketing files are intentional.
-**Remaining:** Audit core files (`src/lib/metadata.ts`, `src/app/layout.tsx`) to use config references.
-**Effort:** 1-2 hours
+### 1.5 Branding System — DONE
+`metadata.ts` refactored to import from `config/app.ts`. SEO schemas split into two files (<300 lines each). Fake aggregateRating removed. Hardcoded emails/names replaced with config references. `sitemap.ts`, `robots.ts`, `email-core.ts`, `changelog/rss` now use env vars.
 
 ---
 
@@ -61,46 +59,14 @@ These require minimal effort but close visible competitive gaps.
 
 These close the most impactful technical gaps.
 
-### 2.1 Redis Integration
-**Gap:** ShipAI has Redis 7.4 for cache + rate limiting. FABRK's cache is in-memory.
-**Plan:**
-- Install `ioredis`
-- Create `src/lib/redis.ts` with connection management
-- Update `src/lib/cache.ts` to use Redis when `SERVICE_REDIS=true`, fallback to in-memory
-- Update `src/lib/rate-limit/middleware.ts` to use Redis backend
-- Add Redis to Docker Compose
-- Add session storage option via Redis
-**Effort:** 6-8 hours
-**Repo:** fabrk-dev, then extract to fabrk-framework `@fabrk/config`
+### 2.1 Redis Integration — DONE
+`ioredis` installed. `src/lib/redis.ts` singleton with `SERVICE_REDIS` toggle. `src/lib/cache.ts` upgraded to use Redis with in-memory fallback (write-through). `REDIS_URL` added to env config. All cache tests pass.
 
-### 2.2 Background Jobs
-**Gap:** ShipAI has BullMQ workers + cron. FABRK has none.
-**Plan:**
-- Install `bullmq`
-- Create `src/lib/jobs/` with:
-  - `queue.ts` - Queue creation and configuration
-  - `worker.ts` - Worker setup and job processing
-  - `scheduler.ts` - Cron job scheduling
-  - `types.ts` - Job type definitions
-- Create example jobs: email sending, data cleanup, usage metering
-- Add admin UI for job monitoring (use existing admin components)
-- Add to Docker Compose (requires Redis)
-**Effort:** 10-12 hours
-**Repo:** fabrk-dev, then extract to fabrk-framework
+### 2.2 Background Jobs — DONE
+`bullmq` installed. `src/lib/jobs/` with queue, worker, scheduler, typed payloads. 4 job types: email, cleanup, usage metering, webhooks. Cron scheduler for recurring cleanup. `npm run jobs:worker` script.
 
-### 2.3 Structured Logging
-**Gap:** ShipAI has Pino + OpenTelemetry. FABRK has basic `console.error`.
-**Plan:**
-- Install `pino` and `pino-pretty`
-- Create `src/lib/logger/` with:
-  - `index.ts` - Logger factory with context
-  - `middleware.ts` - Request logging middleware
-  - `formats.ts` - JSON for prod, pretty for dev
-- Replace all `console.error` / `console.log` with structured logger
-- Add request ID tracking
-- Add log level configuration via env var
-**Effort:** 6-8 hours
-**Repo:** fabrk-dev
+### 2.3 Structured Logging — DONE
+Logger upgraded from console-based to Pino. JSON in production, pretty in development. Sensitive data redaction via Pino `redact`. `LOG_LEVEL` env var support. Child logger support. Same `logger.info/warn/error/debug` API.
 
 ### 2.4 Admin Dashboard Wiring
 **Gap:** ShipAI has full admin panel. FABRK has admin components but they're not fully wired.

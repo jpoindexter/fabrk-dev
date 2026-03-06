@@ -10,7 +10,7 @@ import { env } from '@/lib/env';
 export const resend = env.server.RESEND_API_KEY ? new Resend(env.server.RESEND_API_KEY) : null;
 
 export const FROM_EMAIL = env.server.EMAIL_FROM || 'noreply@yourdomain.com';
-export const APP_NAME = 'Fabrk';
+export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Fabrk';
 export const APP_URL = env.client.NEXT_PUBLIC_APP_URL;
 
 /**
