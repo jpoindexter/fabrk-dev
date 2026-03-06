@@ -7,7 +7,7 @@ Optimize FABRK's website and content for search engine visibility. Drive organic
 - FABRK has existing SEO lib at `src/lib/seo/` (structured data, AI optimization, content optimization)
 - Sitemap at `src/app/sitemap.ts`
 - Robots at `src/app/robots.ts`
-- Blog content at `src/content/blog/`
+- Blog content at `src/components/blog/`
 - Metadata utility at `src/lib/metadata.ts`
 - Competitor ShipAI claims 98/100 Lighthouse
 

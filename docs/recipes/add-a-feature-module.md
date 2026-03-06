@@ -243,21 +243,6 @@ const navigationItems = [
 ];
 ```
 
-## File Summary
-
-```
-src/
-  app/
-    (platform)/projects/page.tsx         # Page
-    api/projects/route.ts                # API route
-  components/projects/
-    project-list.tsx                     # Feature component
-  lib/projects/
-    index.ts                             # Service layer
-prisma/
-  schema.prisma                          # Updated model
-```
-
 ## Checklist
 
 - [ ] Page created in `src/app/(platform)/`

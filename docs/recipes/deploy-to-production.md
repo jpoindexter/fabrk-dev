@@ -99,30 +99,7 @@ npx prisma db push
 
 ## 3. Payment Provider Configuration
 
-### Stripe
-
-1. Switch to **Live mode** in [Stripe Dashboard](https://dashboard.stripe.com)
-2. Create your product and price
-3. Copy the price lookup key or price ID to `NEXT_PUBLIC_STRIPE_PRICE_FABRK`
-4. Set up webhook:
-   - URL: `https://yourdomain.com/api/stripe/webhook`
-   - Events: `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.payment_succeeded`, `invoice.payment_failed`
-5. Copy webhook signing secret to `STRIPE_WEBHOOK_SECRET`
-
-### Polar
-
-1. Get access token from [polar.sh/settings](https://polar.sh/settings) > Developer Settings
-2. Create your product in Polar Dashboard
-3. Set up webhook:
-   - URL: `https://yourdomain.com/api/polar/webhook`
-   - Copy signing secret to `POLAR_WEBHOOK_SECRET`
-
-### Lemon Squeezy
-
-1. Get API key from [app.lemonsqueezy.com/settings/api](https://app.lemonsqueezy.com/settings/api)
-2. Create webhook:
-   - URL: `https://yourdomain.com/api/lemonsqueezy/webhook`
-   - Events: `order_created`, `subscription_created`, `subscription_updated`
+See [Add a Payment Provider](./add-a-payment-provider.md) for full setup. For production, use **live keys** instead of test keys and set webhook URLs to `https://yourdomain.com/api/{provider}/webhook`.
 
 ## 4. Domain and DNS
 

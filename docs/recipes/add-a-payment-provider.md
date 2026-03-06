@@ -169,52 +169,15 @@ LEMONSQUEEZY_WEBHOOK_SECRET="..."
 
 ---
 
-## Testing Payments Locally
+## Testing Locally
 
-### General Setup
-
-1. Set up your provider keys in `.env.local`
+1. Set provider keys in `.env.local`
 2. Run `npm run dev`
-3. Use the provider's test/sandbox mode
+3. Use test/sandbox mode for your provider
+4. Validate webhooks: `npm run validate:webhooks`
 
-### Stripe-Specific
-
-```bash
-# Terminal 1: Run dev server
-npm run dev
-
-# Terminal 2: Forward Stripe webhooks
-stripe listen --forward-to localhost:3000/api/stripe/webhook
-```
-
-Test card numbers:
-- Success: `4242 4242 4242 4242`
-- Decline: `4000 0000 0000 0002`
-- 3D Secure: `4000 0025 0000 3155`
-
-Use any future expiry date, any 3-digit CVC, any ZIP code.
-
-### Validate Webhooks
-
-```bash
-npm run validate:webhooks
-```
-
-This checks that all webhook endpoints are reachable and correctly configured.
-
----
+For Stripe, forward webhooks locally: `stripe listen --forward-to localhost:3000/api/stripe/webhook`
 
 ## Switching Providers
 
-The billing components in `src/components/billing/` detect which provider is configured and render the appropriate checkout button. To switch providers, change your environment variables -- no code changes needed.
-
-If you want to force a specific provider, check the feature flags in `src/config/app.ts`:
-
-```ts
-features: {
-  subscriptions: true,
-  oneTimePurchases: true,
-  trialPeriod: true,
-  trialDays: 14,
-},
-```
+Change your environment variables -- no code changes needed. The billing components auto-detect which provider is configured.

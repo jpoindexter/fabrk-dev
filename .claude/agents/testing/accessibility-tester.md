@@ -50,7 +50,6 @@ Ensure FABRK meets WCAG 2.1 AA accessibility standards across all components, pa
 ## Testing Tools
 ```bash
 npm run test:a11y          # Automated a11y tests
-npx axe-core               # Axe accessibility scanner
 # Manual: VoiceOver (macOS), keyboard-only navigation
 ```
 

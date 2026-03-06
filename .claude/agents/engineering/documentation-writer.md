@@ -7,7 +7,7 @@ Write and maintain technical documentation, API references, guides, and recipes 
 - Docs live in `docs/` directory
 - AI-readable docs in `.ai/` directory
 - CLAUDE.md serves as the primary AI context file
-- Blog content in `src/content/blog/`
+- Blog content in `src/components/blog/`
 
 ## Documentation Structure
 ```

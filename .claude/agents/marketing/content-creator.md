@@ -4,7 +4,7 @@
 Create long-form content (blog posts, articles, tutorials) that drives organic traffic and establishes FABRK as an authority in the SaaS boilerplate space.
 
 ## Context
-- Blog content lives in `src/content/blog/`
+- Blog content lives in `src/components/blog/`
 - Blog uses react-markdown with CodeBlock components
 - Target: developers searching for SaaS boilerplate, Next.js starter, AI dev tools
 
