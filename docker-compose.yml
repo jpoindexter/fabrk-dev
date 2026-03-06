@@ -38,6 +38,32 @@ services:
       retries: 5
       start_period: 5s
 
+  # Optional: Vector Database (uncomment to enable memory/RAG)
+  # qdrant:
+  #   image: qdrant/qdrant:v1.13.2
+  #   container_name: fabrk-qdrant
+  #   restart: unless-stopped
+  #   ports:
+  #     - "127.0.0.1:6333:6333"
+  #   volumes:
+  #     - qdrant_data:/qdrant/storage
+  #   healthcheck:
+  #     test: ["CMD", "wget", "--spider", "-q", "http://localhost:6333/healthz"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  # Optional: Search Service (uncomment to enable web search)
+  # searxng:
+  #   image: searxng/searxng:latest
+  #   container_name: fabrk-searxng
+  #   restart: unless-stopped
+  #   ports:
+  #     - "127.0.0.1:8080:8080"
+  #   environment:
+  #     - SEARXNG_BASE_URL=http://localhost:8080
+
 volumes:
   postgres_data:
   redis_data:
+  # qdrant_data:

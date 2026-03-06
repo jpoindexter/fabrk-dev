@@ -1,24 +1,26 @@
 /**
  * Vercel AI SDK Provider Configuration
  * Modern AI integration with structured outputs support
- * Supports: OpenAI, Google (Gemini), and Ollama (local)
+ * Supports: Anthropic (Claude), OpenAI, Google (Gemini), and Ollama (local)
  */
 
+import { createAnthropic } from '@ai-sdk/anthropic';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 
 // Provider types
-export type AIProvider = 'openai' | 'google' | 'ollama';
+export type AIProvider = 'anthropic' | 'openai' | 'google' | 'ollama';
 
 // Default Ollama settings
 const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1';
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama3.1:8b';
 
 // Get the configured provider based on available API keys
-// Priority: OpenAI > Google > Ollama (cloud providers have better structured output support)
+// Priority: Anthropic > OpenAI > Google > Ollama (cloud providers have better structured output support)
 export function getConfiguredProvider(): AIProvider | null {
   // Prefer cloud providers for better structured output support
+  if (process.env.ANTHROPIC_API_KEY) return 'anthropic';
   if (process.env.OPENAI_API_KEY) return 'openai';
   if (process.env.GOOGLE_AI_API_KEY) return 'google';
   // Fall back to Ollama for local development (uses text parsing for JSON)
@@ -26,6 +28,15 @@ export function getConfiguredProvider(): AIProvider | null {
     return 'ollama';
   }
   return null;
+}
+
+// Create Anthropic (Claude) client
+export function getAnthropicClient() {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    throw new Error('ANTHROPIC_API_KEY is not configured');
+  }
+  return createAnthropic({ apiKey });
 }
 
 // Create OpenAI client
@@ -61,11 +72,13 @@ export function getModel(provider?: AIProvider) {
 
   if (!activeProvider) {
     throw new Error(
-      'No AI provider configured. Set OLLAMA_ENABLED=true for local, or OPENAI_API_KEY/GOOGLE_AI_API_KEY for cloud.'
+      'No AI provider configured. Set OLLAMA_ENABLED=true for local, or ANTHROPIC_API_KEY/OPENAI_API_KEY/GOOGLE_AI_API_KEY for cloud.'
     );
   }
 
   switch (activeProvider) {
+    case 'anthropic':
+      return getAnthropicClient()('claude-sonnet-4-20250514');
     case 'ollama':
       return getOllamaClient()(OLLAMA_MODEL);
     case 'openai':
@@ -86,6 +99,8 @@ export function isAIConfigured(): boolean {
 export function getCurrentProviderName(): string {
   const provider = getConfiguredProvider();
   switch (provider) {
+    case 'anthropic':
+      return 'Anthropic (Claude Sonnet)';
     case 'ollama':
       return `Ollama (${OLLAMA_MODEL})`;
     case 'openai':

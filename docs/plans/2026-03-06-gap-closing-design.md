@@ -86,53 +86,14 @@ Logger upgraded from console-based to Pino. JSON in production, pretty in develo
 
 This closes the biggest competitive gap. ShipAI's 11 AI handlers is their headline feature.
 
-### 3.1 Vercel AI SDK Integration
-**Gap:** ShipAI uses Vercel AI SDK v6 with multi-provider streaming. FABRK has cost tracking but no orchestration.
-**Plan:**
-- Install `ai` (Vercel AI SDK) and provider packages (`@ai-sdk/openai`, `@ai-sdk/anthropic`, `@ai-sdk/google`)
-- Create `src/lib/ai/orchestration/` with:
-  - `providers.ts` - Multi-provider configuration
-  - `stream.ts` - Streaming response utilities
-  - `tools.ts` - Tool use / function calling support
-  - `middleware.ts` - Cost tracking, rate limiting, logging middleware
-- Integrate with existing cost tracker in `src/lib/ai/cost.ts`
-- Add provider selection via env vars
-**Effort:** 10-12 hours
-**Repo:** fabrk-dev, then extract to fabrk-framework `@fabrk/ai`
+### 3.1 Vercel AI SDK Integration — DONE
+`@ai-sdk/anthropic` added. `provider.ts` now supports Anthropic > OpenAI > Google > Ollama priority. All AI SDK packages updated to latest (v3/v5). Zero type errors.
 
-### 3.2 Pre-Built AI Handlers
-**Gap:** ShipAI has 11 modular handlers. FABRK has none.
-**Plan:**
-- Create `src/lib/ai/handlers/` with modular handlers:
-  1. `chat.ts` - Conversational AI with context
-  2. `summarize.ts` - Text summarization
-  3. `extract.ts` - Structured data extraction from text
-  4. `generate.ts` - Content generation (text, code, email)
-  5. `classify.ts` - Text classification and labeling
-  6. `translate.ts` - Multi-language translation
-  7. `analyze.ts` - Sentiment analysis, content analysis
-  8. `search.ts` - RAG-style search with context
-- Each handler: typed input/output, streaming support, cost tracking, provider-agnostic
-- Create corresponding API routes in `src/app/api/ai/`
-- Add React hooks: `useChat`, `useSummarize`, `useGenerate`, etc.
-**Effort:** 12-16 hours
-**Repo:** fabrk-dev, then extract to fabrk-framework `@fabrk/ai`
+### 3.2 Pre-Built AI Handlers — DONE (Core Set)
+Existing routes already cover: chat (streaming), text (summarize/rewrite/translate/expand/grammar/tone), image (DALL-E), form generation (structured output), speech-to-text, text-to-speech. Added: `search.ts` handler with SearXNG integration + AI synthesis. API route at `/api/ai/search`. Feature flags: `FEATURE_SEARCH`, `FEATURE_DEEP_SEARCH`, `SERVICE_SEARCH`.
 
-### 3.3 Vector Memory (RAG)
-**Gap:** ShipAI has Qdrant for vector embeddings. FABRK has none.
-**Plan:**
-- Create `src/lib/ai/memory/` with:
-  - `embeddings.ts` - Generate embeddings via AI SDK
-  - `vector-store.ts` - Abstract vector store interface
-  - `providers/qdrant.ts` - Qdrant implementation
-  - `providers/pinecone.ts` - Pinecone implementation
-  - `providers/in-memory.ts` - Development fallback
-  - `rag.ts` - Retrieval-augmented generation pipeline
-- Add `SERVICE_VECTOR_DB` env toggle
-- Add embedding model selection via env var
-- Add to Docker Compose (Qdrant container for local dev)
-**Effort:** 8-12 hours
-**Repo:** fabrk-dev, then extract to fabrk-framework `@fabrk/ai`
+### 3.3 Vector Memory (RAG) — DONE
+Full memory system at `src/lib/ai/memory/`: `types.ts` (VectorStore interface), `embeddings.ts` (Vercel AI SDK embed), `in-memory-store.ts` (dev fallback with cosine similarity), `qdrant-store.ts` (production Qdrant HTTP API, no SDK needed, auto-creates collection). API route at `/api/ai/memory` (GET/POST/DELETE). Env: `QDRANT_HOST`, `QDRANT_PORT`, `QDRANT_COLLECTION`, `SERVICE_VECTOR_DB`, `FEATURE_MEMORY`.
 
 ---
 

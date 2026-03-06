@@ -148,10 +148,16 @@ export const env = {
   // Redis (self-hosted)
   REDIS_URL: process.env.REDIS_URL || 'redis://localhost:6379',
 
+  // Vector Database (Qdrant) - Optional
+  QDRANT_HOST: process.env.QDRANT_HOST || 'localhost',
+  QDRANT_PORT: process.env.QDRANT_PORT || '6333',
+  QDRANT_COLLECTION: process.env.QDRANT_COLLECTION || 'fabrk_memories',
+
   // Service Toggles (Infrastructure)
   SERVICE_REDIS: process.env.SERVICE_REDIS === 'true',
   SERVICE_STORAGE: process.env.SERVICE_STORAGE === 'true',
   SERVICE_VECTOR_DB: process.env.SERVICE_VECTOR_DB === 'true',
+  SERVICE_SEARCH: process.env.SERVICE_SEARCH || '',
 
   // Feature Toggles (Application Modules)
   FEATURE_AI: process.env.FEATURE_AI === 'true',
@@ -159,6 +165,9 @@ export const env = {
   FEATURE_BLOG: process.env.FEATURE_BLOG !== 'false', // default true
   FEATURE_I18N: process.env.FEATURE_I18N === 'true',
   FEATURE_ANALYTICS: process.env.FEATURE_ANALYTICS !== 'false', // default true
+  FEATURE_SEARCH: process.env.FEATURE_SEARCH !== 'false', // default true
+  FEATURE_MEMORY: process.env.FEATURE_MEMORY === 'true',
+  FEATURE_DEEP_SEARCH: process.env.FEATURE_DEEP_SEARCH === 'true',
 } as const;
 
 /**
@@ -185,6 +194,7 @@ export const features = {
   serviceRedis: env.SERVICE_REDIS,
   serviceStorage: env.SERVICE_STORAGE,
   serviceVectorDb: env.SERVICE_VECTOR_DB,
+  serviceSearch: !!env.SERVICE_SEARCH,
 
   // Feature toggles
   featureAi: env.FEATURE_AI,
@@ -192,6 +202,9 @@ export const features = {
   featureBlog: env.FEATURE_BLOG,
   featureI18n: env.FEATURE_I18N,
   featureAnalytics: env.FEATURE_ANALYTICS,
+  featureSearch: env.FEATURE_SEARCH,
+  featureMemory: env.FEATURE_MEMORY,
+  featureDeepSearch: env.FEATURE_DEEP_SEARCH,
 } as const;
 
 // Re-export validation functions for manual use

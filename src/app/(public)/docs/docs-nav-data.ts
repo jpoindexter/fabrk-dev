@@ -283,6 +283,11 @@ const rawNavigation: NavSection[] = [
         icon: Search,
       },
       {
+        title: 'AI MEMORY',
+        href: '/docs/features/ai-memory',
+        icon: Database,
+      },
+      {
         title: 'AI CREDITS',
         href: '/docs/features/ai-credits',
         icon: Coins,
