@@ -10,6 +10,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import type { AICostEvent } from '@/generated/prisma/client';
 
 export async function GET(request: NextRequest) {
   try {
@@ -41,41 +42,40 @@ export async function GET(request: NextRequest) {
     // Calculate today's stats
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const todayEvents = events.filter((e) => e.timestamp >= today);
+    const todayEvents = events.filter((e: AICostEvent) => e.timestamp >= today);
 
     const todayStats = {
-      cost: todayEvents.reduce((sum, e) => sum + e.costUSD, 0),
+      cost: todayEvents.reduce((sum: number, e: AICostEvent) => sum + e.costUSD, 0),
       requests: todayEvents.length,
       successRate:
         todayEvents.length > 0
-          ? todayEvents.filter((e) => e.success).length / todayEvents.length
+          ? todayEvents.filter((e: AICostEvent) => e.success).length / todayEvents.length
           : 1,
       avgDuration:
         todayEvents.length > 0
-          ? todayEvents.reduce((sum, e) => sum + e.durationMs, 0) / todayEvents.length
+          ? todayEvents.reduce((sum: number, e: AICostEvent) => sum + e.durationMs, 0) /
+            todayEvents.length
           : 0,
-      tokens: todayEvents.reduce((sum, e) => sum + e.totalTokens, 0),
+      tokens: todayEvents.reduce((sum: number, e: AICostEvent) => sum + e.totalTokens, 0),
     };
 
     // Calculate period totals
     const periodStats = {
-      cost: events.reduce((sum, e) => sum + e.costUSD, 0),
+      cost: events.reduce((sum: number, e: AICostEvent) => sum + e.costUSD, 0),
       requests: events.length,
       successRate:
-        events.length > 0
-          ? events.filter((e) => e.success).length / events.length
-          : 1,
+        events.length > 0 ? events.filter((e: AICostEvent) => e.success).length / events.length : 1,
       avgDuration:
         events.length > 0
-          ? events.reduce((sum, e) => sum + e.durationMs, 0) / events.length
+          ? events.reduce((sum: number, e: AICostEvent) => sum + e.durationMs, 0) / events.length
           : 0,
-      tokens: events.reduce((sum, e) => sum + e.totalTokens, 0),
+      tokens: events.reduce((sum: number, e: AICostEvent) => sum + e.totalTokens, 0),
     };
 
     // Group by date for trend chart
     const costByDate = new Map<string, { cost: number; requests: number; errors: number }>();
 
-    events.forEach((event) => {
+    events.forEach((event: AICostEvent) => {
       const dateKey = event.timestamp.toISOString().split('T')[0];
       const existing = costByDate.get(dateKey) || { cost: 0, requests: 0, errors: 0 };
       existing.cost += event.costUSD;
@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
       { cost: number; requests: number; errors: number; tokens: number; lastUsed: Date }
     >();
 
-    events.forEach((event) => {
+    events.forEach((event: AICostEvent) => {
       const existing = featureMap.get(event.feature) || {
         cost: 0,
         requests: 0,
@@ -131,7 +131,7 @@ export async function GET(request: NextRequest) {
     // Group by model
     const modelMap = new Map<string, { cost: number; requests: number; tokens: number }>();
 
-    events.forEach((event) => {
+    events.forEach((event: AICostEvent) => {
       const existing = modelMap.get(event.model) || { cost: 0, requests: 0, tokens: 0 };
       existing.cost += event.costUSD;
       existing.requests += 1;
@@ -150,9 +150,9 @@ export async function GET(request: NextRequest) {
 
     // Get recent errors
     const recentErrors = events
-      .filter((e) => !e.success && e.errorMessage)
+      .filter((e: AICostEvent) => !e.success && e.errorMessage)
       .slice(0, 10)
-      .map((e) => ({
+      .map((e: AICostEvent) => ({
         id: e.id,
         feature: e.feature,
         model: e.model,
@@ -175,15 +175,11 @@ export async function GET(request: NextRequest) {
         daily: Number(process.env.AI_DAILY_BUDGET) || 50,
         used: todayStats.cost,
         remaining: Math.max(0, (Number(process.env.AI_DAILY_BUDGET) || 50) - todayStats.cost),
-        percentUsed:
-          (todayStats.cost / (Number(process.env.AI_DAILY_BUDGET) || 50)) * 100,
+        percentUsed: (todayStats.cost / (Number(process.env.AI_DAILY_BUDGET) || 50)) * 100,
       },
     });
   } catch (error) {
     console.error('Error fetching AI costs:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch AI costs' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch AI costs' }, { status: 500 });
   }
 }
