@@ -104,7 +104,7 @@ export function Navigation() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  &gt; GITHUB
+                  &gt; GET STARTED
                 </Link>
               </Button>
             </div>
@@ -116,7 +116,7 @@ export function Navigation() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              &gt; GITHUB
+              &gt; GET STARTED
             </Link>
           </Button>
         </div>
@@ -227,7 +227,7 @@ export function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    &gt; GITHUB
+                    &gt; GET STARTED
                   </Link>
                 </Button>
               </div>

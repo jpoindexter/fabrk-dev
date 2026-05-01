@@ -68,7 +68,9 @@ export function FinalCTASection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className={cn('mb-8 text-sm', mode.font, mode.color.text.muted)}
             >
-              Every day you spend building auth, billing, and UI from scratch is another day your competitors get ahead. Fabrk gives you everything you need to launch and iterate—faster than ever.
+              Every day you spend building auth, billing, and UI from scratch is another day your
+              competitors get ahead. Fabrk gives you everything you need to launch and
+              iterate—faster than ever.
             </motion.p>
 
             {/* Benefits List */}
@@ -83,7 +85,7 @@ export function FinalCTASection() {
                 'Ship your MVP in days—not months',
                 `${COMPONENT_COUNT_STRING} production-ready components`,
                 'Save 100+ hours on development instantly',
-                'Lifetime updates, no subscription',
+                'Open source, MIT licensed',
               ].map((benefit, index) => (
                 <li key={index} className="flex items-start gap-4">
                   <ArrowRight className={cn('mt-0.5 size-4 shrink-0', mode.color.text.accent)} />

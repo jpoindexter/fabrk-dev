@@ -128,7 +128,7 @@ export function HeroSection() {
                 mode.font
               )}
             >
-              &gt; STAR ON GITHUB
+              &gt; GET STARTED
               <span className={cn('ml-2 text-xs', mode.state.secondary.opacity)}>FREE</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </PolarCheckoutButton>

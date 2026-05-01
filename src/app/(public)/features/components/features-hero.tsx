@@ -80,7 +80,7 @@ export function FeaturesHero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                &gt; STAR ON GITHUB
+                &gt; GET STARTED
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>

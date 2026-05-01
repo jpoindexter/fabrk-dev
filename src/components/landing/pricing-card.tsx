@@ -32,78 +32,58 @@ export function PricingCard({ className }: PricingCardProps) {
       </div>
 
       <CardContent padding="md" className="flex flex-col items-center text-center">
-        {/* Title */}
-        <h3 className={cn('text-foreground text-sm font-bold uppercase tracking-wide', mode.font)}>
-          ONE-TIME LIFETIME ACCESS
+        <h3 className={cn('text-foreground text-sm font-bold tracking-wide uppercase', mode.font)}>
+          OPEN SOURCE
         </h3>
 
-        {/* Urgency Message */}
-        <p className={cn('text-primary mt-2 animate-pulse text-sm font-bold uppercase', mode.font)}>
-          OFFER ENDS SOON!
-        </p>
-
-        {/* Price Display */}
         <div className="mt-6 flex w-full flex-col items-center py-4">
-          <p className={cn('text-muted-foreground text-xs font-bold line-through', mode.font)}>
-            {PRICING.display.regular}
-          </p>
-          <p className={cn('text-primary text-7xl font-bold leading-none lg:text-8xl', mode.font)}>
+          <p className={cn('text-primary text-7xl leading-none font-bold lg:text-8xl', mode.font)}>
             {PRICING.display.current}
           </p>
-          <p className={cn('text-primary mt-1 text-sm font-bold uppercase', mode.font)}>
-            SAVE ${PRICING.promo.amount} Instantly!
-          </p>
           <p
-            className={cn(
-              'text-muted-foreground mt-3 text-xs uppercase tracking-wider',
-              mode.font
-            )}
+            className={cn('text-muted-foreground mt-3 text-xs tracking-wider uppercase', mode.font)}
           >
-            ONE TIME PAYMENT
+            MIT LICENSED
           </p>
         </div>
 
-        {/* CTA Button */}
         <PolarCheckoutButton
           className={cn(
-            'bg-primary text-primary-foreground hover:bg-primary/90 group mt-6 flex h-14 w-full items-center justify-center gap-2 border text-base font-bold uppercase tracking-wider transition-all',
+            'bg-primary text-primary-foreground hover:bg-primary/90 group mt-6 flex h-14 w-full items-center justify-center gap-2 border text-base font-bold tracking-wider uppercase transition-all',
             mode.radius,
             mode.font
           )}
         >
-          <span>
-            {PRICING.cta.label} — {PRICING.display.current}
-          </span>
+          <span>{PRICING.cta.label}</span>
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </PolarCheckoutButton>
 
-        {/* Highlight Badges */}
         <div className="mt-6 flex w-full flex-wrap justify-center gap-x-4 gap-y-2">
           {highlights.map((item) => (
             <p
               key={item}
-              className={cn('text-primary text-xs font-bold uppercase tracking-wider', mode.font)}
+              className={cn('text-primary text-xs font-bold tracking-wider uppercase', mode.font)}
             >
               ✓ {item}
             </p>
           ))}
         </div>
 
-        {/* Trust line */}
         <p className={cn('text-muted-foreground mt-4 text-center text-xs', mode.font)}>
           {PRICING.trustLine}
         </p>
 
-        {/* Enterprise Link */}
         <Link
-          href="mailto:support@fabrk.dev?subject=Enterprise%20Licensing"
+          href="https://github.com/THEFT-DEV/fabrk"
+          target="_blank"
+          rel="noopener noreferrer"
           className={cn(
             'group mt-4 flex items-center gap-1.5 text-xs transition-colors',
             'text-muted-foreground hover:text-primary',
             mode.font
           )}
         >
-          <span>Need enterprise licensing?</span>
+          <span>View on GitHub</span>
           <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </CardContent>

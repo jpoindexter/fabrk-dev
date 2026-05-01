@@ -55,31 +55,29 @@ export function PricingSection() {
           >
             <Badge
               code="0x40"
-              label="PRICING"
-              meta="COMMERCIAL TIER │ FIB[144]"
+              label="OPEN SOURCE"
+              meta="MIT LICENSED │ FIB[144]"
               className="mb-4 self-start"
             />
 
-            <h2 className={cn('mb-2 text-sm', mode.color.text.accent, mode.font)}>
-              [FABRK STARTER]
-            </h2>
+            <h2 className={cn('mb-2 text-sm', mode.color.text.accent, mode.font)}>[FABRK]</h2>
             <h3 className={cn('mb-6 text-4xl font-semibold tracking-tight', mode.font)}>
-              ONE-TIME PURCHASE.
+              FREE & OPEN SOURCE.
               <br />
               <span className={mode.color.text.muted}>UNLIMITED PROJECTS.</span>
             </h3>
 
             <div className={cn('mb-6 border-l-2 pl-4', mode.color.border.default)}>
               <p className={cn('text-sm', mode.color.text.muted, mode.font)}>
-                Upon purchase, use the starter kit for personal and commercial projects—no restrictions on developers or deployments.
+                MIT licensed. Use it for personal or commercial projects. Fork it, ship it,
+                contribute back if you want.
               </p>
             </div>
 
             <Card size="auto">
               <CardContent padding="sm">
                 <InfoNote label="NOTE" className="mt-0">
-                  Fabrk is 40-70% more affordable than comparable Next.js starter kits. Zero hidden
-                  charges or fees.
+                  Star the repo on GitHub if it saves you time. Pull requests welcome.
                 </InfoNote>
               </CardContent>
             </Card>

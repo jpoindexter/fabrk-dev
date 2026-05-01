@@ -1,35 +1,30 @@
-/**
- * Pricing Data - Single source of truth
- * Used by: PricingCard (Hero, Pricing Section, ExitIntentPopup, StickyCTABar)
- */
-
 import { COMPONENT_COUNT_STRING } from './stats';
 
 export const PRICING = {
-  current: 199,
-  regular: 299,
+  current: 0,
+  regular: 0,
   currency: 'USD',
   display: {
-    current: '$199',
-    regular: '$299',
+    current: 'FREE',
+    regular: 'FREE',
   },
   promo: {
-    code: 'EARLY100',
-    amount: 100,
-    limit: 100,
-    label: '$100 OFF for first 100 customers',
+    code: 'OPENSOURCE',
+    amount: 0,
+    limit: 0,
+    label: 'MIT licensed',
   },
   features: [
     `${COMPONENT_COUNT_STRING} PRODUCTION-READY COMPONENTS`,
-    'AUTH, BILLING & MULTI-TENANCY',
-    'LIFETIME UPDATES (NO SUBSCRIPTION)',
+    'AUTH, BILLING & MULTI-TENANCY DEMOS',
+    'OPEN SOURCE — MIT LICENSED',
     'UNLIMITED PROJECTS & CLIENTS',
-    'COMMERCIAL LICENSE INCLUDED',
-    'PREMIUM SUPPORT & DOCUMENTATION',
+    'NO SUBSCRIPTION, NO ATTRIBUTION REQUIRED',
+    'COMMUNITY SUPPORT & DOCUMENTATION',
     'WCAG 2.1 AA ACCESSIBLE',
   ],
   cta: {
-    label: 'BUY NOW',
+    label: 'GET STARTED',
   },
-  trustLine: 'Secure checkout via Polar │ All sales final',
+  trustLine: 'Free forever │ MIT licensed',
 } as const;

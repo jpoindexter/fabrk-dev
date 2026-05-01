@@ -16,7 +16,7 @@ interface PolarCheckoutButtonProps {
 
 export function PolarCheckoutButton({
   className,
-  children = '> STAR ON GITHUB',
+  children = '> GET STARTED',
 }: PolarCheckoutButtonProps) {
   const handleClick = () => {
     trackCTAClicked({

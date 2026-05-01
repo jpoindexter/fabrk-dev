@@ -60,7 +60,7 @@ export function AboutCTA() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              &gt; STAR ON GITHUB - FREE
+              &gt; GET STARTED - FREE
               <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>

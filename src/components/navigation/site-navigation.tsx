@@ -12,7 +12,6 @@ import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { ThemePlaygroundTrigger } from '@/components/theme/theme-playground-panel';
-import { LocaleSwitcher } from '@/components/i18n/locale-switcher';
 import { mode } from '@/design-system';
 import { cn } from '@/lib/utils';
 
@@ -58,7 +57,10 @@ export function SiteNavigation() {
   const suffix = sectionSuffix[currentSection] || 'CONSOLE';
 
   return (
-    <nav id="navigation" className="border-border bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <nav
+      id="navigation"
+      className="border-border bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
+    >
       <div className="flex h-16 w-full items-center px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, x: -12 }}
@@ -67,7 +69,11 @@ export function SiteNavigation() {
         >
           <Link
             href="/"
-            className={cn(mode.font, 'flex items-center gap-2 transition-opacity', mode.state.hover.linkOpacity)}
+            className={cn(
+              mode.font,
+              'flex items-center gap-2 transition-opacity',
+              mode.state.hover.linkOpacity
+            )}
           >
             <span className="text-primary text-xs">&gt;</span>
             <span className="text-sm font-semibold tracking-tight">FABRK</span>
@@ -106,7 +112,6 @@ export function SiteNavigation() {
           </div>
 
           <div className="bg-border h-6 w-px" />
-          <LocaleSwitcher />
           <ThemePlaygroundTrigger />
           <div className="bg-border h-6 w-px" />
 
@@ -115,7 +120,13 @@ export function SiteNavigation() {
               <Link href="/library">&gt; VIEW LIBRARY</Link>
             </Button>
             <Button asChild className={cn(mode.radius, mode.font, 'text-xs')}>
-              <Link href="/#pricing">&gt; GET STARTED</Link>
+              <Link
+                href="https://github.com/THEFT-DEV/fabrk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                &gt; GET STARTED
+              </Link>
             </Button>
           </div>
         </motion.div>
@@ -175,7 +186,13 @@ export function SiteNavigation() {
                   </SheetClose>
                   <SheetClose asChild>
                     <Button className={cn(mode.radius, mode.font, 'mt-4 w-full text-xs')} asChild>
-                      <Link href="/#pricing">&gt; GET STARTED</Link>
+                      <Link
+                        href="https://github.com/THEFT-DEV/fabrk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        &gt; GET STARTED
+                      </Link>
                     </Button>
                   </SheetClose>
                 </div>
@@ -184,7 +201,13 @@ export function SiteNavigation() {
           </Sheet>
 
           <Button asChild className={cn(mode.radius, mode.font, 'text-xs md:hidden')}>
-            <Link href="/#pricing">&gt; START</Link>
+            <Link
+              href="https://github.com/THEFT-DEV/fabrk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              &gt; START
+            </Link>
           </Button>
         </motion.div>
       </div>
