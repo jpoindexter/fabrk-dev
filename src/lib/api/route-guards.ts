@@ -51,6 +51,24 @@ export function guardStripeRoute(): NextResponse | null {
 }
 
 /**
+ * Guard for the Stripe webhook route. Requires BOTH the secret key and the
+ * webhook signing secret. Returns 404 if either is missing — fail-closed so a
+ * partial config never reaches signature verification with a placeholder.
+ */
+export function guardStripeWebhook(): NextResponse | null {
+  if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
+    return NextResponse.json(
+      {
+        error: 'Not Found',
+        message: 'Stripe webhooks are not configured on this server',
+      },
+      { status: 404 }
+    );
+  }
+  return null;
+}
+
+/**
  * Guard for Lemonsqueezy routes - returns 404 if Lemonsqueezy not configured
  */
 export function guardLemonsqueezyRoute(): NextResponse | null {

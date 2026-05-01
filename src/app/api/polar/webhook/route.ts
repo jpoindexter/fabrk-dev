@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { sendWelcomeEmail } from '@/lib/email';
 import { generateLicenseKey } from '@/lib/license';
+import { guardPolarRoute } from '@/lib/api/route-guards';
+import { isWebhookEventProcessed, markWebhookEventProcessed } from '@/lib/stripe/idempotency';
 
 /**
  * POST /api/polar/webhook
@@ -16,14 +18,16 @@ import { generateLicenseKey } from '@/lib/license';
  * - subscription.canceled: Subscription was canceled
  */
 export async function POST(req: NextRequest) {
+  const guard = guardPolarRoute();
+  if (guard) return guard;
+
+  if (!process.env.POLAR_WEBHOOK_SECRET) {
+    return NextResponse.json({ error: 'Not Found' }, { status: 404 });
+  }
+
   try {
     const rawBody = await req.text();
     const secret = process.env.POLAR_WEBHOOK_SECRET;
-
-    if (!secret) {
-      logger.warn('POLAR_WEBHOOK_SECRET is not configured');
-      return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 });
-    }
 
     // Get headers for signature verification
     const headers: Record<string, string> = {};
@@ -41,7 +45,17 @@ export async function POST(req: NextRequest) {
     }
 
     const eventType = event.type;
-    logger.info('Polar webhook received', { eventType });
+    const eventId =
+      (event as { id?: string }).id ?? `${eventType}:${(event.data as { id?: string }).id}`;
+
+    // Idempotency: drop duplicates so welcome emails / license keys are not re-issued.
+    if (await isWebhookEventProcessed(eventId)) {
+      logger.info('Polar webhook event already processed', { eventId, eventType });
+      return NextResponse.json({ received: true, duplicate: true });
+    }
+    await markWebhookEventProcessed(eventId);
+
+    logger.info('Polar webhook received', { eventType, eventId });
 
     // Handle different event types
     switch (eventType) {

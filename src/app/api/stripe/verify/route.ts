@@ -132,6 +132,7 @@
 import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { stripe, isStripeConfigured } from '@/lib/stripe/client';
+import { guardStripeRoute } from '@/lib/api/route-guards';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -145,8 +146,10 @@ const verifySchema = z.object({
  * Verify Stripe checkout session and return purchase details
  */
 export async function GET(request: NextRequest) {
+  const guard = guardStripeRoute();
+  if (guard) return guard;
+
   try {
-    // Check if Stripe is configured
     if (!isStripeConfigured) {
       return NextResponse.json(
         {

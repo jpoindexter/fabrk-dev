@@ -77,11 +77,15 @@ import { prisma } from '@/lib/prisma';
 import { stripe } from '@/lib/stripe/client';
 import { env } from '@/lib/env';
 import { withCsrfProtection } from '@/lib/security/csrf';
+import { guardStripeRoute } from '@/lib/api/route-guards';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
 async function portalHandler(_req: NextRequest) {
+  const guard = guardStripeRoute();
+  if (guard) return guard;
+
   try {
     const session = await auth();
 

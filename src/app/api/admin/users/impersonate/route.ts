@@ -7,7 +7,16 @@ import { cookies } from 'next/headers';
 import crypto from 'crypto';
 
 const IMPERSONATION_COOKIE = 'fabrk_impersonation';
-const IMPERSONATION_SECRET = process.env.NEXTAUTH_SECRET || 'fallback-secret-do-not-use-in-production';
+
+function getImpersonationSecret(): string {
+  const secret = process.env.NEXTAUTH_SECRET;
+  if (!secret) {
+    throw new Error(
+      'NEXTAUTH_SECRET is not set. Refusing to sign impersonation cookies with a known fallback.'
+    );
+  }
+  return secret;
+}
 
 /**
  * Sign impersonation data with HMAC to prevent tampering
@@ -16,7 +25,7 @@ const IMPERSONATION_SECRET = process.env.NEXTAUTH_SECRET || 'fallback-secret-do-
 function signImpersonationData(data: object): string {
   const payload = JSON.stringify(data);
   const signature = crypto
-    .createHmac('sha256', IMPERSONATION_SECRET)
+    .createHmac('sha256', getImpersonationSecret())
     .update(payload)
     .digest('hex');
   return `${Buffer.from(payload).toString('base64')}.${signature}`;
@@ -33,7 +42,7 @@ function verifyImpersonationData(signedData: string): object | null {
 
     const payload = Buffer.from(encodedPayload, 'base64').toString('utf-8');
     const expectedSignature = crypto
-      .createHmac('sha256', IMPERSONATION_SECRET)
+      .createHmac('sha256', getImpersonationSecret())
       .update(payload)
       .digest('hex');
 

@@ -9,17 +9,14 @@ import crypto from 'crypto';
 import { logger } from '@/lib/logger';
 import { env } from '@/lib/env';
 
-// Initialize Stripe - OPTIONAL (only needed if using Stripe for payments)
-// If not configured, Stripe functions will gracefully return null
-const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || '';
-
-// Check if Stripe is configured
+// Stripe is OPTIONAL on this app. Route guards (guardStripeRoute) ensure no
+// Stripe API call runs unless STRIPE_SECRET_KEY is set. We pass the env var
+// straight through — if it's missing the SDK throws on first API call rather
+// than silently using a placeholder.
+const STRIPE_KEY = env.server.STRIPE_SECRET_KEY ?? '';
 export const isStripeConfigured = !!STRIPE_KEY;
 
-// No warning needed - route guards handle this gracefully
-
-// Initialize Stripe client (use placeholder if not configured - won't be used)
-export const stripe = new Stripe(STRIPE_KEY || 'sk_test_placeholder', {
+export const stripe = new Stripe(STRIPE_KEY, {
   apiVersion: '2025-12-15.clover',
   typescript: true,
 });

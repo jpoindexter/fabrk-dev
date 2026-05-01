@@ -118,17 +118,17 @@ import { isWebhookEventProcessed, markWebhookEventProcessed } from '@/lib/stripe
 import * as paymentHandlers from './handlers/payment';
 import * as subscriptionHandlers from './handlers/subscription';
 import * as checkoutHandlers from './handlers/checkout';
-import { guardStripeRoute } from '@/lib/api/route-guards';
-
-const STRIPE_KEY = env.server.STRIPE_SECRET_KEY || 'sk_test_placeholder';
-const stripe = new Stripe(STRIPE_KEY, {
-  apiVersion: '2025-12-15.clover',
-});
+import { guardStripeWebhook } from '@/lib/api/route-guards';
 
 export async function POST(req: Request) {
-  // Guard: Return 404 if Stripe not configured (marketing site uses Polar instead)
-  const guard = guardStripeRoute();
+  // Guard: 404 unless BOTH STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET are set.
+  // Fail-closed prevents signature verification from running against a placeholder.
+  const guard = guardStripeWebhook();
   if (guard) return guard;
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+    apiVersion: '2025-12-15.clover',
+  });
 
   const body = await req.text();
   const headersList = await headers();
@@ -137,8 +137,11 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
-    const webhookSecret = env.server.STRIPE_WEBHOOK_SECRET || 'whsec_placeholder';
-    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET as string
+    );
   } catch (error: unknown) {
     logger.error('Webhook signature verification failed', error);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });

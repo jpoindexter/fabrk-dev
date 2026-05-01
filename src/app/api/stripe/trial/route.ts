@@ -11,13 +11,16 @@ import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { withRateLimit } from '@/lib/rate-limit/middleware';
 import { getOrCreateCustomer, stripe } from '@/lib/stripe/client';
+import { guardStripeRoute } from '@/lib/api/route-guards';
 import { STRIPE_CONFIG } from '@/config/stripe';
 import config from '@/config/app';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function trialHandler(req: NextRequest) {
+  const guard = guardStripeRoute();
+  if (guard) return guard;
+
   try {
-    // Trial period must be enabled
     if (!config.features.trialPeriod) {
       return NextResponse.json(
         { error: 'Trial period is not currently available' },

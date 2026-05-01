@@ -42,7 +42,10 @@ export const PAYMENT_PREFIXES = [
   '/api/lemonsqueezy/checkout',
 ];
 
-export const ADMIN_PREFIXES = ['/api/admin'];
+// Defense-in-depth: middleware enforces role at the edge for both API and page
+// routes. Layouts under /admin still call auth() — middleware just rejects
+// faster (and avoids rendering admin shell HTML to non-admins).
+export const ADMIN_PREFIXES = ['/api/admin', '/admin'];
 
 export const WEBHOOK_PREFIXES = [
   '/api/stripe/webhook',

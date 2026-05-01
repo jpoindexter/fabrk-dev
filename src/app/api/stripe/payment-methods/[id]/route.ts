@@ -112,12 +112,16 @@ import { logger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { withRateLimit } from '@/lib/rate-limit/middleware';
 import { stripe } from '@/lib/stripe/client';
+import { guardStripeRoute } from '@/lib/api/route-guards';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function deletePaymentMethodHandler(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const guard = guardStripeRoute();
+  if (guard) return guard;
+
   try {
     const session = await auth();
 

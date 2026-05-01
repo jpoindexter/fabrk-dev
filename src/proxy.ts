@@ -11,7 +11,13 @@ import { getToken } from 'next-auth/jwt';
 import { generateNonce, getNonceHeaderName } from '@/lib/security/csp-nonce';
 import { extractClientIp } from '@/lib/proxy/client-ip';
 import { isMaliciousBot } from '@/lib/proxy/bot-detection';
-import { shouldSkip, isAuthRoute, isAdminRoute, isAiRoute, classifyRoute } from '@/lib/proxy/routes';
+import {
+  shouldSkip,
+  isAuthRoute,
+  isAdminRoute,
+  isAiRoute,
+  classifyRoute,
+} from '@/lib/proxy/routes';
 import { enforceRateLimit } from '@/lib/proxy/rate-limit';
 import { buildCspHeader } from '@/lib/proxy/csp';
 import { resolveLocale, LOCALE_COOKIE } from '@/lib/proxy/locale';
@@ -66,13 +72,19 @@ async function blockUnauthorizedAdmin(
 ): Promise<NextResponse | null> {
   if (!isAdminRoute(pathname)) return null;
 
-  const token = await getToken({ req: request });
+  const isApi = pathname.startsWith('/api/');
+  const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+
   if (!token) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return isApi
+      ? NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      : NextResponse.redirect(new URL('/login', request.url));
   }
   if (token.role !== 'ADMIN') {
     console.log(`[SECURITY] Non-admin attempted admin route: ${pathname}`, { userId: token.sub });
-    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    return isApi
+      ? NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+      : NextResponse.redirect(new URL('/dashboard', request.url));
   }
   return null;
 }
@@ -100,7 +112,10 @@ function setCsrfCookie(request: NextRequest, response: NextResponse): void {
   if (hasCsrfCookie(request.cookies.get(CSRF_COOKIE_NAME)?.value)) return;
 
   response.cookies.set(CSRF_COOKIE_NAME, generateEdgeCsrfToken(), {
-    httpOnly: true,
+    // Double-submit pattern: cookie must be readable by JS so the client can
+    // mirror it into the x-csrf-token header. Same-origin policy keeps it
+    // unreadable to attackers; SameSite=strict prevents cross-site send.
+    httpOnly: false,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
     path: '/',
