@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { DemoVideoModal } from './demo-video-modal';
 import dynamicCounts from '@/data/dynamic-counts.json';
 
 const ROTATING_WORDS = [
@@ -129,10 +128,7 @@ export function HeroSection() {
               )}
             >
               &gt; GET STARTED
-              <span className={cn('ml-2 text-xs', mode.state.secondary.opacity)}>FREE</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
             </PolarCheckoutButton>
-            <DemoVideoModal className={cn('px-8 py-3 text-sm', mode.radius, mode.font)} />
           </div>
 
           <div
@@ -146,7 +142,7 @@ export function HeroSection() {
             <span className="text-border">|</span>
             <span>{dynamicCounts.counts.themes} THEMES</span>
             <span className="text-border">|</span>
-            <span>LIFETIME UPDATES</span>
+            <span>MIT LICENSED</span>
           </div>
         </div>
       </Container>
