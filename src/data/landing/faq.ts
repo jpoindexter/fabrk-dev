@@ -13,27 +13,21 @@ export const FAQ_QUESTIONS = [
   },
   {
     id: 'license',
-    question: 'What does the commercial license include?',
+    question: 'What is the license?',
     answer:
-      'The commercial license includes unlimited projects, unlimited clients, lifetime updates, and no recurring fees. Build and sell as many SaaS products as you need—no limits.',
+      'Fabrk is open source under the MIT license. Use it in personal or commercial projects, modify it, ship it. No attribution required, no royalties, no recurring fees.',
   },
   {
     id: 'updates',
     question: 'How do updates work?',
     answer:
-      'You get lifetime access to all future updates via GitHub. We continuously improve Fabrk with new components, features, and Next.js upgrades. No subscription required.',
+      'Pull from the GitHub repo whenever you want. New components, features, and Next.js upgrades land in main. Fork it if you want a stable snapshot.',
   },
   {
     id: 'support',
     question: 'What kind of support do you provide?',
     answer:
-      'Email support with 48-hour response time. Comprehensive documentation and setup guides included. We help with setup, deployment, and customization questions.',
-  },
-  {
-    id: 'refunds',
-    question: 'Do you offer refunds?',
-    answer:
-      'Due to the nature of digital products, all sales are final. However, we offer a detailed demo and documentation so you can evaluate Fabrk before purchasing.',
+      'Community support via GitHub Issues and Discussions. Documentation covers setup, deployment, and customization. PRs welcome.',
   },
   {
     id: 'tech-stack',

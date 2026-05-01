@@ -570,9 +570,6 @@ export default function PrivacyPage() {
               <Link href="/cookies" className="text-primary hover:underline">
                 &gt; COOKIE POLICY
               </Link>
-              <Link href="/refund" className="text-primary hover:underline">
-                &gt; REFUND POLICY
-              </Link>
             </div>
           </CardContent>
         </Card>

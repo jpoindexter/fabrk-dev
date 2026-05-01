@@ -60,7 +60,7 @@ export function AboutCTA() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              &gt; GET STARTED - FREE
+              &gt; GITHUB
               <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>
@@ -76,9 +76,9 @@ export function AboutCTA() {
           viewport={{ once: true }}
           className={cn('text-muted-foreground flex justify-center gap-4 text-xs', mode.font)}
         >
-          <span className="text-success">■ INSTANT ACCESS</span>
-          <span className="text-success">■ LIFETIME UPDATES</span>
-          <span className="text-success">■ 30 DAY GUARANTEE</span>
+          <span className="text-success">■ MIT LICENSED</span>
+          <span className="text-success">■ OPEN SOURCE</span>
+          <span className="text-success">■ COMMUNITY SUPPORT</span>
         </motion.div>
       </div>
     </section>

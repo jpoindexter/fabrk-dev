@@ -37,7 +37,6 @@ const LEGAL_LINKS = [
   { href: '/terms', label: 'TERMS' },
   { href: '/privacy', label: 'PRIVACY' },
   { href: '/cookies', label: 'COOKIES' },
-  { href: '/refund', label: 'REFUND' },
 ] as const;
 
 const techStack = [
@@ -124,7 +123,7 @@ export function Footer() {
                   href="https://www.producthunt.com/products/fabrk/launches/fabrk?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-fabrk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="opacity-70 hover:opacity-100 transition-opacity inline-block"
+                  className="inline-block opacity-70 transition-opacity hover:opacity-100"
                 >
                   <img
                     alt="Fabrk - Terminal-aesthetic Next.js boilerplate. Stand out. Ship fast | Product Hunt"
@@ -141,8 +140,16 @@ export function Footer() {
               <CardHeader title="nav links.exe │ PID:1024" code="0x72" />
               <CardContent>
                 <div className="divide-border grid grid-cols-3 divide-x">
-                  <FooterNavColumn title="PRODUCT" ariaLabel="Product links" links={PRODUCT_LINKS} />
-                  <FooterNavColumn title="COMPANY" ariaLabel="Company links" links={COMPANY_LINKS} />
+                  <FooterNavColumn
+                    title="PRODUCT"
+                    ariaLabel="Product links"
+                    links={PRODUCT_LINKS}
+                  />
+                  <FooterNavColumn
+                    title="COMPANY"
+                    ariaLabel="Company links"
+                    links={COMPANY_LINKS}
+                  />
                   <FooterNavColumn title="LEGAL" ariaLabel="Legal links" links={LEGAL_LINKS} />
                 </div>
               </CardContent>

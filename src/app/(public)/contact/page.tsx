@@ -11,26 +11,24 @@ import { ContactSidebar } from './components/contact-sidebar';
 import { FaqSection } from './components/faq-section';
 import { generateFAQSchema } from '@/lib/metadata';
 
-// FAQ data for schema
 const CONTACT_FAQ = [
   {
-    question: 'Do you offer refunds?',
+    question: 'Is Fabrk really open source?',
     answer:
-      'No, all sales are final. Due to the nature of digital products, we do not offer refunds once you have access to the code.',
+      'Yes. MIT licensed. Fork it, ship it, modify it, sell what you build with it. No fees, no attribution required.',
   },
   {
-    question: 'Is technical support included?',
+    question: 'Where do I get support?',
     answer:
-      'Yes, we provide email support for all license holders. Response time is typically within 24 hours.',
+      'GitHub Issues for bugs, GitHub Discussions for questions. Community-driven. PRs welcome.',
   },
   {
     question: 'Can I use Fabrk for client projects?',
-    answer:
-      'Absolutely! Your license allows you to create unlimited projects for yourself or clients.',
+    answer: 'Yes — MIT covers unlimited personal and commercial use.',
   },
   {
-    question: 'Do I get lifetime updates?',
-    answer: 'Yes, all future updates and improvements are included at no additional cost.',
+    question: 'How do I get updates?',
+    answer: 'Pull from the GitHub repo. New components and features land in main.',
   },
 ];
 

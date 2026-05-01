@@ -450,9 +450,6 @@ export default function CookiesPage() {
               <Link href="/privacy" className="text-primary hover:underline">
                 &gt; PRIVACY POLICY
               </Link>
-              <Link href="/refund" className="text-primary hover:underline">
-                &gt; REFUND POLICY
-              </Link>
             </div>
           </CardContent>
         </Card>

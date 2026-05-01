@@ -3,7 +3,6 @@
  * Frequently asked questions with accordion
  */
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { mode } from '@/design-system';
@@ -50,7 +49,7 @@ export function FaqSection() {
             viewport={{ once: true }}
           >
             <AccordionItem
-              value="refunds"
+              value="open-source"
               className={cn('border-border bg-card border transition-all', mode.radius)}
             >
               <AccordionTrigger
@@ -59,15 +58,11 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] DO YOU OFFER REFUNDS?
+                [Q] IS FABRK REALLY OPEN SOURCE?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
-                [A] No, all sales are final. Due to the nature of digital products, we do not offer
-                refunds once you have access to the code. Please review our{' '}
-                <Link href="/refund" className="text-primary hover:underline">
-                  REFUND POLICY
-                </Link>{' '}
-                for more details.
+                [A] Yes. MIT licensed. Fork it, ship it, modify it, sell what you build with it. No
+                fees, no attribution required.
               </AccordionContent>
             </AccordionItem>
           </motion.div>
@@ -88,11 +83,11 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] IS TECHNICAL SUPPORT INCLUDED?
+                [Q] WHERE DO I GET SUPPORT?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
-                [A] Yes, we provide email support for all license holders. Response time is
-                typically within 24 hours.
+                [A] GitHub Issues for bugs, GitHub Discussions for questions. Community-driven. PRs
+                welcome.
               </AccordionContent>
             </AccordionItem>
           </motion.div>
@@ -116,8 +111,7 @@ export function FaqSection() {
                 [Q] CAN I USE FABRK FOR CLIENT PROJECTS?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
-                [A] Absolutely! Your license allows you to create unlimited projects for yourself or
-                clients.
+                [A] Yes. MIT covers unlimited personal and commercial use.
               </AccordionContent>
             </AccordionItem>
           </motion.div>
@@ -138,10 +132,10 @@ export function FaqSection() {
                   mode.font
                 )}
               >
-                [Q] DO I GET LIFETIME UPDATES?
+                [Q] HOW DO I GET UPDATES?
               </AccordionTrigger>
               <AccordionContent className={cn('text-muted-foreground px-6 text-xs', mode.font)}>
-                [A] Yes, all future updates and improvements are included at no additional cost.
+                [A] Pull from the GitHub repo. New components and features land in main.
               </AccordionContent>
             </AccordionItem>
           </motion.div>

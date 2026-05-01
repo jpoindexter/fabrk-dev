@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet';
 import { ThemePlaygroundTrigger } from '@/components/theme/theme-playground-panel';
@@ -125,7 +125,8 @@ export function SiteNavigation() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                &gt; GET STARTED
+                <Github className="mr-2 h-3.5 w-3.5" />
+                GITHUB
               </Link>
             </Button>
           </div>
@@ -191,7 +192,7 @@ export function SiteNavigation() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        &gt; GET STARTED
+                        &gt; GITHUB
                       </Link>
                     </Button>
                   </SheetClose>

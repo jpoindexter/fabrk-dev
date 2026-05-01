@@ -119,7 +119,7 @@ export function HeroSection() {
             faster.
           </p>
 
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mb-6 flex flex-col items-center gap-4 sm:flex-row">
             <PolarCheckoutButton
               className={cn(
                 'bg-primary text-primary-foreground px-8 py-3 text-sm font-medium',
@@ -127,9 +127,26 @@ export function HeroSection() {
                 mode.font
               )}
             >
-              &gt; GET STARTED
+              &gt; GITHUB
             </PolarCheckoutButton>
           </div>
+
+          <a
+            href="https://github.com/THEFT-DEV/fabrk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-8 inline-block"
+            aria-label="Star Fabrk on GitHub"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://img.shields.io/github/stars/THEFT-DEV/fabrk?style=for-the-badge&logo=github&logoColor=white&color=24292e&labelColor=24292e"
+              alt="GitHub stars"
+              height={28}
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
 
           <div
             className={cn(

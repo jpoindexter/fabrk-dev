@@ -21,7 +21,7 @@ const MARKETING_ROUTES = [
 ];
 
 // Legal pages
-const LEGAL_ROUTES = ['/terms', '/privacy', '/refund', '/cookies'];
+const LEGAL_ROUTES = ['/terms', '/privacy', '/cookies'];
 
 // Auth pages (public but low priority)
 const AUTH_ROUTES = ['/login', '/register'];

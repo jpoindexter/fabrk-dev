@@ -42,10 +42,10 @@ const reasons: Reason[] = [
   },
   {
     id: '0x13',
-    title: 'LIFETIME UPDATES',
+    title: 'OPEN SOURCE',
     icon: Gift,
     description:
-      'One-time payment, lifetime access to all updates. No subscriptions, no hidden fees.',
+      'MIT licensed. Fork it, modify it, ship it. No subscriptions, no fees, no attribution required.',
   },
 ];
 
@@ -73,7 +73,7 @@ export function WhyChooseSection() {
               viewport={{ once: true }}
             >
               <p className={cn('text-muted-foreground text-xs', mode.font)}>
-                We're not just selling code, we're selling time
+                Open source infrastructure that saves you weeks
               </p>
             </motion.div>
           </div>
