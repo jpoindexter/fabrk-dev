@@ -128,8 +128,8 @@ export function HeroSection() {
                 mode.font
               )}
             >
-              &gt; GET FABRK
-              <span className={cn('ml-2 text-xs', mode.state.secondary.opacity)}>$199</span>
+              &gt; STAR ON GITHUB
+              <span className={cn('ml-2 text-xs', mode.state.secondary.opacity)}>FREE</span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </PolarCheckoutButton>
             <DemoVideoModal className={cn('px-8 py-3 text-sm', mode.radius, mode.font)} />

@@ -75,8 +75,12 @@ export function FeaturesHero() {
             className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <Button asChild size="lg" className="text-xs">
-              <Link href="/#pricing">
-                &gt; GET FABRK
+              <Link
+                href="https://github.com/THEFT-DEV/fabrk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                &gt; STAR ON GITHUB
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>

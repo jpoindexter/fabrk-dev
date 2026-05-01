@@ -55,8 +55,12 @@ export function AboutCTA() {
           className="flex flex-col gap-4 sm:flex-row sm:justify-center"
         >
           <Button size="lg" className="text-xs" asChild>
-            <Link href="/#pricing">
-              &gt; GET FABRK - {config.pricing.fabrk.display.current}
+            <Link
+              href="https://github.com/THEFT-DEV/fabrk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              &gt; STAR ON GITHUB - FREE
               <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>

@@ -228,18 +228,17 @@ const config = {
   // PRODUCT PRICING
   // ============================================================================
   pricing: {
-    // Fabrk boilerplate pricing (one-time purchase)
     fabrk: {
-      current: 199, // Launch price (first 100 buyers)
-      original: 299, // Regular price after launch
+      current: 0,
+      original: 0,
       currency: 'USD',
       display: {
-        current: '$199',
-        original: '$299',
+        current: 'FREE',
+        original: 'FREE',
       },
-      billingModel: 'one-time',
-      launchDiscount: true,
-      discountLabel: 'First 100 buyers',
+      billingModel: 'open-source',
+      launchDiscount: false,
+      discountLabel: 'MIT licensed',
     },
     // Competitor pricing (for comparison tables)
     competitors: {

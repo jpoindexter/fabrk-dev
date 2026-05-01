@@ -99,17 +99,24 @@ export function Navigation() {
                 <Link href="/demo">&gt; VIEW DEMO</Link>
               </Button>
               <Button asChild className={cn('text-xs', mode.radius, mode.font)}>
-                <Link href="#pricing" className="scroll-smooth">
-                  &gt; GET STARTED
+                <Link
+                  href="https://github.com/THEFT-DEV/fabrk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  &gt; GITHUB
                 </Link>
               </Button>
             </div>
           </motion.div>
 
-          {/* Mobile CTA Button */}
           <Button asChild className={cn('text-xs md:hidden', mode.radius, mode.font)}>
-            <Link href="#pricing" className="scroll-smooth">
-              &gt; START
+            <Link
+              href="https://github.com/THEFT-DEV/fabrk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              &gt; GITHUB
             </Link>
           </Button>
         </div>
@@ -117,7 +124,7 @@ export function Navigation() {
 
       {/* Mobile Menu - Full screen overlay with terminal styling */}
       {isOpen && (
-        <div className="fixed inset-0 z-modal md:hidden">
+        <div className="z-modal fixed inset-0 md:hidden">
           {/* Backdrop */}
           <div
             role="button"
@@ -215,7 +222,13 @@ export function Navigation() {
                   asChild
                   onClick={() => setIsOpen(false)}
                 >
-                  <Link href="#pricing">&gt; GET STARTED</Link>
+                  <Link
+                    href="https://github.com/THEFT-DEV/fabrk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    &gt; GITHUB
+                  </Link>
                 </Button>
               </div>
             </div>
